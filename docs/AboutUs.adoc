@@ -39,6 +39,7 @@ Responsibilities: Data
 
 === Souwmyaa Sabarinathann
 image::souwmyaa.png[width="150", align="left"]
+{empty}[http://github.com/souwmyaa[github]]
 
 Responsibilities: Documentation + Deliverables and deadlines
 
