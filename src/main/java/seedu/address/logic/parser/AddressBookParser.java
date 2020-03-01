@@ -61,7 +61,7 @@ public class AddressBookParser {
             return new HelpCommand();
 
         case ArchiveCommand.COMMAND_WORD:
-            return new ArchiveCommand();
+            return new ArchiveCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

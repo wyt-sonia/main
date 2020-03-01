@@ -15,6 +15,7 @@ import seedu.address.model.person.UniquePersonList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
+    private final UniquePersonList archivedPersons;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -24,7 +25,8 @@ public class AddressBook implements ReadOnlyAddressBook {
      *   among constructors.
      */
     {
-        persons = new UniquePersonList();
+        persons = new UniquePersonList(false);
+        archivedPersons = new UniquePersonList(true);
     }
 
     public AddressBook() {}
@@ -73,6 +75,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void addPerson(Person p) {
         persons.add(p);
     }
+
+    public void archivePerson(Person p) {archivedPersons.add(p);}
 
     /**
      * Replaces the given person {@code target} in the list with {@code editedPerson}.
