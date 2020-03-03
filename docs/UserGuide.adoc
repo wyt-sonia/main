@@ -1,4 +1,4 @@
-= IVLE - User Guide
+= Study Buddy - User Guide
 :site-section: UserGuide
 :toc:
 :toclevels: 4

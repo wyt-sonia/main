@@ -1,4 +1,4 @@
-= IVLE - Developer Guide
+= Study Buddy - Developer Guide
 :site-section: DeveloperGuide
 :toc:
 :toc-title:
@@ -312,7 +312,7 @@ _{More to be added}_
 [appendix]
 == Use Cases
 
-(For all use cases below, the *System* is `IVLE` and the *Actor* is the `user`, unless specified otherwise)
+(For all use cases below, the *System* is `Study Buddy` and the *Actor* is the `user`, unless specified otherwise)
 
 [discrete]
 === Use case: Delete task
@@ -320,9 +320,9 @@ _{More to be added}_
 *MSS*
 
 1.  User requests to list tasks
-2.  IVLE shows a list of tasks
+2.  Study Buddy shows a list of tasks
 3.  User requests to delete a specific task in the list
-4.  IVLE deletes the task
+4.  Study Buddy deletes the task
 +
 Use case ends.
 
@@ -336,7 +336,7 @@ Use case ends.
 * 3a. The given index is invalid.
 +
 [none]
-** 3a1. IVLE shows an error message.
+** 3a1. Study Buddy shows an error message.
 +
 Use case resumes at step 2.
 
