@@ -76,7 +76,9 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.add(p);
     }
 
-    public void archivePerson(Person p) {archivedPersons.add(p);}
+    public void archivePerson(Person p) {
+        archivedPersons.add(p);
+    }
 
     /**
      * Replaces the given person {@code target} in the list with {@code editedPerson}.
