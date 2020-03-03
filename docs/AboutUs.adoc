@@ -13,25 +13,23 @@ _{The dummy content given below serves as a placeholder to be used by future for
 === Huang Ge Xiang
 image::gexiang.jpg[width="150", align= "left"]
 {empty}[http://github.com/gx-huang[github]]
-Responsibilities: Testing, Deadlines
+Responsibilities: Testing + Deadlines
 
 '''
 
-=== John Roe
-image::lejolly.jpg[width="150", align="left"]
-{empty}[http://github.com/lejolly[github]] [<<johndoe#, portfolio>>]
+=== Wang Yuting
+image::wyt-sonia.jpg[width="150", align="left"]
+{empty}[http://github.com/wyt-sonia[github]]
 
-Role: Team Lead +
-Responsibilities: UI
+Responsibilities: Team Lead + Integration
 
 '''
 
-=== Johnny Doe
-image::yijinl.jpg[width="150", align="left"]
-{empty}[http://github.com/yijinl[github]] [<<johndoe#, portfolio>>]
+=== Teik Jun Tan
+image::teikjun.jpg[width="150", align="left"]
+{empty}[http://github.com/teikjun[github]]
 
-Role: Developer +
-Responsibilities: Data
+Responsibilities: Team lead (assistant) + Integration, Testing
 
 '''
 
@@ -43,11 +41,10 @@ Responsibilities: Documentation + Deliverables and deadlines
 
 '''
 
-=== Benson Meier
+=== Hong Wen
 image::yl_coder.jpg[width="150", align="left"]
-{empty}[http://github.com/yl-coder[github]] [<<johndoe#, portfolio>>]
+{empty}[http://github.com/t1nh0ngWen[github]]
 
-Role: Developer +
-Responsibilities: UI
+Responsibilities: Code Quality
 
 '''
