@@ -5,7 +5,7 @@
 :stylesDir: stylesheets
 
 IVLE was developed by our team that is based in the http://www.comp.nus.edu.sg[School of Computing, National University of Singapore] +
-_{The dummy content given below serves as a placeholder to be used by future forks of the project.}_ +
+
 {empty}
 
 == Project Team
@@ -13,12 +13,13 @@ _{The dummy content given below serves as a placeholder to be used by future for
 === Huang Ge Xiang
 image::gexiang.jpg[width="150", align= "left"]
 {empty}[http://github.com/gx-huang[github]]
+
 Responsibilities: Testing + Deadlines
 
 '''
 
 === Wang Yuting
-image::wyt-sonia.jpg[width="150", align="left"]
+image::wyt-sonia.png[width="150", align="left"]
 {empty}[http://github.com/wyt-sonia[github]]
 
 Responsibilities: Team Lead + Integration
@@ -26,7 +27,7 @@ Responsibilities: Team Lead + Integration
 '''
 
 === Teik Jun Tan
-image::teikjun.jpg[width="150", align="left"]
+image::teikjun.png[width="150", align="left"]
 {empty}[http://github.com/teikjun[github]]
 
 Responsibilities: Team lead (assistant) + Integration + Testing
@@ -42,8 +43,8 @@ Responsibilities: Documentation + Deliverables + deadlines
 '''
 
 === Hong Wen
-image::yl_coder.jpg[width="150", align="left"]
-{empty}[http://github.com/t1nh0ngWen[github]]
+image::aegis-bot.png[width="150", align="left"]
+{empty}[http://github.com/aegis-bot[github]]
 
 Responsibilities: Code Quality
 
