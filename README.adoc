@@ -1,32 +1,50 @@
-= IVLE
+= <Project Name>
+
+== Introduction
+
 ifdef::env-github,env-browser[:relfileprefix: docs/]
 
 https://travis-ci.org/se-edu/addressbook-level3[image:https://travis-ci.org/se-edu/addressbook-level3.svg?branch=master[Build Status]]
-https://ci.appveyor.com/project/damithc/addressbook-level3[image:https://ci.appveyor.com/api/projects/status/3boko2x2vr5cc3w2?svg=true[Build status]]
-https://coveralls.io/github/se-edu/addressbook-level3?branch=master[image:https://coveralls.io/repos/github/se-edu/addressbook-level3/badge.svg?branch=master[Coverage Status]]
-https://www.codacy.com/app/damith/addressbook-level3?utm_source=github.com&utm_medium=referral&utm_content=se-edu/addressbook-level3&utm_campaign=Badge_Grade[image:https://api.codacy.com/project/badge/Grade/fc0b7775cf7f4fdeaf08776f3d8e364a[Codacy Badge]]
-
 
 ifdef::env-github[]
 image::docs/images/Ui.png[width="600"]
 endif::[]
 
 ifndef::env-github[]
-image::images/Ui.png[width="600"]
+image::images/Ui.png[width="600", title="UI Sample Picture, will be updated in ther future"]
 endif::[]
 
-* This is a desktop module management application. It has a GUI but most of the user interactions happen using a CLI (Command Line Interface).
-* It is a Java application intended for students who would like to manage their tasks in several modules.
+==== What is <Project Name> ?
+
+* <Project Name> is a  task keeper for students who wish to manage their time more efficiently.
+* With the help of <Project Name>, students can easily manage and view their school tasks.
+* Sort, filter and search commands are also provided to make the interaction more meaningful.
+* It also provides services to show the statistics for time, grades breakdown and workload comparison between different
+modules in Pie charts. With this visualisation of data, students can be more aware of their time management.
+
+==== Who can benefit most from <Project Name>?
+
+* It is designed for students who are able to type fast and comfortable with `Command-Line Interface(CLI)`.
+
+==== What is CLI?
+* CLI is a command line program that accepts text input to execute operating system functions.
+* Compare with graphical user interfaces(GUI), CLI performs interaction with user by keyboard input instead of
+mouse clicking, such as cmd window.
 
 == Site Map
+To browse more information, please check our site map:
 
 * <<UserGuide#, User Guide>>
 * <<DeveloperGuide#, Developer Guide>>
-* <<LearningOutcomes#, Learning Outcomes>>
 * <<AboutUs#, About Us>>
 * <<ContactUs#, Contact Us>>
 
 == Acknowledgements
 
-* Libraries used: https://openjfx.io/[JavaFX], https://github.com/FasterXML/jackson[Jackson], https://github.com/junit-team/junit5[JUnit5]
+* Some parts of this sample application were inspired by the excellent
+http://code.makery.ch/library/javafx-8-tutorial/[Java FX tutorial] by
+_Marco Jakob_.
+* Libraries used: https://openjfx.io/[JavaFX],
+https://github.com/FasterXML/jackson[Jackson], https://github.com/junit-team/junit5[JUnit5]
 
+== Licence : link:LICENSE[MIT]
