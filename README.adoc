@@ -1,4 +1,4 @@
-= <Project Name>
+= Study Buddy
 
 == Introduction
 
@@ -14,22 +14,22 @@ ifndef::env-github[]
 image::images/Ui.png[width="600", title="UI Sample Picture, will be updated in ther future"]
 endif::[]
 
-==== What is <Project Name> ?
+==== What is Study Buddy ?
 
-* <Project Name> is a  task keeper for students who wish to manage their time more efficiently.
-* With the help of <Project Name>, students can easily manage and view their school tasks.
-* Sort, filter and search commands are also provided to make the interaction more meaningful.
+* Study Buddy is a  task management tool for students who wish to organise their tasks more efficiently.
+* With the help of Study Buddy, students can easily view and manage their module related tasks.
+* Sort, filter and search commands are also provided to make the interaction more useful.
 * It also provides services to show the statistics for time, grades breakdown and workload comparison between different
-modules in Pie charts. With this visualisation of data, students can be more aware of their time management.
+modules in Pie charts. This visualisation of data helps students become more aware of their pending work and which tasks to spend more time on.
 
-==== Who can benefit most from <Project Name>?
+==== Who can benefit most from Study Buddy?
 
-* It is designed for students who are able to type fast and comfortable with `Command-Line Interface(CLI)`.
+* It is designed for students who can type fast and are comfortable with `Command-Line Interface(CLI)`.
 
 ==== What is CLI?
 * CLI is a command line program that accepts text input to execute operating system functions.
 * Compare with graphical user interfaces(GUI), CLI performs interaction with user by keyboard input instead of
-mouse clicking, such as cmd window.
+mouse clicking, such as command window.
 
 == Site Map
 To browse more information, please check our site map:
@@ -41,10 +41,10 @@ To browse more information, please check our site map:
 
 == Acknowledgements
 
-* Some parts of this sample application were inspired by the excellent
+* Some parts of this application were inspired by the excellent
 http://code.makery.ch/library/javafx-8-tutorial/[Java FX tutorial] by
 _Marco Jakob_.
 * Libraries used: https://openjfx.io/[JavaFX],
 https://github.com/FasterXML/jackson[Jackson], https://github.com/junit-team/junit5[JUnit5]
 
-== Licence : link:LICENSE[MIT]
+
