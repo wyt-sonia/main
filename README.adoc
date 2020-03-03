@@ -29,7 +29,7 @@ modules in Pie charts. This visualisation of data helps students become more awa
 =======
 
 * It is designed for students who can type fast and are comfortable with `Command-Line Interface(CLI)`.
-
+=======
 ==== What is CLI?
 * CLI is a command line program that accepts text input to execute operating system functions.
 * Compare with graphical user interfaces(GUI), CLI performs interaction with user by keyboard input instead of
