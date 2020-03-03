@@ -70,8 +70,8 @@ A task can have any number of tags (including 0)
 
 Examples:
 
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/Kattis Problem d/2020-03-12 e/Minimum Spanning Tree problem l/blue`
+* `add n/Post-Lecture Quiz t/schoolwork d/2020-04-12 e/For Lecture 7 l/green t/CS2103T`
 
 ==== Listing all tasks : `list`
 
@@ -93,10 +93,10 @@ Format: `edit INDEX [n/NAME] [d/DATE] [e/DETAILS] [l/LABEL] [t/TAG]...`
 
 Examples:
 
-* `edit 1 p/91234567 e/johndoe@example.com` +
-Edits the phone number and email address of the 1st task to be `91234567` and `johndoe@example.com` respectively.
-* `edit 2 n/Betsy Crower t/` +
-Edits the name of the 2nd task to be `Betsy Crower` and clears all existing tags.
+* `edit 1 d/2020-05-19 e/tough assignment +
+Edits the date and details of the 1st task to be `2020-05-19` and `tough assignment` respectively.
+* `edit 2 n/Database project t/` +
+Edits the name of the 2nd task to be `Database project` and clears all existing tags.
 
 ==== Locating tasks by name: `find`
 
