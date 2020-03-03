@@ -49,6 +49,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.persons.setPersons(persons);
     }
 
+    public void setArchivedPersons(List<Person> aPersons) {
+        this.archivedPersons.setPersons(aPersons);
+    }
+
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
@@ -56,6 +60,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(newData);
 
         setPersons(newData.getPersonList());
+        setArchivedPersons(newData.getArchivedList());
     }
 
     //// person-level operations
@@ -76,7 +81,11 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.add(p);
     }
 
-    public void archivePerson(Person p) {
+    /**
+     * Adds an archived person to the address book.
+     * @param p must not already exist in the address book.
+     */
+    public void addArchivedPerson(Person p) {
         archivedPersons.add(p);
     }
 
@@ -110,6 +119,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Person> getPersonList() {
         return persons.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Person> getArchivedList() {
+        return archivedPersons.asUnmodifiableObservableList();
     }
 
     @Override
