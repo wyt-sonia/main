@@ -29,7 +29,7 @@ Responsibilities: Team Lead + Integration
 image::teikjun.jpg[width="150", align="left"]
 {empty}[http://github.com/teikjun[github]]
 
-Responsibilities: Team lead (assistant) + Integration, Testing
+Responsibilities: Team lead (assistant) + Integration + Testing
 
 '''
 
@@ -37,7 +37,7 @@ Responsibilities: Team lead (assistant) + Integration, Testing
 image::souwmyaa.png[width="150", align="left"]
 {empty}[http://github.com/souwmyaa[github]]
 
-Responsibilities: Documentation + Deliverables and deadlines
+Responsibilities: Documentation + Deliverables + deadlines
 
 '''
 
