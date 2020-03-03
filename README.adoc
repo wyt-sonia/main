@@ -1,10 +1,10 @@
-= <Project Name>
+= StudyBuddy
 
 == Introduction
 
 ifdef::env-github,env-browser[:relfileprefix: docs/]
 
-https://travis-ci.org/se-edu/addressbook-level3[image:https://travis-ci.org/teikjun/main.svg?branch=master[Build Status]]
+https://travis-ci.org/se-edu/addressbook-level3[image:https://travis-ci.org/AY1920S2-CS2103T-W16-3/main.svg?branch=master[Build Status]]
 
 ifdef::env-github[]
 image::docs/images/Ui.png[width="600"]
@@ -14,15 +14,15 @@ ifndef::env-github[]
 image::images/Ui.png[width="600", title="UI Sample Picture, will be updated in ther future"]
 endif::[]
 
-==== What is <Project Name> ?
+==== What is StudyBuddy ?
 
-* <Project Name> is a  task keeper for students who wish to manage their time more efficiently.
-* With the help of <Project Name>, students can easily manage and view their school tasks.
+* StudyBuddy is a  task keeper for students who wish to manage their time more efficiently.
+* With the help of StudyBuddy, students can easily manage and view their school tasks.
 * Sort, filter and search commands are also provided to make the interaction more meaningful.
 * It also provides services to show the statistics for time, grades breakdown and workload comparison between different
 modules in Pie charts. With this visualisation of data, students can be more aware of their time management.
 
-==== Who can benefit most from <Project Name>?
+==== Who can benefit most from StudyBuddy ?
 
 * It is designed for students who are able to type fast and comfortable with `Command-Line Interface(CLI)`.
 
