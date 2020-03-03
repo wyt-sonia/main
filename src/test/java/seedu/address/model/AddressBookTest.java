@@ -97,6 +97,11 @@ public class AddressBookTest {
         public ObservableList<Person> getPersonList() {
             return persons;
         }
+
+        @Override
+        public ObservableList<Person> getArchivedList() {
+            return null;
+        }
     }
 
 }
