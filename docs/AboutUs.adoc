@@ -5,7 +5,7 @@
 :stylesDir: stylesheets
 
 IVLE was developed by our team that is based in the http://www.comp.nus.edu.sg[School of Computing, National University of Singapore] +
-_{The dummy content given below serves as a placeholder to be used by future forks of the project.}_ +
+
 {empty}
 
 == Project Team
@@ -13,25 +13,24 @@ _{The dummy content given below serves as a placeholder to be used by future for
 === Huang Ge Xiang
 image::gexiang.jpg[width="150", align= "left"]
 {empty}[http://github.com/gx-huang[github]]
-Responsibilities: Testing, Deadlines
+
+Responsibilities: Testing + Deadlines
 
 '''
 
-=== John Roe
-image::lejolly.jpg[width="150", align="left"]
-{empty}[http://github.com/lejolly[github]] [<<johndoe#, portfolio>>]
+=== Wang Yuting
+image::wyt-sonia.png[width="150", align="left"]
+{empty}[http://github.com/wyt-sonia[github]]
 
-Role: Team Lead +
-Responsibilities: UI
+Responsibilities: Team Lead + Integration
 
 '''
 
-=== Johnny Doe
-image::yijinl.jpg[width="150", align="left"]
-{empty}[http://github.com/yijinl[github]] [<<johndoe#, portfolio>>]
+=== Teik Jun Tan
+image::teikjun.png[width="150", align="left"]
+{empty}[http://github.com/teikjun[github]]
 
-Role: Developer +
-Responsibilities: Data
+Responsibilities: Team lead (assistant) + Integration + Testing
 
 '''
 
@@ -39,15 +38,14 @@ Responsibilities: Data
 image::souwmyaa.png[width="150", align="left"]
 {empty}[http://github.com/souwmyaa[github]]
 
-Responsibilities: Documentation + Deliverables and deadlines
+Responsibilities: Documentation + Deliverables + deadlines
 
 '''
 
-=== Benson Meier
-image::yl_coder.jpg[width="150", align="left"]
-{empty}[http://github.com/yl-coder[github]] [<<johndoe#, portfolio>>]
+=== Hong Wen
+image::aegis-bot.png[width="150", align="left"]
+{empty}[http://github.com/aegis-bot[github]]
 
-Role: Developer +
-Responsibilities: UI
+Responsibilities: Code Quality
 
 '''
