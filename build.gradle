@@ -124,18 +124,18 @@ asciidoctor {
     ]
 
     attributes = [
-            linkcss             : true,
-            stylesheet          : 'gh-pages.css',
-            'source-highlighter': 'coderay',
-            icons               : 'font',
-            experimental        : true,
-            sectlinks           : true,
-            idprefix            : '',  // for compatibility with GitHub preview
-            idseparator         : '-',
-            'site-root'         : "${sourceDir}",  // must be the same as sourceDir, do not modify
-            'site-name'         : 'AddressBook-Level3',
-            'site-githuburl'    : 'https://github.com/se-edu/addressbook-level3',
-            'site-seedu'        : true,  // delete this line if your project is not a fork (not a SE-EDU project)
+        linkcss: true,
+        stylesheet: 'gh-pages.css',
+        'source-highlighter': 'coderay',
+        icons: 'font',
+        experimental: true,
+        sectlinks: true,
+        idprefix: '',  // for compatibility with GitHub preview
+        idseparator: '-',
+        'site-root': "${sourceDir}",  // must be the same as sourceDir, do not modify
+        'site-name': 'StudyBuddy',
+        'site-githuburl': 'https://github.com/AY1920S2-CS2103T-W16-3/main',
+        'site-seedu': true,  // delete this line if your project is not a fork (not a SE-EDU project)
     ]
 
     options['template_dirs'].each {
