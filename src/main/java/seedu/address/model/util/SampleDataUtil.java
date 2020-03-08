@@ -1,60 +1,47 @@
 package seedu.address.model.util;
 
-import java.util.Arrays;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.time.LocalDateTime;
 
+import seedu.address.logic.parser.TimeParser;
 import seedu.address.model.AddressBook;
+import seedu.address.model.Module;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.TaskStatus;
+import seedu.address.model.task.TaskType;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
  */
 public class SampleDataUtil {
-    public static Person[] getSamplePersons() {
-        return new Person[] {
-            new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
-                new Address("Blk 30 Geylang Street 29, #06-40"),
-                getTagSet("friends")),
-            new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
-                new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"),
-                getTagSet("colleagues", "friends")),
-            new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
-                new Address("Blk 11 Ang Mo Kio Street 74, #11-04"),
-                getTagSet("neighbours")),
-            new Person(new Name("David Li"), new Phone("91031282"), new Email("lidavid@example.com"),
-                new Address("Blk 436 Serangoon Gardens Street 26, #16-43"),
-                getTagSet("family")),
-            new Person(new Name("Irfan Ibrahim"), new Phone("92492021"), new Email("irfan@example.com"),
-                new Address("Blk 47 Tampines Street 20, #17-35"),
-                getTagSet("classmates")),
-            new Person(new Name("Roy Balakrishnan"), new Phone("92624417"), new Email("royb@example.com"),
-                new Address("Blk 45 Aljunied Street 85, #11-31"),
-                getTagSet("colleagues"))
+    public static Task[] getSampleTasks() {
+        Module cs2103T = new Module("Software Engineering", "CS2103T");
+        Module cs2101 = new Module("Effective Communication for Computing Professionals",
+            "CS2101");
+        LocalDateTime[] dateTimesOne = {TimeParser.parseDateTime("23:59 12/12/2020"),
+            TimeParser.parseDateTime("23:59 21/12/2020")};
+        LocalDateTime[] dateTimesTwo = {TimeParser.parseDateTime("23:59 12/04/2020"),
+            TimeParser.parseDateTime("23:59 21/04/2020")};
+
+
+        return new Task[]{
+            new Task(cs2103T, TaskType.Assignment, "Ass 1", "taskDescription", 20.0,
+                TaskStatus.PENDING, dateTimesOne, "5h"),
+            new Task(cs2101, TaskType.Presentation, "Presentation 1",
+                "Presentation taskDescription", 20.0, TaskStatus.FINISHED, dateTimesOne,
+                "3h"),
+            new Task(cs2103T, TaskType.Assignment, "Quiz 1", "Quiz taskDescription",
+                2.0, TaskStatus.PENDING, dateTimesTwo, "1h"),
+            new Task(cs2101, TaskType.Meeting, "Meeting 1", "Meeting desc", 20.0,
+                TaskStatus.PENDING, dateTimesTwo, "15h")
         };
     }
 
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
-        for (Person samplePerson : getSamplePersons()) {
-            sampleAb.addPerson(samplePerson);
+        for (Task sampleTask : getSampleTasks()) {
+            sampleAb.addTask(sampleTask);
         }
         return sampleAb;
     }
-
-    /**
-     * Returns a tag set containing the list of strings given.
-     */
-    public static Set<Tag> getTagSet(String... strings) {
-        return Arrays.stream(strings)
-                .map(Tag::new)
-                .collect(Collectors.toSet());
-    }
-
 }
