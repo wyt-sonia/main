@@ -120,7 +120,7 @@ asciidoctor {
     outputDir "${buildDir}/docs"
 
     options = [
-        template_dirs: [file("${sourceDir}/templates")],
+            template_dirs: [file("${sourceDir}/templates")],
     ]
 
     attributes = [

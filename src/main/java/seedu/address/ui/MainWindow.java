@@ -16,6 +16,8 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.ui.interactiveprompt.InteractivePrompt;
+import seedu.address.ui.interactiveprompt.InteractivePromptType;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -75,6 +77,7 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Sets the accelerator of a MenuItem.
+     *
      * @param keyCombination the KeyCombination value of the accelerator
      */
     private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
@@ -107,7 +110,7 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+        personListPanel = new PersonListPanel(logic.getFilteredTaskList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -154,7 +157,7 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleExit() {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
-                (int) primaryStage.getX(), (int) primaryStage.getY());
+            (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
@@ -169,25 +172,36 @@ public class MainWindow extends UiPart<Stage> {
      *
      * @see seedu.address.logic.Logic#execute(String)
      */
-    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
-        try {
-            CommandResult commandResult = logic.execute(commandText);
-            logger.info("Result: " + commandResult.getFeedbackToUser());
-            resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+    private CommandResult executeCommand(InteractivePrompt currentInteractivePrompt, String commandText)
+        throws CommandException, ParseException {
 
-            if (commandResult.isShowHelp()) {
-                handleHelp();
-            }
+        /*
+        CommandResult commandResult = logic.execute(commandText);
+        logger.info("Result: " + commandResult.getFeedbackToUser());
+        resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
-            if (commandResult.isExit()) {
-                handleExit();
-            }
-
-            return commandResult;
-        } catch (CommandException | ParseException e) {
-            logger.info("Invalid command: " + commandText);
-            resultDisplay.setFeedbackToUser(e.getMessage());
-            throw e;
+        if (commandResult.isShowHelp()) {
+            handleHelp();
         }
+
+        if (commandResult.isExit()) {
+            handleExit();
+        }
+
+        return commandResult;*/
+
+        currentInteractivePrompt.setLogic(logic);
+        InteractivePromptType promptType = currentInteractivePrompt.getInteractivePromptType();
+        switch (promptType) {
+        case ADD_TASK:
+            resultDisplay.setFeedbackToUser(currentInteractivePrompt.interact(commandText));
+            break;
+        case EDIT_TASK:
+            break;
+        case DELETE_TASK:
+            break;
+        default:
+        }
+        return null;
     }
 }

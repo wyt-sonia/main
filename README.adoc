@@ -13,9 +13,8 @@ image::docs/images/Ui.png[width="600"]
 endif::[]
 
 ifndef::env-github[]
-image::images/Ui.png[width="600", title="UI Sample Picture, will be updated in ther future"]
+image::images/Ui.png[width="600",title="UI Sample Picture, will be updated in ther future"]
 endif::[]
-
 
 === What is Study Buddy ?
 
@@ -27,8 +26,12 @@ modules in Pie charts. This visualisation of data helps students become more awa
 
 
 === Who can benefit most from Study Buddy?
-=======
 
+==== What is CLI?
+
+* CLI is a command line program that accepts text input to execute operating system functions.
+* Compare with graphical user interfaces(GUI), CLI performs interaction with user by keyboard input instead of mouse clicking, such as cmd window.
+=======
 * It is designed for students who can type fast and are comfortable with `Command-Line Interface(CLI)`.
 =======
 === What is CLI?
@@ -37,6 +40,7 @@ modules in Pie charts. This visualisation of data helps students become more awa
 mouse clicking, such as command window.
 
 == Site Map
+
 To browse more information, please check our site map:
 
 * <<UserGuide#, User Guide>>

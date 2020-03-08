@@ -21,25 +21,27 @@ By: `Team Drag&Drop`      Since: `Jan 2020`
 
 StudyBuddy is for an application designed for those who *prefer to use a desktop app for managing module related tasks*. More importantly, StudyBuddy is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, IVLE can get your module management done faster than traditional GUI apps. Interested? Jump to the <<Quick Start>> to get started. Enjoy!
 
+
 == Quick Start
 
-.  Ensure you have Java `11` or above installed in your Computer.
-.  Download the latest `addressbook.jar` link:{repoURL}/releases[here].
-.  Copy the file to the folder you want to use as the home folder for your Address Book.
-.  Double-click the file to start the app. The GUI should appear in a few seconds.
+. Ensure you have Java `11` or above installed in your Computer.
+. Download the latest `addressbook.jar` link:{repoURL}/releases[here].
+. Copy the file to the folder you want to use as the home folder for your Address Book.
+. Double-click the file to start the app.
+The GUI should appear in a few seconds.
 +
 image::Ui.png[width="790"]
 +
-.  Type the command in the command box and press kbd:[Enter] to execute it. +
+. Type the command in the command box and press kbd:[Enter] to execute it. +
 e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
-.  Some example commands you can try:
+. Some example commands you can try:
 
 * *`list`* : lists all contacts
 * **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : adds a contact named `John Doe` to the Address Book.
 * **`delete`**`3` : deletes the 3rd contact shown in the current list
 * *`exit`* : exits the app
 
-.  Refer to <<Features>> for details of each command.
+. Refer to <<Features>> for details of each command.
 
 [[Features]]
 == Features
@@ -54,7 +56,6 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 * Items with `…`​ after them can be used multiple times including zero times e.g. `[t/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
 * Parameters can be in any order e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 ====
-
 
 ==== Viewing help : `help`
 
@@ -156,14 +157,19 @@ Address book data are saved in the hard disk automatically after any command tha
 There is no need to save manually.
 
 === DashBoard
-Your menu where all the things you want to see from the app is right here. By default, it shows the following:
+
+Your menu where all the things you want to see from the app is right here.
+By default, it shows the following:
 
 . The impending task from the task list, sorted by timing
 . A chart of the amount of time you spend on each of your modules
 . Existing stopwatches that are already running
 
 === Statistics
-On the Statistics page, your usage statistics are displayed. You can use it to see how you can improve your time management and productivity. These include:
+
+On the Statistics page, your usage statistics are displayed.
+You can use it to see how you can improve your time management and productivity.
+These include:
 
 . Number of tasks completed this week
 .. Number of deadlines met this week
@@ -172,17 +178,24 @@ On the Statistics page, your usage statistics are displayed. You can use it to s
 . Longest streak of deadlines met
 
 === Timers
-The Timer feature comprises several other features that manage time. Students can use it to plan their schedule, taking into account the various quizzes, assignments and deadlines they have. Features like that include:
+
+The Timer feature comprises several other features that manage time.
+Students can use it to plan their schedule, taking into account the various quizzes, assignments and deadlines they have.
+Features like that include:
 
 . An integrated calendar to help visualise your schedule
 . An alarm that notifies you when a deadline is approaching and also postpone them, like a snooze
-. A reminder/countdown system. Something like LumiNUS but you can create one for anything you want
+. A reminder/countdown system.
+Something like LumiNUS but you can create one for anything you want
 . A stopwatch, which you can use to time how long you spent on the task
 
 === UI
-You can customize the appearance of your app. You can change the colour of the background, as well as for different modules
+
+You can customize the appearance of your app.
+You can change the colour of the background, as well as for different modules
 
 === Profile
+
 The profile page shows the detail information of the user, such as:
 
 * Personal information, such as name, gender, year of study
@@ -191,13 +204,14 @@ The profile page shows the detail information of the user, such as:
 * etc
 
 === Piechart
-The application provides a summary of the information below using different piechart. These include:
+
+The application provides a summary of the information below using different piechart.
+These include:
 
 * The breakdown grades for each assessment in the same module.
 * The number of different types of assessment in the same module.
 * The number of different tasks in different modules.
 * The time cost for each module, thus the user can better manage their time.
-
 
 == FAQ
 
