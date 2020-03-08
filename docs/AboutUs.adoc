@@ -1,0 +1,56 @@
+= About Us
+:site-section: AboutUs
+:relfileprefix: team/
+:imagesDir: images
+:stylesDir: stylesheets
+
+IVLE was developed by our team that is based in the http://www.comp.nus.edu.sg[School of Computing, National University of Singapore] +
+
+{empty}
+
+== Project Team
+
+=== Huang Ge Xiang
+
+image::gexiang.jpg[width="150",align= "left"]
+{empty}[http://github.com/gx-huang[github]]
+
+Responsibilities: Testing + Deadlines
+
+'''
+
+=== Wang Yuting
+
+image::wyt-sonia.png[width="150",align="left"]
+{empty}[http://github.com/wyt-sonia[github]]
+
+Responsibilities: Team Lead + Integration
+
+'''
+
+=== Teik Jun Tan
+
+image::teikjun.png[width="150",align="left"]
+{empty}[http://github.com/teikjun[github]]
+
+Responsibilities: Team lead (assistant) + Integration + Testing
+
+'''
+
+=== Souwmyaa Sabarinathann
+
+image::souwmyaa.png[width="150",align="left"]
+{empty}[http://github.com/souwmyaa[github]]
+
+Responsibilities: Documentation + Deliverables + deadlines
+
+'''
+
+=== Hong Wen
+
+image::aegis-bot.png[width="150",align="left"]
+{empty}[http://github.com/aegis-bot[github]]
+
+Responsibilities: Code Quality
+
+'''
