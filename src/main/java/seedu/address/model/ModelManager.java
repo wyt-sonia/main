@@ -111,6 +111,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void deleteTask(Task target) {
+        addressBook.removeTask(target);
+    }
+
+    @Override
     public void addPerson(Person person) {
         addressBook.addPerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -178,3 +183,4 @@ public class ModelManager implements Model {
 
 
 }
+
