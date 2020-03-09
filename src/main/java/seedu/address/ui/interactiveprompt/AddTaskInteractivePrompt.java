@@ -49,7 +49,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     public String interact(String userInput) {
         if (userInput.equals("quit")) {
             // exit the command
-            super.isQuit = true;
+            super.setQuit(true);
         } else if (userInput.equals("back")) {
             if (lastTerm != null) {
                 terms.remove(terms.size() - 1);
@@ -142,6 +142,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         case READY_TO_EXECUTE:
             try {
                 AddTaskCommand addTaskCommand = new AddTaskCommand(task);
+                super.setEndOfCommand(true);
                 logic.executeCommand(addTaskCommand);
             } catch (CommandException ex) {
                 reply = ex.getMessage();
