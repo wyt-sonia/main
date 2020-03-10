@@ -79,6 +79,11 @@ public interface Model {
      * The task must exist in the address book.
      */
     void completeTask(Task target);
+    /**
+     * Deletes the given task.
+     * The task must exist in the list.
+     */
+    void deleteTask(Task task);
 
     /**
      * Adds the given person.
