@@ -5,12 +5,8 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
-
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
-import seedu.address.model.task.Task;
-import seedu.address.model.task.UniqueTaskList;
-
 
 /**
  * Wraps all data at the address-book level
@@ -19,7 +15,6 @@ import seedu.address.model.task.UniqueTaskList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
-    private final UniqueTaskList tasks;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -31,10 +26,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     {
         persons = new UniquePersonList();
         tasks = new UniqueTaskList();
+        persons = new UniquePersonList(false);
+        archivedPersons = new UniquePersonList(true);
     }
 
-    public AddressBook() {
-    }
+    public AddressBook() {}
 
     /**
      * Creates an AddressBook using the Persons in the {@code toBeCopied}
@@ -73,6 +69,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         tasks.setTask(target, editedTask);
     }
 
+    public void setArchivedPersons(List<Person> aPersons) {
+        this.archivedPersons.setPersons(aPersons);
+    }
+
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
@@ -80,6 +80,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(newData);
 
         setPersons(newData.getPersonList());
+        setArchivedPersons(newData.getArchivedList());
         setTasks(newData.getTaskList());
     }
 
@@ -94,19 +95,19 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Returns true if a task with the same identity as {@code task} exists in the task list.
-     */
-    public boolean hasTask(Task task) {
-        requireNonNull(task);
-        return tasks.contains(task);
-    }
-
-    /**
      * Adds a person to the address book.
      * The person must not already exist in the address book.
      */
     public void addPerson(Person p) {
         persons.add(p);
+    }
+
+    /**
+     * Adds an archived person to the address book.
+     * @param p must not already exist in the address book.
+     */
+    public void addArchivedPerson(Person p) {
+        archivedPersons.add(p);
     }
 
     /**
@@ -136,19 +137,22 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.remove(key);
     }
 
-    /**
-     * Removes {@code key} from this {@code AddressBook}.
-     * {@code key} must exist in the task list.
-     */
-    public void removeTask(Task key) {
-        tasks.remove(key);
-    }
-
     //// util methods
+
+    @Override
+    public String toString() {
+        return persons.asUnmodifiableObservableList().size() + " persons";
+        // TODO: refine later
+    }
 
     @Override
     public ObservableList<Person> getPersonList() {
         return persons.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Person> getArchivedList() {
+        return archivedPersons.asUnmodifiableObservableList();
     }
 
     @Override
@@ -164,13 +168,12 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof AddressBook // instanceof handles nulls
-            && tasks.equals(((AddressBook) other).tasks));
+                || (other instanceof AddressBook // instanceof handles nulls
+                && persons.equals(((AddressBook) other).persons));
     }
 
     @Override
-    public String toString() {
-        return persons.asUnmodifiableObservableList().size() + " persons";
-        // TODO: refine later
+    public int hashCode() {
+        return persons.hashCode();
     }
 }
