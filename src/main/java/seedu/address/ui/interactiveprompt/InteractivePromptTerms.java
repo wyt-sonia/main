@@ -6,6 +6,7 @@ package seedu.address.ui.interactiveprompt;
 enum InteractivePromptTerms {
     INIT,
     TASK_NAME,
+    TASK_INDEX,
     TASK_TYPE,
     TASK_DATETIME,
     TASK_DESCRIPTION,

@@ -10,6 +10,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.interactiveprompt.AddTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.DeleteTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
 
 /**
@@ -20,8 +21,8 @@ public class CommandBox extends UiPart<Region> {
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes = {"add", "edit", "delete"};
-    private final CommandExecutor commandExecutor;
     private InteractivePrompt currentInteractivePrompt;
+    private final CommandExecutor commandExecutor;
     @FXML
     private TextField commandTextField;
 
@@ -33,6 +34,8 @@ public class CommandBox extends UiPart<Region> {
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
     }
 
+
+
     /**
      * Handles the Enter button pressed event.
      */
@@ -40,7 +43,7 @@ public class CommandBox extends UiPart<Region> {
     private void handleCommandEntered() {
         try {
             String userInput = commandTextField.getText();
-            if (currentInteractivePrompt == null) {
+            if (currentInteractivePrompt == null) { //problem is that this is never not null after the first time
                 boolean isValidType = Arrays.stream(interactiveCommandTypes)
                     .filter(x -> x.equals(userInput)).count() > 0;
                 if (!isValidType) {
@@ -54,7 +57,7 @@ public class CommandBox extends UiPart<Region> {
                         //currentInteractivePrompt = new EditTaskInteractivePrompt();
                         break;
                     case "delete":
-                        //currentInteractivePrompt = new DeleteTaskInteractivePrompt();
+                        currentInteractivePrompt = new DeleteTaskInteractivePrompt();
                         break;
                     default:
                     }
@@ -62,12 +65,16 @@ public class CommandBox extends UiPart<Region> {
 
             }
 
-            commandExecutor.execute(currentInteractivePrompt, commandTextField.getText());
+            CommandResult commandResult = commandExecutor.execute(currentInteractivePrompt, commandTextField.getText());
+            if (commandResult != null) {
+                currentInteractivePrompt = null;
+            }
             commandTextField.setText("");
         } catch (CommandException | ParseException e) {
             setStyleToIndicateCommandFailure();
         }
     }
+
 
     /**
      * Sets the command box style to use the default style.
