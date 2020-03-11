@@ -10,12 +10,12 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 
 import seedu.address.model.Model;
-import seedu.address.model.person.Person;
+import seedu.address.model.task.Task;
 
 /**
  * Archives an entry in the address book.
  */
-public class ArchiveCommand extends Command {
+public class ArchiveTaskCommand extends Command {
 
     public static final String COMMAND_WORD = "archive";
 
@@ -25,23 +25,23 @@ public class ArchiveCommand extends Command {
 
     private final Index targetIndex;
 
-    public ArchiveCommand(Index targetIndex) {
+    public ArchiveTaskCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Person> lastShownList = model.getFilteredPersonList();
+        List<Task> lastShownList = model.getFilteredTaskList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Person personToArchive = lastShownList.get(targetIndex.getZeroBased());
-        model.deletePerson(personToArchive);
-        model.archivePerson(personToArchive);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, personToArchive));
+        Task taskToArchive = lastShownList.get(targetIndex.getZeroBased());
+        model.deleteTask(taskToArchive);
+        model.archiveTask(taskToArchive);
+        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, taskToArchive));
     }
 
 }

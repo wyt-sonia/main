@@ -28,11 +28,8 @@ public class UniquePersonList implements Iterable<Person> {
     private final ObservableList<Person> archivedList = FXCollections.observableArrayList();
     private final ObservableList<Person> internalUnmodifiableList =
         FXCollections.unmodifiableObservableList(internalList);
-            FXCollections.unmodifiableObservableList(internalList);
-    private final boolean isArchiveList;
 
-    public UniquePersonList(boolean isArchiveList) {
-        this.isArchiveList = isArchiveList;
+    public UniquePersonList() {
     }
 
     /**

@@ -122,9 +122,9 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void archivePerson(Person person) {
-        addressBook.addArchivedPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    public void archiveTask(Task task) {
+        addressBook.addArchivedTask(task);
+        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
     }
 
     @Override

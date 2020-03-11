@@ -58,9 +58,6 @@ public interface Model {
      */
     void setAddressBook(ReadOnlyAddressBook addressBook);
 
-    /** Returns the AddressBook */
-    ReadOnlyAddressBook getAddressBook();
-
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
      */
@@ -91,9 +88,9 @@ public interface Model {
 
     /**
      * Archives the given person.
-     * @param person must not already exist in the address book.
+     * @param task must not already exist in the address book.
      */
-    void archivePerson(Person person);
+    void archiveTask(Task task);
 
     /**
      * Adds the given task.

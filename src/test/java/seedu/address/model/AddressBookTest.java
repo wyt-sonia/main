@@ -89,6 +89,7 @@ public class AddressBookTest {
      */
     private static class AddressBookStub implements ReadOnlyAddressBook {
         private final ObservableList<Person> persons = FXCollections.observableArrayList();
+        private final ObservableList<Task> tasks = FXCollections.observableArrayList();
 
         AddressBookStub(Collection<Person> persons) {
             this.persons.setAll(persons);
@@ -105,7 +106,7 @@ public class AddressBookTest {
         }
 
         @Override
-        public ObservableList<Person> getArchivedList() {
+        public ObservableList<Task> getArchivedList() {
             return null;
         }
     }

@@ -115,7 +115,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void archivePerson(Person person) {
+        public void archiveTask(Task task) {
             throw new AssertionError("This method should not be called.");
         }
 
