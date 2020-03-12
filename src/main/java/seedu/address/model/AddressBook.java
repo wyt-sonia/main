@@ -7,6 +7,8 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.task.Task;
+import seedu.address.model.task.UniqueTaskList;
 
 /**
  * Wraps all data at the address-book level
@@ -15,7 +17,8 @@ import seedu.address.model.person.UniquePersonList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
-    private final UniquePersonList archivedPersons;
+    private final UniqueTaskList archivedTasks;
+    private final UniqueTaskList tasks;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -25,8 +28,9 @@ public class AddressBook implements ReadOnlyAddressBook {
      *   among constructors.
      */
     {
-        persons = new UniquePersonList(false);
-        archivedPersons = new UniquePersonList(true);
+        persons = new UniquePersonList();
+        tasks = new UniqueTaskList();
+        archivedTasks = new UniqueTaskList();
     }
 
     public AddressBook() {}
@@ -49,8 +53,44 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.persons.setPersons(persons);
     }
 
-    public void setArchivedPersons(List<Person> aPersons) {
-        this.archivedPersons.setPersons(aPersons);
+    /**
+     * Replaces the contents of the task list with {@code tasks}.
+     * {@code tasks} must not contain duplicate tasks.
+     */
+    public void setTasks(List<Task> tasks) {
+        this.tasks.setTasks(tasks);
+    }
+
+    /**
+     * Replaces the given task {@code target} in the list with {@code editedTask}.
+     * {@code target} must exist in the task list.
+     * The task identity of {@code editedTask} must not be the same as another existing task in the task list.
+     */
+    public void setTasks(Task target, Task editedTask) {
+        requireNonNull(editedTask);
+
+        tasks.setTask(target, editedTask);
+    }
+
+    /**
+     * Returns true if a task with the same identity as {@code task} exists in the task list.
+     */
+    public boolean hasTask(Task task) {
+        requireNonNull(task);
+        return tasks.contains(task);
+    }
+
+
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the task list.
+     */
+    public void removeTask(Task key) {
+        tasks.remove(key);
+    }
+
+    public void setArchivedTasks(List<Task> aTasks) {
+        this.archivedTasks.setTasks(aTasks);
     }
 
     /**
@@ -60,7 +100,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(newData);
 
         setPersons(newData.getPersonList());
-        setArchivedPersons(newData.getArchivedList());
+        setArchivedTasks(newData.getArchivedList());
+        setTasks(newData.getTaskList());
     }
 
     //// person-level operations
@@ -85,8 +126,16 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Adds an archived person to the address book.
      * @param p must not already exist in the address book.
      */
-    public void addArchivedPerson(Person p) {
-        archivedPersons.add(p);
+    public void addArchivedTask(Task p) {
+        archivedTasks.add(p);
+    }
+
+    /**
+     * Adds a task to the task list.
+     * The task must not already exist in the task list.
+     */
+    public void addTask(Task t) {
+        tasks.add(t);
     }
 
     /**
@@ -122,8 +171,18 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     @Override
-    public ObservableList<Person> getArchivedList() {
-        return archivedPersons.asUnmodifiableObservableList();
+    public ObservableList<Task> getArchivedList() {
+        return archivedTasks.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Task> getTaskList() {
+        return tasks.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public int hashCode() {
+        return persons.hashCode();
     }
 
     @Override
@@ -133,8 +192,4 @@ public class AddressBook implements ReadOnlyAddressBook {
                 && persons.equals(((AddressBook) other).persons));
     }
 
-    @Override
-    public int hashCode() {
-        return persons.hashCode();
-    }
 }

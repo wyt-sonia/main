@@ -1,6 +1,14 @@
+
 .background {
     -fx-background-color: derive(#1d1d1d, 20%);
     background-color: #383838; /* Used in the default.html file */
+}
+
+/* my style updated*/
+#mainContainer{
+   -fx-background-image: url('../images/main_bg.png');
+   -fx-background-repeat: repeat;
+   -fx-background-position: center center;
 }
 
 .label {
