@@ -122,6 +122,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void archiveTask(Task task) {
+        addressBook.addArchivedTask(task);
+        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+    }
+
+    @Override
     public void addTask(Task task) {
         addressBook.addTask(task);
         updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
