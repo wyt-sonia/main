@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 import javafx.collections.ObservableList;
@@ -11,6 +12,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.interactiveprompt.AddTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.ArchiveTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.CompleteTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.DeleteTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
 
@@ -21,7 +23,7 @@ public class CommandBox extends UiPart<Region> {
 
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
-    private static final String[] interactiveCommandTypes = {"add", "edit", "delete", "archive"};
+    private static final String[] interactiveCommandTypes = {"add", "edit", "delete", "archive", "done"};
     private InteractivePrompt currentInteractivePrompt;
     private final CommandExecutor commandExecutor;
     @FXML
@@ -62,6 +64,10 @@ public class CommandBox extends UiPart<Region> {
                     case "archive":
                         currentInteractivePrompt = new ArchiveTaskInteractivePrompt();
                         break;
+                    case "done":
+                        currentInteractivePrompt = new CompleteTaskInteractivePrompt();
+                        break;
+
                     default:
                     }
                 }
@@ -76,6 +82,7 @@ public class CommandBox extends UiPart<Region> {
             }
             commandTextField.setText("");
         } catch (CommandException | ParseException | NullPointerException e) {
+            commandTextField.setText("");
             setStyleToIndicateCommandFailure();
         }
     }
