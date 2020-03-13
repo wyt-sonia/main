@@ -1,4 +1,14 @@
 package seedu.address.logic.parser.interactivecommandparser.exceptions;
 
-public class CompleteTaskCommandException {
+/**
+ * pending.
+ */
+public class CompleteTaskCommandException extends InteractiveCommandException {
+
+    /*
+     *pending
+     * */
+    public CompleteTaskCommandException(String errorType) {
+        super(errorType);
+    }
 }
