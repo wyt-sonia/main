@@ -6,5 +6,6 @@ package seedu.address.ui.interactiveprompt;
 public enum InteractivePromptType {
     ADD_TASK,
     EDIT_TASK,
-    DELETE_TASK
+    DELETE_TASK,
+    ARCHIVE_TASK
 }

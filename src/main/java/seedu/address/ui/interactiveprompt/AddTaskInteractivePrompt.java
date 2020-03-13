@@ -142,6 +142,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         case READY_TO_EXECUTE:
             try {
                 AddTaskCommand addTaskCommand = new AddTaskCommand(task);
+                //logic.executeCommand(addTaskCommand);
                 super.setEndOfCommand(true);
                 logic.executeCommand(addTaskCommand);
             } catch (CommandException ex) {
@@ -195,9 +196,8 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      * pending.
      */
     private String dateTime() {
-        String result = "";
 
 
-        return result;
+        return "";
     }
 }

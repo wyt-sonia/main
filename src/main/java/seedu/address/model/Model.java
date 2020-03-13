@@ -92,6 +92,12 @@ public interface Model {
     void addPerson(Person person);
 
     /**
+     * Archives the given person.
+     * @param task must not already exist in the address book.
+     */
+    void archiveTask(Task task);
+
+    /**
      * Adds the given task.
      * {@code task} must not already exist in the task list.
      */
