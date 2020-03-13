@@ -68,12 +68,14 @@ public class CommandBox extends UiPart<Region> {
 
             }
 
+            //currentInteractivePrompt could be null. Might need to create an ErrorInteractivePrompt to handle this.
+            //inserted NullPointerException e at the catch section
             CommandResult commandResult = commandExecutor.execute(currentInteractivePrompt, commandTextField.getText());
             if (commandResult != null) {
                 currentInteractivePrompt = null;
             }
             commandTextField.setText("");
-        } catch (CommandException | ParseException e) {
+        } catch (CommandException | ParseException | NullPointerException e) {
             setStyleToIndicateCommandFailure();
         }
     }
