@@ -22,7 +22,7 @@ import seedu.address.model.tag.Tag;
 /**
  * Incrementally parses input arguments and creates a new Task object
  */
-public class AddTasksParser implements Parser<AddCommand> {
+public class AddTaskParser implements Parser<AddCommand> {
 
     /**
      * Returns true if none of the prefixes contains empty {@code Optional} values in the given
