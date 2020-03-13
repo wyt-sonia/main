@@ -20,4 +20,12 @@ public enum TaskStatus {
         }
         return result;
     }
+
+    public String convertToString() {
+        if(this.equals(PENDING)){
+            return "Pending";
+        } else {
+            return "Finished";
+        }
+    }
 }
