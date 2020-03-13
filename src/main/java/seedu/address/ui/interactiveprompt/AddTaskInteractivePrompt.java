@@ -95,6 +95,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             try {
                 TaskType taskType = AddTaskCommandParser.parseType(userInput, TaskType.getTaskTypes().length);
                 task.setTaskType(taskType);
+                task.setStatus("pending");
                 userInput = taskType.toString();
 
                 this.reply = "The type of task is set to: " + userInput + ".\n"
@@ -143,8 +144,9 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             try {
                 AddTaskCommand addTaskCommand = new AddTaskCommand(task);
                 //logic.executeCommand(addTaskCommand);
-                super.setEndOfCommand(true);
                 logic.executeCommand(addTaskCommand);
+                reply = "Task Added!";
+                super.setEndOfCommand(true);
             } catch (CommandException ex) {
                 reply = ex.getMessage();
             }
