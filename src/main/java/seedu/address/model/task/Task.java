@@ -26,14 +26,14 @@ public class Task {
 
     public Task(Module module, TaskType taskType, String taskName, String taskDescription, double weight,
                 TaskStatus taskStatus, LocalDateTime[] dateTimes, String estimatedTimeCost) {
-        this.module = module;
+        this.module = module; //not covered yet
         this.taskType = taskType;
         this.taskName = taskName;
-        this.taskDescription = taskDescription;
-        this.weight = weight;
+        this.taskDescription = taskDescription; //not covered yet
+        this.weight = weight; //not covered yet
         this.taskStatus = taskStatus;
         this.dateTimes = dateTimes;
-        this.estimatedTimeCost = estimatedTimeCost;
+        this.estimatedTimeCost = estimatedTimeCost; //not covered yet
     }
 
     public Task() {

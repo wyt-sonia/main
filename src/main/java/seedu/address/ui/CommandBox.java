@@ -1,6 +1,5 @@
 package seedu.address.ui;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 import javafx.collections.ObservableList;
