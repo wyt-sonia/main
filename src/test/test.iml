@@ -10,8 +10,6 @@
     <orderEntry type="library" name="main" level="project" />
     <orderEntry type="library" name="addressbook" level="project" />
     <orderEntry type="module" module-name="main" />
-<<<<<<< HEAD
-=======
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit4">
         <CLASSES>
@@ -38,6 +36,5 @@
         <SOURCES />
       </library>
     </orderEntry>
->>>>>>> origin/master
   </component>
 </module>
