@@ -155,12 +155,9 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
 
         case READY_TO_EXECUTE:
             try {
-                System.out.println(super.isEndOfCommand());
                 AddTaskCommand addTaskCommand = new AddTaskCommand(task);
-                System.out.println("READY TO EXECUTE");
                 logic.executeCommand(addTaskCommand);
-                System.out.println("execution successful!");
-
+                reply = "Task added! Key in your next command :)";
                 super.setEndOfCommand(true);
 
             } catch (CommandException ex) {
