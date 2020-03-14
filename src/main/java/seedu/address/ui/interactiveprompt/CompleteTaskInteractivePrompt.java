@@ -1,5 +1,7 @@
 package seedu.address.ui.interactiveprompt;
 
+import static seedu.address.ui.interactiveprompt.InteractivePromptType.COMPLETE_TASK;
+
 import java.util.ArrayList;
 
 import seedu.address.commons.core.index.Index;
@@ -7,8 +9,9 @@ import seedu.address.logic.commands.CompleteTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.DeleteTaskCommandException;
 
-import static seedu.address.ui.interactiveprompt.InteractivePromptType.COMPLETE_TASK;
-
+/**
+ * A interactive prompt for completing task.
+ */
 public class CompleteTaskInteractivePrompt extends InteractivePrompt {
     private int index;
     private String reply;
@@ -50,37 +53,37 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
 
         switch (currentTerm) {
 
-            case INIT:
-                this.reply = "Please enter the index number of task you wish to mark as done.";
-                currentTerm = InteractivePromptTerms.TASK_INDEX;
-                lastTerm = InteractivePromptTerms.INIT;
+        case INIT:
+            this.reply = "Please enter the index number of task you wish to mark as done.";
+            currentTerm = InteractivePromptTerms.TASK_INDEX;
+            lastTerm = InteractivePromptTerms.INIT;
+            terms.add(lastTerm);
+            break;
+
+        case TASK_INDEX:
+            try {
+                index = Integer.parseInt(userInput);
+                reply = "The task at index " + userInput + " will be mark as Done. \n "
+                        + " Please click enter again to make the desired deletion.";
+                currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
+                lastTerm = InteractivePromptTerms.TASK_DATETIME;
                 terms.add(lastTerm);
-                break;
+            } catch (DeleteTaskCommandException ex) {
+                reply = ex.getErrorMessage();
+            }
+            break;
 
-            case TASK_INDEX:
-                try {
-                    index = Integer.parseInt(userInput);
-                    reply = "The task at index " + userInput + " will be mark as Done. \n "
-                            + " Please click enter again to make the desired deletion.";
-                    currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-                    lastTerm = InteractivePromptTerms.TASK_DATETIME;
-                    terms.add(lastTerm);
-                } catch (DeleteTaskCommandException ex) {
-                    reply = ex.getErrorMessage();
-                }
-                break;
+        case READY_TO_EXECUTE:
+            try {
+                CompleteTaskCommand completeTaskCommand = new CompleteTaskCommand(Index.fromZeroBased(index - 1));
+                logic.executeCommand(completeTaskCommand);
+                super.setEndOfCommand(true);
+            } catch (CommandException ex) {
+                reply = ex.getMessage();
+            }
+            break;
 
-            case READY_TO_EXECUTE:
-                try {
-                    CompleteTaskCommand completeTaskCommand = new CompleteTaskCommand(Index.fromZeroBased(index - 1));
-                    logic.executeCommand(completeTaskCommand);
-                    super.setEndOfCommand(true);
-                } catch (CommandException ex) {
-                    reply = ex.getMessage();
-                }
-                break;
-
-            default:
+        default:
         }
         return reply;
     }

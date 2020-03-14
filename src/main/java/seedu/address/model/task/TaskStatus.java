@@ -21,8 +21,12 @@ public enum TaskStatus {
         return result;
     }
 
+    /**
+     * Converts a TaskStatus enum back into a string, primarily for printing purposes.
+     * @return string, either "pending" or "finished"
+     */
     public String convertToString() {
-        if(this.equals(PENDING)){
+        if (this.equals(PENDING)) {
             return "Pending";
         } else {
             return "Finished";

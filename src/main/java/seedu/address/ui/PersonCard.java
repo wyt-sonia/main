@@ -7,8 +7,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.task.Task;
 
-import java.lang.reflect.InvocationTargetException;
-
 /**
  * An UI component that displays information of a {@code Person}.
  */
