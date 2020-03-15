@@ -12,6 +12,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.interactiveprompt.AddTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.ArchiveTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.CompleteTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.DeleteDuplicateTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.DeleteTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
 
@@ -22,7 +23,8 @@ public class CommandBox extends UiPart<Region> {
 
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
-    private static final String[] interactiveCommandTypes = {"add", "edit", "delete", "archive", "done"};
+    private static final String[] interactiveCommandTypes =
+        {"add", "edit", "delete", "archive", "done", "delete duplicates"};
     private InteractivePrompt currentInteractivePrompt;
     private final CommandExecutor commandExecutor;
     @FXML
@@ -43,8 +45,7 @@ public class CommandBox extends UiPart<Region> {
     private void handleCommandEntered() {
         try {
             String userInput = commandTextField.getText();
-
-            if (currentInteractivePrompt == null) { //problem is that this is never not null after the first time
+            if (currentInteractivePrompt == null) {
                 boolean isValidType = Arrays.stream(interactiveCommandTypes)
                     .filter(x -> x.equals(userInput)).count() > 0;
                 if (!isValidType) {
@@ -62,6 +63,9 @@ public class CommandBox extends UiPart<Region> {
                         break;
                     case "archive":
                         currentInteractivePrompt = new ArchiveTaskInteractivePrompt();
+                        break;
+                    case "delete duplicates":
+                        currentInteractivePrompt = new DeleteDuplicateTaskInteractivePrompt();
                         break;
                     case "done":
                         currentInteractivePrompt = new CompleteTaskInteractivePrompt();
