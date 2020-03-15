@@ -11,6 +11,7 @@
    -fx-background-position: center center;
 }
 
+/*
 .label {
     -fx-font-size: 11pt;
     -fx-font-family: "Segoe UI Semibold";
@@ -220,6 +221,8 @@
  * Author: Pedro Duque Vieira
  * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
  */
+
+ /*
 .button {
     -fx-padding: 5 22 5 22;
     -fx-border-color: #e2e2e2;
@@ -357,4 +360,4 @@
     -fx-border-radius: 2;
     -fx-background-radius: 2;
     -fx-font-size: 11;
-}
+}*/
