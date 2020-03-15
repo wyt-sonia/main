@@ -10,11 +10,13 @@ import seedu.address.model.module.exceptions.ModuleCodeException;
 public class ModuleCode {
     public String prefix;
     public int number;
+    public String postfix; //optional
 
     public ModuleCode(String fullModuleCode) throws ModuleCodeException {
         try {
             this.prefix = parsePrefix(fullModuleCode);
             this.number = parseNumber(fullModuleCode);
+            this.postfix = parsePostfix(fullModuleCode);
         } catch (ModuleCodeException e) {
             throw new ModuleCodeException("ModuleCode is invalid!");
         }
@@ -50,7 +52,7 @@ public class ModuleCode {
             try {
                 int test = (int) character;     //if typecasting successful, add char to outputAsString
                 outputAsString += character;
-                System.out.println("getNumber - output = " + outputAsString);
+                System.out.println("getNumber()'s output = " + outputAsString);
             } catch (ClassCastException e) {
                 //ignore
             }
@@ -64,6 +66,17 @@ public class ModuleCode {
         }
     }
 
+    private String parsePostfix(String input) {
+        String output = "";
+        char character = input.charAt(input.length());
+        try {
+            int test = (int) character;
+        } catch (ClassCastException e) {
+            output += character;
+        }
+        return output;
+    }
+
     public String getPrefix() {
         return prefix;
     }
@@ -72,11 +85,16 @@ public class ModuleCode {
         return number;
     }
 
+    public String getPostfix() {
+        return postfix;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (object instanceof ModuleCode) {
             if(this.getPrefix().equals(((ModuleCode) object).prefix)
-                    && (this.getNumber() == ((ModuleCode) object).number)) {
+                    && (this.getNumber() == ((ModuleCode) object).number)
+                    && this.getPostfix().equals(((ModuleCode) object).postfix)) {
                 return true;
             } else {
                 return false;
@@ -88,7 +106,8 @@ public class ModuleCode {
 
     @Override
     public String toString(){
-        return prefix + number;
+        System.out.println(prefix + number + postfix);
+        return prefix + number + postfix;
     }
 
 }

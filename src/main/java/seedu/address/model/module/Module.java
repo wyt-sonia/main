@@ -11,6 +11,7 @@ import static java.util.Objects.requireNonNull;
 
 /**
  * packages task into various modules that the student have. Each module has list of task, taken from the main TaskList.
+ * Identified by ModuleCode instead of ModuleName to minimise errors.
  */
 public class Module {
     private String moduleName;
@@ -98,12 +99,17 @@ public class Module {
         return moduleName;
     }
 
-    public String getModuleCode() {
-        return moduleCode.toString();
+    public ModuleCode getModuleCode() {
+        return moduleCode;
     }
 
     public void setModuleName(String newModuleName) {
         this.moduleName = newModuleName;
+    }
+
+    @Override
+    public String toString() {
+        return getModuleCode().toString();
     }
 
 }
