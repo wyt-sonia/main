@@ -68,7 +68,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void setTasks(Task target, Task editedTask) {
         requireNonNull(editedTask);
-
         tasks.setTask(target, editedTask);
     }
 

@@ -28,6 +28,9 @@ import seedu.address.model.task.TaskType;
  */
 public class AddTaskInteractivePrompt extends InteractivePrompt {
 
+    static final String END_OF_COMMAND_MSG = "Task added successfully!";
+    static final String QUIT_COMMAND_MSG = "Successfully quited from add task command.";
+
     private String reply;
     private String userInput;
     private Task task;
@@ -49,8 +52,8 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     @Override
     public String interact(String userInput) {
         if (userInput.equals("quit")) {
-            // exit the command
-            super.setQuit(true);
+            endInteract(QUIT_COMMAND_MSG);
+            return reply;
         } else if (userInput.equals("back")) {
             if (lastTerm != null) {
                 terms.remove(terms.size() - 1);
@@ -67,7 +70,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         }
 
         switch (currentTerm) {
-
         case INIT:
             this.reply = "Please enter the task name.";
             currentTerm = InteractivePromptTerms.TASK_NAME;
@@ -106,8 +108,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 task.setTaskDescription("EMPTY_TASK_DESCRIPTION");
                 task.setWeight(4.0);
                 task.setEstimatedTimeCost("EMPTY_ESTIMATED_TIME_COST");
-
-
 
                 userInput = taskType.toString();
 
@@ -160,9 +160,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 System.out.println("READY TO EXECUTE");
                 logic.executeCommand(addTaskCommand);
                 System.out.println("execution successful!");
-
-                super.setEndOfCommand(true);
-
+                endInteract(END_OF_COMMAND_MSG);
             } catch (CommandException ex) {
                 reply = ex.getMessage();
             }
@@ -197,8 +195,9 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void endInteract() {
-
+    public void endInteract(String msg) {
+        this.reply = msg;
+        super.setEndOfCommand(true);
     }
 
     @Override
@@ -215,8 +214,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      * pending.
      */
     private String dateTime() {
-
-
         return "";
     }
 }

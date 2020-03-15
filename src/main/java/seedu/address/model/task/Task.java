@@ -2,6 +2,8 @@ package seedu.address.model.task;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import seedu.address.logic.parser.TimeParser;
@@ -15,6 +17,8 @@ public class Task {
      * The acceptable data and time format.
      */
     public static final DateTimeFormatter DATETIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
+    private static ArrayList<Task> currentTasks = new ArrayList<>();
+
     private Module module;
     private TaskType taskType;
     private String taskName;
@@ -182,4 +186,11 @@ public class Task {
             && otherTask.getTaskStatus().equals(getTaskStatus());
     }
 
+    public static void updateCurrentTaskList(List<Task> tasks) {
+        currentTasks = (ArrayList<Task>) tasks;
+    }
+
+    public static ArrayList<Task> getCurrentTasks() {
+        return currentTasks;
+    }
 }

@@ -46,12 +46,14 @@ public class CommandBox extends UiPart<Region> {
         try {
             String userInput = commandTextField.getText();
             if (currentInteractivePrompt == null) {
+                // allow InteractivePrompt type with space in front or behind
+                final String interactivePromptType = userInput.trim();
                 boolean isValidType = Arrays.stream(interactiveCommandTypes)
-                    .filter(x -> x.equals(userInput)).count() > 0;
+                    .filter(x -> x.equals(interactivePromptType)).count() > 0;
                 if (!isValidType) {
                     commandTextField.setText("Please enter valid command type.");
                 } else {
-                    switch (userInput) {
+                    switch (interactivePromptType) {
                     case "add":
                         currentInteractivePrompt = new AddTaskInteractivePrompt();
                         break;

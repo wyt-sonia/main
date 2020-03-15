@@ -23,6 +23,9 @@ import seedu.address.logic.parser.interactivecommandparser.exceptions.ArchiveTas
  */
 public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
 
+    static final String END_OF_COMMAND_MSG = "Task archived successfully!";
+    static final String QUIT_COMMAND_MSG = "Successfully quited from archive command.";
+
     private String reply;
     private String userInput;
     private InteractivePromptTerms currentTerm;
@@ -44,8 +47,8 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
     @Override
     public String interact(String userInput) {
         if (userInput.equals("quit")) {
-            // exit the command
-            super.setQuit(true);
+            endInteract(QUIT_COMMAND_MSG);
+            return reply;
         } else if (userInput.equals("back")) {
             if (lastTerm != null) { //in the beginning it is null
                 terms.remove(terms.size() - 1);
@@ -87,8 +90,7 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
             try {
                 ArchiveTaskCommand archiveTaskCommand = new ArchiveTaskCommand(Index.fromZeroBased(index - 1));
                 logic.executeCommand(archiveTaskCommand);
-                super.setEndOfCommand(true);
-                reply = "Task archived!";
+                endInteract(END_OF_COMMAND_MSG);
             } catch (CommandException ex) {
                 reply = ex.getMessage();
             }
@@ -105,8 +107,9 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void endInteract() {
-
+    public void endInteract(String msg) {
+        this.reply = msg;
+        super.setEndOfCommand(true);
     }
 
     @Override
