@@ -38,7 +38,7 @@ public class ModuleList {
      * checks for duplicate modules first, then add into the moduleList.
      * @param module to be added to the ModuleList
      */
-    public void add(Module module) throws ModuleCodeException{
+    public void add(Module module) throws ModuleCodeException {
         if(this.contains(module)) {
             throw new ModuleCodeException("Duplicate modules");
         } else {
@@ -58,6 +58,13 @@ public class ModuleList {
             throw new ModuleCodeException("Module does not exist");
         }
     }
+
+    /**
+     * Retrieves a module with the original module name inside the moduleList.
+     * @param moduleCode
+     * @return
+     * @throws ModuleCodeException
+     */
 
     public Module get(String moduleCode) throws ModuleCodeException {
         Module moduleToFind = new Module(moduleCode);

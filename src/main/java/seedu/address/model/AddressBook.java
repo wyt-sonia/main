@@ -202,6 +202,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         return moduleList.getInternalList();
     }
 
+    public boolean hasModule(Module module) {
+        return moduleList.contains(module);
+    }
+
     @Override
     public int hashCode() {
         return persons.hashCode();
