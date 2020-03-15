@@ -199,7 +199,6 @@ public class MainWindow extends UiPart<Stage> {
         if (currentInteractivePrompt.isEndOfCommand()) {
             return new CommandResult("Set current interactive to null", false, false);
         }
-
         return null;
     }
 }

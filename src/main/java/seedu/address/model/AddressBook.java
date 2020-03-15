@@ -5,12 +5,10 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
-
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
-
 
 /**
  * Wraps all data at the address-book level
@@ -19,6 +17,7 @@ import seedu.address.model.task.UniqueTaskList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
+    private final UniqueTaskList archivedTasks;
     private final UniqueTaskList tasks;
 
     /*
@@ -31,10 +30,10 @@ public class AddressBook implements ReadOnlyAddressBook {
     {
         persons = new UniquePersonList();
         tasks = new UniqueTaskList();
+        archivedTasks = new UniqueTaskList();
     }
 
-    public AddressBook() {
-    }
+    public AddressBook() {}
 
     /**
      * Creates an AddressBook using the Persons in the {@code toBeCopied}
@@ -74,12 +73,34 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Returns true if a task with the same identity as {@code task} exists in the task list.
+     */
+    public boolean hasTask(Task task) {
+        requireNonNull(task);
+        return tasks.contains(task);
+    }
+
+
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the task list.
+     */
+    public void removeTask(Task key) {
+        tasks.remove(key);
+    }
+
+    public void setArchivedTasks(List<Task> aTasks) {
+        this.archivedTasks.setTasks(aTasks);
+    }
+
+    /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
 
         setPersons(newData.getPersonList());
+        setArchivedTasks(newData.getArchivedList());
         setTasks(newData.getTaskList());
     }
 
@@ -94,14 +115,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Returns true if a task with the same identity as {@code task} exists in the task list.
-     */
-    public boolean hasTask(Task task) {
-        requireNonNull(task);
-        return tasks.contains(task);
-    }
-
-    /**
      * Adds a person to the address book.
      * The person must not already exist in the address book.
      */
@@ -110,11 +123,23 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Adds an archived person to the address book.
+     * @param p must not already exist in the address book.
+     */
+    public void addArchivedTask(Task p) {
+        archivedTasks.add(p);
+    }
+
+    /**
      * Adds a task to the task list.
      * The task must not already exist in the task list.
      */
     public void addTask(Task t) {
         tasks.add(t);
+    }
+
+    public void completeTask(Task target) {
+        tasks.completeTask(target);
     }
 
     /**
@@ -136,19 +161,22 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.remove(key);
     }
 
-    /**
-     * Removes {@code key} from this {@code AddressBook}.
-     * {@code key} must exist in the task list.
-     */
-    public void removeTask(Task key) {
-        tasks.remove(key);
-    }
-
     //// util methods
+
+    @Override
+    public String toString() {
+        return persons.asUnmodifiableObservableList().size() + " persons";
+        // TODO: refine later
+    }
 
     @Override
     public ObservableList<Person> getPersonList() {
         return persons.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Task> getArchivedList() {
+        return archivedTasks.asUnmodifiableObservableList();
     }
 
     @Override
@@ -164,13 +192,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof AddressBook // instanceof handles nulls
-            && tasks.equals(((AddressBook) other).tasks));
+                || (other instanceof AddressBook // instanceof handles nulls
+                && persons.equals(((AddressBook) other).persons));
     }
 
-    @Override
-    public String toString() {
-        return persons.asUnmodifiableObservableList().size() + " persons";
-        // TODO: refine later
-    }
 }
