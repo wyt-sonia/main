@@ -43,7 +43,7 @@ public class CommandBox extends UiPart<Region> {
     private void handleCommandEntered() {
         try {
             String userInput = commandTextField.getText();
-            if (currentInteractivePrompt == null) { //problem is that this is never not null after the first time
+            if (currentInteractivePrompt == null) {
                 boolean isValidType = Arrays.stream(interactiveCommandTypes)
                     .filter(x -> x.equals(userInput)).count() > 0;
                 if (!isValidType) {
