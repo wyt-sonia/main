@@ -44,6 +44,14 @@ public class Task implements Comparable<Task> {
         dateTimes = new LocalDateTime[2];
     }
 
+    public static void updateCurrentTaskList(List<Task> tasks) {
+        currentTasks = (ArrayList<Task>) tasks;
+    }
+
+    public static ArrayList<Task> getCurrentTasks() {
+        return currentTasks;
+    }
+
     public Module getModule() {
         return module;
     }
@@ -186,14 +194,6 @@ public class Task implements Comparable<Task> {
             && otherTask.getTaskStatus().equals(getTaskStatus());
     }
 
-    public static void updateCurrentTaskList(List<Task> tasks) {
-        currentTasks = (ArrayList<Task>) tasks;
-    }
-
-    public static ArrayList<Task> getCurrentTasks() {
-        return currentTasks;
-    }
-
     /**
      * Compare tasks by deadline/ start date.
      * Comparison by task name is handled in sort command class.
@@ -201,17 +201,17 @@ public class Task implements Comparable<Task> {
     @Override
     public int compareTo(Task t) {
         int result = 0;
-            if (this.dateTimes[0].isBefore(t.dateTimes[0])) {
-                result = -1;
-            } else if (!this.dateTimes[0].isBefore(t.dateTimes[0])) {
-                result = 1;
+        if (this.dateTimes[0].isBefore(t.dateTimes[0])) {
+            result = -1;
+        } else if (!this.dateTimes[0].isBefore(t.dateTimes[0])) {
+            result = 1;
+        } else {
+            if (this.taskType.equals(t.taskType)) {
+                result = this.taskName.compareTo(t.taskName);
             } else {
-                if (this.taskType.equals(t.taskType)) {
-                    result = this.taskName.compareTo(t.taskName);
-                } else {
-                    result = this.taskType.compareTo(t.taskType);
-                }
+                result = this.taskType.compareTo(t.taskType);
             }
+        }
         return result;
     }
 }

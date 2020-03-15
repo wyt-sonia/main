@@ -9,7 +9,11 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.task.Task;
 
-public class SortTaskCommand extends Command{
+/**
+ * Represent a SortTaskCommand that can handle the sorting of tasks according to
+ * user choice.
+ */
+public class SortTaskCommand extends Command {
 
     public static final String COMMAND_WORD = "sort";
 

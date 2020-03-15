@@ -1,6 +1,5 @@
 package seedu.address.ui.interactiveprompt;
 
-import static seedu.address.ui.interactiveprompt.InteractivePromptType.DELETE_TASK;
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.SORT_TASK;
 
 import java.util.ArrayList;
@@ -10,7 +9,10 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.DeleteTaskCommandException;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.SortTaskCommandException;
 
-public class SortTaskInteractivePrompt extends InteractivePrompt  {
+/**
+ * A interactive prompt for sorting task list.
+ */
+public class SortTaskInteractivePrompt extends InteractivePrompt {
     private static final String END_OF_COMMAND_MSG = "Task sorted successfully!";
     private static final String QUIT_COMMAND_MSG = "Successfully quited from sort task command.";
     private static final String[] sort_option = {"Deadline", "Task Name"};

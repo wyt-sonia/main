@@ -24,7 +24,7 @@ import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskType;
 
 /**
- * pending.
+ * A interactive prompt for adding new task.
  */
 public class AddTaskInteractivePrompt extends InteractivePrompt {
 
