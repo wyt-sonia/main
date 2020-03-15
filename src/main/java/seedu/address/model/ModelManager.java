@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -118,6 +119,11 @@ public class ModelManager implements Model {
     @Override
     public void deleteTask(Task target) {
         addressBook.removeTask(target);
+    }
+
+    @Override
+    public void sortTasks(String keyword) {
+        addressBook.sortTasks(keyword);
     }
 
     @Override

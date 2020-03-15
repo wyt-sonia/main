@@ -2,8 +2,10 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Comparator;
 import java.util.List;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
@@ -69,6 +71,13 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void setTasks(Task target, Task editedTask) {
         requireNonNull(editedTask);
         tasks.setTask(target, editedTask);
+    }
+
+    /**
+     * Sort tasks by the given {@code keyword}.
+     */
+    public void sortTasks(String keyword) {
+        tasks.sortTasks(keyword);
     }
 
     /**

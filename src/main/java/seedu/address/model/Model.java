@@ -133,4 +133,9 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredTaskList(Predicate<Task> predicate);
+
+    /**
+     * Sort tasks by the given {@code keyword}.
+     */
+    void sortTasks(String keyword);
 }

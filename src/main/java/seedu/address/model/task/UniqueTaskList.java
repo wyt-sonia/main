@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -142,6 +143,17 @@ public class UniqueTaskList implements Iterable<Task> {
             target.setStatus("finished");
             int index = internalList.indexOf(target);
             internalList.set(index, target);
+        }
+    }
+
+    /**
+     * Sort tasks by the given {@code keyword}.
+     */
+    public void sortTasks(String keyword) {
+        if(keyword.toLowerCase().equals("deadline")) {
+            FXCollections.sort(internalList, Task::compareTo);
+        } else {
+            FXCollections.sort(internalList, Comparator.comparing(Task::getTaskName));
         }
     }
 

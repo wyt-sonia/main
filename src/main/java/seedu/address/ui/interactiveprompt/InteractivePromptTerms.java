@@ -13,5 +13,6 @@ enum InteractivePromptTerms {
     TASK_MODULE,
     TASK_WEIGHT,
     TASK_ESTIMATED_TIME_COST,
+    SORT_KEYWORD,
     READY_TO_EXECUTE
 }

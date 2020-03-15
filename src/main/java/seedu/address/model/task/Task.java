@@ -12,7 +12,7 @@ import seedu.address.model.Module;
 /**
  * pending.
  */
-public class Task {
+public class Task implements Comparable<Task> {
     /**
      * The acceptable data and time format.
      */
@@ -192,5 +192,26 @@ public class Task {
 
     public static ArrayList<Task> getCurrentTasks() {
         return currentTasks;
+    }
+
+    /**
+     * Compare tasks by deadline/ start date.
+     * Comparison by task name is handled in sort command class.
+     */
+    @Override
+    public int compareTo(Task t) {
+        int result = 0;
+            if (this.dateTimes[0].isBefore(t.dateTimes[0])) {
+                result = -1;
+            } else if (!this.dateTimes[0].isBefore(t.dateTimes[0])) {
+                result = 1;
+            } else {
+                if (this.taskType.equals(t.taskType)) {
+                    result = this.taskName.compareTo(t.taskName);
+                } else {
+                    result = this.taskType.compareTo(t.taskType);
+                }
+            }
+        return result;
     }
 }
