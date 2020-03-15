@@ -10,6 +10,9 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.interactiveprompt.AddTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.ArchiveTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.CompleteTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.DeleteTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
 
 /**
@@ -19,9 +22,9 @@ public class CommandBox extends UiPart<Region> {
 
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
-    private static final String[] interactiveCommandTypes = {"add", "edit", "delete"};
-    private final CommandExecutor commandExecutor;
+    private static final String[] interactiveCommandTypes = {"add", "edit", "delete", "archive", "done"};
     private InteractivePrompt currentInteractivePrompt;
+    private final CommandExecutor commandExecutor;
     @FXML
     private TextField commandTextField;
 
@@ -40,7 +43,8 @@ public class CommandBox extends UiPart<Region> {
     private void handleCommandEntered() {
         try {
             String userInput = commandTextField.getText();
-            if (currentInteractivePrompt == null) {
+
+            if (currentInteractivePrompt == null) { //problem is that this is never not null after the first time
                 boolean isValidType = Arrays.stream(interactiveCommandTypes)
                     .filter(x -> x.equals(userInput)).count() > 0;
                 if (!isValidType) {
@@ -54,17 +58,30 @@ public class CommandBox extends UiPart<Region> {
                         //currentInteractivePrompt = new EditTaskInteractivePrompt();
                         break;
                     case "delete":
-                        //currentInteractivePrompt = new DeleteTaskInteractivePrompt();
+                        currentInteractivePrompt = new DeleteTaskInteractivePrompt();
                         break;
+                    case "archive":
+                        currentInteractivePrompt = new ArchiveTaskInteractivePrompt();
+                        break;
+                    case "done":
+                        currentInteractivePrompt = new CompleteTaskInteractivePrompt();
+                        break;
+
                     default:
                     }
                 }
 
             }
 
-            commandExecutor.execute(currentInteractivePrompt, commandTextField.getText());
+            //currentInteractivePrompt could be null. Might need to create an ErrorInteractivePrompt to handle this.
+            //inserted NullPointerException e at the catch section
+            CommandResult commandResult = commandExecutor.execute(currentInteractivePrompt, commandTextField.getText());
+            if (commandResult != null) {
+                currentInteractivePrompt = null;
+            }
             commandTextField.setText("");
-        } catch (CommandException | ParseException e) {
+        } catch (CommandException | ParseException | NullPointerException e) {
+            commandTextField.setText("");
             setStyleToIndicateCommandFailure();
         }
     }

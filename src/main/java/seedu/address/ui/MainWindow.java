@@ -17,7 +17,6 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
-import seedu.address.ui.interactiveprompt.InteractivePromptType;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -191,16 +190,14 @@ public class MainWindow extends UiPart<Stage> {
         return commandResult;*/
 
         currentInteractivePrompt.setLogic(logic);
-        InteractivePromptType promptType = currentInteractivePrompt.getInteractivePromptType();
-        switch (promptType) {
-        case ADD_TASK:
-            resultDisplay.setFeedbackToUser(currentInteractivePrompt.interact(commandText));
-            break;
-        case EDIT_TASK:
-            break;
-        case DELETE_TASK:
-            break;
-        default:
+        String s = currentInteractivePrompt.interact(commandText);
+        resultDisplay.setFeedbackToUser(s);
+        if (currentInteractivePrompt.isQuit()) {
+            handleExit();
+        }
+
+        if (currentInteractivePrompt.isEndOfCommand()) {
+            return new CommandResult("Set current interactive to null", false, false);
         }
         return null;
     }

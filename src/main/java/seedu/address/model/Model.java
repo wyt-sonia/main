@@ -75,10 +75,27 @@ public interface Model {
     void deletePerson(Person target);
 
     /**
+     * completes the given task.
+     * The task must exist in the address book.
+     */
+    void completeTask(Task target);
+    /**
+     * Deletes the given task.
+     * The task must exist in the list.
+     */
+    void deleteTask(Task task);
+
+    /**
      * Adds the given person.
      * {@code person} must not already exist in the address book.
      */
     void addPerson(Person person);
+
+    /**
+     * Archives the given person.
+     * @param task must not already exist in the address book.
+     */
+    void archiveTask(Task task);
 
     /**
      * Adds the given task.
