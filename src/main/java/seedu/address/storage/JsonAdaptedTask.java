@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.parser.TimeParser;
-import seedu.address.model.Module;
+import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskStatus;
 import seedu.address.model.task.TaskType;
@@ -64,7 +64,7 @@ class JsonAdaptedTask {
         status = source.getTaskStatus().toString();
         taskType = source.getTaskType().toString();
         weight = source.getWeight();
-        module = source.getModule().getModuleCode();
+        module = source.getModule().toString();
     }
 
     /**

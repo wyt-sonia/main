@@ -25,13 +25,13 @@ public class Module {
      * @param fullModuleCode
      * @throws ModuleCodeException
      */
-    public Module (String moduleName, String fullModuleCode) throws ModuleCodeException {
-        this.moduleName = moduleName;
-        this.moduleCode = new ModuleCode(fullModuleCode);
+    public Module (String moduleName, String fullModuleCode) {
         try {
+            this.moduleName = moduleName;
+            this.moduleCode = new ModuleCode(fullModuleCode);
             moduleList.add(this);
         } catch (ModuleCodeException e) {
-            throw new ModuleCodeException("Duplicate Module!");
+            System.out.println("Module(Name + code) duplicate Module");
         }
     }
 
@@ -40,13 +40,13 @@ public class Module {
      * @param fullModuleCode
      * @throws ModuleCodeException
      */
-    public Module (String fullModuleCode) throws ModuleCodeException {
-        this.moduleName = "Nameless Module";
-        this.moduleCode = new ModuleCode(fullModuleCode);
+    public Module (String fullModuleCode) {
         try {
+            this.moduleName = "Nameless Module";
+            this.moduleCode = new ModuleCode(fullModuleCode);
             moduleList.add(this);
         } catch (ModuleCodeException e) {
-            throw new ModuleCodeException("Duplicate Module!");
+            System.out.println("Module(ModuleCodeOnly) duplicate Module");
         }
     }
 

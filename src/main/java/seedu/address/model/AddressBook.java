@@ -5,6 +5,9 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.module.Module;
+import seedu.address.model.module.ModuleList;
+import seedu.address.model.module.exceptions.ModuleCodeException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.task.Task;
@@ -19,6 +22,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniquePersonList persons;
     private final UniqueTaskList archivedTasks;
     private final UniqueTaskList tasks;
+    private final ModuleList moduleList;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -31,6 +35,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons = new UniquePersonList();
         tasks = new UniqueTaskList();
         archivedTasks = new UniqueTaskList();
+        moduleList = new ModuleList();
     }
 
     public AddressBook() {}
@@ -131,6 +136,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Adds a module to the ModuleList.
+     * @param module
+     */
+    public void addModule(Module module) throws ModuleCodeException {
+        moduleList.add(module);
+    }
+
+    /**
      * Adds a task to the task list.
      * The task must not already exist in the task list.
      */
@@ -182,6 +195,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Task> getTaskList() {
         return tasks.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Module> getModuleList(){
+        return moduleList.getInternalList();
     }
 
     @Override

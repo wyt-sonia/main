@@ -11,6 +11,10 @@ import seedu.address.model.module.exceptions.ModuleCodeException;
 public class ModuleList {
     private ObservableList<Module> internalList = FXCollections.observableArrayList();
 
+    public ModuleList() {
+
+    }
+
     /**
      * To be executed every time whenever a module is added.
      * @param module
