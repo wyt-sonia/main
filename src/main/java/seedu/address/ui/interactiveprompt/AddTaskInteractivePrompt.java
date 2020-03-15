@@ -19,7 +19,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.TimeParser;
 import seedu.address.logic.parser.interactivecommandparser.AddTaskCommandParser;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
-import seedu.address.model.module.Module;
+import seedu.address.model.module.EmptyModule;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskType;
 
@@ -102,14 +102,14 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                  */
 
                 /**
-                 * By default, Task will go to code AA0000. To add to a specific module, use other commands.
+                 * By default, Task will go to Module code AA0000. To add to a specific module, use other commands.
                  */
 
-                task.setModule(new Module("No Module Specified" , "AA0000"));
+                task.setModule(new EmptyModule());
                 task.setStatus("pending");
-                task.setTaskDescription("EMPTY_TASK_DESCRIPTION");
-                task.setWeight(4.0);
-                task.setEstimatedTimeCost("EMPTY_ESTIMATED_TIME_COST");
+                task.setTaskDescription("No Description Available");
+                task.setWeight(0.0);
+                task.setEstimatedTimeCost("No estimated time cost");
 
 
 
