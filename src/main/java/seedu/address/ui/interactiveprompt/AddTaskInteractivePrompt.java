@@ -106,6 +106,8 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                  */
 
                 task.setModule(new EmptyModule());
+                System.out.println("addTaskInteractivePrompt.setModule() correct");
+
                 task.setStatus("pending");
                 task.setTaskDescription("No Description Available");
                 task.setWeight(0.0);

@@ -17,7 +17,6 @@ public class Module {
     private String moduleName;
     private ModuleCode moduleCode;
     private final ObservableList<Task> internalTaskList = FXCollections.observableArrayList();
-    private static ModuleList moduleList;
 
     /**
      * Constructs a Module. Will check for any duplicates in the moduleList.
@@ -26,12 +25,11 @@ public class Module {
      * @throws ModuleCodeException
      */
     public Module (String moduleName, String fullModuleCode) {
+        this.moduleName = moduleName;
         try {
-            this.moduleName = moduleName;
             this.moduleCode = new ModuleCode(fullModuleCode);
-            moduleList.add(this);
         } catch (ModuleCodeException e) {
-            System.out.println("Module(Name + code) duplicate Module");
+            System.out.println("ModuleCode is invalid!");
         }
     }
 
@@ -41,12 +39,11 @@ public class Module {
      * @throws ModuleCodeException
      */
     public Module (String fullModuleCode) {
+        this.moduleName = "Nameless Module";
         try {
-            this.moduleName = "Nameless Module";
             this.moduleCode = new ModuleCode(fullModuleCode);
-            moduleList.add(this);
         } catch (ModuleCodeException e) {
-            System.out.println("Module(ModuleCodeOnly) duplicate Module");
+            System.out.println("ModuleCode is invalid!");
         }
     }
 

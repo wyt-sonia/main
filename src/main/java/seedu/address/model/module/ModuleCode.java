@@ -18,6 +18,7 @@ public class ModuleCode {
             this.number = parseNumber(fullModuleCode);
             this.postfix = parsePostfix(fullModuleCode);
         } catch (ModuleCodeException e) {
+            System.out.println("ModuleCodeParsing failed");
             throw new ModuleCodeException("ModuleCode is invalid!");
         }
     }
@@ -29,11 +30,10 @@ public class ModuleCode {
         while(true) {
             char character = input.charAt(i);
             try {
-                int test = (int) character;     //if typecasting successful, end operation
+                Integer.parseInt("" + character);     //if parseInt successful, end operation
                 break;
-            } catch (ClassCastException e) {    //if typecasting fail, continue
+            } catch (NumberFormatException e) {    //if typecasting fail, continue
                 output += character;
-                System.out.println("getPrefix - output = " + output);
                 i++;
             }
         }
@@ -50,10 +50,9 @@ public class ModuleCode {
         for(int i = 0; i < input.length(); i++) {
             char character = input.charAt(i);
             try {
-                int test = (int) character;     //if typecasting successful, add char to outputAsString
+                Integer.parseInt("" + character);     //if parseInt successful, add char to outputAsString
                 outputAsString += character;
-                System.out.println("getNumber()'s output = " + outputAsString);
-            } catch (ClassCastException e) {
+            } catch (NumberFormatException e) {
                 //ignore
             }
         }
@@ -68,9 +67,9 @@ public class ModuleCode {
 
     private String parsePostfix(String input) {
         String output = "";
-        char character = input.charAt(input.length());
+        char character = input.charAt(input.length() - 1);
         try {
-            int test = (int) character;
+            Integer.parseInt("" + character);
         } catch (ClassCastException e) {
             output += character;
         }
@@ -106,7 +105,6 @@ public class ModuleCode {
 
     @Override
     public String toString(){
-        System.out.println(prefix + number + postfix);
         return prefix + number + postfix;
     }
 
