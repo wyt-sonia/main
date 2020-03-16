@@ -48,6 +48,11 @@ public interface Logic {
     ObservableList<Task> getFilteredTaskList();
 
     /**
+     * Returns an unmodifiable view of the filtered list of archived tasks.
+     */
+    ObservableList<Task> getFilteredArchivedTaskList();
+
+    /**
      * Returns the user prefs' address book file path.
      */
     Path getAddressBookFilePath();
