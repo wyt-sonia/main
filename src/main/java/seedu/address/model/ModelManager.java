@@ -201,7 +201,8 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
             && userPrefs.equals(other.userPrefs)
-            && filteredTasks.equals(other.filteredTasks);
+            && filteredTasks.equals(other.filteredTasks)
+            && filteredArchiveTasks.equals(other.filteredArchiveTasks);
     }
 
 

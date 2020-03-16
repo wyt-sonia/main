@@ -191,6 +191,11 @@ class AddTaskCommandTest {
         public void updateFilteredTaskList(Predicate<Task> predicate) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public void sortTasks(String keyword) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
