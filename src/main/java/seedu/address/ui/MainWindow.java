@@ -33,6 +33,7 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
+    private PersonListPanel archiveListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -160,6 +161,18 @@ public class MainWindow extends UiPart<Stage> {
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
+    }
+
+    @FXML
+    private void handleShowAllTasks() {
+        personListPanel = new PersonListPanel(logic.getFilteredTaskList());
+        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+    }
+
+    @FXML
+    private void handleShowArchivedTasks() {
+        archiveListPanel = new PersonListPanel(logic.getFilteredArchivedTaskList());
+        personListPanelPlaceholder.getChildren().add(archiveListPanel.getRoot());
     }
 
     public PersonListPanel getPersonListPanel() {

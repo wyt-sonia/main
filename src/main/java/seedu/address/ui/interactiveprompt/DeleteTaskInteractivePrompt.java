@@ -87,10 +87,11 @@ public class DeleteTaskInteractivePrompt extends InteractivePrompt {
             try {
                 DeleteTaskCommand deleteTaskCommand = new DeleteTaskCommand(Index.fromZeroBased(index - 1));
                 logic.executeCommand(deleteTaskCommand);
-                super.setEndOfCommand(true);
+                reply = "Task deleted!";
             } catch (CommandException ex) {
                 reply = ex.getMessage();
             }
+            super.setEndOfCommand(true);
             break;
 
         default:

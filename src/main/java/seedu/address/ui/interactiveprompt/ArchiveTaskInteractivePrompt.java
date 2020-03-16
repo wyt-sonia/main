@@ -87,11 +87,11 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
             try {
                 ArchiveTaskCommand archiveTaskCommand = new ArchiveTaskCommand(Index.fromZeroBased(index - 1));
                 logic.executeCommand(archiveTaskCommand);
-                super.setEndOfCommand(true);
                 reply = "Task archived!";
             } catch (CommandException ex) {
                 reply = ex.getMessage();
             }
+            super.setEndOfCommand(true);
             break;
 
         default:
