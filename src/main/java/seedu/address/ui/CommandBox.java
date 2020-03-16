@@ -16,6 +16,7 @@ import seedu.address.ui.interactiveprompt.DeleteDuplicateTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.DeleteTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.ExitTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
+import seedu.address.ui.interactiveprompt.InvalidInputInteractivePrompt;
 import seedu.address.ui.interactiveprompt.SortTaskInteractivePrompt;
 
 /**
@@ -27,8 +28,8 @@ public class CommandBox extends UiPart<Region> {
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes =
         {"add", "edit", "delete", "archive", "done", "delete duplicates", "bye", "sort"};
-    private InteractivePrompt currentInteractivePrompt;
     private final CommandExecutor commandExecutor;
+    private InteractivePrompt currentInteractivePrompt;
     @FXML
     private TextField commandTextField;
 
@@ -51,49 +52,49 @@ public class CommandBox extends UiPart<Region> {
             if (currentInteractivePrompt == null) {
                 boolean isValidType = Arrays.stream(interactiveCommandTypes)
                     .filter(x -> x.equals(userInput)).count() > 0;
-                if (!isValidType) {
-                    commandTextField.setText("Please enter valid command type.");
-                } else {
-                    switch (userInput) {
-                    case "add":
-                        currentInteractivePrompt = new AddTaskInteractivePrompt();
-                        break;
-                    case "edit":
-                        //currentInteractivePrompt = new EditTaskInteractivePrompt();
-                        break;
-                    case "delete":
-                        currentInteractivePrompt = new DeleteTaskInteractivePrompt();
-                        break;
-                    case "archive":
-                        currentInteractivePrompt = new ArchiveTaskInteractivePrompt();
-                        break;
-                    case "delete duplicates":
-                        currentInteractivePrompt = new DeleteDuplicateTaskInteractivePrompt();
-                        break;
-                    case "done":
-                        currentInteractivePrompt = new CompleteTaskInteractivePrompt();
-                        break;
-                    case "sort":
-                        currentInteractivePrompt = new SortTaskInteractivePrompt();
-                        break;
-                    case "bye":
-                        currentInteractivePrompt = new ExitTaskInteractivePrompt();
-                        break;
 
-                    default:
-                    }
+                switch (userInput) {
+                case "add":
+                    currentInteractivePrompt = new AddTaskInteractivePrompt();
+                    break;
+                case "edit":
+                    //currentInteractivePrompt = new EditTaskInteractivePrompt();
+                    commandTextField.setText("Edit function under construction");
+                    break;
+                case "delete":
+                    currentInteractivePrompt = new DeleteTaskInteractivePrompt();
+                    break;
+                case "archive":
+                    currentInteractivePrompt = new ArchiveTaskInteractivePrompt();
+                    break;
+                case "delete duplicates":
+                    currentInteractivePrompt = new DeleteDuplicateTaskInteractivePrompt();
+                    break;
+                case "done":
+                    currentInteractivePrompt = new CompleteTaskInteractivePrompt();
+                    break;
+                case "sort":
+                    currentInteractivePrompt = new SortTaskInteractivePrompt();
+                    break;
+                case "bye":
+                    currentInteractivePrompt = new ExitTaskInteractivePrompt();
+                    break;
+                default:
+                    currentInteractivePrompt = new InvalidInputInteractivePrompt();
                 }
             }
 
+
             //currentInteractivePrompt could be null. Might need to create an ErrorInteractivePrompt to handle this.
             //inserted NullPointerException e at the catch section
-            CommandResult commandResult = commandExecutor.execute(currentInteractivePrompt, commandTextField.getText());
+            CommandResult commandResult = currentInteractivePrompt != null
+                ? commandExecutor.execute(currentInteractivePrompt, commandTextField.getText()) : null;
             if (commandResult != null) {
                 currentInteractivePrompt = null;
+                commandTextField.setText("");
             }
-            commandTextField.setText("");
         } catch (CommandException | ParseException | NullPointerException e) {
-            commandTextField.setText("");
+            commandTextField.setText(e.getMessage());
             setStyleToIndicateCommandFailure();
         }
     }

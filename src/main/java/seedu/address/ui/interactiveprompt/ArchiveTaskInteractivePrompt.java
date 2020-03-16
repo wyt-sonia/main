@@ -77,7 +77,7 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
             try {
                 index = Integer.parseInt(userInput);
                 reply = "The task at index " + userInput + " will be archived. \n "
-                        + " Please press enter again to make the desired changes.";
+                    + " Please press enter again to make the desired changes.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
                 lastTerm = InteractivePromptTerms.TASK_INDEX;
                 terms.add(lastTerm);
@@ -107,8 +107,8 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void endInteract(String msg) {
-        this.reply = msg;
+    public void endInteract(String reply) {
+        this.reply = reply;
         super.setEndOfCommand(true);
     }
 
