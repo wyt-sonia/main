@@ -75,7 +75,7 @@ public class CommandBox extends UiPart<Region> {
                         break;
                     case "sort":
                         currentInteractivePrompt = new SortTaskInteractivePrompt();
-                        break;                 
+                        break;
                     case "bye":
                         currentInteractivePrompt = new ExitTaskInteractivePrompt();
                         break;
