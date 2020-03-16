@@ -1,7 +1,5 @@
 package seedu.address.ui;
 
-import java.util.Arrays;
-
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -91,8 +89,8 @@ public class CommandBox extends UiPart<Region> {
                 ? commandExecutor.execute(currentInteractivePrompt, commandTextField.getText()) : null;
             if (commandResult != null) {
                 currentInteractivePrompt = null;
-                commandTextField.setText("");
             }
+            commandTextField.setText("");
         } catch (CommandException | ParseException | NullPointerException e) {
             commandTextField.setText(e.getMessage());
             setStyleToIndicateCommandFailure();
