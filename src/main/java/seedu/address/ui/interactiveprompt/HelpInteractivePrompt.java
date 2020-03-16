@@ -2,8 +2,6 @@ package seedu.address.ui.interactiveprompt;
 
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.HELP;
 
-import javax.xml.stream.events.EndDocument;
-
 /**
  * The interactive prompt for the help command. Returns the help message immediately
  */
