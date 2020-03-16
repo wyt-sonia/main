@@ -1,11 +1,11 @@
 package seedu.address.ui.interactiveprompt;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
 class HelpInteractivePromptTest {
-    HelpInteractivePrompt hip = new HelpInteractivePrompt();
+    private HelpInteractivePrompt hip = new HelpInteractivePrompt();
 
     @Test
     void interact() {
