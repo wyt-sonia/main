@@ -203,8 +203,8 @@ public class MainWindow extends UiPart<Stage> {
         return commandResult;*/
 
         currentInteractivePrompt.setLogic(logic);
-        String s = currentInteractivePrompt.interact(commandText);
-        resultDisplay.setFeedbackToUser(s);
+        String reply = currentInteractivePrompt.interact(commandText);
+        resultDisplay.setFeedbackToUser(reply);
         if (currentInteractivePrompt.isQuit()) {
             handleExit();
         }
