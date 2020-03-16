@@ -2,6 +2,8 @@ package seedu.address.model.task;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import seedu.address.logic.parser.TimeParser;
@@ -10,11 +12,13 @@ import seedu.address.model.Module;
 /**
  * pending.
  */
-public class Task {
+public class Task implements Comparable<Task> {
     /**
      * The acceptable data and time format.
      */
     public static final DateTimeFormatter DATETIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
+    private static ArrayList<Task> currentTasks = new ArrayList<>();
+
     private Module module;
     private TaskType taskType;
     private String taskName;
@@ -38,6 +42,14 @@ public class Task {
 
     public Task() {
         dateTimes = new LocalDateTime[2];
+    }
+
+    public static void updateCurrentTaskList(List<Task> tasks) {
+        currentTasks = (ArrayList<Task>) tasks;
+    }
+
+    public static ArrayList<Task> getCurrentTasks() {
+        return currentTasks;
     }
 
     public Module getModule() {
@@ -182,4 +194,24 @@ public class Task {
             && otherTask.getTaskStatus().equals(getTaskStatus());
     }
 
+    /**
+     * Compare tasks by deadline/ start date.
+     * Comparison by task name is handled in sort command class.
+     */
+    @Override
+    public int compareTo(Task t) {
+        int result = 0;
+        if (this.dateTimes[0].isBefore(t.dateTimes[0])) {
+            result = -1;
+        } else if (!this.dateTimes[0].isBefore(t.dateTimes[0])) {
+            result = 1;
+        } else {
+            if (this.taskType.equals(t.taskType)) {
+                result = this.taskName.compareTo(t.taskName);
+            } else {
+                result = this.taskType.compareTo(t.taskType);
+            }
+        }
+        return result;
+    }
 }

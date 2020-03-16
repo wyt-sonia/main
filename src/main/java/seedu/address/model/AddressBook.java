@@ -68,8 +68,14 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void setTasks(Task target, Task editedTask) {
         requireNonNull(editedTask);
-
         tasks.setTask(target, editedTask);
+    }
+
+    /**
+     * Sort tasks by the given {@code keyword}.
+     */
+    public void sortTasks(String keyword) {
+        tasks.sortTasks(keyword);
     }
 
     /**

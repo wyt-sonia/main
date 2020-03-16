@@ -19,7 +19,7 @@ public class TimeParser {
         try {
             inputTime = LocalDateTime.parse(userInput.trim(), Task.DATETIME_FORMAT);
         } catch (DateTimeParseException e) {
-            throw new InteractiveCommandException("DateTimeParseError");
+            throw new InteractiveCommandException("dataTimeFormatError");
         }
         return inputTime;
     }

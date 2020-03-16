@@ -13,6 +13,10 @@ import seedu.address.logic.parser.interactivecommandparser.exceptions.DeleteTask
  * A interactive prompt for completing task.
  */
 public class CompleteTaskInteractivePrompt extends InteractivePrompt {
+
+    static final String END_OF_COMMAND_MSG = "Task marked as completed successfully!";
+    static final String QUIT_COMMAND_MSG = "Successfully quited from complete task command.";
+
     private int index;
     private String reply;
     private String userInput;
@@ -34,8 +38,8 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
     @Override
     public String interact(String userInput) {
         if (userInput.equals("quit")) {
-            // exit the command
-            super.setQuit(true);
+            endInteract(QUIT_COMMAND_MSG);
+            return reply;
         } else if (userInput.equals("back")) {
             if (lastTerm != null) { //in the beginning it is null
                 terms.remove(terms.size() - 1);
@@ -77,7 +81,7 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
             try {
                 CompleteTaskCommand completeTaskCommand = new CompleteTaskCommand(Index.fromZeroBased(index - 1));
                 logic.executeCommand(completeTaskCommand);
-                super.setEndOfCommand(true);
+                endInteract(END_OF_COMMAND_MSG);
             } catch (CommandException ex) {
                 reply = ex.getMessage();
             }
@@ -94,8 +98,9 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void endInteract() {
-
+    public void endInteract(String msg) {
+        this.reply = msg;
+        super.setEndOfCommand(true);
     }
 
     @Override

@@ -14,7 +14,9 @@ import seedu.address.ui.interactiveprompt.ArchiveTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.CompleteTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.DeleteDuplicateTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.DeleteTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.ExitTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
+import seedu.address.ui.interactiveprompt.SortTaskInteractivePrompt;
 
 /**
  * The UI component that is responsible for receiving user command inputs.
@@ -24,7 +26,7 @@ public class CommandBox extends UiPart<Region> {
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes =
-        {"add", "edit", "delete", "archive", "done", "delete duplicates"};
+        {"add", "edit", "delete", "archive", "done", "delete duplicates", "bye", "sort"};
     private InteractivePrompt currentInteractivePrompt;
     private final CommandExecutor commandExecutor;
     @FXML
@@ -44,7 +46,8 @@ public class CommandBox extends UiPart<Region> {
     @FXML
     private void handleCommandEntered() {
         try {
-            String userInput = commandTextField.getText();
+            // allow InteractivePrompt type with different case and space in front or behind
+            String userInput = commandTextField.getText().toLowerCase().trim();
             if (currentInteractivePrompt == null) {
                 boolean isValidType = Arrays.stream(interactiveCommandTypes)
                     .filter(x -> x.equals(userInput)).count() > 0;
@@ -70,11 +73,16 @@ public class CommandBox extends UiPart<Region> {
                     case "done":
                         currentInteractivePrompt = new CompleteTaskInteractivePrompt();
                         break;
+                    case "sort":
+                        currentInteractivePrompt = new SortTaskInteractivePrompt();
+                        break;
+                    case "bye":
+                        currentInteractivePrompt = new ExitTaskInteractivePrompt();
+                        break;
 
                     default:
                     }
                 }
-
             }
 
             //currentInteractivePrompt could be null. Might need to create an ErrorInteractivePrompt to handle this.
@@ -123,5 +131,4 @@ public class CommandBox extends UiPart<Region> {
         CommandResult execute(InteractivePrompt currentInteractivePrompt, String commandText)
             throws CommandException, ParseException;
     }
-
 }

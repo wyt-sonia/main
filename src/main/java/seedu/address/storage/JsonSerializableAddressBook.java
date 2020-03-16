@@ -66,6 +66,8 @@ class JsonSerializableAddressBook {
             }
             addressBook.addArchivedTask(task);
         }
+        // init the currentTaskList
+        Task.updateCurrentTaskList(new ArrayList<>(addressBook.getTaskList()));
         return addressBook;
     }
 

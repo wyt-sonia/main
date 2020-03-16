@@ -1,48 +1,37 @@
 package seedu.address.ui.interactiveprompt;
 
-/*
- * Logic of implementation:
- * IP will handle all interaction btw user and the window to get the final version of command
- * - FSM
- * Parser will handle to parsing of the command and create a command
- * command will execute the action
- * server display the response if needed
- * */
-
-import static seedu.address.ui.interactiveprompt.InteractivePromptType.DELETE_TASK;
+import static seedu.address.ui.interactiveprompt.InteractivePromptType.SORT_TASK;
 
 import java.util.ArrayList;
 
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.DeleteTaskCommand;
+import seedu.address.logic.commands.SortTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.DeleteTaskCommandException;
-import seedu.address.model.task.Task;
+import seedu.address.logic.parser.interactivecommandparser.exceptions.SortTaskCommandException;
 
 /**
- * pending.
+ * A interactive prompt for sorting task list.
  */
-public class DeleteTaskInteractivePrompt extends InteractivePrompt {
+public class SortTaskInteractivePrompt extends InteractivePrompt {
+    private static final String END_OF_COMMAND_MSG = "Task sorted successfully!";
+    private static final String QUIT_COMMAND_MSG = "Successfully quited from sort task command.";
+    private static final String[] sort_option = {"Deadline", "Task Name"};
 
-    static final String END_OF_COMMAND_MSG = "Task deleted successfully!";
-    static final String QUIT_COMMAND_MSG = "Successfully quited from delete task command.";
-
+    private int option;
     private String reply;
     private String userInput;
     private InteractivePromptTerms currentTerm;
     private InteractivePromptTerms lastTerm;
     private ArrayList<InteractivePromptTerms> terms;
-    private int index;
 
-    public DeleteTaskInteractivePrompt() {
+    public SortTaskInteractivePrompt() {
         super();
-        this.interactivePromptType = DELETE_TASK;
+        this.interactivePromptType = SORT_TASK;
         this.reply = "";
         this.userInput = "";
         this.currentTerm = InteractivePromptTerms.INIT;
         this.lastTerm = null;
         this.terms = new ArrayList<>();
-        this.index = index;
     }
 
     @Override
@@ -67,34 +56,36 @@ public class DeleteTaskInteractivePrompt extends InteractivePrompt {
 
         switch (currentTerm) {
         case INIT:
-            this.reply = "Please enter the index number of task you wish to delete.";
-            currentTerm = InteractivePromptTerms.TASK_INDEX;
+            this.reply = "Please choose the sort keyword: \n"
+                + "1. Deadline\n"
+                + "2. Task Name";
+            currentTerm = InteractivePromptTerms.SORT_KEYWORD;
             lastTerm = InteractivePromptTerms.INIT;
             terms.add(lastTerm);
             break;
 
-        case TASK_INDEX:
+        case SORT_KEYWORD:
             try {
-                index = Integer.parseInt(userInput);
-                if (index > Task.getCurrentTasks().size() || index <= 0) {
-                    throw new DeleteTaskCommandException("invalidIndexRangeError");
+                option = Integer.parseInt(userInput);
+                if (option > 2 || option <= 0) {
+                    throw new SortTaskCommandException("invalidOptionRangeError");
                 }
-                reply = "The task " + Task.getCurrentTasks().get(index - 1).getTaskName() + " will be deleted. \n "
-                        + " Please click enter again to make the desired deletion.";
+                reply = "The task  will be sorted by" + sort_option[option - 1] + ". \n "
+                    + " Please click enter again to check the sorted list.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-                lastTerm = InteractivePromptTerms.TASK_DATETIME;
+                lastTerm = InteractivePromptTerms.SORT_KEYWORD;
                 terms.add(lastTerm);
             } catch (NumberFormatException ex) {
-                reply = (new DeleteTaskCommandException("wrongIndexFormatError")).getErrorMessage();
-            } catch (DeleteTaskCommandException ex) {
+                reply = (new DeleteTaskCommandException("wrongOptionFormatError")).getErrorMessage();
+            } catch (SortTaskCommandException ex) {
                 reply = ex.getErrorMessage();
             }
             break;
 
         case READY_TO_EXECUTE:
             try {
-                DeleteTaskCommand deleteTaskCommand = new DeleteTaskCommand(Index.fromZeroBased(index - 1));
-                logic.executeCommand(deleteTaskCommand);
+                SortTaskCommand sortTaskCommand = new SortTaskCommand(sort_option[option - 1]);
+                logic.executeCommand(sortTaskCommand);
                 endInteract(END_OF_COMMAND_MSG);
             } catch (CommandException ex) {
                 reply = ex.getMessage();

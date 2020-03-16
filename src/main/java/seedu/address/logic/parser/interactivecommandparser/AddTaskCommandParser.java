@@ -40,8 +40,12 @@ public class AddTaskCommandParser {
         LocalDateTime[] result = null;
         switch (taskType) {
         case Assignment:
-            result = new LocalDateTime[1];
-            result[0] = TimeParser.parseDateTime(userInput);
+            try {
+                result = new LocalDateTime[1];
+                result[0] = TimeParser.parseDateTime(userInput);
+            } catch (InteractiveCommandException e) {
+                throw new AddTaskCommandException("dataTimeFormatError");
+            }
             // filter out the input with correct format but invalid date time
             if (result[0].isBefore(LocalDateTime.now())) {
                 throw new AddTaskCommandException("pastDateTime");
