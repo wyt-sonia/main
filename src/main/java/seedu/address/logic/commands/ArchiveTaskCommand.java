@@ -21,7 +21,7 @@ public class ArchiveTaskCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Archives the selected entry";
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Archived Person: %1$s";
+    public static final String MESSAGE_ARCHIVE_PERSON_SUCCESS = "Archived Person: %1$s";
 
     private final Index targetIndex;
 
@@ -41,7 +41,7 @@ public class ArchiveTaskCommand extends Command {
         Task taskToArchive = lastShownList.get(targetIndex.getZeroBased());
         model.deleteTask(taskToArchive);
         model.archiveTask(taskToArchive);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, taskToArchive));
+        return new CommandResult(String.format(MESSAGE_ARCHIVE_PERSON_SUCCESS, taskToArchive));
     }
 
 }

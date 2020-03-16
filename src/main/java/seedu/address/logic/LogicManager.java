@@ -82,7 +82,9 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ObservableList<Task> getFilteredArchivedTaskList() {return model.getFilteredArchivedTaskList(); }
+    public ObservableList<Task> getFilteredArchivedTaskList() {
+        return model.getFilteredArchivedTaskList();
+    }
 
     @Override
     public Path getAddressBookFilePath() {
