@@ -3,21 +3,18 @@ package seedu.address.ui.interactiveprompt.add;
 import seedu.address.model.task.Task;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
+import seedu.address.ui.interactiveprompt.InteractivePromptType;
+
 
 import java.util.ArrayList;
 
-public class createNewModuleInteractivePrompt extends InteractivePrompt {
+public class CreateModuleInteractivePrompt extends InteractivePrompt {
 
-    private String reply;
-    private String userInput;
-    private Task task;
-    private InteractivePromptTerms currentTerm;
-    private InteractivePromptTerms lastTerm;
     private ArrayList<InteractivePromptTerms> terms;
 
-    public AddTaskInteractivePrompt() {
+    public CreateModuleInteractivePrompt() {
         super();
-        this.interactivePromptType = ADD_TASK;
+        this.interactivePromptType = InteractivePromptType.CREATE_MODULE;
         this.reply = "";
         this.userInput = "";
         this.task = new Task();
@@ -27,6 +24,23 @@ public class createNewModuleInteractivePrompt extends InteractivePrompt {
     }
     @Override
     public String interact(String userInput) {
+        if (userInput.equals("quit")) {
+            // exit the command
+            super.setQuit(true);
+        } else if (userInput.equals("back")) {
+            if (lastTerm != null) {
+                terms.remove(terms.size() - 1);
+                currentTerm = lastTerm;
+                if (lastTerm.equals(InteractivePromptTerms.INIT)) {
+                    lastTerm = null;
+                } else {
+                    lastTerm = terms.get(terms.size() - 1);
+                }
+                userInput = "";
+            } else {
+                this.reply = "Please type quit to exit from this command.";
+            }
+        }
         return null;
     }
 

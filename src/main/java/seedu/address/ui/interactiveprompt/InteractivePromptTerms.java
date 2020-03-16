@@ -3,7 +3,7 @@ package seedu.address.ui.interactiveprompt;
 /**
  * pending.
  */
-enum InteractivePromptTerms {
+public enum InteractivePromptTerms {
     INIT,
     TASK_NAME,
     TASK_INDEX,
@@ -13,5 +13,7 @@ enum InteractivePromptTerms {
     TASK_MODULE,
     TASK_WEIGHT,
     TASK_ESTIMATED_TIME_COST,
+    MODULE_NAME,
+    MODULE_CODE,
     READY_TO_EXECUTE
 }

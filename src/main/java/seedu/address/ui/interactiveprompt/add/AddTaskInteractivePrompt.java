@@ -1,4 +1,4 @@
-package seedu.address.ui.interactiveprompt;
+package seedu.address.ui.interactiveprompt.add;
 
 /*
  * Logic of implementation:
@@ -22,20 +22,13 @@ import seedu.address.logic.parser.interactivecommandparser.exceptions.AddTaskCom
 import seedu.address.model.module.EmptyModule;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskType;
+import seedu.address.ui.interactiveprompt.InteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
  * pending.
  */
 public class AddTaskInteractivePrompt extends InteractivePrompt {
-
-    private String reply;
-    private String userInput;
-    private Task task;
-    private InteractivePromptTerms currentTerm;
-    private InteractivePromptTerms lastTerm;
-    private ArrayList<InteractivePromptTerms> terms;
-
     public AddTaskInteractivePrompt() {
         super();
         this.interactivePromptType = ADD_TASK;
@@ -108,6 +101,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
 
                 task.setModule(new EmptyModule());
                 task.setStatus("pending");
+
                 task.setTaskDescription("No Description Available");
                 task.setWeight(0.0);
                 task.setEstimatedTimeCost("No estimated time cost");

@@ -1,4 +1,4 @@
-package seedu.address.ui.interactiveprompt;
+package seedu.address.ui.interactiveprompt.delete;
 
 /*
  * Logic of implementation:
@@ -16,18 +16,13 @@ import java.util.ArrayList;
 import seedu.address.logic.commands.DeleteDuplicateTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.DeleteDuplicateTaskCommandException;
+import seedu.address.ui.interactiveprompt.InteractivePrompt;
+import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
  * pending.
  */
 public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
-
-    private String reply;
-    private String userInput;
-    private InteractivePromptTerms currentTerm;
-    private InteractivePromptTerms lastTerm;
-    private ArrayList<InteractivePromptTerms> terms;
-
     public DeleteDuplicateTaskInteractivePrompt() {
         super();
         this.interactivePromptType = DELETE_DUPLICATE_TASK;

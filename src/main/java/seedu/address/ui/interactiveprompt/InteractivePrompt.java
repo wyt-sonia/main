@@ -1,6 +1,9 @@
 package seedu.address.ui.interactiveprompt;
 
 import seedu.address.logic.Logic;
+import seedu.address.model.task.Task;
+
+import java.util.ArrayList;
 
 /**
  * pending.
@@ -10,6 +13,13 @@ public abstract class InteractivePrompt {
     protected boolean isQuit;
     protected boolean isEndOfCommand;
     protected InteractivePromptType interactivePromptType;
+    protected String reply;
+    protected String userInput;
+    protected Task task;
+    protected InteractivePromptTerms currentTerm;
+    protected InteractivePromptTerms lastTerm;
+    protected ArrayList<InteractivePromptTerms> terms;
+
 
     public InteractivePrompt() {
         this.isQuit = false;

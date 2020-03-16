@@ -1,4 +1,4 @@
-package seedu.address.ui.interactiveprompt;
+package seedu.address.ui.interactiveprompt.edit;
 
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.COMPLETE_TASK;
 
@@ -8,6 +8,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CompleteTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.DeleteTaskCommandException;
+import seedu.address.ui.interactiveprompt.InteractivePrompt;
+import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
  * A interactive prompt for completing task.
