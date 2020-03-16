@@ -10,6 +10,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.interactiveprompt.add.AddTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.add.CreateModuleInteractivePrompt;
 import seedu.address.ui.interactiveprompt.edit.ArchiveTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.edit.CompleteTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.delete.DeleteDuplicateTaskInteractivePrompt;
@@ -24,7 +25,7 @@ public class CommandBox extends UiPart<Region> {
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes =
-        {"add", "edit", "delete", "archive", "done", "delete duplicates"};
+        {"add", "edit", "delete", "archive", "done", "delete duplicates", "create mods"};
     private InteractivePrompt currentInteractivePrompt;
     private final CommandExecutor commandExecutor;
     @FXML
@@ -70,7 +71,9 @@ public class CommandBox extends UiPart<Region> {
                     case "done":
                         currentInteractivePrompt = new CompleteTaskInteractivePrompt();
                         break;
-
+                    case "create mods":
+                        currentInteractivePrompt = new CreateModuleInteractivePrompt();
+                        break;
                     default:
                     }
                 }

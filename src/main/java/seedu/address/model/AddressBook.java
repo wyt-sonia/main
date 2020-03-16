@@ -107,6 +107,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setPersons(newData.getPersonList());
         setArchivedTasks(newData.getArchivedList());
         setTasks(newData.getTaskList());
+        setModuleList(newData.getModuleList());
     }
 
     //// person-level operations
@@ -139,9 +140,18 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Adds a module to the ModuleList.
      * @param module
      */
-    public void addModule(Module module) throws ModuleCodeException {
-        moduleList.add(module);
+    public void addModule(Module module) {
+        try {
+            moduleList.add(module);
+        } catch (ModuleCodeException ex) {
+            System.out.println("AddModule Failed, from addressBook.addModule()");
+        }
     }
+
+    public void setModuleList(List<Module> modules) {
+        this.moduleList.setModuleList(modules);
+    }
+
 
     /**
      * Adds a task to the task list.

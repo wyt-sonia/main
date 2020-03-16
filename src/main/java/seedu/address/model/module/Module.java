@@ -39,13 +39,21 @@ public class Module {
      * @throws ModuleCodeException
      */
     public Module (String fullModuleCode) {
-        this.moduleName = "Nameless Module";
+        this.moduleName = "";
         try {
             this.moduleCode = new ModuleCode(fullModuleCode);
         } catch (ModuleCodeException e) {
-            System.out.println("ModuleCode is invalid!");
+            System.out.println("from Module(string). ModuleCode is invalid!");
         }
     }
+
+    public Module() {
+        this.moduleName = "";
+        try {
+            this.moduleCode = new ModuleCode("O0000O");
+        } catch (ModuleCodeException e) {
+            System.out.println("from Module(). ModuleCode is invalid!");
+        }    }
 
     public boolean contains(Task toCheck) {
         requireNonNull(toCheck);
@@ -100,8 +108,16 @@ public class Module {
         return moduleCode;
     }
 
-    public void setModuleName(String newModuleName) {
-        this.moduleName = newModuleName;
+    public void setModuleName(String moduleName) {
+        this.moduleName = moduleName;
+    }
+
+    public void setModuleCode(String moduleCode) {
+        try {
+            this.moduleCode = new ModuleCode(moduleCode);
+        } catch (ModuleCodeException e) {
+            System.out.println("From module.setModuleCode. Module code is invalid!");
+        }
     }
 
     @Override

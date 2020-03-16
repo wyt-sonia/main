@@ -5,8 +5,12 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.model.module.exceptions.ModuleCodeException;
 
+import java.util.List;
+
+import static java.util.Objects.requireNonNull;
+
 /**
- * List of Modules. Checks for duplicates
+ * List of Modules. Checks for duplicates. Will be stored in Json.
  */
 public class ModuleList {
     private ObservableList<Module> internalList = FXCollections.observableArrayList();
@@ -24,9 +28,9 @@ public class ModuleList {
         final Module moduleForPredicate = module;
         FilteredList<Module> filteredList = internalList.filtered((x) -> x.equals(moduleForPredicate));
         if(filteredList.isEmpty()) {
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 
@@ -42,6 +46,7 @@ public class ModuleList {
         if(this.contains(module)) {
             throw new ModuleCodeException("Duplicate modules");
         } else {
+            System.out.println("adding");
             internalList.add(module);
         }
     }
@@ -74,5 +79,10 @@ public class ModuleList {
         } else {
             throw new ModuleCodeException("Module Not Found");
         }
+    }
+
+    public void setModuleList(List<Module> replacement) {
+        requireNonNull(replacement);
+        internalList.setAll(replacement);
     }
 }
