@@ -67,3 +67,4 @@ public class HelpInteractivePrompt extends InteractivePrompt {
         return END_OF_COMMAND_MSG;
     }
 }
+
