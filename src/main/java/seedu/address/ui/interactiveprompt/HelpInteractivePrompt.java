@@ -1,4 +1,5 @@
 package seedu.address.ui.interactiveprompt;
+
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.HELP;
 
 /**
@@ -20,6 +21,7 @@ public class HelpInteractivePrompt extends InteractivePrompt {
 
     /**
      * Returns the help message to the user immediately
+     *
      * @param userInput the help keyword
      * @return the help message
      */
@@ -31,6 +33,7 @@ public class HelpInteractivePrompt extends InteractivePrompt {
 
     /**
      * Ends the interactive prompt
+     *
      * @param msg the help message to be displayed to the user
      */
     @Override
@@ -43,11 +46,14 @@ public class HelpInteractivePrompt extends InteractivePrompt {
      * As this is a single line command, the methods below do not have any functionality
      */
     @Override
-    public void interruptInteract() {}
+    public void interruptInteract() {
+    }
 
     @Override
-    public void back() {}
+    public void back() {
+    }
 
     @Override
-    public void next() {}
+    public void next() {
+    }
 }
