@@ -2,11 +2,14 @@ package seedu.address.ui.interactiveprompt;
 
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.HELP;
 
+import javax.xml.stream.events.EndDocument;
+
 /**
  * The interactive prompt for the help command. Returns the help message immediately
  */
 public class HelpInteractivePrompt extends InteractivePrompt {
-    static final String END_OF_COMMAND_MSG = "Here are the list of available commands:\n"
+    private static final String END_OF_COMMAND_MSG =
+        "Here are the list of available commands:" + System.lineSeparator()
         + "1. add  2. delete  3. edit  4. bye  5. sort  6. find  7. done  8. delete duplicates  "
         + "9. sort  10. archive  11. help" + System.lineSeparator() + System.lineSeparator()
         + "User Guide: https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html";
@@ -58,5 +61,9 @@ public class HelpInteractivePrompt extends InteractivePrompt {
     @Override
     public void next() {
         // no next interaction
+    }
+
+    public static String getHelpMessage() {
+        return END_OF_COMMAND_MSG;
     }
 }

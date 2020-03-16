@@ -8,7 +8,7 @@ class HelpInteractivePromptTest {
     private HelpInteractivePrompt hip = new HelpInteractivePrompt();
 
     @Test
-    void interact() {
-        assertEquals(hip.interact("help"), HelpInteractivePrompt.END_OF_COMMAND_MSG);
+    public void interact() {
+        assertEquals(hip.interact("help"), HelpInteractivePrompt.getHelpMessage());
     }
 }
