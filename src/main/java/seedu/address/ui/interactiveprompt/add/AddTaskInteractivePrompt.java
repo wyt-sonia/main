@@ -14,7 +14,7 @@ import static seedu.address.ui.interactiveprompt.InteractivePromptType.ADD_TASK;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import seedu.address.logic.commands.AddTaskCommand;
+import seedu.address.logic.commands.add.AddTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.TimeParser;
 import seedu.address.logic.parser.interactivecommandparser.AddTaskCommandParser;
@@ -29,6 +29,8 @@ import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
  * pending.
  */
 public class AddTaskInteractivePrompt extends InteractivePrompt {
+    protected Task task;
+
     public AddTaskInteractivePrompt() {
         super();
         this.interactivePromptType = ADD_TASK;

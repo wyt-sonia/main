@@ -5,7 +5,7 @@ import static seedu.address.ui.interactiveprompt.InteractivePromptType.COMPLETE_
 import java.util.ArrayList;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.CompleteTaskCommand;
+import seedu.address.logic.commands.edit.CompleteTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.DeleteTaskCommandException;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;

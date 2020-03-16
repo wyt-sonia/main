@@ -14,7 +14,7 @@ import static seedu.address.ui.interactiveprompt.InteractivePromptType.DELETE_TA
 import java.util.ArrayList;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.DeleteTaskCommand;
+import seedu.address.logic.commands.delete.DeleteTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.DeleteTaskCommandException;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;

@@ -14,7 +14,7 @@ import static seedu.address.ui.interactiveprompt.InteractivePromptType.ARCHIVE_T
 import java.util.ArrayList;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.ArchiveTaskCommand;
+import seedu.address.logic.commands.edit.ArchiveTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.ArchiveTaskCommandException;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;

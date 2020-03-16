@@ -15,7 +15,6 @@ public abstract class InteractivePrompt {
     protected InteractivePromptType interactivePromptType;
     protected String reply;
     protected String userInput;
-    protected Task task;
     protected InteractivePromptTerms currentTerm;
     protected InteractivePromptTerms lastTerm;
     protected ArrayList<InteractivePromptTerms> terms;

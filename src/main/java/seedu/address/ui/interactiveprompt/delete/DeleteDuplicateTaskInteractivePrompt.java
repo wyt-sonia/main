@@ -13,7 +13,7 @@ import static seedu.address.ui.interactiveprompt.InteractivePromptType.DELETE_DU
 
 import java.util.ArrayList;
 
-import seedu.address.logic.commands.DeleteDuplicateTaskCommand;
+import seedu.address.logic.commands.delete.DeleteDuplicateTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.DeleteDuplicateTaskCommandException;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
