@@ -81,7 +81,7 @@ public class ExitTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void endInteract() {
+    public void endInteract(String reply) {
 
     }
 

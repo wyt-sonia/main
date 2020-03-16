@@ -19,8 +19,16 @@ public class InteractiveCommandException extends RuntimeException {
             errorMessage = "The index entered is out of range, please check again.";
             break;
 
+        case "invalidOptionRangeError":
+            errorMessage = "The option index entered is out of range, please check again.";
+            break;
+
         case "wrongIndexFormatError":
             errorMessage = "The format of index entered is invalid, please enter an integer.";
+            break;
+
+        case "wrongOptionFormatError":
+            errorMessage = "The format of option index entered is invalid, please enter an integer.";
             break;
 
         case "dataTimeFormatError":

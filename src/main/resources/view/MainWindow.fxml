@@ -25,16 +25,18 @@
             <VBox id="mainContainer">
                 <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
                     <Menu mnemonicParsing="false" text="Dashboard">
-                        <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleShowAllTasks" text="Tasks" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleShowArchivedTasks" text="Archived tasks" />
+                        <MenuItem mnemonicParsing="false" style="-fx-font-size: 10pt;" onAction="#handleExit" text="Exit"/>
+                        <MenuItem mnemonicParsing="false" style="-fx-font-size: 10pt;" onAction="#handleShowAllTasks" text="Tasks" />
+                        <MenuItem mnemonicParsing="false" style="-fx-font-size: 10pt;" onAction="#handleShowArchivedTasks" text="Archived tasks" />
                     </Menu>
                     <Menu mnemonicParsing="false" text="Modules">
-                        <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
+                        <MenuItem fx:id="helpMenuItem" style="-fx-font-size: 10pt;"  mnemonicParsing="false"
+                                  onAction="#handleHelp" text="Help"/>
                     </Menu>
                     <Menu mnemonicParsing="false" text="Statistics">
                         <items>
-                            <MenuItem fx:id="helpMenuItem1" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
+                            <MenuItem fx:id="helpMenuItem1" style="-fx-font-size: 10pt;"  mnemonicParsing="false"
+                                      onAction="#handleHelp" text="Help"/>
                         </items>
                     </Menu>
                 </MenuBar>
