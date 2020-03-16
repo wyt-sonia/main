@@ -19,6 +19,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.TimeParser;
 import seedu.address.logic.parser.interactivecommandparser.AddTaskCommandParser;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
+import seedu.address.model.Module;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskType;
 
@@ -95,6 +96,19 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             try {
                 TaskType taskType = AddTaskCommandParser.parseType(userInput, TaskType.getTaskTypes().length);
                 task.setTaskType(taskType);
+                /**
+                 * TEMPORARY PLACEHOLDER TO ENABLE FILE SAVE.
+                 * REMOVE task.setAttribute once you've create methods to handle these....
+                 */
+
+                task.setModule(new Module("EMPTY_MODULE" , "CS0000"));
+                task.setStatus("pending");
+                task.setTaskDescription("EMPTY_TASK_DESCRIPTION");
+                task.setWeight(4.0);
+                task.setEstimatedTimeCost("EMPTY_ESTIMATED_TIME_COST");
+
+
+
                 userInput = taskType.toString();
 
                 this.reply = "The type of task is set to: " + userInput + ".\n"
@@ -141,13 +155,18 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
 
         case READY_TO_EXECUTE:
             try {
+                System.out.println(super.isEndOfCommand());
                 AddTaskCommand addTaskCommand = new AddTaskCommand(task);
-                //logic.executeCommand(addTaskCommand);
-                super.setEndOfCommand(true);
+                System.out.println("READY TO EXECUTE");
                 logic.executeCommand(addTaskCommand);
+                System.out.println("execution successful!");
+
+                super.setEndOfCommand(true);
+
             } catch (CommandException ex) {
                 reply = ex.getMessage();
             }
+
             break;
 
         case TASK_MODULE:

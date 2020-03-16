@@ -11,6 +11,8 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.interactiveprompt.AddTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.ArchiveTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.CompleteTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.DeleteDuplicateTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.DeleteTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
 
@@ -21,7 +23,8 @@ public class CommandBox extends UiPart<Region> {
 
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
-    private static final String[] interactiveCommandTypes = {"add", "edit", "delete", "archive"};
+    private static final String[] interactiveCommandTypes =
+        {"add", "edit", "delete", "archive", "done", "delete duplicates"};
     private InteractivePrompt currentInteractivePrompt;
     private final CommandExecutor commandExecutor;
     @FXML
@@ -35,8 +38,6 @@ public class CommandBox extends UiPart<Region> {
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
     }
 
-
-
     /**
      * Handles the Enter button pressed event.
      */
@@ -44,7 +45,7 @@ public class CommandBox extends UiPart<Region> {
     private void handleCommandEntered() {
         try {
             String userInput = commandTextField.getText();
-            if (currentInteractivePrompt == null) { //problem is that this is never not null after the first time
+            if (currentInteractivePrompt == null) {
                 boolean isValidType = Arrays.stream(interactiveCommandTypes)
                     .filter(x -> x.equals(userInput)).count() > 0;
                 if (!isValidType) {
@@ -63,22 +64,31 @@ public class CommandBox extends UiPart<Region> {
                     case "archive":
                         currentInteractivePrompt = new ArchiveTaskInteractivePrompt();
                         break;
+                    case "delete duplicates":
+                        currentInteractivePrompt = new DeleteDuplicateTaskInteractivePrompt();
+                        break;
+                    case "done":
+                        currentInteractivePrompt = new CompleteTaskInteractivePrompt();
+                        break;
+
                     default:
                     }
                 }
 
             }
 
+            //currentInteractivePrompt could be null. Might need to create an ErrorInteractivePrompt to handle this.
+            //inserted NullPointerException e at the catch section
             CommandResult commandResult = commandExecutor.execute(currentInteractivePrompt, commandTextField.getText());
             if (commandResult != null) {
                 currentInteractivePrompt = null;
             }
             commandTextField.setText("");
-        } catch (CommandException | ParseException e) {
+        } catch (CommandException | ParseException | NullPointerException e) {
+            commandTextField.setText("");
             setStyleToIndicateCommandFailure();
         }
     }
-
 
     /**
      * Sets the command box style to use the default style.

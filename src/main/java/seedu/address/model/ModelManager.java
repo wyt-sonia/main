@@ -113,6 +113,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void completeTask(Task target) {
+        addressBook.completeTask(target);
+    }
+
+    @Override
     public void deleteTask(Task target) {
         addressBook.removeTask(target);
     }
@@ -196,4 +201,3 @@ public class ModelManager implements Model {
 
 
 }
-

@@ -43,7 +43,7 @@ public class PersonCard extends UiPart<Region> {
         super(FXML);
         this.task = task;
         taskName.setText(task.getTaskName());
-        status.setText(task.getTaskName());
+        status.setText(task.getTaskStatus().convertToString());
         id.setText(displayedIndex + ". ");
         dateTime.setText(task.getTimeString());
         type.setText(task.getTaskType().toString());
