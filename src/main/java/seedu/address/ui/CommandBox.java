@@ -25,7 +25,7 @@ public class CommandBox extends UiPart<Region> {
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes =
-        {"add", "edit", "delete", "archive", "done", "delete duplicates", "quit"};
+        {"add", "edit", "delete", "archive", "done", "delete duplicates", "bye"};
     private InteractivePrompt currentInteractivePrompt;
     private final CommandExecutor commandExecutor;
     @FXML
@@ -71,7 +71,7 @@ public class CommandBox extends UiPart<Region> {
                     case "done":
                         currentInteractivePrompt = new CompleteTaskInteractivePrompt();
                         break;
-                    case "quit":
+                    case "bye":
                         currentInteractivePrompt = new ExitTaskInteractivePrompt();
                         break;
                     default:
