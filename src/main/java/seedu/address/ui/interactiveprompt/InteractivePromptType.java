@@ -10,5 +10,6 @@ public enum InteractivePromptType {
     DELETE_TASK,
     ARCHIVE_TASK,
     DELETE_DUPLICATE_TASK,
-    COMPLETE_TASK;
+    COMPLETE_TASK,
+    SORT_TASK
 }

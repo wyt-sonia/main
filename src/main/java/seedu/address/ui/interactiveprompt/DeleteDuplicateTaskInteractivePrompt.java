@@ -22,6 +22,9 @@ import seedu.address.logic.parser.interactivecommandparser.exceptions.DeleteDupl
  */
 public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
 
+    static final String END_OF_COMMAND_MSG = "Duplicated task deleted successfully!";
+    static final String QUIT_COMMAND_MSG = "Successfully quited from delete duplication command.";
+
     private String reply;
     private String userInput;
     private InteractivePromptTerms currentTerm;
@@ -41,8 +44,8 @@ public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
     @Override
     public String interact(String userInput) {
         if (userInput.equals("quit")) {
-            // exit the command
-            super.setQuit(true);
+            endInteract(QUIT_COMMAND_MSG);
+            return reply;
         } else if (userInput.equals("back")) {
             if (lastTerm != null) { //in the beginning it is null
                 terms.remove(terms.size() - 1);
@@ -77,7 +80,7 @@ public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
                 DeleteDuplicateTaskCommand deleteDuplicateTaskCommand = new DeleteDuplicateTaskCommand();
                 logic.executeCommand(deleteDuplicateTaskCommand);
                 super.setEndOfCommand(true);
-                reply = "Duplicate tasks have been deleted.";
+                endInteract(END_OF_COMMAND_MSG);
             } catch (CommandException ex) {
                 reply = ex.getMessage();
             }
@@ -94,8 +97,9 @@ public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void endInteract() {
-
+    public void endInteract(String msg) {
+        this.reply = msg;
+        super.setEndOfCommand(true);
     }
 
     @Override
