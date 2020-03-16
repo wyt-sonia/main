@@ -22,6 +22,7 @@ import seedu.address.logic.parser.interactivecommandparser.exceptions.AddTaskCom
 import seedu.address.model.module.EmptyModule;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskType;
+import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
  * pending.
@@ -106,8 +107,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                  */
 
                 task.setModule(new EmptyModule());
-                System.out.println("addTaskInteractivePrompt.setModule() correct");
-
                 task.setStatus("pending");
                 task.setTaskDescription("No Description Available");
                 task.setWeight(0.0);

@@ -70,21 +70,21 @@ public class ModuleCode {
         char character = input.charAt(input.length() - 1);
         try {
             Integer.parseInt("" + character);
-        } catch (ClassCastException e) {
+        } catch (NumberFormatException e) {
             output += character;
         }
-        return output;
+        return output.toUpperCase();
     }
 
-    public String getPrefix() {
+    private String getPrefix() {
         return prefix;
     }
 
-    public int getNumber(){
+    private int getNumber(){
         return number;
     }
 
-    public String getPostfix() {
+    private String getPostfix() {
         return postfix;
     }
 
@@ -105,7 +105,7 @@ public class ModuleCode {
 
     @Override
     public String toString(){
-        return prefix + number + postfix;
+        return prefix + String.format("%04d", number) + postfix;
     }
 
 }

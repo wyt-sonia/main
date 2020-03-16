@@ -30,7 +30,7 @@ public class JsonAdaptedModule {
         this.moduleCode = module.getModuleCode().toString();
     }
 
-    public Module toModelType() throws ModuleCodeException {
+    public Module toModelType() {
         return new Module(moduleName, moduleCode);
     }
 }
