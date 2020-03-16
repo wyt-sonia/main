@@ -47,13 +47,16 @@ public class HelpInteractivePrompt extends InteractivePrompt {
      */
     @Override
     public void interruptInteract() {
+        // no possibility of interrupt
     }
 
     @Override
     public void back() {
+        // no previous interaction
     }
 
     @Override
     public void next() {
+        // no next interaction
     }
 }
