@@ -3,8 +3,9 @@ package seedu.address.model.task;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
-import seedu.address.model.module.Module;
+
 import seedu.address.logic.parser.TimeParser;
+import seedu.address.model.module.Module;
 
 /**
  * pending.

@@ -1,9 +1,8 @@
 package seedu.address.ui.interactiveprompt;
 
-import seedu.address.logic.Logic;
-import seedu.address.model.task.Task;
-
 import java.util.ArrayList;
+
+import seedu.address.logic.Logic;
 
 /**
  * pending.

@@ -1,13 +1,13 @@
 package seedu.address.model.module;
 
+import static java.util.Objects.requireNonNull;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.module.exceptions.ModuleCodeException;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.exceptions.DuplicateTaskException;
 import seedu.address.model.task.exceptions.TaskNotFoundException;
-
-import static java.util.Objects.requireNonNull;
 
 /**
  * packages task into various modules that the student have. Each module has list of task, taken from the main TaskList.
@@ -53,13 +53,24 @@ public class Module {
             this.moduleCode = new ModuleCode("O0000O");
         } catch (ModuleCodeException e) {
             System.out.println("from Module(). ModuleCode is invalid!");
-        }    }
+        }
+    }
 
+    /**
+     * returns whether a Task is inside the internalList of this module.
+     * @param toCheck
+     * @return
+     */
     public boolean contains(Task toCheck) {
         requireNonNull(toCheck);
         return internalTaskList.stream().anyMatch(toCheck::isSameTask);
     }
 
+    /**
+     * Adds a task.
+     * @param toAdd
+     * @throws DuplicateTaskException
+     */
     public void add(Task toAdd) throws DuplicateTaskException {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
@@ -68,6 +79,11 @@ public class Module {
         internalTaskList.add(toAdd);
     }
 
+    /**
+     * Removes a task from the module list.
+     * @param toRemove
+     * @throws TaskNotFoundException
+     */
     public void remove(Task toRemove) throws TaskNotFoundException {
         requireNonNull(toRemove);
         if (contains(toRemove)) {
@@ -89,13 +105,9 @@ public class Module {
      */
     @Override
     public boolean equals(Object other) {
-        if(other instanceof Module) {
+        if (other instanceof Module) {
             ModuleCode otherModuleCode = ((Module) other).moduleCode;
-            if(this.moduleCode.equals(otherModuleCode)) {
-                return true;
-            } else {
-                return false;
-            }
+            return this.moduleCode.equals(otherModuleCode) ? true : false;
         } else {
             return false;
         }

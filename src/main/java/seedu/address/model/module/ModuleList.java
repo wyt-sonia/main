@@ -1,13 +1,14 @@
 package seedu.address.model.module;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import seedu.address.model.module.exceptions.ModuleCodeException;
+import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 
-import static java.util.Objects.requireNonNull;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+
+import seedu.address.model.module.exceptions.ModuleCodeException;
 
 /**
  * List of Modules. Checks for duplicates. Will be stored in Json.
@@ -27,11 +28,8 @@ public class ModuleList {
     public boolean contains(Module module) {
         final Module moduleForPredicate = module;
         FilteredList<Module> filteredList = internalList.filtered((x) -> x.equals(moduleForPredicate));
-        if(filteredList.isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
+        return filteredList.isEmpty() ? false : true;
+
     }
 
     public ObservableList<Module> getInternalList() {
@@ -43,7 +41,7 @@ public class ModuleList {
      * @param module to be added to the ModuleList
      */
     public void add(Module module) throws ModuleCodeException {
-        if(this.contains(module)) {
+        if (this.contains(module)) {
             throw new ModuleCodeException("Duplicate modules");
         } else {
             System.out.println("adding");
@@ -56,8 +54,8 @@ public class ModuleList {
      * @param module
      * @throws ModuleCodeException
      */
-    public void remove(Module module) throws ModuleCodeException{
-        if(this.contains(module)) {
+    public void remove(Module module) throws ModuleCodeException {
+        if (this.contains(module)) {
             internalList.remove(module);
         } else {
             throw new ModuleCodeException("Module does not exist");
@@ -73,7 +71,7 @@ public class ModuleList {
 
     public Module get(String moduleCode) throws ModuleCodeException {
         Module moduleToFind = new Module(moduleCode);
-        if(this.contains(moduleToFind)) {
+        if (this.contains(moduleToFind)) {
             int index = this.internalList.indexOf(moduleToFind);
             return this.internalList.get(index);
         } else {

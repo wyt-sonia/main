@@ -1,16 +1,14 @@
 package seedu.address.model.module;
 
-import java.lang.Integer;
-
 import seedu.address.model.module.exceptions.ModuleCodeException;
 
 /**
  * ModuleCode. Ensures that the module code keyed in matches the proper format. XX0000.
  */
 public class ModuleCode {
-    public String prefix;
-    public int number;
-    public String postfix; //optional
+    private String prefix;
+    private int number;
+    private String postfix;
 
     public ModuleCode(String fullModuleCode) throws ModuleCodeException {
         try {
@@ -23,16 +21,21 @@ public class ModuleCode {
         }
     }
 
-
+    /**
+     * method to parse prefix from the input to ensure correctness of moduleCode.
+     * @param input
+     * @return
+     * @throws ModuleCodeException
+     */
     private String parsePrefix(String input) throws ModuleCodeException {
         String output = "";
         int i = 0;
-        while(true) {
+        while (true) {
             char character = input.charAt(i);
             try {
-                Integer.parseInt("" + character);     //if parseInt successful, end operation
+                Integer.parseInt(character + "");
                 break;
-            } catch (NumberFormatException e) {    //if typecasting fail, continue
+            } catch (NumberFormatException e) {
                 output += character;
                 i++;
             }
@@ -45,12 +48,18 @@ public class ModuleCode {
         }
     }
 
+    /**
+     * method to parse number from the input to ensure correctness of moduleCode.
+     * @param input
+     * @return
+     * @throws ModuleCodeException
+     */
     private int parseNumber(String input) throws ModuleCodeException {
         String outputAsString = "";
-        for(int i = 0; i < input.length(); i++) {
+        for (int i = 0; i < input.length(); i++) {
             char character = input.charAt(i);
             try {
-                Integer.parseInt("" + character);     //if parseInt successful, add char to outputAsString
+                Integer.parseInt("" + character);
                 outputAsString += character;
             } catch (NumberFormatException e) {
                 //ignore
@@ -65,6 +74,11 @@ public class ModuleCode {
         }
     }
 
+    /**
+     * method to parse postfix from the input to ensure correctness of moduleCode.
+     * @param input
+     * @return
+     */
     private String parsePostfix(String input) {
         String output = "";
         char character = input.charAt(input.length() - 1);
@@ -80,7 +94,7 @@ public class ModuleCode {
         return prefix;
     }
 
-    private int getNumber(){
+    private int getNumber() {
         return number;
     }
 
@@ -91,7 +105,7 @@ public class ModuleCode {
     @Override
     public boolean equals(Object object) {
         if (object instanceof ModuleCode) {
-            if(this.getPrefix().equals(((ModuleCode) object).prefix)
+            if (this.getPrefix().equals(((ModuleCode) object).prefix)
                     && (this.getNumber() == ((ModuleCode) object).number)
                     && this.getPostfix().equals(((ModuleCode) object).postfix)) {
                 return true;
@@ -104,7 +118,7 @@ public class ModuleCode {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return prefix + String.format("%04d", number) + postfix;
     }
 

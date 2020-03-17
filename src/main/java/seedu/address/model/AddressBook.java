@@ -208,7 +208,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     @Override
-    public ObservableList<Module> getModuleList(){
+    public ObservableList<Module> getModuleList() {
         return moduleList.getInternalList();
     }
 

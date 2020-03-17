@@ -9,13 +9,13 @@ import javafx.scene.layout.Region;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.ui.interactiveprompt.InteractivePrompt;
 import seedu.address.ui.interactiveprompt.add.AddTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.add.CreateModuleInteractivePrompt;
-import seedu.address.ui.interactiveprompt.edit.ArchiveTaskInteractivePrompt;
-import seedu.address.ui.interactiveprompt.edit.CompleteTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.delete.DeleteDuplicateTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.delete.DeleteTaskInteractivePrompt;
-import seedu.address.ui.interactiveprompt.InteractivePrompt;
+import seedu.address.ui.interactiveprompt.edit.ArchiveTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.edit.CompleteTaskInteractivePrompt;
 
 /**
  * The UI component that is responsible for receiving user command inputs.

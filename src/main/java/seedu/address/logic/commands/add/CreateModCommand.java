@@ -2,14 +2,16 @@ package seedu.address.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
 
-import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.module.Module;
 
-
-public class CreateModCommand extends Command{
+/**
+ * A command to create modules.
+ */
+public class CreateModCommand extends Command {
     public static final String COMMAND_WORD = "create mod";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a new mod. "

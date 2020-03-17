@@ -12,9 +12,9 @@ import javafx.collections.transformation.FilteredList;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.module.Module;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
-import seedu.address.model.module.Module;
 
 
 /**
@@ -142,14 +142,14 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public boolean hasMod(Module mod){
+    public boolean hasMod(Module mod) {
         requireNonNull(mod);
         return addressBook.hasModule(mod);
     }
 
 
     @Override
-    public void addMod(Module mod){
+    public void addMod(Module mod) {
         System.out.println("ModelManager add mod");
         addressBook.addModule(mod);
         System.out.println("ModelManager add mod success");

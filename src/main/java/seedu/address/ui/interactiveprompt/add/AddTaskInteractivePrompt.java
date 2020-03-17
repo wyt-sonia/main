@@ -34,8 +34,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     public AddTaskInteractivePrompt() {
         super();
         this.interactivePromptType = ADD_TASK;
-        this.reply = "";
-        this.userInput = "";
         this.task = new Task();
         this.currentTerm = InteractivePromptTerms.INIT;
         this.lastTerm = null;
