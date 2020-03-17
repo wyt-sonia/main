@@ -65,7 +65,6 @@ public class StorageManager implements Storage {
 
     @Override
     public void saveAddressBook(ReadOnlyAddressBook addressBook) throws IOException {
-        System.out.println("StorageManager saving addressBook");
         saveAddressBook(addressBook, addressBookStorage.getAddressBookFilePath());
     }
 

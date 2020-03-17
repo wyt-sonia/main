@@ -69,6 +69,22 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             currentTerm = InteractivePromptTerms.TASK_NAME;
             lastTerm = InteractivePromptTerms.INIT;
             terms.add(lastTerm);
+
+            /**
+             * TEMPORARY PLACEHOLDER TO ENABLE FILE SAVE.
+             * REMOVE task.setAttribute once you've create methods to handle these....
+             */
+
+            /**
+             * By default, Task will go to Module code AA0000. To add to a specific module, use other commands.
+             */
+
+            task.setModule(new EmptyModule());
+            task.setStatus("pending");
+
+            task.setTaskDescription("No Description Available");
+            task.setWeight(0.0);
+            task.setEstimatedTimeCost("No estimated time cost");
             break;
 
         case TASK_NAME:
@@ -92,21 +108,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             try {
                 TaskType taskType = AddTaskCommandParser.parseType(userInput, TaskType.getTaskTypes().length);
                 task.setTaskType(taskType);
-                /**
-                 * TEMPORARY PLACEHOLDER TO ENABLE FILE SAVE.
-                 * REMOVE task.setAttribute once you've create methods to handle these....
-                 */
-
-                /**
-                 * By default, Task will go to Module code AA0000. To add to a specific module, use other commands.
-                 */
-
-                task.setModule(new EmptyModule());
-                task.setStatus("pending");
-
-                task.setTaskDescription("No Description Available");
-                task.setWeight(0.0);
-                task.setEstimatedTimeCost("No estimated time cost");
 
                 userInput = taskType.toString();
 
