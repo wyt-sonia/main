@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.parser.TimeParser;
-import seedu.address.model.Module;
+import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskStatus;
 import seedu.address.model.task.TaskType;
@@ -23,7 +23,7 @@ class JsonAdaptedTask {
     private final String taskDateTime;
     private final String taskType;
     private final double weight;
-    private final String module;
+    private final String moduleCode;
     private final String taskDescription;
     private final String estimatedTimeCost;
     private final String status;
@@ -42,7 +42,7 @@ class JsonAdaptedTask {
         this.taskName = taskName;
         this.taskDateTime = taskDateTime;
         this.taskDescription = taskDescription;
-        this.module = module;
+        this.moduleCode = module;
         this.weight = weight;
         this.estimatedTimeCost = estimatedTimeCost;
         this.status = status;
@@ -64,7 +64,7 @@ class JsonAdaptedTask {
         status = source.getTaskStatus().toString();
         taskType = source.getTaskType().toString();
         weight = source.getWeight();
-        module = source.getModule().getModuleCode();
+        moduleCode = source.getModule().toString();
     }
 
     /**
@@ -87,7 +87,7 @@ class JsonAdaptedTask {
             dateTimes[0] = TimeParser.parseDateTime(timeTerms[0]);
         }
 
-        Task data = new Task(new Module("temp" + module, module), TaskType.getType(taskType),
+        Task data = new Task(new Module(moduleCode), TaskType.getType(taskType),
             taskName, taskDescription, weight,
             TaskStatus.getStatus(status), dateTimes, estimatedTimeCost);
         return data;

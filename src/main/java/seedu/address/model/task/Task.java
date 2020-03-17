@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 import seedu.address.logic.parser.TimeParser;
-import seedu.address.model.Module;
+import seedu.address.model.module.Module;
 
 /**
  * pending.

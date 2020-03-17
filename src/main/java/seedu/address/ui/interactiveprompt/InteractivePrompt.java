@@ -1,5 +1,7 @@
 package seedu.address.ui.interactiveprompt;
 
+import java.util.ArrayList;
+
 import seedu.address.logic.Logic;
 
 /**
@@ -10,6 +12,12 @@ public abstract class InteractivePrompt {
     protected boolean isQuit;
     protected boolean isEndOfCommand;
     protected InteractivePromptType interactivePromptType;
+    protected String reply;
+    protected String userInput;
+    protected InteractivePromptTerms currentTerm;
+    protected InteractivePromptTerms lastTerm;
+    protected ArrayList<InteractivePromptTerms> terms;
+
 
     public InteractivePrompt() {
         this.isQuit = false;

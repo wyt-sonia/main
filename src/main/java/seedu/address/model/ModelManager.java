@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.module.Module;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
 
@@ -26,6 +27,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Task> filteredTasks;
+    private final FilteredList<Module> filteredModules;
     private final FilteredList<Task> filteredArchiveTasks;
 
     /**
@@ -41,6 +43,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredTasks = new FilteredList<>(this.addressBook.getTaskList());
+        filteredModules = new FilteredList<>(this.addressBook.getModuleList());
         filteredArchiveTasks = new FilteredList<>(this.addressBook.getArchivedList());
     }
 
@@ -143,6 +146,24 @@ public class ModelManager implements Model {
     public void addTask(Task task) {
         addressBook.addTask(task);
         updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+    }
+
+    @Override
+    public boolean hasMod(Module mod) {
+        requireNonNull(mod);
+        return addressBook.hasModule(mod);
+    }
+
+    /**
+     * STILL NEEDS MORE REFINEMENT DUE TO ABSENCE OF UpdateModuleList.
+     * @param mod
+     */
+    @Override
+    public void addMod(Module mod) {
+        System.out.println("ModelManager add mod");
+        addressBook.addModule(mod);
+        System.out.println("ModelManager add mod success");
+
     }
 
     @Override

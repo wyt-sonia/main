@@ -1,4 +1,4 @@
-package seedu.address.ui.interactiveprompt;
+package seedu.address.ui.interactiveprompt.delete;
 
 /*
  * Logic of implementation:
@@ -9,39 +9,31 @@ package seedu.address.ui.interactiveprompt;
  * server display the response if needed
  * */
 
-import static seedu.address.ui.interactiveprompt.InteractivePromptType.ARCHIVE_TASK;
+import static seedu.address.ui.interactiveprompt.InteractivePromptType.DELETE_DUPLICATE_TASK;
 
 import java.util.ArrayList;
 
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.ArchiveTaskCommand;
+import seedu.address.logic.commands.delete.DeleteDuplicateTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.interactivecommandparser.exceptions.ArchiveTaskCommandException;
+import seedu.address.logic.parser.interactivecommandparser.exceptions.DeleteDuplicateTaskCommandException;
+import seedu.address.ui.interactiveprompt.InteractivePrompt;
+import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
  * pending.
  */
-public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
+public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
+    static final String END_OF_COMMAND_MSG = "Duplicated task deleted successfully!";
+    static final String QUIT_COMMAND_MSG = "Successfully quited from delete duplication command.";
 
-    static final String END_OF_COMMAND_MSG = "Task archived successfully!";
-    static final String QUIT_COMMAND_MSG = "Successfully quited from archive command.";
-
-    private String reply;
-    private String userInput;
-    private InteractivePromptTerms currentTerm;
-    private InteractivePromptTerms lastTerm;
-    private ArrayList<InteractivePromptTerms> terms;
-    private int index;
-
-    public ArchiveTaskInteractivePrompt() {
+    public DeleteDuplicateTaskInteractivePrompt() {
         super();
-        this.interactivePromptType = ARCHIVE_TASK;
+        this.interactivePromptType = DELETE_DUPLICATE_TASK;
         this.reply = "";
         this.userInput = "";
         this.currentTerm = InteractivePromptTerms.INIT;
         this.lastTerm = null;
         this.terms = new ArrayList<>();
-        this.index = index;
     }
 
     @Override
@@ -67,29 +59,22 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
         switch (currentTerm) {
 
         case INIT:
-            this.reply = "Please enter the index number of task you wish to archive.";
-            currentTerm = InteractivePromptTerms.TASK_INDEX;
-            lastTerm = InteractivePromptTerms.INIT;
-            terms.add(lastTerm);
-            break;
-
-        case TASK_INDEX:
             try {
-                index = Integer.parseInt(userInput);
-                reply = "The task at index " + userInput + " will be archived. \n "
-                    + " Please press enter again to make the desired changes.";
+                reply = "The duplicate tasks will be deleted\n "
+                            + " Please press enter again to make the desired changes.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-                lastTerm = InteractivePromptTerms.TASK_INDEX;
+                lastTerm = InteractivePromptTerms.INIT;
                 terms.add(lastTerm);
-            } catch (ArchiveTaskCommandException ex) {
+            } catch (DeleteDuplicateTaskCommandException ex) {
                 reply = ex.getErrorMessage();
             }
             break;
 
         case READY_TO_EXECUTE:
             try {
-                ArchiveTaskCommand archiveTaskCommand = new ArchiveTaskCommand(Index.fromZeroBased(index - 1));
-                logic.executeCommand(archiveTaskCommand);
+                DeleteDuplicateTaskCommand deleteDuplicateTaskCommand = new DeleteDuplicateTaskCommand();
+                logic.executeCommand(deleteDuplicateTaskCommand);
+                super.setEndOfCommand(true);
                 endInteract(END_OF_COMMAND_MSG);
             } catch (CommandException ex) {
                 reply = ex.getMessage();
@@ -107,8 +92,8 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void endInteract(String reply) {
-        this.reply = reply;
+    public void endInteract(String msg) {
+        this.reply = msg;
         super.setEndOfCommand(true);
     }
 

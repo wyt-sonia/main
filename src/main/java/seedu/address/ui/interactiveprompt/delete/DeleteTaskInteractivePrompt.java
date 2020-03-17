@@ -1,4 +1,4 @@
-package seedu.address.ui.interactiveprompt;
+package seedu.address.ui.interactiveprompt.delete;
 
 /*
  * Logic of implementation:
@@ -14,24 +14,20 @@ import static seedu.address.ui.interactiveprompt.InteractivePromptType.DELETE_TA
 import java.util.ArrayList;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.DeleteTaskCommand;
+import seedu.address.logic.commands.delete.DeleteTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.DeleteTaskCommandException;
 import seedu.address.model.task.Task;
+import seedu.address.ui.interactiveprompt.InteractivePrompt;
+import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
  * pending.
  */
 public class DeleteTaskInteractivePrompt extends InteractivePrompt {
-
     static final String END_OF_COMMAND_MSG = "Task deleted successfully!";
     static final String QUIT_COMMAND_MSG = "Successfully quited from delete task command.";
 
-    private String reply;
-    private String userInput;
-    private InteractivePromptTerms currentTerm;
-    private InteractivePromptTerms lastTerm;
-    private ArrayList<InteractivePromptTerms> terms;
     private int index;
 
     public DeleteTaskInteractivePrompt() {
@@ -42,7 +38,6 @@ public class DeleteTaskInteractivePrompt extends InteractivePrompt {
         this.currentTerm = InteractivePromptTerms.INIT;
         this.lastTerm = null;
         this.terms = new ArrayList<>();
-        this.index = index;
     }
 
     @Override

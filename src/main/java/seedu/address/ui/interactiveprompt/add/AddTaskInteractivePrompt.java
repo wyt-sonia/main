@@ -1,4 +1,4 @@
-package seedu.address.ui.interactiveprompt;
+package seedu.address.ui.interactiveprompt.add;
 
 /*
  * Logic of implementation:
@@ -14,35 +14,29 @@ import static seedu.address.ui.interactiveprompt.InteractivePromptType.ADD_TASK;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import seedu.address.logic.commands.AddTaskCommand;
+import seedu.address.logic.commands.add.AddTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.TimeParser;
 import seedu.address.logic.parser.interactivecommandparser.AddTaskCommandParser;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
-import seedu.address.model.Module;
+import seedu.address.model.module.EmptyModule;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskType;
+import seedu.address.ui.interactiveprompt.InteractivePrompt;
+import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
  * A interactive prompt for adding new task.
  */
 public class AddTaskInteractivePrompt extends InteractivePrompt {
-
     static final String END_OF_COMMAND_MSG = "Task added successfully!";
     static final String QUIT_COMMAND_MSG = "Successfully quited from add task command.";
 
-    private String reply;
-    private String userInput;
-    private Task task;
-    private InteractivePromptTerms currentTerm;
-    private InteractivePromptTerms lastTerm;
-    private ArrayList<InteractivePromptTerms> terms;
+    protected Task task;
 
     public AddTaskInteractivePrompt() {
         super();
         this.interactivePromptType = ADD_TASK;
-        this.reply = "";
-        this.userInput = "";
         this.task = new Task();
         this.currentTerm = InteractivePromptTerms.INIT;
         this.lastTerm = null;
@@ -75,6 +69,22 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             currentTerm = InteractivePromptTerms.TASK_NAME;
             lastTerm = InteractivePromptTerms.INIT;
             terms.add(lastTerm);
+
+            /**
+             * TEMPORARY PLACEHOLDER TO ENABLE FILE SAVE.
+             * REMOVE task.setAttribute once you've create methods to handle these....
+             */
+
+            /**
+             * By default, Task will go to Module code AA0000. To add to a specific module, use other commands.
+             */
+
+            task.setModule(new EmptyModule());
+            task.setStatus("pending");
+
+            task.setTaskDescription("No Description Available");
+            task.setWeight(0.0);
+            task.setEstimatedTimeCost("No estimated time cost");
             break;
 
         case TASK_NAME:
@@ -98,16 +108,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             try {
                 TaskType taskType = AddTaskCommandParser.parseType(userInput, TaskType.getTaskTypes().length);
                 task.setTaskType(taskType);
-                /**
-                 * TEMPORARY PLACEHOLDER TO ENABLE FILE SAVE.
-                 * REMOVE task.setAttribute once you've create methods to handle these....
-                 */
-
-                task.setModule(new Module("EMPTY_MODULE" , "CS0000"));
-                task.setStatus("pending");
-                task.setTaskDescription("EMPTY_TASK_DESCRIPTION");
-                task.setWeight(4.0);
-                task.setEstimatedTimeCost("EMPTY_ESTIMATED_TIME_COST");
 
                 userInput = taskType.toString();
 
@@ -155,11 +155,9 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
 
         case READY_TO_EXECUTE:
             try {
-                System.out.println(super.isEndOfCommand());
                 AddTaskCommand addTaskCommand = new AddTaskCommand(task);
-                System.out.println("READY TO EXECUTE");
                 logic.executeCommand(addTaskCommand);
-                System.out.println("execution successful!");
+                reply = "Task added! Key in your next command :)";
                 endInteract(END_OF_COMMAND_MSG);
             } catch (CommandException ex) {
                 reply = ex.getMessage();
