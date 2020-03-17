@@ -35,6 +35,7 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private PersonListPanel archiveListPanel;
     private ResultDisplay resultDisplay;
+    private DueSoonDisplay dueSoonDisplay;
     private HelpWindow helpWindow;
 
     @FXML
@@ -48,6 +49,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane resultDisplayPlaceholder;
+
+    @FXML
+    private StackPane dueSoonDisplayPlaceholder;
 
     @FXML
     private StackPane statusbarPlaceholder;
@@ -116,6 +120,9 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
+        //dueSoonDisplay = new DueSoonDisplay();
+        //dueSoonDisplayPlaceholder.getChildren().add(dueSoonDisplay.getRoot());
+
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
@@ -169,6 +176,13 @@ public class MainWindow extends UiPart<Stage> {
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
     }
 
+    /*
+    @FXML
+    private void handleDueSoonTasks() {
+        personListPanel = new PersonListPanel(logic.getFilteredDueSoonTaskList());
+        personListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
+    }*/
+
     @FXML
     private void handleShowArchivedTasks() {
         archiveListPanel = new PersonListPanel(logic.getFilteredArchivedTaskList());
@@ -205,6 +219,7 @@ public class MainWindow extends UiPart<Stage> {
         currentInteractivePrompt.setLogic(logic);
         String reply = currentInteractivePrompt.interact(commandText);
         resultDisplay.setFeedbackToUser(reply);
+        dueSoonDisplay.setFeedbackToUser("hi");
         if (currentInteractivePrompt.isQuit()) {
             handleExit();
         }

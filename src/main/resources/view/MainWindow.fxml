@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.stage.Stage?>
 
-<fx:root minHeight="600" minWidth="450" onCloseRequest="#handleExit" title="Address App" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root minHeight="600" minWidth="450" onCloseRequest="#handleExit" title="Study Buddy" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <icons>
-        <Image url="@/images/address_book_32.png" />
+        <Image url="@/images/study_buddy.png" />
     </icons>
     <scene>
         <Scene>
@@ -46,6 +46,12 @@
                 </StackPane>
 
                 <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="100" style="-fx-background-image: url(&quot;../lmages/main_bg.png&quot;);" styleClass="pane-with-border" VBox.vgrow="NEVER">
+                    <padding>
+                        <Insets bottom="5" left="10" right="10" top="5" />
+                    </padding>
+                </StackPane>
+
+                <StackPane fx:id="dueSoonPlaceHolder" maxHeight="100" minHeight="100" prefHeight="100" style="-fx-background-image: url(&quot;../lmages/main_bg.png&quot;);" styleClass="pane-with-border" VBox.vgrow="NEVER">
                     <padding>
                         <Insets bottom="5" left="10" right="10" top="5" />
                     </padding>

@@ -244,7 +244,18 @@
     -fx-text-fill: white;
 }
 
+.due-soon-display {
+    -fx-background-color: transparent;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 13pt;
+    -fx-text-fill: white;
+}
+
 .result-display .label {
+    -fx-text-fill: black !important;
+}
+
+.due-soon-display .label {
     -fx-text-fill: black !important;
 }
 
@@ -360,6 +371,11 @@
 }
 
 #resultDisplay .content {
+    -fx-background-color: transparent, #383838, transparent, #383838;
+    -fx-background-radius: 0;
+}
+
+#dueSoonDisplay .content {
     -fx-background-color: transparent, #383838, transparent, #383838;
     -fx-background-radius: 0;
 }
