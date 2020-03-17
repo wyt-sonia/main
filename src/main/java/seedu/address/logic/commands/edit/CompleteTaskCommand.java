@@ -13,7 +13,7 @@ import seedu.address.model.Model;
 import seedu.address.model.task.Task;
 
 /**
- * Completes a task
+ * Completes a task.
  */
 public class CompleteTaskCommand extends Command {
     public static final String COMMAND_WORD = "Complete";
@@ -41,6 +41,9 @@ public class CompleteTaskCommand extends Command {
 
         Task taskToComplete = lastShownList.get(targetIndex.getZeroBased());
         model.completeTask(taskToComplete);
+        model.deleteTask(taskToComplete);
+        model.archiveTask(taskToComplete);
+
         return new CommandResult(String.format(MESSAGE_COMPLETE_TASK_SUCCESS, taskToComplete));
     }
 }
