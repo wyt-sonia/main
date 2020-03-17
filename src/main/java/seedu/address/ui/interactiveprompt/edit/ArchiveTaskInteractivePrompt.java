@@ -24,6 +24,8 @@ import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
  * pending.
  */
 public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
+    static final String END_OF_COMMAND_MSG = "Task archived successfully!";
+    static final String QUIT_COMMAND_MSG = "Successfully quited from archive command.";
     private int index;
 
     public ArchiveTaskInteractivePrompt() {
@@ -39,8 +41,8 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
     @Override
     public String interact(String userInput) {
         if (userInput.equals("quit")) {
-            // exit the command
-            super.setQuit(true);
+            endInteract(QUIT_COMMAND_MSG);
+            return reply;
         } else if (userInput.equals("back")) {
             if (lastTerm != null) { //in the beginning it is null
                 terms.remove(terms.size() - 1);
@@ -69,7 +71,7 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
             try {
                 index = Integer.parseInt(userInput);
                 reply = "The task at index " + userInput + " will be archived. \n "
-                        + " Please press enter again to make the desired changes.";
+                    + " Please press enter again to make the desired changes.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
                 lastTerm = InteractivePromptTerms.TASK_INDEX;
                 terms.add(lastTerm);
@@ -82,8 +84,7 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
             try {
                 ArchiveTaskCommand archiveTaskCommand = new ArchiveTaskCommand(Index.fromZeroBased(index - 1));
                 logic.executeCommand(archiveTaskCommand);
-                super.setEndOfCommand(true);
-                reply = "Task archived!";
+                endInteract(END_OF_COMMAND_MSG);
             } catch (CommandException ex) {
                 reply = ex.getMessage();
             }
@@ -100,8 +101,9 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void endInteract() {
-
+    public void endInteract(String reply) {
+        this.reply = reply;
+        super.setEndOfCommand(true);
     }
 
     @Override

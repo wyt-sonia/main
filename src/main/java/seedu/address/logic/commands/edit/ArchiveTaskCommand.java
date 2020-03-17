@@ -23,7 +23,7 @@ public class ArchiveTaskCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Archives the selected entry";
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Archived Person: %1$s";
+    public static final String MESSAGE_ARCHIVE_TASK_SUCCESS = "Archived Task: %1$s";
 
     private final Index targetIndex;
 
@@ -37,13 +37,20 @@ public class ArchiveTaskCommand extends Command {
         List<Task> lastShownList = model.getFilteredTaskList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
 
         Task taskToArchive = lastShownList.get(targetIndex.getZeroBased());
         model.deleteTask(taskToArchive);
         model.archiveTask(taskToArchive);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, taskToArchive));
+        return new CommandResult(String.format(MESSAGE_ARCHIVE_TASK_SUCCESS, taskToArchive));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof ArchiveTaskCommand // instanceof handles nulls
+                && targetIndex.equals(((ArchiveTaskCommand) other).targetIndex)); // state check
     }
 
 }

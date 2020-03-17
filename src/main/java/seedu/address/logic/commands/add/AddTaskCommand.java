@@ -9,7 +9,7 @@ import seedu.address.model.Model;
 import seedu.address.model.task.Task;
 
 /**
- * pending.
+ *
  */
 public class AddTaskCommand extends Command {
 

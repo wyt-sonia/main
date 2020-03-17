@@ -26,9 +26,12 @@ import seedu.address.ui.interactiveprompt.InteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
- * pending.
+ * A interactive prompt for adding new task.
  */
 public class AddTaskInteractivePrompt extends InteractivePrompt {
+    static final String END_OF_COMMAND_MSG = "Task added successfully!";
+    static final String QUIT_COMMAND_MSG = "Successfully quited from add task command.";
+
     protected Task task;
 
     public AddTaskInteractivePrompt() {
@@ -43,8 +46,8 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     @Override
     public String interact(String userInput) {
         if (userInput.equals("quit")) {
-            // exit the command
-            super.setQuit(true);
+            endInteract(QUIT_COMMAND_MSG);
+            return reply;
         } else if (userInput.equals("back")) {
             if (lastTerm != null) {
                 terms.remove(terms.size() - 1);
@@ -61,7 +64,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         }
 
         switch (currentTerm) {
-
         case INIT:
             this.reply = "Please enter the task name.";
             currentTerm = InteractivePromptTerms.TASK_NAME;
@@ -105,8 +107,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 task.setTaskDescription("No Description Available");
                 task.setWeight(0.0);
                 task.setEstimatedTimeCost("No estimated time cost");
-
-
 
                 userInput = taskType.toString();
 
@@ -157,8 +157,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 AddTaskCommand addTaskCommand = new AddTaskCommand(task);
                 logic.executeCommand(addTaskCommand);
                 reply = "Task added! Key in your next command :)";
-                super.setEndOfCommand(true);
-
+                endInteract(END_OF_COMMAND_MSG);
             } catch (CommandException ex) {
                 reply = ex.getMessage();
             }
@@ -193,8 +192,9 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void endInteract() {
-
+    public void endInteract(String msg) {
+        this.reply = msg;
+        super.setEndOfCommand(true);
     }
 
     @Override
@@ -211,8 +211,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      * pending.
      */
     private String dateTime() {
-
-
         return "";
     }
 }

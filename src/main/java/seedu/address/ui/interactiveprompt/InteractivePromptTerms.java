@@ -15,5 +15,6 @@ public enum InteractivePromptTerms {
     TASK_ESTIMATED_TIME_COST,
     MODULE_NAME,
     MODULE_CODE,
+    SORT_KEYWORD,
     READY_TO_EXECUTE
 }

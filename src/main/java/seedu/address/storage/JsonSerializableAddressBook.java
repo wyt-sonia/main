@@ -78,6 +78,8 @@ class JsonSerializableAddressBook {
             }
             addressBook.addModule(module);
         }
+
+        Task.updateCurrentTaskList(new ArrayList<>(addressBook.getTaskList()));
         return addressBook;
     }
 

@@ -75,8 +75,7 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
                 CreateModCommand createModCommand = new CreateModCommand(module);
                 logic.executeCommand(createModCommand);
                 reply = "Module created! Key in your next command :)";
-                super.setEndOfCommand(true);
-
+                endInteract(reply);
             } catch (CommandException ex) {
                 reply = ex.getMessage();
             }
@@ -94,9 +93,11 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void endInteract() {
-
+    public void endInteract(String msg) {
+        this.reply = msg;
+        super.setEndOfCommand(true);
     }
+
 
     @Override
     public void back() {

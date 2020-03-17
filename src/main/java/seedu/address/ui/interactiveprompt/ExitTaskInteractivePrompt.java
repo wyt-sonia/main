@@ -1,4 +1,4 @@
-package seedu.address.ui.interactiveprompt.delete;
+package seedu.address.ui.interactiveprompt;
 
 /*
  * Logic of implementation:
@@ -9,28 +9,26 @@ package seedu.address.ui.interactiveprompt.delete;
  * server display the response if needed
  * */
 
-import static seedu.address.ui.interactiveprompt.InteractivePromptType.DELETE_DUPLICATE_TASK;
+import static seedu.address.ui.interactiveprompt.InteractivePromptType.EXIT_TASK;
 
 import java.util.ArrayList;
 
-import seedu.address.logic.commands.delete.DeleteDuplicateTaskCommand;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.interactivecommandparser.exceptions.DeleteDuplicateTaskCommandException;
-import seedu.address.ui.interactiveprompt.InteractivePrompt;
-import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
+import seedu.address.logic.parser.interactivecommandparser.exceptions.ExitTaskCommandException;
 
 /**
  * pending.
  */
-public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
-    static final String END_OF_COMMAND_MSG = "Duplicated task deleted successfully!";
-    static final String QUIT_COMMAND_MSG = "Successfully quited from delete duplication command.";
+public class ExitTaskInteractivePrompt extends InteractivePrompt {
 
-    public DeleteDuplicateTaskInteractivePrompt() {
+    private String reply;
+    private InteractivePromptTerms currentTerm;
+    private InteractivePromptTerms lastTerm;
+    private ArrayList<InteractivePromptTerms> terms;
+
+    public ExitTaskInteractivePrompt() {
         super();
-        this.interactivePromptType = DELETE_DUPLICATE_TASK;
+        this.interactivePromptType = EXIT_TASK;
         this.reply = "";
-        this.userInput = "";
         this.currentTerm = InteractivePromptTerms.INIT;
         this.lastTerm = null;
         this.terms = new ArrayList<>();
@@ -38,10 +36,7 @@ public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
 
     @Override
     public String interact(String userInput) {
-        if (userInput.equals("quit")) {
-            endInteract(QUIT_COMMAND_MSG);
-            return reply;
-        } else if (userInput.equals("back")) {
+        if (userInput.equals("back")) {
             if (lastTerm != null) { //in the beginning it is null
                 terms.remove(terms.size() - 1);
                 currentTerm = lastTerm;
@@ -60,25 +55,19 @@ public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
 
         case INIT:
             try {
-                reply = "The duplicate tasks will be deleted\n "
-                            + " Please press enter again to make the desired changes.";
+                reply = "Are you sure you want to quit?\n "
+                        + " Please press enter again to exit the application.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
                 lastTerm = InteractivePromptTerms.INIT;
                 terms.add(lastTerm);
-            } catch (DeleteDuplicateTaskCommandException ex) {
+            } catch (ExitTaskCommandException ex) {
                 reply = ex.getErrorMessage();
             }
             break;
 
         case READY_TO_EXECUTE:
-            try {
-                DeleteDuplicateTaskCommand deleteDuplicateTaskCommand = new DeleteDuplicateTaskCommand();
-                logic.executeCommand(deleteDuplicateTaskCommand);
-                super.setEndOfCommand(true);
-                endInteract(END_OF_COMMAND_MSG);
-            } catch (CommandException ex) {
-                reply = ex.getMessage();
-            }
+            super.setQuit(true);
+            super.setEndOfCommand(true);
             break;
 
         default:
@@ -92,9 +81,8 @@ public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void endInteract(String msg) {
-        this.reply = msg;
-        super.setEndOfCommand(true);
+    public void endInteract(String reply) {
+
     }
 
     @Override

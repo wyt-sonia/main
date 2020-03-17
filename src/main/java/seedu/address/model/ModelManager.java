@@ -28,6 +28,7 @@ public class ModelManager implements Model {
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Task> filteredTasks;
     private final FilteredList<Module> filteredModules;
+    private final FilteredList<Task> filteredArchiveTasks;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -43,6 +44,7 @@ public class ModelManager implements Model {
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredTasks = new FilteredList<>(this.addressBook.getTaskList());
         filteredModules = new FilteredList<>(this.addressBook.getModuleList());
+        filteredArchiveTasks = new FilteredList<>(this.addressBook.getArchivedList());
     }
 
     public ModelManager() {
@@ -124,6 +126,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void sortTasks(String keyword) {
+        addressBook.sortTasks(keyword);
+    }
+
+    @Override
     public void addPerson(Person person) {
         addressBook.addPerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -147,7 +154,10 @@ public class ModelManager implements Model {
         return addressBook.hasModule(mod);
     }
 
-
+    /**
+     * STILL NEEDS MORE REFINEMENT DUE TO ABSENCE OF UpdateModuleList.
+     * @param mod
+     */
     @Override
     public void addMod(Module mod) {
         System.out.println("ModelManager add mod");
@@ -180,6 +190,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ObservableList<Task> getFilteredArchivedTaskList() {
+        return filteredArchiveTasks;
+    }
+
+    @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
@@ -207,7 +222,8 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
             && userPrefs.equals(other.userPrefs)
-            && filteredTasks.equals(other.filteredTasks);
+            && filteredTasks.equals(other.filteredTasks)
+            && filteredArchiveTasks.equals(other.filteredArchiveTasks);
     }
 
 

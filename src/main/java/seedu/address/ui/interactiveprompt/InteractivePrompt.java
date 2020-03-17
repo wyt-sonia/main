@@ -28,7 +28,7 @@ public abstract class InteractivePrompt {
 
     public abstract void interruptInteract();
 
-    public abstract void endInteract();
+    public abstract void endInteract(String reply);
 
     public abstract void back();
 

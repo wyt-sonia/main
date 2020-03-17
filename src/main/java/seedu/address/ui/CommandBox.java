@@ -1,7 +1,5 @@
 package seedu.address.ui;
 
-import java.util.Arrays;
-
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -9,7 +7,13 @@ import javafx.scene.layout.Region;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+
+import seedu.address.ui.interactiveprompt.ExitTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.HelpInteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
+import seedu.address.ui.interactiveprompt.InvalidInputInteractivePrompt;
+import seedu.address.ui.interactiveprompt.SortTaskInteractivePrompt;
+
 import seedu.address.ui.interactiveprompt.add.AddTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.add.CreateModuleInteractivePrompt;
 import seedu.address.ui.interactiveprompt.delete.DeleteDuplicateTaskInteractivePrompt;
@@ -25,7 +29,7 @@ public class CommandBox extends UiPart<Region> {
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes =
-        {"add", "edit", "delete", "archive", "done", "delete duplicates", "create mods"};
+        {"add", "edit", "delete", "archive", "done", "delete duplicates", "bye", "sort", "help", "create mods"};
     private InteractivePrompt currentInteractivePrompt;
     private final CommandExecutor commandExecutor;
     @FXML
@@ -45,50 +49,56 @@ public class CommandBox extends UiPart<Region> {
     @FXML
     private void handleCommandEntered() {
         try {
-            String userInput = commandTextField.getText();
+            // allow InteractivePrompt type with different case and space in front or behind
+            String userInput = commandTextField.getText().toLowerCase().trim();
             if (currentInteractivePrompt == null) {
-                boolean isValidType = Arrays.stream(interactiveCommandTypes)
-                    .filter(x -> x.equals(userInput)).count() > 0;
-                if (!isValidType) {
-                    commandTextField.setText("Please enter valid command type.");
-                } else {
-                    switch (userInput) {
-                    case "add":
-                        currentInteractivePrompt = new AddTaskInteractivePrompt();
-                        break;
-                    case "edit":
-                        //currentInteractivePrompt = new EditTaskInteractivePrompt();
-                        break;
-                    case "delete":
-                        currentInteractivePrompt = new DeleteTaskInteractivePrompt();
-                        break;
-                    case "archive":
-                        currentInteractivePrompt = new ArchiveTaskInteractivePrompt();
-                        break;
-                    case "delete duplicates":
-                        currentInteractivePrompt = new DeleteDuplicateTaskInteractivePrompt();
-                        break;
-                    case "done":
-                        currentInteractivePrompt = new CompleteTaskInteractivePrompt();
-                        break;
-                    case "create mods":
-                        currentInteractivePrompt = new CreateModuleInteractivePrompt();
-                        break;
-                    default:
-                    }
+                switch (userInput) {
+                case "add":
+                    currentInteractivePrompt = new AddTaskInteractivePrompt();
+                    break;
+                case "edit":
+                    //currentInteractivePrompt = new EditTaskInteractivePrompt();
+                    commandTextField.setText("Edit function under construction");
+                    break;
+                case "delete":
+                    currentInteractivePrompt = new DeleteTaskInteractivePrompt();
+                    break;
+                case "archive":
+                    currentInteractivePrompt = new ArchiveTaskInteractivePrompt();
+                    break;
+                case "delete duplicates":
+                    currentInteractivePrompt = new DeleteDuplicateTaskInteractivePrompt();
+                    break;
+                case "done":
+                    currentInteractivePrompt = new CompleteTaskInteractivePrompt();
+                    break;
+                case "sort":
+                    currentInteractivePrompt = new SortTaskInteractivePrompt();
+                    break;
+                case "help":
+                    currentInteractivePrompt = new HelpInteractivePrompt();
+                    break;
+                case "create mods":
+                    currentInteractivePrompt = new CreateModuleInteractivePrompt();
+                    break;
+                case "bye":
+                    currentInteractivePrompt = new ExitTaskInteractivePrompt();
+                    break;
+                default:
+                    currentInteractivePrompt = new InvalidInputInteractivePrompt();
                 }
-
             }
 
             //currentInteractivePrompt could be null. Might need to create an ErrorInteractivePrompt to handle this.
             //inserted NullPointerException e at the catch section
-            CommandResult commandResult = commandExecutor.execute(currentInteractivePrompt, commandTextField.getText());
+            CommandResult commandResult = currentInteractivePrompt != null
+                ? commandExecutor.execute(currentInteractivePrompt, commandTextField.getText()) : null;
             if (commandResult != null) {
                 currentInteractivePrompt = null;
             }
             commandTextField.setText("");
         } catch (CommandException | ParseException | NullPointerException e) {
-            commandTextField.setText("");
+            commandTextField.setText(e.getMessage());
             setStyleToIndicateCommandFailure();
         }
     }
@@ -126,5 +136,4 @@ public class CommandBox extends UiPart<Region> {
         CommandResult execute(InteractivePrompt currentInteractivePrompt, String commandText)
             throws CommandException, ParseException;
     }
-
 }
