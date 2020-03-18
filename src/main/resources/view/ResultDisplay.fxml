@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.StackPane?>
-<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="placeHolder" styleClass="pane-with-border"
-           xmlns="http://javafx.com/javafx/8">
-    <TextArea fx:id="resultDisplay" editable="false" styleClass="result-display"/>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane fx:id="placeHolder" styleClass="pane-with-border" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <Pane maxWidth="1.7976931348623157E308" prefHeight="${resultPane.parent.height}" StackPane.alignment="CENTER">
+      <children>
+         <HBox fx:id="resultPane" maxWidth="1.7976931348623157E308" prefHeight="${resultPane.parent.height}" prefWidth="${resultPane.parent.width}">
+            <children>
+
+                <TextArea fx:id="resultDisplay" editable="false" maxHeight="150.0" prefHeight="${resultPane.parent.height}" wrapText="true" HBox.hgrow="ALWAYS" />
+
+               <ImageView fitHeight="120.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="NEVER">
+                  <image>
+                     <Image url="@../images/SB.png" />
+                  </image>
+                  <HBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="15.0" />
+                  </HBox.margin>
+               </ImageView>
+            </children>
+         </HBox>
+      </children>
+   </Pane>
 </StackPane>
