@@ -22,6 +22,10 @@ public abstract class InteractivePrompt {
     public InteractivePrompt() {
         this.isQuit = false;
         this.isEndOfCommand = false;
+        this.reply = "";
+        this.currentTerm = InteractivePromptTerms.INIT;
+        this.lastTerm = null;
+        this.terms = new ArrayList<>();
     }
 
     public abstract String interact(String userInput);
@@ -56,5 +60,30 @@ public abstract class InteractivePrompt {
 
     public InteractivePromptType getInteractivePromptType() {
         return interactivePromptType;
+    }
+
+    /**
+     * Handles the quit and back commands
+     * @param userInput the input given by the user. This should be checked to be either quit or back.
+     * @param quitMessage the message that is displayed upon quitting
+     * @return the reply to user
+     */
+    public String handleQuitAndBack(String userInput, String quitMessage) {
+        if (userInput.equals("quit")) {
+            endInteract(quitMessage);
+        } else if (userInput.equals("back")) {
+            if (lastTerm != null) { //in the beginning it is null
+                terms.remove(terms.size() - 1);
+                currentTerm = lastTerm;
+                if (lastTerm.equals(InteractivePromptTerms.INIT)) {
+                    lastTerm = null;
+                } else {
+                    lastTerm = terms.get(terms.size() - 1);
+                }
+            } else {
+                this.reply = "Please type quit to exit from this command.";
+            }
+        }
+        return reply;
     }
 }

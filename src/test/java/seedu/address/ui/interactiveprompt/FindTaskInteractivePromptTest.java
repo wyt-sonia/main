@@ -1,0 +1,27 @@
+package seedu.address.ui.interactiveprompt;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
+class FindTaskInteractivePromptTest {
+
+    @Test
+    void interact_firstInput_returnKeywordPrompt() {
+        FindTaskInteractivePrompt prompt = new FindTaskInteractivePrompt();
+        assertEquals(prompt.getKeywordPrompt(), prompt.interact("find"));
+    }
+
+    @Test
+    void interact_secondInput_returnKeywordPrompt() {
+        FindTaskInteractivePrompt prompt = new FindTaskInteractivePrompt();
+        prompt.interact("find");
+        assertEquals(prompt.getConfirmationPrompt("randomKeyword"), prompt.interact("randomKeyword"));
+    }
+
+    @Test
+    void interact_quitCommand_returnQuitMessage() {
+        FindTaskInteractivePrompt prompt = new FindTaskInteractivePrompt();
+        assertEquals(prompt.getQuitMessage(), prompt.interact("quit"));
+    }
+}
