@@ -1,4 +1,28 @@
 
+/*Custom font*/
+@font-face {
+    font-family: 'Beatrix Antiqua Bold';
+    font-weight: bold;
+    src: url('../font/Beatrix-Antiqua-ExtraBold-trial.ttf');
+}
+
+@font-face {
+    font-family: 'Beatrix Antiqua light';
+    src: url('../font/Beatrix-Antiqua-Light-trial.ttf.ttf');
+}
+
+@font-face {
+    font-family: 'Rainclouds DEMO Regular';
+    font-weight: bold;
+    src: url('../font/Rainclouds.ttf');
+}
+
+.app_brand {
+    -fx-font-family: 'Rainclouds DEMO Regular';
+    -fx-font-size: 36pt;
+    -fx-text-fill: rgba(123, 87, 69, 1);
+    -fx-text-weight: bold;
+}
 .background {
     -fx-background-color: derive(#1d1d1d, 20%);
     background-color: #383838; /* Used in the default.html file */
@@ -69,7 +93,6 @@
 
 
 /* scroll bar */
-
 .scroll-bar {
     -fx-background-color: rgba(196, 177, 152, 0.8)
 }
@@ -96,6 +119,26 @@
     -fx-padding: 8 1 8 1;
 }
 
+/*command input box*/
+.pane-with-border {
+     -fx-background-color: transparent;
+     -fx-border-color: transparent;
+     -fx-border-top-width: 0px;
+}
+
+/*result display*/
+.result-display {
+    -fx-font-family: "Beatrix Antiqua light";
+    -fx-font-size: 13pt;
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-text-fill: #3c2e2c;
+}
+
+.result-display .label {
+    -fx-background-radius: 10;
+    -fx-background-color: transparent;
+ }
 
 /*
 .label {
@@ -231,22 +274,6 @@
      -fx-background-color: derive(#1d1d1d, 20%);
 }
 
-.pane-with-border {
-     -fx-background-color: derive(#1d1d1d, 20%);
-     -fx-border-color: derive(#1d1d1d, 10%);
-     -fx-border-top-width: 1px;
-}
-
-.result-display {
-    -fx-background-color: transparent;
-    -fx-font-family: "Segoe UI Light";
-    -fx-font-size: 13pt;
-    -fx-text-fill: white;
-}
-
-.result-display .label {
-    -fx-text-fill: black !important;
-}
 
 .grid-pane {
     -fx-background-color: derive(#1d1d1d, 30%);
