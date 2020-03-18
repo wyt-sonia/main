@@ -12,7 +12,8 @@ public enum InteractivePromptType {
     DELETE_DUPLICATE_TASK,
     COMPLETE_TASK,
     DUE_SOON_TASK,
+    CREATE_MODULE,
     SORT_TASK,
     HELP,
-    INVALID_MSG
+    INVALID_MSG;
 }

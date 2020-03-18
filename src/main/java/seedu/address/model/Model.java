@@ -5,8 +5,10 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.module.Module;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
+
 
 /**
  * The API of the Model component.
@@ -116,6 +118,9 @@ public interface Model {
      */
     void setPerson(Person target, Person editedPerson);
 
+    boolean hasMod(Module mod);
+
+    void addMod(Module mod);
     /**
      * Returns an unmodifiable view of the filtered person list
      */

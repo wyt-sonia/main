@@ -5,6 +5,9 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.module.Module;
+import seedu.address.model.module.ModuleList;
+import seedu.address.model.module.exceptions.ModuleCodeException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.task.Task;
@@ -20,6 +23,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniqueTaskList archivedTasks;
     private final UniqueTaskList dueSoonTasks;
     private final UniqueTaskList tasks;
+    private final ModuleList moduleList;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -33,6 +37,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         tasks = new UniqueTaskList();
         archivedTasks = new UniqueTaskList();
         dueSoonTasks = new UniqueTaskList();
+        moduleList = new ModuleList();
     }
 
     public AddressBook() {}
@@ -115,6 +120,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setArchivedTasks(newData.getArchivedList());
         setDueSoonTasks(newData.getDueSoonList());
         setTasks(newData.getTaskList());
+        setModuleList(newData.getModuleList());
     }
 
     //// person-level operations
@@ -144,11 +150,27 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Adds an archived person to the address book.
+     * Adds a due soon task to the dueSoonTasks list.
      * @param p must not already exist in the address book.
      */
     public void addDueSoonTask(Task p) {
         dueSoonTasks.add(p);
+    }
+
+    /**
+     * Adds a module to the ModuleList.
+     * @param module
+     */
+    public void addModule(Module module) {
+        try {
+            moduleList.add(module);
+        } catch (ModuleCodeException ex) {
+            System.out.println("AddModule Failed, from addressBook.addModule()");
+        }
+    }
+
+    public void setModuleList(List<Module> modules) {
+        this.moduleList.setModuleList(modules);
     }
 
     /**
@@ -208,6 +230,15 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Task> getTaskList() {
         return tasks.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Module> getModuleList() {
+        return moduleList.getInternalList();
+    }
+
+    public boolean hasModule(Module module) {
+        return moduleList.contains(module);
     }
 
     @Override

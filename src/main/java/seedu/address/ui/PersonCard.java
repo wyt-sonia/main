@@ -28,6 +28,8 @@ public class PersonCard extends UiPart<Region> {
     private HBox cardPane;
     @FXML
     private Label taskName;
+    //@FXML
+    //private Label Module;
     @FXML
     private Label status;
     @FXML
@@ -43,6 +45,7 @@ public class PersonCard extends UiPart<Region> {
         super(FXML);
         this.task = task;
         taskName.setText(task.getTaskName());
+        //Module.setText(task.getModule().toString());
         status.setText(task.getTaskStatus().convertToString());
         id.setText(displayedIndex + ". ");
         dateTime.setText(task.getTimeString());

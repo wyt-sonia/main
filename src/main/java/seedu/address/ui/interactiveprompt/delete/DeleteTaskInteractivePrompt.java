@@ -1,4 +1,4 @@
-package seedu.address.ui.interactiveprompt;
+package seedu.address.ui.interactiveprompt.delete;
 
 /*
  * Logic of implementation:
@@ -9,32 +9,31 @@ package seedu.address.ui.interactiveprompt;
  * server display the response if needed
  * */
 
-import static seedu.address.ui.interactiveprompt.InteractivePromptType.DELETE_DUPLICATE_TASK;
+import static seedu.address.ui.interactiveprompt.InteractivePromptType.DELETE_TASK;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 
-import seedu.address.logic.commands.DeleteDuplicateTaskCommand;
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.delete.DeleteTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.interactivecommandparser.exceptions.DeleteDuplicateTaskCommandException;
+import seedu.address.logic.parser.interactivecommandparser.exceptions.DeleteTaskCommandException;
+import seedu.address.model.task.Task;
+import seedu.address.ui.interactiveprompt.InteractivePrompt;
+import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
  * pending.
  */
-public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
+public class DeleteTaskInteractivePrompt extends InteractivePrompt {
+    static final String END_OF_COMMAND_MSG = "Task deleted successfully!";
+    static final String QUIT_COMMAND_MSG = "Successfully quited from delete task command.";
 
-    static final String END_OF_COMMAND_MSG = "Duplicated task deleted successfully!";
-    static final String QUIT_COMMAND_MSG = "Successfully quited from delete duplication command.";
+    private int index;
 
-    private String reply;
-    private String userInput;
-    private InteractivePromptTerms currentTerm;
-    private InteractivePromptTerms lastTerm;
-    private ArrayList<InteractivePromptTerms> terms;
-
-    public DeleteDuplicateTaskInteractivePrompt() {
+    public DeleteTaskInteractivePrompt() {
         super();
-        this.interactivePromptType = DELETE_DUPLICATE_TASK;
+        this.interactivePromptType = DELETE_TASK;
         this.reply = "";
         this.userInput = "";
         this.currentTerm = InteractivePromptTerms.INIT;
@@ -63,24 +62,35 @@ public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
         }
 
         switch (currentTerm) {
-
         case INIT:
+            this.reply = "Please enter the index number of task you wish to delete.";
+            currentTerm = InteractivePromptTerms.TASK_INDEX;
+            lastTerm = InteractivePromptTerms.INIT;
+            terms.add(lastTerm);
+            break;
+
+        case TASK_INDEX:
             try {
-                reply = "The duplicate tasks will be deleted\n "
-                            + " Please press enter again to make the desired changes.";
+                index = Integer.parseInt(userInput);
+                if (index > Task.getCurrentTasks().size() || index <= 0) {
+                    throw new DeleteTaskCommandException("invalidIndexRangeError");
+                }
+                reply = "The task " + Task.getCurrentTasks().get(index - 1).getTaskName() + " will be deleted. \n "
+                        + " Please click enter again to make the desired deletion.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-                lastTerm = InteractivePromptTerms.INIT;
+                lastTerm = InteractivePromptTerms.TASK_DATETIME;
                 terms.add(lastTerm);
-            } catch (DeleteDuplicateTaskCommandException ex) {
+            } catch (NumberFormatException ex) {
+                reply = (new DeleteTaskCommandException("wrongIndexFormatError")).getErrorMessage();
+            } catch (DeleteTaskCommandException ex) {
                 reply = ex.getErrorMessage();
             }
             break;
 
         case READY_TO_EXECUTE:
             try {
-                DeleteDuplicateTaskCommand deleteDuplicateTaskCommand = new DeleteDuplicateTaskCommand();
-                logic.executeCommand(deleteDuplicateTaskCommand);
-                super.setEndOfCommand(true);
+                DeleteTaskCommand deleteTaskCommand = new DeleteTaskCommand(Index.fromZeroBased(index - 1));
+                logic.executeCommand(deleteTaskCommand);
                 endInteract(END_OF_COMMAND_MSG);
             } catch (CommandException | ParseException ex) {
                 reply = ex.getMessage();
@@ -118,8 +128,6 @@ public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
      */
     private String dateTime() {
         String result = "";
-
-
         return result;
     }
 }

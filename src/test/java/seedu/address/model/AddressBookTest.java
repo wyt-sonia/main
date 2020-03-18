@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.module.Module;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.task.Task;
@@ -111,8 +112,13 @@ public class AddressBookTest {
         }
 
         @Override
+<<<<<<< HEAD
         public ObservableList<Task> getDueSoonList() {
             return null;
+=======
+        public ObservableList<Module> getModuleList() {
+            return getModuleList();
+>>>>>>> 281996c520bf503d6ac39822c21909728b4c5cbb
         }
     }
 

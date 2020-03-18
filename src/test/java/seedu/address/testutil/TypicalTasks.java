@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 import seedu.address.logic.parser.TimeParser;
 import seedu.address.model.AddressBook;
-import seedu.address.model.Module;
+import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskStatus;
 import seedu.address.model.task.TaskType;

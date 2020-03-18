@@ -7,6 +7,7 @@ import javafx.scene.layout.Region;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+
 import seedu.address.ui.interactiveprompt.AddTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.ArchiveTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.CompleteTaskInteractivePrompt;
@@ -27,9 +28,11 @@ public class CommandBox extends UiPart<Region> {
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes =
-        {"add", "edit", "delete", "archive", "done", "delete duplicates", "bye", "sort", "help", "due soon"};
+            {"add", "edit", "delete", "archive", "done", "delete duplicates",
+            "bye", "sort", "help", "create mods", "due soon"};
     private final CommandExecutor commandExecutor;
     private InteractivePrompt currentInteractivePrompt;
+    private final CommandExecutor commandExecutor;
     @FXML
     private TextField commandTextField;
 
@@ -78,6 +81,9 @@ public class CommandBox extends UiPart<Region> {
                     break;
                 case "due soon":
                     currentInteractivePrompt = new DueSoonTaskInteractivePrompt();
+                    break;
+                case "create mods":
+                    currentInteractivePrompt = new CreateModuleInteractivePrompt();
                     break;
                 case "bye":
                     currentInteractivePrompt = new ExitTaskInteractivePrompt();
