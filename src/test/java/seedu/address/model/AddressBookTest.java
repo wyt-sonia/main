@@ -112,13 +112,12 @@ public class AddressBookTest {
         }
 
         @Override
-<<<<<<< HEAD
         public ObservableList<Task> getDueSoonList() {
             return null;
-=======
+        }
+
         public ObservableList<Module> getModuleList() {
             return getModuleList();
->>>>>>> 281996c520bf503d6ac39822c21909728b4c5cbb
         }
     }
 

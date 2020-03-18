@@ -1,5 +1,6 @@
 package seedu.address.ui.interactiveprompt.add;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import seedu.address.logic.commands.add.CreateModCommand;
@@ -76,7 +77,7 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
                 logic.executeCommand(createModCommand);
                 reply = "Module created! Key in your next command :)";
                 endInteract(reply);
-            } catch (CommandException ex) {
+            } catch (CommandException | ParseException ex) {
                 reply = ex.getMessage();
             }
             break;
