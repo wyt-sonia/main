@@ -23,11 +23,6 @@
     -fx-text-fill: rgba(123, 87, 69, 1);
     -fx-text-weight: bold;
 }
-.background {
-    -fx-background-color: derive(#1d1d1d, 20%);
-    background-color: #383838; /* Used in the default.html file */
-}
-
 /* main window*/
 #mainContainer{
    -fx-background-image: url('../images/main_bg.png');
@@ -140,6 +135,60 @@
     -fx-background-color: transparent;
  }
 
+ #filterField, #taskListView, #dueSoonListView {
+      -fx-effect: innershadow(gaussian, white, 10, 0, 0, 0);
+      -fx-background-color: white;
+  }
+
+ /*List views*/
+ .list-view {
+     -fx-background-color: white;
+     -fx-background-insets: 0;
+     -fx-padding: 0;
+ }
+
+ .list-view .virtual-flow {
+    -fx-background-color: white;
+ }
+
+ .list-cell {
+     -fx-label-padding: 0 0 0 0;
+     -fx-graphic-text-gap : 0;
+     -fx-padding: 0 0 0 0;
+ }
+
+ .list-cell:empty {
+      -fx-label-padding: 0 0 0 0;
+      -fx-graphic-text-gap : 0;
+      -fx-padding: 0 0 0 0;
+      -fx-background-color: white;
+  }
+
+ .list-cell:filled:even {
+     -fx-background-color: rgba(197, 179, 149, 0.5);
+ }
+
+ .list-cell:filled:odd {
+     -fx-background-color: rgba(249, 245, 236, 0.5);
+ }
+
+ .list-cell:filled:selected {
+     -fx-background-color: #c5b395;
+ }
+
+ .list-cell:filled:selected #cardPane {
+     -fx-border-color: #c5b395;
+     -fx-border-width: 1;
+ }
+
+  .list-cell:filled:selected .label {
+      -fx-text-fill: white;
+  }
+
+ .list-cell .label {
+     -fx-text-fill: #3c2e2c;
+ }
+
 /*
 .label {
     -fx-font-size: 11pt;
@@ -223,39 +272,6 @@
     -fx-border-radius: 1;
     -fx-border-width: 1;
     -fx-background-color: derive(#1d1d1d, 20%);
-}
-
-.list-view {
-    -fx-background-insets: 0;
-    -fx-padding: 0;
-    -fx-background-color: derive(#1d1d1d, 20%);
-}
-
-.list-cell {
-    -fx-label-padding: 0 0 0 0;
-    -fx-graphic-text-gap : 0;
-    -fx-padding: 0 0 0 0;
-}
-
-.list-cell:filled:even {
-    -fx-background-color: #3c3e3f;
-}
-
-.list-cell:filled:odd {
-    -fx-background-color: #515658;
-}
-
-.list-cell:filled:selected {
-    -fx-background-color: #424d5f;
-}
-
-.list-cell:filled:selected #cardPane {
-    -fx-border-color: #3e7b91;
-    -fx-border-width: 1;
-}
-
-.list-cell .label {
-    -fx-text-fill: white;
 }
 
 .cell_big_label {
@@ -385,9 +401,6 @@
     -fx-text-fill: white;
 }
 
-#filterField, #personListPanel, #personWebpage {
-    -fx-effect: innershadow(gaussian, black, 10, 0, 0, 0);
-}
 
 #resultDisplay .content {
     -fx-background-color: transparent, #383838, transparent, #383838;
