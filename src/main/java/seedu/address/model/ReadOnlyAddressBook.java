@@ -16,6 +16,7 @@ public interface ReadOnlyAddressBook {
      */
     ObservableList<Person> getPersonList();
     ObservableList<Task> getArchivedList();
+    ObservableList<Task> getDueSoonList();
     ObservableList<Module> getModuleList();
 
     /**

@@ -101,6 +101,12 @@ public interface Model {
 
     /**
      * Adds the given task.
+     * @param task must not already exist in the address book.
+     */
+    void addDueSoonTask(Task task);
+
+    /**
+     * Adds the given task.
      * {@code task} must not already exist in the task list.
      */
     void addTask(Task task);
@@ -129,6 +135,11 @@ public interface Model {
      * Returns an unmodifiable view of the filtered archived task list.
      */
     ObservableList<Task> getFilteredArchivedTaskList();
+
+    /**
+     * Returns an unmodifiable view of the filtered archived task list.
+     */
+    ObservableList<Task> getFilteredDueSoonTaskList();
 
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.

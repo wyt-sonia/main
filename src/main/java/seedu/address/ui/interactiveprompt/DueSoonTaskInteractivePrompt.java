@@ -1,4 +1,4 @@
-package seedu.address.ui.interactiveprompt.edit;
+package seedu.address.ui.interactiveprompt;
 
 /*
  * Logic of implementation:
@@ -9,29 +9,32 @@ package seedu.address.ui.interactiveprompt.edit;
  * server display the response if needed
  * */
 
-import static seedu.address.ui.interactiveprompt.InteractivePromptType.ARCHIVE_TASK;
+import static seedu.address.ui.interactiveprompt.InteractivePromptType.DUE_SOON_TASK;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.edit.ArchiveTaskCommand;
+import seedu.address.logic.commands.DueSoonRefreshCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.interactivecommandparser.exceptions.ArchiveTaskCommandException;
-import seedu.address.ui.interactiveprompt.InteractivePrompt;
-import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
+import seedu.address.logic.parser.interactivecommandparser.exceptions.DueSoonRefreshCommandException;
 
 /**
  * pending.
  */
-public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
-    static final String END_OF_COMMAND_MSG = "Task archived successfully!";
-    static final String QUIT_COMMAND_MSG = "Successfully quited from archive command.";
-    private int index;
+public class DueSoonTaskInteractivePrompt extends InteractivePrompt {
 
-    public ArchiveTaskInteractivePrompt() {
+    static final String END_OF_COMMAND_MSG = "Refreshed tasks that are due soon!";
+    static final String QUIT_COMMAND_MSG = "Successfully quited from refresh due soon command.";
+
+    private String reply;
+    private String userInput;
+    private InteractivePromptTerms currentTerm;
+    private InteractivePromptTerms lastTerm;
+    private ArrayList<InteractivePromptTerms> terms;
+
+    public DueSoonTaskInteractivePrompt() {
         super();
-        this.interactivePromptType = ARCHIVE_TASK;
+        this.interactivePromptType = DUE_SOON_TASK;
         this.reply = "";
         this.userInput = "";
         this.currentTerm = InteractivePromptTerms.INIT;
@@ -60,38 +63,29 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
         }
 
         switch (currentTerm) {
-
         case INIT:
-            this.reply = "Please enter the index number of task you wish to archive.";
-            currentTerm = InteractivePromptTerms.TASK_INDEX;
-            lastTerm = InteractivePromptTerms.INIT;
-            terms.add(lastTerm);
-            break;
-
-        case TASK_INDEX:
             try {
-                index = Integer.parseInt(userInput);
-                reply = "The task at index " + userInput + " will be archived. \n "
-                    + " Please press enter again to make the desired changes.";
+                reply = "The tasks that are due soon will be refreshed.\n "
+                        + " Please press enter again to make the desired changes.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-                lastTerm = InteractivePromptTerms.TASK_INDEX;
+                lastTerm = InteractivePromptTerms.INIT;
                 terms.add(lastTerm);
-            } catch (ArchiveTaskCommandException ex) {
+            } catch (DueSoonRefreshCommandException ex) {
                 reply = ex.getErrorMessage();
             }
             break;
-
         case READY_TO_EXECUTE:
             try {
-                ArchiveTaskCommand archiveTaskCommand = new ArchiveTaskCommand(Index.fromZeroBased(index - 1));
-                logic.executeCommand(archiveTaskCommand);
+                DueSoonRefreshCommand dueSoonRefreshCommand = new DueSoonRefreshCommand();
+                logic.executeCommand(dueSoonRefreshCommand);
+                super.setEndOfCommand(true);
                 endInteract(END_OF_COMMAND_MSG);
             } catch (CommandException | ParseException ex) {
                 reply = ex.getMessage();
             }
             break;
-
         default:
+
         }
         return reply;
     }
@@ -102,8 +96,8 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void endInteract(String reply) {
-        this.reply = reply;
+    public void endInteract(String msg) {
+        this.reply = msg;
         super.setEndOfCommand(true);
     }
 

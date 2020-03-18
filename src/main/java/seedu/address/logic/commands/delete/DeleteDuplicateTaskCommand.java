@@ -48,7 +48,7 @@ public class DeleteDuplicateTaskCommand extends Command {
                             if (!task1.getTimeString().equals(task2.getTimeString())) {
                                 continue;
                             } else {
-                                Task taskToDelete = lastShownList.get(j);
+                                Task taskToDelete = lastShownList.get(i);
                                 model.deleteTask(taskToDelete);
                                 lastShownList = model.getFilteredTaskList();
                                 break;

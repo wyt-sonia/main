@@ -11,6 +11,7 @@ public enum InteractivePromptType {
     ARCHIVE_TASK,
     DELETE_DUPLICATE_TASK,
     COMPLETE_TASK,
+    DUE_SOON_TASK,
     CREATE_MODULE,
     SORT_TASK,
     HELP,

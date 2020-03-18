@@ -2,6 +2,7 @@ package seedu.address.ui.interactiveprompt.edit;
 
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.COMPLETE_TASK;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import seedu.address.commons.core.index.Index;
@@ -84,7 +85,7 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
                 CompleteTaskCommand completeTaskCommand = new CompleteTaskCommand(Index.fromZeroBased(index - 1));
                 logic.executeCommand(completeTaskCommand);
                 endInteract(END_OF_COMMAND_MSG);
-            } catch (CommandException ex) {
+            } catch (CommandException | ParseException ex) {
                 reply = ex.getMessage();
             }
             break;

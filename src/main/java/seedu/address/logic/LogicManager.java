@@ -40,9 +40,13 @@ public class LogicManager implements Logic {
     public CommandResult execute(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
-        CommandResult commandResult;
+        CommandResult commandResult = null;
         Command command = addressBookParser.parseCommand(commandText);
-        commandResult = command.execute(model);
+        try {
+            commandResult = command.execute(model);
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
 
         try {
             storage.saveAddressBook(model.getAddressBook());
@@ -54,7 +58,7 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public CommandResult executeCommand(Command command) throws CommandException {
+    public CommandResult executeCommand(Command command) throws CommandException, java.text.ParseException {
         CommandResult commandResult;
         commandResult = command.execute(model);
 
@@ -87,6 +91,11 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<Task> getFilteredArchivedTaskList() {
         return model.getFilteredArchivedTaskList();
+    }
+
+    @Override
+    public ObservableList<Task> getFilteredDueSoonTaskList() {
+        return model.getFilteredDueSoonTaskList();
     }
 
     @Override

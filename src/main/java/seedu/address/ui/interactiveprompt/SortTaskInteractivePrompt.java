@@ -2,6 +2,8 @@ package seedu.address.ui.interactiveprompt;
 
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.SORT_TASK;
 
+import java.text.ParseException;
+
 import java.util.ArrayList;
 
 import seedu.address.logic.commands.SortTaskCommand;
@@ -70,7 +72,7 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
                 if (option > 2 || option <= 0) {
                     throw new SortTaskCommandException("invalidOptionRangeError");
                 }
-                reply = "The task  will be sorted by" + sort_option[option - 1] + ". \n "
+                reply = "The task  will be sorted by " + sort_option[option - 1] + ". \n "
                     + " Please click enter again to check the sorted list.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
                 lastTerm = InteractivePromptTerms.SORT_KEYWORD;
@@ -87,7 +89,7 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
                 SortTaskCommand sortTaskCommand = new SortTaskCommand(sort_option[option - 1]);
                 logic.executeCommand(sortTaskCommand);
                 endInteract(END_OF_COMMAND_MSG);
-            } catch (CommandException ex) {
+            } catch (CommandException | ParseException ex) {
                 reply = ex.getMessage();
             }
             break;
