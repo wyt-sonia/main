@@ -16,5 +16,6 @@ public enum InteractivePromptTerms {
     MODULE_NAME,
     MODULE_CODE,
     SORT_KEYWORD,
-    READY_TO_EXECUTE
+    READY_TO_EXECUTE,
+    FIND_KEYWORD
 }
