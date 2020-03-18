@@ -21,6 +21,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
     private final UniqueTaskList archivedTasks;
+    private final UniqueTaskList dueSoonTasks;
     private final UniqueTaskList tasks;
     private final ModuleList moduleList;
 
@@ -35,6 +36,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons = new UniquePersonList();
         tasks = new UniqueTaskList();
         archivedTasks = new UniqueTaskList();
+        dueSoonTasks = new UniqueTaskList();
         moduleList = new ModuleList();
     }
 
@@ -104,6 +106,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.archivedTasks.setTasks(aTasks);
     }
 
+    public void setDueSoonTasks(List<Task> aTasks) {
+        this.dueSoonTasks.setTasks(aTasks);
+    }
+
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
@@ -112,6 +118,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
         setPersons(newData.getPersonList());
         setArchivedTasks(newData.getArchivedList());
+        setDueSoonTasks(newData.getDueSoonList());
         setTasks(newData.getTaskList());
         setModuleList(newData.getModuleList());
     }
@@ -143,6 +150,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Adds a due soon task to the dueSoonTasks list.
+     * @param p must not already exist in the address book.
+     */
+    public void addDueSoonTask(Task p) {
+        dueSoonTasks.add(p);
+    }
+
+    /**
      * Adds a module to the ModuleList.
      * @param module
      */
@@ -157,7 +172,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void setModuleList(List<Module> modules) {
         this.moduleList.setModuleList(modules);
     }
-
 
     /**
      * Adds a task to the task list.
@@ -206,6 +220,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Task> getArchivedList() {
         return archivedTasks.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Task> getDueSoonList() {
+        return dueSoonTasks.asUnmodifiableObservableList();
     }
 
     @Override

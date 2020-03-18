@@ -8,7 +8,9 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+import seedu.address.ui.interactiveprompt.DueSoonTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.ExitTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.FindTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.HelpInteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
 import seedu.address.ui.interactiveprompt.InvalidInputInteractivePrompt;
@@ -16,8 +18,10 @@ import seedu.address.ui.interactiveprompt.SortTaskInteractivePrompt;
 
 import seedu.address.ui.interactiveprompt.add.AddTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.add.CreateModuleInteractivePrompt;
+
 import seedu.address.ui.interactiveprompt.delete.DeleteDuplicateTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.delete.DeleteTaskInteractivePrompt;
+
 import seedu.address.ui.interactiveprompt.edit.ArchiveTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.edit.CompleteTaskInteractivePrompt;
 
@@ -29,9 +33,10 @@ public class CommandBox extends UiPart<Region> {
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes =
-        {"add", "edit", "delete", "archive", "done", "delete duplicates", "bye", "sort", "help", "create mods"};
-    private InteractivePrompt currentInteractivePrompt;
+        {"add", "edit", "delete", "archive", "done", "delete duplicates",
+        "bye", "sort", "help", "create mods", "due soon", "find"};
     private final CommandExecutor commandExecutor;
+    private InteractivePrompt currentInteractivePrompt;
     @FXML
     private TextField commandTextField;
 
@@ -78,14 +83,21 @@ public class CommandBox extends UiPart<Region> {
                 case "help":
                     currentInteractivePrompt = new HelpInteractivePrompt();
                     break;
+                case "due soon":
+                    currentInteractivePrompt = new DueSoonTaskInteractivePrompt();
+                    break;
                 case "create mods":
                     currentInteractivePrompt = new CreateModuleInteractivePrompt();
                     break;
                 case "bye":
                     currentInteractivePrompt = new ExitTaskInteractivePrompt();
                     break;
+                case "find":
+                    currentInteractivePrompt = new FindTaskInteractivePrompt();
+                    break;
                 default:
                     currentInteractivePrompt = new InvalidInputInteractivePrompt();
+                    break;
                 }
             }
 

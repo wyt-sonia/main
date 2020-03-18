@@ -112,6 +112,10 @@ public class AddressBookTest {
         }
 
         @Override
+        public ObservableList<Task> getDueSoonList() {
+            return null;
+        }
+
         public ObservableList<Module> getModuleList() {
             return getModuleList();
         }
