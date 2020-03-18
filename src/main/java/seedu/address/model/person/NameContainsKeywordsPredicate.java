@@ -4,12 +4,11 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.StringUtil;
-import seedu.address.model.task.Task;
 
 /**
  * Tests that a {@code Person}'s {@code Name} matches any of the keywords given.
  */
-public class NameContainsKeywordsPredicate implements Predicate<Task> {
+public class NameContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> keywords;
 
     public NameContainsKeywordsPredicate(List<String> keywords) {
@@ -17,9 +16,9 @@ public class NameContainsKeywordsPredicate implements Predicate<Task> {
     }
 
     @Override
-    public boolean test(Task task) {
+    public boolean test(Person person) {
         return keywords.stream()
-            .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(task.getTaskName(), keyword));
+            .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
     }
 
     @Override

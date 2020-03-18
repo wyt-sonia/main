@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 import seedu.address.logic.commands.FindTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
 
 /**
  * A interactive prompt for finding tasks in the list.
@@ -77,7 +77,8 @@ public class FindTaskInteractivePrompt extends InteractivePrompt {
                     throw new ParseException("Keyword cannot be empty string", 0);
                 }
                 String[] userKeywords = trimmedArgs.split("\\s+");
-                NameContainsKeywordsPredicate pred = new NameContainsKeywordsPredicate(Arrays.asList(userKeywords));
+                TaskNameContainsKeywordsPredicate pred =
+                    new TaskNameContainsKeywordsPredicate(Arrays.asList(userKeywords));
                 FindTaskCommand findTaskCommand = new FindTaskCommand(pred);
 
                 logic.executeCommand(findTaskCommand);
