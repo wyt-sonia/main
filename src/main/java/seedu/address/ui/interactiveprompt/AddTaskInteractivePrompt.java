@@ -11,10 +11,12 @@ package seedu.address.ui.interactiveprompt;
 
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.ADD_TASK;
 
+import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import seedu.address.logic.commands.AddTaskCommand;
+import seedu.address.logic.commands.DueSoonTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.TimeParser;
 import seedu.address.logic.parser.interactivecommandparser.AddTaskCommandParser;
@@ -160,8 +162,10 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 System.out.println("READY TO EXECUTE");
                 logic.executeCommand(addTaskCommand);
                 System.out.println("execution successful!");
+                DueSoonTaskCommand dueSoonTaskCommand = new DueSoonTaskCommand(task);
+                logic.executeCommand(dueSoonTaskCommand);
                 endInteract(END_OF_COMMAND_MSG);
-            } catch (CommandException ex) {
+            } catch (CommandException | ParseException ex) {
                 reply = ex.getMessage();
             }
 

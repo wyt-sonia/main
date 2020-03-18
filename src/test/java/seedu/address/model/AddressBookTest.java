@@ -109,6 +109,11 @@ public class AddressBookTest {
         public ObservableList<Task> getArchivedList() {
             return null;
         }
+
+        @Override
+        public ObservableList<Task> getDueSoonList() {
+            return null;
+        }
     }
 
 }

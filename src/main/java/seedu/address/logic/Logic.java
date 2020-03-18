@@ -28,7 +28,7 @@ public interface Logic {
      */
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
-    CommandResult executeCommand(Command command) throws CommandException;
+    CommandResult executeCommand(Command command) throws CommandException, java.text.ParseException;
 
     /**
      * Returns the AddressBook.
@@ -46,6 +46,11 @@ public interface Logic {
      * Returns an unmodifiable view of the filtered list of tasks
      */
     ObservableList<Task> getFilteredTaskList();
+
+    /**
+     * Returns an unmodifiable view of the filtered list of tasks that are due soon
+     */
+    ObservableList<Task> getFilteredDueSoonTaskList();
 
     /**
      * Returns an unmodifiable view of the filtered list of archived tasks.

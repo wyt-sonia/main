@@ -11,6 +11,7 @@ package seedu.address.ui.interactiveprompt;
 
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.ARCHIVE_TASK;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import seedu.address.commons.core.index.Index;
@@ -91,7 +92,7 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
                 ArchiveTaskCommand archiveTaskCommand = new ArchiveTaskCommand(Index.fromZeroBased(index - 1));
                 logic.executeCommand(archiveTaskCommand);
                 endInteract(END_OF_COMMAND_MSG);
-            } catch (CommandException ex) {
+            } catch (CommandException | ParseException ex) {
                 reply = ex.getMessage();
             }
             break;

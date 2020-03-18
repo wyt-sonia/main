@@ -18,6 +18,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
     private final UniqueTaskList archivedTasks;
+    private final UniqueTaskList dueSoonTasks;
     private final UniqueTaskList tasks;
 
     /*
@@ -31,6 +32,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons = new UniquePersonList();
         tasks = new UniqueTaskList();
         archivedTasks = new UniqueTaskList();
+        dueSoonTasks = new UniqueTaskList();
     }
 
     public AddressBook() {}
@@ -99,6 +101,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.archivedTasks.setTasks(aTasks);
     }
 
+    public void setDueSoonTasks(List<Task> aTasks) {
+        this.dueSoonTasks.setTasks(aTasks);
+    }
+
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
@@ -107,6 +113,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
         setPersons(newData.getPersonList());
         setArchivedTasks(newData.getArchivedList());
+        setDueSoonTasks(newData.getDueSoonList());
         setTasks(newData.getTaskList());
     }
 
@@ -134,6 +141,14 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addArchivedTask(Task p) {
         archivedTasks.add(p);
+    }
+
+    /**
+     * Adds an archived person to the address book.
+     * @param p must not already exist in the address book.
+     */
+    public void addDueSoonTask(Task p) {
+        dueSoonTasks.add(p);
     }
 
     /**
@@ -183,6 +198,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Task> getArchivedList() {
         return archivedTasks.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Task> getDueSoonList() {
+        return dueSoonTasks.asUnmodifiableObservableList();
     }
 
     @Override

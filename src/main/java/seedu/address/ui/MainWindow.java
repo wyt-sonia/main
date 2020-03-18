@@ -34,8 +34,8 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
     private PersonListPanel archiveListPanel;
+    private DueSoonListPanel dueSoonListPanel;
     private ResultDisplay resultDisplay;
-    private DueSoonDisplay dueSoonDisplay;
     private HelpWindow helpWindow;
 
     @FXML
@@ -48,10 +48,10 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane personListPanelPlaceholder;
 
     @FXML
-    private StackPane resultDisplayPlaceholder;
+    private StackPane dueSoonListPanelPlaceholder;
 
     @FXML
-    private StackPane dueSoonDisplayPlaceholder;
+    private StackPane resultDisplayPlaceholder;
 
     @FXML
     private StackPane statusbarPlaceholder;
@@ -117,11 +117,11 @@ public class MainWindow extends UiPart<Stage> {
         personListPanel = new PersonListPanel(logic.getFilteredTaskList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
+        dueSoonListPanel = new DueSoonListPanel(logic.getFilteredDueSoonTaskList());
+        dueSoonListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
+
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
-
-        //dueSoonDisplay = new DueSoonDisplay();
-        //dueSoonDisplayPlaceholder.getChildren().add(dueSoonDisplay.getRoot());
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
@@ -176,12 +176,12 @@ public class MainWindow extends UiPart<Stage> {
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
     }
 
-    /*
+
     @FXML
     private void handleDueSoonTasks() {
-        personListPanel = new PersonListPanel(logic.getFilteredDueSoonTaskList());
-        personListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
-    }*/
+        dueSoonListPanel = new DueSoonListPanel(logic.getFilteredDueSoonTaskList());
+        dueSoonListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
+    }
 
     @FXML
     private void handleShowArchivedTasks() {
@@ -191,6 +191,10 @@ public class MainWindow extends UiPart<Stage> {
 
     public PersonListPanel getPersonListPanel() {
         return personListPanel;
+    }
+
+    public DueSoonListPanel getDueSoonListPanel() {
+        return dueSoonListPanel;
     }
 
     /**
@@ -219,7 +223,6 @@ public class MainWindow extends UiPart<Stage> {
         currentInteractivePrompt.setLogic(logic);
         String reply = currentInteractivePrompt.interact(commandText);
         resultDisplay.setFeedbackToUser(reply);
-        dueSoonDisplay.setFeedbackToUser("hi");
         if (currentInteractivePrompt.isQuit()) {
             handleExit();
         }

@@ -15,6 +15,7 @@ public interface ReadOnlyAddressBook {
      */
     ObservableList<Person> getPersonList();
     ObservableList<Task> getArchivedList();
+    ObservableList<Task> getDueSoonList();
 
     /**
      * Returns an unmodifiable view of the task list.

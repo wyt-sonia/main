@@ -26,6 +26,7 @@
                 <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
                     <Menu mnemonicParsing="false" text="Dashboard">
 			<MenuItem mnemonicParsing="false" onAction="#handleShowAllTasks" style="-fx-font-size: 10pt;" text="Tasks" />
+            <MenuItem mnemonicParsing="false" onAction="#handleDueSoonTasks" style="-fx-font-size: 10pt;" text="Tasks" />
 			<MenuItem mnemonicParsing="false" onAction="#handleShowArchivedTasks" style="-fx-font-size: 10pt;" text="Archived Tasks" />
 			<MenuItem mnemonicParsing="false" onAction="#handleExit" style="-fx-font-size: 10pt;" text="Exit" />
                     </Menu>
@@ -51,17 +52,18 @@
                     </padding>
                 </StackPane>
 
-                <StackPane fx:id="dueSoonPlaceHolder" maxHeight="100" minHeight="100" prefHeight="100" style="-fx-background-image: url(&quot;../lmages/main_bg.png&quot;);" styleClass="pane-with-border" VBox.vgrow="NEVER">
-                    <padding>
-                        <Insets bottom="5" left="10" right="10" top="5" />
-                    </padding>
-                </StackPane>
-
-                <VBox fx:id="personList" minWidth="340" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+                <VBox fx:id="personList" minWidth="100" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
                     <padding>
                         <Insets bottom="10" left="10" right="10" top="10" />
                     </padding>
                     <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+                </VBox>
+
+                <VBox fx:id="dueSoonList" minWidth="100" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="10" left="10" right="10" top="10" />
+                    </padding>
+                    <StackPane fx:id="dueSoonListPanelPlaceholder" VBox.vgrow="ALWAYS" />
                 </VBox>
 
                 <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />

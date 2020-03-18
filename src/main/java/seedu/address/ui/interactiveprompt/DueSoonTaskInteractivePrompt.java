@@ -1,36 +1,42 @@
 package seedu.address.ui.interactiveprompt;
 
-import static seedu.address.ui.interactiveprompt.InteractivePromptType.COMPLETE_TASK;
+/*
+ * Logic of implementation:
+ * IP will handle all interaction btw user and the window to get the final version of command
+ * - FSM
+ * Parser will handle to parsing of the command and create a command
+ * command will execute the action
+ * server display the response if needed
+ * */
+
+import static seedu.address.ui.interactiveprompt.InteractivePromptType.DUE_SOON_TASK;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.CompleteTaskCommand;
+import seedu.address.logic.commands.DueSoonRefreshCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.interactivecommandparser.exceptions.DeleteTaskCommandException;
+import seedu.address.logic.parser.interactivecommandparser.exceptions.DueSoonRefreshCommandException;
 
 /**
- * A interactive prompt for completing task.
+ * pending.
  */
-public class CompleteTaskInteractivePrompt extends InteractivePrompt {
+public class DueSoonTaskInteractivePrompt extends InteractivePrompt {
 
-    static final String END_OF_COMMAND_MSG = "Task marked as completed successfully!";
-    static final String QUIT_COMMAND_MSG = "Successfully quited from complete task command.";
+    static final String END_OF_COMMAND_MSG = "Refreshed tasks that are due soon!";
+    static final String QUIT_COMMAND_MSG = "Successfully quited from refresh due soon command.";
 
-    private int index;
     private String reply;
     private String userInput;
     private InteractivePromptTerms currentTerm;
     private InteractivePromptTerms lastTerm;
     private ArrayList<InteractivePromptTerms> terms;
 
-    public CompleteTaskInteractivePrompt() {
+    public DueSoonTaskInteractivePrompt() {
         super();
-        this.interactivePromptType = COMPLETE_TASK;
+        this.interactivePromptType = DUE_SOON_TASK;
         this.reply = "";
         this.userInput = "";
-        this.index = index;
         this.currentTerm = InteractivePromptTerms.INIT;
         this.lastTerm = null;
         this.terms = new ArrayList<>();
@@ -57,38 +63,29 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
         }
 
         switch (currentTerm) {
-
         case INIT:
-            this.reply = "Please enter the index number of task you wish to mark as done.";
-            currentTerm = InteractivePromptTerms.TASK_INDEX;
-            lastTerm = InteractivePromptTerms.INIT;
-            terms.add(lastTerm);
-            break;
-
-        case TASK_INDEX:
             try {
-                index = Integer.parseInt(userInput);
-                reply = "The task at index " + userInput + " will be mark as Done. \n "
-                        + " Please click enter again to make the desired deletion.";
+                reply = "The tasks that are due soon will be refreshed.\n "
+                        + " Please press enter again to make the desired changes.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-                lastTerm = InteractivePromptTerms.TASK_DATETIME;
+                lastTerm = InteractivePromptTerms.INIT;
                 terms.add(lastTerm);
-            } catch (DeleteTaskCommandException ex) {
+            } catch (DueSoonRefreshCommandException ex) {
                 reply = ex.getErrorMessage();
             }
             break;
-
         case READY_TO_EXECUTE:
             try {
-                CompleteTaskCommand completeTaskCommand = new CompleteTaskCommand(Index.fromZeroBased(index - 1));
-                logic.executeCommand(completeTaskCommand);
+                DueSoonRefreshCommand dueSoonRefreshCommand = new DueSoonRefreshCommand();
+                logic.executeCommand(dueSoonRefreshCommand);
+                super.setEndOfCommand(true);
                 endInteract(END_OF_COMMAND_MSG);
             } catch (CommandException | ParseException ex) {
                 reply = ex.getMessage();
             }
             break;
-
         default:
+
         }
         return reply;
     }
@@ -105,13 +102,22 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void back(){
-
-    };
-
-    @Override
-    public void next(){
+    public void back() {
 
     }
 
+    @Override
+    public void next() {
+
+    }
+
+    /**
+     * pending.
+     */
+    private String dateTime() {
+        String result = "";
+
+
+        return result;
+    }
 }

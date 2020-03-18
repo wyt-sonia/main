@@ -2,6 +2,8 @@ package seedu.address.ui.interactiveprompt;
 
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.SORT_TASK;
 
+import java.text.ParseException;
+
 import java.util.ArrayList;
 
 import seedu.address.logic.commands.SortTaskCommand;
@@ -87,7 +89,7 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
                 SortTaskCommand sortTaskCommand = new SortTaskCommand(sort_option[option - 1]);
                 logic.executeCommand(sortTaskCommand);
                 endInteract(END_OF_COMMAND_MSG);
-            } catch (CommandException ex) {
+            } catch (CommandException | ParseException ex) {
                 reply = ex.getMessage();
             }
             break;

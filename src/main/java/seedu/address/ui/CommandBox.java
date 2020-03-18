@@ -12,6 +12,7 @@ import seedu.address.ui.interactiveprompt.ArchiveTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.CompleteTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.DeleteDuplicateTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.DeleteTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.DueSoonTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.ExitTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.HelpInteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
@@ -26,7 +27,7 @@ public class CommandBox extends UiPart<Region> {
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes =
-        {"add", "edit", "delete", "archive", "done", "delete duplicates", "bye", "sort", "help"};
+        {"add", "edit", "delete", "archive", "done", "delete duplicates", "bye", "sort", "help", "due soon"};
     private final CommandExecutor commandExecutor;
     private InteractivePrompt currentInteractivePrompt;
     @FXML
@@ -74,6 +75,9 @@ public class CommandBox extends UiPart<Region> {
                     break;
                 case "help":
                     currentInteractivePrompt = new HelpInteractivePrompt();
+                    break;
+                case "due soon":
+                    currentInteractivePrompt = new DueSoonTaskInteractivePrompt();
                     break;
                 case "bye":
                     currentInteractivePrompt = new ExitTaskInteractivePrompt();

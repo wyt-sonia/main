@@ -27,6 +27,7 @@ public class ModelManager implements Model {
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Task> filteredTasks;
     private final FilteredList<Task> filteredArchiveTasks;
+    private final FilteredList<Task> filteredDueSoonTasks;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -42,6 +43,7 @@ public class ModelManager implements Model {
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredTasks = new FilteredList<>(this.addressBook.getTaskList());
         filteredArchiveTasks = new FilteredList<>(this.addressBook.getArchivedList());
+        filteredDueSoonTasks = new FilteredList<>(this.addressBook.getDueSoonList());
     }
 
     public ModelManager() {
@@ -140,6 +142,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void addDueSoonTask(Task task) {
+        addressBook.addDueSoonTask(task);
+        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+    }
+
+    @Override
     public void addTask(Task task) {
         addressBook.addTask(task);
         updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
@@ -174,6 +182,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ObservableList<Task> getFilteredDueSoonTaskList() {
+        return filteredDueSoonTasks;
+    }
+
+    @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
@@ -202,6 +215,7 @@ public class ModelManager implements Model {
         return addressBook.equals(other.addressBook)
             && userPrefs.equals(other.userPrefs)
             && filteredTasks.equals(other.filteredTasks)
+            && filteredDueSoonTasks.equals(other.filteredDueSoonTasks)
             && filteredArchiveTasks.equals(other.filteredArchiveTasks);
     }
 
