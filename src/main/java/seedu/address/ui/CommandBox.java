@@ -13,6 +13,7 @@ import seedu.address.ui.interactiveprompt.FindTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.HelpInteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
 import seedu.address.ui.interactiveprompt.InvalidInputInteractivePrompt;
+import seedu.address.ui.interactiveprompt.ListTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.SortTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.add.AddTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.add.CreateModuleInteractivePrompt;
@@ -30,7 +31,7 @@ public class CommandBox extends UiPart<Region> {
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes =
         {"add", "edit", "delete", "archive", "done", "delete duplicates",
-            "bye", "sort", "help", "create mods", "due soon", "find"};
+            "bye", "sort", "help", "create mods", "due soon", "find", "list"};
     private final CommandExecutor commandExecutor;
     private InteractivePrompt currentInteractivePrompt;
     @FXML
@@ -90,6 +91,9 @@ public class CommandBox extends UiPart<Region> {
                     break;
                 case "find":
                     currentInteractivePrompt = new FindTaskInteractivePrompt();
+                    break;
+                case "list":
+                    currentInteractivePrompt = new ListTaskInteractivePrompt();
                     break;
                 default:
                     currentInteractivePrompt = new InvalidInputInteractivePrompt();

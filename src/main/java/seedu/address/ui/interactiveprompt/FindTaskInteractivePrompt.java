@@ -91,25 +91,4 @@ public class FindTaskInteractivePrompt extends InteractivePrompt {
         return QUIT_COMMAND_MSG;
     }
 
-    @Override
-    public void interruptInteract() {
-        // empty
-    }
-
-    @Override
-    public void endInteract(String msg) {
-        this.reply = msg;
-        super.setEndOfCommand(true);
-    }
-
-    @Override
-    public void back() {
-        // empty
-    }
-
-    @Override
-    public void next() {
-        // empty
-    }
-
 }

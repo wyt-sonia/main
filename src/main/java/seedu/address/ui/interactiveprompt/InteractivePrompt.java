@@ -30,13 +30,26 @@ public abstract class InteractivePrompt {
 
     public abstract String interact(String userInput);
 
-    public abstract void interruptInteract();
+    /**
+     * ends the interaction
+     * @param reply message to be displayed to the user upon end of interaction
+     */
+    public void endInteract(String reply) {
+        this.reply = reply;
+        setEndOfCommand(true);
+    };
 
-    public abstract void endInteract(String reply);
+    public void interruptInteract() {
+        // empty
+    };
 
-    public abstract void back();
+    public void back() {
+        // empty
+    };
 
-    public abstract void next();
+    public void next() {
+        // empty
+    };
 
     public boolean isQuit() {
         return isQuit;
