@@ -35,6 +35,7 @@ public class FindTaskInteractivePrompt extends InteractivePrompt {
 
     /**
      * Handles the sequence of interactive find commands.
+     *
      * @param userInput the input entered by the user
      * @return the reply to the user
      */
@@ -62,7 +63,7 @@ public class FindTaskInteractivePrompt extends InteractivePrompt {
                 }
                 String[] userKeywords = trimmedArgs.split("\\s+");
                 TaskNameContainsKeywordsPredicate pred =
-                        new TaskNameContainsKeywordsPredicate(Arrays.asList(userKeywords));
+                    new TaskNameContainsKeywordsPredicate(Arrays.asList(userKeywords));
                 FindTaskCommand findTaskCommand = new FindTaskCommand(pred);
 
                 logic.executeCommand(findTaskCommand);
@@ -79,8 +80,9 @@ public class FindTaskInteractivePrompt extends InteractivePrompt {
 
     public String getConfirmationPrompt(String userKeyword) {
         return "You are searching for the tasks containing " + userKeyword + ". \n "
-                + "Please click enter again to view the searched list.";
+            + "Please click enter again to view the searched list.";
     }
+
     public String getKeywordPrompt() {
         return KEYWORD_PROMPT;
     }

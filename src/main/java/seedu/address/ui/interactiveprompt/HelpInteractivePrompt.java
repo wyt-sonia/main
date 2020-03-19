@@ -8,9 +8,9 @@ import static seedu.address.ui.interactiveprompt.InteractivePromptType.HELP;
 public class HelpInteractivePrompt extends InteractivePrompt {
     private static final String END_OF_COMMAND_MSG =
         "Here are the list of available commands:" + System.lineSeparator()
-        + "1. add  2. delete  3. edit  4. bye  5. sort  6. find  7. done  8. delete duplicates  "
-        + "9. sort  10. archive  11. help" + System.lineSeparator() + System.lineSeparator()
-        + "User Guide: https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html";
+            + "1. add  2. delete  3. edit  4. bye  5. sort  6. find  7. done  8. delete duplicates  "
+            + "9. sort  10. archive  11. help" + System.lineSeparator() + System.lineSeparator()
+            + "User Guide: https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html";
 
     private String reply;
 
@@ -18,6 +18,10 @@ public class HelpInteractivePrompt extends InteractivePrompt {
         super();
         this.interactivePromptType = HELP;
         this.reply = "";
+    }
+
+    public static String getHelpMessage() {
+        return END_OF_COMMAND_MSG;
     }
 
     /**
@@ -59,10 +63,6 @@ public class HelpInteractivePrompt extends InteractivePrompt {
     @Override
     public void next() {
         // no next interaction
-    }
-
-    public static String getHelpMessage() {
-        return END_OF_COMMAND_MSG;
     }
 }
 

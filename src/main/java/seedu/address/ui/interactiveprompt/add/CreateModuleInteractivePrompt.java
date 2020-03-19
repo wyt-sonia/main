@@ -27,6 +27,7 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
         this.terms = new ArrayList<>();
         this.module = new Module();
     }
+
     @Override
     public String interact(String userInput) {
         if (userInput.equals("quit")) {
@@ -57,7 +58,7 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
         case MODULE_NAME:
             userInput = AddTaskCommandParser.parseName(userInput);
             this.reply = "The name of module is set to: " + userInput + ".\n"
-                            + "Now key in your module code";
+                + "Now key in your module code";
             module.setModuleName(userInput);
             currentTerm = InteractivePromptTerms.MODULE_CODE;
             lastTerm = InteractivePromptTerms.MODULE_NAME;
@@ -66,7 +67,7 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
         case MODULE_CODE:
             module.setModuleCode(userInput);
             this.reply = "Module Code: " + module.toString() + "\n"
-                    + "Click 'Enter' again to confirm your changes";
+                + "Click 'Enter' again to confirm your changes";
             currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             lastTerm = InteractivePromptTerms.MODULE_CODE;
             terms.add(lastTerm);

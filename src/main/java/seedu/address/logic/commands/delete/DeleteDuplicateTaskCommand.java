@@ -18,8 +18,8 @@ public class DeleteDuplicateTaskCommand extends Command {
     public static final String COMMAND_WORD = "delete duplicates";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes any duplicate tasks in the displayed task list.\n"
-            + "Example: " + COMMAND_WORD;
+        + ": Deletes any duplicate tasks in the displayed task list.\n"
+        + "Example: " + COMMAND_WORD;
 
     public static final String MESSAGE_DELETE_DUPLICATE_TASK_SUCCESS = "Deleted duplicate tasks";
 
@@ -66,7 +66,7 @@ public class DeleteDuplicateTaskCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeleteDuplicateTaskCommand);
+            || (other instanceof DeleteDuplicateTaskCommand);
     }
 
 }

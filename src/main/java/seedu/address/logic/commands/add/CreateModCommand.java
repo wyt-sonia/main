@@ -15,7 +15,7 @@ public class CreateModCommand extends Command {
     public static final String COMMAND_WORD = "create mod";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a new mod. "
-            + "Parameters: Name & Code";
+        + "Parameters: Name & Code";
 
     public static final String MESSAGE_SUCCESS = "New Mod added: %1$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This module already exists in the address book";
@@ -43,7 +43,7 @@ public class CreateModCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof CreateModCommand // instanceof handles nulls
-                && mod.equals(((CreateModCommand) other).mod));
+            || (other instanceof CreateModCommand // instanceof handles nulls
+            && mod.equals(((CreateModCommand) other).mod));
     }
 }

@@ -18,9 +18,9 @@ import seedu.address.model.task.Task;
 public class CompleteTaskCommand extends Command {
     public static final String COMMAND_WORD = "Complete";
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Complete the task based on the displayed list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+        + ": Complete the task based on the displayed list.\n"
+        + "Parameters: INDEX (must be a positive integer)\n"
+        + "Example: " + COMMAND_WORD + " 1";
     public static final String MESSAGE_COMPLETE_TASK_SUCCESS = "Task Completed: [task name]";
 
     private final Index targetIndex;

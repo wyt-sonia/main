@@ -24,7 +24,7 @@ public class SampleDataUtil {
             TimeParser.parseDateTime("23:59 21/04/2020")};
 
 
-        return new Task[]{
+        return new Task[] {
             new Task(cs2103T, TaskType.Assignment, "Ass 1", "taskDescription", 20.0,
                 TaskStatus.PENDING, dateTimesOne, "5h"),
             new Task(cs2101, TaskType.Presentation, "Presentation 1",

@@ -46,7 +46,7 @@ class JsonSerializableAddressBook {
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
         tasks.addAll(source.getTaskList().stream().map(JsonAdaptedTask::new).collect(Collectors.toList()));
         archivedTasks.addAll(source.getArchivedList().stream()
-                .map(JsonAdaptedTask::new).collect(Collectors.toList()));
+            .map(JsonAdaptedTask::new).collect(Collectors.toList()));
         modules.addAll(source.getModuleList().stream().map(JsonAdaptedModule::new).collect(Collectors.toList()));
     }
 

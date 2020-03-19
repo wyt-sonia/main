@@ -7,7 +7,6 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-
 import seedu.address.model.module.exceptions.ModuleCodeException;
 
 /**
@@ -22,6 +21,7 @@ public class ModuleList {
 
     /**
      * To be executed every time whenever a module is added.
+     *
      * @param module
      * @return if there is a duplicate
      */
@@ -38,6 +38,7 @@ public class ModuleList {
 
     /**
      * checks for duplicate modules first, then add into the moduleList.
+     *
      * @param module to be added to the ModuleList
      */
     public void add(Module module) throws ModuleCodeException {
@@ -51,6 +52,7 @@ public class ModuleList {
 
     /**
      * Removes module from the list.
+     *
      * @param module
      * @throws ModuleCodeException
      */
@@ -64,6 +66,7 @@ public class ModuleList {
 
     /**
      * Retrieves a module with the original module name inside the moduleList.
+     *
      * @param moduleCode
      * @return
      * @throws ModuleCodeException

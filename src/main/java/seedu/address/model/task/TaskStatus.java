@@ -23,6 +23,7 @@ public enum TaskStatus {
 
     /**
      * Converts a TaskStatus enum back into a string, primarily for printing purposes.
+     *
      * @return string, either "pending" or "finished"
      */
     public String convertToString() {

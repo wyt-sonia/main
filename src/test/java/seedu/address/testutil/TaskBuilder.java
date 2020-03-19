@@ -22,7 +22,7 @@ public class TaskBuilder {
     public static final TaskStatus DEFAULT_TASKSTATUS = TaskStatus.PENDING;
     public static final double DEFAULT_TASKWEIGHT = 45.0;
     public static final LocalDateTime[] DEFAULT_DATETIME = {TimeParser.parseDateTime("23:59 12/12/2020"),
-            TimeParser.parseDateTime("23:59 10/10/2020")};
+        TimeParser.parseDateTime("23:59 10/10/2020")};
 
     private Module module;
     private TaskType taskType;
@@ -72,7 +72,7 @@ public class TaskBuilder {
      */
     public Task build() {
         return new Task(module, taskType, taskName, taskDescription, weight, taskStatus,
-                dateTimes, estimatedTimeCost);
+            dateTimes, estimatedTimeCost);
     }
 
 }

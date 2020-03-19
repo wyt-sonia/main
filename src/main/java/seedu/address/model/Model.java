@@ -81,6 +81,7 @@ public interface Model {
      * The task must exist in the address book.
      */
     void completeTask(Task target);
+
     /**
      * Deletes the given task.
      * The task must exist in the list.
@@ -95,12 +96,14 @@ public interface Model {
 
     /**
      * Archives the given person.
+     *
      * @param task must not already exist in the address book.
      */
     void archiveTask(Task task);
 
     /**
      * Adds the given task.
+     *
      * @param task must not already exist in the address book.
      */
     void addDueSoonTask(Task task);
@@ -121,6 +124,7 @@ public interface Model {
     boolean hasMod(Module mod);
 
     void addMod(Module mod);
+
     /**
      * Returns an unmodifiable view of the filtered person list
      */

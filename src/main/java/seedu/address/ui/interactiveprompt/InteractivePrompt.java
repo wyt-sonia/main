@@ -64,7 +64,8 @@ public abstract class InteractivePrompt {
 
     /**
      * Handles the quit and back commands
-     * @param userInput the input given by the user. This should be checked to be either quit or back.
+     *
+     * @param userInput   the input given by the user. This should be checked to be either quit or back.
      * @param quitMessage the message that is displayed upon quitting
      * @return the reply to user
      */
