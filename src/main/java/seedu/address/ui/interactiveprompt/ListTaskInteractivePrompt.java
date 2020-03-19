@@ -35,4 +35,8 @@ public class ListTaskInteractivePrompt extends InteractivePrompt {
         }
     }
 
+    public String getEndOfCommandMsg() {
+        return END_OF_COMMAND_MSG;
+    }
+
 }
