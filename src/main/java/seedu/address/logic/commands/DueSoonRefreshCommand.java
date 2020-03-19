@@ -5,7 +5,6 @@ import static java.util.Objects.requireNonNull;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
 import java.util.List;
 
@@ -53,7 +52,7 @@ public class DueSoonRefreshCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DueSoonTaskCommand); // state check
+            || (other instanceof DueSoonTaskCommand); // state check
     }
 
 }

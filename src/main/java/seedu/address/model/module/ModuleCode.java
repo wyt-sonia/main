@@ -23,6 +23,7 @@ public class ModuleCode {
 
     /**
      * method to parse prefix from the input to ensure correctness of moduleCode.
+     *
      * @param input
      * @return
      * @throws ModuleCodeException
@@ -50,6 +51,7 @@ public class ModuleCode {
 
     /**
      * method to parse number from the input to ensure correctness of moduleCode.
+     *
      * @param input
      * @return
      * @throws ModuleCodeException
@@ -76,6 +78,7 @@ public class ModuleCode {
 
     /**
      * method to parse postfix from the input to ensure correctness of moduleCode.
+     *
      * @param input
      * @return
      */
@@ -106,8 +109,8 @@ public class ModuleCode {
     public boolean equals(Object object) {
         if (object instanceof ModuleCode) {
             if (this.getPrefix().equals(((ModuleCode) object).prefix)
-                    && (this.getNumber() == ((ModuleCode) object).number)
-                    && this.getPostfix().equals(((ModuleCode) object).postfix)) {
+                && (this.getNumber() == ((ModuleCode) object).number)
+                && this.getPostfix().equals(((ModuleCode) object).postfix)) {
                 return true;
             } else {
                 return false;

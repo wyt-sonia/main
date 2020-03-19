@@ -71,7 +71,7 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
             try {
                 index = Integer.parseInt(userInput);
                 reply = "The task at index " + userInput + " will be mark as Done. \n "
-                        + " Please click enter again to make the desired deletion.";
+                    + " Please click enter again to make the desired deletion.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
                 lastTerm = InteractivePromptTerms.TASK_DATETIME;
                 terms.add(lastTerm);
@@ -107,12 +107,12 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void back(){
+    public void back() {
 
-    };
+    }
 
     @Override
-    public void next(){
+    public void next() {
 
     }
 

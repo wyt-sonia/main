@@ -15,8 +15,11 @@ public interface ReadOnlyAddressBook {
      * This list will not contain any duplicate persons.
      */
     ObservableList<Person> getPersonList();
+
     ObservableList<Task> getArchivedList();
+
     ObservableList<Task> getDueSoonList();
+
     ObservableList<Module> getModuleList();
 
     /**

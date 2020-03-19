@@ -3,7 +3,6 @@ package seedu.address.ui.interactiveprompt;
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.SORT_TASK;
 
 import java.text.ParseException;
-
 import java.util.ArrayList;
 
 import seedu.address.logic.commands.SortTaskCommand;

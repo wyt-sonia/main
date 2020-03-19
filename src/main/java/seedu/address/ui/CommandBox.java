@@ -7,21 +7,18 @@ import javafx.scene.layout.Region;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-
 import seedu.address.ui.interactiveprompt.DueSoonTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.ExitTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.FindTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.HelpInteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
 import seedu.address.ui.interactiveprompt.InvalidInputInteractivePrompt;
+import seedu.address.ui.interactiveprompt.ListTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.SortTaskInteractivePrompt;
-
 import seedu.address.ui.interactiveprompt.add.AddTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.add.CreateModuleInteractivePrompt;
-
 import seedu.address.ui.interactiveprompt.delete.DeleteDuplicateTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.delete.DeleteTaskInteractivePrompt;
-
 import seedu.address.ui.interactiveprompt.edit.ArchiveTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.edit.CompleteTaskInteractivePrompt;
 
@@ -34,7 +31,7 @@ public class CommandBox extends UiPart<Region> {
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes =
         {"add", "edit", "delete", "archive", "done", "delete duplicates",
-        "bye", "sort", "help", "create mods", "due soon", "find"};
+            "bye", "sort", "help", "create mods", "due soon", "find", "list"};
     private final CommandExecutor commandExecutor;
     private InteractivePrompt currentInteractivePrompt;
     @FXML
@@ -94,6 +91,9 @@ public class CommandBox extends UiPart<Region> {
                     break;
                 case "find":
                     currentInteractivePrompt = new FindTaskInteractivePrompt();
+                    break;
+                case "list":
+                    currentInteractivePrompt = new ListTaskInteractivePrompt();
                     break;
                 default:
                     currentInteractivePrompt = new InvalidInputInteractivePrompt();

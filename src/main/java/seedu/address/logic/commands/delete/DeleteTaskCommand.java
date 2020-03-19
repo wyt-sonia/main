@@ -20,9 +20,9 @@ public class DeleteTaskCommand extends Command {
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the task identified by the index number used in the displayed task list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+        + ": Deletes the task identified by the index number used in the displayed task list.\n"
+        + "Parameters: INDEX (must be a positive integer)\n"
+        + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
 
@@ -49,7 +49,7 @@ public class DeleteTaskCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeleteTaskCommand // instanceof handles nulls
-                && targetIndex.equals(((DeleteTaskCommand) other).targetIndex)); // state check
+            || (other instanceof DeleteTaskCommand // instanceof handles nulls
+            && targetIndex.equals(((DeleteTaskCommand) other).targetIndex)); // state check
     }
 }

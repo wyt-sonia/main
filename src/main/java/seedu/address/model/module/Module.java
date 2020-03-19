@@ -14,17 +14,18 @@ import seedu.address.model.task.exceptions.TaskNotFoundException;
  * Identified by ModuleCode instead of ModuleName to minimise errors.
  */
 public class Module {
+    private final ObservableList<Task> internalTaskList = FXCollections.observableArrayList();
     private String moduleName;
     private ModuleCode moduleCode;
-    private final ObservableList<Task> internalTaskList = FXCollections.observableArrayList();
 
     /**
      * Constructs a Module. Will check for any duplicates in the moduleList.
+     *
      * @param moduleName
      * @param fullModuleCode
      * @throws ModuleCodeException
      */
-    public Module (String moduleName, String fullModuleCode) {
+    public Module(String moduleName, String fullModuleCode) {
         this.moduleName = moduleName;
         try {
             this.moduleCode = new ModuleCode(fullModuleCode);
@@ -35,10 +36,11 @@ public class Module {
 
     /**
      * Same as previous constructor, but a module without a name.
+     *
      * @param fullModuleCode
      * @throws ModuleCodeException
      */
-    public Module (String fullModuleCode) {
+    public Module(String fullModuleCode) {
         this.moduleName = "";
         try {
             this.moduleCode = new ModuleCode(fullModuleCode);
@@ -58,6 +60,7 @@ public class Module {
 
     /**
      * returns whether a Task is inside the internalList of this module.
+     *
      * @param toCheck
      * @return
      */
@@ -68,6 +71,7 @@ public class Module {
 
     /**
      * Adds a task.
+     *
      * @param toAdd
      * @throws DuplicateTaskException
      */
@@ -81,6 +85,7 @@ public class Module {
 
     /**
      * Removes a task from the module list.
+     *
      * @param toRemove
      * @throws TaskNotFoundException
      */
@@ -100,6 +105,7 @@ public class Module {
 
     /**
      * Compares moduleCode instead of moduleName.
+     *
      * @param other object, possibly a module
      * @return true or false.
      */
@@ -112,16 +118,17 @@ public class Module {
             return false;
         }
     }
+
     public String getModuleName() {
         return moduleName;
     }
 
-    public ModuleCode getModuleCode() {
-        return moduleCode;
-    }
-
     public void setModuleName(String moduleName) {
         this.moduleName = moduleName;
+    }
+
+    public ModuleCode getModuleCode() {
+        return moduleCode;
     }
 
     public void setModuleCode(String moduleCode) {

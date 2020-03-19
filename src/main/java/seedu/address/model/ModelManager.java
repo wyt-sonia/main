@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.module.Module;
@@ -164,6 +163,7 @@ public class ModelManager implements Model {
 
     /**
      * STILL NEEDS MORE REFINEMENT DUE TO ABSENCE OF UpdateModuleList.
+     *
      * @param mod
      */
     @Override

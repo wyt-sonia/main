@@ -66,7 +66,7 @@ public class DueSoonTaskInteractivePrompt extends InteractivePrompt {
         case INIT:
             try {
                 reply = "The tasks that are due soon will be refreshed.\n "
-                        + " Please press enter again to make the desired changes.";
+                    + " Please press enter again to make the desired changes.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
                 lastTerm = InteractivePromptTerms.INIT;
                 terms.add(lastTerm);

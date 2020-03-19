@@ -6,11 +6,9 @@ import java.util.List;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-
 import seedu.address.model.Model;
 import seedu.address.model.task.Task;
 
@@ -49,8 +47,8 @@ public class ArchiveTaskCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof ArchiveTaskCommand // instanceof handles nulls
-                && targetIndex.equals(((ArchiveTaskCommand) other).targetIndex)); // state check
+            || (other instanceof ArchiveTaskCommand // instanceof handles nulls
+            && targetIndex.equals(((ArchiveTaskCommand) other).targetIndex)); // state check
     }
 
 }
