@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javafx.collections.ObservableList;
@@ -103,6 +104,14 @@ public class AddressBook implements ReadOnlyAddressBook {
         tasks.remove(key);
     }
 
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the task list.
+     */
+    public void removeDueSoonTask(Task key) {
+        dueSoonTasks.remove(key);
+    }
+
     public void setArchivedTasks(List<Task> aTasks) {
         this.archivedTasks.setTasks(aTasks);
     }
@@ -157,7 +166,9 @@ public class AddressBook implements ReadOnlyAddressBook {
      * @param p must not already exist in the address book.
      */
     public void addDueSoonTask(Task p) {
-        dueSoonTasks.add(p);
+        if (p.isDueSoon()) {
+            dueSoonTasks.add(p);
+        }
     }
 
     /**

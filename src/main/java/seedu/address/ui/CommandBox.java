@@ -31,7 +31,7 @@ public class CommandBox extends UiPart<Region> {
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes =
         {"add", "edit", "delete", "archive", "done", "delete duplicates",
-            "bye", "sort", "help", "create mods", "due soon", "find", "list"};
+            "bye", "sort", "due soon", "help", "create mods", "find", "list"};
     private final CommandExecutor commandExecutor;
     private InteractivePrompt currentInteractivePrompt;
     @FXML
@@ -80,9 +80,6 @@ public class CommandBox extends UiPart<Region> {
                 case "help":
                     currentInteractivePrompt = new HelpInteractivePrompt();
                     break;
-                case "due soon":
-                    currentInteractivePrompt = new DueSoonTaskInteractivePrompt();
-                    break;
                 case "create mods":
                     currentInteractivePrompt = new CreateModuleInteractivePrompt();
                     break;
@@ -91,6 +88,9 @@ public class CommandBox extends UiPart<Region> {
                     break;
                 case "find":
                     currentInteractivePrompt = new FindTaskInteractivePrompt();
+                    break;
+                case "due soon":
+                    currentInteractivePrompt = new DueSoonTaskInteractivePrompt();
                     break;
                 case "list":
                     currentInteractivePrompt = new ListTaskInteractivePrompt();

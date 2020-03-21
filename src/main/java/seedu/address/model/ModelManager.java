@@ -127,6 +127,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void deleteDueSoonTask(Task target) {
+        addressBook.removeDueSoonTask(target);
+    }
+
+    @Override
     public void sortTasks(String keyword) {
         addressBook.sortTasks(keyword);
     }
