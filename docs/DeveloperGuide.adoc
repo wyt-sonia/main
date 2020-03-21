@@ -175,10 +175,6 @@ This feature is implemented using a panel on the main window with a list of task
 
 When a task that is added to the main list, is due within the next week, it is automatically added to the list of due soon tasks.
 
-Activity diagram:
-
-image:AddDueSoonActivityDiagram.png[width = "400", length = "600"]
-
 2. Delete --
 
    Command: delete
@@ -196,6 +192,10 @@ Given below is an example usage scenario and how the due soon list mechanism beh
 
 Step 1. The user launches the application for the first time.
 The list of tasks due soon will be initialized and displayed with the initial address book state. Initialization is done by filtering tasks that are due soon from the general list of tasks.
+
+Activity diagram:
+
+image::AddDueSoonActivityDiagram.png[width = "230", length = "350"]
 
 Step 2. The user executes `add` command to add a task.
 The `add` command execution checks if this task belongs in the due soon tasks list (i.e it is due in 7 days). If it does, the task is added to both lists, else it is only added to the main list.
