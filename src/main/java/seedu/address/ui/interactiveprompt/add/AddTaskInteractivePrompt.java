@@ -151,8 +151,9 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             break;
 
         case READY_TO_EXECUTE:
-            AddTaskCommand addTaskCommand = new AddTaskCommand(task);
             try {
+                task.setCreationDateTime(LocalDateTime.now());
+                AddTaskCommand addTaskCommand = new AddTaskCommand(task);
                 logic.executeCommand(addTaskCommand);
                 if (task.isDuplicate()) {
                     reply = "This is a duplicate task. Are you sure you would like to proceed?\n"
