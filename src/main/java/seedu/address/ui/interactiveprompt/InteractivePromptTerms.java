@@ -17,6 +17,11 @@ public enum InteractivePromptTerms {
     MODULE_CODE,
     SORT_KEYWORD,
     READY_TO_EXECUTE,
+    ADD_DUPLICATE,
+    // for find
     FIND_KEYWORD,
-    ADD_DUPLICATE;
+    // for edit
+    TASK_NUMBER,
+    TASK_FIELD,
+    NEW_VALUE;
 }
