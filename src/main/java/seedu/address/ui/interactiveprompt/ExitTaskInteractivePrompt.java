@@ -20,10 +20,14 @@ import seedu.address.logic.parser.interactivecommandparser.exceptions.ExitTaskCo
  */
 public class ExitTaskInteractivePrompt extends InteractivePrompt {
 
+    static final String END_OF_COMMAND_NO_EXIT_MSG = "Thank you for staying!";
+    static final String END_OF_COMMAND_MSG = "Exit successfully!";
+
     private String reply;
     private InteractivePromptTerms currentTerm;
     private InteractivePromptTerms lastTerm;
     private ArrayList<InteractivePromptTerms> terms;
+
 
     public ExitTaskInteractivePrompt() {
         super();
@@ -56,18 +60,21 @@ public class ExitTaskInteractivePrompt extends InteractivePrompt {
         case INIT:
             try {
                 reply = "Are you sure you want to quit?\n "
-                    + " Please press enter again to exit the application.";
+                    + "Please press enter yes if you would like to close the application.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-                lastTerm = InteractivePromptTerms.INIT;
-                terms.add(lastTerm);
             } catch (ExitTaskCommandException ex) {
                 reply = ex.getErrorMessage();
             }
             break;
 
         case READY_TO_EXECUTE:
-            super.setQuit(true);
-            super.setEndOfCommand(true);
+            if (userInput.equalsIgnoreCase("yes")) {
+                super.setQuit(true);
+                endInteract(END_OF_COMMAND_MSG);
+            } else {
+                endInteract(END_OF_COMMAND_NO_EXIT_MSG);
+            }
+
             break;
 
         default:
@@ -81,8 +88,9 @@ public class ExitTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void endInteract(String reply) {
-
+    public void endInteract(String msg) {
+        this.reply = msg;
+        super.setEndOfCommand(true);
     }
 
     @Override
