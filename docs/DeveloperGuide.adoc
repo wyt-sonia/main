@@ -173,19 +173,19 @@ This feature is implemented using a panel on the main window with a list of task
 
    Command: add
 
-   When a task that is added to the main list, is due within the next week, it is automatically added to the list of due soon tasks.
+When a task that is added to the main list, is due within the next week, it is automatically added to the list of due soon tasks.
 
 2. Delete --
 
    Command: delete
 
-   When a task that is deleted from the main list occurs in the due soon list as well, it is automatically deleted.
+When a task that is deleted from the main list occurs in the due soon list as well, it is automatically deleted.
 
 3. Refresh --
 
    Command: due soon
 
-   Refreshes the list of due soon tasks. This command is useful for a situation where due soon list is not up to date due to a drastic change in time.
+Refreshes the list of due soon tasks. This command is useful for a situation where due soon list is not up to date due to a drastic change in time.
 
 
 Given below is an example usage scenario and how the due soon list mechanism behaves at each step.
@@ -206,11 +206,11 @@ The `due soon` command execution will traverse the main list and check if there 
 If there are no such inconsistencies, the due soon command will not make any changes.
 
 Activity diagram:
-image:DueSoonActivityDiagram.png[]
+image:DueSoonActivityDiagram.png[DueSoonActivityDiagram, scaledWidth ="10%"]
 
 Sequence diagram:
 
-image::DueSoonSequenceDiagram.png[]
+image::DueSoonSequenceDiagram.png[DueSoonSequenceDiagram, scaledWidth = "75%"]
 
 ==== Design Considerations
 
