@@ -2,7 +2,6 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
-import java.text.ParseException;
 import java.util.List;
 
 import javafx.collections.ObservableList;

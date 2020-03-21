@@ -21,9 +21,8 @@ public class Task implements Comparable<Task> {
      * The acceptable data and time format.
      */
     public static final DateTimeFormatter DATETIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
+    private static final int DIVISOR = (1000 * 60 * 60 * 24);
     private static ArrayList<Task> currentTasks = new ArrayList<>();
-
-    private final int DIVISOR = (1000 * 60 * 60 * 24);
 
     private Module module;
     private TaskType taskType;
@@ -147,6 +146,10 @@ public class Task implements Comparable<Task> {
         this.estimatedTimeCost = estimatedTimeCost;
     }
 
+    /**
+     * Checks if the task is due soon (next 7 days).
+     * @return true if it is due soon, else false
+     */
     public boolean isDueSoon() {
         df = new SimpleDateFormat("HH:mm dd/MM/yyyy");
         dateObj = new Date();
