@@ -76,6 +76,7 @@ public interface Model {
      */
     void deletePerson(Person target);
 
+    public void deleteDueSoonTask(Task target);
     /**
      * completes the given task.
      * The task must exist in the address book.

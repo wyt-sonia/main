@@ -17,7 +17,7 @@ public class CommandResult {
     private final boolean showHelp;
 
     /**
-     * The application should exit.
+     * The application should exit.1
      */
     private final boolean exit;
 

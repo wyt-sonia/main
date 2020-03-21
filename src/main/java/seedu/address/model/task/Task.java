@@ -1,8 +1,12 @@
 package seedu.address.model.task;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,6 +21,7 @@ public class Task implements Comparable<Task> {
      * The acceptable data and time format.
      */
     public static final DateTimeFormatter DATETIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
+    private static final int DIVISOR = (1000 * 60 * 60 * 24);
     private static ArrayList<Task> currentTasks = new ArrayList<>();
 
     private Module module;
@@ -27,6 +32,8 @@ public class Task implements Comparable<Task> {
     private TaskStatus taskStatus;
     private LocalDateTime[] dateTimes;
     private String estimatedTimeCost;
+    private DateFormat df = null;
+    private Date dateObj = null;
 
     public Task(Module module, TaskType taskType, String taskName, String taskDescription, double weight,
                 TaskStatus taskStatus, LocalDateTime[] dateTimes, String estimatedTimeCost) {
@@ -137,6 +144,27 @@ public class Task implements Comparable<Task> {
 
     public void setEstimatedTimeCost(String estimatedTimeCost) {
         this.estimatedTimeCost = estimatedTimeCost;
+    }
+
+    /**
+     * Checks if the task is due soon (next 7 days).
+     * @return true if it is due soon, else false
+     */
+    public boolean isDueSoon() {
+        df = new SimpleDateFormat("HH:mm dd/MM/yyyy");
+        dateObj = new Date();
+        long difference = 0;
+        try {
+            difference = df.parse(this.getTimeString()).getTime() - dateObj.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        float daysBetween = (difference / DIVISOR);
+        if (daysBetween <= 7) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

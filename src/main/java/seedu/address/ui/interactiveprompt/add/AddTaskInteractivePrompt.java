@@ -15,7 +15,6 @@ import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import seedu.address.logic.commands.DueSoonTaskCommand;
 import seedu.address.logic.commands.add.AddTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.TimeParser;
@@ -159,9 +158,8 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             try {
                 AddTaskCommand addTaskCommand = new AddTaskCommand(task);
                 logic.executeCommand(addTaskCommand);
-                System.out.println("execution successful!");
-                DueSoonTaskCommand dueSoonTaskCommand = new DueSoonTaskCommand(task);
-                logic.executeCommand(dueSoonTaskCommand);
+                //DueSoonTaskCommand dueSoonTaskCommand = new DueSoonTaskCommand(task);
+                //logic.executeCommand(dueSoonTaskCommand);
                 reply = "Task added! Key in your next command :)";
                 endInteract(END_OF_COMMAND_MSG);
             } catch (CommandException | ParseException ex) {
