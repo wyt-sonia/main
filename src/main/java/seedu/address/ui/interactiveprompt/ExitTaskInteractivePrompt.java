@@ -13,7 +13,6 @@ import static seedu.address.ui.interactiveprompt.InteractivePromptType.EXIT_TASK
 
 import java.util.ArrayList;
 
-import seedu.address.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.ExitTaskCommandException;
 
 /**
