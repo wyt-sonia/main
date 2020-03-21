@@ -76,7 +76,7 @@ public class DeleteTaskInteractivePrompt extends InteractivePrompt {
                     throw new DeleteTaskCommandException("invalidIndexRangeError");
                 }
                 reply = "The task " + Task.getCurrentTasks().get(index - 1).getTaskName() + " will be deleted. \n "
-                        + " Please click enter again to make the desired deletion.";
+                    + " Please click enter again to make the desired deletion.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
                 lastTerm = InteractivePromptTerms.TASK_DATETIME;
                 terms.add(lastTerm);

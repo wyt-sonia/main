@@ -14,15 +14,16 @@ public class FindTaskCommand extends Command {
     public static final String COMMAND_WORD = "find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
-            + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
-            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " alice bob charlie";
+        + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
+        + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
+        + "Example: " + COMMAND_WORD + " alice bob charlie";
 
     private final TaskNameContainsKeywordsPredicate predicate;
 
     public FindTaskCommand(TaskNameContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
+
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
@@ -33,7 +34,7 @@ public class FindTaskCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof FindTaskCommand // instanceof handles nulls
-                && predicate.equals(((FindTaskCommand) other).predicate)); // state check
+            || (other instanceof FindTaskCommand // instanceof handles nulls
+            && predicate.equals(((FindTaskCommand) other).predicate)); // state check
     }
 }

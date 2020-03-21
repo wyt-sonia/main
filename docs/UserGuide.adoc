@@ -19,8 +19,12 @@ By: `Team Drag&Drop`      Since: `Jan 2020`
 
 == Introduction
 
-StudyBuddy is for an application designed for those who *prefer to use a desktop app for managing module related tasks*. More importantly, StudyBuddy is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, IVLE can get your module management done faster than traditional GUI apps. Interested? Jump to the <<Quick Start>> to get started. Enjoy!
-
+StudyBuddy is for an application designed for those who *prefer to use a desktop app for managing module related tasks*.
+More importantly, StudyBuddy is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
+If you can type fast, IVLE can get your module management done faster than traditional GUI apps.
+Interested?
+Jump to the <<Quick Start>> to get started.
+Enjoy!
 
 == Quick Start
 
@@ -85,7 +89,9 @@ Edits an existing task in the address book. +
 Format: `edit INDEX [n/NAME] [d/DATE] [e/DETAILS] [l/LABEL] [t/TAG]...`
 
 ****
-* Edits the task at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index *must be a positive integer* 1, 2, 3, ...
+* Edits the task at the specified `INDEX`.
+The index refers to the index number shown in the displayed person list.
+The index *must be a positive integer* 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the task will be removed i.e adding of tags is not cumulative.

@@ -117,17 +117,17 @@ public class AddCommandTest {
         }
 
         @Override
+        public void setAddressBook(ReadOnlyAddressBook newData) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void archiveTask(Task task) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void addDueSoonTask(Task task) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void setAddressBook(ReadOnlyAddressBook newData) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -162,6 +162,11 @@ public class AddCommandTest {
 
         @Override
         public void addMod(Module module) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteDueSoonTask(Task task) {
             throw new AssertionError("This method should not be called.");
         }
 

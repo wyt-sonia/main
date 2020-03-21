@@ -40,7 +40,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         moduleList = new ModuleList();
     }
 
-    public AddressBook() {}
+    public AddressBook() {
+    }
 
     /**
      * Creates an AddressBook using the Persons in the {@code toBeCopied}
@@ -102,6 +103,14 @@ public class AddressBook implements ReadOnlyAddressBook {
         tasks.remove(key);
     }
 
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the task list.
+     */
+    public void removeDueSoonTask(Task key) {
+        dueSoonTasks.remove(key);
+    }
+
     public void setArchivedTasks(List<Task> aTasks) {
         this.archivedTasks.setTasks(aTasks);
     }
@@ -143,6 +152,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Adds an archived person to the address book.
+     *
      * @param p must not already exist in the address book.
      */
     public void addArchivedTask(Task p) {
@@ -151,14 +161,18 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Adds a due soon task to the dueSoonTasks list.
+     *
      * @param p must not already exist in the address book.
      */
     public void addDueSoonTask(Task p) {
-        dueSoonTasks.add(p);
+        if (p.isDueSoon()) {
+            dueSoonTasks.add(p);
+        }
     }
 
     /**
      * Adds a module to the ModuleList.
+     *
      * @param module
      */
     public void addModule(Module module) {
@@ -167,10 +181,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         } catch (ModuleCodeException ex) {
             System.out.println("AddModule Failed, from addressBook.addModule()");
         }
-    }
-
-    public void setModuleList(List<Module> modules) {
-        this.moduleList.setModuleList(modules);
     }
 
     /**
@@ -204,13 +214,13 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.remove(key);
     }
 
-    //// util methods
-
     @Override
     public String toString() {
         return persons.asUnmodifiableObservableList().size() + " persons";
         // TODO: refine later
     }
+
+    //// util methods
 
     @Override
     public ObservableList<Person> getPersonList() {
@@ -237,6 +247,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         return moduleList.getInternalList();
     }
 
+    public void setModuleList(List<Module> modules) {
+        this.moduleList.setModuleList(modules);
+    }
+
     public boolean hasModule(Module module) {
         return moduleList.contains(module);
     }
@@ -249,8 +263,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddressBook // instanceof handles nulls
-                && persons.equals(((AddressBook) other).persons));
+            || (other instanceof AddressBook // instanceof handles nulls
+            && persons.equals(((AddressBook) other).persons));
     }
 
 }

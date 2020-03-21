@@ -23,10 +23,12 @@ class JsonSerializableAddressBook {
     private static final String MESSAGE_DUPLICATE_TASK = "Task list contains duplicate task(s).";
     private static final String MESSAGE_DUPLICATE_ARCHIVED_TASK = "Archived contains duplicate task(s).";
     private static final String MESSAGE_DUPLICATE_MODULES = "Module List contains duplicate module(s).";
+    private static final String MESSAGE_DUPLICATE_DUE_SOON_TASK = "Due soon list contains duplicate task(s).";
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedTask> archivedTasks = new ArrayList<>();
     private final List<JsonAdaptedTask> tasks = new ArrayList<>();
+    private final List<JsonAdaptedTask> dueSoonTasks = new ArrayList<>();
     private final List<JsonAdaptedModule> modules = new ArrayList<>();
 
 
@@ -46,6 +48,8 @@ class JsonSerializableAddressBook {
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
         tasks.addAll(source.getTaskList().stream().map(JsonAdaptedTask::new).collect(Collectors.toList()));
         archivedTasks.addAll(source.getArchivedList().stream()
+            .map(JsonAdaptedTask::new).collect(Collectors.toList()));
+        dueSoonTasks.addAll(source.getTaskList().stream()
                 .map(JsonAdaptedTask::new).collect(Collectors.toList()));
         modules.addAll(source.getModuleList().stream().map(JsonAdaptedModule::new).collect(Collectors.toList()));
     }
@@ -70,6 +74,13 @@ class JsonSerializableAddressBook {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_ARCHIVED_TASK);
             }
             addressBook.addArchivedTask(task);
+        }
+        for (JsonAdaptedTask jsonAdaptedTask : tasks) {
+            Task task = jsonAdaptedTask.toModelType();
+            /*if (addressBook.hasTask(task)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_DUE_SOON_TASK);
+            }*/
+            addressBook.addDueSoonTask(task);
         }
         for (JsonAdaptedModule jsonAdaptedModule : modules) {
             Module module = jsonAdaptedModule.toModelType();

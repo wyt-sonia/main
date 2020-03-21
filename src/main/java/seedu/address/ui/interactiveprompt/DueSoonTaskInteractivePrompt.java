@@ -74,6 +74,7 @@ public class DueSoonTaskInteractivePrompt extends InteractivePrompt {
                 reply = ex.getErrorMessage();
             }
             break;
+
         case READY_TO_EXECUTE:
             try {
                 DueSoonRefreshCommand dueSoonRefreshCommand = new DueSoonRefreshCommand();
@@ -84,6 +85,7 @@ public class DueSoonTaskInteractivePrompt extends InteractivePrompt {
                 reply = ex.getMessage();
             }
             break;
+
         default:
 
         }

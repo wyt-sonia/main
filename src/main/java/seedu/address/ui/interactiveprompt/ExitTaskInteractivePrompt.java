@@ -56,7 +56,7 @@ public class ExitTaskInteractivePrompt extends InteractivePrompt {
         case INIT:
             try {
                 reply = "Are you sure you want to quit?\n "
-                        + " Please press enter again to exit the application.";
+                    + " Please press enter again to exit the application.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
                 lastTerm = InteractivePromptTerms.INIT;
                 terms.add(lastTerm);
