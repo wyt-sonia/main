@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+import java.io.IOException;
+import java.util.Calendar;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -33,7 +35,6 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
-    private PersonListPanel archiveListPanel;
     private DueSoonListPanel dueSoonListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
@@ -185,8 +186,15 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private void handleShowArchivedTasks() {
-        archiveListPanel = new PersonListPanel(logic.getFilteredArchivedTaskList());
+        PersonListPanel archiveListPanel = new PersonListPanel(logic.getFilteredArchivedTaskList());
         personListPanelPlaceholder.getChildren().add(archiveListPanel.getRoot());
+    }
+
+    @FXML
+    private void handleShowCalendar() {
+        personListPanelPlaceholder.getChildren().clear();
+        CalendarBox calendar = new CalendarBox(logic.getFilteredTaskList());
+        personListPanelPlaceholder.getChildren().add(calendar.getRoot());
     }
 
     public PersonListPanel getPersonListPanel() {
