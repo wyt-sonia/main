@@ -206,11 +206,12 @@ The `due soon` command execution will traverse the main list and check if there 
 If there are no such inconsistencies, the due soon command will not make any changes.
 
 Activity diagram:
-image:DueSoonActivityDiagram.png[DueSoonActivityDiagram, scaledWidth ="10%"]
+
+image:DueSoonActivityDiagram.png[width = "250", length = "200"]
 
 Sequence diagram:
 
-image::DueSoonSequenceDiagram.png[DueSoonSequenceDiagram, scaledWidth = "75%"]
+image::DueSoonSequenceDiagram.png[width = "500", length = "300"]
 
 ==== Design Considerations
 
