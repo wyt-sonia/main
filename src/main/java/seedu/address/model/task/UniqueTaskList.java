@@ -149,10 +149,13 @@ public class UniqueTaskList implements Iterable<Task> {
      * Sort tasks by the given {@code keyword}.
      */
     public void sortTasks(String keyword) {
-        if (keyword.toLowerCase().equals("deadline")) {
+
+        if (keyword.toLowerCase().equals("deadline / task start date")) {
             FXCollections.sort(internalList, Task::compareTo);
-        } else {
+        } else if (keyword.toLowerCase().equals("task name")) {
             FXCollections.sort(internalList, Comparator.comparing(Task::getTaskName));
+        } else {
+            FXCollections.sort(internalList, Comparator.comparing(Task::getCreationDateTime));
         }
     }
 

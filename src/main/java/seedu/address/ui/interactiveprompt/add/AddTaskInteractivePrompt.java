@@ -156,6 +156,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
 
         case READY_TO_EXECUTE:
             try {
+                task.setCreationDateTime(LocalDateTime.now());
                 AddTaskCommand addTaskCommand = new AddTaskCommand(task);
                 logic.executeCommand(addTaskCommand);
                 //DueSoonTaskCommand dueSoonTaskCommand = new DueSoonTaskCommand(task);

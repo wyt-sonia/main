@@ -31,12 +31,14 @@ public class Task implements Comparable<Task> {
     private double weight;
     private TaskStatus taskStatus;
     private LocalDateTime[] dateTimes;
+    private LocalDateTime creationDateTime;
     private String estimatedTimeCost;
     private DateFormat df = null;
     private Date dateObj = null;
 
     public Task(Module module, TaskType taskType, String taskName, String taskDescription, double weight,
-                TaskStatus taskStatus, LocalDateTime[] dateTimes, String estimatedTimeCost) {
+                TaskStatus taskStatus, LocalDateTime[] dateTimes, String estimatedTimeCost,
+                LocalDateTime creationDateTime) {
         this.module = module; //not covered yet
         this.taskType = taskType;
         this.taskName = taskName;
@@ -45,6 +47,7 @@ public class Task implements Comparable<Task> {
         this.taskStatus = taskStatus;
         this.dateTimes = dateTimes;
         this.estimatedTimeCost = estimatedTimeCost; //not covered yet
+        this.creationDateTime = creationDateTime;
     }
 
     public Task() {
@@ -140,6 +143,14 @@ public class Task implements Comparable<Task> {
 
     public String getEstimatedTimeCost() {
         return estimatedTimeCost;
+    }
+
+    public LocalDateTime getCreationDateTime() {
+        return creationDateTime;
+    }
+
+    public void setCreationDateTime(LocalDateTime creationDateTime) {
+        this.creationDateTime = creationDateTime;
     }
 
     public void setEstimatedTimeCost(String estimatedTimeCost) {

@@ -27,6 +27,7 @@ class JsonAdaptedTask {
     private final String taskDescription;
     private final String estimatedTimeCost;
     private final String status;
+    private final String taskCreationDateTime;
 
     /**
      * Constructs a {@code JsonAdaptedTask} with the given task details.
@@ -37,7 +38,8 @@ class JsonAdaptedTask {
                            @JsonProperty("taskDescription") String taskDescription,
                            @JsonProperty("module") String module, @JsonProperty("weight") Double weight,
                            @JsonProperty("estimatedTimeCost") String estimatedTimeCost,
-                           @JsonProperty("status") String status) {
+                           @JsonProperty("status") String status,
+                           @JsonProperty("taskCreationDateTime") String taskCreationDateTime) {
 
         this.taskName = taskName;
         this.taskDateTime = taskDateTime;
@@ -47,6 +49,7 @@ class JsonAdaptedTask {
         this.estimatedTimeCost = estimatedTimeCost;
         this.status = status;
         this.taskType = taskType;
+        this.taskCreationDateTime = taskCreationDateTime;
     }
 
     /**
@@ -65,6 +68,7 @@ class JsonAdaptedTask {
         taskType = source.getTaskType().toString();
         weight = source.getWeight();
         moduleCode = source.getModule().toString();
+        taskCreationDateTime = TimeParser.getDateTimeString(source.getCreationDateTime());
     }
 
     /**
@@ -87,9 +91,12 @@ class JsonAdaptedTask {
             dateTimes[0] = TimeParser.parseDateTime(timeTerms[0]);
         }
 
+        // for creationDateTime
+        LocalDateTime creationDateTime = TimeParser.parseDateTime(taskCreationDateTime);
+
         Task data = new Task(new Module(moduleCode), TaskType.getType(taskType),
             taskName, taskDescription, weight,
-            TaskStatus.getStatus(status), dateTimes, estimatedTimeCost);
+            TaskStatus.getStatus(status), dateTimes, estimatedTimeCost, creationDateTime);
         return data;
     }
 
