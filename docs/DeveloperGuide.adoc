@@ -195,7 +195,7 @@ The list of tasks due soon will be initialized and displayed with the initial ad
 
 Activity diagram:
 
-image::AddDueSoonActivityDiagram.png[width = "230", length = "350"]
+image::AddDueSoonActivityDiagram.png[width = "200", length = "300"]
 
 Step 2. The user executes `add` command to add a task.
 The `add` command execution checks if this task belongs in the due soon tasks list (i.e it is due in 7 days). If it does, the task is added to both lists, else it is only added to the main list.
