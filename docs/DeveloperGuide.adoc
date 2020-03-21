@@ -207,11 +207,11 @@ If there are no such inconsistencies, the due soon command will not make any cha
 
 Activity diagram:
 
-image:DueSoonActivityDiagram.png[width = "250", length = "200"]
+image:DueSoonActivityDiagram.png[width = "400", length = "600"]
 
 Sequence diagram:
 
-image::DueSoonSequenceDiagram.png[width = "500", length = "300"]
+image::DueSoonSequenceDiagram.png[width = "600", length = "500"]
 
 ==== Design Considerations
 
