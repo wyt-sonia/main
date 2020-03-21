@@ -1,0 +1,23 @@
+@startuml
+start
+
+skinparam ActivityBackgroundColor #tan
+skinparam ActivityBorderColor #black
+skinparam activityDiamondBorderColor #black
+skinparam activityDiamondBackgroundColor #tan
+skinparam arrowColor #black
+
+:User executes add command;
+
+'Since the beta syntax does not support placing the condition outside the
+'diamond we place it as the true branch instead.
+
+if () then ([task is due soon])
+    :add task to due soon list;
+else ([else])
+endif;
+
+:add task to main list;
+
+stop
+@enduml
