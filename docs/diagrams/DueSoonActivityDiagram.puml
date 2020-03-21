@@ -1,0 +1,28 @@
+@startuml
+start
+
+skinparam ActivityBackgroundColor #tan
+skinparam ActivityBorderColor #black
+skinparam activityDiamondBorderColor #black
+skinparam activityDiamondBackgroundColor #tan
+skinparam arrowColor #black
+
+:User executes due soon command;
+
+'Since the beta syntax does not support placing the condition outside the
+'diamond we place it as the true branch instead.
+: Study Buddy traverses due soon list;
+
+if () then ([task is due soon])
+    if () then ([task is not present in due soon list])
+        :Add task to due soon list;
+    else ([else])
+    endif
+else ([else])
+    if () then ([due soon list contains task])
+        :Delete task from due soon list;
+    else ([else])
+    endif;
+endif;
+stop
+@enduml

@@ -1,0 +1,50 @@
+@startuml
+!include style.puml
+
+box UI UI_COLOR_T1
+participant ":DueSoonTaskInteractivePrompt" as DueSoonTaskInteractivePrompt UI_COLOR
+end box
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":DueSoonRefreshCommand" as DueSoonRefreshCommand LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+participant ":AddressBook" as AddressBook MODEL_COLOR
+end box
+
+[-> DueSoonTaskInteractivePrompt : execute(due soon)
+activate DueSoonTaskInteractivePrompt
+
+DueSoonTaskInteractivePrompt -> LogicManager : execute()
+activate LogicManager
+
+LogicManager -> DueSoonRefreshCommand : execute()
+activate DueSoonRefreshCommand
+
+DueSoonRefreshCommand -> Model : addDueSoonTask()
+activate Model
+
+Model -> AddressBook : addDueSoonTask()
+activate AddressBook
+
+AddressBook --> Model
+deactivate AddressBook
+
+Model --> DueSoonRefreshCommand
+deactivate Model
+
+DueSoonRefreshCommand --> LogicManager
+deactivate DueSoonRefreshCommand
+destroy DueSoonRefreshCommand
+
+LogicManager --> DueSoonTaskInteractivePrompt
+deactivate LogicManager
+
+[<--DueSoonTaskInteractivePrompt
+deactivate DueSoonTaskInteractivePrompt
+destroy DueSoonTaskInteractivePrompt
+
+@enduml
