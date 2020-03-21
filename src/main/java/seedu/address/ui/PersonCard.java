@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.address.logic.parser.TimeParser;
 import seedu.address.model.task.Task;
 
 /**
@@ -35,6 +36,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label dateTime;
     @FXML
+    private Label creationDateTime;
+    @FXML
     private Label type;
     @FXML
     private Label id;
@@ -48,7 +51,9 @@ public class PersonCard extends UiPart<Region> {
         //Module.setText(task.getModule().toString());
         status.setText(task.getTaskStatus().convertToString());
         id.setText(displayedIndex + ". ");
-        dateTime.setText(task.getTimeString());
+        dateTime.setText("Deadline/Task Duration: " + task.getTimeString());
+        creationDateTime.setText("Creation Date & Time: "
+            + TimeParser.getDateTimeString(task.getCreationDateTime()));
         type.setText(task.getTaskType().toString());
     }
 

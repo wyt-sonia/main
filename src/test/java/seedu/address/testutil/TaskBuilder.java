@@ -23,6 +23,7 @@ public class TaskBuilder {
     public static final double DEFAULT_TASKWEIGHT = 45.0;
     public static final LocalDateTime[] DEFAULT_DATETIME = {TimeParser.parseDateTime("23:59 12/12/2020"),
         TimeParser.parseDateTime("23:59 10/10/2020")};
+    public static final LocalDateTime DEFAULT_CREATION_DATETIME = LocalDateTime.now();
 
     private Module module;
     private TaskType taskType;
@@ -32,6 +33,7 @@ public class TaskBuilder {
     private TaskStatus taskStatus;
     private LocalDateTime[] dateTimes;
     private String estimatedTimeCost;
+    private LocalDateTime creationDateTime;
 
     public TaskBuilder() {
         module = new Module(DEFAULT_MODULE, DEFAULT_MODULE);
@@ -42,7 +44,7 @@ public class TaskBuilder {
         taskStatus = DEFAULT_TASKSTATUS;
         dateTimes = DEFAULT_DATETIME;
         estimatedTimeCost = DEFAULT_ESTIMATEDTIME;
-
+        creationDateTime = DEFAULT_CREATION_DATETIME;
     }
 
     /**
@@ -57,6 +59,7 @@ public class TaskBuilder {
         taskStatus = taskToCopy.getTaskStatus();
         dateTimes = taskToCopy.getDateTimes();
         estimatedTimeCost = taskToCopy.getEstimatedTimeCost();
+        creationDateTime = taskToCopy.getCreationDateTime();
     }
 
     /**
@@ -72,7 +75,7 @@ public class TaskBuilder {
      */
     public Task build() {
         return new Task(module, taskType, taskName, taskDescription, weight, taskStatus,
-            dateTimes, estimatedTimeCost);
+            dateTimes, estimatedTimeCost, creationDateTime);
     }
 
 }
