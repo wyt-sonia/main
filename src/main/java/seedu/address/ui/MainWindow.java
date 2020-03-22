@@ -216,7 +216,6 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleShowCalendar() {
         toggleHolder();
-        taskListPanelPlaceholder.getChildren().clear();
         CalendarBox calendar = new CalendarBox(logic);
         taskListPanelPlaceholder.getChildren().add(calendar.getRoot());
     }
