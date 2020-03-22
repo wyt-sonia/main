@@ -33,7 +33,6 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-
     private TaskListPanel taskListPanel;
     private TaskSummaryPanel taskSummaryPanel;
     private DueSoonListPanel dueSoonListPanel;
