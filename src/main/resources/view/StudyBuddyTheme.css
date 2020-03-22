@@ -189,6 +189,75 @@
     -fx-text-fill: #3c2e2c;
 }
 
+/* task types style */
+.assignment_lbl,
+.quiz_lbl,
+.presentation_lbl,
+.meeting_lbl,
+.exam_lbl,
+.others_lbl{
+    -fx-background-radius: 4;
+	-fx-text-fill: white !important;
+	-fx-label-padding: 0.2em 0.5em 0.2em 0.5em;
+}
+
+.assignment_lbl {
+    -fx-background-color: #ec7561;
+}
+
+.quiz_lbl {
+    -fx-background-color: #498da4;
+}
+
+.presentation_lbl {
+    -fx-background-color: #a56a91;
+}
+
+.meeting_lbl {
+    -fx-background-color: #609369;
+}
+
+.exam_lbl {
+    -fx-background-color: #bf5252;
+}
+
+.others_lbl {
+    -fx-background-color: #5fb2ce;
+}
+
+
+
+/* task status style */
+.pending_status,
+.done_status,
+.due_soon_status,
+.overdue_status,
+.important_status {
+    -fx-background-radius: 4;
+	-fx-text-fill: white !important;
+	-fx-label-padding: 0.2em 0.5em 0.2em 0.5em;
+}
+
+/* for task status: done */
+.done_status {
+    -fx-background-color: #478e47;
+}
+
+/* for task status: pending */
+.pending_status {
+    -fx-background-color: #337ab7;
+}
+
+/* for task status: due soon */
+.due_soon_status {
+    -fx-background-color: #f0ad4e;
+}
+
+/* for task status: overdue */
+.overdue_status {
+    -fx-background-color: #d9534f;
+}
+
 /*
 .label {
     -fx-font-size: 11pt;

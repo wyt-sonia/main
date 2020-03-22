@@ -13,6 +13,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
+import seedu.address.model.task.TaskStatus;
 
 /**
  * An Immutable AddressBook that is serializable to JSON format.
@@ -20,10 +21,10 @@ import seedu.address.model.task.Task;
 @JsonRootName(value = "addressBook")
 class JsonSerializableAddressBook {
 
-    private static final String MESSAGE_DUPLICATE_TASK = "Task list contains duplicate task(s).";
-    private static final String MESSAGE_DUPLICATE_ARCHIVED_TASK = "Archived contains duplicate task(s).";
+    //private static final String MESSAGE_DUPLICATE_TASK = "Task list contains duplicate task(s).";
+    //private static final String MESSAGE_DUPLICATE_ARCHIVED_TASK = "Archived contains duplicate task(s).";
     private static final String MESSAGE_DUPLICATE_MODULES = "Module List contains duplicate module(s).";
-    private static final String MESSAGE_DUPLICATE_DUE_SOON_TASK = "Due soon list contains duplicate task(s).";
+    //private static final String MESSAGE_DUPLICATE_DUE_SOON_TASK = "Due soon list contains duplicate task(s).";
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedTask> archivedTasks = new ArrayList<>();
@@ -63,24 +64,17 @@ class JsonSerializableAddressBook {
         AddressBook addressBook = new AddressBook();
         for (JsonAdaptedTask jsonAdaptedTask : tasks) {
             Task task = jsonAdaptedTask.toModelType();
-            if (addressBook.hasTask(task)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_TASK);
+            if (task.isStatusExpired()) {
+                task.freshStatus();
             }
             addressBook.addTask(task);
+            if (task.getTaskStatus().equals(TaskStatus.DUE_SOON)) {
+                addressBook.addDueSoonTask(task);
+            }
         }
         for (JsonAdaptedTask jsonAdaptedTask : archivedTasks) {
             Task task = jsonAdaptedTask.toModelType();
-            if (addressBook.hasTask(task)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_ARCHIVED_TASK);
-            }
             addressBook.addArchivedTask(task);
-        }
-        for (JsonAdaptedTask jsonAdaptedTask : tasks) {
-            Task task = jsonAdaptedTask.toModelType();
-            /*if (addressBook.hasTask(task)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_DUE_SOON_TASK);
-            }*/
-            addressBook.addDueSoonTask(task);
         }
         for (JsonAdaptedModule jsonAdaptedModule : modules) {
             Module module = jsonAdaptedModule.toModelType();

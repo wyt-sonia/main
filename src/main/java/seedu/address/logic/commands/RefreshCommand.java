@@ -10,12 +10,13 @@ import seedu.address.model.task.Task;
 /**
  * Archives an entry in the address book.
  */
-public class DueSoonRefreshCommand extends Command {
+public class RefreshCommand extends Command {
 
-    public static final String MESSAGE_USAGE = "Refreshes the tasks that are due soon";
-    public static final String MESSAGE_DUE_SOON_TASK_SUCCESS = "Tasks due soon are displayed";
+    public static final String MESSAGE_USAGE = "Refreshes the tasks and update their status";
+    public static final String MESSAGE_DUE_SOON_TASK_SUCCESS = "Tasks' status are updated and "
+        + "tasks due soon are displayed";
 
-    public DueSoonRefreshCommand() {
+    public RefreshCommand() {
 
     }
 
@@ -26,6 +27,13 @@ public class DueSoonRefreshCommand extends Command {
 
         for (int i = 0; i < lastShownList.size(); i++) {
             Task task = lastShownList.get(i);
+            boolean isStatusExpired = task.isStatusExpired();
+            if (isStatusExpired) {
+                Task temp = task;
+                model.deleteTask(task);
+                temp.freshStatus();
+                model.addTask(temp);
+            }
             if (task.isDueSoon()) {
                 if (model.getFilteredDueSoonTaskList().contains(task)) {
                     continue;
@@ -47,7 +55,7 @@ public class DueSoonRefreshCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof DueSoonRefreshCommand); // state check
+            || (other instanceof RefreshCommand); // state check
     }
 
 }

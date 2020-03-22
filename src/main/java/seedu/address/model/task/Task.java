@@ -31,12 +31,15 @@ public class Task implements Comparable<Task> {
     private double weight;
     private TaskStatus taskStatus;
     private LocalDateTime[] dateTimes;
+    private LocalDateTime creationDateTime;
     private String estimatedTimeCost;
     private DateFormat df = null;
     private Date dateObj = null;
+    private boolean duplicate = false;
 
     public Task(Module module, TaskType taskType, String taskName, String taskDescription, double weight,
-                TaskStatus taskStatus, LocalDateTime[] dateTimes, String estimatedTimeCost) {
+                TaskStatus taskStatus, LocalDateTime[] dateTimes, String estimatedTimeCost,
+                LocalDateTime creationDateTime) {
         this.module = module; //not covered yet
         this.taskType = taskType;
         this.taskName = taskName;
@@ -45,6 +48,7 @@ public class Task implements Comparable<Task> {
         this.taskStatus = taskStatus;
         this.dateTimes = dateTimes;
         this.estimatedTimeCost = estimatedTimeCost; //not covered yet
+        this.creationDateTime = creationDateTime;
     }
 
     public Task() {
@@ -77,6 +81,63 @@ public class Task implements Comparable<Task> {
             break;
         default:
         }
+    }
+
+    /**
+     * Updates the tasks status accordingly.
+     */
+    public void freshStatus() {
+        if (this.taskStatus != null && !this.taskStatus.equals(TaskStatus.FINISHED)) {
+            LocalDateTime now = LocalDateTime.now();
+            if (this.isDueSoon() && !this.taskStatus.equals(TaskStatus.DUE_SOON)) {
+                this.taskStatus = TaskStatus.DUE_SOON;
+                return;
+            }
+            if (!this.isDueSoon() && this.taskStatus.equals(TaskStatus.DUE_SOON)) {
+                if (this.dateTimes[0].isBefore(now) && !this.taskStatus.equals(TaskStatus.OVERDUE)) {
+                    this.taskStatus = TaskStatus.OVERDUE;
+                    return;
+                }
+                if (this.dateTimes[0].isAfter(now) && !this.taskStatus.equals(TaskStatus.PENDING)) {
+                    this.taskStatus = TaskStatus.PENDING;
+                    return;
+                }
+            }
+
+        }
+    }
+
+    /**
+     * Checks whether the status of the task is expired.
+     *
+     * Returns true if the status of the task is expired.
+     */
+    public boolean isStatusExpired() {
+        boolean result = false;
+        if (this.taskStatus != null && !this.taskStatus.equals(TaskStatus.FINISHED)) {
+            LocalDateTime now = LocalDateTime.now();
+            if (this.dateTimes[0].isBefore(now) && !this.taskStatus.equals(TaskStatus.OVERDUE)) {
+                result = true;
+            }
+            if (this.dateTimes[0].isAfter(now) && this.taskStatus.equals(TaskStatus.OVERDUE)) {
+                result = true;
+            }
+            if (this.isDueSoon() && !this.taskStatus.equals(TaskStatus.DUE_SOON)) {
+                result = true;
+            }
+            if (!this.isDueSoon() && this.taskStatus.equals(TaskStatus.DUE_SOON)) {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    public boolean isDuplicate() {
+        return duplicate;
+    }
+
+    public void setDuplicate(boolean duplicate) {
+        this.duplicate = duplicate;
     }
 
     public TaskType getTaskType() {
@@ -112,6 +173,12 @@ public class Task implements Comparable<Task> {
     }
 
     public TaskStatus getTaskStatus() {
+        if (taskStatus == null) {
+            taskStatus = TaskStatus.PENDING;
+            if (isStatusExpired()) {
+                freshStatus();
+            }
+        }
         return taskStatus;
     }
 
@@ -146,8 +213,17 @@ public class Task implements Comparable<Task> {
         this.estimatedTimeCost = estimatedTimeCost;
     }
 
+    public LocalDateTime getCreationDateTime() {
+        return creationDateTime;
+    }
+
+    public void setCreationDateTime(LocalDateTime creationDateTime) {
+        this.creationDateTime = creationDateTime;
+    }
+
     /**
      * Checks if the task is due soon (next 7 days).
+     *
      * @return true if it is due soon, else false
      */
     public boolean isDueSoon() {
@@ -160,11 +236,7 @@ public class Task implements Comparable<Task> {
             e.printStackTrace();
         }
         float daysBetween = (difference / DIVISOR);
-        if (daysBetween <= 7) {
-            return true;
-        } else {
-            return false;
-        }
+        return daysBetween <= 7 && daysBetween >= 0;
     }
 
     @Override

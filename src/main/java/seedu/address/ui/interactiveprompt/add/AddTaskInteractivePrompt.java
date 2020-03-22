@@ -31,6 +31,7 @@ import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
  */
 public class AddTaskInteractivePrompt extends InteractivePrompt {
     static final String END_OF_COMMAND_MSG = "Task added successfully!";
+    static final String END_OF_COMMAND_DUPLICATE_MSG = "Task will not be added! Key in your next command :)";
     static final String QUIT_COMMAND_MSG = "Successfully quited from add task command.";
 
     protected Task task;
@@ -70,13 +71,9 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             currentTerm = InteractivePromptTerms.TASK_NAME;
             lastTerm = InteractivePromptTerms.INIT;
             terms.add(lastTerm);
-
             /**
              * TEMPORARY PLACEHOLDER TO ENABLE FILE SAVE.
              * REMOVE task.setAttribute once you've create methods to handle these....
-             */
-
-            /**
              * By default, Task will go to Module code AA0000. To add to a specific module, use other commands.
              */
 
@@ -91,10 +88,9 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         case TASK_NAME:
             try {
                 userInput = AddTaskCommandParser.parseName(userInput);
-
                 this.reply = "The name of task is set to: " + userInput + ".\n"
-                    + "Please choose the task type:\n"
-                    + TaskType.getTypeString();
+                        + "Please choose the task type:\n"
+                        + TaskType.getTypeString();
 
                 task.setTaskName(userInput);
                 currentTerm = InteractivePromptTerms.TASK_TYPE;
@@ -113,7 +109,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 userInput = taskType.toString();
 
                 this.reply = "The type of task is set to: " + userInput + ".\n"
-                    + "Please enter the deadline with format: ";
+                        + "Please enter the deadline with format: ";
                 if (taskType.equals(TaskType.Assignment)) {
                     this.reply += "HH:mm dd/MM/yyyy";
                 } else {
@@ -139,12 +135,12 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                     userInput = TimeParser.getDateTimeString(dateTimes[0]);
                 } else {
                     userInput = TimeParser.getDateTimeString(dateTimes[0])
-                        + "-" + TimeParser.getDateTimeString(dateTimes[1]);
+                            + "-" + TimeParser.getDateTimeString(dateTimes[1]);
                 }
 
                 reply = "The date and time is set to: " + userInput + "\n"
-                    + "Press enter again to add the task:\n"
-                    + task.getTaskName() + " " + task.getTaskType().toString() + " " + task.getTimeString();
+                        + "Press enter again to add the task:\n"
+                        + task.getTaskName() + " " + task.getTaskType().toString() + " " + task.getTimeString();
 
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
                 lastTerm = InteractivePromptTerms.TASK_DATETIME;
@@ -156,16 +152,38 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
 
         case READY_TO_EXECUTE:
             try {
+                task.setCreationDateTime(LocalDateTime.now());
                 AddTaskCommand addTaskCommand = new AddTaskCommand(task);
                 logic.executeCommand(addTaskCommand);
-                //DueSoonTaskCommand dueSoonTaskCommand = new DueSoonTaskCommand(task);
-                //logic.executeCommand(dueSoonTaskCommand);
-                reply = "Task added! Key in your next command :)";
-                endInteract(END_OF_COMMAND_MSG);
-            } catch (CommandException | ParseException ex) {
-                reply = ex.getMessage();
+                if (task.isDuplicate()) {
+                    reply = "This is a duplicate task. Are you sure you would like to proceed?\n"
+                            + "Please enter yes or no.";
+                    currentTerm = InteractivePromptTerms.ADD_DUPLICATE;
+                } else {
+                    endInteract(END_OF_COMMAND_MSG);
+                }
+            } catch (ParseException | CommandException e) {
+                e.printStackTrace();
             }
 
+            break;
+
+        case ADD_DUPLICATE:
+            if (userInput.equalsIgnoreCase("yes")) {
+                AddTaskCommand addDuplicateTaskCommand = new AddTaskCommand(task);
+                try {
+                    logic.executeCommand(addDuplicateTaskCommand);
+                    endInteract(END_OF_COMMAND_MSG);
+                } catch (CommandException e) {
+                    e.printStackTrace();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            } else if (userInput.equalsIgnoreCase("no")) {
+                endInteract(END_OF_COMMAND_DUPLICATE_MSG);
+            } else {
+                reply = (new AddTaskCommandException("wrongDuplicateFormat")).getErrorMessage();
+            }
             break;
 
         case TASK_MODULE:

@@ -58,7 +58,7 @@ public enum TaskType {
         case "exam":
             result = Exam;
             break;
-        case "other":
+        case "others":
             result = Others;
             break;
         default:

@@ -7,13 +7,13 @@ import javafx.scene.layout.Region;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.ui.interactiveprompt.DueSoonTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.ExitTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.FindTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.HelpInteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
 import seedu.address.ui.interactiveprompt.InvalidInputInteractivePrompt;
 import seedu.address.ui.interactiveprompt.ListTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.RefreshTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.SortTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.add.AddTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.add.CreateModuleInteractivePrompt;
@@ -31,7 +31,7 @@ public class CommandBox extends UiPart<Region> {
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes =
         {"add", "edit", "delete", "archive", "done", "delete duplicates",
-            "bye", "sort", "due soon", "help", "create mods", "find", "list"};
+            "bye", "sort", "refresh", "help", "create mods", "find", "list"};
     private final CommandExecutor commandExecutor;
     private InteractivePrompt currentInteractivePrompt;
     @FXML
@@ -89,8 +89,8 @@ public class CommandBox extends UiPart<Region> {
                 case "find":
                     currentInteractivePrompt = new FindTaskInteractivePrompt();
                     break;
-                case "due soon":
-                    currentInteractivePrompt = new DueSoonTaskInteractivePrompt();
+                case "refresh":
+                    currentInteractivePrompt = new RefreshTaskInteractivePrompt();
                     break;
                 case "list":
                     currentInteractivePrompt = new ListTaskInteractivePrompt();

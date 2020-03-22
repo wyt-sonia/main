@@ -5,7 +5,9 @@ package seedu.address.model.task;
  */
 public enum TaskStatus {
     PENDING,
-    FINISHED;
+    FINISHED,
+    DUE_SOON,
+    OVERDUE;
 
     public static TaskStatus getStatus(String status) {
         TaskStatus result = null;
@@ -15,6 +17,12 @@ public enum TaskStatus {
             break;
         case "finished":
             result = FINISHED;
+            break;
+        case "due soon":
+            result = DUE_SOON;
+            break;
+        case "overdue":
+            result = OVERDUE;
             break;
         default:
         }
@@ -27,10 +35,22 @@ public enum TaskStatus {
      * @return string, either "pending" or "finished"
      */
     public String convertToString() {
-        if (this.equals(PENDING)) {
-            return "Pending";
-        } else {
-            return "Finished";
+        String result = "";
+        switch (this) {
+        case PENDING:
+            result = "pending";
+            break;
+        case FINISHED:
+            result = "finished";
+            break;
+        case DUE_SOON:
+            result = "due soon";
+            break;
+        case OVERDUE:
+            result = "overdue";
+            break;
+        default:
         }
+        return result;
     }
 }

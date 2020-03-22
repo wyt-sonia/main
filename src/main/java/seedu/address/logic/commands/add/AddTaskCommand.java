@@ -19,7 +19,7 @@ public class AddTaskCommand extends Command {
         + "Parameters: TaskName, TaskType, TaskDateTime";
 
     public static final String MESSAGE_SUCCESS = "New Task added: %1$s";
-    public static final String MESSAGE_DUPLICATE_TASK = "This Task already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_TASK = "This Task already exists. Are you sure you want to proceed?";
 
     private final Task toAdd;
 
@@ -35,12 +35,15 @@ public class AddTaskCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (toAdd.isDueSoon()) {
-            model.addDueSoonTask(toAdd);
+        if (model.hasTask(toAdd)) {
+            if (!toAdd.isDuplicate()) {
+                toAdd.setDuplicate(true);
+                return new CommandResult(String.format(MESSAGE_DUPLICATE_TASK, toAdd));
+            }
         }
 
-        if (model.hasTask(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_TASK);
+        if (toAdd.isDueSoon()) {
+            model.addDueSoonTask(toAdd);
         }
 
         model.addTask(toAdd);
