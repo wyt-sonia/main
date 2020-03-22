@@ -13,6 +13,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
+import seedu.address.model.task.TaskStatus;
 
 /**
  * An Immutable AddressBook that is serializable to JSON format.
@@ -63,15 +64,17 @@ class JsonSerializableAddressBook {
         AddressBook addressBook = new AddressBook();
         for (JsonAdaptedTask jsonAdaptedTask : tasks) {
             Task task = jsonAdaptedTask.toModelType();
+            if (task.isStatusExpired()) {
+                task.freshStatus();
+            }
             addressBook.addTask(task);
+            if (task.getTaskStatus().equals(TaskStatus.DUE_SOON)) {
+                addressBook.addDueSoonTask(task);
+            }
         }
         for (JsonAdaptedTask jsonAdaptedTask : archivedTasks) {
             Task task = jsonAdaptedTask.toModelType();
             addressBook.addArchivedTask(task);
-        }
-        for (JsonAdaptedTask jsonAdaptedTask : tasks) {
-            Task task = jsonAdaptedTask.toModelType();
-            addressBook.addDueSoonTask(task);
         }
         for (JsonAdaptedModule jsonAdaptedModule : modules) {
             Module module = jsonAdaptedModule.toModelType();

@@ -14,17 +14,17 @@ import static seedu.address.ui.interactiveprompt.InteractivePromptType.DUE_SOON_
 import java.text.ParseException;
 import java.util.ArrayList;
 
-import seedu.address.logic.commands.DueSoonRefreshCommand;
+import seedu.address.logic.commands.RefreshCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.DueSoonRefreshCommandException;
 
 /**
  * pending.
  */
-public class DueSoonTaskInteractivePrompt extends InteractivePrompt {
+public class RefreshTaskInteractivePrompt extends InteractivePrompt {
 
-    static final String END_OF_COMMAND_MSG = "Refreshed tasks that are due soon!";
-    static final String QUIT_COMMAND_MSG = "Successfully quited from refresh due soon command.";
+    static final String END_OF_COMMAND_MSG = "Refreshed tasks' status and tasks due soon list is updated!";
+    static final String QUIT_COMMAND_MSG = "Successfully quited from refresh command.";
 
     private String reply;
     private String userInput;
@@ -32,7 +32,7 @@ public class DueSoonTaskInteractivePrompt extends InteractivePrompt {
     private InteractivePromptTerms lastTerm;
     private ArrayList<InteractivePromptTerms> terms;
 
-    public DueSoonTaskInteractivePrompt() {
+    public RefreshTaskInteractivePrompt() {
         super();
         this.interactivePromptType = DUE_SOON_TASK;
         this.reply = "";
@@ -47,26 +47,13 @@ public class DueSoonTaskInteractivePrompt extends InteractivePrompt {
         if (userInput.equals("quit")) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
-        } else if (userInput.equals("back")) {
-            if (lastTerm != null) { //in the beginning it is null
-                terms.remove(terms.size() - 1);
-                currentTerm = lastTerm;
-                if (lastTerm.equals(InteractivePromptTerms.INIT)) {
-                    lastTerm = null;
-                } else {
-                    lastTerm = terms.get(terms.size() - 1);
-                }
-                userInput = "";
-            } else {
-                this.reply = "Please type quit to exit from this command.";
-            }
         }
 
         switch (currentTerm) {
         case INIT:
             try {
-                reply = "The tasks that are due soon will be refreshed.\n "
-                        + " Please press enter again to make the desired changes.";
+                reply = "The tasks list will be refreshed.\n "
+                    + " Please press enter again to make the desired changes.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
                 lastTerm = InteractivePromptTerms.INIT;
                 terms.add(lastTerm);
@@ -77,7 +64,7 @@ public class DueSoonTaskInteractivePrompt extends InteractivePrompt {
 
         case READY_TO_EXECUTE:
             try {
-                DueSoonRefreshCommand dueSoonRefreshCommand = new DueSoonRefreshCommand();
+                RefreshCommand dueSoonRefreshCommand = new RefreshCommand();
                 logic.executeCommand(dueSoonRefreshCommand);
                 super.setEndOfCommand(true);
                 endInteract(END_OF_COMMAND_MSG);
@@ -93,14 +80,14 @@ public class DueSoonTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void interruptInteract() {
-
-    }
-
-    @Override
     public void endInteract(String msg) {
         this.reply = msg;
         super.setEndOfCommand(true);
+    }
+
+    @Override
+    public void interruptInteract() {
+
     }
 
     @Override
