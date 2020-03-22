@@ -6,8 +6,19 @@
 }
 
 @font-face {
+    font-family: 'AL_Nevrada_PersonalUseOnly';
+    font-weight: bold;
+    src: url('../font/AL_Nevrada_PersonalUseOnly.ttf');
+}
+
+@font-face {
+    font-family: 'Beatrix Antiqua Medium';
+    src: url('../font/Beatrix-Antiqua-Medium-trial.ttf');
+}
+
+@font-face {
     font-family: 'Beatrix Antiqua light';
-    src: url('../font/Beatrix-Antiqua-Light-trial.ttf.ttf');
+    src: url('../font/Beatrix-Antiqua-Light-trial.ttf');
 }
 
 @font-face {
@@ -21,6 +32,16 @@
     -fx-font-size: 36pt;
     -fx-text-fill: rgba(123, 87, 69, 1);
     -fx-text-weight: bold;
+}
+
+.index_lbl {
+    -fx-font-family: 'AL_Nevrada_PersonalUseOnly';
+    -fx-font-size: 12pt;
+}
+
+.taskName_lbl {
+    -fx-font-family: 'Beatrix Antiqua Medium';
+    -fx-font-size: 12pt;
 }
 
 /* main window*/
@@ -224,8 +245,6 @@
 .others_lbl {
     -fx-background-color: #5fb2ce;
 }
-
-
 
 /* task status style */
 .pending_status,
