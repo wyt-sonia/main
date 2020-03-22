@@ -1,6 +1,11 @@
 @startuml
 !include style.puml
 
+skinparam arrowColor #black
+skinparam SequenceBoxBorderColor #black
+skinparam SequenceLifeLineBorderColor #black
+
+
 box UI UI_COLOR_T1
 participant ":DueSoonTaskInteractivePrompt" as DueSoonTaskInteractivePrompt UI_COLOR
 end box

@@ -21,7 +21,7 @@ By: `Team Drag&Drop`      Since: `Jan 2020`
 
 StudyBuddy is for an application designed for those who *prefer to use a desktop app for managing module related tasks*.
 More importantly, StudyBuddy is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
-If you can type fast, IVLE can get your module management done faster than traditional GUI apps.
+If you can type fast, Study Buddy can get your module management done faster than traditional GUI apps.
 Interested?
 Jump to the <<Quick Start>> to get started.
 Enjoy!
@@ -29,21 +29,42 @@ Enjoy!
 == Quick Start
 
 . Ensure you have Java `11` or above installed in your Computer.
-. Download the latest `addressbook.jar` link:{repoURL}/releases[here].
-. Copy the file to the folder you want to use as the home folder for your Address Book.
+. Download the latest `studybuddy.jar` link:{repoURL}/releases[here].
+. Copy the file to the folder you want to use as the home folder for your Study Buddy.
 . Double-click the file to start the app.
 The GUI should appear in a few seconds.
 +
 image::Ui.png[width="790"]
 +
 . Type the command in the command box and press kbd:[Enter] to execute it. +
-e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
+e.g. typing *`help`* and pressing kbd:[Enter] will display a list of commands you can use.
 . Some example commands you can try:
 
-* *`list`* : lists all contacts
-* **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : adds a contact named `John Doe` to the Address Book.
-* **`delete`**`3` : deletes the 3rd contact shown in the current list
-* *`exit`* : exits the app
+**  To list all tasks
+
+    list
+
+** To add a task named `Economics Homework` to the list
+
+    add
+
+    Economics Homework
+
+    1
+
+    18:00 23/03/2020
+
+** To delete a task at index 1 in the list
+
+    delete
+
+    1
+
+** To exit the application
+
+    bye
+
+    yes
 
 . Refer to <<Features>> for details of each command.
 
