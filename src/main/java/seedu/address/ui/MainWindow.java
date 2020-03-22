@@ -34,7 +34,6 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private TaskListPanel taskListPanel;
-    private TaskListPanel archiveListPanel;
     private TaskSummaryPanel taskSummaryPanel;
     private DueSoonListPanel dueSoonListPanel;
     private ResultDisplay resultDisplay;
@@ -210,8 +209,15 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleShowArchivedTasks() {
         toggleHolder();
-        archiveListPanel = new TaskListPanel(logic.getFilteredArchivedTaskList());
+        TaskListPanel archiveListPanel = new TaskListPanel(logic.getFilteredArchivedTaskList());
         taskListPanelPlaceholder.getChildren().add(archiveListPanel.getRoot());
+    }
+
+    @FXML
+    private void handleShowCalendar() {
+        toggleHolder();
+        CalendarBox calendar = new CalendarBox(logic);
+        taskListPanelPlaceholder.getChildren().add(calendar.getRoot());
     }
 
     public TaskListPanel getPersonListPanel() {

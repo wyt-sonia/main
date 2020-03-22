@@ -85,11 +85,11 @@
     -fx-opacity: 1;
 }
 
-.menu-button: showing, .menu-button: hover {
+.menu-button:showing, .menu-button:hover {
     -fx-background-color: #b9b2a7;
 }
 
-.menu-item: {
+.menu-item:showing {
     -fx-background-color: rgba(196, 177, 152, 1);
 }
 
@@ -98,12 +98,12 @@
     -fx-background-color: rgba(196, 177, 152, 1);
 }
 
-.menu-item: showing, .menu-item: hover {
+.menu-item:showing, .menu-item:hover {
     -fx-background-color: #e6dbd2;
     -fx-text-fill: #7b5745;
 }
 
-.menu-item: showing .label, .menu-item: hover .label {
+.menu-item:showing .label, .menu-item:hover .label {
     -fx-text-fill: #7b5745;
 }
 
