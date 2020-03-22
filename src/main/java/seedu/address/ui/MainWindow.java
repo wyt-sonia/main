@@ -33,14 +33,9 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-<<<<<<< HEAD
 
-    private TaskListPanel personListPanel;
-=======
     private TaskListPanel taskListPanel;
-    private TaskListPanel archiveListPanel;
     private TaskSummaryPanel taskSummaryPanel;
->>>>>>> 2aca3c6e4e8d2cf0fd65cd4c85143902e15e4593
     private DueSoonListPanel dueSoonListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
@@ -214,21 +209,17 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private void handleShowArchivedTasks() {
-<<<<<<< HEAD
-        TaskListPanel archiveListPanel = new TaskListPanel(logic.getFilteredArchivedTaskList());
-        personListPanelPlaceholder.getChildren().add(archiveListPanel.getRoot());
-=======
+
         toggleHolder();
-        archiveListPanel = new TaskListPanel(logic.getFilteredArchivedTaskList());
+        TaskListPanel archiveListPanel = new TaskListPanel(logic.getFilteredArchivedTaskList());
         taskListPanelPlaceholder.getChildren().add(archiveListPanel.getRoot());
->>>>>>> 2aca3c6e4e8d2cf0fd65cd4c85143902e15e4593
     }
 
     @FXML
     private void handleShowCalendar() {
-        personListPanelPlaceholder.getChildren().clear();
+        taskListPanelPlaceholder.getChildren().clear();
         CalendarBox calendar = new CalendarBox(logic);
-        personListPanelPlaceholder.getChildren().add(calendar.getRoot());
+        taskListPanelPlaceholder.getChildren().add(calendar.getRoot());
     }
 
     public TaskListPanel getPersonListPanel() {
