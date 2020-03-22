@@ -8,6 +8,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
@@ -32,8 +33,9 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-
-    private TaskListPanel personListPanel;
+    private TaskListPanel taskListPanel;
+    private TaskListPanel archiveListPanel;
+    private TaskSummaryPanel taskSummaryPanel;
     private DueSoonListPanel dueSoonListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
@@ -45,7 +47,10 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private HBox taskListHolder;
+
+    @FXML
+    private StackPane taskListPanelPlaceholder;
 
     @FXML
     private StackPane dueSoonListPanelPlaceholder;
@@ -55,6 +60,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private StackPane taskSummaryHolder;
 
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
@@ -114,8 +122,13 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personListPanel = new TaskListPanel(logic.getFilteredTaskList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
+        taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+
+        taskSummaryPanel = new TaskSummaryPanel(logic.getFilteredTaskList());
+        taskSummaryHolder.getChildren().add(taskSummaryPanel.getRoot());
+        taskSummaryHolder.setVisible(false);
+        taskSummaryHolder.setManaged(false);
 
         dueSoonListPanel = new DueSoonListPanel(logic.getFilteredDueSoonTaskList());
         dueSoonListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
@@ -154,6 +167,17 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Shows the task summaries.
+     */
+    @FXML
+    public void handleShowTaskSummary() {
+        if (!taskSummaryHolder.isManaged()) {
+            toggleTaskSummaryHolder();
+            toggleTaskListHolder();
+        }
+    }
+
     void show() {
         primaryStage.show();
     }
@@ -172,10 +196,10 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private void handleShowAllTasks() {
-        personListPanel = new TaskListPanel(logic.getFilteredTaskList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        toggleHolder();
+        taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
+        taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
     }
-
 
     @FXML
     private void handleDueSoonTasks() {
@@ -186,18 +210,18 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleShowArchivedTasks() {
         TaskListPanel archiveListPanel = new TaskListPanel(logic.getFilteredArchivedTaskList());
-        personListPanelPlaceholder.getChildren().add(archiveListPanel.getRoot());
+        taskListPanelPlaceholder.getChildren().add(archiveListPanel.getRoot());
     }
 
     @FXML
     private void handleShowCalendar() {
-        personListPanelPlaceholder.getChildren().clear();
+        taskListPanelPlaceholder.getChildren().clear();
         CalendarBox calendar = new CalendarBox(logic);
-        personListPanelPlaceholder.getChildren().add(calendar.getRoot());
+        taskListPanelPlaceholder.getChildren().add(calendar.getRoot());
     }
 
     public TaskListPanel getPersonListPanel() {
-        return personListPanel;
+        return taskListPanel;
     }
 
     public DueSoonListPanel getDueSoonListPanel() {
@@ -212,21 +236,6 @@ public class MainWindow extends UiPart<Stage> {
     private CommandResult executeCommand(InteractivePrompt currentInteractivePrompt, String commandText)
         throws CommandException, ParseException {
 
-        /*
-        CommandResult commandResult = logic.execute(commandText);
-        logger.info("Result: " + commandResult.getFeedbackToUser());
-        resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
-
-        if (commandResult.isShowHelp()) {
-            handleHelp();
-        }
-
-        if (commandResult.isExit()) {
-            handleExit();
-        }
-
-        return commandResult;*/
-
         currentInteractivePrompt.setLogic(logic);
         String reply = currentInteractivePrompt.interact(commandText);
         resultDisplay.setFeedbackToUser(reply);
@@ -238,5 +247,41 @@ public class MainWindow extends UiPart<Stage> {
             return new CommandResult("Set current interactive to null", false, false);
         }
         return null;
+    }
+
+    /**
+     * Toggle function wrapper.
+     */
+    private void toggleHolder() {
+        if (taskSummaryHolder.isManaged()) {
+            toggleTaskSummaryHolder();
+            toggleTaskListHolder();
+        }
+    }
+
+    /**
+     * Toggles the taskSummaryHolder's visibility.
+     */
+    private void toggleTaskSummaryHolder() {
+        if (taskSummaryHolder.isManaged()) {
+            taskSummaryHolder.setVisible(false);
+            taskSummaryHolder.setManaged(false);
+        } else {
+            taskSummaryHolder.setManaged(true);
+            taskSummaryHolder.setVisible(true);
+        }
+    }
+
+    /**
+     * Toggles the taskListHolder's visibility.
+     */
+    private void toggleTaskListHolder() {
+        if (taskListHolder.isManaged()) {
+            taskListHolder.setVisible(false);
+            taskListHolder.setManaged(false);
+        } else {
+            taskListHolder.setManaged(true);
+            taskListHolder.setVisible(true);
+        }
     }
 }

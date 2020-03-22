@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="498.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+    <PieChart fx:id="task_type_summary" VBox.vgrow="ALWAYS" />
+    <PieChart fx:id="task_status_summary" VBox.vgrow="ALWAYS" />
+</VBox>

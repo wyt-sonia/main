@@ -2,7 +2,12 @@
 
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.StackPane?>
-<StackPane xmlns:fx="http://javafx.com/fxml/1" styleClass="stack-pane" xmlns="http://javafx.com/javafx/8">
-    <TextField fx:id="commandTextField" onAction="#handleCommandEntered" promptText="Enter command here..."/>
+<?import javafx.scene.text.Font?>
+<StackPane xmlns:fx="http://javafx.com/fxml/1" styleClass="stack-pane" xmlns="http://javafx.com/javafx/10.0.2-internal">
+    <TextField fx:id="commandTextField" maxHeight="40.0" onAction="#handleCommandEntered" prefHeight="40.0"
+               promptText="Enter command here...">
+        <font>
+            <Font size="15.0"/>
+        </font>
+    </TextField>
 </StackPane>
-
