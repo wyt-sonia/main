@@ -68,7 +68,7 @@
     -fx-background-color: #b9b2a7;
 }
 
-.menu-item:showing{
+.menu-item:showing {
     -fx-background-color: rgba(196, 177, 152, 1);
 }
 
