@@ -211,7 +211,7 @@ If there are no such inconsistencies, the due soon command will not make any cha
 
 Activity diagram:
 
-image:DueSoonActivityDiagram.png[width = "400", length = "600"]
+image::DueSoonActivityDiagram.png[width = "400", length = "600"]
 
 Sequence diagram:
 
@@ -273,13 +273,12 @@ Refer to the guide <<DevOps#, here>>.
 
 *Target user profile*:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
+* has a need to manage a significant number of tasks for various modules
+* prefers desktop apps over other types
 * can type fast
 * prefers typing over mouse input
-* is reasonably comfortable using CLI apps
 
-*Value proposition*: manage contacts faster than a typical mouse/GUI driven app
+*Value proposition*: manages tasks faster than a typical mouse/<<GUI,GUI>> driven app
 
 [appendix]
 == User Stories
@@ -291,17 +290,25 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |Priority |As a ... |I want to ... |So that I can...
 |`* * *` |new user |see usage instructions |refer to instructions when I forget how to use the App
 
+|`* * *` |user |view a list of my tasks | know what I have pending
+
 |`* * *` |user |add a new task |
 
 |`* * *` |user |delete a task |remove entries that I no longer need
+
+|`* * *` |user |mark a task as completed| update my list of pending tasks
 
 |`* * *` |user |find a task by keyword |locate details of a task without having to go through the entire list
 
 |`* *` |user with many deadlines |sort tasks in order of deadlines |organise my list by priority
 
-|=======================================================================
+|`* *` |user |archive tasks |separate the tasks that are not applicable right now
 
-_{More to be added}_
+|`* *` |user |delete duplicate tasks | easily filter out any duplicate data in my list
+
+|`* *` |user who likes organization |view all my tasks that are due soon|know what to focus on in the next week
+
+|=======================================================================
 
 [appendix]
 == Use Cases
@@ -317,7 +324,9 @@ _{More to be added}_
 1. User requests to list tasks
 2. Study Buddy shows a list of tasks
 3. User requests to delete a specific task in the list
-4. Study Buddy deletes the task
+4. Study Buddy asks for the index
+5. User provides index
+6. Study Buddy deletes the task
 +
 Use case ends.
 
@@ -337,7 +346,6 @@ The given index is invalid.
 +
 Use case resumes at step 2.
 
-_{More to be added}_
 
 [appendix]
 == Non Functional Requirements
@@ -346,7 +354,6 @@ _{More to be added}_
 . Should be able to hold up to 1000 tasks without a noticeable sluggishness in performance for typical usage.
 . A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
-_{More to be added}_
 
 [appendix]
 == Glossary
@@ -354,6 +361,10 @@ _{More to be added}_
 [[mainstream-os]]
 Mainstream OS::
 Windows, Linux, Unix, OS-X
+[[GUI]]
+GUI::
+Graphical User Interface i.e a user interface that allows users to interact using graphical icons rather than text-based user interfaces
+
 
 [appendix]
 == Product Survey
