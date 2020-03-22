@@ -11,9 +11,9 @@ import seedu.address.model.task.Task;
 /**
  * An UI component that displays information of a {@code Person}.
  */
-public class PersonCard extends UiPart<Region> {
+public class TaskCard extends UiPart<Region> {
 
-    private static final String FXML = "PersonListCard.fxml";
+    private static final String FXML = "TaskListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -44,17 +44,63 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
 
-    public PersonCard(Task task, int displayedIndex) {
+    public TaskCard(Task task, int displayedIndex) {
         super(FXML);
         this.task = task;
+        id.setText(displayedIndex + ". ");
         taskName.setText(task.getTaskName());
         //Module.setText(task.getModule().toString());
         status.setText(task.getTaskStatus().convertToString());
-        id.setText(displayedIndex + ". ");
-        dateTime.setText("Deadline/Task Duration: " + task.getTimeString());
-        creationDateTime.setText("Creation Date & Time: "
+        renderTask(task);
+        dateTime.setText("\tDeadline/Task Duration: " + task.getTimeString());
+        creationDateTime.setText("\tCreation Date & Time: "
             + TimeParser.getDateTimeString(task.getCreationDateTime()));
         type.setText(task.getTaskType().toString());
+    }
+
+    /**
+     * Applies different css calss to different task type and status.
+     *
+     * @param task
+     */
+    private void renderTask(Task task) {
+        switch (task.getTaskStatus()) {
+        case PENDING:
+            status.getStyleClass().add("pending_status");
+            break;
+        case FINISHED:
+            status.getStyleClass().add("done_status");
+            break;
+        case DUE_SOON:
+            status.getStyleClass().add("due_soon_status");
+            break;
+        case OVERDUE:
+            status.getStyleClass().add("overdue_status");
+            break;
+        default:
+        }
+
+        switch (task.getTaskType()) {
+        case Assignment:
+            type.getStyleClass().add("assignment_lbl");
+            break;
+        case Quiz:
+            type.getStyleClass().add("quiz_lbl");
+            break;
+        case Exam:
+            type.getStyleClass().add("exam_lbl");
+            break;
+        case Meeting:
+            type.getStyleClass().add("meeting_lbl");
+            break;
+        case Presentation:
+            type.getStyleClass().add("presentation_lbl");
+            break;
+        case Others:
+            type.getStyleClass().add("others_lbl");
+            break;
+        default:
+        }
     }
 
     @Override
@@ -65,12 +111,12 @@ public class PersonCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof PersonCard)) {
+        if (!(other instanceof TaskCard)) {
             return false;
         }
 
         // state check
-        PersonCard card = (PersonCard) other;
+        TaskCard card = (TaskCard) other;
         return id.getText().equals(card.id.getText())
             && task.equals(card.task);
     }

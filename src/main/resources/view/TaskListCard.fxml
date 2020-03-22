@@ -21,25 +21,30 @@
                     </minWidth>
                 </Label>
                 <Label fx:id="taskName" styleClass="cell_big_label" text="\$first" />
-               <FlowPane fx:id="tags">
-               <children>
-                     <Label fx:id="type" styleClass="cell_small_label" text="\$type">
-                     <FlowPane.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </FlowPane.margin></Label>
-                     <Label fx:id="status" styleClass="cell_small_label" text="\$status">
-                         <FlowPane.margin>
-                            <Insets left="5.0" right="5.0" />
-                         </FlowPane.margin>
-                     </Label>
-               </children>
-            </FlowPane>
+                <FlowPane fx:id="tags">
+                    <children>
+                        <Label fx:id="type" styleClass="cell_small_label" text="\$type">
+                            <FlowPane.margin>
+                                <Insets left="5.0" right="5.0" />
+                            </FlowPane.margin>
+                        </Label>
+                        <Label fx:id="status" styleClass="cell_small_label" text="\$status">
+                            <FlowPane.margin>
+                                <Insets left="5.0" right="5.0" />
+                            </FlowPane.margin>
+                        </Label>
+                    </children>
+                </FlowPane>
+            <padding>
+               <Insets bottom="10.0" />
+            </padding>
             </HBox>
             <Label fx:id="dateTime" styleClass="cell_small_label" text="\$dateTime" />
             <Label fx:id="creationDateTime" styleClass="cell_small_label" text="\$creationDateTime" />
         </VBox>
-      <rowConstraints>
-         <RowConstraints />
-      </rowConstraints>
+      <HBox prefHeight="100.0" prefWidth="200.0" />
+        <rowConstraints>
+            <RowConstraints />
+        </rowConstraints>
     </GridPane>
 </HBox>

@@ -32,8 +32,8 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private PersonListPanel personListPanel;
-    private PersonListPanel archiveListPanel;
+    private TaskListPanel personListPanel;
+    private TaskListPanel archiveListPanel;
     private DueSoonListPanel dueSoonListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
@@ -114,7 +114,7 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredTaskList());
+        personListPanel = new TaskListPanel(logic.getFilteredTaskList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
         dueSoonListPanel = new DueSoonListPanel(logic.getFilteredDueSoonTaskList());
@@ -172,7 +172,7 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private void handleShowAllTasks() {
-        personListPanel = new PersonListPanel(logic.getFilteredTaskList());
+        personListPanel = new TaskListPanel(logic.getFilteredTaskList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
     }
 
@@ -185,11 +185,11 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private void handleShowArchivedTasks() {
-        archiveListPanel = new PersonListPanel(logic.getFilteredArchivedTaskList());
+        archiveListPanel = new TaskListPanel(logic.getFilteredArchivedTaskList());
         personListPanelPlaceholder.getChildren().add(archiveListPanel.getRoot());
     }
 
-    public PersonListPanel getPersonListPanel() {
+    public TaskListPanel getPersonListPanel() {
         return personListPanel;
     }
 
