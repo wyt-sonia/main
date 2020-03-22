@@ -1,7 +1,7 @@
 package seedu.address.ui.interactiveprompt;
 
 /**
- * pending.
+ * Terms used in Interactive Prompt to indicate the stage in the sequence of interaction.
  */
 public enum InteractivePromptTerms {
     INIT,
