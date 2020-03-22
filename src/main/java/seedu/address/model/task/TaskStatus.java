@@ -1,5 +1,7 @@
 package seedu.address.model.task;
 
+import java.util.ArrayList;
+
 /**
  * pending.
  */
@@ -8,6 +10,15 @@ public enum TaskStatus {
     FINISHED,
     DUE_SOON,
     OVERDUE;
+
+    public static ArrayList<TaskStatus> getTaskStatusList() {
+        ArrayList<TaskStatus> taskStatuses = new ArrayList<>();
+        taskStatuses.add(PENDING);
+        taskStatuses.add(FINISHED);
+        taskStatuses.add(DUE_SOON);
+        taskStatuses.add(OVERDUE);
+        return taskStatuses;
+    }
 
     public static TaskStatus getStatus(String status) {
         TaskStatus result = null;
