@@ -209,7 +209,6 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private void handleShowArchivedTasks() {
-
         toggleHolder();
         TaskListPanel archiveListPanel = new TaskListPanel(logic.getFilteredArchivedTaskList());
         taskListPanelPlaceholder.getChildren().add(archiveListPanel.getRoot());
