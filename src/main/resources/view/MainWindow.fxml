@@ -42,7 +42,6 @@
                     <Menu mnemonicParsing="false" text="Modules">
                         <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" style="-fx-font-size: 10pt;" text="Help" />
                     </Menu>
-                    <Menu mnemonicParsing="false" text="Calendar" onAction="#handleShowCalendar"/>
                     <Menu mnemonicParsing="false" text="Statistics">
                         <MenuItem fx:id="taskSummaryEntry" mnemonicParsing="false" onAction="#handleHelp"
                                   style="-fx-font-size: 10pt;" text="Task Summary"/>
