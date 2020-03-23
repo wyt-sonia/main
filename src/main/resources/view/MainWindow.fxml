@@ -14,7 +14,8 @@
 <?import javafx.scene.Scene?>
 <?import javafx.scene.text.Font?>
 <?import javafx.stage.Stage?>
-<fx:root xmlns:fx="http://javafx.com/fxml/1" minHeight="600" minWidth="550" onCloseRequest="#handleExit" title="Study Buddy"
+<fx:root xmlns:fx="http://javafx.com/fxml/1" minHeight="600" minWidth="550" onCloseRequest="#handleExit"
+         title="Study Buddy"
          type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/10.0.2-internal">
     <icons>
         <Image url="@/images/study_buddy.png"/>
@@ -97,12 +98,6 @@
                 </HBox>
                 <StackPane fx:id="taskSummaryHolder" maxHeight="1.7976931348623157E308"
                            maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-                    <opaqueInsets>
-                        <Insets/>
-                    </opaqueInsets>
-                    <VBox.margin>
-                        <Insets/>
-                    </VBox.margin>
                     <padding>
                         <Insets left="10.0" right="10.0"/>
                     </padding>

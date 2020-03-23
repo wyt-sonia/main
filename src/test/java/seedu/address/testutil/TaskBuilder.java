@@ -16,7 +16,7 @@ public class TaskBuilder {
     public static final String DEFAULT_MODULE = "CS2103T";
     public static final String DEFAULT_NAME = "Team project";
     public static final String DEFAULT_TASKDESCRIPTION = "Team project";
-    public static final String DEFAULT_ESTIMATEDTIME = "45 hours";
+    public static final double DEFAULT_ESTIMATEDTIME = 45.5;
 
     public static final TaskType DEFAULT_TASKTYPE = TaskType.Others;
     public static final TaskStatus DEFAULT_TASKSTATUS = TaskStatus.PENDING;
@@ -32,7 +32,7 @@ public class TaskBuilder {
     private double weight;
     private TaskStatus taskStatus;
     private LocalDateTime[] dateTimes;
-    private String estimatedTimeCost;
+    private double estimatedTimeCost;
     private LocalDateTime creationDateTime;
 
     public TaskBuilder() {

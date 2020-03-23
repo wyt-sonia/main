@@ -3,6 +3,7 @@ package seedu.address.model.task;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 //import seedu.address.model.task.exceptions.DuplicateTaskException;
+import seedu.address.logic.parser.TimeParser;
 import seedu.address.model.task.exceptions.TaskNotFoundException;
 
 /**
@@ -135,11 +137,12 @@ public class UniqueTaskList implements Iterable<Task> {
      */
     public void completeTask(Task target) {
         requireNonNull(target);
-        target.setStatus("finished");
         if (!internalList.contains(target)) {
             throw new TaskNotFoundException();
         } else {
             target.setStatus("finished");
+            String finishDateTimeString = TimeParser.getDateTimeString(LocalDateTime.now());
+            target.setFinishDateTime(TimeParser.parseDateTime(finishDateTimeString));
             int index = internalList.indexOf(target);
             internalList.set(index, target);
         }

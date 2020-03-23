@@ -1,5 +1,6 @@
 package seedu.address.logic.parser;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
@@ -12,7 +13,11 @@ import seedu.address.model.task.Task;
 public class TimeParser {
 
     /**
-     * pending.
+     * Parses valid dateTime string to LocalDateTime variable.
+     *
+     * @param userInput
+     * @return
+     * @throws InteractiveCommandException
      */
     public static LocalDateTime parseDateTime(String userInput) throws InteractiveCommandException {
         LocalDateTime inputTime = null;
@@ -24,6 +29,14 @@ public class TimeParser {
         return inputTime;
     }
 
+
+    /**
+     * Converts LocalDateTime variable to a String as HH:mm dd/MM/yyyy format.
+     *
+     * @param dateTime
+     * @return
+     * @throws InteractiveCommandException
+     */
     public static String getDateTimeString(LocalDateTime dateTime) throws InteractiveCommandException {
         String min = dateTime.getMinute() < 10 ? "0" + dateTime.getMinute()
             : "" + dateTime.getMinute();
@@ -35,5 +48,20 @@ public class TimeParser {
             : "" + dateTime.getMonthValue();
         return hour + ":" + min
             + " " + day + "/" + month + "/" + dateTime.getYear();
+    }
+
+    /**
+     * Converts LocalDateTime variable to a String as dd/MM/yyyy format.
+     *
+     * @param date
+     * @return
+     * @throws InteractiveCommandException
+     */
+    public static String getDateString(LocalDate date) throws InteractiveCommandException {
+        String day = date.getDayOfMonth() < 10 ? "0" + date.getDayOfMonth()
+            : "" + date.getDayOfMonth();
+        String month = date.getMonthValue() < 10 ? "0" + date.getMonthValue()
+            : "" + date.getMonthValue();
+        return day + "/" + month + "/" + date.getYear();
     }
 }
