@@ -21,6 +21,7 @@ import seedu.address.ui.interactiveprompt.delete.DeleteDuplicateTaskInteractiveP
 import seedu.address.ui.interactiveprompt.delete.DeleteTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.edit.ArchiveTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.edit.CompleteTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.edit.EditTaskInteractivePrompt;
 
 /**
  * The UI component that is responsible for receiving user command inputs.
@@ -59,8 +60,7 @@ public class CommandBox extends UiPart<Region> {
                     currentInteractivePrompt = new AddTaskInteractivePrompt();
                     break;
                 case "edit":
-                    //currentInteractivePrompt = new EditTaskInteractivePrompt();
-                    commandTextField.setText("Edit function under construction");
+                    currentInteractivePrompt = new EditTaskInteractivePrompt();
                     break;
                 case "delete":
                     currentInteractivePrompt = new DeleteTaskInteractivePrompt();

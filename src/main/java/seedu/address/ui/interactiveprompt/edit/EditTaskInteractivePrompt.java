@@ -2,13 +2,12 @@ package seedu.address.ui.interactiveprompt.edit;
 
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.EDIT_TASK;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditTaskCommand;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.interactivecommandparser.AddTaskCommandParser;
+import seedu.address.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskField;
 import seedu.address.model.task.TaskType;
@@ -49,7 +48,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         switch (currentTerm) {
         case INIT:
             this.reply = "Please enter the index of the task that you wish to edit.";
-            this.currentTerm = InteractivePromptTerms.TASK_INDEX;
+            this.currentTerm = InteractivePromptTerms.TASK_NUMBER;
             break;
         case TASK_NUMBER:
             this.taskNumber = parseTaskNumber(userInput);
@@ -63,7 +62,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         default:
             break;
         }
-        return "";
+        return this.reply;
     }
 
     /**
@@ -73,22 +72,37 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
      */
     public String handleNewValue(String userInput) {
         Index taskIndex = Index.fromZeroBased(taskNumber - 1);
-        EditTaskCommand editTaskCommand= new EditTaskCommand(taskIndex, taskField);
-        switch (taskField) {
-        case TASK_NAME:
-            editTaskCommand.provideNewTaskName(userInput);
-            break;
-        case TASK_TYPE:
-            TaskType taskType = AddTaskCommandParser.parseType(userInput, TaskType.getTaskTypes().length);
-            editTaskCommand.provideNewTaskType(taskType);
-            this.reply = "The type of task is set to: " + taskType + ".\n";
-            break;
-        case TASK_DATETIME:
-            //LocalDateTime[] dateTimes = AddTaskCommandParser.parseDateTime(userInput, task.getTaskType());
-            //editTaskCommand.provideNewDateTime();
-            break;
-        default:
-            throw new IllegalStateException("Unexpected value: " + taskField);
+        EditTaskCommand editTaskCommand = new EditTaskCommand(taskIndex, taskField);
+        boolean parseSuccess = true;
+        try {
+            switch (taskField) {
+            case TASK_NAME:
+                editTaskCommand.provideNewTaskName(userInput);
+                break;
+            case TASK_TYPE:
+                TaskType taskType = AddTaskCommandParser.parseType(userInput, TaskType.getTaskTypes().length);
+                editTaskCommand.provideNewTaskType(taskType);
+                this.reply = "The type of task is set to: " + taskType + ".\n";
+                break;
+            case TASK_DATETIME:
+                //LocalDateTime[] dateTimes = AddTaskCommandParser.parseDateTime(userInput, task.getTaskType());
+                //editTaskCommand.provideNewDateTime();
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + taskField);
+            }
+        } catch (AddTaskCommandException ex) {
+            parseSuccess = false;
+            reply = ex.getMessage();
+        }
+
+        if (parseSuccess) {
+            try {
+                logic.executeCommand(editTaskCommand);
+                endInteract(END_OF_COMMAND_MSG);
+            } catch (java.text.ParseException | CommandException ex) {
+                reply = ex.getMessage();
+            }
         }
         return reply;
     }
@@ -105,7 +119,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
 
         try {
             taskNum = Integer.parseInt(userInput);
-            if (taskNum > Task.getCurrentTasks().size() || taskNum < 0) {
+            if (taskNum > Task.getCurrentTasks().size() || taskNum < 1) {
                 throw new ParseException("task number not in range");
             }
         } catch (NumberFormatException | ParseException ex) {
