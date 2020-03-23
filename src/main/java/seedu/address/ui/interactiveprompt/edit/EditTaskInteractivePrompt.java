@@ -8,7 +8,6 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.interactivecommandparser.AddTaskCommandParser;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
-import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskField;
 import seedu.address.model.task.TaskType;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
@@ -119,7 +118,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
 
         try {
             taskNum = Integer.parseInt(userInput);
-            if (taskNum > Task.getCurrentTasks().size() || taskNum < 1) {
+            if (taskNum < 1) { // taskNum > Task.getCurrentTasks().size() ||
                 throw new ParseException("task number not in range");
             }
         } catch (NumberFormatException | ParseException ex) {
@@ -127,7 +126,8 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         }
 
         if (isParseSuccessful) {
-            this.reply = "Please choose the field that you wish to edit in task number " + taskNumber + ".";
+            this.reply = "Please choose the field that you wish to edit in task number " + taskNum + ".\n"
+                        + TaskField.getFieldString();
             this.currentTerm = InteractivePromptTerms.TASK_FIELD;
         } else {
             // prompt for a new value

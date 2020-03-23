@@ -27,7 +27,9 @@ public class EditTaskCommand extends Command {
     private LocalDateTime[] newDateTimes = null;
 
     /**
-     * @param index of the task to edit
+     * Creates an edit task command
+     * @param targetIndex index of target task to be edited
+     * @param taskField the task field to be edited
      */
     public EditTaskCommand(Index targetIndex, TaskField taskField) {
         requireNonNull(targetIndex);
