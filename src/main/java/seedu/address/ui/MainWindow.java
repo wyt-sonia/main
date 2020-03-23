@@ -214,6 +214,15 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     @FXML
+    private void handleShowModules() {
+        toggleHolder();
+        //TaskListPanel moduleListPanel = new TaskListPanel(logic.getFilteredModuleList());
+        //taskListPanelPlaceholder.getChildren().add(archiveListPanel.getRoot());
+    }
+
+
+
+    @FXML
     private void handleShowCalendar() {
         toggleHolder();
         CalendarBox calendar = new CalendarBox(logic);

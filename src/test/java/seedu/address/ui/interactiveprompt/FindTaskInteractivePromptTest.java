@@ -3,6 +3,7 @@ package seedu.address.ui.interactiveprompt;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import seedu.address.ui.interactiveprompt.view.FindTaskInteractivePrompt;
 
 class FindTaskInteractivePromptTest {
 
