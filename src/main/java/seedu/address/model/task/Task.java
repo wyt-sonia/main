@@ -32,13 +32,14 @@ public class Task implements Comparable<Task> {
     private TaskStatus taskStatus;
     private LocalDateTime[] dateTimes;
     private LocalDateTime creationDateTime;
-    private String estimatedTimeCost;
+    private LocalDateTime finishDateTime;
+    private double estimatedTimeCost;
     private DateFormat df = null;
     private Date dateObj = null;
     private boolean duplicate = false;
 
     public Task(Module module, TaskType taskType, String taskName, String taskDescription, double weight,
-                TaskStatus taskStatus, LocalDateTime[] dateTimes, String estimatedTimeCost,
+                TaskStatus taskStatus, LocalDateTime[] dateTimes, double estimatedTimeCost,
                 LocalDateTime creationDateTime) {
         this.module = module; //not covered yet
         this.taskType = taskType;
@@ -47,6 +48,7 @@ public class Task implements Comparable<Task> {
         this.weight = weight; //not covered yet
         this.taskStatus = taskStatus;
         this.dateTimes = dateTimes;
+        this.finishDateTime = null;
         this.estimatedTimeCost = estimatedTimeCost; //not covered yet
         this.creationDateTime = creationDateTime;
     }
@@ -132,6 +134,14 @@ public class Task implements Comparable<Task> {
         return result;
     }
 
+    public LocalDateTime getFinishDateTime() {
+        return finishDateTime;
+    }
+
+    public void setFinishDateTime(LocalDateTime finishDateTime) {
+        this.finishDateTime = finishDateTime;
+    }
+
     public boolean isDuplicate() {
         return duplicate;
     }
@@ -205,11 +215,11 @@ public class Task implements Comparable<Task> {
         this.dateTimes = dateTimes;
     }
 
-    public String getEstimatedTimeCost() {
+    public double getEstimatedTimeCost() {
         return estimatedTimeCost;
     }
 
-    public void setEstimatedTimeCost(String estimatedTimeCost) {
+    public void setEstimatedTimeCost(double estimatedTimeCost) {
         this.estimatedTimeCost = estimatedTimeCost;
     }
 
