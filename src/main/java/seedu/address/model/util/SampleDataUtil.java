@@ -27,14 +27,14 @@ public class SampleDataUtil {
 
         return new Task[] {
             new Task(cs2103T, TaskType.Assignment, "Ass 1", "taskDescription", 20.0,
-                TaskStatus.PENDING, dateTimesOne, "5h", creationDateTime),
+                TaskStatus.PENDING, dateTimesOne, 5.0, creationDateTime),
             new Task(cs2101, TaskType.Presentation, "Presentation 1",
                 "Presentation taskDescription", 20.0, TaskStatus.FINISHED, dateTimesOne,
-                "3h", creationDateTime),
+                3.0, creationDateTime),
             new Task(cs2103T, TaskType.Assignment, "Quiz 1", "Quiz taskDescription",
-                2.0, TaskStatus.PENDING, dateTimesTwo, "1h", creationDateTime),
+                2.0, TaskStatus.PENDING, dateTimesTwo, 1.0, creationDateTime),
             new Task(cs2101, TaskType.Meeting, "Meeting 1", "Meeting desc", 20.0,
-                TaskStatus.PENDING, dateTimesTwo, "15h", creationDateTime)
+                TaskStatus.PENDING, dateTimesTwo, 15.0, creationDateTime)
         };
     }
 

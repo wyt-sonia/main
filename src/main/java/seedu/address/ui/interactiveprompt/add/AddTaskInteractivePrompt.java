@@ -82,7 +82,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
 
             task.setTaskDescription("No Description Available");
             task.setWeight(0.0);
-            task.setEstimatedTimeCost("No estimated time cost");
+            task.setEstimatedTimeCost(0);
             break;
 
         case TASK_NAME:

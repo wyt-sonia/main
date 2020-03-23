@@ -25,14 +25,14 @@ public class TypicalTasks {
 
         return new Task[] {
             new Task(cs2103T, TaskType.Assignment, "Ass 1", "taskDescription", 20.0,
-                TaskStatus.PENDING, dateTimesOne, "5h", LocalDateTime.now()),
+                TaskStatus.PENDING, dateTimesOne, 5.0, LocalDateTime.now()),
             new Task(cs2101, TaskType.Presentation, "Presentation 1",
                 "Presentation taskDescription", 20.0, TaskStatus.FINISHED, dateTimesOne,
-                "3h", LocalDateTime.now()),
+                3.0, LocalDateTime.now()),
             new Task(cs2103T, TaskType.Assignment, "Quiz 1", "Quiz taskDescription",
-                2.0, TaskStatus.PENDING, dateTimesTwo, "1h", LocalDateTime.now()),
+                2.0, TaskStatus.PENDING, dateTimesTwo, 1.0, LocalDateTime.now()),
             new Task(cs2101, TaskType.Meeting, "Meeting 1", "Meeting desc", 20.0,
-                TaskStatus.PENDING, dateTimesTwo, "15h", LocalDateTime.now())
+                TaskStatus.PENDING, dateTimesTwo, 15.0, LocalDateTime.now())
         };
     }
 
