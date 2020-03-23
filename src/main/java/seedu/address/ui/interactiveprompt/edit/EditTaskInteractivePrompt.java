@@ -2,10 +2,16 @@ package seedu.address.ui.interactiveprompt.edit;
 
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.EDIT_TASK;
 
-import seedu.address.logic.commands.exceptions.CommandException;
+import java.time.LocalDateTime;
+import java.util.List;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.EditTaskCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.interactivecommandparser.AddTaskCommandParser;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskField;
+import seedu.address.model.task.TaskType;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
 
@@ -52,14 +58,41 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
             this.taskField = parseTaskFieldNumber(userInput);
             break;
         case NEW_VALUE:
-            this.reply = ""; // depends on success or failure.
-            this.newValue = userInput;
+            this.reply = handleNewValue(userInput);
             break;
         default:
             break;
         }
         return "";
     }
+
+    /**
+     * Creates and executes an edit command, with the new values provided by the user
+     * @param userInput input from user
+     * @return reply to user
+     */
+    public String handleNewValue(String userInput) {
+        Index taskIndex = Index.fromZeroBased(taskNumber - 1);
+        EditTaskCommand editTaskCommand= new EditTaskCommand(taskIndex, taskField);
+        switch (taskField) {
+        case TASK_NAME:
+            editTaskCommand.provideNewTaskName(userInput);
+            break;
+        case TASK_TYPE:
+            TaskType taskType = AddTaskCommandParser.parseType(userInput, TaskType.getTaskTypes().length);
+            editTaskCommand.provideNewTaskType(taskType);
+            this.reply = "The type of task is set to: " + taskType + ".\n";
+            break;
+        case TASK_DATETIME:
+            //LocalDateTime[] dateTimes = AddTaskCommandParser.parseDateTime(userInput, task.getTaskType());
+            //editTaskCommand.provideNewDateTime();
+            break;
+        default:
+            throw new IllegalStateException("Unexpected value: " + taskField);
+        }
+        return reply;
+    }
+
 
     /**
      * parses task number
@@ -111,7 +144,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
 
         if (isParseSuccessful) {
             assert(taskField != null);
-            this.reply = "Please enter the new value for the " + taskField.getLabel() + "field";
+            this.reply = getTaskFieldMessage(taskField);
             this.currentTerm = InteractivePromptTerms.NEW_VALUE;
         } else {
             // prompt for a new value
@@ -120,4 +153,26 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         }
         return taskField;
     }
+
+    private String getTaskFieldMessage(TaskField taskField) {
+        String result = "You are now editing the " + taskField.getLabel() + "field\n";
+        switch (taskField) {
+        case TASK_NAME:
+            result += "Please enter the new task name.";
+            break;
+        case TASK_TYPE:
+            result += "Please choose the task type:\n"
+                + TaskType.getTypeString();
+            break;
+        case TASK_DATETIME:
+            result += "Please enter the deadline with format: ";
+            break;
+        default:
+            throw new IllegalStateException("Unexpected value: " + taskField);
+        }
+        return result;
+    }
+
+
 }
+

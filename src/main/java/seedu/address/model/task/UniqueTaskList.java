@@ -149,6 +149,39 @@ public class UniqueTaskList implements Iterable<Task> {
     }
 
     /**
+     * Set the task name
+     * @param target a task
+     * @param newTaskName the new name of the task
+     */
+    public void setTaskName(Task target, String newTaskName) {
+        requireNonNull(target);
+        requireNonNull(newTaskName);
+        target.setTaskName(newTaskName);
+    }
+
+    /**
+     * Set the task type
+     * @param target a task
+     * @param newTaskType the new task type
+     */
+    public void setTaskType(Task target, TaskType newTaskType) {
+        requireNonNull(target);
+        requireNonNull(newTaskType);
+        target.setTaskType(newTaskType);
+    }
+
+    /**
+     * Set the task date time
+     * @param target a task
+     * @param newDateTimes the new date and time
+     */
+    public void setTaskDateTime(Task target, LocalDateTime[] newDateTimes) {
+        requireNonNull(target);
+        requireNonNull(newDateTimes);
+        target.setDateTimes(newDateTimes);
+    }
+
+    /**
      * Sort tasks by the given {@code keyword}.
      */
     public void sortTasks(String keyword) {
