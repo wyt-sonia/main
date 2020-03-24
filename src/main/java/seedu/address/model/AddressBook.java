@@ -89,6 +89,13 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Sort tasks by the given {@code keyword}.
+     */
+    public void sortDueSoonTasks() {
+        dueSoonTasks.sortTasks("deadline / task start date");
+    }
+
+    /**
      * Returns true if a task with the same identity as {@code task} exists in the task list.
      */
     public boolean hasTask(Task task) {
@@ -103,6 +110,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removeTask(Task key) {
         tasks.remove(key);
+        sortDueSoonTasks();
     }
 
     /**
@@ -169,6 +177,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void addDueSoonTask(Task p) {
         if (p.isDueSoon()) {
             dueSoonTasks.add(p);
+            sortDueSoonTasks();
         }
     }
 
