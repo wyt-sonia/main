@@ -237,11 +237,6 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public ObservableList<Module> getFilteredModuleList() {
-        return filteredModules;
-    }
-
-    @Override
     public ObservableList<Task> getFilteredDueSoonTaskList() {
         return filteredDueSoonTasks;
     }

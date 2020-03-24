@@ -1,11 +1,9 @@
-package seedu.address.ui.interactiveprompt.view;
+package seedu.address.ui.interactiveprompt;
 
 import java.text.ParseException;
 
-import seedu.address.logic.commands.view.ListTaskCommand;
+import seedu.address.logic.commands.ListTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.ui.interactiveprompt.InteractivePrompt;
-import seedu.address.ui.interactiveprompt.InteractivePromptType;
 
 /**
  * InteractivePrompt to list the tasks. This is useful after a Find command.

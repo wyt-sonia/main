@@ -1,15 +1,13 @@
-package seedu.address.ui.interactiveprompt.sort;
+package seedu.address.ui.interactiveprompt;
 
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.SORT_TASK;
 
 import java.text.ParseException;
 
-import seedu.address.logic.commands.sort.SortTaskCommand;
+import seedu.address.logic.commands.SortTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.DeleteTaskCommandException;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.SortTaskCommandException;
-import seedu.address.ui.interactiveprompt.InteractivePrompt;
-import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
  * A interactive prompt for sorting task list.
