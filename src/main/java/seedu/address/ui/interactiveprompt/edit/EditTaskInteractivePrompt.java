@@ -2,12 +2,15 @@ package seedu.address.ui.interactiveprompt.edit;
 
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.EDIT_TASK;
 
+import java.time.LocalDateTime;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.logic.parser.interactivecommandparser.AddTaskCommandParser;
-import seedu.address.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
+import seedu.address.logic.parser.interactivecommandparser.EditTaskCommandParser;
+import seedu.address.logic.parser.interactivecommandparser.exceptions.EditTaskCommandException;
+import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskField;
 import seedu.address.model.task.TaskType;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
@@ -21,7 +24,6 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
     private static final String QUIT_COMMAND_MSG = "Successfully quit from the edit task command";
     private int taskNumber;
     private TaskField taskField;
-    private String newValue;
 
     public EditTaskInteractivePrompt() {
         super();
@@ -76,21 +78,22 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         try {
             switch (taskField) {
             case TASK_NAME:
-                editTaskCommand.provideNewTaskName(userInput);
+                String newName = EditTaskCommandParser.parseName(userInput);
+                editTaskCommand.provideNewTaskName(newName);
                 break;
             case TASK_TYPE:
-                TaskType taskType = AddTaskCommandParser.parseType(userInput, TaskType.getTaskTypes().length);
-                editTaskCommand.provideNewTaskType(taskType);
-                this.reply = "The type of task is set to: " + taskType + ".\n";
+                TaskType newTaskType = EditTaskCommandParser.parseType(userInput, TaskType.getTaskTypes().length);
+                editTaskCommand.provideNewTaskType(newTaskType);
+                this.reply = "The type of task is set to: " + newTaskType + ".\n";
                 break;
             case TASK_DATETIME:
-                //LocalDateTime[] dateTimes = AddTaskCommandParser.parseDateTime(userInput, task.getTaskType());
-                //editTaskCommand.provideNewDateTime();
+                LocalDateTime[] newDateTimes = EditTaskCommandParser.parseDateTime(userInput);
+                editTaskCommand.provideNewDateTime(newDateTimes);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + taskField);
             }
-        } catch (AddTaskCommandException ex) {
+        } catch (EditTaskCommandException ex) {
             parseSuccess = false;
             reply = ex.getMessage();
         }
@@ -118,7 +121,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
 
         try {
             taskNum = Integer.parseInt(userInput);
-            if (taskNum < 1) { // taskNum > Task.getCurrentTasks().size() ||
+            if (taskNum > Task.getCurrentTasks().size() || taskNum < 1) {
                 throw new ParseException("task number not in range");
             }
         } catch (NumberFormatException | ParseException ex) {
@@ -132,7 +135,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         } else {
             // prompt for a new value
             this.reply = "Please choose a valid task number.";
-            this.currentTerm = InteractivePromptTerms.TASK_INDEX;
+            this.currentTerm = InteractivePromptTerms.TASK_NUMBER;
         }
         return taskNum;
     }
@@ -179,7 +182,8 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                 + TaskType.getTypeString();
             break;
         case TASK_DATETIME:
-            result += "Please enter the deadline with format: ";
+            result += "Please enter the deadline with format: "
+                + "HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy";;
             break;
         default:
             throw new IllegalStateException("Unexpected value: " + taskField);

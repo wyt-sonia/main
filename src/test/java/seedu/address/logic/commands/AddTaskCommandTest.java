@@ -171,6 +171,9 @@ class AddTaskCommandTest {
         }
 
         @Override
+        public void sortDueSoonTasks(){}
+
+        @Override
         public void setTask(Task target, Task editedTask) {
 
         }

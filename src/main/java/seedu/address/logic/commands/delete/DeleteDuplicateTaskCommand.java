@@ -50,9 +50,7 @@ public class DeleteDuplicateTaskCommand extends Command {
                             } else {
                                 Task taskToDelete = lastShownList.get(i);
                                 model.deleteTask(taskToDelete);
-                                if (model.getFilteredDueSoonTaskList().contains(taskToDelete)) {
-                                    model.deleteDueSoonTask(taskToDelete);
-                                }
+
                                 lastShownList = model.getFilteredTaskList();
                                 break;
                             }

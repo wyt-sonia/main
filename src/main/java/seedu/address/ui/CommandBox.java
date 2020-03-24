@@ -7,6 +7,7 @@ import javafx.scene.layout.Region;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.ui.interactiveprompt.ClearTasksInteractivePrompt;
 import seedu.address.ui.interactiveprompt.ExitTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.FindTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.HelpInteractivePrompt;
@@ -32,7 +33,7 @@ public class CommandBox extends UiPart<Region> {
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes =
         {"add", "edit", "delete", "archive", "done", "delete duplicates",
-            "bye", "sort", "refresh", "help", "create mods", "find", "list"};
+            "clear", "bye", "sort", "refresh", "help", "create mods", "find", "list"};
     private final CommandExecutor commandExecutor;
     private InteractivePrompt currentInteractivePrompt;
     @FXML
@@ -94,6 +95,9 @@ public class CommandBox extends UiPart<Region> {
                     break;
                 case "list":
                     currentInteractivePrompt = new ListTaskInteractivePrompt();
+                    break;
+                case "clear":
+                    currentInteractivePrompt = new ClearTasksInteractivePrompt();
                     break;
                 default:
                     currentInteractivePrompt = new InvalidInputInteractivePrompt();

@@ -17,5 +17,6 @@ public enum InteractivePromptType {
     HELP,
     INVALID_MSG,
     FIND_TASK,
-    LIST_TASK;
+    LIST_TASK,
+    CLEAR_TASK;
 }

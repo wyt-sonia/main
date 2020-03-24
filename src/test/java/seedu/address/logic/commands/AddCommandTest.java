@@ -129,6 +129,9 @@ public class AddCommandTest {
         }
 
         @Override
+        public void sortDueSoonTasks(){}
+
+        @Override
         public void addDueSoonTask(Task task) {
             throw new AssertionError("This method should not be called.");
         }

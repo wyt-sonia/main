@@ -28,12 +28,12 @@ public class RefreshCommand extends Command {
         for (int i = 0; i < lastShownList.size(); i++) {
             Task task = lastShownList.get(i);
             boolean isStatusExpired = task.isStatusExpired();
-            if (isStatusExpired) {
+            /*if (isStatusExpired) {
                 Task temp = task;
                 model.deleteTask(task);
                 temp.freshStatus();
                 model.addTask(temp);
-            }
+            }*/
             if (task.isDueSoon()) {
                 if (model.getFilteredDueSoonTaskList().contains(task)) {
                     continue;
@@ -48,7 +48,7 @@ public class RefreshCommand extends Command {
                 }
             }
         }
-
+        model.sortDueSoonTasks();
         return new CommandResult(String.format(MESSAGE_DUE_SOON_TASK_SUCCESS));
     }
 
