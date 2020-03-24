@@ -35,7 +35,6 @@ public class FindTaskInteractivePrompt extends InteractivePrompt {
 
     /**
      * Handles the sequence of interactive find commands.
-     *
      * @param userInput the input entered by the user
      * @return the reply to the user
      */

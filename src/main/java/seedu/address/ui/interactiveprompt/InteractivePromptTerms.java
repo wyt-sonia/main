@@ -1,7 +1,7 @@
 package seedu.address.ui.interactiveprompt;
 
 /**
- * pending.
+ * Terms used in Interactive Prompt to indicate the stage in the sequence of interaction.
  */
 public enum InteractivePromptTerms {
     INIT,
@@ -17,6 +17,11 @@ public enum InteractivePromptTerms {
     MODULE_CODE,
     SORT_KEYWORD,
     READY_TO_EXECUTE,
+    ADD_DUPLICATE,
+    // for find
     FIND_KEYWORD,
-    ADD_DUPLICATE;
+    // for edit
+    TASK_NUMBER,
+    TASK_FIELD,
+    NEW_VALUE;
 }
