@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.BarChart;
@@ -55,6 +56,19 @@ public class TaskSummaryPanel extends UiPart<Region> {
         setUpPieChart();
         setUpBarChart();
         setUpLineChart();
+
+        currentTaskList.addListener(new ListChangeListener<Task>() {
+            @Override
+            public void onChanged(Change<? extends Task> t) {
+                tempTasks.clear();
+                tempTasks.addAll(currentTaskList);
+                tempTasks.addAll(archivedTaskList);
+                setUpAreaChart();
+                setUpPieChart();
+                setUpBarChart();
+                setUpLineChart();
+            }
+        });
     }
 
     /**
@@ -62,6 +76,9 @@ public class TaskSummaryPanel extends UiPart<Region> {
      */
     private void setUpPieChart() {
 
+        if (!taskSummaryPieChart.getData().isEmpty()) {
+            taskSummaryPieChart.getData().clear();
+        }
         for (TaskStatus ts : TaskStatus.getTaskStatusList()) {
             long count = tempTasks.stream().filter(t -> t.getTaskStatus().equals(ts)).count();
             taskSummaryPieChart.getData().add(new PieChart.Data(ts.convertToString(), count));
@@ -81,6 +98,11 @@ public class TaskSummaryPanel extends UiPart<Region> {
      * Aim to compare time estimated and actual time used.
      */
     private void setUpAreaChart() {
+
+        if (!taskSummaryAreaChart.getData().isEmpty()) {
+            taskSummaryAreaChart.getData().clear();
+        }
+
         XYChart.Series taskTypeDataSeries = new XYChart.Series();
         XYChart.Series taskStatusDataSeries = new XYChart.Series();
         taskTypeDataSeries.setName("Task Type");
@@ -108,6 +130,11 @@ public class TaskSummaryPanel extends UiPart<Region> {
      * Pending update to make it show different modules/semesters.
      */
     private void setUpBarChart() {
+
+        if (!taskSummaryBarChart.getData().isEmpty()) {
+            taskSummaryBarChart.getData().clear();
+        }
+
         HashMap<String, XYChart.Series> moduleDataSeries = new HashMap<>();
 
         Map<String, Map<TaskType, Long>> currentTaskTypeAndCountUnderModules = tempTasks.stream()
@@ -152,6 +179,11 @@ public class TaskSummaryPanel extends UiPart<Region> {
      * Aims to show the changing of number of creation/ finishing/ due task of each day.
      */
     private void setUpLineChart() {
+
+        if (!taskSummaryLineChart.getData().isEmpty()) {
+            taskSummaryLineChart.getData().clear();
+        }
+
         taskSummaryLineChart.getYAxis().setLabel("No of Tasks");
         taskSummaryLineChart.getXAxis().setLabel("Date & Time");
 
@@ -181,4 +213,6 @@ public class TaskSummaryPanel extends UiPart<Region> {
 
         taskSummaryLineChart.getData().addAll(creationInfoSeries, dueInfoSeries, finishInfoSeries);
     }
+
+
 }

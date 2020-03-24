@@ -149,7 +149,8 @@ public class UniqueTaskList implements Iterable<Task> {
     }
 
     /**
-     * Set the task name
+     * Set the task name.
+     *
      * @param target a task
      * @param newTaskName the new name of the task
      */
