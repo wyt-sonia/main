@@ -9,7 +9,7 @@ public class HelpInteractivePrompt extends InteractivePrompt {
     private static final String END_OF_COMMAND_MSG =
         "Here are the list of available commands:" + System.lineSeparator()
             + "1. add  2. delete  3. edit  4. bye  5. sort  6. find  7. done  8. delete duplicates  "
-            + "9. sort  10. archive  11. help  12. list"
+            + "9. sort  10. archive  11. help  12. list  13. clear"
             + System.lineSeparator() + System.lineSeparator()
             + "User Guide: https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html";
 
