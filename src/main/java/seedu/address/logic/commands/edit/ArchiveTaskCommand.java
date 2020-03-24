@@ -41,9 +41,7 @@ public class ArchiveTaskCommand extends Command {
         Task taskToArchive = lastShownList.get(targetIndex.getZeroBased());
         model.deleteTask(taskToArchive);
         model.archiveTask(taskToArchive);
-        if (model.getFilteredDueSoonTaskList().contains(taskToArchive)) {
-            model.deleteDueSoonTask(taskToArchive);
-        }
+
         return new CommandResult(String.format(MESSAGE_ARCHIVE_TASK_SUCCESS, taskToArchive));
     }
 
