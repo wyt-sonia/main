@@ -41,11 +41,6 @@ public class AddTaskCommand extends Command {
                 return new CommandResult(String.format(MESSAGE_DUPLICATE_TASK, toAdd));
             }
         }
-
-        if (toAdd.isDueSoon()) {
-            model.addDueSoonTask(toAdd);
-        }
-
         model.addTask(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }

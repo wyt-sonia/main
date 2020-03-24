@@ -110,6 +110,9 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removeTask(Task key) {
         tasks.remove(key);
+        if (this.getDueSoonList().contains(key)) {
+            removeDueSoonTask(key);
+        }
         sortDueSoonTasks();
     }
 
@@ -200,6 +203,9 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addTask(Task t) {
         tasks.add(t);
+        if (t.isDueSoon()) {
+            addDueSoonTask(t);
+        }
     }
 
     public void completeTask(Task target) {
