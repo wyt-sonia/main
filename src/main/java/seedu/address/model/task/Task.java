@@ -21,7 +21,7 @@ public class Task implements Comparable<Task> {
      * The acceptable data and time format.
      */
     public static final DateTimeFormatter DATETIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
-    private static final int DIVISOR = (1000 * 60 * 60 * 24);
+    private static final int DIVISOR = (1000 * 60);
     private static ArrayList<Task> currentTasks = new ArrayList<>();
 
     private Module module;
@@ -246,7 +246,7 @@ public class Task implements Comparable<Task> {
             e.printStackTrace();
         }
         float daysBetween = (difference / DIVISOR);
-        return daysBetween <= 7 && daysBetween >= 0;
+        return daysBetween <= 7 * 24 * 60 && daysBetween >= 0;
     }
 
     @Override
