@@ -68,9 +68,6 @@ class JsonSerializableAddressBook {
                 task.freshStatus();
             }
             addressBook.addTask(task);
-            if (task.getTaskStatus().equals(TaskStatus.DUE_SOON)) {
-                addressBook.addDueSoonTask(task);
-            }
         }
         for (JsonAdaptedTask jsonAdaptedTask : archivedTasks) {
             Task task = jsonAdaptedTask.toModelType();
