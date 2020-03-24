@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javafx.collections.ObservableList;
@@ -11,6 +12,7 @@ import seedu.address.model.module.exceptions.ModuleCodeException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.task.Task;
+import seedu.address.model.task.TaskType;
 import seedu.address.model.task.UniqueTaskList;
 
 /**
@@ -87,6 +89,13 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Sort tasks by the given {@code keyword}.
+     */
+    public void sortDueSoonTasks() {
+        dueSoonTasks.sortTasks("deadline / task start date");
+    }
+
+    /**
      * Returns true if a task with the same identity as {@code task} exists in the task list.
      */
     public boolean hasTask(Task task) {
@@ -101,6 +110,10 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removeTask(Task key) {
         tasks.remove(key);
+        if (this.getDueSoonList().contains(key)) {
+            removeDueSoonTask(key);
+        }
+        sortDueSoonTasks();
     }
 
     /**
@@ -167,6 +180,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void addDueSoonTask(Task p) {
         if (p.isDueSoon()) {
             dueSoonTasks.add(p);
+            sortDueSoonTasks();
         }
     }
 
@@ -189,10 +203,25 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addTask(Task t) {
         tasks.add(t);
+        if (t.isDueSoon()) {
+            addDueSoonTask(t);
+        }
     }
 
     public void completeTask(Task target) {
         tasks.completeTask(target);
+    }
+
+    public void setTaskName(Task target, String newTaskName) {
+        tasks.setTaskName(target, newTaskName);
+    }
+
+    public void setTaskType(Task target, TaskType newTaskType) {
+        tasks.setTaskType(target, newTaskType);
+    }
+
+    public void setTaskDateTime(Task target, LocalDateTime[] newDateTimes) {
+        tasks.setTaskDateTime(target, newDateTimes);
     }
 
     /**

@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.function.Predicate;
@@ -24,6 +25,7 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.module.Module;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
+import seedu.address.model.task.TaskType;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddCommandTest {
@@ -127,6 +129,9 @@ public class AddCommandTest {
         }
 
         @Override
+        public void sortDueSoonTasks(){}
+
+        @Override
         public void addDueSoonTask(Task task) {
             throw new AssertionError("This method should not be called.");
         }
@@ -176,6 +181,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void setTask(Task target, Task editedTask) {
+
+        }
+
+        @Override
         public boolean hasMod(Module mod) {
             throw new AssertionError("This method should not be called.");
         }
@@ -183,6 +193,21 @@ public class AddCommandTest {
         @Override
         public void completeTask(Task task) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setTaskName(Task target, String newTaskName) {
+
+        }
+
+        @Override
+        public void setTaskType(Task target, TaskType newTaskType) {
+
+        }
+
+        @Override
+        public void setTaskDateTime(Task target, LocalDateTime[] newDateTimes) {
+
         }
 
         @Override

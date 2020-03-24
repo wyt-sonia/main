@@ -1,6 +1,7 @@
 package seedu.address.model.util;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 import seedu.address.logic.parser.TimeParser;
 import seedu.address.model.AddressBook;
@@ -25,24 +26,27 @@ public class SampleDataUtil {
         LocalDateTime creationDateTime = LocalDateTime.now();
 
 
-        return new Task[] {
+        return new Task[]{
             new Task(cs2103T, TaskType.Assignment, "Ass 1", "taskDescription", 20.0,
-                TaskStatus.PENDING, dateTimesOne, "5h", creationDateTime),
+                TaskStatus.PENDING, dateTimesOne, 5.0, creationDateTime),
             new Task(cs2101, TaskType.Presentation, "Presentation 1",
                 "Presentation taskDescription", 20.0, TaskStatus.FINISHED, dateTimesOne,
-                "3h", creationDateTime),
+                3.0, creationDateTime),
             new Task(cs2103T, TaskType.Assignment, "Quiz 1", "Quiz taskDescription",
-                2.0, TaskStatus.PENDING, dateTimesTwo, "1h", creationDateTime),
+                2.0, TaskStatus.PENDING, dateTimesTwo, 1.0, creationDateTime),
             new Task(cs2101, TaskType.Meeting, "Meeting 1", "Meeting desc", 20.0,
-                TaskStatus.PENDING, dateTimesTwo, "15h", creationDateTime)
+                TaskStatus.PENDING, dateTimesTwo, 15.0, creationDateTime)
         };
     }
 
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
+        ArrayList<Task> sampleTasks = new ArrayList<>();
         for (Task sampleTask : getSampleTasks()) {
             sampleAb.addTask(sampleTask);
+            sampleTasks.add(sampleTask);
         }
+        Task.updateCurrentTaskList(sampleTasks);
         return sampleAb;
     }
 }

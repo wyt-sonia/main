@@ -44,10 +44,6 @@ public class DeleteTaskCommand extends Command {
         Task taskToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deleteTask(taskToDelete);
 
-        if (model.getFilteredDueSoonTaskList().contains(taskToDelete)) {
-            model.deleteDueSoonTask(taskToDelete);
-        }
-
         return new CommandResult(String.format(MESSAGE_DELETE_TASK_SUCCESS, taskToDelete));
     }
 

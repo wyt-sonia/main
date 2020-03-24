@@ -7,32 +7,30 @@ package seedu.address.ui.interactiveprompt;
  * Parser will handle to parsing of the command and create a command
  * command will execute the action
  * server display the response if needed
- */
+ * */
 
-import static seedu.address.ui.interactiveprompt.InteractivePromptType.EXIT_TASK;
+import static seedu.address.ui.interactiveprompt.InteractivePromptType.CLEAR_TASK;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
-import seedu.address.logic.parser.interactivecommandparser.exceptions.ExitTaskCommandException;
+import seedu.address.logic.commands.ClearTasksCommand;
+import seedu.address.logic.commands.exceptions.CommandException;
 
 /**
  * pending.
  */
-public class ExitTaskInteractivePrompt extends InteractivePrompt {
+public class ClearTasksInteractivePrompt extends InteractivePrompt {
+    static final String END_OF_COMMAND_MSG = "Tasks cleared successfully!";
+    static final String QUIT_COMMAND_MSG = "Successfully cleared all tasks.";
 
-    static final String END_OF_COMMAND_NO_EXIT_MSG = "Thank you for staying!";
-    static final String END_OF_COMMAND_MSG = "Exit successfully!";
+    private int index;
 
-    private String reply;
-    private InteractivePromptTerms currentTerm;
-    private InteractivePromptTerms lastTerm;
-    private ArrayList<InteractivePromptTerms> terms;
-
-
-    public ExitTaskInteractivePrompt() {
+    public ClearTasksInteractivePrompt() {
         super();
-        this.interactivePromptType = EXIT_TASK;
+        this.interactivePromptType = CLEAR_TASK;
         this.reply = "";
+        this.userInput = "";
         this.currentTerm = InteractivePromptTerms.INIT;
         this.lastTerm = null;
         this.terms = new ArrayList<>();
@@ -40,7 +38,10 @@ public class ExitTaskInteractivePrompt extends InteractivePrompt {
 
     @Override
     public String interact(String userInput) {
-        if (userInput.equals("back")) {
+        if (userInput.equals("quit")) {
+            endInteract(QUIT_COMMAND_MSG);
+            return reply;
+        } else if (userInput.equals("back")) {
             if (lastTerm != null) { //in the beginning it is null
                 terms.remove(terms.size() - 1);
                 currentTerm = lastTerm;
@@ -56,25 +57,22 @@ public class ExitTaskInteractivePrompt extends InteractivePrompt {
         }
 
         switch (currentTerm) {
-
         case INIT:
-            try {
-                reply = "Are you sure you want to quit?\n "
-                    + "Please press enter yes if you would like to close the application.";
-                currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-            } catch (ExitTaskCommandException ex) {
-                reply = ex.getErrorMessage();
-            }
+            this.reply = "Please press enter to clear all your tasks.\n"
+                    + " Else enter quit to go back.";
+            currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
+            lastTerm = InteractivePromptTerms.INIT;
+            terms.add(lastTerm);
             break;
 
         case READY_TO_EXECUTE:
-            if (userInput.equalsIgnoreCase("yes")) {
-                super.setQuit(true);
+            try {
+                ClearTasksCommand clearTaskCommand = new ClearTasksCommand();
+                logic.executeCommand(clearTaskCommand);
                 endInteract(END_OF_COMMAND_MSG);
-            } else {
-                endInteract(END_OF_COMMAND_NO_EXIT_MSG);
+            } catch (CommandException | ParseException ex) {
+                reply = ex.getMessage();
             }
-
             break;
 
         default:
@@ -108,8 +106,6 @@ public class ExitTaskInteractivePrompt extends InteractivePrompt {
      */
     private String dateTime() {
         String result = "";
-
-
         return result;
     }
 }

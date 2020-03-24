@@ -103,40 +103,33 @@ image::LogicClassDiagram.png[]
 *API* :
 link:{repoURL}/src/main/java/seedu/address/logic/Logic.java[`Logic.java`]
 
-. `Logic` uses the `AddressBookParser` class to parse the user command.
+. The `InteractiveCommandPrompt` in `Ui` uses the parsers to parse the user command.
 . This results in a `Command` object which is executed by the `LogicManager`.
-. The command execution can affect the `Model` (e.g. adding a person).
+. The command execution can affect the `Model` (e.g. adding or editing a task).
 . The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
-. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
+. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying a help message to the user.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
+//Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
 .Interactions Inside the Logic Component for the `delete 1` Command
 image::DeleteSequenceDiagram.png[]
 
-NOTE: The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+//NOTE: The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 [[Design-Model]]
 === Model component
 
 .Structure of the Model Component
-image::ModelClassDiagram.png[]
+image::ModelClassDiagram.png[width = "500", length = "500"]
 
 *API* : link:{repoURL}/src/main/java/seedu/address/model/Model.java[`Model.java`]
 
 The `Model`,
 
 * stores a `UserPref` object that represents the user's preferences.
-* stores the Address Book data.
-* exposes an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores the Study Buddy data.
+* exposes an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
-
-[NOTE]
-As a more OOP model, we can store a `Tag` list in `Address Book`, which `Person` can reference.
-This would allow `Address Book` to only require one `Tag` object per unique `Tag`, instead of each `Person` needing their own `Tag` object.
-An example of how such a model may look like is given below. +
- +
-image:BetterModelClassDiagram.png[]
 
 [[Design-Storage]]
 === Storage component
@@ -191,7 +184,7 @@ Refreshes the list of due soon tasks. This command is useful for a situation whe
 Given below is an example usage scenario and how the due soon list mechanism behaves at each step.
 
 Step 1. The user launches the application for the first time.
-The list of tasks due soon will be initialized and displayed with the initial address book state. Initialization is done by filtering tasks that are due soon from the general list of tasks.
+The list of tasks due soon will b   e initialized and displayed with the initial address book state. Initialization is done by filtering tasks that are due soon from the general list of tasks.
 
 Activity diagram:
 
@@ -227,6 +220,43 @@ image::DueSoonSequenceDiagram.png[width = "600", length = "500"]
 * **Alternative 2:** Clear and reload the due soon task list.
 ** Pros: Less prone to errors since the entire list is "refreshed".
 ** Cons: More operation intensive.
+
+//tag:calendar[]
+=== Calendar feature
+
+==== Implementation
+The calendar feature, as the name suggests, displays a calendar fo users.
+
+The feature is implemented by overriding the task list display panel on the main window with calendar box. The calendar currently supports following features:
+
+. Displays the name of all tasks on that day in the calendar grid.
+. Access calendars in previous or next month using the buttons on top.
+. Displays more information about tasks for the day on the due soon panel after clicking on a grid. (Not done)
+. Fast forward to a specific year/month using CLI. (Not done)
+
+==== Example usage scenario
+Clicking on the show calendar menu item under the calendar menu will enable this feature. Upon requesting for the calendar to be shown:
+
+. The calendar box object will be constructed
+. The calendar loops through every day of the month while searching for tasks due on that day
+. The task name is added to the calendar grid
+
+Activity diagram:
+
+image::CalendarActivityDiagram.png[width = "400", length = "600"]
+
+==== Design considerations
+* It is more efficient to cache the calendar rather than to generate a new one, however, we do not expect the user to have too many tasks (n>1000000) and therefore it should not slow down the application.
+
+=== Archive feature
+Archive stores selected task away into a seperate task list, this command is used when the user has completed a task but still wants to keep track of it.
+
+==== Implementation
+Archive uses both the old delete and a new archive command. Upon executing the archive command, it will call the model to delete the task and archive it elsewhere.
+
+Sequence diagram:
+
+image::ArchiveSequenceDiagram.png[width = "600", length = "500"]
 
 // tag::dataencryption[]
 === [Proposed] Data Encryption

@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -14,6 +15,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.module.Module;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
+import seedu.address.model.task.TaskType;
 
 
 /**
@@ -122,6 +124,21 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void setTaskName(Task target, String taskName) {
+        addressBook.setTaskName(target, taskName);
+    }
+
+    @Override
+    public void setTaskType(Task target, TaskType newTaskType) {
+        addressBook.setTaskType(target, newTaskType);
+    }
+
+    @Override
+    public void setTaskDateTime(Task target, LocalDateTime[] newTaskDateTime) {
+        addressBook.setTaskDateTime(target, newTaskDateTime);
+    }
+
+    @Override
     public void deleteTask(Task target) {
         addressBook.removeTask(target);
     }
@@ -134,6 +151,11 @@ public class ModelManager implements Model {
     @Override
     public void sortTasks(String keyword) {
         addressBook.sortTasks(keyword);
+    }
+
+    @Override
+    public void sortDueSoonTasks() {
+        addressBook.sortDueSoonTasks();
     }
 
     @Override
@@ -177,6 +199,13 @@ public class ModelManager implements Model {
         addressBook.addModule(mod);
         System.out.println("ModelManager add mod success");
 
+    }
+
+    @Override
+    public void setTask(Task target, Task editedTask) {
+        requireAllNonNull(target, editedTask);
+
+        addressBook.setTasks(target, editedTask);
     }
 
     @Override

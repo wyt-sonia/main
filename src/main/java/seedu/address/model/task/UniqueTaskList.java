@@ -3,6 +3,7 @@ package seedu.address.model.task;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 //import seedu.address.model.task.exceptions.DuplicateTaskException;
+import seedu.address.logic.parser.TimeParser;
 import seedu.address.model.task.exceptions.TaskNotFoundException;
 
 /**
@@ -135,14 +137,55 @@ public class UniqueTaskList implements Iterable<Task> {
      */
     public void completeTask(Task target) {
         requireNonNull(target);
-        target.setStatus("finished");
         if (!internalList.contains(target)) {
             throw new TaskNotFoundException();
         } else {
             target.setStatus("finished");
+            String finishDateTimeString = TimeParser.getDateTimeString(LocalDateTime.now());
+            target.setFinishDateTime(TimeParser.parseDateTime(finishDateTimeString));
             int index = internalList.indexOf(target);
             internalList.set(index, target);
         }
+    }
+
+    /**
+     * Set the task name.
+     *
+     * @param target a task
+     * @param newTaskName the new name of the task
+     */
+    public void setTaskName(Task target, String newTaskName) {
+        requireNonNull(target);
+        requireNonNull(newTaskName);
+        target.setTaskName(newTaskName);
+        int index = internalList.indexOf(target);
+        internalList.set(index, target);
+    }
+
+    /**
+     * Set the task type
+     * @param target a task
+     * @param newTaskType the new task type
+     */
+    public void setTaskType(Task target, TaskType newTaskType) {
+        requireNonNull(target);
+        requireNonNull(newTaskType);
+        target.setTaskType(newTaskType);
+        int index = internalList.indexOf(target);
+        internalList.set(index, target);
+    }
+
+    /**
+     * Set the task date time
+     * @param target a task
+     * @param newDateTimes the new date and time
+     */
+    public void setTaskDateTime(Task target, LocalDateTime[] newDateTimes) {
+        requireNonNull(target);
+        requireNonNull(newDateTimes);
+        target.setDateTimes(newDateTimes);
+        int index = internalList.indexOf(target);
+        internalList.set(index, target);
     }
 
     /**

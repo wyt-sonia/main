@@ -7,6 +7,7 @@ import javafx.scene.layout.Region;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.ui.interactiveprompt.ClearTasksInteractivePrompt;
 import seedu.address.ui.interactiveprompt.ExitTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.view.FindTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.view.HelpInteractivePrompt;
@@ -21,6 +22,7 @@ import seedu.address.ui.interactiveprompt.delete.DeleteDuplicateTaskInteractiveP
 import seedu.address.ui.interactiveprompt.delete.DeleteTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.edit.ArchiveTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.edit.CompleteTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.edit.EditTaskInteractivePrompt;
 
 /**
  * The UI component that is responsible for receiving user command inputs.
@@ -31,7 +33,7 @@ public class CommandBox extends UiPart<Region> {
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes =
         {"add", "edit", "delete", "archive", "done", "delete duplicates",
-            "bye", "sort", "refresh", "help", "create mods", "find", "list"};
+            "clear", "bye", "sort", "refresh", "help", "create mods", "find", "list"};
     private final CommandExecutor commandExecutor;
     private InteractivePrompt currentInteractivePrompt;
     @FXML
@@ -59,8 +61,7 @@ public class CommandBox extends UiPart<Region> {
                     currentInteractivePrompt = new AddTaskInteractivePrompt();
                     break;
                 case "edit":
-                    //currentInteractivePrompt = new EditTaskInteractivePrompt();
-                    commandTextField.setText("Edit function under construction");
+                    currentInteractivePrompt = new EditTaskInteractivePrompt();
                     break;
                 case "delete":
                     currentInteractivePrompt = new DeleteTaskInteractivePrompt();
@@ -95,6 +96,9 @@ public class CommandBox extends UiPart<Region> {
                 case "list":
                     currentInteractivePrompt = new ListTaskInteractivePrompt();
                     break;
+                case "clear":
+                    currentInteractivePrompt = new ClearTasksInteractivePrompt();
+                    break;
                 default:
                     currentInteractivePrompt = new InvalidInputInteractivePrompt();
                     break;
@@ -103,8 +107,7 @@ public class CommandBox extends UiPart<Region> {
 
             //currentInteractivePrompt could be null. Might need to create an ErrorInteractivePrompt to handle this.
             //inserted NullPointerException e at the catch section
-            CommandResult commandResult = currentInteractivePrompt != null
-                ? commandExecutor.execute(currentInteractivePrompt, commandTextField.getText()) : null;
+            CommandResult commandResult = commandExecutor.execute(currentInteractivePrompt, commandTextField.getText());
             if (commandResult != null) {
                 currentInteractivePrompt = null;
             }

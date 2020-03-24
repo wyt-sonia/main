@@ -1,0 +1,18 @@
+@startuml
+start
+skinparam ActivityBackgroundColor #tan
+skinparam ActivityBorderColor #black
+skinparam activityDiamondBorderColor #black
+skinparam activityDiamondBackgroundColor #tan
+skinparam arrowColor #black
+
+:User requests for a calendar;
+
+:Calendar for current month is generated;
+
+while (day < Month.length) is (true)
+    :Search for task with date matching day;
+    :Add task name to gridpane;
+endwhile (day==Month.length)
+stop
+@enduml

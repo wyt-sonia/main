@@ -21,11 +21,12 @@ class JsonAdaptedTask {
 
     private final String taskName;
     private final String taskDateTime;
+    private final String taskFinishDateTime;
     private final String taskType;
     private final double weight;
     private final String moduleCode;
     private final String taskDescription;
-    private final String estimatedTimeCost;
+    private final double estimatedTimeCost;
     private final String status;
     private final String taskCreationDateTime;
 
@@ -35,14 +36,16 @@ class JsonAdaptedTask {
     @JsonCreator
     public JsonAdaptedTask(@JsonProperty("taskName") String taskName, @JsonProperty("taskType") String taskType,
                            @JsonProperty("taskDateTime") String taskDateTime,
+                           @JsonProperty("finishDateTime") String taskFinishDateTime,
                            @JsonProperty("taskDescription") String taskDescription,
                            @JsonProperty("module") String module, @JsonProperty("weight") Double weight,
-                           @JsonProperty("estimatedTimeCost") String estimatedTimeCost,
+                           @JsonProperty("estimatedTimeCost") Double estimatedTimeCost,
                            @JsonProperty("status") String status,
                            @JsonProperty("taskCreationDateTime") String taskCreationDateTime) {
 
         this.taskName = taskName;
         this.taskDateTime = taskDateTime;
+        this.taskFinishDateTime = taskFinishDateTime;
         this.taskDescription = taskDescription;
         this.moduleCode = module;
         this.weight = weight;
@@ -58,12 +61,14 @@ class JsonAdaptedTask {
     public JsonAdaptedTask(Task source) {
 
         String descString = source.getTaskDescription();
-        String estimatedTimeCostString = source.getEstimatedTimeCost();
 
         taskDescription = descString.isBlank() ? "" : descString;
         taskName = source.getTaskName();
         taskDateTime = source.getTimeString();
-        estimatedTimeCost = estimatedTimeCostString.isBlank() ? "" : estimatedTimeCostString;
+        taskFinishDateTime = source.getFinishDateTime() != null
+            ? TimeParser.getDateTimeString(source.getFinishDateTime())
+            : "";
+        estimatedTimeCost = source.getEstimatedTimeCost();
         status = source.getTaskStatus().toString();
         taskType = source.getTaskType().toString();
         weight = source.getWeight();
@@ -91,12 +96,15 @@ class JsonAdaptedTask {
             dateTimes[0] = TimeParser.parseDateTime(timeTerms[0]);
         }
 
-        // for creationDateTime
         LocalDateTime creationDateTime = TimeParser.parseDateTime(taskCreationDateTime);
 
         Task data = new Task(new Module(moduleCode), TaskType.getType(taskType),
             taskName, taskDescription, weight,
             TaskStatus.getStatus(status), dateTimes, estimatedTimeCost, creationDateTime);
+        if (!taskFinishDateTime.isBlank()) {
+            LocalDateTime finishDateTime = TimeParser.parseDateTime(taskFinishDateTime);
+            data.setFinishDateTime(finishDateTime);
+        }
         return data;
     }
 
