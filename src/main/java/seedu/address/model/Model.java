@@ -169,6 +169,12 @@ public interface Model {
     ObservableList<Task> getFilteredArchivedTaskList();
 
     /**
+     * Returns a List of modules
+     * @return
+     */
+    ObservableList<Module> getFilteredModuleList();
+
+    /**
      * Returns an unmodifiable view of the filtered archived task list.
      */
     ObservableList<Task> getFilteredDueSoonTaskList();
