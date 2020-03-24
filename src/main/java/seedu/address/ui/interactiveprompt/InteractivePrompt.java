@@ -100,4 +100,13 @@ public abstract class InteractivePrompt {
         }
         return reply;
     }
+
+    /**
+     * checks if the userInput is quit or back
+     * @param userInput
+     * @return true if the userInput is quit or back, false otherwise
+     */
+    public boolean isQuitOrBack(String userInput) {
+        return userInput.equals("quit") || userInput.equals("back");
+    }
 }

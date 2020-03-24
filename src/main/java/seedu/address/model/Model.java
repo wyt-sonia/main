@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -8,6 +9,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.module.Module;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
+import seedu.address.model.task.TaskType;
 
 
 /**
@@ -84,6 +86,27 @@ public interface Model {
     void completeTask(Task target);
 
     /**
+     * Set the task name
+     * @param target a task
+     * @param newTaskName the new name of the task
+     */
+    void setTaskName(Task target, String newTaskName);
+
+    /**
+     * Set the task type
+     * @param target a task
+     * @param newTaskType the new task type
+     */
+    void setTaskType(Task target, TaskType newTaskType);
+
+    /**
+     * Set the task date time
+     * @param target a task
+     * @param newDateTimes the new date and time
+     */
+    void setTaskDateTime(Task target, LocalDateTime[] newDateTimes);
+
+    /**
      * Deletes the given task.
      * The task must exist in the list.
      */
@@ -122,6 +145,8 @@ public interface Model {
      */
     void setPerson(Person target, Person editedPerson);
 
+
+    void setTask(Task target, Task editedTask);
     boolean hasMod(Module mod);
 
     void addMod(Module mod);

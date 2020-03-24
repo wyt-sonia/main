@@ -7,7 +7,7 @@ package seedu.address.ui.interactiveprompt;
  * Parser will handle to parsing of the command and create a command
  * command will execute the action
  * server display the response if needed
- * */
+ */
 
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.EXIT_TASK;
 
