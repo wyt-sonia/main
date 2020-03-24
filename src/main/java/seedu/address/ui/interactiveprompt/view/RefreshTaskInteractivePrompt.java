@@ -1,4 +1,4 @@
-package seedu.address.ui.interactiveprompt;
+package seedu.address.ui.interactiveprompt.view;
 
 /*
  * Logic of implementation:
@@ -14,9 +14,11 @@ import static seedu.address.ui.interactiveprompt.InteractivePromptType.DUE_SOON_
 import java.text.ParseException;
 import java.util.ArrayList;
 
-import seedu.address.logic.commands.RefreshCommand;
+import seedu.address.logic.commands.view.RefreshCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.DueSoonRefreshCommandException;
+import seedu.address.ui.interactiveprompt.InteractivePrompt;
+import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
  * pending.
