@@ -127,7 +127,6 @@
                     </StackPane>
                     <StackPane fx:id="statusbarPlaceholder" maxWidth="1.7976931348623157E308" VBox.vgrow="NEVER"/>
                 </VBox>
-
             </VBox>
         </Scene>
     </scene>

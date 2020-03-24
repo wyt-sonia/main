@@ -1,6 +1,8 @@
 package seedu.address.model.util;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import seedu.address.logic.parser.TimeParser;
 import seedu.address.model.AddressBook;
@@ -40,9 +42,12 @@ public class SampleDataUtil {
 
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
+        ArrayList<Task> sampleTasks = new ArrayList<>();
         for (Task sampleTask : getSampleTasks()) {
             sampleAb.addTask(sampleTask);
+            sampleTasks.add(sampleTask);
         }
+        Task.updateCurrentTaskList(sampleTasks);
         return sampleAb;
     }
 }
