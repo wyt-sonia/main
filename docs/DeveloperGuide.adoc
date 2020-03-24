@@ -249,7 +249,7 @@ image::CalendarActivityDiagram.png[width = "400", length = "600"]
 * It is more efficient to cache the calendar rather than to generate a new one, however, we do not expect the user to have too many tasks (n>1000000) and therefore it should not slow down the application.
 
 === Archive feature
-Archive stores selected task away into a seperate task list, this command is used when the user has completed a task but still wants to keep track of it.
+Archive stores selected task away into a separate task list, this command is used when the user has completed a task but still wants to keep track of it.
 
 ==== Implementation
 Archive uses both the old delete and a new archive command. Upon executing the archive command, it will call the model to delete the task and archive it elsewhere.
@@ -257,6 +257,32 @@ Archive uses both the old delete and a new archive command. Upon executing the a
 Sequence diagram:
 
 image::ArchiveSequenceDiagram.png[width = "600", length = "500"]
+
+=== Achievement feature
+The achievement feature keeps track of usage statistics and displays the user's achievements
+and feedback on the user's weekly performance.
+
+==== Implementation
+The achievement feature keeps track of usage statistics that are important to the user.
+Each usage statistic is recorded when the respective user command has completed. The user command is
+said to be completed when the respective `InteractivePrompt` has completed successfully.
+
+For example, the following are the usage statistics logged for the `CompleteTaskInteractivePrompt`.
+
+.  Number of tasks completed
+.  Number of tasks completed on time
+.  Number of tasks deadlines missed
+.  Average amount of time exceeded
+.  Average amount of buffer time
+.  Time spent on each type of task
+
+Similarly, usage statistics are recorded for other user commands as well.
+
+==== Example Use Scenario
+Clicking on the achievement menu item will enable this feature.
+
+==== Design Considerations
+Pending.
 
 // tag::dataencryption[]
 === [Proposed] Data Encryption
