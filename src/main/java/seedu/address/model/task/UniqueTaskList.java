@@ -158,6 +158,8 @@ public class UniqueTaskList implements Iterable<Task> {
         requireNonNull(target);
         requireNonNull(newTaskName);
         target.setTaskName(newTaskName);
+        int index = internalList.indexOf(target);
+        internalList.set(index, target);
     }
 
     /**
@@ -169,6 +171,8 @@ public class UniqueTaskList implements Iterable<Task> {
         requireNonNull(target);
         requireNonNull(newTaskType);
         target.setTaskType(newTaskType);
+        int index = internalList.indexOf(target);
+        internalList.set(index, target);
     }
 
     /**
@@ -180,6 +184,8 @@ public class UniqueTaskList implements Iterable<Task> {
         requireNonNull(target);
         requireNonNull(newDateTimes);
         target.setDateTimes(newDateTimes);
+        int index = internalList.indexOf(target);
+        internalList.set(index, target);
     }
 
     /**
