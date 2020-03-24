@@ -9,7 +9,7 @@ import seedu.address.logic.commands.EditTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.interactivecommandparser.EditTaskCommandParser;
-import seedu.address.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
+import seedu.address.logic.parser.interactivecommandparser.exceptions.EditTaskCommandException;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskField;
 import seedu.address.model.task.TaskType;
@@ -93,7 +93,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
             default:
                 throw new IllegalStateException("Unexpected value: " + taskField);
             }
-        } catch (AddTaskCommandException ex) {
+        } catch (EditTaskCommandException ex) {
             parseSuccess = false;
             reply = ex.getMessage();
         }
