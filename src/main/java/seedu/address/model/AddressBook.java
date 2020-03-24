@@ -110,6 +110,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removeTask(Task key) {
         tasks.remove(key);
+        sortDueSoonTasks();
     }
 
     /**
@@ -176,6 +177,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void addDueSoonTask(Task p) {
         if (p.isDueSoon()) {
             dueSoonTasks.add(p);
+            sortDueSoonTasks();
         }
     }
 

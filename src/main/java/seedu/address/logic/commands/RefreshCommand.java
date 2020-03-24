@@ -48,7 +48,7 @@ public class RefreshCommand extends Command {
                 }
             }
         }
-
+        model.sortDueSoonTasks();
         return new CommandResult(String.format(MESSAGE_DUE_SOON_TASK_SUCCESS));
     }
 
