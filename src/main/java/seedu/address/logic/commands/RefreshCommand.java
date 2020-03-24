@@ -1,11 +1,9 @@
-package seedu.address.logic.commands.view;
+package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 
-import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
 import seedu.address.model.task.Task;
 

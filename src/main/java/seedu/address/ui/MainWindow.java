@@ -2,7 +2,6 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -19,7 +18,6 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
-import seedu.address.model.module.Module;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -64,9 +62,6 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane taskSummaryHolder;
-
-    @FXML
-    private StackPane modulePaneHolder;
 
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
@@ -218,16 +213,6 @@ public class MainWindow extends UiPart<Stage> {
         TaskListPanel archiveListPanel = new TaskListPanel(logic.getFilteredArchivedTaskList());
         taskListPanelPlaceholder.getChildren().add(archiveListPanel.getRoot());
     }
-
-    @FXML
-    private void handleShowModules() {
-        toggleHolder();
-        ObservableList<Module> modulesToBeDisplayed = logic.getFilteredModuleList();
-        ModuleListPanel moduleListPanel = new ModuleListPanel(modulesToBeDisplayed);
-        taskListPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
-    }
-
-
 
     @FXML
     private void handleShowCalendar() {
