@@ -3,6 +3,10 @@
 skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
+skinparam classBorderColor #black
+skinparam arrowColor #black
+
+
 
 Package Model <<Rectangle>>{
 Interface ReadOnlyAddressBook <<Interface>>
@@ -15,13 +19,11 @@ Class ModelManager
 Class UserPrefs
 Class ReadOnlyUserPrefs
 
-Package Person {
-Class Person
-Class Address
-Class Email
-Class Name
-Class Phone
-Class UniquePersonList
+Package Task {
+Class UniqueTaskList
+Class Task
+Enum TaskStatus
+Enum TaskType
 }
 
 Package Tag {
@@ -40,17 +42,14 @@ ModelManager o--> "1" AddressBook
 ModelManager o-left-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 
-AddressBook *--> "1" UniquePersonList
-UniquePersonList o--> "*" Person
-Person *--> Name
-Person *--> Phone
-Person *--> Email
-Person *--> Address
-Person *--> "*" Tag
+AddressBook *--> "1" UniqueTaskList
 
-Name -[hidden]right-> Phone
-Phone -[hidden]right-> Address
-Address -[hidden]right-> Email
+UniqueTaskList o-> "*" Task
+Task *--> TaskStatus
+Task *--> TaskType
 
-ModelManager -->"1" Person : filtered list
+Task *--> "*" Tag
+
+ModelManager -->"1" Task : filtered list
 @enduml
+
