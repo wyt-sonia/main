@@ -226,6 +226,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public ObservableList<Module> getFilteredModuleList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Task> getFilteredDueSoonTaskList() {
             throw new AssertionError("This method should not be called.");
         }

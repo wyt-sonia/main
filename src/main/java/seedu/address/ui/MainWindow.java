@@ -18,8 +18,8 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.ui.interactiveprompt.InteractivePrompt;
 import seedu.address.model.module.Module;
+import seedu.address.ui.interactiveprompt.InteractivePrompt;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -219,6 +219,9 @@ public class MainWindow extends UiPart<Stage> {
         taskListPanelPlaceholder.getChildren().add(archiveListPanel.getRoot());
     }
 
+    /**
+     * handles modules to be displayed
+     */
     @FXML
     private void handleShowModules() {
         toggleHolder();
