@@ -285,11 +285,37 @@ Clicking on the achievement menu item will enable this feature.
 Pending.
 
 // tag::dataencryption[]
+=== Modules
+The `modules` feature enables users to be able to group and view their tasks according to various modules or subjects.
+Each module is assigned with a unique module code & a name.
+By default, all task created with the `add` command will be be assigned to module code `O0000O`.
+
+==== Implementation
+Modules are created with `create mods` Command and the program will request for a module name and module code. There are no restrictions on module name as long as it is not an empty entry.
+
+Module codes however, require at least an alphabetical prefix, a number, and a postfix(optional).
+
+```
+Correct moduleCodes:
+A0A
+CS11X
+AA1234
+
+Incorrect moduleCodes:
+123456
+CAT
+555T
+```
+
+
+
+
 === [Proposed] Data Encryption
 
 _{Explain here how the data encryption feature will be implemented}_
 
 // end::dataencryption[]
+
 
 === Logging
 

@@ -5,8 +5,8 @@ import static seedu.address.ui.interactiveprompt.InteractivePromptType.FIND_TASK
 import java.text.ParseException;
 import java.util.Arrays;
 
-import seedu.address.logic.commands.view.FindTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.view.FindTaskCommand;
 import seedu.address.model.task.TaskNameContainsKeywordsPredicate;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePromptTerms;

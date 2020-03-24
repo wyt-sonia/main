@@ -1,8 +1,8 @@
 package seedu.address.ui.interactiveprompt.view;
 
-import seedu.address.ui.interactiveprompt.InteractivePrompt;
-
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.HELP;
+
+import seedu.address.ui.interactiveprompt.InteractivePrompt;
 
 /**
  * The interactive prompt for the help command. Returns the help message immediately

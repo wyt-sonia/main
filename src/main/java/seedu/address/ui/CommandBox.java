@@ -9,13 +9,8 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.interactiveprompt.ClearTasksInteractivePrompt;
 import seedu.address.ui.interactiveprompt.ExitTaskInteractivePrompt;
-import seedu.address.ui.interactiveprompt.view.FindTaskInteractivePrompt;
-import seedu.address.ui.interactiveprompt.view.HelpInteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
 import seedu.address.ui.interactiveprompt.InvalidInputInteractivePrompt;
-import seedu.address.ui.interactiveprompt.view.ListTaskInteractivePrompt;
-import seedu.address.ui.interactiveprompt.view.RefreshTaskInteractivePrompt;
-import seedu.address.ui.interactiveprompt.sort.SortTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.add.AddTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.add.CreateModuleInteractivePrompt;
 import seedu.address.ui.interactiveprompt.delete.DeleteDuplicateTaskInteractivePrompt;
@@ -23,6 +18,11 @@ import seedu.address.ui.interactiveprompt.delete.DeleteTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.edit.ArchiveTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.edit.CompleteTaskInteractivePrompt;
 import seedu.address.ui.interactiveprompt.edit.EditTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.sort.SortTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.view.FindTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.view.HelpInteractivePrompt;
+import seedu.address.ui.interactiveprompt.view.ListTaskInteractivePrompt;
+import seedu.address.ui.interactiveprompt.view.RefreshTaskInteractivePrompt;
 
 /**
  * The UI component that is responsible for receiving user command inputs.
