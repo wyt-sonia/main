@@ -284,7 +284,7 @@ CAT
 ==== Sequence diagram for creating modules
 This is a sequence of how a module is created using the `create mods` feature. Take note that all interactions go through the `CommandBox` first in the UI, but it will be omitted from this diagram for simplicity.
 
-image::UMLmodule.jpeg[width = "800", length = "600"]
+image::UMLmodule.jpeg[width = "1000", length = "800"]
 
 
 
