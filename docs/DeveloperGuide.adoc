@@ -81,17 +81,37 @@ image::UiClassDiagram.png[]
 
 *API* : link:{repoURL}/src/main/java/seedu/address/ui/Ui.java[`Ui.java`]
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc.
+The UI consists of a `MainWindow` that is made up of parts e.g.`BrandingLabel`, `TaskListPanel`,
+ `DueSoonTaskListPanel`, `TaskSummaryPanel`, `CalenderPanel`, `ResultDisplay`, `CommandBox`, `StatusBarFooter` etc.
+
 All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+
+The `TaskListPanel` and `DueSoonTaskListPanel` can switch with `TaskSummaryPanel` or `CalenderPanel` accordingly
+as user click `Statistics->Task Summary` or `Calender->Show Calender`.
 
 The `UI` component uses JavaFx UI framework.
 The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
 For example, the layout of the link:{repoURL}/src/main/java/seedu/address/ui/MainWindow.java[`MainWindow`] is specified in link:{repoURL}/src/main/resources/view/MainWindow.fxml[`MainWindow.fxml`]
 
+Study Buddy provides an interactive way for command execution. `AddTaskInteractivePrompt`, `DeleteTaskInteractivePrompt`,
+`SortTaskInteractivePrompt` etc are used to handle each types of command executions. Besides, they all `extends` the `InteractivePrompt` abstract class.
+
 The `UI` component,
 
-* Executes user commands using the `Logic` component.
+* Provides interactive command process.
+* Allows users to exit from a command execution at any interaction step using `quit`.
+* Validate user input in each interaction.
+* When invalid input received, proper message will respond in `ResultDisplay` node.
+The execution of the command will not be terminated, user can continue with the process with valid input.
+* Result in final executable command and executes it using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
+
+[NOTE]
+The command execution will only terminate in two scenarios: +
+1.  When the command is successfully executed. +
+2.  When the user enter `quit` and kbd:[enter] to exit the execution.
+
+
 
 [[Design-Logic]]
 === Logic component
@@ -153,8 +173,8 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-// tag::undoredo[]
-=== Due Soon Tasks feature
+// tag::dueSoon[]
+=== Due Soon Tasks Feature
 
 ==== Implementation
 
@@ -176,7 +196,7 @@ When a task that is deleted from the main list occurs in the due soon list as we
 
 3. Refresh --
 
-   Command: due soon
+   Command: refresh
 
 Refreshes the list of due soon tasks. This command is useful for a situation where due soon list is not up to date due to a drastic change in time.
 
@@ -220,13 +240,75 @@ image::DueSoonSequenceDiagram.png[width = "600", length = "500"]
 * **Alternative 2:** Clear and reload the due soon task list.
 ** Pros: Less prone to errors since the entire list is "refreshed".
 ** Cons: More operation intensive.
+// end::dueSoon[]
 
-// tag::dataencryption[]
-=== [Proposed] Data Encryption
+// tag::taskSummary[]
+=== Task Summary Feature
 
-_{Explain here how the data encryption feature will be implemented}_
+==== Implementation
 
-// end::dataencryption[]
+The task summary feature allows user to enjoy visualized and real-time statistics of their tasks' information.
+
+This feature is implemented using different charts as `pie chart`, `area chart`, `bar chart` and `line chart`.
+All charts are organized in a `TabPanel` which will replace the `ListPanel` and `Due Soon List Panel` in the main window when
+`Task Summary` in the `Menu` is clicked.
+
+The data of each chart will automatically rebind when user manage their tasks using the commands as below:
+
+* `add`
+* `done`
+* `delete`
+* `refresh`
+
+[NOTE]
+Only when there is task status change after `refresh`, the charts will refresh accordingly.
+
+==== Example Usage Scenario
+Given below is an example usage scenario and how the task summary mechanism behaves at each step.
+
+Step 1. The user launches the application with some alive and archived task records in the `storage`.
+Statistics will perform on the records retrieved, and the result will be visualized as different charts organized in a `tab panel`.
+After the user clicks `Statistics -> Task Summary`, the `tab panel` will display.
+The user successfully executes `add`, `delete` or `done` command when any chart is on the screen.
+The diagram will automatically refresh and reflect the updated record.
+
+Activity diagram <pending update>:
+
+image::AddDueSoonActivityDiagram.png[width = "200", length = "300"]
+
+Step 2. The user successfully executes `add`, `delete` or `done` command when any chart is on the screen.
+The diagram will automatically refresh and reflect the updated record.
+
+
+Step 3. The user executes `refresh` command, and there is a task status update after the execution.
+For example, when the user is playing with the application, and meanwhile, a task expires.
+The status won't update until user call `refresh` command. In this case, the chart will also automatically refresh and reflect the updated record.
+
+Step 4. The user executes `refresh`, and there is no task status update after the execution. The charts will remain the same.
+
+
+Activity diagram<pending change>:
+
+image::DueSoonActivityDiagram.png[width = "400", length = "600"]
+
+Sequence diagram<pending change>:
+
+image::DueSoonSequenceDiagram.png[width = "600", length = "500"]
+
+==== Design Considerations
+
+===== Aspect: How to display charts
+
+* **Alternative 1 (current choice):** Use a `tab panel` to organize different charts.
+** Pros: Easy to organize and the UI is clean.
+** Cons: Less interaction, and clicking is required. While allowing user to use command to switch among different tabs is under construction.
+* **Alternative 2:** Use a simple `panel` to hold the chart, and allow user to use command to toggle the type of charts.
+** Pros: More flexible and more interaction possibilities.
+** Cons: The cost overweight the benefit.
+
+==== Future possibility
+===== Question: should we write this in DG?
+// end::taskSummary[]
 
 === Logging
 
