@@ -272,10 +272,6 @@ After the user clicks `Statistics -> Task Summary`, the `tab panel` will display
 The user successfully executes `add`, `delete` or `done` command when any chart is on the screen.
 The diagram will automatically refresh and reflect the updated record.
 
-Activity diagram <pending update>:
-
-image::AddDueSoonActivityDiagram.png[width = "200", length = "300"]
-
 Step 2. The user successfully executes `add`, `delete` or `done` command when any chart is on the screen.
 The diagram will automatically refresh and reflect the updated record.
 
@@ -287,13 +283,10 @@ The status won't update until user call `refresh` command. In this case, the cha
 Step 4. The user executes `refresh`, and there is no task status update after the execution. The charts will remain the same.
 
 
-Activity diagram<pending change>:
+Activity diagram for step 4:
 
-image::DueSoonActivityDiagram.png[width = "400", length = "600"]
+image::TaskSummaryWithRefreshCommandActivityDiagram.png[width = "400", length = "600"]
 
-Sequence diagram<pending change>:
-
-image::DueSoonSequenceDiagram.png[width = "600", length = "500"]
 
 ==== Design Considerations
 

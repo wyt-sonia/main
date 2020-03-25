@@ -1,0 +1,20 @@
+@startuml
+
+skinparam ActivityBackgroundColor #lightgrey
+skinparam ActivityBorderColor #grey
+skinparam activityDiamondBorderColor #grey
+skinparam activityDiamondBackgroundColor #grey
+skinparam arrowColor #grey
+
+
+(*)  --> "User clicks Statistics from menu items"
+--> "User clicks Task Summary from the dropdown List"
+--> "User executes refresh command"
+--> "System checks tasks' statuses"
+If "find any task with expired status" then
+--> [Yes] "Update its status"
+--> "Chart refreshes"
+--> (*)
+else
+--> [No] (*)
+@enduml

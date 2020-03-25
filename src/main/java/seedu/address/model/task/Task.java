@@ -95,7 +95,7 @@ public class Task implements Comparable<Task> {
                 this.taskStatus = TaskStatus.DUE_SOON;
                 return;
             }
-            if (!this.isDueSoon() && this.taskStatus.equals(TaskStatus.DUE_SOON)) {
+            if (!this.isDueSoon()) {
                 if (this.dateTimes[0].isBefore(now) && !this.taskStatus.equals(TaskStatus.OVERDUE)) {
                     this.taskStatus = TaskStatus.OVERDUE;
                     return;
@@ -105,7 +105,6 @@ public class Task implements Comparable<Task> {
                     return;
                 }
             }
-
         }
     }
 
