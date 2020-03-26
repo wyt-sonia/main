@@ -7,9 +7,9 @@ import static seedu.address.ui.interactiveprompt.InteractivePromptType.INVALID_M
  * Help message will be provided when invalid message caught.
  */
 public class InvalidInputInteractivePrompt extends InteractivePrompt {
-
     static final String HELP_MSG = "Please enter a valid command option.\n"
-        + HelpInteractivePrompt.getHelpMessage();
+        + "1. add  2. delete  3. edit  4. bye  5. sort  6. find  7. done  8. delete duplicates  "
+        + "9. sort  10. archive  11. help  12. list  13. clear";
 
     private InteractivePromptTerms currentTerm;
     private String reply;
