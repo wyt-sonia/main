@@ -3,9 +3,7 @@ package seedu.address.model.task;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -100,7 +98,7 @@ public class Task implements Comparable<Task> {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        int daysBetween = (int)(difference / DAYS_DIVISOR);
+        int daysBetween = (int) (difference / DAYS_DIVISOR);
         int hoursBetween = ((int) (difference / HOURS_DIVISOR)) % 24;
         int minsBetween = ((int) (difference / MINUTES_DIVISOR)) % 60;
 
