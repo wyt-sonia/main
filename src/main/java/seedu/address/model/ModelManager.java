@@ -145,6 +145,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void setTaskListForModule(Module mod) throws ModuleCodeException {
+        addressBook.collectTaskBasedOnMod(mod);
+    }
+
+
+    @Override
     public void deleteTask(Task target) {
         addressBook.removeTask(target);
     }

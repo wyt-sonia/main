@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import seedu.address.logic.parser.TimeParser;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.InteractiveCommandException;
+import seedu.address.model.module.Module;
+import seedu.address.model.module.exceptions.ModuleCodeException;
 import seedu.address.model.task.TaskType;
 
 /**
@@ -70,5 +72,13 @@ public class EditTaskCommandParser {
             result = TaskType.getTaskTypes()[index - 1];
         }
         return result;
+    }
+
+    public static Module parseModule(String userInput) throws AddTaskCommandException {
+        try {
+            return new Module(userInput);
+        } catch (ModuleCodeException ex) {
+            throw new AddTaskCommandException(ex.getLocalizedMessage());
+        }
     }
 }

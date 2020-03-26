@@ -14,7 +14,7 @@ import seedu.address.model.task.exceptions.TaskNotFoundException;
  * Identified by ModuleCode instead of ModuleName to minimise errors.
  */
 public class Module {
-    private final ObservableList<Task> internalTaskList = FXCollections.observableArrayList();
+    private ObservableList<Task> internalTaskList = FXCollections.observableArrayList();
     private String moduleName;
     private ModuleCode moduleCode;
 
@@ -94,11 +94,6 @@ public class Module {
         }
     }
 
-    public ObservableList<Task> getInternalTaskListFromModule() {
-        return internalTaskList;
-    }
-
-
     /**
      * Compares moduleCode instead of moduleName.
      *
@@ -131,6 +126,18 @@ public class Module {
         this.moduleCode = new ModuleCode(moduleCode);
     }
 
+    public ObservableList<Task> getInternalTaskList() {
+        return internalTaskList;
+    }
+
+    public void setInternalTaskList(ObservableList<Task> internalTaskList) {
+        this.internalTaskList = internalTaskList;
+    }
+
+    public void filterAndSetInternalTaskList(ObservableList<Task> externalTaskList) {
+        ObservableList<Task> collectedTasks = externalTaskList.filtered(x-> x.getModule().equals(this));
+        this.internalTaskList = collectedTasks;
+    }
     @Override
     public String toString() {
         return getModuleCode().toString();

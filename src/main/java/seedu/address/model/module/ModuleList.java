@@ -85,4 +85,8 @@ public class ModuleList {
         requireNonNull(replacement);
         internalList.setAll(replacement);
     }
+
+    public int indexOf(Module module) {
+        return internalList.indexOf(module);
+    }
 }

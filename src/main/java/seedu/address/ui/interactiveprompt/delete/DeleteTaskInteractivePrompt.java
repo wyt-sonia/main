@@ -55,7 +55,7 @@ public class DeleteTaskInteractivePrompt extends InteractivePrompt {
 
         case TASK_INDEX:
             try {
-                index = Integer.parseInt(userInput)
+                index = Integer.parseInt(userInput);
                 if (index > Task.getCurrentTasks().size() || index <= 0) {
                     throw new DeleteTaskCommandException("invalidIndexRangeError");
                 }

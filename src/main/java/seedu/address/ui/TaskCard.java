@@ -6,6 +6,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.logic.parser.TimeParser;
+import seedu.address.model.module.EmptyModule;
 import seedu.address.model.task.Task;
 
 /**
@@ -29,8 +30,8 @@ public class TaskCard extends UiPart<Region> {
     private HBox cardPane;
     @FXML
     private Label taskName;
-    //@FXML
-    //private Label Module;
+    @FXML
+    private Label module;
     @FXML
     private Label status;
     @FXML
@@ -44,12 +45,20 @@ public class TaskCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
 
+
     public TaskCard(Task task, int displayedIndex) {
         super(FXML);
         this.task = task;
         id.setText(displayedIndex + ". ");
         taskName.setText(task.getTaskName());
-        //Module.setText(task.getModule().toString());
+
+        if(task.getModule().equals(new EmptyModule())) {
+            module.setVisible(false);
+            module.setManaged(false);
+        } else {
+            module.setText(task.getModule().toString());
+        }
+
         status.setText(task.getTaskStatus().convertToString());
         renderTask(task);
         dateTime.setText("\tDeadline/Task Duration: " + task.getTimeString());

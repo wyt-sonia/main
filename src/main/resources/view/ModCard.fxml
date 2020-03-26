@@ -2,32 +2,28 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="76.0" prefWidth="304.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMousePressed="#sayHi" prefHeight="76.0" prefWidth="304.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox prefHeight="76.0" prefWidth="304.0">
+      <FlowPane alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="186.0">
-               <children>
-                  <Label fx:id="moduleName" alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="269.0" text="\$moduleName">
-                     <padding>
-                        <Insets left="5.0" top="5.0" />
-                     </padding>
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <Label fx:id="moduleCode" alignment="CENTER" prefHeight="37.0" prefWidth="304.0" text="\\$moduleCode" textFill="#686868">
+            <Label fx:id="moduleName" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="31.0" prefWidth="298.0" text="\$moduleName">
+               <padding>
+                  <Insets left="5.0" top="5.0" />
+               </padding>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="moduleCode" prefHeight="37.0" prefWidth="304.0" text="\\$moduleCode" textFill="#686868">
                <padding>
                   <Insets left="5.0" top="20.0" />
                </padding>
             </Label>
          </children>
-      </VBox>
+      </FlowPane>
    </children>
 </HBox>

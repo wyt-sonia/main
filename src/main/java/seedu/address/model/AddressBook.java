@@ -232,6 +232,13 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
     }
 
+    public void collectTaskBasedOnMod(Module module) throws ModuleCodeException {
+        ObservableList<Task> collectedTask = tasks.filterTaskByMod(module);
+        int modIndex = moduleList.indexOf(module);
+        Module originalModule = moduleList.get(module.toString());
+        originalModule.setInternalTaskList(collectedTask);
+    }
+
     /**
      * Replaces the given person {@code target} in the list with {@code editedPerson}.
      * {@code target} must exist in the address book.

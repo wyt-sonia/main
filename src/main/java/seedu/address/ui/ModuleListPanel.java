@@ -21,16 +21,26 @@ public class ModuleListPanel extends UiPart<Region> {
     @FXML
     private ListView<Module> moduleListView;
 
+    @FXML
+    public void sayHi() {
+        System.out.println("ModListPanel");
+    }
+
     public ModuleListPanel(ObservableList<Module> moduleList) {
         super(FXML);
         moduleListView.setItems(moduleList);
         moduleListView.setCellFactory(listView -> new ModuleListViewCell());
     }
 
+
     /**
     * cells for moduleList
     */
+
+
     class ModuleListViewCell extends ListCell<Module> {
+        Module module;
+
         @Override
         protected void updateItem(Module module, boolean empty) {
             super.updateItem(module, empty);
@@ -40,10 +50,10 @@ public class ModuleListPanel extends UiPart<Region> {
                 setText(null);
             } else {
                 ModCard modcard = new ModCard(module, getIndex() + 1);
+                this.module = module;
                 setGraphic(modcard.getRoot());
             }
         }
-
     }
 }
 

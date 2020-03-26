@@ -10,6 +10,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.interactivecommandparser.EditTaskCommandParser;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.EditTaskCommandException;
+import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskField;
 import seedu.address.model.task.TaskType;
@@ -49,7 +50,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         if (userInput.equals("quit")) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
-        } else {
+        } else if (userInput.equals("back")){
             userInput = checkForBackInput(userInput);
         }
 
@@ -97,6 +98,10 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                 LocalDateTime[] newDateTimes = EditTaskCommandParser.parseDateTime(userInput);
                 editTaskCommand.provideNewDateTime(newDateTimes);
                 break;
+            case TASK_MODULE:
+                Module newModule = EditTaskCommandParser.parseModule(userInput);
+                editTaskCommand.provideNewModule(newModule);
+                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + taskField);
             }
@@ -158,7 +163,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
 
         try {
             int taskFieldNumber = Integer.parseInt(userInput);
-            if (taskFieldNumber > 3 || taskFieldNumber < 1) {
+            if (taskFieldNumber > 4 || taskFieldNumber < 1) {
                 throw new ParseException("task field number not in range");
             }
             taskField = TaskField.getTaskFieldFromNumber(taskFieldNumber);
@@ -191,6 +196,10 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         case TASK_DATETIME:
             result += "Please enter the deadline with format: "
                 + "HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy";;
+            break;
+        case TASK_MODULE:
+            result += "Please enter the module code that you wish to assign to this task.\n"
+                    + "You can find all the modules available under Modules/Show Modules in the menu bar above.";
             break;
         default:
             throw new IllegalStateException("Unexpected value: " + taskField);

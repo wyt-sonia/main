@@ -2,6 +2,7 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Scene?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -11,16 +12,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.Scene?>
 <?import javafx.scene.text.Font?>
 <?import javafx.stage.Stage?>
 
-<fx:root xmlns:fx="http://javafx.com/fxml/1" minHeight="600" minWidth="550" onCloseRequest="#handleExit"
-         title="Study Buddy"
-         type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/10.0.2-internal">
+<fx:root minHeight="600" minWidth="550" onCloseRequest="#handleExit" title="Study Buddy" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
 
     <icons>
-        <Image url="@/images/study_buddy.png"/>
+        <Image url="@/images/study_buddy.png" />
     </icons>
     <scene>
         <Scene>
@@ -37,8 +35,9 @@
                     <Menu mnemonicParsing="false" text="My Tasks">
                         <MenuItem mnemonicParsing="false" onAction="#handleShowAllTasks" style="-fx-font-size: 10pt;" text="All Tasks" />
                         <MenuItem mnemonicParsing="false" onAction="#handleShowArchivedTasks" style="-fx-font-size: 10pt;" text="Archived Tasks" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleDueSoonTasks" style="-fx-font-size: 10pt;" text="Due Soon Task" />
                     </Menu>
-                    <Menu mnemonicParsing="false" onAction="#handleShowModules" text="Modules">
+                    <Menu mnemonicParsing="false" text="Modules">
                         
                         <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleShowModules" style="-fx-font-size: 10pt;" text="Show Modules" />
                         
@@ -61,24 +60,22 @@
                         
                     </Menu>
                 </MenuBar>
-                <Pane maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="530.0"
-                      style="-fx-background-color: rgba(255, 255, 255, 0.8); -fx-background-radius: 10;"
-                      VBox.vgrow="NEVER">
+                <Pane maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="530.0" style="-fx-background-color: rgba(255, 255, 255, 0.8); -fx-background-radius: 10;" VBox.vgrow="NEVER">
                     <children>
                         <Label fx:id="brand" alignment="CENTER" minWidth="540.0" prefWidth="${brand.parent.width}" style="-fx-text-fill: rgba(123, 87, 69, 0.8);" styleClass="app_brand" text="Study Buddy">
                             <padding>
-                                <Insets bottom="5.0" left="10.0" right="5.0" top="5.0"/>
+                                <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
                             </padding>
                             <font>
-                                <Font name="System Bold" size="13.0"/>
+                                <Font name="System Bold" size="13.0" />
                             </font>
                         </Label>
                     </children>
                     <opaqueInsets>
-                        <Insets/>
+                        <Insets />
                     </opaqueInsets>
                     <VBox.margin>
-                        <Insets left="10.0" right="10.0" top="5.0"/>
+                        <Insets left="10.0" right="10.0" top="5.0" />
                     </VBox.margin>
                 </Pane>
 
@@ -95,40 +92,37 @@
                         <padding>
                             <Insets bottom="5.0" left="5.0" right="10.0" top="10.0" />
                         </padding>
-                        <StackPane fx:id="dueSoonListPanelPlaceholder" prefWidth="${brand.parent.width}" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" />
+                        <StackPane fx:id="dueSoonListPanelPlaceholder" onMouseClicked="#handleTaskFilteredByModule" prefWidth="${brand.parent.width}" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" />
                     </VBox>
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
                 </HBox>
 
-                <StackPane fx:id="taskSummaryHolder" maxHeight="1.7976931348623157E308"
-                           maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                <StackPane fx:id="taskSummaryHolder" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                     <padding>
                         <Insets left="10.0" right="10.0" />
                     </padding>
                 </StackPane>
+            <StackPane fx:id="modulePaneHolder" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="940.0" VBox.vgrow="ALWAYS" />
 
                 <VBox>
 
 
-                    <StackPane fx:id="resultDisplayPlaceholder" maxHeight="150.0" maxWidth="1.7976931348623157E308"
-                               minHeight="120.0" prefHeight="200.0" styleClass="pane-with-border"
-                               VBox.vgrow="ALWAYS">
+                    <StackPane fx:id="resultDisplayPlaceholder" maxHeight="150.0" maxWidth="1.7976931348623157E308" minHeight="120.0" prefHeight="200.0" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
                         <padding>
-                            <Insets left="10.0" right="10.0" top="5.0"/>
+                            <Insets left="10.0" right="10.0" top="5.0" />
                         </padding>
                         <VBox.margin>
-                            <Insets/>
+                            <Insets />
                         </VBox.margin>
                     </StackPane>
-                    <StackPane fx:id="commandBoxPlaceholder" maxWidth="1.7976931348623157E308" prefHeight="40.0"
-                               styleClass="pane-with-border" VBox.vgrow="NEVER">
+                    <StackPane fx:id="commandBoxPlaceholder" maxWidth="1.7976931348623157E308" prefHeight="40.0" styleClass="pane-with-border" VBox.vgrow="NEVER">
                         <VBox.margin>
-                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                         </VBox.margin>
                     </StackPane>
-                    <StackPane fx:id="statusbarPlaceholder" maxWidth="1.7976931348623157E308" VBox.vgrow="NEVER"/>
+                    <StackPane fx:id="statusbarPlaceholder" maxWidth="1.7976931348623157E308" VBox.vgrow="NEVER" />
                 </VBox>
             </VBox>
         </Scene>

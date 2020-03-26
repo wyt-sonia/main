@@ -40,6 +40,7 @@ public class MainWindow extends UiPart<Stage> {
     private DueSoonListPanel dueSoonListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private ModuleListPanelv2 moduleListPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -67,6 +68,7 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane modulePaneHolder;
+
 
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
@@ -134,6 +136,11 @@ public class MainWindow extends UiPart<Stage> {
         taskSummaryHolder.getChildren().add(taskSummaryPanel.getRoot());
         taskSummaryHolder.setVisible(false);
         taskSummaryHolder.setManaged(false);
+
+        moduleListPanel = new ModuleListPanelv2(logic.getFilteredModuleList(), logic.getFilteredTaskList());
+        modulePaneHolder.getChildren().add(moduleListPanel.getRoot());
+        modulePaneHolder.setVisible(false);
+        modulePaneHolder.setManaged(false);
 
         dueSoonListPanel = new DueSoonListPanel(logic.getFilteredDueSoonTaskList());
         dueSoonListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
@@ -204,6 +211,10 @@ public class MainWindow extends UiPart<Stage> {
         toggleHolder();
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+        if(modulePaneHolder.isManaged()) {
+            toggleModuleTabs();
+            toggleTaskListHolder();
+        }
     }
 
     @FXML
@@ -224,13 +235,14 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleShowModules() {
-        toggleHolder();
-        ObservableList<Module> modulesToBeDisplayed = logic.getFilteredModuleList();
-        ModuleListPanel moduleListPanel = new ModuleListPanel(modulesToBeDisplayed);
-        taskListPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
+        toggleTaskListHolder();
+        toggleModuleTabs();
     }
 
-
+    @FXML
+    private void handleTaskFilteredByModule() {
+        System.out.println("MainWindow");
+    }
 
     @FXML
     private void handleShowCalendar() {
@@ -275,6 +287,16 @@ public class MainWindow extends UiPart<Stage> {
         if (taskSummaryHolder.isManaged()) {
             toggleTaskSummaryHolder();
             toggleTaskListHolder();
+        }
+    }
+
+    private void toggleModuleTabs() {
+        if (modulePaneHolder.isManaged()) {
+            modulePaneHolder.setVisible(false);
+            modulePaneHolder.setManaged(false);
+        } else {
+            modulePaneHolder.setVisible(true);
+            modulePaneHolder.setManaged(true);
         }
     }
 
