@@ -31,7 +31,7 @@ public class ModuleCode {
     private String parsePrefix(String input) throws ModuleCodeException {
         String output = "";
         int i = 0;
-        while (true) {
+        while (i < input.length()) {
             char character = input.charAt(i);
             try {
                 Integer.parseInt(character + "");

@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import seedu.address.logic.commands.add.CreateModCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.interactivecommandparser.AddTaskCommandParser;
+import seedu.address.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
 import seedu.address.model.module.Module;
+import seedu.address.model.module.exceptions.ModuleCodeException;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
 import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
 import seedu.address.ui.interactiveprompt.InteractivePromptType;
@@ -39,6 +41,7 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
                 currentTerm = lastTerm;
                 if (lastTerm.equals(InteractivePromptTerms.INIT)) {
                     lastTerm = null;
+                    reply = "You have reach the start of the command.\nEither continue, or type 'quit' the exit." + reply;
                 } else {
                     lastTerm = terms.get(terms.size() - 1);
                 }
@@ -56,21 +59,30 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
             terms.add(lastTerm);
             break;
         case MODULE_NAME:
-            userInput = AddTaskCommandParser.parseName(userInput);
-            this.reply = "The name of module is set to: " + userInput + ".\n"
-                + "Now key in your module code";
-            module.setModuleName(userInput);
-            currentTerm = InteractivePromptTerms.MODULE_CODE;
-            lastTerm = InteractivePromptTerms.MODULE_NAME;
-            terms.add(lastTerm);
+            try {
+                userInput = AddTaskCommandParser.parseName(userInput);
+                this.reply = "The name of module is set to: " + userInput + ".\n"
+                        + "Now key in your module code";
+                module.setModuleName(userInput);
+                currentTerm = InteractivePromptTerms.MODULE_CODE;
+                lastTerm = InteractivePromptTerms.MODULE_NAME;
+                terms.add(lastTerm);
+            } catch (AddTaskCommandException ex) {
+                reply = "Please write something as the name of your module.";
+            }
             break;
         case MODULE_CODE:
-            module.setModuleCode(userInput);
-            this.reply = "Module Code: " + module.toString() + "\n"
-                + "Click 'Enter' again to confirm your changes";
-            currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-            lastTerm = InteractivePromptTerms.MODULE_CODE;
-            terms.add(lastTerm);
+            try {
+                module.setModuleCode(userInput);
+                this.reply = "Module Code: " + module.toString() + "\n"
+                        + "Click 'Enter' again to confirm your changes";
+                currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
+                lastTerm = InteractivePromptTerms.MODULE_CODE;
+                terms.add(lastTerm);
+            } catch(ModuleCodeException ex) {
+                reply = "Please key in your module code to include a prefix, a number, then a postfix (Optional).\n"
+                        + "E.g. A1\n        BT102     \n        CS77777X";
+            }
             break;
         case READY_TO_EXECUTE:
             try {
