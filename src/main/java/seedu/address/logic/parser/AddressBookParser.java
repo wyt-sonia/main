@@ -6,8 +6,8 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.commands.ClearTasksCommand;
 import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.delete.ClearTasksCommand;
 import seedu.address.logic.commands.edit.ArchiveTaskCommand;
 import seedu.address.logic.commands.oldcommands.AddCommand;
 import seedu.address.logic.commands.oldcommands.DeleteCommand;

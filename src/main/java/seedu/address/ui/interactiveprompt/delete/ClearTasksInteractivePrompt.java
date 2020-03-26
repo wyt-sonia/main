@@ -1,4 +1,4 @@
-package seedu.address.ui.interactiveprompt;
+package seedu.address.ui.interactiveprompt.delete;
 
 /*
  * Logic of implementation:
@@ -14,8 +14,10 @@ import static seedu.address.ui.interactiveprompt.InteractivePromptType.CLEAR_TAS
 import java.text.ParseException;
 import java.util.ArrayList;
 
-import seedu.address.logic.commands.ClearTasksCommand;
+import seedu.address.logic.commands.delete.ClearTasksCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.ui.interactiveprompt.InteractivePrompt;
+import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
  * pending.

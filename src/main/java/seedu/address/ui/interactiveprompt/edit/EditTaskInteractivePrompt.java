@@ -5,7 +5,7 @@ import static seedu.address.ui.interactiveprompt.InteractivePromptType.EDIT_TASK
 import java.time.LocalDateTime;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.EditTaskCommand;
+import seedu.address.logic.commands.edit.EditTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.interactivecommandparser.EditTaskCommandParser;
