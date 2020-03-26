@@ -7,16 +7,27 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.logging.Logger;
 
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.logic.Logic;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.UniqueTaskList;
 
@@ -27,7 +38,7 @@ import seedu.address.model.task.UniqueTaskList;
 public class CalendarBox extends UiPart<Region> {
     private static final String FXML = "Calendar.fxml";
     private final Logger logger = LogsCenter.getLogger(CalendarBox.class);
-    private Logic logic;
+    private ObservableList<Task> taskList;
     private int calendarYear;
     private Month calendarMonth;
     private LocalDate localDate;
@@ -48,13 +59,20 @@ public class CalendarBox extends UiPart<Region> {
     @FXML
     private Button next;
 
-    public CalendarBox(Logic logic, StackPane dueSoonListPanelPlaceholder) {
+    public CalendarBox(ObservableList<Task> taskList, StackPane dueSoonListPanelPlaceholder) {
         super(FXML);
-        this.logic = logic;
+        this.taskList = taskList;
         Date date = new Date();
         localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         this.dueSoonListPanelPlaceholder = dueSoonListPanelPlaceholder;
         generateCalendar(localDate.getYear(), localDate.getMonth());
+
+        taskList.addListener(new ListChangeListener<Task>() {
+            @Override
+            public void onChanged(Change<? extends Task> t) {
+                generateCalendar(calendarYear, calendarMonth);
+            }
+        });
     }
 
     /**
@@ -89,16 +107,26 @@ public class CalendarBox extends UiPart<Region> {
                         BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
             }
             monthBox.add(p, dayOfWeek, j);
-            label = new Label(" " + i);
-            temp.getChildren().add(label);
-            for (Task task : logic.getFilteredTaskList()) {
+            temp.getChildren().add(new Label(" " + i));
+            int count = 0;
+            for (Task task : taskList) {
                 LocalDateTime[] ldt = task.getDateTimes();
                 LocalDateTime tempTaskDueDate = ldt[0];
                 LocalDate taskDueDate = LocalDate.of(tempTaskDueDate.getYear(),
                         tempTaskDueDate.getMonth(), tempTaskDueDate.getDayOfMonth());
                 if (taskDueDate.equals(tempDate)) {
-                    temp.getChildren().add(new Label(task.getTaskName()));
+                    count++;
                 }
+            }
+            if (count > 0) {
+                Label dayTasksLabel = new Label();
+                if (count == 1) {
+                    dayTasksLabel.setText("Task: " + count);
+                } else {
+                    dayTasksLabel.setText("Tasks: " + count);
+                }
+                dayTasksLabel.setPadding(new Insets(0, 0, 0, 10));
+                temp.getChildren().add(dayTasksLabel);
             }
             monthBox.add(temp, dayOfWeek, j);
             dayOfWeek++;
@@ -169,10 +197,13 @@ public class CalendarBox extends UiPart<Region> {
 
     }
 
-
+    /**
+     * @param date
+     * @return
+     */
     public ObservableList<Task> generateTaskList(LocalDate date) {
         UniqueTaskList taskByDay = new UniqueTaskList();
-        for (Task task : logic.getFilteredTaskList()) {
+        for (Task task : taskList) {
             LocalDateTime[] ldt = task.getDateTimes();
             LocalDateTime tempTaskDueDate = ldt[0];
             LocalDate taskDueDate = LocalDate.of(tempTaskDueDate.getYear(),

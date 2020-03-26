@@ -199,6 +199,9 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
+    /**
+     * Shows all tasks.
+     */
     @FXML
     private void handleShowAllTasks() {
         toggleHolder();
@@ -213,6 +216,9 @@ public class MainWindow extends UiPart<Stage> {
         dueSoonListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
     }
 
+    /**
+     * Shows all archived tasks.
+     */
     @FXML
     private void handleShowArchivedTasks() {
         toggleHolder();
@@ -238,7 +244,7 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleShowCalendar() {
         toggleHolder();
-        CalendarBox calendar = new CalendarBox(logic, dueSoonListPanelPlaceholder);
+        CalendarBox calendar = new CalendarBox(logic.getFilteredTaskList(), dueSoonListPanelPlaceholder);
         taskListPanelPlaceholder.getChildren().add(calendar.getRoot());
     }
 
