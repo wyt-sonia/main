@@ -13,6 +13,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.module.Module;
+import seedu.address.model.module.exceptions.ModuleCodeException;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskType;
@@ -139,6 +140,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void setTaskMod(Task target, Module mod) throws ModuleCodeException {
+        addressBook.setModuleInTask(target, mod);
+    }
+
+    @Override
     public void deleteTask(Task target) {
         addressBook.removeTask(target);
     }
@@ -187,6 +193,7 @@ public class ModelManager implements Model {
         requireNonNull(mod);
         return addressBook.hasModule(mod);
     }
+
 
     /**
      * STILL NEEDS MORE REFINEMENT DUE TO ABSENCE OF UpdateModuleList.

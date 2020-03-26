@@ -41,7 +41,8 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
                 currentTerm = lastTerm;
                 if (lastTerm.equals(InteractivePromptTerms.INIT)) {
                     lastTerm = null;
-                    reply = "You have reach the start of the command.\nEither continue, or type 'quit' the exit." + reply;
+                    reply = "You have reach the start of the command.\n"
+                        + "Either continue, or type 'quit' the exit." + reply;
                 } else {
                     lastTerm = terms.get(terms.size() - 1);
                 }
@@ -79,7 +80,7 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
                 lastTerm = InteractivePromptTerms.MODULE_CODE;
                 terms.add(lastTerm);
-            } catch(ModuleCodeException ex) {
+            } catch (ModuleCodeException ex) {
                 reply = "Please key in your module code to include a prefix, a number, then a postfix (Optional).\n"
                         + "E.g. A1\n        BT102     \n        CS77777X";
             }

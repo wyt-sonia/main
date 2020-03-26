@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 //import seedu.address.model.task.exceptions.DuplicateTaskException;
 import seedu.address.logic.parser.TimeParser;
+import seedu.address.model.module.Module;
 import seedu.address.model.task.exceptions.TaskNotFoundException;
 
 /**
@@ -186,6 +187,21 @@ public class UniqueTaskList implements Iterable<Task> {
         target.setDateTimes(newDateTimes);
         int index = internalList.indexOf(target);
         internalList.set(index, target);
+    }
+
+    /**
+     * Set module in task. Module will be checked for its existence outside this class
+     * before this function is performed.
+     * @param target a task
+     * @param module a module for the task to be assigned to
+     */
+    public void setTaskMod(Task target, Module module) {
+        requireNonNull(target);
+        requireNonNull(module);
+        target.setModule(module);
+        int index = internalList.indexOf(target);
+        internalList.set(index, target);
+
     }
 
     /**

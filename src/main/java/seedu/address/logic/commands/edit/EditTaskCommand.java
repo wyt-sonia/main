@@ -11,7 +11,9 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.module.exceptions.ModuleCodeException;
 import seedu.address.model.task.Task;
+import seedu.address.model.module.Module;
 import seedu.address.model.task.TaskField;
 import seedu.address.model.task.TaskType;
 
@@ -27,6 +29,7 @@ public class EditTaskCommand extends Command {
     private String newTaskName = null;
     private TaskType newTaskType = null;
     private LocalDateTime[] newDateTimes = null;
+    private Module newModule = null;
 
     /**
      * Creates an edit task command
@@ -52,6 +55,9 @@ public class EditTaskCommand extends Command {
         this.newDateTimes = newDateTimes;
     }
 
+    public void provideNewModule(Module newModule) {
+        this.newModule = newModule;
+    }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -73,6 +79,13 @@ public class EditTaskCommand extends Command {
             requireNonNull(newTaskType);
             model.setTaskDateTime(taskToEdit, newDateTimes);
             break;
+        case TASK_MODULE:
+            requireNonNull(newModule);
+            try {
+                model.setTaskMod(taskToEdit, newModule);
+            } catch (ModuleCodeException ex) {
+                throw new CommandException("module code invalid/does not exist!!!");
+            }
         default:
             throw new IllegalStateException("Unexpected value: " + taskField);
         }

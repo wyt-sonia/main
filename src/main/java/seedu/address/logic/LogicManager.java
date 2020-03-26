@@ -47,6 +47,8 @@ public class LogicManager implements Logic {
             commandResult = command.execute(model);
         } catch (java.text.ParseException e) {
             e.printStackTrace();
+        } catch (CommandException ex) {
+            ex.getLocalizedMessage();
         }
 
         try {

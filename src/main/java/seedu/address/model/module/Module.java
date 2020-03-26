@@ -128,7 +128,7 @@ public class Module {
     }
 
     public void setModuleCode(String moduleCode) throws ModuleCodeException {
-            this.moduleCode = new ModuleCode(moduleCode);
+        this.moduleCode = new ModuleCode(moduleCode);
     }
 
     @Override

@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.module.Module;
+import seedu.address.model.module.exceptions.ModuleCodeException;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskType;
@@ -105,6 +106,8 @@ public interface Model {
      * @param newDateTimes the new date and time
      */
     void setTaskDateTime(Task target, LocalDateTime[] newDateTimes);
+
+    void setTaskMod(Task target, Module mod) throws ModuleCodeException;
 
     /**
      * Deletes the given task.

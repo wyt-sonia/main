@@ -224,6 +224,14 @@ public class AddressBook implements ReadOnlyAddressBook {
         tasks.setTaskDateTime(target, newDateTimes);
     }
 
+    public void setModuleInTask(Task target, Module module) throws ModuleCodeException {
+        if (moduleList.contains(module)) {
+            tasks.setTaskMod(target, module);
+        } else {
+            throw new ModuleCodeException("Module does not exist in addressBook!");
+        }
+    }
+
     /**
      * Replaces the given person {@code target} in the list with {@code editedPerson}.
      * {@code target} must exist in the address book.
