@@ -31,6 +31,7 @@ public class CalendarBox extends UiPart<Region> {
     private int calendarYear;
     private Month calendarMonth;
     private LocalDate localDate;
+    private StackPane dueSoonListPanelPlaceholder;
 
     @FXML
     private Label month;
@@ -47,11 +48,12 @@ public class CalendarBox extends UiPart<Region> {
     @FXML
     private Button next;
 
-    public CalendarBox(Logic logic) {
+    public CalendarBox(Logic logic, StackPane dueSoonListPanelPlaceholder) {
         super(FXML);
         this.logic = logic;
         Date date = new Date();
         localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        this.dueSoonListPanelPlaceholder = dueSoonListPanelPlaceholder;
         generateCalendar(localDate.getYear(), localDate.getMonth());
     }
 
@@ -158,8 +160,11 @@ public class CalendarBox extends UiPart<Region> {
             int date = rowIndex * 7 + colIndex - firstDayOfWeek + 1;
             LocalDate clickedDate = LocalDate.of(calendarYear, calendarMonth, date);
             ObservableList<Task> taskByDay = generateTaskList(clickedDate);
-            System.out.println(clickedDate);
-            System.out.println(taskByDay.get(0).getTaskName());
+            DueSoonListPanel dueSoonListPanel = new DueSoonListPanel(taskByDay);
+            dueSoonListPanelPlaceholder.getChildren().clear();
+            dueSoonListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
+            //System.out.println(clickedDate);
+            //taskByDay.forEach(System.out::println);
         }
 
     }

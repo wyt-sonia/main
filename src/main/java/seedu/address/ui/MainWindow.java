@@ -204,6 +204,7 @@ public class MainWindow extends UiPart<Stage> {
         toggleHolder();
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+        handleDueSoonTasks();
     }
 
     @FXML
@@ -217,6 +218,7 @@ public class MainWindow extends UiPart<Stage> {
         toggleHolder();
         TaskListPanel archiveListPanel = new TaskListPanel(logic.getFilteredArchivedTaskList());
         taskListPanelPlaceholder.getChildren().add(archiveListPanel.getRoot());
+        handleDueSoonTasks();
     }
 
     /**
@@ -228,6 +230,7 @@ public class MainWindow extends UiPart<Stage> {
         ObservableList<Module> modulesToBeDisplayed = logic.getFilteredModuleList();
         ModuleListPanel moduleListPanel = new ModuleListPanel(modulesToBeDisplayed);
         taskListPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
+        handleDueSoonTasks();
     }
 
 
@@ -235,7 +238,7 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleShowCalendar() {
         toggleHolder();
-        CalendarBox calendar = new CalendarBox(logic);
+        CalendarBox calendar = new CalendarBox(logic, dueSoonListPanelPlaceholder);
         taskListPanelPlaceholder.getChildren().add(calendar.getRoot());
     }
 
