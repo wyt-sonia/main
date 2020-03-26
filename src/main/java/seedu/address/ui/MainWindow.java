@@ -63,6 +63,9 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane statusbarPlaceholder;
 
     @FXML
+    private StackPane timeLeftbarPlaceholder;
+
+    @FXML
     private StackPane taskSummaryHolder;
 
     @FXML

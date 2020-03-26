@@ -31,23 +31,23 @@
                 <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
                     <Menu mnemonicParsing="false" text="Study Buddy">
                         <MenuItem mnemonicParsing="false" style="-fx-font-size: 10pt;" text="Dashboard" />
-                        <MenuItem mnemonicParsing="false" onAction="#handleExit" style="-fx-font-size: 10pt;" text="Exit Study Buddy" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleExit" style="-fx-font-size: 10pt;" text="Exit" />
                     </Menu>
                     <Menu mnemonicParsing="false" text="My Tasks">
-                        <MenuItem mnemonicParsing="false" onAction="#handleShowAllTasks" style="-fx-font-size: 10pt;" text="All Tasks" />
-                        <MenuItem mnemonicParsing="false" onAction="#handleShowArchivedTasks" style="-fx-font-size: 10pt;" text="Archived Tasks" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleShowAllTasks" style="-fx-font-size: 10pt;" text="List" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleShowArchivedTasks" style="-fx-font-size: 10pt;" text="Archived" />
                     </Menu>
                     <Menu mnemonicParsing="false" onAction="#handleShowModules" text="Modules">
                         <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleShowModules" style="-fx-font-size: 10pt;" text="Show Modules" />
-                  <MenuItem fx:id="helpMenuItem1" mnemonicParsing="false" style="-fx-font-size: 10pt;" text="Create new module" />
-                  <MenuItem fx:id="helpMenuItem11" mnemonicParsing="false" style="-fx-font-size: 10pt;" text="Edit modules" />
+                  <MenuItem fx:id="helpMenuItem1" mnemonicParsing="false" style="-fx-font-size: 10pt;" text="Create" />
+                  <MenuItem fx:id="helpMenuItem11" mnemonicParsing="false" style="-fx-font-size: 10pt;" text="Edit" />
                     </Menu>
                     <Menu mnemonicParsing="false" text="Statistics">
                         <MenuItem fx:id="taskSummaryEntry" mnemonicParsing="false" onAction="#handleShowTaskSummary" style="-fx-font-size: 10pt;" text="Task Summary" />
                         <MenuItem fx:id="usageSummaryEntry" mnemonicParsing="false" onAction="#handleHelp" style="-fx-font-size: 10pt;" text="Usage Summary" />
                     </Menu>
                     <Menu mnemonicParsing="false" text="Calendar">
-                        <MenuItem mnemonicParsing="false" onAction="#handleShowCalendar" text="Show calendar" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleShowCalendar" text="Display" />
                     </Menu>
                 </MenuBar>
                 <Pane maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="530.0"

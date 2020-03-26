@@ -38,7 +38,7 @@ public class DueSoonListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new TaskCard(task, getIndex() + 1).getRoot());
+                setGraphic(new DueSoonTaskCard(task, getIndex() + 1).getRoot());
             }
         }
     }

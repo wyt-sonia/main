@@ -11,9 +11,9 @@ import seedu.address.model.task.Task;
 /**
  * An UI component that displays information of a {@code Person}.
  */
-public class TaskCard extends UiPart<Region> {
+public class DueSoonTaskCard extends UiPart<Region> {
 
-    private static final String FXML = "TaskListCard.fxml";
+    private static final String FXML = "DueSoonTaskListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -32,7 +32,7 @@ public class TaskCard extends UiPart<Region> {
     //@FXML
     //private Label Module;
     @FXML
-    private Label status;
+    private Label timeLeft;
     @FXML
     private Label dateTime;
     @FXML
@@ -44,17 +44,17 @@ public class TaskCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
 
-    public TaskCard(Task task, int displayedIndex) {
+    public DueSoonTaskCard(Task task, int displayedIndex) {
         super(FXML);
         this.task = task;
         id.setText(displayedIndex + ". ");
         taskName.setText(task.getTaskName());
         //Module.setText(task.getModule().toString());
-        status.setText(task.getTaskStatus().convertToString());
+        timeLeft.setText(task.getTimeLeft());
         renderTask(task);
         dateTime.setText("\tDeadline: " + task.getTimeString());
         creationDateTime.setText("\tCreated: "
-            + TimeParser.getDateTimeString(task.getCreationDateTime()));
+                + TimeParser.getDateTimeString(task.getCreationDateTime()));
         type.setText(task.getTaskType().toString());
     }
 
@@ -64,21 +64,8 @@ public class TaskCard extends UiPart<Region> {
      * @param task
      */
     private void renderTask(Task task) {
-        switch (task.getTaskStatus()) {
-        case PENDING:
-            status.getStyleClass().add("pending_status");
-            break;
-        case FINISHED:
-            status.getStyleClass().add("done_status");
-            break;
-        case DUE_SOON:
-            status.getStyleClass().add("due_soon_status");
-            break;
-        case OVERDUE:
-            status.getStyleClass().add("overdue_status");
-            break;
-        default:
-        }
+
+        timeLeft.getStyleClass().add("time_left");
 
         switch (task.getTaskType()) {
         case Assignment:
@@ -111,13 +98,13 @@ public class TaskCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof TaskCard)) {
+        if (!(other instanceof DueSoonTaskCard)) {
             return false;
         }
 
         // state check
-        TaskCard card = (TaskCard) other;
+        DueSoonTaskCard card = (DueSoonTaskCard) other;
         return id.getText().equals(card.id.getText())
-            && task.equals(card.task);
+                && task.equals(card.task);
     }
 }

@@ -3,7 +3,9 @@ package seedu.address.model.task;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,7 +23,10 @@ public class Task implements Comparable<Task> {
      * The acceptable data and time format.
      */
     public static final DateTimeFormatter DATETIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
-    private static final int DIVISOR = (1000 * 60);
+    private static final int MINUTES_DIVISOR = (1000 * 60);
+    private static final int HOURS_DIVISOR = (1000 * 60 * 60);
+    private static final int DAYS_DIVISOR = (1000 * 60 * 60 * 24);
+    private static final int MINUTES_IN_WEEK = (7 * 24 * 60);
     private static ArrayList<Task> currentTasks = new ArrayList<>();
 
     private Module module;
@@ -83,6 +88,52 @@ public class Task implements Comparable<Task> {
             break;
         default:
         }
+    }
+
+    public String getTimeLeft() {
+        String timeLeft = "due: ";
+        df = new SimpleDateFormat("HH:mm dd/MM/yyyy");
+        dateObj = new Date();
+        long difference = 0;
+        try {
+            difference = df.parse(this.getTimeString()).getTime() - dateObj.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        int daysBetween = (int)(difference / DAYS_DIVISOR);
+        int hoursBetween = ((int) (difference / HOURS_DIVISOR)) % 24;
+        int minsBetween = ((int) (difference / MINUTES_DIVISOR)) % 60;
+
+        if (daysBetween != 0) {
+            if (daysBetween == 1) {
+                timeLeft = timeLeft + daysBetween + " day ";
+            } else {
+                timeLeft = timeLeft + daysBetween + " days ";
+            }
+            if (hoursBetween == 0) {
+                return timeLeft;
+            }
+        }
+        if (hoursBetween != 0) {
+            if (hoursBetween == 1) {
+                timeLeft = timeLeft + hoursBetween + " hour ";
+            } else {
+                timeLeft = timeLeft + hoursBetween + " hours ";
+            }
+        }
+        if (minsBetween != 0) {
+            if (minsBetween == 1) {
+                timeLeft = timeLeft + minsBetween + " min ";
+            } else {
+                timeLeft = timeLeft + minsBetween + " mins ";
+            }
+        }
+
+        if (daysBetween == 0 && hoursBetween == 0 && minsBetween == 0) {
+            timeLeft = timeLeft + " now";
+        }
+
+        return timeLeft;
     }
 
     /**
@@ -244,8 +295,8 @@ public class Task implements Comparable<Task> {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        float daysBetween = (difference / DIVISOR);
-        return daysBetween <= 7 * 24 * 60 && daysBetween >= 0;
+        float minsBetween = (difference / MINUTES_DIVISOR);
+        return minsBetween <= MINUTES_IN_WEEK && minsBetween >= 0;
     }
 
     @Override
@@ -299,8 +350,7 @@ public class Task implements Comparable<Task> {
             && otherTask.getModule().equals(getModule())
             && otherTask.getTimeString().equals(getTimeString())
             && otherTask.getTaskType().equals(getTaskType())
-            && otherTask.getTaskDescription().equals(getTaskDescription())
-            && otherTask.getTaskStatus().equals(getTaskStatus());
+            && otherTask.getTaskDescription().equals(getTaskDescription());
     }
 
     /**

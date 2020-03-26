@@ -155,6 +155,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 task.setCreationDateTime(LocalDateTime.now());
                 AddTaskCommand addTaskCommand = new AddTaskCommand(task);
                 logic.executeCommand(addTaskCommand);
+                System.out.println(task.isDuplicate());
                 if (task.isDuplicate()) {
                     reply = "This is a duplicate task. Are you sure you would like to proceed?\n"
                             + "Please enter yes or no.";
