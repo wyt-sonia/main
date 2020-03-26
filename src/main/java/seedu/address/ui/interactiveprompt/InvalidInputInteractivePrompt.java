@@ -8,10 +8,8 @@ import static seedu.address.ui.interactiveprompt.InteractivePromptType.INVALID_M
  */
 public class InvalidInputInteractivePrompt extends InteractivePrompt {
 
-    static final String HELP_MSG = "Please enter valid command option.\n"
-        + "Current functions provided: \n"
-        + "add, edit, delete, archive, done, delete duplicates, sort, create mods,  bye\n\n"
-        + "Please press enter to reenter a valid command.";
+    static final String HELP_MSG = "Please enter a valid command option.\n"
+        + HelpInteractivePrompt.getHelpMessage();
 
     private InteractivePromptTerms currentTerm;
     private String reply;
