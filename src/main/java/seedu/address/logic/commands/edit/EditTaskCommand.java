@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.edit;
 
 import static java.util.Objects.requireNonNull;
 
@@ -7,8 +7,12 @@ import java.util.List;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.module.exceptions.ModuleCodeException;
+import seedu.address.model.module.Module;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskField;
 import seedu.address.model.task.TaskType;
@@ -25,6 +29,7 @@ public class EditTaskCommand extends Command {
     private String newTaskName = null;
     private TaskType newTaskType = null;
     private LocalDateTime[] newDateTimes = null;
+    private Module newModule = null;
 
     /**
      * Creates an edit task command
@@ -50,6 +55,10 @@ public class EditTaskCommand extends Command {
         this.newDateTimes = newDateTimes;
     }
 
+    public void provideNewModule(Module module) {
+        this.newModule = newModule;
+    }
+
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
@@ -70,6 +79,15 @@ public class EditTaskCommand extends Command {
         case TASK_DATETIME:
             requireNonNull(newTaskType);
             model.setTaskDateTime(taskToEdit, newDateTimes);
+            break;
+
+        case TASK_MODULE:
+            requireNonNull(newModule);
+            try {
+                model.setMod(taskToEdit, newModule);
+            } catch (ModuleCodeException ex) {
+                throw new CommandException("Invalid Mod Code. Probably");
+            }
             break;
         default:
             throw new IllegalStateException("Unexpected value: " + taskField);

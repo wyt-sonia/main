@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.model.module.Module;
+import seedu.address.model.module.exceptions.ModuleCodeException;
 
 
 /**
@@ -29,6 +30,6 @@ public class JsonAdaptedModule {
     }
 
     public Module toModelType() {
-        return new Module(moduleName, moduleCode);
+            return new Module(moduleName, moduleCode);
     }
 }
