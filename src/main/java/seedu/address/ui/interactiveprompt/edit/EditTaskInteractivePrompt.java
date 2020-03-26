@@ -75,6 +75,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         Index taskIndex = Index.fromZeroBased(taskNumber - 1);
         EditTaskCommand editTaskCommand = new EditTaskCommand(taskIndex, taskField);
         boolean parseSuccess = true;
+        String successMessage = END_OF_COMMAND_MSG;
         try {
             switch (taskField) {
             case TASK_NAME:
@@ -84,7 +85,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
             case TASK_TYPE:
                 TaskType newTaskType = EditTaskCommandParser.parseType(userInput, TaskType.getTaskTypes().length);
                 editTaskCommand.provideNewTaskType(newTaskType);
-                this.reply = "The type of task is set to: " + newTaskType + ".\n";
+                successMessage = "The type of task is successfully changed to: " + newTaskType + ".\n";
                 break;
             case TASK_DATETIME:
                 LocalDateTime[] newDateTimes = EditTaskCommandParser.parseDateTime(userInput);
@@ -95,20 +96,19 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
             }
         } catch (EditTaskCommandException ex) {
             parseSuccess = false;
-            reply = ex.getMessage();
+            reply = ex.getErrorMessage();
         }
 
         if (parseSuccess) {
             try {
                 logic.executeCommand(editTaskCommand);
-                endInteract(END_OF_COMMAND_MSG);
+                endInteract(successMessage);
             } catch (java.text.ParseException | CommandException ex) {
                 reply = ex.getMessage();
             }
         }
         return reply;
     }
-
 
     /**
      * parses task number
