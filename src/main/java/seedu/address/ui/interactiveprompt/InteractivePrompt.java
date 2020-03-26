@@ -30,6 +30,23 @@ public abstract class InteractivePrompt {
 
     public abstract String interact(String userInput);
 
+    protected String checkForBackInput(String userInput) {
+        if (userInput.equals("back")) {
+            if (lastTerm != null) {
+                terms.remove(terms.size() - 1);
+                currentTerm = lastTerm;
+                if (lastTerm.equals(InteractivePromptTerms.INIT)) {
+                    lastTerm = null;
+                } else {
+                    lastTerm = terms.get(terms.size() - 1);
+                }
+                userInput = "";
+            } else {
+                this.reply = "Please type quit to exit from this command.";
+            }
+        }
+        return userInput;
+    }
     /**
      * ends the interaction
      * @param reply message to be displayed to the user upon end of interaction

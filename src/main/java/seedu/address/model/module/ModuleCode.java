@@ -16,7 +16,6 @@ public class ModuleCode {
             this.number = parseNumber(fullModuleCode);
             this.postfix = parsePostfix(fullModuleCode);
         } catch (ModuleCodeException e) {
-            System.out.println("ModuleCodeParsing failed");
             throw new ModuleCodeException("ModuleCode is invalid!");
         }
     }

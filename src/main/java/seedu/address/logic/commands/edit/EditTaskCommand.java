@@ -11,9 +11,9 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.module.Module;
 import seedu.address.model.module.exceptions.ModuleCodeException;
 import seedu.address.model.task.Task;
-import seedu.address.model.module.Module;
 import seedu.address.model.task.TaskField;
 import seedu.address.model.task.TaskType;
 
@@ -86,6 +86,7 @@ public class EditTaskCommand extends Command {
             } catch (ModuleCodeException ex) {
                 throw new CommandException("module code invalid/does not exist!!!");
             }
+            break;
         default:
             throw new IllegalStateException("Unexpected value: " + taskField);
         }

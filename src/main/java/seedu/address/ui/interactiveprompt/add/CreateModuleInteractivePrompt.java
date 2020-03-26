@@ -18,39 +18,23 @@ import seedu.address.ui.interactiveprompt.InteractivePromptType;
  */
 public class CreateModuleInteractivePrompt extends InteractivePrompt {
     private Module module;
+    static final String QUIT_COMMAND_MSG = "Successfully quited from create mod command.";
 
     public CreateModuleInteractivePrompt() {
         super();
         this.interactivePromptType = InteractivePromptType.CREATE_MODULE;
-        this.reply = "";
-        this.userInput = "";
-        this.currentTerm = InteractivePromptTerms.INIT;
-        this.lastTerm = null;
-        this.terms = new ArrayList<>();
         this.module = new Module();
     }
 
     @Override
     public String interact(String userInput) {
         if (userInput.equals("quit")) {
-            // exit the command
-            super.setQuit(true);
-        } else if (userInput.equals("back")) {
-            if (lastTerm != null) {
-                terms.remove(terms.size() - 1);
-                currentTerm = lastTerm;
-                if (lastTerm.equals(InteractivePromptTerms.INIT)) {
-                    lastTerm = null;
-                    reply = "You have reach the start of the command.\n"
-                        + "Either continue, or type 'quit' the exit." + reply;
-                } else {
-                    lastTerm = terms.get(terms.size() - 1);
-                }
-                userInput = "";
-            } else {
-                this.reply = "Please type quit to exit from this command.";
-            }
+            endInteract(QUIT_COMMAND_MSG);
+            return reply;
+        } else {
+            userInput = checkForBackInput(userInput);
         }
+
         switch (currentTerm) {
 
         case INIT:
@@ -91,8 +75,10 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
                 logic.executeCommand(createModCommand);
                 reply = "Module created! Key in your next command :)";
                 endInteract(reply);
-            } catch (CommandException | ParseException ex) {
+            } catch (ParseException ex) {
                 reply = ex.getMessage();
+            } catch (CommandException ex) {
+                reply = ex.getLocalizedMessage();
             }
             break;
         default:

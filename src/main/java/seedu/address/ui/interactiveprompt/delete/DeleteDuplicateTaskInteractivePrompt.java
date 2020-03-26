@@ -30,11 +30,6 @@ public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
     public DeleteDuplicateTaskInteractivePrompt() {
         super();
         this.interactivePromptType = DELETE_DUPLICATE_TASK;
-        this.reply = "";
-        this.userInput = "";
-        this.currentTerm = InteractivePromptTerms.INIT;
-        this.lastTerm = null;
-        this.terms = new ArrayList<>();
     }
 
     @Override
@@ -42,19 +37,6 @@ public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
         if (userInput.equals("quit")) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
-        } else if (userInput.equals("back")) {
-            if (lastTerm != null) { //in the beginning it is null
-                terms.remove(terms.size() - 1);
-                currentTerm = lastTerm;
-                if (lastTerm.equals(InteractivePromptTerms.INIT)) {
-                    lastTerm = null;
-                } else {
-                    lastTerm = terms.get(terms.size() - 1);
-                }
-                userInput = "";
-            } else {
-                this.reply = "Please type quit to exit from this command.";
-            }
         }
 
         switch (currentTerm) {

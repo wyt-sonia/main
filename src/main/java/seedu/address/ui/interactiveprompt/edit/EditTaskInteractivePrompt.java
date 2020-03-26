@@ -46,6 +46,13 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
      * @return reply to user
      */
     public String handleEdit(String userInput) {
+        if (userInput.equals("quit")) {
+            endInteract(QUIT_COMMAND_MSG);
+            return reply;
+        } else {
+            userInput = checkForBackInput(userInput);
+        }
+
         switch (currentTerm) {
         case INIT:
             this.reply = "Please enter the index of the task that you wish to edit.";
