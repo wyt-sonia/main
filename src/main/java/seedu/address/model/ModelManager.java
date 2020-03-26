@@ -13,7 +13,6 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.module.Module;
-import seedu.address.model.module.exceptions.ModuleCodeException;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskType;
@@ -195,14 +194,11 @@ public class ModelManager implements Model {
      * @param mod
      */
     @Override
-    public void addMod(Module mod) throws ModuleCodeException {
+    public void addMod(Module mod) {
+        System.out.println("ModelManager add mod");
         addressBook.addModule(mod);
+        System.out.println("ModelManager add mod success");
 
-    }
-
-    @Override
-    public void setMod(Task task, Module mod) throws ModuleCodeException {
-        addressBook.setModule(task, mod);
     }
 
     @Override

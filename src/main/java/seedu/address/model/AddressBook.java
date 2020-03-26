@@ -189,8 +189,12 @@ public class AddressBook implements ReadOnlyAddressBook {
      *
      * @param module
      */
-    public void addModule(Module module) throws ModuleCodeException {
+    public void addModule(Module module) {
+        try {
             moduleList.add(module);
+        } catch (ModuleCodeException ex) {
+            System.out.println("AddModule Failed, from addressBook.addModule()");
+        }
     }
 
     /**
@@ -219,15 +223,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void setTaskDateTime(Task target, LocalDateTime[] newDateTimes) {
         tasks.setTaskDateTime(target, newDateTimes);
     }
-
-    public void setModule(Task task, Module mod) throws ModuleCodeException {
-        if(moduleList.contains(mod)) {
-            tasks.setMod(task, mod);
-        } else {
-            throw new ModuleCodeException("Module does not exist. Please create the module first.");
-        }
-    }
-
 
     /**
      * Replaces the given person {@code target} in the list with {@code editedPerson}.

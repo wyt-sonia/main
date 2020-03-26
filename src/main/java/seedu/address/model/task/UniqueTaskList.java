@@ -13,7 +13,6 @@ import javafx.collections.ObservableList;
 //import seedu.address.model.task.exceptions.DuplicateTaskException;
 import seedu.address.logic.parser.TimeParser;
 import seedu.address.model.task.exceptions.TaskNotFoundException;
-import seedu.address.model.module.Module;
 
 /**
  * pending.
@@ -185,15 +184,6 @@ public class UniqueTaskList implements Iterable<Task> {
         requireNonNull(target);
         requireNonNull(newDateTimes);
         target.setDateTimes(newDateTimes);
-        int index = internalList.indexOf(target);
-        internalList.set(index, target);
-    }
-
-
-    public void setMod(Task target, Module mod) {
-        requireNonNull(target);
-        requireNonNull(mod);
-        target.setModule(mod);
         int index = internalList.indexOf(target);
         internalList.set(index, target);
     }

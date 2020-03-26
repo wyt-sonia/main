@@ -7,7 +7,6 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.module.Module;
-import seedu.address.model.module.exceptions.ModuleCodeException;
 
 /**
  * A command to create modules.
@@ -32,12 +31,12 @@ public class CreateModCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        try {
-            model.addMod(mod);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, mod));
-        } catch (ModuleCodeException ex) {
-            throw new CommandException("Duplicate module code. \nPlease key in another module code with a prefix, numbers and postfix (optional).");
+
+        if (model.hasMod(mod)) {
+            throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
+        model.addMod(mod);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, mod));
     }
 
 

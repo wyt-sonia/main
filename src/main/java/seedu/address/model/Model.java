@@ -7,7 +7,6 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.module.Module;
-import seedu.address.model.module.exceptions.ModuleCodeException;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskType;
@@ -152,9 +151,7 @@ public interface Model {
     void setTask(Task target, Task editedTask);
     boolean hasMod(Module mod);
 
-    void addMod(Module mod) throws ModuleCodeException;
-
-    void setMod(Task task, Module mod) throws ModuleCodeException;
+    void addMod(Module mod);
 
     /**
      * Returns an unmodifiable view of the filtered person list

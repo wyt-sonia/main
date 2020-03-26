@@ -5,13 +5,11 @@ import static seedu.address.ui.interactiveprompt.InteractivePromptType.EDIT_TASK
 import java.time.LocalDateTime;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.edit.EditTaskCommand;
+import seedu.address.logic.commands.EditTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.interactivecommandparser.EditTaskCommandParser;
 import seedu.address.logic.parser.interactivecommandparser.exceptions.EditTaskCommandException;
-import seedu.address.model.module.Module;
-import seedu.address.model.module.exceptions.ModuleCodeException;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskField;
 import seedu.address.model.task.TaskType;
@@ -92,11 +90,6 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                 LocalDateTime[] newDateTimes = EditTaskCommandParser.parseDateTime(userInput);
                 editTaskCommand.provideNewDateTime(newDateTimes);
                 break;
-            case TASK_MODULE:
-                Module newModule = parseModule(userInput);
-                editTaskCommand.provideNewModule(newModule);
-                this.reply = "This task is assigned to module: " + newModule + ".\n";
-                break;
             default:
                 throw new IllegalStateException("Unexpected value: " + taskField);
             }
@@ -169,37 +162,14 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         if (isParseSuccessful) {
             assert(taskField != null);
             this.reply = getTaskFieldMessage(taskField);
-            this.currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
+            this.currentTerm = InteractivePromptTerms.NEW_VALUE;
         } else {
             // prompt for a new value
             this.reply = "Please choose a valid task field index";
-            //this.currentTerm = InteractivePromptTerms.TASK_FIELD;
+            this.currentTerm = InteractivePromptTerms.TASK_FIELD;
         }
         return taskField;
     }
-
-    public Module parseModule(String userInput) {
-        boolean isParseSuccessful = true;
-        Module module = null;
-
-        try {
-            module = new Module(userInput);
-        } catch (ModuleCodeException ex) {
-            isParseSuccessful = false;
-        }
-
-        if (isParseSuccessful) {
-            assert(taskField != null);
-            this.reply = getTaskFieldMessage(taskField);
-            this.currentTerm = InteractivePromptTerms.TASK_MODULE;
-        } else {
-            // prompt for a new value
-            this.reply = "Please choose a valid module code.";
-            this.currentTerm = InteractivePromptTerms.TASK_MODULE;
-        }
-        return module;
-    }
-
 
     private String getTaskFieldMessage(TaskField taskField) {
         String result = "You are now editing the " + taskField.getLabel() + "field\n";
@@ -213,11 +183,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
             break;
         case TASK_DATETIME:
             result += "Please enter the deadline with format: "
-                + "HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy";
-            break;
-        case TASK_MODULE:
-            result += "Please key in your module code that you want to assign to this task.\n"
-                + "Click on Modules/Show Modules at the top menu bar to view your modules available.";
+                + "HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy";;
             break;
         default:
             throw new IllegalStateException("Unexpected value: " + taskField);

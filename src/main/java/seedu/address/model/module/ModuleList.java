@@ -45,6 +45,7 @@ public class ModuleList {
         if (this.contains(module)) {
             throw new ModuleCodeException("Duplicate modules");
         } else {
+            System.out.println("adding");
             internalList.add(module);
         }
     }

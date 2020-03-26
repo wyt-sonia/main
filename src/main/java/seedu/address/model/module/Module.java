@@ -40,9 +40,13 @@ public class Module {
      * @param fullModuleCode
      * @throws ModuleCodeException
      */
-    public Module(String fullModuleCode) throws ModuleCodeException {
+    public Module(String fullModuleCode) {
         this.moduleName = "";
+        try {
             this.moduleCode = new ModuleCode(fullModuleCode);
+        } catch (ModuleCodeException e) {
+            System.out.println("from Module(string). ModuleCode is invalid!");
+        }
     }
 
     public Module() {
@@ -127,8 +131,12 @@ public class Module {
         return moduleCode;
     }
 
-    public void setModuleCode(String moduleCode) throws ModuleCodeException {
+    public void setModuleCode(String moduleCode) {
+        try {
             this.moduleCode = new ModuleCode(moduleCode);
+        } catch (ModuleCodeException e) {
+            System.out.println("From module.setModuleCode. Module code is invalid!");
+        }
     }
 
     @Override
