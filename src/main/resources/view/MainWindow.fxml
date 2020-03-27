@@ -38,12 +38,7 @@
                         <MenuItem mnemonicParsing="false" onAction="#handleShowArchivedTasks" style="-fx-font-size: 10pt;" text="Archived Tasks" />
                   <MenuItem mnemonicParsing="false" onAction="#handleDueSoonTasks" style="-fx-font-size: 10pt;" text="Due Soon Task" />
                     </Menu>
-<<<<<<< HEAD
                     <Menu mnemonicParsing="false" text="Modules">
-                        
-=======
-                    <Menu mnemonicParsing="false" onAction="#handleShowModules" text="Modules">
->>>>>>> c36595500d72febea4c2b62613e27c609df5ce41
                         <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleShowModules" style="-fx-font-size: 10pt;" text="Show Modules" />
                   <MenuItem fx:id="helpMenuItem1" mnemonicParsing="false" style="-fx-font-size: 10pt;" text="Create new module" />
                   <MenuItem fx:id="helpMenuItem11" mnemonicParsing="false" style="-fx-font-size: 10pt;" text="Edit modules" />
@@ -91,30 +86,19 @@
                         <Insets />
                     </VBox.margin>
                 </HBox>
-<<<<<<< HEAD
 
-                <StackPane fx:id="taskSummaryHolder" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-=======
                 <StackPane fx:id="taskSummaryHolder" maxHeight="1.7976931348623157E308"
                            maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
->>>>>>> c36595500d72febea4c2b62613e27c609df5ce41
                     <padding>
                         <Insets left="10.0" right="10.0" />
                     </padding>
                 </StackPane>
-<<<<<<< HEAD
             <StackPane fx:id="modulePaneHolder" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="940.0" VBox.vgrow="ALWAYS" />
 
                 <VBox>
 
 
                     <StackPane fx:id="resultDisplayPlaceholder" maxHeight="150.0" maxWidth="1.7976931348623157E308" minHeight="120.0" prefHeight="200.0" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
-=======
-                <VBox>
-                    <StackPane fx:id="resultDisplayPlaceholder" maxHeight="150.0" maxWidth="1.7976931348623157E308"
-                               minHeight="120.0" prefHeight="200.0" styleClass="pane-with-border"
-                               VBox.vgrow="ALWAYS">
->>>>>>> c36595500d72febea4c2b62613e27c609df5ce41
                         <padding>
                             <Insets left="10.0" right="10.0" top="5.0" />
                         </padding>
