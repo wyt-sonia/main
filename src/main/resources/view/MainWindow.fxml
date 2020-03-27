@@ -30,7 +30,7 @@
             <VBox id="mainContainer" maxWidth="1.7976931348623157E308">
                 <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
                     <Menu mnemonicParsing="false" text="Study Buddy">
-                        <MenuItem mnemonicParsing="false" style="-fx-font-size: 10pt;" text="Dashboard" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleShowAllTasks" style="-fx-font-size: 10pt;" text="Dashboard" />
                         <MenuItem mnemonicParsing="false" onAction="#handleExit" style="-fx-font-size: 10pt;" text="Exit" />
                     </Menu>
                     <Menu mnemonicParsing="false" text="My Tasks">
