@@ -107,7 +107,7 @@ public interface Model {
      */
     void setTaskDateTime(Task target, LocalDateTime[] newDateTimes);
 
-    void setTaskMod(Task target, Module mod) throws ModuleCodeException;
+    void setTaskMod(Task target, Module mod);
 
     /**
      * Deletes the given task.

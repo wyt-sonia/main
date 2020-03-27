@@ -212,7 +212,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void setTaskMod(Task target, Module mod) throws ModuleCodeException {
+        public void setTaskMod(Task target, Module mod) {
 
         }
 
