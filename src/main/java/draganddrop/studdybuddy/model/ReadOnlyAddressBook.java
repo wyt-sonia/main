@@ -1,7 +1,6 @@
 package draganddrop.studdybuddy.model;
 
 import draganddrop.studdybuddy.model.module.Module;
-import draganddrop.studdybuddy.model.person.Person;
 import draganddrop.studdybuddy.model.task.Task;
 
 import javafx.collections.ObservableList;
@@ -15,7 +14,6 @@ public interface ReadOnlyAddressBook {
      * Returns an unmodifiable view of the persons list.
      * This list will not contain any duplicate persons.
      */
-    ObservableList<Person> getPersonList();
 
     ObservableList<Task> getArchivedList();
 

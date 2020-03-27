@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import draganddrop.studdybuddy.commons.exceptions.IllegalValueException;
@@ -25,20 +23,10 @@ class JsonSerializableAddressBook {
     private static final String MESSAGE_DUPLICATE_MODULES = "Module List contains duplicate module(s).";
     //private static final String MESSAGE_DUPLICATE_DUE_SOON_TASK = "Due soon list contains duplicate task(s).";
 
-    private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedTask> archivedTasks = new ArrayList<>();
     private final List<JsonAdaptedTask> tasks = new ArrayList<>();
     private final List<JsonAdaptedTask> dueSoonTasks = new ArrayList<>();
     private final List<JsonAdaptedModule> modules = new ArrayList<>();
-
-
-    /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
-     */
-    @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
-        this.persons.addAll(persons);
-    }
 
     /**
      * Converts a given {@code ReadOnlyAddressBook} into this class for Jackson use.
