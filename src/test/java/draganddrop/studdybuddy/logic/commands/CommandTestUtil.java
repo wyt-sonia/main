@@ -25,6 +25,8 @@ public class CommandTestUtil {
     public static final String VALID_TASK_NAME_TWO = "Job application";
     public static final String VALID_TASK_TYPE_THREE = "Assignment";
     public static final String VALID_TASK_TYPE_FOUR = "Quiz";
+    public static final String VALID_DESCRIPTION_ONE = "Project";
+    public static final String VALID_DESCRIPTION_TWO = "Final draft of Project";
     public static final String VALID_MODULE_ONE = "CS2103T";
     public static final String VALID_MODULE_TWO = "CS2101";
     public static final String VALID_DATE_ONE = "17:00 28/04/2060";

@@ -25,6 +25,9 @@ public class UniqueTaskList implements Iterable<Task> {
     private final ObservableList<Task> internalUnmodifiableList =
         FXCollections.unmodifiableObservableList(internalList);
 
+    public int getSize() {
+        return internalList.size();
+    }
     /**
      * Returns true if the list contains an equivalent task as the given argument.
      */

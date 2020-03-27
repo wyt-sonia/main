@@ -77,6 +77,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         tasks.sortTasks(keyword);
     }
 
+
     /**
      * Sort tasks by the given {@code keyword}.
      */
@@ -132,7 +133,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setModuleList(newData.getModuleList());
     }
 
-    //// person-level operations
+    //// task-level operations
 
     /**
      * Adds an archived person to the address book.
