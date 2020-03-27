@@ -203,7 +203,11 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+<<<<<<< HEAD
      * Shows all task list in taskListHolder.
+=======
+     * Shows all tasks.
+>>>>>>> c36595500d72febea4c2b62613e27c609df5ce41
      */
     @FXML
     private void handleShowAllTasks() {
@@ -211,6 +215,7 @@ public class MainWindow extends UiPart<Stage> {
         setTaskListHolderView(true);
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+        handleDueSoonTasks();
     }
 
     /**
@@ -233,6 +238,7 @@ public class MainWindow extends UiPart<Stage> {
         setTaskListHolderView(true);
         TaskListPanel archiveListPanel = new TaskListPanel(logic.getFilteredArchivedTaskList());
         taskListPanelPlaceholder.getChildren().add(archiveListPanel.getRoot());
+        handleDueSoonTasks();
     }
 
     /**
@@ -251,7 +257,7 @@ public class MainWindow extends UiPart<Stage> {
     private void handleShowCalendar() {
         toggleAllHoldersInvisible();
         setTaskListHolderView(true);
-        CalendarBox calendar = new CalendarBox(logic);
+        CalendarBox calendar = new CalendarBox(logic.getFilteredTaskList(), dueSoonListPanelPlaceholder);
         taskListPanelPlaceholder.getChildren().add(calendar.getRoot());
     }
 

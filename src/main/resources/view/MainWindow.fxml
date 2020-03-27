@@ -15,8 +15,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.stage.Stage?>
 
-<fx:root minHeight="600" minWidth="550" onCloseRequest="#handleExit" title="Study Buddy" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-
+<fx:root xmlns:fx="http://javafx.com/fxml/1" minHeight="600" minWidth="550" onCloseRequest="#handleExit"
+         title="Study Buddy"
+         type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/10.0.2-internal">
     <icons>
         <Image url="@/images/study_buddy.png" />
     </icons>
@@ -37,27 +38,22 @@
                         <MenuItem mnemonicParsing="false" onAction="#handleShowArchivedTasks" style="-fx-font-size: 10pt;" text="Archived Tasks" />
                   <MenuItem mnemonicParsing="false" onAction="#handleDueSoonTasks" style="-fx-font-size: 10pt;" text="Due Soon Task" />
                     </Menu>
+<<<<<<< HEAD
                     <Menu mnemonicParsing="false" text="Modules">
                         
+=======
+                    <Menu mnemonicParsing="false" onAction="#handleShowModules" text="Modules">
+>>>>>>> c36595500d72febea4c2b62613e27c609df5ce41
                         <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleShowModules" style="-fx-font-size: 10pt;" text="Show Modules" />
-                        
-                        
                   <MenuItem fx:id="helpMenuItem1" mnemonicParsing="false" style="-fx-font-size: 10pt;" text="Create new module" />
                   <MenuItem fx:id="helpMenuItem11" mnemonicParsing="false" style="-fx-font-size: 10pt;" text="Edit modules" />
-
                     </Menu>
-                    
-                    
                     <Menu mnemonicParsing="false" text="Statistics">
                         <MenuItem fx:id="taskSummaryEntry" mnemonicParsing="false" onAction="#handleShowTaskSummary" style="-fx-font-size: 10pt;" text="Task Summary" />
                         <MenuItem fx:id="usageSummaryEntry" mnemonicParsing="false" onAction="#handleHelp" style="-fx-font-size: 10pt;" text="Usage Summary" />
                     </Menu>
-                    
-                    
                     <Menu mnemonicParsing="false" text="Calendar">
                         <MenuItem mnemonicParsing="false" onAction="#handleShowCalendar" text="Show calendar" />
-                        
-                        
                     </Menu>
                 </MenuBar>
                 <Pane maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="530.0" style="-fx-background-color: rgba(255, 255, 255, 0.8); -fx-background-radius: 10;" VBox.vgrow="NEVER">
@@ -78,16 +74,13 @@
                         <Insets left="10.0" right="10.0" top="5.0" />
                     </VBox.margin>
                 </Pane>
-
                 <HBox fx:id="taskListHolder" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-
                     <VBox fx:id="taskList" maxHeight="560.0" maxWidth="1200" minWidth="340" styleClass="pane-with-border" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
                         <padding>
                             <Insets bottom="5.0" left="10.0" right="5.0" top="10.0" />
                         </padding>
                         <StackPane fx:id="taskListPanelPlaceholder" prefWidth="${brand.parent.width}" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" />
                     </VBox>
-
                     <VBox fx:id="dueSoonList" maxHeight="560.0" minWidth="200" prefWidth="600" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
                         <padding>
                             <Insets bottom="5.0" left="5.0" right="10.0" top="10.0" />
@@ -98,18 +91,30 @@
                         <Insets />
                     </VBox.margin>
                 </HBox>
+<<<<<<< HEAD
 
                 <StackPane fx:id="taskSummaryHolder" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+=======
+                <StackPane fx:id="taskSummaryHolder" maxHeight="1.7976931348623157E308"
+                           maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+>>>>>>> c36595500d72febea4c2b62613e27c609df5ce41
                     <padding>
                         <Insets left="10.0" right="10.0" />
                     </padding>
                 </StackPane>
+<<<<<<< HEAD
             <StackPane fx:id="modulePaneHolder" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="940.0" VBox.vgrow="ALWAYS" />
 
                 <VBox>
 
 
                     <StackPane fx:id="resultDisplayPlaceholder" maxHeight="150.0" maxWidth="1.7976931348623157E308" minHeight="120.0" prefHeight="200.0" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+=======
+                <VBox>
+                    <StackPane fx:id="resultDisplayPlaceholder" maxHeight="150.0" maxWidth="1.7976931348623157E308"
+                               minHeight="120.0" prefHeight="200.0" styleClass="pane-with-border"
+                               VBox.vgrow="ALWAYS">
+>>>>>>> c36595500d72febea4c2b62613e27c609df5ce41
                         <padding>
                             <Insets left="10.0" right="10.0" top="5.0" />
                         </padding>
