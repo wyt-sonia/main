@@ -14,6 +14,7 @@ import seedu.address.model.module.exceptions.ModuleCodeException;
  */
 public class ModuleList {
     private ObservableList<Module> internalList = FXCollections.observableArrayList();
+    private boolean hasEmptyModule = false;
 
     public ModuleList() {
 
@@ -38,7 +39,7 @@ public class ModuleList {
 
     /**
      * checks for duplicate modules first, then add into the moduleList.
-     *
+     * Moves Empty module to the back of the internalList.
      * @param module to be added to the ModuleList
      */
     public void add(Module module) throws ModuleCodeException {
@@ -46,7 +47,29 @@ public class ModuleList {
             throw new ModuleCodeException("Duplicate modules");
         } else {
             internalList.add(module);
+            shiftEmptyModBack();
         }
+    }
+
+    private void shiftEmptyModBack() {
+        //check last mod for Empty Module
+        if(internalList.get(internalList.size() -1).equals(new EmptyModule())) {
+            hasEmptyModule = true;
+        } else { //if it is not empty
+            if(internalList.contains(new EmptyModule())) {
+                int emptyIndex = internalList.indexOf(new EmptyModule());
+                swap(emptyIndex, emptyIndex + 1);
+            } else {
+                hasEmptyModule = false;
+            }
+        }
+    }
+
+    private void swap(int i, int j) {
+        Module firstMod = internalList.get(i);
+        Module secondMod = internalList.get(j);
+        internalList.set(i, secondMod);
+        internalList.set(j, firstMod);
     }
 
     /**

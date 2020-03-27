@@ -40,7 +40,7 @@ public class MainWindow extends UiPart<Stage> {
     private DueSoonListPanel dueSoonListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
-    private ModuleListPanelv2 moduleListPanel;
+    private ModuleListPanel moduleListPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -137,7 +137,7 @@ public class MainWindow extends UiPart<Stage> {
         taskSummaryHolder.setVisible(false);
         taskSummaryHolder.setManaged(false);
 
-        moduleListPanel = new ModuleListPanelv2(logic.getFilteredModuleList(), logic.getFilteredTaskList());
+        moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList(), logic.getFilteredTaskList());
         modulePaneHolder.getChildren().add(moduleListPanel.getRoot());
         modulePaneHolder.setVisible(false);
         modulePaneHolder.setManaged(false);
@@ -184,10 +184,8 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleShowTaskSummary() {
-        if (!taskSummaryHolder.isManaged()) {
-            toggleTaskSummaryHolder();
-            toggleTaskListHolder();
-        }
+        toggleAllHoldersInvisible();
+        setTaskSummaryHolderView(true);
     }
 
     void show() {
@@ -208,24 +206,24 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private void handleShowAllTasks() {
-        toggleHolder();
+        toggleAllHoldersInvisible();
+        setTaskListHolderView(true);
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
-        if(modulePaneHolder.isManaged()) {
-            toggleModuleTabs();
-            toggleTaskListHolder();
-        }
     }
 
     @FXML
     private void handleDueSoonTasks() {
+        toggleAllHoldersInvisible();
+        setTaskListHolderView(true);
         dueSoonListPanel = new DueSoonListPanel(logic.getFilteredDueSoonTaskList());
         dueSoonListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
     }
 
     @FXML
     private void handleShowArchivedTasks() {
-        toggleHolder();
+        toggleAllHoldersInvisible();
+        setTaskListHolderView(true);
         TaskListPanel archiveListPanel = new TaskListPanel(logic.getFilteredArchivedTaskList());
         taskListPanelPlaceholder.getChildren().add(archiveListPanel.getRoot());
     }
@@ -235,18 +233,14 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleShowModules() {
-        toggleTaskListHolder();
-        toggleModuleTabs();
-    }
-
-    @FXML
-    private void handleTaskFilteredByModule() {
-        System.out.println("MainWindow");
+        toggleAllHoldersInvisible();
+        setModTabView(true);
     }
 
     @FXML
     private void handleShowCalendar() {
-        toggleHolder();
+        toggleAllHoldersInvisible();
+        setTaskListHolderView(true);
         CalendarBox calendar = new CalendarBox(logic);
         taskListPanelPlaceholder.getChildren().add(calendar.getRoot());
     }
@@ -281,12 +275,44 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Toggle function wrapper.
+     * Toggles according to values assigned. Can add more if there are more windows required for display.
+     * @param val1 toggles TaskListHolder
+     * @param val2 toggles TaskSummaryHolder
+     * @param val3 toggles ModuleTabHolder
      */
+    private void customToggleHolders(boolean val1, boolean val2, boolean val3) {
+        setTaskListHolderView(val1);
+        setTaskSummaryHolderView(val2);
+        setModTabView(val3);
+    }
+
+    private void toggleAllHoldersInvisible() {
+        customToggleHolders(false, false, false);
+    }
+
+
+    private void setTaskSummaryHolderView(boolean val) {
+        taskSummaryHolder.setVisible(val);
+        taskSummaryHolder.setManaged(val);
+    }
+
+    private void setTaskListHolderView(boolean val) {
+        taskListHolder.setVisible(val);
+        taskListHolder.setManaged(val);
+    }
+
+    private void setModTabView(boolean val) {
+        modulePaneHolder.setVisible(val);
+        modulePaneHolder.setManaged(val);
+    }
+
+
+    /*
     private void toggleHolder() {
-        if (taskSummaryHolder.isManaged()) {
-            toggleTaskSummaryHolder();
-            toggleTaskListHolder();
+        if (!taskListHolder.isManaged()) {
+            //toggleTaskSummaryHolder();
+            //toggleTaskListHolder();
+            //toggleModuleTabs();
         }
     }
 
@@ -300,9 +326,6 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
-    /**
-     * Toggles the taskSummaryHolder's visibility.
-     */
     private void toggleTaskSummaryHolder() {
         if (taskSummaryHolder.isManaged()) {
             taskSummaryHolder.setVisible(false);
@@ -313,9 +336,6 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
-    /**
-     * Toggles the taskListHolder's visibility.
-     */
     private void toggleTaskListHolder() {
         if (taskListHolder.isManaged()) {
             taskListHolder.setVisible(false);
@@ -325,4 +345,5 @@ public class MainWindow extends UiPart<Stage> {
             taskListHolder.setVisible(true);
         }
     }
+    */
 }

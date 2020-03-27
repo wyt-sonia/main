@@ -92,7 +92,7 @@
                         <padding>
                             <Insets bottom="5.0" left="5.0" right="10.0" top="10.0" />
                         </padding>
-                        <StackPane fx:id="dueSoonListPanelPlaceholder" onMouseClicked="#handleTaskFilteredByModule" prefWidth="${brand.parent.width}" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" />
+                        <StackPane fx:id="dueSoonListPanelPlaceholder" prefWidth="${brand.parent.width}" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" />
                     </VBox>
                     <VBox.margin>
                         <Insets />
