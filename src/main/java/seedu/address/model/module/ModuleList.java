@@ -14,7 +14,6 @@ import seedu.address.model.module.exceptions.ModuleCodeException;
  */
 public class ModuleList {
     private ObservableList<Module> internalList = FXCollections.observableArrayList();
-    private boolean hasEmptyModule = false;
 
     public ModuleList() {
 
@@ -57,13 +56,11 @@ public class ModuleList {
     private void shiftEmptyModBack() {
         //check last mod for Empty Module
         if (internalList.get(internalList.size() - 1).equals(new EmptyModule())) {
-            hasEmptyModule = true;
+            //Do nothing
         } else { //if it is not empty
             if (internalList.contains(new EmptyModule())) {
                 int emptyIndex = internalList.indexOf(new EmptyModule());
                 swap(emptyIndex, emptyIndex + 1);
-            } else {
-                hasEmptyModule = false;
             }
         }
     }
