@@ -13,7 +13,6 @@ import static seedu.address.ui.interactiveprompt.InteractivePromptType.ADD_TASK;
 
 import java.text.ParseException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 import seedu.address.logic.commands.add.AddTaskCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -37,12 +36,8 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     protected Task task;
 
     public AddTaskInteractivePrompt() {
-        super();
         this.interactivePromptType = ADD_TASK;
         this.task = new Task();
-        this.currentTerm = InteractivePromptTerms.INIT;
-        this.lastTerm = null;
-        this.terms = new ArrayList<>();
     }
 
     @Override

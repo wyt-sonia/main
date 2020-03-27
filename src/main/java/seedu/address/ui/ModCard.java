@@ -1,13 +1,10 @@
 package seedu.address.ui;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.address.model.module.EmptyModule;
 import seedu.address.model.module.Module;
-import seedu.address.model.task.Task;
 
 /**
  * module for display
@@ -29,15 +26,6 @@ public class ModCard extends UiPart<Region> {
         moduleCode.setText(module.toString());
         moduleName.setText(module.getModuleName());
     }
-
-    @FXML
-    public void sayHi() {
-        System.out.println("From Modcard " + module.toString());
-    }
-
-   // public ObservableList<Task> getFilteredList() {
-   //     return module.getInternalTaskList();
-   // }
 
     @Override
     public boolean equals(Object other) {

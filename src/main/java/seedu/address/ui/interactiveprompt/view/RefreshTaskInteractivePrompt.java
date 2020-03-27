@@ -12,7 +12,6 @@ package seedu.address.ui.interactiveprompt.view;
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.DUE_SOON_TASK;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.view.RefreshCommand;

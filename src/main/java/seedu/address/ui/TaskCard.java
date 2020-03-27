@@ -52,7 +52,7 @@ public class TaskCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         taskName.setText(task.getTaskName());
 
-        if(task.getModule().equals(new EmptyModule())) {
+        if (task.getModule().equals(new EmptyModule())) {
             module.setVisible(false);
             module.setManaged(false);
         } else {

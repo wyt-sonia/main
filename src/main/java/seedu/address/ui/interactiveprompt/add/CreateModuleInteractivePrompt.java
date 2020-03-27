@@ -1,7 +1,6 @@
 package seedu.address.ui.interactiveprompt.add;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 
 import seedu.address.logic.commands.add.CreateModCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -17,8 +16,8 @@ import seedu.address.ui.interactiveprompt.InteractivePromptType;
  * An interactive prompt for creating modules.
  */
 public class CreateModuleInteractivePrompt extends InteractivePrompt {
-    private Module module;
     static final String QUIT_COMMAND_MSG = "Successfully quited from create mod command.";
+    private Module module;
 
     public CreateModuleInteractivePrompt() {
         super();

@@ -109,8 +109,6 @@ public interface Model {
 
     void setTaskMod(Task target, Module mod) throws ModuleCodeException;
 
-    void setTaskListForModule(Module mod) throws ModuleCodeException;
-
     /**
      * Deletes the given task.
      * The task must exist in the list.

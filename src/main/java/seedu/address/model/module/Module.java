@@ -134,9 +134,13 @@ public class Module {
         this.internalTaskList = internalTaskList;
     }
 
+    /**
+     * Takes in an ObservableList of Task, filters it, then setInternalTaskList().
+     * @param externalTaskList
+     */
     public void filterAndSetInternalTaskList(ObservableList<Task> externalTaskList) {
         ObservableList<Task> collectedTasks = externalTaskList.filtered(x-> x.getModule().equals(this));
-        this.internalTaskList = collectedTasks;
+        setInternalTaskList(collectedTasks);
     }
     @Override
     public String toString() {

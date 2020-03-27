@@ -30,6 +30,11 @@ public abstract class InteractivePrompt {
 
     public abstract String interact(String userInput);
 
+    /**
+     * handles user input when user keys in 'back'
+     * @param userInput
+     * @return the userInput
+     */
     protected String checkForBackInput(String userInput) {
         if (userInput.equals("back")) {
             if (lastTerm != null) {

@@ -50,7 +50,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         if (userInput.equals("quit")) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
-        } else if (userInput.equals("back")){
+        } else if (userInput.equals("back")) {
             userInput = checkForBackInput(userInput);
         }
 
@@ -101,7 +101,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
             case TASK_MODULE:
                 Module newModule = EditTaskCommandParser.parseModule(userInput);
                 editTaskCommand.provideNewModule(newModule);
-                 break;
+                break;
             default:
                 throw new IllegalStateException("Unexpected value: " + taskField);
             }

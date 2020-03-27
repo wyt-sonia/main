@@ -12,7 +12,6 @@ package seedu.address.ui.interactiveprompt.delete;
 import static seedu.address.ui.interactiveprompt.InteractivePromptType.CLEAR_TASK;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 
 import seedu.address.logic.commands.delete.ClearTasksCommand;
 import seedu.address.logic.commands.exceptions.CommandException;

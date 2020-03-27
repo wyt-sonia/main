@@ -218,9 +218,9 @@ public class UniqueTaskList implements Iterable<Task> {
         }
     }
 
-    public ObservableList<Task> filterTaskByMod(Module module) {
-        ObservableList<Task> taskListForModule = internalList.filtered(x-> x.getModule().equals(module)? true: false);
-        return taskListForModule;
-    }
+    // public ObservableList<Task> filterTaskByMod(Module module) {
+    //     ObservableList<Task> taskListForModule = internalList.filtered(x-> x.getModule().equals(module));
+    //     return taskListForModule;
+    // }
 
 }

@@ -74,6 +74,12 @@ public class EditTaskCommandParser {
         return result;
     }
 
+    /**
+     * throws a (converted) error when the userinput is an invalid moduleCode
+     * @param userInput
+     * @return module
+     * @throws AddTaskCommandException
+     */
     public static Module parseModule(String userInput) throws AddTaskCommandException {
         try {
             return new Module(userInput);

@@ -2,7 +2,6 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -18,7 +17,6 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.module.Module;
 import seedu.address.ui.interactiveprompt.InteractivePrompt;
 
 /**
@@ -204,6 +202,9 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
+    /**
+     * Shows all task list in taskListHolder.
+     */
     @FXML
     private void handleShowAllTasks() {
         toggleAllHoldersInvisible();
@@ -212,6 +213,9 @@ public class MainWindow extends UiPart<Stage> {
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
     }
 
+    /**
+     * handles task to be shown in TaskListHolder.
+     */
     @FXML
     private void handleDueSoonTasks() {
         toggleAllHoldersInvisible();
@@ -220,6 +224,9 @@ public class MainWindow extends UiPart<Stage> {
         dueSoonListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
     }
 
+    /**
+     * handles archived task to be shown in TaskListHolder.
+     */
     @FXML
     private void handleShowArchivedTasks() {
         toggleAllHoldersInvisible();
@@ -229,7 +236,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * handles modules to be displayed
+     * handles modules to be displayed in ModulesTabHolder.
      */
     @FXML
     private void handleShowModules() {
@@ -237,6 +244,9 @@ public class MainWindow extends UiPart<Stage> {
         setModTabView(true);
     }
 
+    /**
+     * handles calendar to be shown in TaskListHolder.
+     */
     @FXML
     private void handleShowCalendar() {
         toggleAllHoldersInvisible();

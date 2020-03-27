@@ -23,6 +23,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.module.Module;
+import seedu.address.model.module.exceptions.ModuleCodeException;
 import seedu.address.model.person.Person;
 import seedu.address.model.task.Task;
 import seedu.address.model.task.TaskType;
@@ -207,6 +208,11 @@ public class AddCommandTest {
 
         @Override
         public void setTaskDateTime(Task target, LocalDateTime[] newDateTimes) {
+
+        }
+
+        @Override
+        public void setTaskMod(Task target, Module mod) throws ModuleCodeException {
 
         }
 

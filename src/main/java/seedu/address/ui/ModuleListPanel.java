@@ -26,8 +26,8 @@ import seedu.address.model.task.Task;
 public class ModuleListPanel extends UiPart<Region> {
     private static final String FXML = "ModuleListPanelv2.fxml";
     private final Logger logger = LogsCenter.getLogger(ModuleListPanel.class);
-    ObservableList<Module> moduleObservableList;
-    ObservableList<Task> tasks;
+    private ObservableList<Module> moduleObservableList;
+    private ObservableList<Task> tasks;
 
     @FXML
     private TabPane tabPane;
@@ -44,16 +44,16 @@ public class ModuleListPanel extends UiPart<Region> {
         this.tasks = tasks;
         moduleListView.setItems(moduleList);
         moduleListView.setCellFactory(listView -> new ModuleListViewCell());
-        moduleObservableList.forEach(x->{
+        moduleObservableList.forEach(x -> {
             x.filterAndSetInternalTaskList(tasks);
             String tabName;
             if (x.equals(new EmptyModule())) {
-               tabName = "No Module Allocated";
+                tabName = "No Module Allocated";
             } else {
                 tabName = x.toString();
             }
             Tab newTab = new Tab(tabName);
-            if(!x.getInternalTaskList().isEmpty()){
+            if (!x.getInternalTaskList().isEmpty()) {
                 ListView<Task> taskListView = new ListView<>();
                 taskListView.setItems(x.getInternalTaskList());
                 taskListView.setCellFactory(listView -> new TaskListPanel.TaskListViewCell());
@@ -75,13 +75,20 @@ public class ModuleListPanel extends UiPart<Region> {
         });
     }
 
-
+    /**
+     * Pending.
+     */
     class ModuleListViewCell extends ListCell<Module> {
+        /**
+         * pending.
+         * @param module
+         * @param empty
+         */
         @Override
         protected void updateItem(Module module, boolean empty) {
             super.updateItem(module, empty);
 
-            if (empty || module == null || module.equals(new EmptyModule()) ) {
+            if (empty || module == null || module.equals(new EmptyModule())) {
                 setGraphic(null);
                 setText(null);
             } else {

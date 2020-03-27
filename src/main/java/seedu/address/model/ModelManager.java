@@ -144,10 +144,10 @@ public class ModelManager implements Model {
         addressBook.setModuleInTask(target, mod);
     }
 
-    @Override
-    public void setTaskListForModule(Module mod) throws ModuleCodeException {
-        addressBook.collectTaskBasedOnMod(mod);
-    }
+    //  @Override
+    //  public void setTaskListForModule(Module mod) throws ModuleCodeException {
+    //      addressBook.collectTaskBasedOnMod(mod);
+    // }
 
 
     @Override

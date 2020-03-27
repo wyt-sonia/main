@@ -63,8 +63,7 @@ public class LogicManager implements Logic {
     @Override
     public CommandResult executeCommand(Command command) throws CommandException, java.text.ParseException {
         CommandResult commandResult;
-        commandResult = command.execute(model);
-
+            commandResult = command.execute(model);
         try {
             storage.saveAddressBook(model.getAddressBook());
             // keep track of task list
@@ -72,7 +71,6 @@ public class LogicManager implements Logic {
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
-
         return commandResult;
     }
 
