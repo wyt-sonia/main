@@ -39,22 +39,14 @@ public class DeleteDuplicateTaskCommand extends Command {
                     continue;
                 } else {
                     Task task2 = lastShownList.get(j);
-                    if (task1.getTaskType() != task2.getTaskType()) {
-                        continue;
-                    } else {
-                        if (!task1.getTaskName().equals(task2.getTaskName())) {
-                            continue;
-                        } else {
-                            if (!task1.getTimeString().equals(task2.getTimeString())) {
-                                continue;
-                            } else {
-                                Task taskToDelete = lastShownList.get(i);
-                                model.deleteTask(taskToDelete);
+                    if (task1.isSameTask(task2)) {
+                        Task taskToDelete = lastShownList.get(i);
+                        model.deleteTask(taskToDelete);
 
-                                lastShownList = model.getFilteredTaskList();
-                                break;
-                            }
-                        }
+                        lastShownList = model.getFilteredTaskList();
+                        break;
+                    } else {
+                        continue;
                     }
                 }
             }
