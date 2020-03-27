@@ -31,7 +31,9 @@ public class TypicalTasks {
             new Task(cs2103T, TaskType.Assignment, "Quiz 1", "Quiz taskDescription",
                 2.0, TaskStatus.PENDING, dateTimesTwo, 1.0, LocalDateTime.now()),
             new Task(cs2101, TaskType.Meeting, "Meeting 1", "Meeting desc", 20.0,
-                TaskStatus.PENDING, dateTimesTwo, 15.0, LocalDateTime.now())
+                TaskStatus.PENDING, dateTimesTwo, 15.0, LocalDateTime.now()),
+            new Task(cs2103T, TaskType.Assignment, "Quiz 1", "Quiz taskDescription",
+                2.0, TaskStatus.PENDING, dateTimesTwo, 1.0, LocalDateTime.now()),
         };
     }
 

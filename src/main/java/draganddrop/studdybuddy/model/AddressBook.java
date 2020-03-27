@@ -8,8 +8,6 @@ import java.util.List;
 import draganddrop.studdybuddy.model.module.Module;
 import draganddrop.studdybuddy.model.module.ModuleList;
 import draganddrop.studdybuddy.model.module.exceptions.ModuleCodeException;
-import draganddrop.studdybuddy.model.person.Person;
-import draganddrop.studdybuddy.model.person.UniquePersonList;
 import draganddrop.studdybuddy.model.task.Task;
 import draganddrop.studdybuddy.model.task.TaskType;
 import draganddrop.studdybuddy.model.task.UniqueTaskList;
@@ -22,7 +20,6 @@ import javafx.collections.ObservableList;
  */
 public class AddressBook implements ReadOnlyAddressBook {
 
-    private final UniquePersonList persons;
     private final UniqueTaskList archivedTasks;
     private final UniqueTaskList dueSoonTasks;
     private final UniqueTaskList tasks;
@@ -36,7 +33,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      *   among constructors.
      */
     {
-        persons = new UniquePersonList();
         tasks = new UniqueTaskList();
         archivedTasks = new UniqueTaskList();
         dueSoonTasks = new UniqueTaskList();
@@ -56,13 +52,6 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     //// list overwrite operations
 
-    /**
-     * Replaces the contents of the person list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
-     */
-    public void setPersons(List<Person> persons) {
-        this.persons.setPersons(persons);
-    }
 
     /**
      * Replaces the contents of the task list with {@code tasks}.
@@ -88,6 +77,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void sortTasks(String keyword) {
         tasks.sortTasks(keyword);
     }
+
 
     /**
      * Sort tasks by the given {@code keyword}.
@@ -139,30 +129,13 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
 
-        setPersons(newData.getPersonList());
         setArchivedTasks(newData.getArchivedList());
         setDueSoonTasks(newData.getDueSoonList());
         setTasks(newData.getTaskList());
         setModuleList(newData.getModuleList());
     }
 
-    //// person-level operations
-
-    /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
-     */
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return persons.contains(person);
-    }
-
-    /**
-     * Adds a person to the address book.
-     * The person must not already exist in the address book.
-     */
-    public void addPerson(Person p) {
-        persons.add(p);
-    }
+    //// task-level operations
 
     /**
      * Adds an archived person to the address book.
@@ -225,37 +198,14 @@ public class AddressBook implements ReadOnlyAddressBook {
         tasks.setTaskDateTime(target, newDateTimes);
     }
 
-    /**
-     * Replaces the given person {@code target} in the list with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
-     */
-    public void setPerson(Person target, Person editedPerson) {
-        requireNonNull(editedPerson);
-
-        persons.setPerson(target, editedPerson);
-    }
-
-    /**
-     * Removes {@code key} from this {@code AddressBook}.
-     * {@code key} must exist in the address book.
-     */
-    public void removePerson(Person key) {
-        persons.remove(key);
-    }
 
     @Override
     public String toString() {
-        return persons.asUnmodifiableObservableList().size() + " persons";
+        return tasks.asUnmodifiableObservableList().size() + " tasks";
         // TODO: refine later
     }
 
     //// util methods
-
-    @Override
-    public ObservableList<Person> getPersonList() {
-        return persons.asUnmodifiableObservableList();
-    }
 
     @Override
     public ObservableList<Task> getArchivedList() {
@@ -287,14 +237,14 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     @Override
     public int hashCode() {
-        return persons.hashCode();
+        return tasks.hashCode();
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
             || (other instanceof AddressBook // instanceof handles nulls
-            && persons.equals(((AddressBook) other).persons));
+            && tasks.equals(((AddressBook) other).tasks));
     }
 
 }

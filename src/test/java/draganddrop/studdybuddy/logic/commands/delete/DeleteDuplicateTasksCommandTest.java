@@ -1,7 +1,6 @@
-package draganddrop.studdybuddy.logic.commands.edit;
+package draganddrop.studdybuddy.logic.commands.delete;
 
 import static draganddrop.studdybuddy.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static draganddrop.studdybuddy.testutil.TypicalIndexes.INDEX_FIRST_TASK;
 import static draganddrop.studdybuddy.testutil.TypicalTasks.getSampleTasks;
 import static draganddrop.studdybuddy.testutil.TypicalTasks.getTypicalTaskList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,9 +14,8 @@ import draganddrop.studdybuddy.commons.core.Messages;
 import draganddrop.studdybuddy.model.Model;
 import draganddrop.studdybuddy.model.ModelManager;
 import draganddrop.studdybuddy.model.UserPrefs;
-import draganddrop.studdybuddy.model.task.Task;
 
-public class CompleteTaskCommandTest {
+public class DeleteDuplicateTasksCommandTest {
 
     private Model model;
     private Model expectedModel;
@@ -29,15 +27,12 @@ public class CompleteTaskCommandTest {
     }
 
     @Test
-    public void execute_checkCompleted_success() {
-        Task task = model.getFilteredTaskList().get(0);
-        String expectedMessage = String.format(Messages.MESSAGE_COMPLETE_TASK_SUCCESS, task.getTaskName());
-        CompleteTaskCommand command = new CompleteTaskCommand(INDEX_FIRST_TASK);
-        expectedModel.completeTask(task);
-        expectedModel.deleteTask(task);
-        expectedModel.archiveTask(task);
+    public void execute_checkDeleteDuplicates_success() {
+        String expectedMessage = String.format(Messages.MESSAGE_DELETE_DUPLICATE_TASK_SUCCESS);
+        DeleteDuplicateTaskCommand command = new DeleteDuplicateTaskCommand();
+        expectedModel.deleteTask(model.getFilteredTaskList().get(2));
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(getSampleTasks()[1], getSampleTasks()[2],
+        assertEquals(Arrays.asList(getSampleTasks()[0], getSampleTasks()[1],
                 getSampleTasks()[3], getSampleTasks()[4]),
                 model.getFilteredTaskList());
     }
