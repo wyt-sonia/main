@@ -34,6 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     private static final String ARCHIVED_TASK = "Archived Task";
     private static final String CALENDAR = "Calendar";
     private static final String TASK_SUMMARY = "Task Summary";
+    private static final String PROFILE_PAGE = "Profile Page";
 
     private static final String FXML = "MainWindow.fxml";
 
@@ -49,6 +50,7 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private ModuleListPanel moduleListPanel;
+    private ProfilePage profilePage;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -79,6 +81,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane modulePaneHolder;
+
+    @FXML
+    private StackPane profilePageHolder;
 
     @FXML
     private Label taskListPanelTitle;
@@ -167,6 +172,12 @@ public class MainWindow extends UiPart<Stage> {
         taskSummaryHolder.setVisible(false);
         taskSummaryHolder.setManaged(false);
 
+        //Profile page
+        profilePage = new ProfilePage(logic.getFilteredTaskList());
+        profilePageHolder.getChildren().add(profilePage.getRoot());
+        profilePageHolder.setVisible(false);
+        profilePageHolder.setManaged(false);
+
         moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList(), logic.getFilteredTaskList());
         modulePaneHolder.getChildren().add(moduleListPanel.getRoot());
         modulePaneHolder.setVisible(false);
@@ -226,6 +237,19 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.show();
     }
 
+
+    /**
+     * handles showing the profile page
+     */
+    @FXML
+    private void handleShowProfile() {
+        toggleAllHoldersInvisible();
+        toggleProfileHolderView(true);
+
+        toggleAllTitle(false);
+        toggleMainTitleView(true);
+        setMainTitleText(PROFILE_PAGE);
+    }
     /**
      * Closes the application.
      */
@@ -296,6 +320,8 @@ public class MainWindow extends UiPart<Stage> {
         toggleMainTitleView(true);
         setMainTitleText(MODULE);
     }
+
+
 
     /**
      * handles calendar to be shown in TaskListHolder.
@@ -386,6 +412,10 @@ public class MainWindow extends UiPart<Stage> {
 
     private void toggleModTabView(boolean val) {
         setPaneView(modulePaneHolder, val);
+    }
+
+    private void toggleProfileHolderView(boolean val) {
+        setPaneView(profilePageHolder, val);
     }
 
 
