@@ -360,7 +360,6 @@ public class MainWindow extends UiPart<Stage> {
      * Toggles title according to values assigned. Can add more if there are more windows required for display.
      * @param val1 toggles MainTitle
      * @param val2 toggles TaskList(Left side)
-     * @param val3 toggles DueList(Right side, not in use for now)
      */
     private void customToggleTitle(boolean val1, boolean val2/*, boolean val3*/) {
         toggleMainTitleView(val1);
