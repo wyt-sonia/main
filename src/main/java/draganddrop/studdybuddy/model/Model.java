@@ -42,12 +42,12 @@ public interface Model {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' study buddy file path.
      */
     Path getStudyBuddyFilePath();
 
     /**
-     * Sets the user prefs' address book file path.
+     * Sets the user prefs' study buddy file path.
      */
     void setStudyBuddyFilePath(Path studyBuddyFilePath);
 
@@ -57,7 +57,7 @@ public interface Model {
     ReadOnlyStudyBuddy getStudyBuddy();
 
     /**
-     * Replaces address book data with the data in {@code studyBuddy}.
+     * Replaces study buddy data with the data in {@code studyBuddy}.
      */
     void setStudyBuddy(ReadOnlyStudyBuddy studyBuddy);
 
@@ -69,7 +69,7 @@ public interface Model {
     public void deleteDueSoonTask(Task target);
     /**
      * completes the given task.
-     * The task must exist in the address book.
+     * The task must exist in the study buddy.
      */
     void completeTask(Task target);
 
@@ -105,14 +105,14 @@ public interface Model {
     /**
      * Archives the given task.
      *
-     * @param task must not already exist in the address book.
+     * @param task must not already exist in the study buddy.
      */
     void archiveTask(Task task);
 
     /**
      * Adds the given task.
      *
-     * @param task must not already exist in the address book.
+     * @param task must not already exist in the study buddy.
      */
     void addDueSoonTask(Task task);
 

@@ -52,12 +52,12 @@ public class JsonStudyBuddyStorageTest {
     }
 
     /**
-     * Saves {@code addressBook} at the specified {@code filePath}.
+     * Saves {@code studyBuddy} at the specified {@code filePath}.
      */
-    private void saveStudyBuddy(ReadOnlyStudyBuddy addressBook, String filePath) {
+    private void saveStudyBuddy(ReadOnlyStudyBuddy studyBuddy, String filePath) {
         try {
             new JsonStudyBuddyStorage(Paths.get(filePath))
-                .saveStudyBuddy(addressBook, addToTestDataPathIfNotNull(filePath));
+                .saveStudyBuddy(studyBuddy, addToTestDataPathIfNotNull(filePath));
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file.", ioe);
         }
