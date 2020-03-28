@@ -5,6 +5,7 @@ import static draganddrop.studdybuddy.testutil.TypicalTasks.getTypicalTaskList;
 
 import org.junit.jupiter.api.Test;
 
+import draganddrop.studdybuddy.logic.commands.delete.ClearTasksCommand;
 import draganddrop.studdybuddy.model.Model;
 import draganddrop.studdybuddy.model.ModelManager;
 import draganddrop.studdybuddy.model.StudyBuddy;

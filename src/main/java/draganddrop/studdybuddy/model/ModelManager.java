@@ -11,6 +11,7 @@ import draganddrop.studdybuddy.commons.core.GuiSettings;
 import draganddrop.studdybuddy.commons.core.LogsCenter;
 import draganddrop.studdybuddy.commons.util.CollectionUtil;
 import draganddrop.studdybuddy.model.module.Module;
+import draganddrop.studdybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studdybuddy.model.task.Task;
 import draganddrop.studdybuddy.model.task.TaskType;
 
@@ -126,6 +127,17 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void setTaskMod(Task target, Module mod) throws ModuleCodeException {
+        studyBuddy.setModuleInTask(target, mod);
+    }
+
+    //  @Override
+    //  public void setTaskListForModule(Module mod) throws ModuleCodeException {
+    //      addressBook.collectTaskBasedOnMod(mod);
+    // }
+
+
+    @Override
     public void deleteTask(Task target) {
         studyBuddy.removeTask(target);
     }
@@ -168,6 +180,7 @@ public class ModelManager implements Model {
         requireNonNull(mod);
         return studyBuddy.hasModule(mod);
     }
+
 
     /**
      * STILL NEEDS MORE REFINEMENT DUE TO ABSENCE OF UpdateModuleList.

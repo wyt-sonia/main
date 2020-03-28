@@ -3,7 +3,6 @@ package draganddrop.studdybuddy.ui.interactiveprompt.edit;
 import static draganddrop.studdybuddy.ui.interactiveprompt.InteractivePromptType.COMPLETE_TASK;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 
 import draganddrop.studdybuddy.commons.core.index.Index;
 import draganddrop.studdybuddy.logic.commands.edit.CompleteTaskCommand;
@@ -21,21 +20,10 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
     static final String QUIT_COMMAND_MSG = "Successfully quited from complete task command.";
 
     private int index;
-    private String reply;
-    private String userInput;
-    private InteractivePromptTerms currentTerm;
-    private InteractivePromptTerms lastTerm;
-    private ArrayList<InteractivePromptTerms> terms;
 
     public CompleteTaskInteractivePrompt() {
         super();
         this.interactivePromptType = COMPLETE_TASK;
-        this.reply = "";
-        this.userInput = "";
-        this.index = index;
-        this.currentTerm = InteractivePromptTerms.INIT;
-        this.lastTerm = null;
-        this.terms = new ArrayList<>();
     }
 
     @Override
@@ -43,19 +31,8 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
         if (userInput.equals("quit")) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
-        } else if (userInput.equals("back")) {
-            if (lastTerm != null) { //in the beginning it is null
-                terms.remove(terms.size() - 1);
-                currentTerm = lastTerm;
-                if (lastTerm.equals(InteractivePromptTerms.INIT)) {
-                    lastTerm = null;
-                } else {
-                    lastTerm = terms.get(terms.size() - 1);
-                }
-                userInput = "";
-            } else {
-                this.reply = "Please type quit to exit from this command.";
-            }
+        } else {
+            userInput = checkForBackInput(userInput);
         }
 
         switch (currentTerm) {

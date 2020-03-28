@@ -1,6 +1,7 @@
 package draganddrop.studdybuddy.ui;
 
 import draganddrop.studdybuddy.logic.parser.TimeParser;
+import draganddrop.studdybuddy.model.module.EmptyModule;
 import draganddrop.studdybuddy.model.task.Task;
 
 import javafx.fxml.FXML;
@@ -30,8 +31,8 @@ public class TaskCard extends UiPart<Region> {
     private HBox cardPane;
     @FXML
     private Label taskName;
-    //@FXML
-    //private Label Module;
+    @FXML
+    private Label module;
     @FXML
     private Label status;
     @FXML
@@ -45,12 +46,20 @@ public class TaskCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
 
+
     public TaskCard(Task task, int displayedIndex) {
         super(FXML);
         this.task = task;
         id.setText(displayedIndex + ". ");
         taskName.setText(task.getTaskName());
-        //Module.setText(task.getModule().toString());
+
+        if (task.getModule().equals(new EmptyModule())) {
+            module.setVisible(false);
+            module.setManaged(false);
+        } else {
+            module.setText(task.getModule().toString());
+        }
+
         status.setText(task.getTaskStatus().convertToString());
         renderTask(task);
         dateTime.setText("\tDeadline: " + task.getTimeString());

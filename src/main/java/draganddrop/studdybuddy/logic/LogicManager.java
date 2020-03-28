@@ -47,6 +47,8 @@ public class LogicManager implements Logic {
             commandResult = command.execute(model);
         } catch (java.text.ParseException e) {
             e.printStackTrace();
+        } catch (CommandException ex) {
+            ex.getLocalizedMessage();
         }
 
         try {
@@ -62,7 +64,6 @@ public class LogicManager implements Logic {
     public CommandResult executeCommand(Command command) throws CommandException, java.text.ParseException {
         CommandResult commandResult;
         commandResult = command.execute(model);
-
         try {
             storage.saveStudyBuddy(model.getStudyBuddy());
             // keep track of task list
@@ -70,7 +71,6 @@ public class LogicManager implements Logic {
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
-
         return commandResult;
     }
 

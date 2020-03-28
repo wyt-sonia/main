@@ -8,10 +8,8 @@ import draganddrop.studdybuddy.logic.Logic;
 import draganddrop.studdybuddy.logic.commands.CommandResult;
 import draganddrop.studdybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studdybuddy.logic.parser.exceptions.ParseException;
-import draganddrop.studdybuddy.model.module.Module;
 import draganddrop.studdybuddy.ui.interactiveprompt.InteractivePrompt;
 
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -41,6 +39,7 @@ public class MainWindow extends UiPart<Stage> {
     private DueSoonListPanel dueSoonListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private ModuleListPanel moduleListPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -71,6 +70,7 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane modulePaneHolder;
+
 
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
@@ -139,6 +139,11 @@ public class MainWindow extends UiPart<Stage> {
         taskSummaryHolder.setVisible(false);
         taskSummaryHolder.setManaged(false);
 
+        moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList(), logic.getFilteredTaskList());
+        modulePaneHolder.getChildren().add(moduleListPanel.getRoot());
+        modulePaneHolder.setVisible(false);
+        modulePaneHolder.setManaged(false);
+
         dueSoonListPanel = new DueSoonListPanel(logic.getFilteredDueSoonTaskList());
         dueSoonListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
 
@@ -181,10 +186,8 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleShowTaskSummary() {
-        if (!taskSummaryHolder.isManaged()) {
-            toggleTaskSummaryHolder();
-            toggleTaskListHolder();
-        }
+        toggleAllHoldersInvisible();
+        setTaskSummaryHolderView(true);
     }
 
     void show() {
@@ -204,50 +207,56 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Shows all tasks.
+     * Shows all task list in taskListHolder.
      */
     @FXML
     private void handleShowAllTasks() {
-        toggleHolder();
+        toggleAllHoldersInvisible();
+        setTaskListHolderView(true);
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
         handleDueSoonTasks();
     }
 
+    /**
+     * handles task to be shown in TaskListHolder.
+     */
     @FXML
     private void handleDueSoonTasks() {
+        toggleAllHoldersInvisible();
+        setTaskListHolderView(true);
         dueSoonListPanel = new DueSoonListPanel(logic.getFilteredDueSoonTaskList());
         dueSoonListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
     }
 
     /**
-     * Shows all archived tasks.
+     * handles archived task to be shown in TaskListHolder.
      */
     @FXML
     private void handleShowArchivedTasks() {
-        toggleHolder();
+        toggleAllHoldersInvisible();
+        setTaskListHolderView(true);
         TaskListPanel archiveListPanel = new TaskListPanel(logic.getFilteredArchivedTaskList());
         taskListPanelPlaceholder.getChildren().add(archiveListPanel.getRoot());
         handleDueSoonTasks();
     }
 
     /**
-     * handles modules to be displayed
+     * handles modules to be displayed in ModulesTabHolder.
      */
     @FXML
     private void handleShowModules() {
-        toggleHolder();
-        ObservableList<Module> modulesToBeDisplayed = logic.getFilteredModuleList();
-        ModuleListPanel moduleListPanel = new ModuleListPanel(modulesToBeDisplayed);
-        taskListPanelPlaceholder.getChildren().add(moduleListPanel.getRoot());
-        handleDueSoonTasks();
+        toggleAllHoldersInvisible();
+        setModTabView(true);
     }
 
-
-
+    /**
+     * handles calendar to be shown in TaskListHolder.
+     */
     @FXML
     private void handleShowCalendar() {
-        toggleHolder();
+        toggleAllHoldersInvisible();
+        setTaskListHolderView(true);
         CalendarBox calendar = new CalendarBox(logic.getFilteredTaskList(), dueSoonListPanelPlaceholder);
         taskListPanelPlaceholder.getChildren().add(calendar.getRoot());
     }
@@ -282,18 +291,57 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Toggle function wrapper.
+     * Toggles according to values assigned. Can add more if there are more windows required for display.
+     * @param val1 toggles TaskListHolder
+     * @param val2 toggles TaskSummaryHolder
+     * @param val3 toggles ModuleTabHolder
      */
+    private void customToggleHolders(boolean val1, boolean val2, boolean val3) {
+        setTaskListHolderView(val1);
+        setTaskSummaryHolderView(val2);
+        setModTabView(val3);
+    }
+
+    private void toggleAllHoldersInvisible() {
+        customToggleHolders(false, false, false);
+    }
+
+
+    private void setTaskSummaryHolderView(boolean val) {
+        taskSummaryHolder.setVisible(val);
+        taskSummaryHolder.setManaged(val);
+    }
+
+    private void setTaskListHolderView(boolean val) {
+        taskListHolder.setVisible(val);
+        taskListHolder.setManaged(val);
+    }
+
+    private void setModTabView(boolean val) {
+        modulePaneHolder.setVisible(val);
+        modulePaneHolder.setManaged(val);
+    }
+
+
+    /*
     private void toggleHolder() {
-        if (taskSummaryHolder.isManaged()) {
-            toggleTaskSummaryHolder();
-            toggleTaskListHolder();
+        if (!taskListHolder.isManaged()) {
+            //toggleTaskSummaryHolder();
+            //toggleTaskListHolder();
+            //toggleModuleTabs();
         }
     }
 
-    /**
-     * Toggles the taskSummaryHolder's visibility.
-     */
+    private void toggleModuleTabs() {
+        if (modulePaneHolder.isManaged()) {
+            modulePaneHolder.setVisible(false);
+            modulePaneHolder.setManaged(false);
+        } else {
+            modulePaneHolder.setVisible(true);
+            modulePaneHolder.setManaged(true);
+        }
+    }
+
     private void toggleTaskSummaryHolder() {
         if (taskSummaryHolder.isManaged()) {
             taskSummaryHolder.setVisible(false);
@@ -304,9 +352,6 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
-    /**
-     * Toggles the taskListHolder's visibility.
-     */
     private void toggleTaskListHolder() {
         if (taskListHolder.isManaged()) {
             taskListHolder.setVisible(false);
@@ -316,4 +361,5 @@ public class MainWindow extends UiPart<Stage> {
             taskListHolder.setVisible(true);
         }
     }
+    */
 }

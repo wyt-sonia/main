@@ -196,6 +196,21 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         tasks.setTaskDateTime(target, newDateTimes);
     }
 
+    public void setModuleInTask(Task target, Module module) throws ModuleCodeException {
+        if (moduleList.contains(module)) {
+            tasks.setTaskMod(target, module);
+        } else {
+            throw new ModuleCodeException("Module does not exist in addressBook!");
+        }
+    }
+
+    // public void collectTaskBasedOnMod(Module module) throws ModuleCodeException {
+    //     ObservableList<Task> collectedTask = tasks.filterTaskByMod(module);
+    //     int modIndex = moduleList.indexOf(module);
+    //     Module originalModule = moduleList.get(module.toString());
+    //    originalModule.setInternalTaskList(collectedTask);
+    // }
+
     @Override
     public String toString() {
         return tasks.asUnmodifiableObservableList().size() + " tasks";

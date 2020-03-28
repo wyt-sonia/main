@@ -1,7 +1,9 @@
-package draganddrop.studdybuddy.logic.commands;
+package draganddrop.studdybuddy.logic.commands.delete;
 
 import static java.util.Objects.requireNonNull;
 
+import draganddrop.studdybuddy.logic.commands.Command;
+import draganddrop.studdybuddy.logic.commands.CommandResult;
 import draganddrop.studdybuddy.model.Model;
 import draganddrop.studdybuddy.model.StudyBuddy;
 

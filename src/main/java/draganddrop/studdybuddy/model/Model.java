@@ -6,11 +6,11 @@ import java.util.function.Predicate;
 
 import draganddrop.studdybuddy.commons.core.GuiSettings;
 import draganddrop.studdybuddy.model.module.Module;
+import draganddrop.studdybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studdybuddy.model.task.Task;
 import draganddrop.studdybuddy.model.task.TaskType;
 
 import javafx.collections.ObservableList;
-
 
 /**
  * The API of the Model component.
@@ -93,6 +93,8 @@ public interface Model {
      * @param newDateTimes the new date and time
      */
     void setTaskDateTime(Task target, LocalDateTime[] newDateTimes);
+
+    void setTaskMod(Task target, Module mod) throws ModuleCodeException;
 
     /**
      * Deletes the given task.

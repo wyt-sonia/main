@@ -20,17 +20,11 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
     private static final String[] sort_option = {"Deadline / Task Start Date", "Task Name", "Creation DateTime"};
 
     private int option;
-    private String reply;
     private String userInput;
-    private InteractivePromptTerms currentTerm;
 
     public SortTaskInteractivePrompt() {
         super();
         this.interactivePromptType = SORT_TASK;
-        this.reply = "";
-        this.userInput = "";
-        this.currentTerm = InteractivePromptTerms.INIT;
-        this.lastTerm = null;
     }
 
     @Override
@@ -38,6 +32,8 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
         if (userInput.equals("quit")) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
+        } else {
+            userInput = checkForBackInput(userInput);
         }
 
         switch (currentTerm) {

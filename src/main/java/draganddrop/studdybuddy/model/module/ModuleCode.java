@@ -16,7 +16,6 @@ public class ModuleCode {
             this.number = parseNumber(fullModuleCode);
             this.postfix = parsePostfix(fullModuleCode);
         } catch (ModuleCodeException e) {
-            System.out.println("ModuleCodeParsing failed");
             throw new ModuleCodeException("ModuleCode is invalid!");
         }
     }
@@ -31,7 +30,7 @@ public class ModuleCode {
     private String parsePrefix(String input) throws ModuleCodeException {
         String output = "";
         int i = 0;
-        while (true) {
+        while (i < input.length()) {
             char character = input.charAt(i);
             try {
                 Integer.parseInt(character + "");
