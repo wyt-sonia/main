@@ -27,8 +27,8 @@ import javafx.stage.Stage;
  * a menu bar and space where other JavaFX elements can be placed.
  */
 public class MainWindow extends UiPart<Stage> {
-    private static final String ALL_TASK = "All Task";
-    private static final String TITLE = "Study Buddy ";
+    private static final String ALL_TASK = "All Tasks";
+    private static final String TITLE = "Study Buddy";
     private static final String DUE_SOON_TASK = "Task Due Soon";
     private static final String MODULE = "Modules";
     private static final String ARCHIVED_TASK = "Archived Task";

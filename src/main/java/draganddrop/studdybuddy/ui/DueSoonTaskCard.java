@@ -64,8 +64,6 @@ public class DueSoonTaskCard extends UiPart<Region> {
      */
     private void renderTask(Task task) {
 
-        timeLeft.getStyleClass().add("time_left");
-
         switch (task.getTaskType()) {
         case Assignment:
             type.getStyleClass().add("assignment_lbl");
