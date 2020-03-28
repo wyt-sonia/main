@@ -44,22 +44,22 @@ public interface Model {
     /**
      * Returns the user prefs' address book file path.
      */
-    Path getAddressBookFilePath();
+    Path getStudyBuddyFilePath();
 
     /**
      * Sets the user prefs' address book file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setStudyBuddyFilePath(Path studyBuddyFilePath);
 
     /**
-     * Returns the AddressBook
+     * Returns the StudyBuddy
      */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyStudyBuddy getStudyBuddy();
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Replaces address book data with the data in {@code studyBuddy}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setStudyBuddy(ReadOnlyStudyBuddy studyBuddy);
 
     /**
      * Returns true if a task with the same identity as {@code task} exists in the task list.

@@ -28,7 +28,7 @@ class ArchiveTaskCommandTest {
 
         String expectedMessage = String.format(ArchiveTaskCommand.MESSAGE_ARCHIVE_TASK_SUCCESS, taskToArchive);
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(model.getStudyBuddy(), new UserPrefs());
         expectedModel.deleteTask(taskToArchive);
         expectedModel.archiveTask(taskToArchive);
 
@@ -51,7 +51,7 @@ class ArchiveTaskCommandTest {
 
         String expectedMessage = String.format(ArchiveTaskCommand.MESSAGE_ARCHIVE_TASK_SUCCESS, taskToArchive);
 
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getStudyBuddy(), new UserPrefs());
         expectedModel.deleteTask(taskToArchive);
         expectedModel.archiveTask(taskToArchive);
 

@@ -8,7 +8,7 @@ import draganddrop.studdybuddy.logic.commands.CommandResult;
 import draganddrop.studdybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studdybuddy.logic.parser.exceptions.ParseException;
 import draganddrop.studdybuddy.model.Model;
-import draganddrop.studdybuddy.model.ReadOnlyAddressBook;
+import draganddrop.studdybuddy.model.ReadOnlyStudyBuddy;
 import draganddrop.studdybuddy.model.module.Module;
 import draganddrop.studdybuddy.model.task.Task;
 
@@ -32,11 +32,11 @@ public interface Logic {
     CommandResult executeCommand(Command command) throws CommandException, java.text.ParseException;
 
     /**
-     * Returns the AddressBook.
+     * Returns the StudyBuddy.
      *
-     * @see Model#getAddressBook()
+     * @see Model#getStudyBuddy()
      */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyStudyBuddy getStudyBuddy();
 
     /**
      * Returns an unmodifiable view of the filtered list of tasks
@@ -59,7 +59,7 @@ public interface Logic {
     /**
      * Returns the user prefs' address book file path.
      */
-    Path getAddressBookFilePath();
+    Path getStudyBuddyFilePath();
 
     /**
      * Returns the user prefs' GUI settings.

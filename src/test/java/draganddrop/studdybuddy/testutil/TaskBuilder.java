@@ -71,6 +71,14 @@ public class TaskBuilder {
     }
 
     /**
+     * init taskBuilder with description as parameter
+     */
+    public TaskBuilder withDescription(String desc) {
+        this.taskDescription = desc;
+        return this;
+    }
+
+    /**
      * builds task.
      */
     public Task build() {

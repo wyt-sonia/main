@@ -37,7 +37,7 @@ public class SortTaskCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Task> lastShownList = model.getFilteredTaskList();
-        ObservableList<Task> temp = model.getAddressBook().getTaskList();
+        ObservableList<Task> temp = model.getStudyBuddy().getTaskList();
         model.sortTasks(sortKeyword);
         return new CommandResult(String.format(MESSAGE_SORT_TASK_SUCCESS, sortKeyword));
     }
