@@ -3,6 +3,9 @@ package draganddrop.studybuddy.model.user;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * List that contains the count of completed task for each day
+ */
 public class CompleteCountList {
     private static List<Integer> completeList;
     private static List<Integer> completeLateList;
