@@ -1,10 +1,8 @@
-package draganddrop.studdybuddy.ui.interactiveprompt;
+package draganddrop.studdybuddy.ui.interactiveprompt.view;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-
-import draganddrop.studdybuddy.ui.interactiveprompt.view.FindTaskInteractivePrompt;
 
 class FindTaskInteractivePromptTest {
 
