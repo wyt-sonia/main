@@ -103,12 +103,10 @@ public class CalendarBox extends UiPart<Region> {
             VBox temp = new VBox();
             Pane p = new Pane();
             p.setBackground(new Background(new BackgroundFill(Color.WHEAT, CornerRadii.EMPTY, Insets.EMPTY)));
-            if (tempDate.equals(localDate)) {
-                p.setBorder(new Border(new BorderStroke(Color.CYAN,
-                        BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-            }
             monthBox.add(p, dayOfWeek, j);
-            temp.getChildren().add(new Label(" " + i));
+            Label temp_lbl = new Label(i+"");
+            temp_lbl.setPadding(new Insets(2, 2,2,4));
+            temp.getChildren().add(temp_lbl);
             int count = 0;
             for (Task task : taskList) {
                 LocalDateTime[] ldt = task.getDateTimes();
@@ -120,14 +118,20 @@ public class CalendarBox extends UiPart<Region> {
                 }
             }
             if (count > 0) {
+                p.setBackground(new Background(
+                    new BackgroundFill(Color.rgb(255, 157, 94), CornerRadii.EMPTY, Insets.EMPTY)));
                 Label dayTasksLabel = new Label();
                 if (count == 1) {
-                    dayTasksLabel.setText("Task: " + count);
+                    dayTasksLabel.setText(count + " Task");
                 } else {
-                    dayTasksLabel.setText("Tasks: " + count);
+                    dayTasksLabel.setText(count + " Tasks");
                 }
                 dayTasksLabel.setPadding(new Insets(0, 0, 0, 10));
                 temp.getChildren().add(dayTasksLabel);
+            }
+            if (tempDate.equals(localDate)) {
+                p.setBackground(new Background(
+                    new BackgroundFill(Color.rgb(118, 156, 206), CornerRadii.EMPTY, Insets.EMPTY)));
             }
             monthBox.add(temp, dayOfWeek, j);
             dayOfWeek++;

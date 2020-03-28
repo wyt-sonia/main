@@ -4,5 +4,5 @@
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" maxWidth="1.7976931348623157E308"
       xmlns="http://javafx.com/javafx/10.0.2-internal">
-    <ListView fx:id="dueSoonListView" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS"/>
+    <ListView fx:id="dueSoonListView"  maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS"/>
 </VBox>
