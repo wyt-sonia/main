@@ -13,7 +13,7 @@ import draganddrop.studdybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studdybuddy.logic.parser.StudyBuddyParser;
 import draganddrop.studdybuddy.logic.parser.exceptions.ParseException;
 import draganddrop.studdybuddy.model.Model;
-import draganddrop.studdybuddy.model.ReadOnlyAddressBook;
+import draganddrop.studdybuddy.model.ReadOnlyStudyBuddy;
 import draganddrop.studdybuddy.model.module.Module;
 import draganddrop.studdybuddy.model.task.Task;
 import draganddrop.studdybuddy.storage.Storage;
@@ -50,7 +50,7 @@ public class LogicManager implements Logic {
         }
 
         try {
-            storage.saveAddressBook(model.getAddressBook());
+            storage.saveStudyBuddy(model.getStudyBuddy());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
@@ -64,9 +64,9 @@ public class LogicManager implements Logic {
         commandResult = command.execute(model);
 
         try {
-            storage.saveAddressBook(model.getAddressBook());
+            storage.saveStudyBuddy(model.getStudyBuddy());
             // keep track of task list
-            Task.updateCurrentTaskList(new ArrayList<Task>(getAddressBook().getTaskList()));
+            Task.updateCurrentTaskList(new ArrayList<Task>(getStudyBuddy().getTaskList()));
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
@@ -75,8 +75,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return model.getAddressBook();
+    public ReadOnlyStudyBuddy getStudyBuddy() {
+        return model.getStudyBuddy();
     }
 
     @Override
@@ -100,8 +100,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return model.getAddressBookFilePath();
+    public Path getStudyBuddyFilePath() {
+        return model.getStudyBuddyFilePath();
     }
 
     @Override

@@ -18,7 +18,7 @@ import javafx.collections.ObservableList;
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
-public class AddressBook implements ReadOnlyAddressBook {
+public class StudyBuddy implements ReadOnlyStudyBuddy {
 
     private final UniqueTaskList archivedTasks;
     private final UniqueTaskList dueSoonTasks;
@@ -39,13 +39,13 @@ public class AddressBook implements ReadOnlyAddressBook {
         moduleList = new ModuleList();
     }
 
-    public AddressBook() {
+    public StudyBuddy() {
     }
 
     /**
-     * Creates an AddressBook using the Persons in the {@code toBeCopied}
+     * Creates an StudyBuddy using the Persons in the {@code toBeCopied}
      */
-    public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    public StudyBuddy(ReadOnlyStudyBuddy toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -95,7 +95,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
+     * Removes {@code key} from this {@code StudyBuddy}.
      * {@code key} must exist in the task list.
      */
     public void removeTask(Task key) {
@@ -107,7 +107,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
+     * Removes {@code key} from this {@code StudyBuddy}.
      * {@code key} must exist in the task list.
      */
     public void removeDueSoonTask(Task key) {
@@ -123,9 +123,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Resets the existing data of this {@code AddressBook} with {@code newData}.
+     * Resets the existing data of this {@code StudyBuddy} with {@code newData}.
      */
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyStudyBuddy newData) {
         requireNonNull(newData);
         setArchivedTasks(newData.getArchivedList());
         setDueSoonTasks(newData.getDueSoonList());
@@ -165,7 +165,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         try {
             moduleList.add(module);
         } catch (ModuleCodeException ex) {
-            System.out.println("AddModule Failed, from addressBook.addModule()");
+            System.out.println("AddModule Failed, from studyBuddy.addModule()");
         }
     }
 
@@ -240,8 +240,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof AddressBook // instanceof handles nulls
-            && tasks.equals(((AddressBook) other).tasks));
+            || (other instanceof StudyBuddy // instanceof handles nulls
+            && tasks.equals(((StudyBuddy) other).tasks));
     }
 
 }

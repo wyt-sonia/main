@@ -4,15 +4,15 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import draganddrop.studdybuddy.logic.parser.TimeParser;
-import draganddrop.studdybuddy.model.AddressBook;
-import draganddrop.studdybuddy.model.ReadOnlyAddressBook;
+import draganddrop.studdybuddy.model.ReadOnlyStudyBuddy;
+import draganddrop.studdybuddy.model.StudyBuddy;
 import draganddrop.studdybuddy.model.module.Module;
 import draganddrop.studdybuddy.model.task.Task;
 import draganddrop.studdybuddy.model.task.TaskStatus;
 import draganddrop.studdybuddy.model.task.TaskType;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code StudyBuddy} with sample data.
  */
 public class SampleDataUtil {
     public static Task[] getSampleTasks() {
@@ -39,14 +39,14 @@ public class SampleDataUtil {
         };
     }
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
-        AddressBook sampleAb = new AddressBook();
+    public static ReadOnlyStudyBuddy getSampleStudyBuddy() {
+        StudyBuddy sampleSb = new StudyBuddy();
         ArrayList<Task> sampleTasks = new ArrayList<>();
         for (Task sampleTask : getSampleTasks()) {
-            sampleAb.addTask(sampleTask);
+            sampleSb.addTask(sampleTask);
             sampleTasks.add(sampleTask);
         }
         Task.updateCurrentTaskList(sampleTasks);
-        return sampleAb;
+        return sampleSb;
     }
 }

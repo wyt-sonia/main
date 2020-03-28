@@ -13,18 +13,18 @@ import draganddrop.studdybuddy.commons.util.ConfigUtil;
 import draganddrop.studdybuddy.commons.util.StringUtil;
 import draganddrop.studdybuddy.logic.Logic;
 import draganddrop.studdybuddy.logic.LogicManager;
-import draganddrop.studdybuddy.model.AddressBook;
 import draganddrop.studdybuddy.model.Model;
 import draganddrop.studdybuddy.model.ModelManager;
-import draganddrop.studdybuddy.model.ReadOnlyAddressBook;
+import draganddrop.studdybuddy.model.ReadOnlyStudyBuddy;
 import draganddrop.studdybuddy.model.ReadOnlyUserPrefs;
+import draganddrop.studdybuddy.model.StudyBuddy;
 import draganddrop.studdybuddy.model.UserPrefs;
 import draganddrop.studdybuddy.model.util.SampleDataUtil;
-import draganddrop.studdybuddy.storage.AddressBookStorage;
-import draganddrop.studdybuddy.storage.JsonAddressBookStorage;
+import draganddrop.studdybuddy.storage.JsonStudyBuddyStorage;
 import draganddrop.studdybuddy.storage.JsonUserPrefsStorage;
 import draganddrop.studdybuddy.storage.Storage;
 import draganddrop.studdybuddy.storage.StorageManager;
+import draganddrop.studdybuddy.storage.StudyBuddyStorage;
 import draganddrop.studdybuddy.storage.UserPrefsStorage;
 import draganddrop.studdybuddy.ui.Ui;
 import draganddrop.studdybuddy.ui.UiManager;
@@ -57,8 +57,8 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
-        storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        StudyBuddyStorage studyBuddyStorage = new JsonStudyBuddyStorage(userPrefs.getStudyBuddyFilePath());
+        storage = new StorageManager(studyBuddyStorage, userPrefsStorage);
 
         initLogging(config);
 
@@ -91,20 +91,20 @@ public class MainApp extends Application {
      * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
-        Optional<ReadOnlyAddressBook> addressBookOptional;
-        ReadOnlyAddressBook initialData;
+        Optional<ReadOnlyStudyBuddy> studyBuddyOptional;
+        ReadOnlyStudyBuddy initialData;
         try {
-            addressBookOptional = storage.readAddressBook();
-            if (!addressBookOptional.isPresent()) {
-                logger.info("Data file not found. Will be starting with a sample AddressBook");
+            studyBuddyOptional = storage.readStudyBuddy();
+            if (!studyBuddyOptional.isPresent()) {
+                logger.info("Data file not found. Will be starting with a sample StudyBuddy");
             }
-            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+            initialData = studyBuddyOptional.orElseGet(SampleDataUtil::getSampleStudyBuddy);
         } catch (DataConversionException e) {
-            logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");
-            initialData = new AddressBook();
+            logger.warning("Data file not in the correct format. Will be starting with an empty StudyBuddy");
+            initialData = new StudyBuddy();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
-            initialData = new AddressBook();
+            logger.warning("Problem while reading from the file. Will be starting with an empty StudyBuddy");
+            initialData = new StudyBuddy();
         }
 
         return new ModelManager(initialData, userPrefs);
@@ -168,7 +168,7 @@ public class MainApp extends Application {
                 + "Using default user prefs");
             initializedPrefs = new UserPrefs();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
+            logger.warning("Problem while reading from the file. Will be starting with an empty StudyBuddy");
             initializedPrefs = new UserPrefs();
         }
 
