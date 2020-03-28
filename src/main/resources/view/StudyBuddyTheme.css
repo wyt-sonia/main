@@ -34,6 +34,13 @@
     -fx-text-weight: bold;
 }
 
+.sub_header {
+    -fx-font-family: 'Rainclouds DEMO Regular';
+    -fx-font-size: 20pt;
+    -fx-text-fill: rgba(123, 87, 69, 1);
+    -fx-text-weight: bold;
+}
+
 .index_lbl {
     -fx-font-family: 'AL_Nevrada_PersonalUseOnly';
     -fx-font-size: 12pt;
@@ -51,7 +58,7 @@
     -fx-background-position: center center;
 }
 
-/*Status bar*/
+/* Status bar */
 .status-bar {
     -fx-background-color: rgba(123, 87, 69, 0.8);
 }
@@ -244,6 +251,16 @@
 
 .others_lbl {
     -fx-background-color: #5fb2ce;
+}
+
+/*time left */
+.time_left{
+    -fx-background-color: #f0ad4e;
+    -fx-background-radius: 4;
+	-fx-text-fill: white !important;
+	-fx-label-padding: 0.2em 0.5em 0.2em 0.5em;
+	-fx-border-color: derive(#1d1d1d, 25%);
+    -fx-border-width: 1px;
 }
 
 /* task status style */
