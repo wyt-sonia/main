@@ -1,0 +1,25 @@
+package draganddrop.studybuddy.logic.commands.delete;
+
+import static java.util.Objects.requireNonNull;
+
+import draganddrop.studybuddy.logic.commands.Command;
+import draganddrop.studybuddy.logic.commands.CommandResult;
+import draganddrop.studybuddy.model.Model;
+import draganddrop.studybuddy.model.StudyBuddy;
+
+/**
+ * Clears the study buddy.
+ */
+public class ClearTasksCommand extends Command {
+
+    public static final String COMMAND_WORD = "clear";
+    public static final String MESSAGE_SUCCESS = "Study Buddy has been cleared!";
+
+
+    @Override
+    public CommandResult execute(Model model) {
+        requireNonNull(model);
+        model.setStudyBuddy(new StudyBuddy());
+        return new CommandResult(MESSAGE_SUCCESS);
+    }
+}
