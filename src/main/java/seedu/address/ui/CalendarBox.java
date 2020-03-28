@@ -188,9 +188,9 @@ public class CalendarBox extends UiPart<Region> {
             int date = rowIndex * 7 + colIndex - firstDayOfWeek + 1;
             LocalDate clickedDate = LocalDate.of(calendarYear, calendarMonth, date);
             ObservableList<Task> taskByDay = generateTaskList(clickedDate);
-            DueSoonListPanel dueSoonListPanel = new DueSoonListPanel(taskByDay);
+            TaskListPanel taskByDayPanel = new TaskListPanel(taskByDay);
             dueSoonListPanelPlaceholder.getChildren().clear();
-            dueSoonListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
+            dueSoonListPanelPlaceholder.getChildren().add(taskByDayPanel.getRoot());
             //System.out.println(clickedDate);
             //taskByDay.forEach(System.out::println);
         }
