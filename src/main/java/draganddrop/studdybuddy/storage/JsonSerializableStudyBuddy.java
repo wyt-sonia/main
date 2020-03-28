@@ -54,7 +54,7 @@ class JsonSerializableStudyBuddy {
     }
 
     /**
-     * Converts this address book into the model's {@code StudyBuddy} object.
+     * Converts this study buddy into the model's {@code StudyBuddy} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */

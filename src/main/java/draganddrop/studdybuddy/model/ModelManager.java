@@ -20,7 +20,7 @@ import javafx.collections.transformation.FilteredList;
 
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the study buddy data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
@@ -39,7 +39,7 @@ public class ModelManager implements Model {
         super();
         CollectionUtil.requireAllNonNull(studyBuddy.getTaskList(), userPrefs);
 
-        logger.fine("Initializing with address book: " + studyBuddy + " and user prefs " + userPrefs);
+        logger.fine("Initializing with study buddy: " + studyBuddy + " and user prefs " + userPrefs);
 
         this.studyBuddy = new StudyBuddy(studyBuddy);
         this.userPrefs = new UserPrefs(userPrefs);
@@ -130,12 +130,6 @@ public class ModelManager implements Model {
     public void setTaskMod(Task target, Module mod) throws ModuleCodeException {
         studyBuddy.setModuleInTask(target, mod);
     }
-
-    //  @Override
-    //  public void setTaskListForModule(Module mod) throws ModuleCodeException {
-    //      addressBook.collectTaskBasedOnMod(mod);
-    // }
-
 
     @Override
     public void deleteTask(Task target) {

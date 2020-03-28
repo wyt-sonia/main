@@ -88,7 +88,7 @@ Format: `help`
 
 ==== Adding a task: `add`
 
-Adds a task to the address book +
+Adds a task to the study buddy +
 Format: `add n/NAME d/DATE e/DETAILS l/LABEL [t/TAG]...`
 
 [TIP]
@@ -101,12 +101,12 @@ Examples:
 
 ==== Listing all tasks : `list`
 
-Shows a list of all tasks in the address book. +
+Shows a list of all tasks in the study buddy. +
 Format: `list`
 
 ==== Editing a task : `edit`
 
-Edits an existing task in the address book. +
+Edits an existing task in the study buddy. +
 Format: `edit INDEX [n/NAME] [d/DATE] [e/DETAILS] [l/LABEL] [t/TAG]...`
 
 ****
@@ -149,7 +149,7 @@ Returns any task having names `Betsy`, `Tim`, or `John`
 // tag::delete[]
 ==== Deleting a task : `delete`
 
-Deletes the specified task from the address book. +
+Deletes the specified task from the study buddy. +
 Format: `delete INDEX`
 
 ****
@@ -162,7 +162,7 @@ Examples:
 
 * `list` +
 `delete 2` +
-Deletes the 2nd task in the address book.
+Deletes the 2nd task in the study buddy.
 * `find Betsy` +
 `delete 1` +
 Deletes the 1st task in the results of the `find` command.
@@ -170,7 +170,7 @@ Deletes the 1st task in the results of the `find` command.
 // end::delete[]
 ==== Clearing all entries : `clear`
 
-Clears all entries from the address book. +
+Clears all entries from the study buddy. +
 Format: `clear`
 
 ==== Exiting the program : `exit`
@@ -243,7 +243,7 @@ These include:
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
-*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.
+*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Study Buddy folder.
 
 == Command Summary
 

@@ -10,7 +10,7 @@ import draganddrop.studdybuddy.model.Model;
 import draganddrop.studdybuddy.model.task.Task;
 
 /**
- * Archives an entry in the address book.
+ * Archives an entry in the study buddy.
  */
 public class RefreshCommand extends Command {
 

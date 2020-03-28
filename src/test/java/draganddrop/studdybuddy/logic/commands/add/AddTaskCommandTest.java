@@ -27,8 +27,6 @@ import draganddrop.studdybuddy.testutil.TaskBuilder;
 
 import javafx.collections.ObservableList;
 
-//import seedu.address.logic.commands.exceptions.CommandException;
-
 class AddTaskCommandTest {
 
     @Test

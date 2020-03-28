@@ -15,8 +15,6 @@ import draganddrop.studdybuddy.model.task.exceptions.TaskNotFoundException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-//import seedu.address.model.task.exceptions.DuplicateTaskException;
-
 /**
  * pending.
  */

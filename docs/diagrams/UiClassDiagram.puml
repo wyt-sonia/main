@@ -10,11 +10,17 @@ Class "{abstract}\nUiPart" as UiPart
 Class UiManager
 Class MainWindow
 Class HelpWindow
+Class ModCard
+Class TaskCard
 Class ResultDisplay
-Class PersonListPanel
-Class PersonCard
-Class StatusBarFooter
+Class DueSoonDisplay
+Class TaskSummaryPanel
+Class DueSoonListPanel
+Class ModuleListPanel
+Class TaskListPanel
+Class CalendarBox
 Class CommandBox
+Class StatusBarFooter
 }
 
 package Model <<Rectangle>> {
@@ -32,26 +38,41 @@ UiManager .left.|> Ui
 UiManager -down-> MainWindow
 MainWindow --> HelpWindow
 MainWindow *-down-> CommandBox
+MainWindow *-down-> TaskSummaryPanel
+MainWindow *-down-> DueSoonListPanel
+MainWindow *-down-> CalendarBox
+MainWindow *-down-> ModuleListPanel
 MainWindow *-down-> ResultDisplay
-MainWindow *-down-> PersonListPanel
+MainWindow *-down-> TaskListPanel
 MainWindow *-down-> StatusBarFooter
+MainWindow *-down-> DueSoonDisplay
 
-PersonListPanel -down-> PersonCard
+TaskListPanel -down-> TaskCard
+DueSoonListPanel -down-> TaskCard
+ModuleListPanel -down-> ModCard
+
 
 MainWindow -left-|> UiPart
 
 ResultDisplay --|> UiPart
+DueSoonDisplay --|> UiPart
+TaskSummaryPanel --|> UiPart
+ModuleListPanel --|> UiPart
+CalendarBox --|> UiPart
+DueSoonListPanel --|> UiPart
 CommandBox --|> UiPart
-PersonListPanel --|> UiPart
-PersonCard --|> UiPart
+TaskListPanel --|> UiPart
+TaskCard --|> UiPart
+ModCard --|> UiPart
 StatusBarFooter --|> UiPart
 HelpWindow -down-|> UiPart
 
-PersonCard ..> Model
+TaskCard ..> Model
+ModCard ..> Model
 UiManager -right-> Logic
 MainWindow -left-> Logic
 
-PersonListPanel -[hidden]left- HelpWindow
+TaskListPanel -[hidden]left- HelpWindow
 HelpWindow -[hidden]left- CommandBox
 CommandBox -[hidden]left- ResultDisplay
 ResultDisplay -[hidden]left- StatusBarFooter

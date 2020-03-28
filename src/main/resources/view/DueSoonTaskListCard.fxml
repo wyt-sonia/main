@@ -37,7 +37,7 @@
                                 <Insets left="5.0" right="5.0"/>
                             </FlowPane.margin>
                         </Label>
-                        <Label fx:id="timeLeft" styleClass="cell_small_label" text="\$timeLeft">
+                        <Label fx:id="timeLeft" styleClass="due_soon_status" text="\$timeLeft">
                             <FlowPane.margin>
                                 <Insets left="5.0" right="5.0"/>
                             </FlowPane.margin>

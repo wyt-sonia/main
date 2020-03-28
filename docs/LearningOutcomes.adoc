@@ -199,7 +199,7 @@ image::DependencyInjectionWithoutDIP.png[width=250]
 
 === Exercise: Analyze OCP-compliance of the `LogicManager` class
 
-* Consider adding a new command to the Address Book. e.g. an `edit` command.
+* Consider adding a new command to the Study Buddy. e.g. an `edit` command.
 Notice how little you need to change in the `LogicManager` class to extend its behavior so that it can execute the new command.
 That is because `LogicManager` follows the OCP i.e. `LogicManager` is _open to be extended_ with more commands but _closed for modifications_.
 * Is it possible to make the `AddressBookParser` class more OCP-compliant in terms of extending it to handle more command types?

@@ -19,7 +19,7 @@ import draganddrop.studdybuddy.model.task.TaskType;
 
 
 /**
- * Edits the details of an existing task in the address book.
+ * Edits the details of an existing task in the study buddy.
  */
 public class EditTaskCommand extends Command {
     public static final String COMMAND_WORD = "edit";

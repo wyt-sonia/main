@@ -162,7 +162,7 @@ image::StorageClassDiagram.png[]
 The `Storage` component,
 
 * can save `UserPref` objects in json format and read it back.
-* can save the Address Book data in json format and read it back.
+* can save the Study Buddy data in json format and read it back.
 
 [[Design-Commons]]
 === Common classes
@@ -204,7 +204,7 @@ Refreshes the list of due soon tasks. This command is useful for a situation whe
 Given below is an example usage scenario and how the due soon list mechanism behaves at each step.
 
 Step 1. The user launches the application for the first time.
-The list of tasks due soon will be initialized and displayed with the initial address book state. Initialization is done by filtering tasks that are due soon from the general list of tasks.
+The list of tasks due soon will be initialized and displayed with the initial study buddy state. Initialization is done by filtering tasks that are due soon from the general list of tasks.
 
 Activity diagram:
 

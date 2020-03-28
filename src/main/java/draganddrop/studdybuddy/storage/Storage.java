@@ -27,6 +27,6 @@ public interface Storage extends StudyBuddyStorage, UserPrefsStorage {
     Optional<ReadOnlyStudyBuddy> readStudyBuddy() throws DataConversionException, IOException;
 
     @Override
-    void saveStudyBuddy(ReadOnlyStudyBuddy addressBook) throws IOException;
+    void saveStudyBuddy(ReadOnlyStudyBuddy studyBuddy) throws IOException;
 
 }
