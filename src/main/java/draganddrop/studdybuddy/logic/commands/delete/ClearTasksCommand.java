@@ -8,7 +8,7 @@ import draganddrop.studdybuddy.model.Model;
 import draganddrop.studdybuddy.model.StudyBuddy;
 
 /**
- * Clears the address book.
+ * Clears the study buddy.
  */
 public class ClearTasksCommand extends Command {
 

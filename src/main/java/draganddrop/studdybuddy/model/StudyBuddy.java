@@ -15,7 +15,7 @@ import draganddrop.studdybuddy.model.task.UniqueTaskList;
 import javafx.collections.ObservableList;
 
 /**
- * Wraps all data at the address-book level
+ * Wraps all data at the study buddy
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
 public class StudyBuddy implements ReadOnlyStudyBuddy {
@@ -136,9 +136,9 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     //// task-level operations
 
     /**
-     * Adds an archived person to the address book.
+     * Adds an archived person to the study buddy.
      *
-     * @param p must not already exist in the address book.
+     * @param p must not already exist in the study buddy.
      */
     public void addArchivedTask(Task p) {
         archivedTasks.add(p);
@@ -147,7 +147,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     /**
      * Adds a due soon task to the dueSoonTasks list.
      *
-     * @param p must not already exist in the address book.
+     * @param p must not already exist in the study buddy.
      */
     public void addDueSoonTask(Task p) {
         if (p.isDueSoon()) {
@@ -200,7 +200,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         if (moduleList.contains(module)) {
             tasks.setTaskMod(target, module);
         } else {
-            throw new ModuleCodeException("Module does not exist in addressBook!");
+            throw new ModuleCodeException("Module does not exist in studyBuddy!");
         }
     }
 

@@ -4,7 +4,7 @@ import draganddrop.studdybuddy.model.StudyBuddy;
 import draganddrop.studdybuddy.model.task.Task;
 
 /**
- * A utility class to help with building Addressbook objects.
+ * A utility class to help with building StudyBuddy objects.
  * Example usage: <br>
  * {@code StudyBuddy ab = new StudyBuddyBuilder().withPerson("John", "Doe").build();}
  */

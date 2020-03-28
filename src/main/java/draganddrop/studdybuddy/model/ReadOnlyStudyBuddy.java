@@ -6,7 +6,7 @@ import draganddrop.studdybuddy.model.task.Task;
 import javafx.collections.ObservableList;
 
 /**
- * Unmodifiable view of an address book
+ * Unmodifiable view of an study buddy
  */
 public interface ReadOnlyStudyBuddy {
 

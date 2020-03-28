@@ -7,7 +7,7 @@ package draganddrop.studdybuddy.ui.interactiveprompt.delete;
  * Parser will handle to parsing of the command and create a command
  * command will execute the action
  * server display the response if needed
- * */
+ */
 
 import java.text.ParseException;
 
