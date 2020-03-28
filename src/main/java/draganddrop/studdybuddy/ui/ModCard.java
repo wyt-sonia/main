@@ -24,7 +24,6 @@ public class ModCard extends UiPart<Region> {
     public ModCard(Module module, int displayIndex) {
         super(FXML);
         this.module = module;
-
         moduleCode.setText(module.toString());
         moduleName.setText(module.getModuleName());
     }
@@ -40,7 +39,6 @@ public class ModCard extends UiPart<Region> {
         if (!(other instanceof ModCard)) {
             return false;
         }
-
         // state check
         ModCard card = (ModCard) other;
         return moduleCode.getText().equals(card.moduleCode.getText())

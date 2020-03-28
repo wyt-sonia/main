@@ -6,6 +6,8 @@ import draganddrop.studdybuddy.logic.parser.TimeParser;
 import draganddrop.studdybuddy.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
 import draganddrop.studdybuddy.logic.parser.interactivecommandparser.exceptions.EditTaskCommandException;
 import draganddrop.studdybuddy.logic.parser.interactivecommandparser.exceptions.InteractiveCommandException;
+import draganddrop.studdybuddy.model.module.Module;
+import draganddrop.studdybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studdybuddy.model.task.TaskType;
 
 /**
@@ -72,5 +74,19 @@ public class EditTaskCommandParser {
             result = TaskType.getTaskTypes()[index - 1];
         }
         return result;
+    }
+
+    /**
+     * throws a (converted) error when the userinput is an invalid moduleCode
+     * @param userInput
+     * @return module
+     * @throws AddTaskCommandException
+     */
+    public static Module parseModule(String userInput) throws AddTaskCommandException {
+        try {
+            return new Module(userInput);
+        } catch (ModuleCodeException ex) {
+            throw new AddTaskCommandException(ex.getLocalizedMessage());
+        }
     }
 }

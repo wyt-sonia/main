@@ -6,11 +6,11 @@ import java.util.function.Predicate;
 
 import draganddrop.studdybuddy.commons.core.GuiSettings;
 import draganddrop.studdybuddy.model.module.Module;
+import draganddrop.studdybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studdybuddy.model.task.Task;
 import draganddrop.studdybuddy.model.task.TaskType;
 
 import javafx.collections.ObservableList;
-
 
 /**
  * The API of the Model component.
@@ -44,22 +44,22 @@ public interface Model {
     /**
      * Returns the user prefs' address book file path.
      */
-    Path getAddressBookFilePath();
+    Path getStudyBuddyFilePath();
 
     /**
      * Sets the user prefs' address book file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setStudyBuddyFilePath(Path studyBuddyFilePath);
 
     /**
-     * Returns the AddressBook
+     * Returns the StudyBuddy
      */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyStudyBuddy getStudyBuddy();
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Replaces address book data with the data in {@code studyBuddy}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setStudyBuddy(ReadOnlyStudyBuddy studyBuddy);
 
     /**
      * Returns true if a task with the same identity as {@code task} exists in the task list.
@@ -93,6 +93,8 @@ public interface Model {
      * @param newDateTimes the new date and time
      */
     void setTaskDateTime(Task target, LocalDateTime[] newDateTimes);
+
+    void setTaskMod(Task target, Module mod) throws ModuleCodeException;
 
     /**
      * Deletes the given task.

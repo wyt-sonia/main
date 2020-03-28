@@ -1,9 +1,11 @@
-package draganddrop.studdybuddy.logic.commands;
+package draganddrop.studdybuddy.logic.commands.delete;
 
 import static java.util.Objects.requireNonNull;
 
-import draganddrop.studdybuddy.model.AddressBook;
+import draganddrop.studdybuddy.logic.commands.Command;
+import draganddrop.studdybuddy.logic.commands.CommandResult;
 import draganddrop.studdybuddy.model.Model;
+import draganddrop.studdybuddy.model.StudyBuddy;
 
 /**
  * Clears the address book.
@@ -17,7 +19,7 @@ public class ClearTasksCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.setAddressBook(new AddressBook());
+        model.setStudyBuddy(new StudyBuddy());
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

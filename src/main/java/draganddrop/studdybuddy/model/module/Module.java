@@ -15,7 +15,7 @@ import javafx.collections.ObservableList;
  * Identified by ModuleCode instead of ModuleName to minimise errors.
  */
 public class Module {
-    private final ObservableList<Task> internalTaskList = FXCollections.observableArrayList();
+    private ObservableList<Task> internalTaskList = FXCollections.observableArrayList();
     private String moduleName;
     private ModuleCode moduleCode;
 
@@ -41,13 +41,9 @@ public class Module {
      * @param fullModuleCode
      * @throws ModuleCodeException
      */
-    public Module(String fullModuleCode) {
+    public Module(String fullModuleCode) throws ModuleCodeException {
         this.moduleName = "";
-        try {
-            this.moduleCode = new ModuleCode(fullModuleCode);
-        } catch (ModuleCodeException e) {
-            System.out.println("from Module(string). ModuleCode is invalid!");
-        }
+        this.moduleCode = new ModuleCode(fullModuleCode);
     }
 
     public Module() {
@@ -99,11 +95,6 @@ public class Module {
         }
     }
 
-    public ObservableList<Task> getInternalTaskListFromModule() {
-        return internalTaskList;
-    }
-
-
     /**
      * Compares moduleCode instead of moduleName.
      *
@@ -132,14 +123,26 @@ public class Module {
         return moduleCode;
     }
 
-    public void setModuleCode(String moduleCode) {
-        try {
-            this.moduleCode = new ModuleCode(moduleCode);
-        } catch (ModuleCodeException e) {
-            System.out.println("From module.setModuleCode. Module code is invalid!");
-        }
+    public void setModuleCode(String moduleCode) throws ModuleCodeException {
+        this.moduleCode = new ModuleCode(moduleCode);
     }
 
+    public ObservableList<Task> getInternalTaskList() {
+        return internalTaskList;
+    }
+
+    public void setInternalTaskList(ObservableList<Task> internalTaskList) {
+        this.internalTaskList = internalTaskList;
+    }
+
+    /**
+     * Takes in an ObservableList of Task, filters it, then setInternalTaskList().
+     * @param externalTaskList
+     */
+    public void filterAndSetInternalTaskList(ObservableList<Task> externalTaskList) {
+        ObservableList<Task> collectedTasks = externalTaskList.filtered(x-> x.getModule().equals(this));
+        setInternalTaskList(collectedTasks);
+    }
     @Override
     public String toString() {
         return getModuleCode().toString();

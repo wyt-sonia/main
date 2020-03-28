@@ -39,16 +39,43 @@ public class ModuleList {
 
     /**
      * checks for duplicate modules first, then add into the moduleList.
-     *
+     * Moves Empty module to the back of the internalList.
      * @param module to be added to the ModuleList
      */
     public void add(Module module) throws ModuleCodeException {
         if (this.contains(module)) {
             throw new ModuleCodeException("Duplicate modules");
         } else {
-            System.out.println("adding");
             internalList.add(module);
+            shiftEmptyModBack();
         }
+    }
+
+    /**
+     * relocates Empty Module to the back of the internalList if it exist.
+     */
+    private void shiftEmptyModBack() {
+        //check last mod for Empty Module
+        if (internalList.get(internalList.size() - 1).equals(new EmptyModule())) {
+            //Do nothing
+        } else { //if it is not empty
+            if (internalList.contains(new EmptyModule())) {
+                int emptyIndex = internalList.indexOf(new EmptyModule());
+                swap(emptyIndex, emptyIndex + 1);
+            }
+        }
+    }
+
+    /**
+     * swaps 2 elements in the internalList.
+     * @param i
+     * @param j
+     */
+    private void swap(int i, int j) {
+        Module firstMod = internalList.get(i);
+        Module secondMod = internalList.get(j);
+        internalList.set(i, secondMod);
+        internalList.set(j, firstMod);
     }
 
     /**
@@ -86,5 +113,9 @@ public class ModuleList {
     public void setModuleList(List<Module> replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement);
+    }
+
+    public int indexOf(Module module) {
+        return internalList.indexOf(module);
     }
 }

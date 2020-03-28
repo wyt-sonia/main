@@ -9,43 +9,42 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import draganddrop.studdybuddy.commons.exceptions.IllegalValueException;
-import draganddrop.studdybuddy.model.AddressBook;
-import draganddrop.studdybuddy.model.ReadOnlyAddressBook;
+import draganddrop.studdybuddy.model.ReadOnlyStudyBuddy;
+import draganddrop.studdybuddy.model.StudyBuddy;
 import draganddrop.studdybuddy.model.module.Module;
 import draganddrop.studdybuddy.model.task.Task;
 
 /**
- * An Immutable AddressBook that is serializable to JSON format.
+ * An Immutable StudyBuddy that is serializable to JSON format.
  */
-@JsonRootName(value = "addressBook")
-class JsonSerializableAddressBook {
+@JsonRootName(value = "studyBuddy")
+class JsonSerializableStudyBuddy {
 
     //private static final String MESSAGE_DUPLICATE_TASK = "Task list contains duplicate task(s).";
     //private static final String MESSAGE_DUPLICATE_ARCHIVED_TASK = "Archived contains duplicate task(s).";
     private static final String MESSAGE_DUPLICATE_MODULES = "Module List contains duplicate module(s).";
     //private static final String MESSAGE_DUPLICATE_DUE_SOON_TASK = "Due soon list contains duplicate task(s).";
 
-    private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedTask> archivedTasks = new ArrayList<>();
     private final List<JsonAdaptedTask> tasks = new ArrayList<>();
     private final List<JsonAdaptedTask> dueSoonTasks = new ArrayList<>();
     private final List<JsonAdaptedModule> modules = new ArrayList<>();
 
-
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
+     * Constructs a {@code JsonSerializableStudyBuddy} with the given persons.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
-        this.persons.addAll(persons);
+    public JsonSerializableStudyBuddy(@JsonProperty("tasks") List<JsonAdaptedTask> tasks) {
+        this.tasks.addAll(tasks);
     }
 
+
     /**
-     * Converts a given {@code ReadOnlyAddressBook} into this class for Jackson use.
+     * Converts a given {@code ReadOnlyStudyBuddy} into this class for Jackson use.
      *
-     * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
+     * @param source future changes to this will not affect the created {@code JsonSerializableStudyBuddy}.
      */
-    public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
+    public JsonSerializableStudyBuddy(ReadOnlyStudyBuddy source) {
         tasks.addAll(source.getTaskList().stream().map(JsonAdaptedTask::new).collect(Collectors.toList()));
         archivedTasks.addAll(source.getArchivedList().stream()
             .map(JsonAdaptedTask::new).collect(Collectors.toList()));
@@ -55,33 +54,33 @@ class JsonSerializableAddressBook {
     }
 
     /**
-     * Converts this address book into the model's {@code AddressBook} object.
+     * Converts this address book into the model's {@code StudyBuddy} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
-    public AddressBook toModelType() throws IllegalValueException {
-        AddressBook addressBook = new AddressBook();
+    public StudyBuddy toModelType() throws IllegalValueException {
+        StudyBuddy studyBuddy = new StudyBuddy();
         for (JsonAdaptedTask jsonAdaptedTask : tasks) {
             Task task = jsonAdaptedTask.toModelType();
             if (task.isStatusExpired()) {
                 task.freshStatus();
             }
-            addressBook.addTask(task);
+            studyBuddy.addTask(task);
         }
         for (JsonAdaptedTask jsonAdaptedTask : archivedTasks) {
             Task task = jsonAdaptedTask.toModelType();
-            addressBook.addArchivedTask(task);
+            studyBuddy.addArchivedTask(task);
         }
         for (JsonAdaptedModule jsonAdaptedModule : modules) {
             Module module = jsonAdaptedModule.toModelType();
-            if (addressBook.hasModule(module)) {
+            if (studyBuddy.hasModule(module)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_MODULES);
             }
-            addressBook.addModule(module);
+            studyBuddy.addModule(module);
         }
 
-        Task.updateCurrentTaskList(new ArrayList<>(addressBook.getTaskList()));
-        return addressBook;
+        Task.updateCurrentTaskList(new ArrayList<>(studyBuddy.getTaskList()));
+        return studyBuddy;
     }
 
 }

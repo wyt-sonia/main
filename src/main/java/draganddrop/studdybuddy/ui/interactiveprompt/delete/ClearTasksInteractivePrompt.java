@@ -1,4 +1,4 @@
-package draganddrop.studdybuddy.ui.interactiveprompt;
+package draganddrop.studdybuddy.ui.interactiveprompt.delete;
 
 /*
  * Logic of implementation:
@@ -10,10 +10,12 @@ package draganddrop.studdybuddy.ui.interactiveprompt;
  * */
 
 import java.text.ParseException;
-import java.util.ArrayList;
 
-import draganddrop.studdybuddy.logic.commands.ClearTasksCommand;
+import draganddrop.studdybuddy.logic.commands.delete.ClearTasksCommand;
 import draganddrop.studdybuddy.logic.commands.exceptions.CommandException;
+import draganddrop.studdybuddy.ui.interactiveprompt.InteractivePrompt;
+import draganddrop.studdybuddy.ui.interactiveprompt.InteractivePromptTerms;
+import draganddrop.studdybuddy.ui.interactiveprompt.InteractivePromptType;
 
 /**
  * pending.
@@ -22,16 +24,9 @@ public class ClearTasksInteractivePrompt extends InteractivePrompt {
     static final String END_OF_COMMAND_MSG = "Tasks cleared successfully!";
     static final String QUIT_COMMAND_MSG = "Successfully cleared all tasks.";
 
-    private int index;
-
     public ClearTasksInteractivePrompt() {
         super();
         this.interactivePromptType = InteractivePromptType.CLEAR_TASK;
-        this.reply = "";
-        this.userInput = "";
-        this.currentTerm = InteractivePromptTerms.INIT;
-        this.lastTerm = null;
-        this.terms = new ArrayList<>();
     }
 
     @Override
@@ -39,19 +34,8 @@ public class ClearTasksInteractivePrompt extends InteractivePrompt {
         if (userInput.equals("quit")) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
-        } else if (userInput.equals("back")) {
-            if (lastTerm != null) { //in the beginning it is null
-                terms.remove(terms.size() - 1);
-                currentTerm = lastTerm;
-                if (lastTerm.equals(InteractivePromptTerms.INIT)) {
-                    lastTerm = null;
-                } else {
-                    lastTerm = terms.get(terms.size() - 1);
-                }
-                userInput = "";
-            } else {
-                this.reply = "Please type quit to exit from this command.";
-            }
+        } else {
+            userInput = checkForBackInput(userInput);
         }
 
         switch (currentTerm) {

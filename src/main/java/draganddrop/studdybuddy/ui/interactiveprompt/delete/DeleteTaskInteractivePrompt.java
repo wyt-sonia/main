@@ -12,7 +12,6 @@ package draganddrop.studdybuddy.ui.interactiveprompt.delete;
 import static draganddrop.studdybuddy.ui.interactiveprompt.InteractivePromptType.DELETE_TASK;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 
 import draganddrop.studdybuddy.commons.core.index.Index;
 import draganddrop.studdybuddy.logic.commands.delete.DeleteTaskCommand;
@@ -34,11 +33,6 @@ public class DeleteTaskInteractivePrompt extends InteractivePrompt {
     public DeleteTaskInteractivePrompt() {
         super();
         this.interactivePromptType = DELETE_TASK;
-        this.reply = "";
-        this.userInput = "";
-        this.currentTerm = InteractivePromptTerms.INIT;
-        this.lastTerm = null;
-        this.terms = new ArrayList<>();
     }
 
     @Override
@@ -46,19 +40,8 @@ public class DeleteTaskInteractivePrompt extends InteractivePrompt {
         if (userInput.equals("quit")) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
-        } else if (userInput.equals("back")) {
-            if (lastTerm != null) { //in the beginning it is null
-                terms.remove(terms.size() - 1);
-                currentTerm = lastTerm;
-                if (lastTerm.equals(InteractivePromptTerms.INIT)) {
-                    lastTerm = null;
-                } else {
-                    lastTerm = terms.get(terms.size() - 1);
-                }
-                userInput = "";
-            } else {
-                this.reply = "Please type quit to exit from this command.";
-            }
+        } else {
+            userInput = checkForBackInput(userInput);
         }
 
         switch (currentTerm) {

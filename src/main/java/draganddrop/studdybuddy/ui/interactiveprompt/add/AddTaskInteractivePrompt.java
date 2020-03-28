@@ -13,7 +13,6 @@ import static draganddrop.studdybuddy.ui.interactiveprompt.InteractivePromptType
 
 import java.text.ParseException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 import draganddrop.studdybuddy.logic.commands.add.AddTaskCommand;
 import draganddrop.studdybuddy.logic.commands.exceptions.CommandException;
@@ -37,12 +36,8 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     protected Task task;
 
     public AddTaskInteractivePrompt() {
-        super();
         this.interactivePromptType = ADD_TASK;
         this.task = new Task();
-        this.currentTerm = InteractivePromptTerms.INIT;
-        this.lastTerm = null;
-        this.terms = new ArrayList<>();
     }
 
     @Override
@@ -50,19 +45,8 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         if (userInput.equals("quit")) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
-        } else if (userInput.equals("back")) {
-            if (lastTerm != null) {
-                terms.remove(terms.size() - 1);
-                currentTerm = lastTerm;
-                if (lastTerm.equals(InteractivePromptTerms.INIT)) {
-                    lastTerm = null;
-                } else {
-                    lastTerm = terms.get(terms.size() - 1);
-                }
-                userInput = "";
-            } else {
-                this.reply = "Please type quit to exit from this command.";
-            }
+        } else {
+            userInput = checkForBackInput(userInput);
         }
 
         switch (currentTerm) {

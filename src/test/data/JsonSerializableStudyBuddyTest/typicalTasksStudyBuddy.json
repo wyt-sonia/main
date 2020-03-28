@@ -1,0 +1,49 @@
+{
+  "_comment": "StudyBuddy save file which contains the same Person values as in TypicalTasks#getTypicalStudyBuddy()",
+  "tasks": [
+    {
+      "taskName" : "Ass 1",
+      "taskType" : "Assignment",
+      "taskDateTime" : "23:59 12/12/2020",
+      "taskDescription" : "taskDescription",
+      "weight" : 20.0,
+      "estimatedTimeCost" : 5.0,
+      "status" : "PENDING",
+      "taskCreationDateTime" : "LocalDateTime.now()",
+      "moduleCode" : "cs2103T"
+    },
+    {
+      "taskName" : "Presentation 1",
+      "taskType" : "Presentation",
+      "taskDateTime" : "23:59 12/12/2020",
+      "taskDescription" : "Presentation taskDescription",
+      "weight" : 20.0,
+      "estimatedTimeCost" : 3.0,
+      "status" : "FINISHED",
+      "taskCreationDateTime" : "LocalDateTime.now()",
+      "moduleCode" : "cs2101"
+    },
+    {
+      "taskName" : "Quiz 1",
+      "taskType" : "Assignment",
+      "taskDateTime" : "23:59 12/04/2020",
+      "taskDescription" : "Quiz taskDescription",
+      "weight" : 2.0,
+      "estimatedTimeCost" : 1.0,
+      "status" : "PENDING",
+      "taskCreationDateTime" : "LocalDateTime.now()",
+      "moduleCode" : "cs2101"
+    },
+    {
+      "taskName" : "Quiz 1",
+      "taskType" : "Assignment",
+      "taskDateTime" : "23:59 12/04/2020",
+      "taskDescription" : "Quiz taskDescription",
+      "weight" : 2.0,
+      "estimatedTimeCost" : 1.0,
+      "status" : "PENDING",
+      "taskCreationDateTime" : "LocalDateTime.now()",
+      "moduleCode" : "cs2101"
+    }
+  ]
+}

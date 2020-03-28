@@ -11,6 +11,7 @@ import draganddrop.studdybuddy.commons.core.GuiSettings;
 import draganddrop.studdybuddy.commons.core.LogsCenter;
 import draganddrop.studdybuddy.commons.util.CollectionUtil;
 import draganddrop.studdybuddy.model.module.Module;
+import draganddrop.studdybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studdybuddy.model.task.Task;
 import draganddrop.studdybuddy.model.task.TaskType;
 
@@ -24,7 +25,7 @@ import javafx.collections.transformation.FilteredList;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final StudyBuddy studyBuddy;
     private final UserPrefs userPrefs;
     private final FilteredList<Task> filteredTasks;
     private final FilteredList<Module> filteredModules;
@@ -32,24 +33,24 @@ public class ModelManager implements Model {
     private final FilteredList<Task> filteredDueSoonTasks;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given studyBuddy and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyStudyBuddy studyBuddy, ReadOnlyUserPrefs userPrefs) {
         super();
-        CollectionUtil.requireAllNonNull(addressBook.getTaskList(), userPrefs);
+        CollectionUtil.requireAllNonNull(studyBuddy.getTaskList(), userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with address book: " + studyBuddy + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.studyBuddy = new StudyBuddy(studyBuddy);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredTasks = new FilteredList<>(this.addressBook.getTaskList());
-        filteredModules = new FilteredList<>(this.addressBook.getModuleList());
-        filteredArchiveTasks = new FilteredList<>(this.addressBook.getArchivedList());
-        filteredDueSoonTasks = new FilteredList<>(this.addressBook.getDueSoonList());
+        filteredTasks = new FilteredList<>(this.studyBuddy.getTaskList());
+        filteredModules = new FilteredList<>(this.studyBuddy.getModuleList());
+        filteredArchiveTasks = new FilteredList<>(this.studyBuddy.getArchivedList());
+        filteredDueSoonTasks = new FilteredList<>(this.studyBuddy.getDueSoonList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new StudyBuddy(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -77,97 +78,109 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return userPrefs.getAddressBookFilePath();
+    public Path getStudyBuddyFilePath() {
+        return userPrefs.getStudyBuddyFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setStudyBuddyFilePath(Path studyBuddyFilePath) {
+        requireNonNull(studyBuddyFilePath);
+        userPrefs.setStudyBuddyFilePath(studyBuddyFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== StudyBuddy ================================================================================
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+    public ReadOnlyStudyBuddy getStudyBuddy() {
+        return studyBuddy;
     }
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
+    public void setStudyBuddy(ReadOnlyStudyBuddy studyBuddy) {
+        this.studyBuddy.resetData(studyBuddy);
     }
 
     @Override
     public boolean hasTask(Task task) {
         requireNonNull(task);
-        return addressBook.hasTask(task);
+        return studyBuddy.hasTask(task);
     }
 
     @Override
     public void completeTask(Task target) {
-        addressBook.completeTask(target);
+        studyBuddy.completeTask(target);
     }
 
     @Override
     public void setTaskName(Task target, String taskName) {
-        addressBook.setTaskName(target, taskName);
+        studyBuddy.setTaskName(target, taskName);
     }
 
     @Override
     public void setTaskType(Task target, TaskType newTaskType) {
-        addressBook.setTaskType(target, newTaskType);
+        studyBuddy.setTaskType(target, newTaskType);
     }
 
     @Override
     public void setTaskDateTime(Task target, LocalDateTime[] newTaskDateTime) {
-        addressBook.setTaskDateTime(target, newTaskDateTime);
+        studyBuddy.setTaskDateTime(target, newTaskDateTime);
     }
 
     @Override
+    public void setTaskMod(Task target, Module mod) throws ModuleCodeException {
+        studyBuddy.setModuleInTask(target, mod);
+    }
+
+    //  @Override
+    //  public void setTaskListForModule(Module mod) throws ModuleCodeException {
+    //      addressBook.collectTaskBasedOnMod(mod);
+    // }
+
+
+    @Override
     public void deleteTask(Task target) {
-        addressBook.removeTask(target);
+        studyBuddy.removeTask(target);
     }
 
     @Override
     public void deleteDueSoonTask(Task target) {
-        addressBook.removeDueSoonTask(target);
+        studyBuddy.removeDueSoonTask(target);
     }
 
     @Override
     public void sortTasks(String keyword) {
-        addressBook.sortTasks(keyword);
+        studyBuddy.sortTasks(keyword);
     }
 
     @Override
     public void sortDueSoonTasks() {
-        addressBook.sortDueSoonTasks();
+        studyBuddy.sortDueSoonTasks();
     }
 
     @Override
     public void archiveTask(Task task) {
-        addressBook.addArchivedTask(task);
+        studyBuddy.addArchivedTask(task);
         updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
     }
 
     @Override
     public void addDueSoonTask(Task task) {
-        addressBook.addDueSoonTask(task);
+        studyBuddy.addDueSoonTask(task);
         updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
     }
 
     @Override
     public void addTask(Task task) {
-        addressBook.addTask(task);
+        studyBuddy.addTask(task);
         updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
     }
 
     @Override
     public boolean hasMod(Module mod) {
         requireNonNull(mod);
-        return addressBook.hasModule(mod);
+        return studyBuddy.hasModule(mod);
     }
+
 
     /**
      * STILL NEEDS MORE REFINEMENT DUE TO ABSENCE OF UpdateModuleList.
@@ -177,7 +190,7 @@ public class ModelManager implements Model {
     @Override
     public void addMod(Module mod) {
         System.out.println("ModelManager add mod");
-        addressBook.addModule(mod);
+        studyBuddy.addModule(mod);
         System.out.println("ModelManager add mod success");
 
     }
@@ -186,14 +199,14 @@ public class ModelManager implements Model {
     public void setTask(Task target, Task editedTask) {
         CollectionUtil.requireAllNonNull(target, editedTask);
 
-        addressBook.setTasks(target, editedTask);
+        studyBuddy.setTasks(target, editedTask);
     }
 
     //=========== Filtered Task List Accessors =============================================================
 
     /**
      * Returns an unmodifiable view of the list of {@code Task} backed by the internal list of
-     * {@code versionedAddressBook}
+     * {@code versionedStudyBuddy}
      */
 
     @Override
@@ -236,7 +249,7 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
+        return studyBuddy.equals(other.studyBuddy)
             && userPrefs.equals(other.userPrefs)
             && filteredTasks.equals(other.filteredTasks)
             && filteredDueSoonTasks.equals(other.filteredDueSoonTasks)

@@ -5,15 +5,16 @@ import static draganddrop.studdybuddy.testutil.TypicalTasks.getTypicalTaskList;
 
 import org.junit.jupiter.api.Test;
 
-import draganddrop.studdybuddy.model.AddressBook;
+import draganddrop.studdybuddy.logic.commands.delete.ClearTasksCommand;
 import draganddrop.studdybuddy.model.Model;
 import draganddrop.studdybuddy.model.ModelManager;
+import draganddrop.studdybuddy.model.StudyBuddy;
 import draganddrop.studdybuddy.model.UserPrefs;
 
 public class ClearTasksCommandTest {
 
     @Test
-    public void execute_emptyAddressBook_success() {
+    public void execute_emptyStudyBuddy_success() {
         Model model = new ModelManager();
         Model expectedModel = new ModelManager();
 
@@ -21,10 +22,10 @@ public class ClearTasksCommandTest {
     }
 
     @Test
-    public void execute_nonEmptyAddressBook_success() {
+    public void execute_nonEmptyStudyBuddy_success() {
         Model model = new ModelManager(getTypicalTaskList(), new UserPrefs());
         Model expectedModel = new ModelManager(getTypicalTaskList(), new UserPrefs());
-        expectedModel.setAddressBook(new AddressBook());
+        expectedModel.setStudyBuddy(new StudyBuddy());
 
         assertCommandSuccess(new ClearTasksCommand(), model, ClearTasksCommand.MESSAGE_SUCCESS, expectedModel);
     }

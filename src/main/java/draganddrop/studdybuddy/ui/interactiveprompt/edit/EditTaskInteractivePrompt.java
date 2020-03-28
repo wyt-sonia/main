@@ -5,11 +5,12 @@ import static draganddrop.studdybuddy.ui.interactiveprompt.InteractivePromptType
 import java.time.LocalDateTime;
 
 import draganddrop.studdybuddy.commons.core.index.Index;
-import draganddrop.studdybuddy.logic.commands.EditTaskCommand;
+import draganddrop.studdybuddy.logic.commands.edit.EditTaskCommand;
 import draganddrop.studdybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studdybuddy.logic.parser.exceptions.ParseException;
 import draganddrop.studdybuddy.logic.parser.interactivecommandparser.EditTaskCommandParser;
 import draganddrop.studdybuddy.logic.parser.interactivecommandparser.exceptions.EditTaskCommandException;
+import draganddrop.studdybuddy.model.module.Module;
 import draganddrop.studdybuddy.model.task.Task;
 import draganddrop.studdybuddy.model.task.TaskField;
 import draganddrop.studdybuddy.model.task.TaskType;
@@ -46,6 +47,13 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
      * @return reply to user
      */
     public String handleEdit(String userInput) {
+        if (userInput.equals("quit")) {
+            endInteract(QUIT_COMMAND_MSG);
+            return reply;
+        } else if (userInput.equals("back")) {
+            userInput = checkForBackInput(userInput);
+        }
+
         switch (currentTerm) {
         case INIT:
             this.reply = "Please enter the index of the task that you wish to edit.";
@@ -90,6 +98,10 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
             case TASK_DATETIME:
                 LocalDateTime[] newDateTimes = EditTaskCommandParser.parseDateTime(userInput);
                 editTaskCommand.provideNewDateTime(newDateTimes);
+                break;
+            case TASK_MODULE:
+                Module newModule = EditTaskCommandParser.parseModule(userInput);
+                editTaskCommand.provideNewModule(newModule);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + taskField);
@@ -151,7 +163,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
 
         try {
             int taskFieldNumber = Integer.parseInt(userInput);
-            if (taskFieldNumber > 3 || taskFieldNumber < 1) {
+            if (taskFieldNumber > 4 || taskFieldNumber < 1) {
                 throw new ParseException("task field number not in range");
             }
             taskField = TaskField.getTaskFieldFromNumber(taskFieldNumber);
@@ -184,6 +196,10 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         case TASK_DATETIME:
             result += "Please enter the deadline with format: "
                 + "HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy";;
+            break;
+        case TASK_MODULE:
+            result += "Please enter the module code that you wish to assign to this task.\n"
+                    + "You can find all the modules available under Modules/Show Modules in the menu bar above.";
             break;
         default:
             throw new IllegalStateException("Unexpected value: " + taskField);

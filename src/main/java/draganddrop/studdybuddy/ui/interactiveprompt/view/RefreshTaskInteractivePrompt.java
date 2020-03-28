@@ -12,7 +12,6 @@ package draganddrop.studdybuddy.ui.interactiveprompt.view;
 import static draganddrop.studdybuddy.ui.interactiveprompt.InteractivePromptType.DUE_SOON_TASK;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 
 import draganddrop.studdybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studdybuddy.logic.commands.view.RefreshCommand;
@@ -28,20 +27,9 @@ public class RefreshTaskInteractivePrompt extends InteractivePrompt {
     static final String END_OF_COMMAND_MSG = "Refreshed tasks' status and tasks due soon list is updated!";
     static final String QUIT_COMMAND_MSG = "Successfully quited from refresh command.";
 
-    private String reply;
-    private String userInput;
-    private InteractivePromptTerms currentTerm;
-    private InteractivePromptTerms lastTerm;
-    private ArrayList<InteractivePromptTerms> terms;
-
     public RefreshTaskInteractivePrompt() {
         super();
         this.interactivePromptType = DUE_SOON_TASK;
-        this.reply = "";
-        this.userInput = "";
-        this.currentTerm = InteractivePromptTerms.INIT;
-        this.lastTerm = null;
-        this.terms = new ArrayList<>();
     }
 
     @Override

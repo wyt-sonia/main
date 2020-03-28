@@ -11,8 +11,8 @@ import java.util.List;
 
 import draganddrop.studdybuddy.commons.core.index.Index;
 import draganddrop.studdybuddy.logic.commands.exceptions.CommandException;
-import draganddrop.studdybuddy.model.AddressBook;
 import draganddrop.studdybuddy.model.Model;
+import draganddrop.studdybuddy.model.StudyBuddy;
 import draganddrop.studdybuddy.model.task.Task;
 import draganddrop.studdybuddy.model.task.TaskNameContainsKeywordsPredicate;
 
@@ -25,6 +25,8 @@ public class CommandTestUtil {
     public static final String VALID_TASK_NAME_TWO = "Job application";
     public static final String VALID_TASK_TYPE_THREE = "Assignment";
     public static final String VALID_TASK_TYPE_FOUR = "Quiz";
+    public static final String VALID_DESCRIPTION_ONE = "Project";
+    public static final String VALID_DESCRIPTION_TWO = "Final draft of Project";
     public static final String VALID_MODULE_ONE = "CS2103T";
     public static final String VALID_MODULE_TWO = "CS2101";
     public static final String VALID_DATE_ONE = "17:00 28/04/2060";
@@ -68,11 +70,11 @@ public class CommandTestUtil {
     public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
-        AddressBook expectedAddressBook = new AddressBook(actualModel.getAddressBook());
+        StudyBuddy expectedStudyBuddy = new StudyBuddy(actualModel.getStudyBuddy());
         List<Task> expectedFilteredList = new ArrayList<>(actualModel.getFilteredTaskList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
-        assertEquals(expectedAddressBook, actualModel.getAddressBook());
+        assertEquals(expectedStudyBuddy, actualModel.getStudyBuddy());
         assertEquals(expectedFilteredList, actualModel.getFilteredTaskList());
     }
 

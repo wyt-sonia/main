@@ -3,7 +3,7 @@ package draganddrop.studdybuddy.testutil;
 import java.time.LocalDateTime;
 
 import draganddrop.studdybuddy.logic.parser.TimeParser;
-import draganddrop.studdybuddy.model.AddressBook;
+import draganddrop.studdybuddy.model.StudyBuddy;
 import draganddrop.studdybuddy.model.module.Module;
 import draganddrop.studdybuddy.model.task.Task;
 import draganddrop.studdybuddy.model.task.TaskStatus;
@@ -37,8 +37,8 @@ public class TypicalTasks {
         };
     }
 
-    public static AddressBook getTypicalTaskList() {
-        AddressBook sampleAb = new AddressBook();
+    public static StudyBuddy getTypicalTaskList() {
+        StudyBuddy sampleAb = new StudyBuddy();
         for (Task sampleTask : getSampleTasks()) {
             sampleAb.addTask(sampleTask);
         }

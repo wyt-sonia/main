@@ -9,6 +9,7 @@ import java.util.List;
 
 import draganddrop.studdybuddy.commons.util.CollectionUtil;
 import draganddrop.studdybuddy.logic.parser.TimeParser;
+import draganddrop.studdybuddy.model.module.Module;
 import draganddrop.studdybuddy.model.task.exceptions.TaskNotFoundException;
 
 import javafx.collections.FXCollections;
@@ -194,6 +195,21 @@ public class UniqueTaskList implements Iterable<Task> {
     }
 
     /**
+     * Set module in task. Module will be checked for its existence outside this class
+     * before this function is performed.
+     * @param target a task
+     * @param module a module for the task to be assigned to
+     */
+    public void setTaskMod(Task target, Module module) {
+        requireNonNull(target);
+        requireNonNull(module);
+        target.setModule(module);
+        int index = internalList.indexOf(target);
+        internalList.set(index, target);
+
+    }
+
+    /**
      * Sort tasks by the given {@code keyword}.
      */
     public void sortTasks(String keyword) {
@@ -206,5 +222,10 @@ public class UniqueTaskList implements Iterable<Task> {
             FXCollections.sort(internalList, Comparator.comparing(Task::getCreationDateTime));
         }
     }
+
+    // public ObservableList<Task> filterTaskByMod(Module module) {
+    //     ObservableList<Task> taskListForModule = internalList.filtered(x-> x.getModule().equals(module));
+    //     return taskListForModule;
+    // }
 
 }

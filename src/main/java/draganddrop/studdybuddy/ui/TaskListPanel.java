@@ -30,7 +30,7 @@ public class TaskListPanel extends UiPart<Region> {
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code TaskCard}.
      */
-    class TaskListViewCell extends ListCell<Task> {
+    static class TaskListViewCell extends ListCell<Task> {
         @Override
         protected void updateItem(Task task, boolean empty) {
             super.updateItem(task, empty);

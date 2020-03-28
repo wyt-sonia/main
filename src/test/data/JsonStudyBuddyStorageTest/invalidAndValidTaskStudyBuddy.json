@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "taskName" : "Valid task",
+      "taskType" : "Assignment",
+      "taskDateTime" : "19:00 29/03/2030",
+      "taskDescription" : "No Description Available",
+      "weight" : 0.0,
+      "estimatedTimeCost" : 0.0,
+      "status" : "PENDING",
+      "taskCreationDateTime" : "02:31 28/03/2030",
+      "taskFinishDateTime" : "",
+      "moduleCode" : "O0000O"
+    },
+    {
+      "taskName" : "Invalid date",
+      "taskType" : "Assignment",
+      "taskDateTime" : "29/03/2020",
+      "taskDescription" : "No Description Available",
+      "weight" : 0.0,
+      "estimatedTimeCost" : 0.0,
+      "status" : "PENDING",
+      "taskCreationDateTime" : "28/03/2020",
+      "taskFinishDateTime" : "",
+      "moduleCode" : "O0000O"
+    }
+  ]
+}

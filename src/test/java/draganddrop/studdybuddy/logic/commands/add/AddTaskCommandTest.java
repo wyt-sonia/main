@@ -16,10 +16,10 @@ import org.junit.jupiter.api.Test;
 
 import draganddrop.studdybuddy.commons.core.GuiSettings;
 import draganddrop.studdybuddy.logic.commands.CommandResult;
-import draganddrop.studdybuddy.model.AddressBook;
 import draganddrop.studdybuddy.model.Model;
-import draganddrop.studdybuddy.model.ReadOnlyAddressBook;
+import draganddrop.studdybuddy.model.ReadOnlyStudyBuddy;
 import draganddrop.studdybuddy.model.ReadOnlyUserPrefs;
+import draganddrop.studdybuddy.model.StudyBuddy;
 import draganddrop.studdybuddy.model.module.Module;
 import draganddrop.studdybuddy.model.task.Task;
 import draganddrop.studdybuddy.model.task.TaskType;
@@ -98,22 +98,22 @@ class AddTaskCommandTest {
         }
 
         @Override
-        public Path getAddressBookFilePath() {
+        public Path getStudyBuddyFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setAddressBookFilePath(Path addressBookFilePath) {
+        public void setStudyBuddyFilePath(Path studyBuddyFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
+        public ReadOnlyStudyBuddy getStudyBuddy() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setAddressBook(ReadOnlyAddressBook newData) {
+        public void setStudyBuddy(ReadOnlyStudyBuddy newData) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -178,6 +178,11 @@ class AddTaskCommandTest {
         @Override
         public void setTaskDateTime(Task target, LocalDateTime[] newDateTimes) {
             // empty
+        }
+
+        @Override
+        public void setTaskMod(Task target, Module mod) {
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
@@ -247,8 +252,8 @@ class AddTaskCommandTest {
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
-            return new AddressBook();
+        public ReadOnlyStudyBuddy getStudyBuddy() {
+            return new StudyBuddy();
         }
 
         @Override
