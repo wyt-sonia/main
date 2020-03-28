@@ -21,8 +21,9 @@ import draganddrop.studdybuddy.ui.interactiveprompt.InteractivePromptTerms;
  * Interactive prompt for editing tasks
  */
 public class EditTaskInteractivePrompt extends InteractivePrompt {
-    private static final String END_OF_COMMAND_MSG = "Task edited successfully";
-    private static final String QUIT_COMMAND_MSG = "Successfully quit from the edit task command";
+    static final String END_OF_COMMAND_MSG = "Task edited successfully";
+    static final String QUIT_COMMAND_MSG = "Successfully quit from the edit task command";
+
     private int taskNumber;
     private TaskField taskField;
 
