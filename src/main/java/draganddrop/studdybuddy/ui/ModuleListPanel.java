@@ -3,7 +3,9 @@ package draganddrop.studdybuddy.ui;
 import java.util.logging.Logger;
 
 import draganddrop.studdybuddy.commons.core.LogsCenter;
+import draganddrop.studdybuddy.model.module.EmptyModule;
 import draganddrop.studdybuddy.model.module.Module;
+import draganddrop.studdybuddy.model.task.Task;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,19 +17,12 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.Region;
-<<<<<<< HEAD:src/main/java/seedu/address/ui/ModuleListPanel.java
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
-import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.module.EmptyModule;
-import seedu.address.model.module.Module;
-import seedu.address.model.task.Task;
-=======
->>>>>>> 59df6a049d5ca9c9b37e32113b04c7493b0d395b:src/main/java/draganddrop/studdybuddy/ui/ModuleListPanel.java
 
 /**
- * Panel v2.0 to
+ * FXML switched to ModuleListPanelv2. Can show task under each module.
  */
 public class ModuleListPanel extends UiPart<Region> {
     private static final String FXML = "ModuleListPanelv2.fxml";

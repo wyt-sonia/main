@@ -4,12 +4,12 @@ import draganddrop.studdybuddy.logic.Logic;
 import draganddrop.studdybuddy.logic.commands.CommandResult;
 import draganddrop.studdybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studdybuddy.logic.parser.exceptions.ParseException;
-import draganddrop.studdybuddy.ui.interactiveprompt.ClearTasksInteractivePrompt;
 import draganddrop.studdybuddy.ui.interactiveprompt.ExitTaskInteractivePrompt;
 import draganddrop.studdybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studdybuddy.ui.interactiveprompt.InvalidInputInteractivePrompt;
 import draganddrop.studdybuddy.ui.interactiveprompt.add.AddTaskInteractivePrompt;
 import draganddrop.studdybuddy.ui.interactiveprompt.add.CreateModuleInteractivePrompt;
+import draganddrop.studdybuddy.ui.interactiveprompt.delete.ClearTasksInteractivePrompt;
 import draganddrop.studdybuddy.ui.interactiveprompt.delete.DeleteDuplicateTaskInteractivePrompt;
 import draganddrop.studdybuddy.ui.interactiveprompt.delete.DeleteTaskInteractivePrompt;
 import draganddrop.studdybuddy.ui.interactiveprompt.edit.ArchiveTaskInteractivePrompt;
@@ -25,28 +25,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
-<<<<<<< HEAD:src/main/java/seedu/address/ui/CommandBox.java
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.ui.interactiveprompt.ExitTaskInteractivePrompt;
-import seedu.address.ui.interactiveprompt.InteractivePrompt;
-import seedu.address.ui.interactiveprompt.InvalidInputInteractivePrompt;
-import seedu.address.ui.interactiveprompt.add.AddTaskInteractivePrompt;
-import seedu.address.ui.interactiveprompt.add.CreateModuleInteractivePrompt;
-import seedu.address.ui.interactiveprompt.delete.ClearTasksInteractivePrompt;
-import seedu.address.ui.interactiveprompt.delete.DeleteDuplicateTaskInteractivePrompt;
-import seedu.address.ui.interactiveprompt.delete.DeleteTaskInteractivePrompt;
-import seedu.address.ui.interactiveprompt.edit.ArchiveTaskInteractivePrompt;
-import seedu.address.ui.interactiveprompt.edit.CompleteTaskInteractivePrompt;
-import seedu.address.ui.interactiveprompt.edit.EditTaskInteractivePrompt;
-import seedu.address.ui.interactiveprompt.sort.SortTaskInteractivePrompt;
-import seedu.address.ui.interactiveprompt.view.FindTaskInteractivePrompt;
-import seedu.address.ui.interactiveprompt.view.HelpInteractivePrompt;
-import seedu.address.ui.interactiveprompt.view.ListTaskInteractivePrompt;
-import seedu.address.ui.interactiveprompt.view.RefreshTaskInteractivePrompt;
-=======
->>>>>>> 59df6a049d5ca9c9b37e32113b04c7493b0d395b:src/main/java/draganddrop/studdybuddy/ui/CommandBox.java
 
 /**
  * The UI component that is responsible for receiving user command inputs.

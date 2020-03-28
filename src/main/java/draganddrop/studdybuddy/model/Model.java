@@ -6,20 +6,11 @@ import java.util.function.Predicate;
 
 import draganddrop.studdybuddy.commons.core.GuiSettings;
 import draganddrop.studdybuddy.model.module.Module;
+import draganddrop.studdybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studdybuddy.model.task.Task;
 import draganddrop.studdybuddy.model.task.TaskType;
 
 import javafx.collections.ObservableList;
-<<<<<<< HEAD:src/main/java/seedu/address/model/Model.java
-import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.module.Module;
-import seedu.address.model.module.exceptions.ModuleCodeException;
-import seedu.address.model.person.Person;
-import seedu.address.model.task.Task;
-import seedu.address.model.task.TaskType;
-=======
->>>>>>> 59df6a049d5ca9c9b37e32113b04c7493b0d395b:src/main/java/draganddrop/studdybuddy/model/Model.java
-
 
 /**
  * The API of the Model component.

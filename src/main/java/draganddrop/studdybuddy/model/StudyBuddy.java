@@ -196,7 +196,6 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         tasks.setTaskDateTime(target, newDateTimes);
     }
 
-<<<<<<< HEAD:src/main/java/seedu/address/model/AddressBook.java
     public void setModuleInTask(Task target, Module module) throws ModuleCodeException {
         if (moduleList.contains(module)) {
             tasks.setTaskMod(target, module);
@@ -210,29 +209,8 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     //     int modIndex = moduleList.indexOf(module);
     //     Module originalModule = moduleList.get(module.toString());
     //    originalModule.setInternalTaskList(collectedTask);
-    //}
+    // }
 
-    /**
-     * Replaces the given person {@code target} in the list with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
-     */
-    public void setPerson(Person target, Person editedPerson) {
-        requireNonNull(editedPerson);
-
-        persons.setPerson(target, editedPerson);
-    }
-
-    /**
-     * Removes {@code key} from this {@code AddressBook}.
-     * {@code key} must exist in the address book.
-     */
-    public void removePerson(Person key) {
-        persons.remove(key);
-    }
-
-=======
->>>>>>> 59df6a049d5ca9c9b37e32113b04c7493b0d395b:src/main/java/draganddrop/studdybuddy/model/StudyBuddy.java
     @Override
     public String toString() {
         return tasks.asUnmodifiableObservableList().size() + " tasks";

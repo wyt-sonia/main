@@ -2,19 +2,14 @@ package draganddrop.studdybuddy.ui;
 
 import java.util.logging.Logger;
 
-<<<<<<< HEAD:src/main/java/seedu/address/ui/MainWindow.java
-=======
 import draganddrop.studdybuddy.commons.core.GuiSettings;
 import draganddrop.studdybuddy.commons.core.LogsCenter;
 import draganddrop.studdybuddy.logic.Logic;
 import draganddrop.studdybuddy.logic.commands.CommandResult;
 import draganddrop.studdybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studdybuddy.logic.parser.exceptions.ParseException;
-import draganddrop.studdybuddy.model.module.Module;
 import draganddrop.studdybuddy.ui.interactiveprompt.InteractivePrompt;
 
-import javafx.collections.ObservableList;
->>>>>>> 59df6a049d5ca9c9b37e32113b04c7493b0d395b:src/main/java/draganddrop/studdybuddy/ui/MainWindow.java
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -24,16 +19,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-<<<<<<< HEAD:src/main/java/seedu/address/ui/MainWindow.java
-import seedu.address.commons.core.GuiSettings;
-import seedu.address.commons.core.LogsCenter;
-import seedu.address.logic.Logic;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.ui.interactiveprompt.InteractivePrompt;
-=======
->>>>>>> 59df6a049d5ca9c9b37e32113b04c7493b0d395b:src/main/java/draganddrop/studdybuddy/ui/MainWindow.java
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -222,11 +207,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-<<<<<<< HEAD
      * Shows all task list in taskListHolder.
-=======
-     * Shows all tasks.
->>>>>>> c36595500d72febea4c2b62613e27c609df5ce41
      */
     @FXML
     private void handleShowAllTasks() {

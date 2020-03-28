@@ -2,21 +2,13 @@ package draganddrop.studdybuddy.logic.parser.interactivecommandparser;
 
 import java.time.LocalDateTime;
 
-<<<<<<< HEAD:src/main/java/seedu/address/logic/parser/interactivecommandparser/EditTaskCommandParser.java
-import seedu.address.logic.parser.TimeParser;
-import seedu.address.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
-import seedu.address.logic.parser.interactivecommandparser.exceptions.EditTaskCommandException;
-import seedu.address.logic.parser.interactivecommandparser.exceptions.InteractiveCommandException;
-import seedu.address.model.module.Module;
-import seedu.address.model.module.exceptions.ModuleCodeException;
-import seedu.address.model.task.TaskType;
-=======
 import draganddrop.studdybuddy.logic.parser.TimeParser;
 import draganddrop.studdybuddy.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
 import draganddrop.studdybuddy.logic.parser.interactivecommandparser.exceptions.EditTaskCommandException;
 import draganddrop.studdybuddy.logic.parser.interactivecommandparser.exceptions.InteractiveCommandException;
+import draganddrop.studdybuddy.model.module.Module;
+import draganddrop.studdybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studdybuddy.model.task.TaskType;
->>>>>>> 59df6a049d5ca9c9b37e32113b04c7493b0d395b:src/main/java/draganddrop/studdybuddy/logic/parser/interactivecommandparser/EditTaskCommandParser.java
 
 /**
  * Parser for the edit command

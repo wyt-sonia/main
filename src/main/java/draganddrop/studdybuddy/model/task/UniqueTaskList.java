@@ -9,18 +9,13 @@ import java.util.List;
 
 import draganddrop.studdybuddy.commons.util.CollectionUtil;
 import draganddrop.studdybuddy.logic.parser.TimeParser;
+import draganddrop.studdybuddy.model.module.Module;
 import draganddrop.studdybuddy.model.task.exceptions.TaskNotFoundException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 //import seedu.address.model.task.exceptions.DuplicateTaskException;
-<<<<<<< HEAD:src/main/java/seedu/address/model/task/UniqueTaskList.java
-import seedu.address.logic.parser.TimeParser;
-import seedu.address.model.module.Module;
-import seedu.address.model.task.exceptions.TaskNotFoundException;
-=======
->>>>>>> 59df6a049d5ca9c9b37e32113b04c7493b0d395b:src/main/java/draganddrop/studdybuddy/model/task/UniqueTaskList.java
 
 /**
  * pending.

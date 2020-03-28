@@ -1,6 +1,7 @@
 package draganddrop.studdybuddy.ui;
 
 import draganddrop.studdybuddy.logic.parser.TimeParser;
+import draganddrop.studdybuddy.model.module.EmptyModule;
 import draganddrop.studdybuddy.model.task.Task;
 
 import javafx.fxml.FXML;
@@ -8,12 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-<<<<<<< HEAD:src/main/java/seedu/address/ui/TaskCard.java
-import seedu.address.logic.parser.TimeParser;
-import seedu.address.model.module.EmptyModule;
-import seedu.address.model.task.Task;
-=======
->>>>>>> 59df6a049d5ca9c9b37e32113b04c7493b0d395b:src/main/java/draganddrop/studdybuddy/ui/TaskCard.java
 
 /**
  * An UI component that displays information of a {@code Person}.

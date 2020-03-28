@@ -1,8 +1,4 @@
-<<<<<<< HEAD:src/main/java/draganddrop/studdybuddy/ui/interactiveprompt/delete/ClearTasksInteractivePrompt.java
-package seedu.address.ui.interactiveprompt.delete;
-=======
-package draganddrop.studdybuddy.ui.interactiveprompt;
->>>>>>> 59df6a049d5ca9c9b37e32113b04c7493b0d395b:src/main/java/draganddrop/studdybuddy/ui/interactiveprompt/ClearTasksInteractivePrompt.java
+package draganddrop.studdybuddy.ui.interactiveprompt.delete;
 
 /*
  * Logic of implementation:
@@ -15,15 +11,11 @@ package draganddrop.studdybuddy.ui.interactiveprompt;
 
 import java.text.ParseException;
 
-<<<<<<< HEAD:src/main/java/draganddrop/studdybuddy/ui/interactiveprompt/delete/ClearTasksInteractivePrompt.java
-import seedu.address.logic.commands.delete.ClearTasksCommand;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.ui.interactiveprompt.InteractivePrompt;
-import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
-=======
-import draganddrop.studdybuddy.logic.commands.ClearTasksCommand;
+import draganddrop.studdybuddy.logic.commands.delete.ClearTasksCommand;
 import draganddrop.studdybuddy.logic.commands.exceptions.CommandException;
->>>>>>> 59df6a049d5ca9c9b37e32113b04c7493b0d395b:src/main/java/draganddrop/studdybuddy/ui/interactiveprompt/ClearTasksInteractivePrompt.java
+import draganddrop.studdybuddy.ui.interactiveprompt.InteractivePrompt;
+import draganddrop.studdybuddy.ui.interactiveprompt.InteractivePromptTerms;
+import draganddrop.studdybuddy.ui.interactiveprompt.InteractivePromptType;
 
 /**
  * pending.
@@ -34,16 +26,7 @@ public class ClearTasksInteractivePrompt extends InteractivePrompt {
 
     public ClearTasksInteractivePrompt() {
         super();
-<<<<<<< HEAD:src/main/java/draganddrop/studdybuddy/ui/interactiveprompt/delete/ClearTasksInteractivePrompt.java
-        this.interactivePromptType = CLEAR_TASK;
-=======
         this.interactivePromptType = InteractivePromptType.CLEAR_TASK;
-        this.reply = "";
-        this.userInput = "";
-        this.currentTerm = InteractivePromptTerms.INIT;
-        this.lastTerm = null;
-        this.terms = new ArrayList<>();
->>>>>>> 59df6a049d5ca9c9b37e32113b04c7493b0d395b:src/main/java/draganddrop/studdybuddy/ui/interactiveprompt/ClearTasksInteractivePrompt.java
     }
 
     @Override

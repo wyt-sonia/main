@@ -4,32 +4,18 @@ import static draganddrop.studdybuddy.ui.interactiveprompt.InteractivePromptType
 
 import java.time.LocalDateTime;
 
-<<<<<<< HEAD:src/main/java/seedu/address/ui/interactiveprompt/edit/EditTaskInteractivePrompt.java
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.edit.EditTaskCommand;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.logic.parser.interactivecommandparser.EditTaskCommandParser;
-import seedu.address.logic.parser.interactivecommandparser.exceptions.EditTaskCommandException;
-import seedu.address.model.module.Module;
-import seedu.address.model.task.Task;
-import seedu.address.model.task.TaskField;
-import seedu.address.model.task.TaskType;
-import seedu.address.ui.interactiveprompt.InteractivePrompt;
-import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
-=======
 import draganddrop.studdybuddy.commons.core.index.Index;
-import draganddrop.studdybuddy.logic.commands.EditTaskCommand;
+import draganddrop.studdybuddy.logic.commands.edit.EditTaskCommand;
 import draganddrop.studdybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studdybuddy.logic.parser.exceptions.ParseException;
 import draganddrop.studdybuddy.logic.parser.interactivecommandparser.EditTaskCommandParser;
 import draganddrop.studdybuddy.logic.parser.interactivecommandparser.exceptions.EditTaskCommandException;
+import draganddrop.studdybuddy.model.module.Module;
 import draganddrop.studdybuddy.model.task.Task;
 import draganddrop.studdybuddy.model.task.TaskField;
 import draganddrop.studdybuddy.model.task.TaskType;
 import draganddrop.studdybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studdybuddy.ui.interactiveprompt.InteractivePromptTerms;
->>>>>>> 59df6a049d5ca9c9b37e32113b04c7493b0d395b:src/main/java/draganddrop/studdybuddy/ui/interactiveprompt/edit/EditTaskInteractivePrompt.java
 
 /**
  * Interactive prompt for editing tasks

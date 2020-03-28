@@ -11,21 +11,12 @@ import draganddrop.studdybuddy.commons.core.GuiSettings;
 import draganddrop.studdybuddy.commons.core.LogsCenter;
 import draganddrop.studdybuddy.commons.util.CollectionUtil;
 import draganddrop.studdybuddy.model.module.Module;
+import draganddrop.studdybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studdybuddy.model.task.Task;
 import draganddrop.studdybuddy.model.task.TaskType;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-<<<<<<< HEAD:src/main/java/seedu/address/model/ModelManager.java
-import seedu.address.commons.core.GuiSettings;
-import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.module.Module;
-import seedu.address.model.module.exceptions.ModuleCodeException;
-import seedu.address.model.person.Person;
-import seedu.address.model.task.Task;
-import seedu.address.model.task.TaskType;
-=======
->>>>>>> 59df6a049d5ca9c9b37e32113b04c7493b0d395b:src/main/java/draganddrop/studdybuddy/model/ModelManager.java
 
 
 /**
@@ -137,7 +128,7 @@ public class ModelManager implements Model {
 
     @Override
     public void setTaskMod(Task target, Module mod) throws ModuleCodeException {
-        addressBook.setModuleInTask(target, mod);
+        studyBuddy.setModuleInTask(target, mod);
     }
 
     //  @Override

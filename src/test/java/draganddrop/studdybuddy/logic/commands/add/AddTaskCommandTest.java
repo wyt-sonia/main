@@ -28,19 +28,6 @@ import draganddrop.studdybuddy.testutil.TaskBuilder;
 import javafx.collections.ObservableList;
 
 //import seedu.address.logic.commands.exceptions.CommandException;
-<<<<<<< HEAD:src/test/java/seedu/address/logic/commands/AddTaskCommandTest.java
-import seedu.address.model.AddressBook;
-import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.module.Module;
-import seedu.address.model.module.exceptions.ModuleCodeException;
-import seedu.address.model.person.Person;
-import seedu.address.model.task.Task;
-import seedu.address.model.task.TaskType;
-import seedu.address.testutil.TaskBuilder;
-=======
->>>>>>> 59df6a049d5ca9c9b37e32113b04c7493b0d395b:src/test/java/draganddrop/studdybuddy/logic/commands/add/AddTaskCommandTest.java
 
 class AddTaskCommandTest {
 
@@ -193,20 +180,11 @@ class AddTaskCommandTest {
             // empty
         }
 
-<<<<<<< HEAD:src/test/java/seedu/address/logic/commands/AddTaskCommandTest.java
         @Override
-        public void setTaskMod(Task target, Module mod) throws ModuleCodeException {
+        public void setTaskMod(Task target, Module mod) {
             throw new AssertionError("This method should not be called.");
         }
 
-
-        @Override
-        public ObservableList<Person> getFilteredPersonList() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-=======
->>>>>>> 59df6a049d5ca9c9b37e32113b04c7493b0d395b:src/test/java/draganddrop/studdybuddy/logic/commands/add/AddTaskCommandTest.java
         @Override
         public ObservableList<Task> getFilteredTaskList() {
             throw new AssertionError("This method should not be called.");

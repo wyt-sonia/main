@@ -2,25 +2,15 @@ package draganddrop.studdybuddy.ui.interactiveprompt.add;
 
 import java.text.ParseException;
 
-<<<<<<< HEAD:src/main/java/seedu/address/ui/interactiveprompt/add/CreateModuleInteractivePrompt.java
-import seedu.address.logic.commands.add.CreateModCommand;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.interactivecommandparser.AddTaskCommandParser;
-import seedu.address.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
-import seedu.address.model.module.Module;
-import seedu.address.model.module.exceptions.ModuleCodeException;
-import seedu.address.ui.interactiveprompt.InteractivePrompt;
-import seedu.address.ui.interactiveprompt.InteractivePromptTerms;
-import seedu.address.ui.interactiveprompt.InteractivePromptType;
-=======
 import draganddrop.studdybuddy.logic.commands.add.CreateModCommand;
 import draganddrop.studdybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studdybuddy.logic.parser.interactivecommandparser.AddTaskCommandParser;
+import draganddrop.studdybuddy.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
 import draganddrop.studdybuddy.model.module.Module;
+import draganddrop.studdybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studdybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studdybuddy.ui.interactiveprompt.InteractivePromptTerms;
 import draganddrop.studdybuddy.ui.interactiveprompt.InteractivePromptType;
->>>>>>> 59df6a049d5ca9c9b37e32113b04c7493b0d395b:src/main/java/draganddrop/studdybuddy/ui/interactiveprompt/add/CreateModuleInteractivePrompt.java
 
 /**
  * An interactive prompt for creating modules.
