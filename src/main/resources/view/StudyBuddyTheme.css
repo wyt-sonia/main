@@ -34,6 +34,13 @@
     -fx-text-weight: bold;
 }
 
+.sub_header {
+    -fx-font-family: 'Rainclouds DEMO Regular';
+    -fx-font-size: 20pt;
+    -fx-text-fill: rgba(123, 87, 69, 1);
+    -fx-text-weight: bold;
+}
+
 .index_lbl {
     -fx-font-family: 'AL_Nevrada_PersonalUseOnly';
     -fx-font-size: 12pt;
