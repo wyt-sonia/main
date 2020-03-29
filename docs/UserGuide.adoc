@@ -135,28 +135,24 @@ S- Please enter the task name.
 
 U- `Lab 1 submission`
 
-S- The name of task is set to: Lab 1 submission.
-
-Please choose the task type:
-
-1. Assignment
-2. Quiz
-3. Presentation
-4. Meeting
-5. Exam
+S- The name of task is set to: Lab 1 submission. +
+Please choose the task type: +
+1. Assignment +
+2. Quiz +
+3. Presentation +
+4. Meeting +
+5. Exam +
 6. Others
 
 U- `1`
 
-S- The type of task is set to: Assignment.
+S- The type of task is set to: Assignment. +
 Please enter the deadline with format: HH:mm dd/MM/yyyy
 
 U- `18:00 23/06/2020`
 
-S- The date and time is set to: 18:00 23/06/2020
-
-Press enter again to add the task:
-
+S- The date and time is set to: 18:00 23/06/2020 +
+Press enter again to add the task: +
 Lab 1 submission Assignment 18:00 23/06/2020
 
 U- `[enter]`
