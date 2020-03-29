@@ -190,6 +190,7 @@
     -fx-graphic-text-gap: 0;
     -fx-padding: 0 0 0 0;
     -fx-background-color: white;
+    -fx-background-radius: 0, 0, 10, 10;
 }
 
 .list-cell:filled:even {
@@ -294,42 +295,137 @@
     -fx-background-color: #d9534f;
 }
 
-
-/*Tabs*/
-.tab-pane .tab-header-area .tab-header-background {
-    -fx-background-color: rgba(123, 87, 69, 0.7);
+/*button style*/
+.button {
+	-fx-font-size: 14;
+	-fx-background-radius: 4;
+	-fx-border-radius: 4;
+	-fx-pref-height: 30;
+	-fx-min-width: 30;
+	-fx-background-insets: 0, 0, -1, 0;
 }
 
-.tab-pane{
-    -fx-tab-min-width:100px;
+.button:hover {
+   	-fx-background-color: #e6e6e6;
+   	-fx-border-color: #acacac;
 }
 
-.tab{
-    -fx-padding: 0 0 0 0;
+.button:pressed, .button:default:hover:pressed {
+	-fx-background-color: #e6e6e6;
+	-fx-border-color: #acacac;
+	-fx-effect: innershadow(gaussian, #adadad, 10, 0, 0, 3);
 }
 
-.tab-pane .tab {
-    -fx-background-color: rgba(123, 100, 69, 0.7);
+.button:focused {
+   -fx-effect: dropshadow(gaussian, #b4d1f3, 3, 3, 0, 0);
 }
 
-.tab-pane .tab:selected {
-    -fx-background-color: rgba(181, 150, 134, 1);
+.button:disabled, .button:default:disabled {
+   -fx-opacity: 0.4;
+   -fx-background-color: #1d1d1d;
+   -fx-text-fill: white;
 }
 
-.tab .tab-label {
-    -fx-alignment: CENTER;
-    -fx-font-family: "Verdana";
-    -fx-text-fill: rgba(255, 255, 255, 1);
-    -fx-font-size: 14px;
+.button:default {
+   -fx-background-color: -fx-focus-color;
+   -fx-text-fill: #ffffff;
 }
 
-.tab:selected .tab-label {
-    -fx-font-size: 16px;
-    -fx-text-fill: rgba(248, 245, 12, 1);
-    -fx-font-weight: bold;
+.button:default:hover {
+   -fx-background-color: derive(-fx-focus-color, 30%);
 }
 
+/*calender style*/
+.calender_panel {
+    -fx-background-color: #94a57e;
+    -fx-background-radius: 10 10 0 0;
+    -fx-text-fill: white;
+    -fx-effect: innershadow(gaussian, white, 10, 0, 0, 0);
+}
 
+.calender_lbl_lg {
+    -fx-font-family: 'AL_Nevrada_PersonalUseOnly';
+    -fx-font-size: 18pt;
+    -fx-text-fill: white;
+}
+
+.calender_lbl_sm {
+    -fx-font-family: 'AL_Nevrada_PersonalUseOnly';
+    -fx-font-size: 12pt;
+    -fx-text-fill: white;
+}
+
+.calender_btn {
+    -fx-background-color: transparent;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+}
+
+.calender_btn:hover {
+     -fx-background-color: white;
+     -fx-border-radius: 8;
+     -fx-border-radius: 10;
+     -fx-text-fill: rgba(64, 94, 106, 1);
+     -fx-border-color: white;
+}
+
+.calender_btn:pressed, .calender_btn:default:hover:pressed {
+	-fx-background-color: #e6e6e6;
+	-fx-border-color: #acacac;
+}
+
+/* tabs*/
+.tab-pane .tab-header-background {
+	-fx-background-color: #7b5745;
+	-fx-background-radius: 4, 4, 0, 0;
+}
+
+.tab-pane.plain .tab-header-background {
+	-fx-background-color: transparent;
+}
+
+.tab-pane .tab-header-area .tab {
+	-fx-border-radius: 4 4 0 0;
+	-fx-background-radius: 5 5 0 0;
+	-fx-background-color: transparent;
+	-fx-border-color: transparent;
+	-fx-padding: 3 10 3 10;
+	-fx-background-insets: 0;
+}
+
+.tab-pane .tab-header-area .tab .tab-label {
+	-fx-text-fill: white;
+}
+
+.tab-pane .tab-header-area .tab:hover {
+	-fx-background-color: #c4b198;
+}
+
+.tab:hover .tab-label {
+	-fx-text-fill: white;
+}
+
+.tab-pane .tab-header-area .tab:selected {
+	-fx-focus-color: transparent;
+	-fx-border-color: #7b5745 #7b5745 white #7b5745;
+	-fx-background-color: white;
+}
+.tab-pane .tab-header-area .tab:selected .tab-label {
+	-fx-text-fill: #7b5745;
+}
+.tab-pane > .tab-content-area {
+	-fx-background-color: white;
+}
+
+.tab-pane .tab-header-area .tab .tab-label {
+	-fx-focus-color: transparent;
+}
+
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+	-fx-border-color: transparent;
+}
 
 
 /*
@@ -445,57 +541,6 @@
 
 .grid-pane .stack-pane {
     -fx-background-color: derive(#1d1d1d, 30%);
-}
-
-/*
- * Metro style Push Button
- * Author: Pedro Duque Vieira
- * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
- */
-
-/*
-.button {
-   -fx-padding: 5 22 5 22;
-   -fx-border-color: #e2e2e2;
-   -fx-border-width: 2;
-   -fx-background-radius: 0;
-   -fx-background-color: #1d1d1d;
-   -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
-   -fx-font-size: 11pt;
-   -fx-text-fill: #d8d8d8;
-   -fx-background-insets: 0 0 0 0, 0, 1, 2;
-}
-
-.button:hover {
-   -fx-background-color: #3a3a3a;
-}
-
-.button:pressed, .button:default:hover:pressed {
- -fx-background-color: white;
- -fx-text-fill: #1d1d1d;
-}
-
-.button:focused {
-   -fx-border-color: white, white;
-   -fx-border-width: 1, 1;
-   -fx-border-style: solid, segments(1, 1);
-   -fx-border-radius: 0, 0;
-   -fx-border-insets: 1 1 1 1, 0;
-}
-
-.button:disabled, .button:default:disabled {
-   -fx-opacity: 0.4;
-   -fx-background-color: #1d1d1d;
-   -fx-text-fill: white;
-}
-
-.button:default {
-   -fx-background-color: -fx-focus-color;
-   -fx-text-fill: #ffffff;
-}
-
-.button:default:hover {
-   -fx-background-color: derive(-fx-focus-color, 30%);
 }
 
 .dialog-pane {
