@@ -35,18 +35,6 @@ public class AddTaskCommandParser {
     }
 
     /**
-     * Parse the {@code userInput} for task description.
-     *
-     * @param userInput
-     * @return
-     * @throws AddTaskCommandException
-     */
-    public static String parseDescription(String userInput) throws AddTaskCommandException {
-        String result = "";
-        return result;
-    }
-
-    /**
      * Parse the {@code userInput} for task date and time.
      *
      * @param userInput
@@ -165,8 +153,16 @@ public class AddTaskCommandParser {
      * @return
      * @throws AddTaskCommandException
      */
-    public static String parseWeight(String userInput) throws AddTaskCommandException {
-        String result = "";
+    public static double parseWeight(String userInput) throws AddTaskCommandException {
+        double result = 0.0;
+        try {
+            result = Double.parseDouble(userInput);
+            if (result < 0.0 || result > 100.0) {
+                throw new AddTaskCommandException("wrongWeightRangeError");
+            }
+        } catch (NumberFormatException e) {
+            throw new AddTaskCommandException("wrongWeightFormatError");
+        }
         return result;
     }
 
@@ -177,8 +173,16 @@ public class AddTaskCommandParser {
      * @return
      * @throws AddTaskCommandException
      */
-    public static String parseTimeCost(String userInput) throws AddTaskCommandException {
-        String result = "";
+    public static double parseTimeCost(String userInput) throws AddTaskCommandException {
+        double result = 0.0;
+        try {
+            result = Double.parseDouble(userInput);
+            if (result < 0.0) {
+                throw new AddTaskCommandException("wrongEstimatedTimeRangeError");
+            }
+        } catch (NumberFormatException e) {
+            throw new AddTaskCommandException("wrongEstimatedTimeFormatError");
+        }
         return result;
     }
 }

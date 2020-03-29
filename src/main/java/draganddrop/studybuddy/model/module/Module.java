@@ -6,7 +6,6 @@ import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.exceptions.DuplicateTaskException;
 import draganddrop.studybuddy.model.task.exceptions.TaskNotFoundException;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -49,7 +48,7 @@ public class Module {
     public Module() {
         this.moduleName = "";
         try {
-            this.moduleCode = new ModuleCode("O0000O");
+            this.moduleCode = new ModuleCode("OO0000O");
         } catch (ModuleCodeException e) {
             System.out.println("from Module(). ModuleCode is invalid!");
         }
@@ -137,12 +136,14 @@ public class Module {
 
     /**
      * Takes in an ObservableList of Task, filters it, then setInternalTaskList().
+     *
      * @param externalTaskList
      */
     public void filterAndSetInternalTaskList(ObservableList<Task> externalTaskList) {
-        ObservableList<Task> collectedTasks = externalTaskList.filtered(x-> x.getModule().equals(this));
+        ObservableList<Task> collectedTasks = externalTaskList.filtered(x -> x.getModule().equals(this));
         setInternalTaskList(collectedTasks);
     }
+
     @Override
     public String toString() {
         return getModuleCode().toString();
