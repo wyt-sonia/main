@@ -34,17 +34,13 @@ public class ClearTasksInteractivePrompt extends InteractivePrompt {
         if (userInput.equals("quit")) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
-        } else {
-            userInput = checkForBackInput(userInput);
         }
 
         switch (currentTerm) {
         case INIT:
             this.reply = "Please press enter to clear all your tasks.\n"
-                    + " Else enter quit to go back.";
+                + " Else enter quit to go back.";
             currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-            lastTerm = InteractivePromptTerms.INIT;
-            terms.add(lastTerm);
             break;
 
         case READY_TO_EXECUTE:

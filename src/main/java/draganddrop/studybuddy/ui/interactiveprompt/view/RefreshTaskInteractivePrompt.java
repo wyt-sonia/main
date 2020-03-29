@@ -45,8 +45,6 @@ public class RefreshTaskInteractivePrompt extends InteractivePrompt {
                 reply = "The tasks list will be refreshed.\n "
                     + " Please press enter again to make the desired changes.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-                lastTerm = InteractivePromptTerms.INIT;
-                terms.add(lastTerm);
             } catch (DueSoonRefreshCommandException ex) {
                 reply = ex.getErrorMessage();
             }

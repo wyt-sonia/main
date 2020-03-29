@@ -45,15 +45,11 @@ public class FindTaskInteractivePrompt extends InteractivePrompt {
         case INIT:
             this.reply = KEYWORD_PROMPT;
             currentTerm = InteractivePromptTerms.FIND_KEYWORD;
-            lastTerm = InteractivePromptTerms.INIT;
-            terms.add(lastTerm);
             break;
         case FIND_KEYWORD:
             userKeyword = userInput;
             reply = getConfirmationPrompt(userKeyword);
             currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-            lastTerm = InteractivePromptTerms.FIND_KEYWORD;
-            terms.add(lastTerm);
             break;
 
         case READY_TO_EXECUTE:

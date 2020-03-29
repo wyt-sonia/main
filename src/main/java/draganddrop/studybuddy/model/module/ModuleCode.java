@@ -20,6 +20,18 @@ public class ModuleCode {
         }
     }
 
+    public static boolean isModuleCode(String userInput) {
+        boolean result = true;
+        try {
+            parsePrefix(userInput);
+            parseNumber(userInput);
+            parsePostfix(userInput);
+        } catch (ModuleCodeException e) {
+            result = false;
+        }
+        return result;
+    }
+
     /**
      * method to parse prefix from the input to ensure correctness of moduleCode.
      *
@@ -27,25 +39,18 @@ public class ModuleCode {
      * @return
      * @throws ModuleCodeException
      */
-    private String parsePrefix(String input) throws ModuleCodeException {
+    private static String parsePrefix(String input) throws ModuleCodeException {
         String output = "";
-        int i = 0;
-        while (i < input.length()) {
-            char character = input.charAt(i);
-            try {
-                Integer.parseInt(character + "");
-                break;
-            } catch (NumberFormatException e) {
-                output += character;
+        if (!Character.isLetter(input.charAt(0))) {
+            throw new ModuleCodeException("Module prefix not found.");
+        } else {
+            int i = 0;
+            while (Character.isLetter(input.charAt(i))) {
+                output += input.charAt(i);
                 i++;
             }
         }
-
-        if (output.equals("")) {
-            throw new ModuleCodeException("Module prefix not found!!!");
-        } else {
-            return output.toUpperCase();
-        }
+        return output.toUpperCase();
     }
 
     /**
@@ -55,7 +60,7 @@ public class ModuleCode {
      * @return
      * @throws ModuleCodeException
      */
-    private int parseNumber(String input) throws ModuleCodeException {
+    private static int parseNumber(String input) throws ModuleCodeException {
         String outputAsString = "";
         for (int i = 0; i < input.length(); i++) {
             char character = input.charAt(i);
@@ -68,7 +73,7 @@ public class ModuleCode {
         }
 
         if (outputAsString.equals("")) {
-            throw new ModuleCodeException("Module number not found!!!");
+            throw new ModuleCodeException("Module number not found!");
         } else {
             int output = Integer.parseInt(outputAsString);
             return output;
@@ -81,7 +86,7 @@ public class ModuleCode {
      * @param input
      * @return
      */
-    private String parsePostfix(String input) {
+    private static String parsePostfix(String input) {
         String output = "";
         char character = input.charAt(input.length() - 1);
         try {

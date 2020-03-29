@@ -30,8 +30,6 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
         if (userInput.equals("quit")) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
-        } else {
-            userInput = checkForBackInput(userInput);
         }
 
         switch (currentTerm) {
@@ -39,8 +37,6 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
         case INIT:
             this.reply = "Please key in the name of the module that you want to create";
             currentTerm = InteractivePromptTerms.MODULE_NAME;
-            lastTerm = InteractivePromptTerms.INIT;
-            terms.add(lastTerm);
             break;
         case MODULE_NAME:
             try {
@@ -49,8 +45,6 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
                         + "Now key in your module code";
                 module.setModuleName(userInput);
                 currentTerm = InteractivePromptTerms.MODULE_CODE;
-                lastTerm = InteractivePromptTerms.MODULE_NAME;
-                terms.add(lastTerm);
             } catch (AddTaskCommandException ex) {
                 reply = "Please write something as the name of your module.";
             }
@@ -61,8 +55,6 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
                 this.reply = "Module Code: " + module.toString() + "\n"
                         + "Click 'Enter' again to confirm your changes";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-                lastTerm = InteractivePromptTerms.MODULE_CODE;
-                terms.add(lastTerm);
             } catch (ModuleCodeException ex) {
                 reply = "Please key in your module code to include a prefix, a number, then a postfix (Optional).\n"
                         + "E.g. A1\n        BT102     \n        CS77777X";

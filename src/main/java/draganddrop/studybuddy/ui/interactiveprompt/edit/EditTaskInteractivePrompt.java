@@ -44,6 +44,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
 
     /**
      * handles the sequence of commands for edit
+     *
      * @param userInput input from user
      * @return reply to user
      */
@@ -51,8 +52,6 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         if (userInput.equals("quit")) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
-        } else if (userInput.equals("back")) {
-            userInput = checkForBackInput(userInput);
         }
 
         switch (currentTerm) {
@@ -77,6 +76,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
 
     /**
      * Creates and executes an edit command, with the new values provided by the user
+     *
      * @param userInput input from user
      * @return reply to user
      */
@@ -125,6 +125,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
 
     /**
      * parses task number
+     *
      * @param userInput user input for task number
      * @return an int of task number
      */
@@ -143,7 +144,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
 
         if (isParseSuccessful) {
             this.reply = "Please choose the field that you wish to edit in task number " + taskNum + ".\n"
-                        + TaskField.getFieldString();
+                + TaskField.getFieldString();
             this.currentTerm = InteractivePromptTerms.TASK_FIELD;
         } else {
             // prompt for a new value
@@ -155,6 +156,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
 
     /**
      * parses the task field
+     *
      * @param userInput userInput for task number
      * @return a TaskField
      */
@@ -173,7 +175,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         }
 
         if (isParseSuccessful) {
-            assert(taskField != null);
+            assert (taskField != null);
             this.reply = getTaskFieldMessage(taskField);
             this.currentTerm = InteractivePromptTerms.NEW_VALUE;
         } else {
@@ -196,11 +198,12 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
             break;
         case TASK_DATETIME:
             result += "Please enter the deadline with format: "
-                + "HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy";;
+                + "HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy";
+            ;
             break;
         case TASK_MODULE:
             result += "Please enter the module code that you wish to assign to this task.\n"
-                    + "You can find all the modules available under Modules/Show Modules in the menu bar above.";
+                + "You can find all the modules available under Modules/Show Modules in the menu bar above.";
             break;
         default:
             throw new IllegalStateException("Unexpected value: " + taskField);

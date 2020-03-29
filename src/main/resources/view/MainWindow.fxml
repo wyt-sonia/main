@@ -94,7 +94,7 @@
                             <children>
                                 <Label fx:id="taskListPanelTitle" alignment="CENTER" contentDisplay="CENTER"
                                        prefHeight="40.0" prefWidth="${taskListPanelTitleHolder.width}"
-                                       styleClass="sub_header" text="All-Task" textAlignment="CENTER">
+                                       styleClass="sub_header" text="All Tasks" textAlignment="CENTER">
                                     <padding>
                                         <Insets left="10.0" right="10.0"/>
                                     </padding>
@@ -118,7 +118,7 @@
                             <children>
                                 <Label fx:id="dueListPanelTitle" alignment="CENTER" contentDisplay="CENTER"
                                        ellipsisString="" prefHeight="40.0" prefWidth="${dueListPanelTitleHolder.width}"
-                                       styleClass="sub_header" text="Task to be due soon" textAlignment="CENTER"
+                                       styleClass="sub_header" text="Task Due Soon" textAlignment="CENTER"
                                        textOverrun="CLIP">
                                     <padding>
                                         <Insets left="10.0" right="10.0"/>

@@ -32,8 +32,6 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
         if (userInput.equals("quit")) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
-        } else {
-            userInput = checkForBackInput(userInput);
         }
 
         switch (currentTerm) {
@@ -43,7 +41,6 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
                 + "2. Task Name\n"
                 + "3. Creation Date & Time";
             currentTerm = InteractivePromptTerms.SORT_KEYWORD;
-            terms.add(lastTerm);
             break;
 
         case SORT_KEYWORD:

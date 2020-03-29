@@ -45,8 +45,6 @@ public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
                 reply = "The duplicate tasks will be deleted\n "
                     + " Please press enter again to make the desired changes.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-                lastTerm = InteractivePromptTerms.INIT;
-                terms.add(lastTerm);
             } catch (DeleteDuplicateTaskCommandException ex) {
                 reply = ex.getErrorMessage();
             }
