@@ -36,13 +36,14 @@ public class ModuleTest {
         Assert.assertThrows(ModuleCodeException.class, ()-> new Module("ABBA"));
     }
 
-    /*@Test
+    @Test
     public void filterTaskFromTaskListTest() {
         Module emptyMod = new EmptyModule();
         emptyMod.filterAndSetInternalTaskList(SampleModules.getSampleTask());
+        ObservableList<?> list = SampleModules.getExpectedOutcomeForFilterFunction();
         for(int i = 0; i < emptyMod.getInternalTaskList().size(); i++) {
-            assertTrue(emptyMod.getInternalTaskList().get(i), SampleModules.getExpectedOutcomeForFilterFunction().get(i));
+            assertEquals(emptyMod.getInternalTaskList().get(i), SampleModules.getExpectedOutcomeForFilterFunction().get(i));
         }
 
-    }*/
+    }
 }

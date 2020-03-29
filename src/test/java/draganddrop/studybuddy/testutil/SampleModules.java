@@ -1,5 +1,6 @@
 package draganddrop.studybuddy.testutil;
 
+import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.task.Task;
@@ -11,6 +12,11 @@ import javafx.collections.ObservableList;
 import java.time.LocalDateTime;
 
 public class SampleModules {
+    static LocalDateTime[] dateTimesOne = {TimeParser.parseDateTime("23:59 12/12/2020"),
+            TimeParser.parseDateTime("23:59 21/12/2020")};
+    static LocalDateTime[] dateTimesTwo = {TimeParser.parseDateTime("23:59 12/04/2020"),
+            TimeParser.parseDateTime("23:59 21/04/2020"), LocalDateTime.now()};
+
     public static Module[] getSampleModule() {
         Module cs2100 = new Module("Computer Organisation", "CS2100");
         Module cs2100clone1 = new Module("dasadsa", "CS2100");
@@ -22,13 +28,14 @@ public class SampleModules {
         Module[] modArr = getSampleModule();
         ObservableList<Task> SampleTaskList = FXCollections.observableArrayList();
         SampleTaskList.add(new Task(modArr[0], TaskType.Assignment, "Ass 1", "taskDescription", 20.0,
-                TaskStatus.PENDING, null, 5.0, LocalDateTime.now()));
-        SampleTaskList.add(new Task(modArr[0], TaskType.Assignment, "Ass 2", "taskDescription", 20.0,
-                TaskStatus.PENDING, null, 5.0, LocalDateTime.now()));
-        SampleTaskList.add(new Task(modArr[3], TaskType.Assignment, "Ass 3", "taskDescription", 20.0,
-                TaskStatus.PENDING, null, 5.0, LocalDateTime.now()));
-        SampleTaskList.add(new Task(modArr[3], TaskType.Assignment, "Ass 4", "taskDescription", 20.0,
-                TaskStatus.PENDING, null, 5.0, LocalDateTime.now()));
+                TaskStatus.PENDING, dateTimesOne, 5.0, LocalDateTime.now()));
+        SampleTaskList.add(new Task(modArr[0], TaskType.Presentation, "Presentation 1",
+                "Presentation taskDescription", 20.0, TaskStatus.FINISHED, dateTimesOne,
+                3.0, LocalDateTime.now()));
+        SampleTaskList.add(new Task(modArr[3], TaskType.Assignment, "Quiz 1", "Quiz taskDescription",
+                2.0, TaskStatus.PENDING, dateTimesTwo, 1.0, LocalDateTime.now()));
+        SampleTaskList.add(new Task(modArr[3], TaskType.Meeting, "Meeting 1", "Meeting desc", 20.0,
+                TaskStatus.PENDING, dateTimesTwo, 15.0, LocalDateTime.now()));
 
         return SampleTaskList;
     }
@@ -36,10 +43,10 @@ public class SampleModules {
     public static ObservableList<Task> getExpectedOutcomeForFilterFunction() {
         Module[] modArr = getSampleModule();
         ObservableList<Task> SampleTaskList = FXCollections.observableArrayList();
-        SampleTaskList.add(new Task(modArr[3], TaskType.Assignment, "Ass 3", "taskDescription", 20.0,
-                TaskStatus.PENDING, null, 5.0, LocalDateTime.now()));
-        SampleTaskList.add(new Task(modArr[3], TaskType.Assignment, "Ass 4", "taskDescription", 20.0,
-                TaskStatus.PENDING, null, 5.0, LocalDateTime.now()));
+        SampleTaskList.add(new Task(modArr[3], TaskType.Assignment, "Quiz 1", "Quiz taskDescription",
+                2.0, TaskStatus.PENDING, dateTimesTwo, 1.0, LocalDateTime.now()));
+        SampleTaskList.add(new Task(modArr[3], TaskType.Meeting, "Meeting 1", "Meeting desc", 20.0,
+                TaskStatus.PENDING, dateTimesTwo, 15.0, LocalDateTime.now()));
         return SampleTaskList;
     }
 }
