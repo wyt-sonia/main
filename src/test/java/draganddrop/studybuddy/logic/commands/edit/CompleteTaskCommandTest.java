@@ -28,17 +28,17 @@ public class CompleteTaskCommandTest {
         expectedModel = new ModelManager(model.getStudyBuddy(), new UserPrefs());
     }
 
-    /*@Test
-    public void execute_checkCompleted_success() {
-        Task task = model.getFilteredTaskList().get(0);
-        String expectedMessage = String.format(Messages.MESSAGE_COMPLETE_TASK_SUCCESS, task.getTaskName());
-        CompleteTaskCommand command = new CompleteTaskCommand(INDEX_FIRST_TASK);
-        expectedModel.completeTask(task);
-        expectedModel.deleteTask(task);
-        expectedModel.archiveTask(task);
-        assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(getSampleTasks()[1], getSampleTasks()[2],
-                getSampleTasks()[3], getSampleTasks()[4]),
-                model.getFilteredTaskList());
-    }*/
+//    @Test
+//    public void execute_checkCompleted_success() {
+//        Task task = model.getFilteredTaskList().get(0);
+//        String expectedMessage = String.format(Messages.MESSAGE_COMPLETE_TASK_SUCCESS, task.getTaskName());
+//        CompleteTaskCommand command = new CompleteTaskCommand(INDEX_FIRST_TASK);
+//        expectedModel.completeTask(task);
+//        expectedModel.deleteTask(task);
+//        expectedModel.archiveTask(task);
+//        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+//        assertEquals(Arrays.asList(getSampleTasks()[1], getSampleTasks()[2],
+//                getSampleTasks()[3], getSampleTasks()[4]),
+//                model.getFilteredTaskList());
+//    }
 }
