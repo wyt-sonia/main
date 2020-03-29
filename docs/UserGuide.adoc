@@ -84,6 +84,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will display a list of commands yo
 * When a line is preceded by S, it implies that it is a reply displayed by Study Buddy.
 * When a line is preceded by U, it implies that it is a value that must be entered by the user.
 * [enter] indicates hitting the enter key on your keyboard.
+* [exits] indicates that application has closed
 ====
 
 [NOTE]
@@ -149,7 +150,9 @@ S- done!
 . You can assign a name, type, and deadline to your tasks.
 
 [NOTE]
-The application does not allow you to enter a deadline that has already passed. It must be a time in the future.
+ The application does not allow you to enter a deadline that has already passed. It must be a time in the future.
+[NOTE]
+The application allows for addition of duplicate tasks. It will however confirm with you if you are sure you want to add a duplicate.
 
 
 *Example:*
@@ -218,6 +221,7 @@ The index *must be a positive integer* 1, 2, 3, ...
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the task will be removed i.e adding of tags is not cumulative.
 * You can remove all the task's tags by typing `t/` without specifying any tags after it.
+
 ****
 
 Examples:
@@ -226,6 +230,114 @@ Examples:
 Edits the date and details of the 1st task to be `2020-05-19` and `tough assignment` respectively.
 * `edit 2 n/Database project t/` +
 Edits the name of the 2nd task to be `Database project` and clears all existing tags.
+
+==== Delete
+*Format:*
+
+U- `delete`
+
+S- prompt for task index
+
+U- `INDEX`
+
+S- done!
+
+*Description:*
+
+. This function allows you to delete a task from your list of tasks.
+. You can refer to the list of tasks to determine the respective index number.
+
+[NOTE]
+The application does not allow you to enter an invalid index number. If you happen to enter one, just try again!
+
+
+*Example:*
+
+U- `delete`
+
+S- Please enter the index number of task you wish to delete.
+
+U- `1`
+
+S- The task Lab 1 submission will be deleted. +
+Please click enter again to make the desired deletion.
+
+U- `[enter]`
+
+S- Task deleted successfully!
+
+==== Delete duplicates
+*Format:*
+
+U- `delete duplicates`
+
+S- done!
+
+*Description:*
+
+. This function allows you delete any duplicate tasks in your list of tasks.
+
+*Example:*
+
+U- `delete`
+
+S- The duplicate tasks will be deleted +
+Please press enter again to make the desired changes.
+
+U- `[enter]`
+
+S- Duplicated task deleted successfully!
+
+==== Clear
+*Format:*
+
+U- `clear`
+
+S- done!
+
+*Description:*
+
+. This function allows you clear your entire list.
+
+[NOTE]
+This function will clear any data you have entered into the application. Use it with caution!
+
+*Example:*
+
+U- `clear`
+
+S- Please press enter to clear all your tasks. +
+Else enter quit to go back.
+
+U- `[enter]`
+
+S- Tasks cleared successfully!
+
+==== Exit
+*Format:*
+
+U- `bye`
+
+S- done!
+
+*Description:*
+
+. This function allows you close the application.
+
+[NOTE]
+Your data will be saved and reloaded when you reopen the application!
+
+*Example:*
+
+U- `bye`
+
+S- Are you sure you want to quit? +
+Please press enter yes if you would like to close the application.
+
+U- `yes`
+
+S- [exits]
+
 
 ==== Find
 
@@ -246,38 +358,6 @@ Examples:
 Returns `john` and `John Doe`
 * `find Betsy Tim John` +
 Returns any task having names `Betsy`, `Tim`, or `John`
-
-// tag::delete[]
-==== Deleting a task : `delete`
-
-Deletes the specified task from the study buddy. +
-Format: `delete INDEX`
-
-****
-* Deletes the task at the specified `INDEX`.
-* The index refers to the index number shown in the displayed task list.
-* The index *must be a positive integer* 1, 2, 3, ...
-****
-
-Examples:
-
-* `list` +
-`delete 2` +
-Deletes the 2nd task in the study buddy.
-* `find Betsy` +
-`delete 1` +
-Deletes the 1st task in the results of the `find` command.
-
-// end::delete[]
-==== Clearing all entries : `clear`
-
-Clears all entries from the study buddy. +
-Format: `clear`
-
-==== Exiting the program : `exit`
-
-Exits the program. +
-Format: `exit`
 
 ==== Saving the data
 
