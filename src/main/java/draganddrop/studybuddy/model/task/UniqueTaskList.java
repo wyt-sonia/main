@@ -12,6 +12,7 @@ import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.task.exceptions.TaskNotFoundException;
 
+import draganddrop.studybuddy.model.user.Statistics;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -149,6 +150,9 @@ public class UniqueTaskList implements Iterable<Task> {
             target.setFinishDateTime(TimeParser.parseDateTime(finishDateTimeString));
             int index = internalList.indexOf(target);
             internalList.set(index, target);
+
+            // log statistics
+            Statistics.recordCompletedTask(target);
         }
     }
 
