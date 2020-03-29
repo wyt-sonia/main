@@ -35,7 +35,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
     @Override
     public String interact(String userInput) {
         if (isQuitOrBack(userInput)) {
-            this.reply = handleQuit(userInput, QUIT_COMMAND_MSG);
+            this.reply = handleQuitAndBack(userInput, QUIT_COMMAND_MSG);
         } else {
             this.reply = handleEdit(userInput);
         }
@@ -51,6 +51,8 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         if (userInput.equals("quit")) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
+        } else if (userInput.equals("back")) {
+            userInput = checkForBackInput(userInput);
         }
 
         switch (currentTerm) {
