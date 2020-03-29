@@ -33,6 +33,7 @@ public class MainWindow extends UiPart<Stage> {
     private static final String ARCHIVED_TASK = "Archived Task";
     private static final String CALENDAR = "Calendar";
     private static final String TASK_SUMMARY = "Task Summary";
+    private static final String PROFILE_PAGE = "Profile Page";
 
     private static final String FXML = "MainWindow.fxml";
 
@@ -48,6 +49,7 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private ModuleListPanel moduleListPanel;
+    private ProfilePage profilePage;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -80,13 +82,16 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane modulePaneHolder;
 
     @FXML
+    private StackPane profilePageHolder;
+
+    @FXML
     private Label taskListPanelTitle;
 
     @FXML
     private Pane taskListPanelTitleHolder;
 
     @FXML
-    private Label dueSoonTaskListPanelTitle;
+    private Label dueListPanelTitle;
 
     @FXML
     private Pane dueSoonTaskListPanelTitleHolder;
@@ -166,6 +171,12 @@ public class MainWindow extends UiPart<Stage> {
         taskSummaryHolder.setVisible(false);
         taskSummaryHolder.setManaged(false);
 
+        //Profile page
+        profilePage = new ProfilePage(logic.getFilteredTaskList());
+        profilePageHolder.getChildren().add(profilePage.getRoot());
+        profilePageHolder.setVisible(false);
+        profilePageHolder.setManaged(false);
+
         moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList(), logic.getFilteredTaskList());
         modulePaneHolder.getChildren().add(moduleListPanel.getRoot());
         modulePaneHolder.setVisible(false);
@@ -225,6 +236,19 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.show();
     }
 
+
+    /**
+     * handles showing the profile page
+     */
+    @FXML
+    private void handleShowProfile() {
+        toggleAllHoldersInvisible();
+        toggleProfileHolderView(true);
+
+        toggleAllTitle(false);
+        toggleMainTitleView(true);
+        setMainTitleText(PROFILE_PAGE);
+    }
     /**
      * Closes the application.
      */
@@ -263,6 +287,7 @@ public class MainWindow extends UiPart<Stage> {
 
         toggleAllTitle(true);
         setMainTitleText(TITLE);
+        dueListPanelTitle.setText(DUE_SOON_TASK);
         dueSoonListPanel = new DueSoonListPanel(logic.getFilteredDueSoonTaskList());
         dueSoonListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
     }
@@ -296,6 +321,8 @@ public class MainWindow extends UiPart<Stage> {
         setMainTitleText(MODULE);
     }
 
+
+
     /**
      * handles calendar to be shown in TaskListHolder.
      */
@@ -308,8 +335,8 @@ public class MainWindow extends UiPart<Stage> {
         toggleTaskListPanelTitleView(false);
         setMainTitleText(CALENDAR);
 
-
-        CalendarBox calendar = new CalendarBox(logic.getFilteredTaskList(), dueSoonListPanelPlaceholder);
+        CalendarBox calendar = new CalendarBox(logic.getFilteredTaskList(), dueSoonListPanelPlaceholder,
+                dueListPanelTitle);
         taskListPanelPlaceholder.getChildren().add(calendar.getRoot());
     }
 
@@ -348,10 +375,11 @@ public class MainWindow extends UiPart<Stage> {
      * @param val2 toggles TaskSummaryHolder
      * @param val3 toggles ModuleTabHolder
      */
-    private void customToggleHolders(boolean val1, boolean val2, boolean val3) {
+    private void customToggleHolders(boolean val1, boolean val2, boolean val3, boolean val4) {
         toggleTaskListHolderView(val1);
         toggleTaskSummaryHolderView(val2);
         toggleModTabView(val3);
+        toggleProfileHolderView(val4);
     }
 
 
@@ -371,7 +399,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void toggleAllHoldersInvisible() {
-        customToggleHolders(false, false, false);
+        customToggleHolders(false, false, false, false);
     }
 
     private void toggleTaskSummaryHolderView(boolean val) {
@@ -386,6 +414,10 @@ public class MainWindow extends UiPart<Stage> {
 
     private void toggleModTabView(boolean val) {
         setPaneView(modulePaneHolder, val);
+    }
+
+    private void toggleProfileHolderView(boolean val) {
+        setPaneView(profilePageHolder, val);
     }
 
 
