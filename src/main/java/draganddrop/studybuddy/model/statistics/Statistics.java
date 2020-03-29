@@ -1,7 +1,7 @@
-package draganddrop.studybuddy.model.user;
+package draganddrop.studybuddy.model.statistics;
 
 /**
- * Usage statistics for the user
+ * Usage statistics for the user. These statistics are used on the productivity page.
  */
 public class Statistics {
     private int points;

@@ -12,7 +12,7 @@ import java.util.Objects;
 
 import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.model.module.Module;
-import draganddrop.studybuddy.model.user.Statistics;
+import draganddrop.studybuddy.model.statistics.OverdueStats;
 
 /**
  * pending.
@@ -26,6 +26,7 @@ public class Task implements Comparable<Task> {
     private static final int HOURS_DIVISOR = (1000 * 60 * 60);
     private static final int DAYS_DIVISOR = (1000 * 60 * 60 * 24);
     private static final int MINUTES_IN_WEEK = (7 * 24 * 60);
+    private static OverdueStats overdueStats;
     private static ArrayList<Task> currentTasks = new ArrayList<>();
 
     private Module module;
@@ -59,6 +60,10 @@ public class Task implements Comparable<Task> {
 
     public Task() {
         dateTimes = new LocalDateTime[2];
+    }
+
+    public static void setOverdueStats(OverdueStats overdueStats) {
+        Task.overdueStats = overdueStats;
     }
 
     public static void updateCurrentTaskList(List<Task> tasks) {
@@ -151,7 +156,7 @@ public class Task implements Comparable<Task> {
             }
             if (!this.isDueSoon()) {
                 if (this.dateTimes[0].isBefore(now) && !this.taskStatus.equals(TaskStatus.OVERDUE)) {
-                    Statistics.recordOverdueTask(this);
+                    overdueStats.recordOverdueTask(this);
                     this.taskStatus = TaskStatus.OVERDUE;
                     return;
                 }
@@ -165,7 +170,7 @@ public class Task implements Comparable<Task> {
 
     /**
      * Checks whether the status of the task is expired.
-     *
+     * <p>
      * Returns true if the status of the task is expired.
      */
     public boolean isStatusExpired() {

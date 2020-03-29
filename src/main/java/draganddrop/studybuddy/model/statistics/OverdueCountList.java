@@ -1,4 +1,4 @@
-package draganddrop.studybuddy.model.user;
+package draganddrop.studybuddy.model.statistics;
 
 import java.util.ArrayList;
 import java.util.List;

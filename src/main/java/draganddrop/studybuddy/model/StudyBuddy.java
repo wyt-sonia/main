@@ -12,7 +12,7 @@ import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskType;
 import draganddrop.studybuddy.model.task.UniqueTaskList;
 
-import draganddrop.studybuddy.model.user.Statistics;
+import draganddrop.studybuddy.model.statistics.Statistics;
 import javafx.collections.ObservableList;
 
 /**

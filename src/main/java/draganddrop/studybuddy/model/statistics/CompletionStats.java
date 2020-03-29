@@ -1,4 +1,4 @@
-package draganddrop.studybuddy.model.user;
+package draganddrop.studybuddy.model.statistics;
 
 import java.time.LocalDateTime;
 

@@ -1,4 +1,4 @@
-package draganddrop.studybuddy.model.user;
+package draganddrop.studybuddy.model.statistics;
 
 import static java.time.temporal.TemporalAdjusters.firstDayOfYear;
 

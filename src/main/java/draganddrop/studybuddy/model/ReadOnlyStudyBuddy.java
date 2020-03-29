@@ -3,7 +3,7 @@ package draganddrop.studybuddy.model;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.task.Task;
 
-import draganddrop.studybuddy.model.user.Statistics;
+import draganddrop.studybuddy.model.statistics.Statistics;
 import javafx.collections.ObservableList;
 
 /**

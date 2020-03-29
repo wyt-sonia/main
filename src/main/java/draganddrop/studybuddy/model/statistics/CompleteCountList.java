@@ -1,4 +1,4 @@
-package draganddrop.studybuddy.model.user;
+package draganddrop.studybuddy.model.statistics;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public class CompleteCountList {
     /**
      * Returns number of task completed on the given day
      *
-     * @param dayIndex
+     * @param dayIndex the day of interest
      * @return number of tasks completed on the given day
      */
     public int getDailyCompleteCount(int dayIndex) {
