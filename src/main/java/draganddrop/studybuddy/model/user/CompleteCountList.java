@@ -44,6 +44,4 @@ public class CompleteCountList {
     public int getDailyCompleteCount(int dayIndex) {
         return completeCountList.get(dayIndex);
     }
-
-
 }
