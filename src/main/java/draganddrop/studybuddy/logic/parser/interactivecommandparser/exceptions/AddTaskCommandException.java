@@ -5,9 +5,11 @@ package draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions;
  */
 public class AddTaskCommandException extends InteractiveCommandException {
 
-    /*
-     *pending
-     * */
+    /**
+     * Creates an AddTaskCommandException with {@code errorType}.
+     *
+     * @param errorType
+     */
     public AddTaskCommandException(String errorType) {
         super(errorType);
     }

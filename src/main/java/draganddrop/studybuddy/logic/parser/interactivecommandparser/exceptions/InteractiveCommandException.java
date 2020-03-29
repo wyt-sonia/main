@@ -15,6 +15,10 @@ public class InteractiveCommandException extends RuntimeException {
             errorMessage = "The input is empty, please check again.";
             break;
 
+        case "noSuchModuleError":
+            errorMessage = "Could not find the module based on the module code entered, please check and re-enter.";
+            break;
+
         case "invalidIndexRangeError":
             errorMessage = "The index entered is out of range, please check again.";
             break;

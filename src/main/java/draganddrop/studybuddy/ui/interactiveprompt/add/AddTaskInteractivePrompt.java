@@ -13,6 +13,7 @@ import static draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType.
 
 import java.text.ParseException;
 import java.time.LocalDateTime;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import draganddrop.studybuddy.logic.commands.add.AddTaskCommand;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
@@ -20,10 +21,12 @@ import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.AddTaskCommandParser;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
 import draganddrop.studybuddy.model.module.EmptyModule;
+import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskType;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
+import javafx.collections.ObservableList;
 
 /**
  * A interactive prompt for adding new task.
@@ -32,12 +35,18 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     static final String END_OF_COMMAND_MSG = "Task added successfully!";
     static final String END_OF_COMMAND_DUPLICATE_MSG = "Task will not be added! Key in your next command :)";
     static final String QUIT_COMMAND_MSG = "Successfully quited from add task command.";
+    private String moduleListString = "";
+    private ObservableList<Module> modules;
+    private boolean isModuleTried = false;
+    private Task task;
 
-    protected Task task;
+
 
     public AddTaskInteractivePrompt() {
+        super();
         this.interactivePromptType = ADD_TASK;
         this.task = new Task();
+        this.modules = null;
     }
 
     @Override
@@ -49,37 +58,61 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
 
         switch (currentTerm) {
         case INIT:
-            this.reply = "Please enter the task name.";
-            currentTerm = InteractivePromptTerms.TASK_NAME;
-            lastTerm = InteractivePromptTerms.INIT;
-            terms.add(lastTerm);
+            this.reply = "Please choose a Module for this task or press enter to skip.\n"
+                + "Index number and module code are both acceptable.\n"
+                + "The Modules available are: \n";
+            this.modules = logic.getFilteredModuleList();
+            AtomicInteger counter = new AtomicInteger();
+            modules.forEach(m -> {
+                counter.getAndAdd(1);
+                reply += counter + "." + m.getModuleCode() + " " + m.getModuleName() + "\n";
+            });
+            moduleListString = this.reply;
+            currentTerm = InteractivePromptTerms.TASK_MODULE;
             /**
              * TEMPORARY PLACEHOLDER TO ENABLE FILE SAVE.
              * REMOVE task.setAttribute once you've create methods to handle these....
              * By default, Task will go to Module code AA0000. To add to a specific module, use other commands.
              */
-
-            task.setModule(new EmptyModule());
             task.setStatus("pending");
-
-            task.setTaskDescription("No Description Available");
+            task.setTaskDescription("No Description");
             task.setWeight(0.0);
             task.setEstimatedTimeCost(0);
+            break;
+
+        case TASK_MODULE:
+            try {
+                Module module = null;
+                if (userInput.isBlank() && !isModuleTried) {
+                    module = new EmptyModule();
+                } else if (userInput.isBlank() && isModuleTried) {
+                    throw new AddTaskCommandException("emptyInputError");
+                } else {
+                    isModuleTried = true;
+                    module = AddTaskCommandParser.parseModule(userInput, modules);
+                }
+                task.setModule(module);
+                currentTerm = InteractivePromptTerms.TASK_NAME;
+                this.reply = "The module has been set as: " + module.getModuleCode() + " "
+                    + module.getModuleName() + "\n\n"
+                    + "Please enter the task name.";
+            } catch (AddTaskCommandException e) {
+                isModuleTried = false;
+                reply = e.getErrorMessage() + "\n\n" + moduleListString;
+            }
             break;
 
         case TASK_NAME:
             try {
                 userInput = AddTaskCommandParser.parseName(userInput);
                 this.reply = "The name of task is set to: " + userInput + ".\n"
-                        + "Please choose the task type:\n"
-                        + TaskType.getTypeString();
-
+                    + "Please choose the task type:\n"
+                    + TaskType.getTypeString();
                 task.setTaskName(userInput);
                 currentTerm = InteractivePromptTerms.TASK_TYPE;
-                lastTerm = InteractivePromptTerms.TASK_NAME;
-                terms.add(lastTerm);
             } catch (AddTaskCommandException ex) {
-                reply = ex.getErrorMessage();
+                reply = ex.getErrorMessage() + "\n\n"
+                    + "Please enter the task name.";
             }
             break;
 
@@ -88,10 +121,8 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 TaskType taskType = AddTaskCommandParser.parseType(userInput, TaskType.getTaskTypes().length);
                 task.setTaskType(taskType);
 
-                userInput = taskType.toString();
-
-                this.reply = "The type of task is set to: " + userInput + ".\n"
-                        + "Please enter the deadline with format: ";
+                this.reply = "The type of task has been set to: " + taskType.toString() + ".\n"
+                    + "Please enter the deadline with format: ";
                 if (taskType.equals(TaskType.Assignment)) {
                     this.reply += "HH:mm dd/MM/yyyy";
                 } else {
@@ -99,8 +130,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 }
 
                 currentTerm = InteractivePromptTerms.TASK_DATETIME;
-                lastTerm = InteractivePromptTerms.TASK_TYPE;
-                terms.add(lastTerm);
             } catch (NumberFormatException ex) {
                 reply = (new AddTaskCommandException("wrongIndexFormat")).getErrorMessage();
             } catch (AddTaskCommandException ex) {
@@ -117,16 +146,15 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                     userInput = TimeParser.getDateTimeString(dateTimes[0]);
                 } else {
                     userInput = TimeParser.getDateTimeString(dateTimes[0])
-                            + "-" + TimeParser.getDateTimeString(dateTimes[1]);
+                        + "-" + TimeParser.getDateTimeString(dateTimes[1]);
                 }
 
-                reply = "The date and time is set to: " + userInput + "\n"
-                        + "Press enter again to add the task:\n"
-                        + task.getTaskName() + " " + task.getTaskType().toString() + " " + task.getTimeString();
+                reply = "The date and time is set to: " + userInput + "\n\n"
+                    + "Press enter again to add the task:\n\n"
+                    + "=========== TASK INFO ===========\n"
+                    + task.toString();
 
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-                lastTerm = InteractivePromptTerms.TASK_DATETIME;
-                terms.add(lastTerm);
             } catch (AddTaskCommandException ex) {
                 reply = ex.getErrorMessage();
             }
@@ -137,10 +165,9 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 task.setCreationDateTime(LocalDateTime.now());
                 AddTaskCommand addTaskCommand = new AddTaskCommand(task);
                 logic.executeCommand(addTaskCommand);
-                System.out.println(task.isDuplicate());
                 if (task.isDuplicate()) {
                     reply = "This is a duplicate task. Are you sure you would like to proceed?\n"
-                            + "Please enter yes or no.";
+                        + "Please enter yes or no.";
                     currentTerm = InteractivePromptTerms.ADD_DUPLICATE;
                 } else {
                     endInteract(END_OF_COMMAND_MSG);
@@ -169,10 +196,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             }
             break;
 
-        case TASK_MODULE:
-            //TASK_MODULE under construction
-            break;
-
         case TASK_WEIGHT:
             //TASK_WEIGHT under construction
             break;
@@ -192,9 +215,24 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
 
 
     @Override
+    public void interruptInteract() {
+
+    }
+
+    @Override
     public void endInteract(String msg) {
         this.reply = msg;
         super.setEndOfCommand(true);
+    }
+
+    @Override
+    public void back() {
+
+    }
+
+    @Override
+    public void next() {
+
     }
 
     /**

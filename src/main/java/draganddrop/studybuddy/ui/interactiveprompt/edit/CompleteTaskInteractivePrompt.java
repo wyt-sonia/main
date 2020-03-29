@@ -38,8 +38,6 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
         case INIT:
             this.reply = "Please enter the index number of task you wish to mark as done.";
             currentTerm = InteractivePromptTerms.TASK_INDEX;
-            lastTerm = InteractivePromptTerms.INIT;
-            terms.add(lastTerm);
             break;
 
         case TASK_INDEX:
@@ -48,8 +46,6 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
                 reply = "The task at index " + userInput + " will be mark as Done. \n "
                     + " Please click enter again to make the desired deletion.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-                lastTerm = InteractivePromptTerms.TASK_DATETIME;
-                terms.add(lastTerm);
             } catch (DeleteTaskCommandException ex) {
                 reply = ex.getErrorMessage();
             }

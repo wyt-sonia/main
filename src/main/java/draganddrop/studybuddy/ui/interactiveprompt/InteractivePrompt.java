@@ -1,11 +1,9 @@
 package draganddrop.studybuddy.ui.interactiveprompt;
 
-import java.util.ArrayList;
-
 import draganddrop.studybuddy.logic.Logic;
 
 /**
- * Interactive Prompt
+ * pending.
  */
 public abstract class InteractivePrompt {
     protected Logic logic;
@@ -15,8 +13,6 @@ public abstract class InteractivePrompt {
     protected String reply;
     protected String userInput;
     protected InteractivePromptTerms currentTerm;
-    protected InteractivePromptTerms lastTerm;
-    protected ArrayList<InteractivePromptTerms> terms;
 
 
     public InteractivePrompt() {
@@ -24,19 +20,30 @@ public abstract class InteractivePrompt {
         this.isEndOfCommand = false;
         this.reply = "";
         this.currentTerm = InteractivePromptTerms.INIT;
-        this.lastTerm = null;
-        this.terms = new ArrayList<>();
     }
 
     public abstract String interact(String userInput);
 
     /**
      * ends the interaction
+     *
      * @param reply message to be displayed to the user upon end of interaction
      */
     public void endInteract(String reply) {
         this.reply = reply;
         setEndOfCommand(true);
+    }
+
+    public void interruptInteract() {
+        // empty
+    }
+
+    public void back() {
+        // empty
+    }
+
+    public void next() {
+        // empty
     }
 
     public boolean isQuit() {
@@ -70,7 +77,7 @@ public abstract class InteractivePrompt {
      * @param quitMessage the message that is displayed upon quitting
      * @return the reply to user
      */
-    public String handleQuit(String userInput, String quitMessage) {
+    public String handleQuitAndBack(String userInput, String quitMessage) {
         if (userInput.equals("quit")) {
             endInteract(quitMessage);
         }
@@ -79,6 +86,7 @@ public abstract class InteractivePrompt {
 
     /**
      * checks if the userInput is quit or back
+     *
      * @param userInput
      * @return true if the userInput is quit or back, false otherwise
      */

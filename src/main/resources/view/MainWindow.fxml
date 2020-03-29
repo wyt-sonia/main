@@ -27,15 +27,20 @@
             </stylesheets>
             <VBox id="mainContainer" maxWidth="1.7976931348623157E308">
                 <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
-                    <Menu mnemonicParsing="false" text="StudyBuddy">
+                    <Menu mnemonicParsing="false" text="Study Buddy">
+                        <MenuItem mnemonicParsing="false" onAction="#handleShowAllTasks" style="-fx-font-size: 10pt;"
+                                  text="Dashboard"/>
+                        <MenuItem mnemonicParsing="false" onAction="#handleExit" style="-fx-font-size: 10pt;"
+                                  text="Exit"/>
+                    </Menu>
+                    <Menu mnemonicParsing="false" text="My Tasks">
                         <MenuItem mnemonicParsing="false" onAction="#handleShowAllTasks" style="-fx-font-size: 10pt;"
                                   text="All Tasks"/>
                         <MenuItem mnemonicParsing="false" onAction="#handleShowArchivedTasks"
                                   style="-fx-font-size: 10pt;" text="Archived Tasks"/>
                         <MenuItem mnemonicParsing="false" onAction="#handleDueSoonTasks" style="-fx-font-size: 10pt;"
                                   text="Due Soon Task"/>
-                        <MenuItem mnemonicParsing="false" onAction="#handleExit" style="-fx-font-size: 10pt;"
-                                  text="Exit"/>
+
                     </Menu>
                     <Menu mnemonicParsing="false" text="Modules">
                         <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleShowModules"
@@ -45,15 +50,12 @@
                         <MenuItem fx:id="helpMenuItem11" mnemonicParsing="false" style="-fx-font-size: 10pt;"
                                   text="Edit"/>
                     </Menu>
-                    <Menu mnemonicParsing="false">
-                        <graphic>
-                            <Label fx:id="taskSummaryEntry" text="Statistics" onMouseClicked="#handleShowTaskSummary"/>
-                        </graphic>
+                    <Menu mnemonicParsing="false" text="Statistics">
+                        <MenuItem fx:id="taskSummaryEntry" mnemonicParsing="false" onAction="#handleShowTaskSummary" style="-fx-font-size: 10pt;" text="Task Summary" />
+                        <MenuItem fx:id="usageSummaryEntry" mnemonicParsing="false" onAction="#handleShowProfile" style="-fx-font-size: 10pt;" text="Usage Summary" />
                     </Menu>
-                    <Menu mnemonicParsing="false">
-                        <graphic>
-                            <Label fx:id="CalendarLabel"  text="Calendar" onMouseClicked="#handleShowCalendar"/>
-                        </graphic>
+                    <Menu mnemonicParsing="false" text="Calendar">
+                        <MenuItem mnemonicParsing="false" onAction="#handleShowCalendar" text="Display"/>
                     </Menu>
                <Menu mnemonicParsing="false">
                   <graphic>
@@ -92,7 +94,7 @@
                             <children>
                                 <Label fx:id="taskListPanelTitle" alignment="CENTER" contentDisplay="CENTER"
                                        prefHeight="40.0" prefWidth="${taskListPanelTitleHolder.width}"
-                                       styleClass="sub_header" text="All-Task" textAlignment="CENTER">
+                                       styleClass="sub_header" text="All Tasks" textAlignment="CENTER">
                                     <padding>
                                         <Insets left="10.0" right="10.0"/>
                                     </padding>
@@ -116,7 +118,7 @@
                             <children>
                                 <Label fx:id="dueListPanelTitle" alignment="CENTER" contentDisplay="CENTER"
                                        ellipsisString="" prefHeight="40.0" prefWidth="${dueListPanelTitleHolder.width}"
-                                       styleClass="sub_header" text="Task to be due soon" textAlignment="CENTER"
+                                       styleClass="sub_header" text="Task Due Soon" textAlignment="CENTER"
                                        textOverrun="CLIP">
                                     <padding>
                                         <Insets left="10.0" right="10.0"/>
