@@ -9,7 +9,6 @@ import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.logic.parser.exceptions.ParseException;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -376,8 +375,9 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void toggleTaskSummaryHolderView(boolean val) {
+        taskSummaryHolder.setVisible(val);
+        taskSummaryHolder.setManaged(val);
         setPaneView(taskSummaryHolder, val);
-
     }
 
     private void toggleTaskListHolderView(boolean val) {

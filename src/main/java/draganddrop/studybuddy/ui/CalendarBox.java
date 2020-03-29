@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.UniqueTaskList;
-
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,10 +19,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -78,7 +73,8 @@ public class CalendarBox extends UiPart<Region> {
 
     /**
      * Generates a calendarBox with give year and month
-     * @param calYear calendar year
+     *
+     * @param calYear  calendar year
      * @param calMonth calendar month
      */
     private void generateCalendar(int calYear, Month calMonth) {
@@ -104,15 +100,15 @@ public class CalendarBox extends UiPart<Region> {
             Pane p = new Pane();
             p.setBackground(new Background(new BackgroundFill(Color.WHEAT, CornerRadii.EMPTY, Insets.EMPTY)));
             monthBox.add(p, dayOfWeek, j);
-            Label temp_lbl = new Label(i+"");
-            temp_lbl.setPadding(new Insets(2, 2,2,4));
+            Label temp_lbl = new Label(i + "");
+            temp_lbl.setPadding(new Insets(2, 2, 2, 4));
             temp.getChildren().add(temp_lbl);
             int count = 0;
             for (Task task : taskList) {
                 LocalDateTime[] ldt = task.getDateTimes();
                 LocalDateTime tempTaskDueDate = ldt[0];
                 LocalDate taskDueDate = LocalDate.of(tempTaskDueDate.getYear(),
-                        tempTaskDueDate.getMonth(), tempTaskDueDate.getDayOfMonth());
+                    tempTaskDueDate.getMonth(), tempTaskDueDate.getDayOfMonth());
                 if (taskDueDate.equals(tempDate)) {
                     count++;
                 }
@@ -172,6 +168,7 @@ public class CalendarBox extends UiPart<Region> {
 
     /**
      * Generates task list when clicked on cell.
+     *
      * @param event mouse click event
      */
     public void onClickDate(javafx.scene.input.MouseEvent event) {
@@ -185,7 +182,7 @@ public class CalendarBox extends UiPart<Region> {
             Integer colIndex = GridPane.getColumnIndex(clickedNode);
             Integer rowIndex = GridPane.getRowIndex(clickedNode);
             int firstDayOfWeek = LocalDate.of(calendarYear, calendarMonth, 1)
-                    .getDayOfWeek().getValue();
+                .getDayOfWeek().getValue();
             if (firstDayOfWeek == 7) {
                 firstDayOfWeek = 0;
                 rowIndex--;
@@ -212,7 +209,7 @@ public class CalendarBox extends UiPart<Region> {
             LocalDateTime[] ldt = task.getDateTimes();
             LocalDateTime tempTaskDueDate = ldt[0];
             LocalDate taskDueDate = LocalDate.of(tempTaskDueDate.getYear(),
-                    tempTaskDueDate.getMonth(), tempTaskDueDate.getDayOfMonth());
+                tempTaskDueDate.getMonth(), tempTaskDueDate.getDayOfMonth());
             if (taskDueDate.equals(date)) {
                 taskByDay.add(task);
             }
