@@ -1,18 +1,17 @@
 package draganddrop.studybuddy.model.module;
 
-import static draganddrop.studybuddy.logic.commands.CommandTestUtil.VALID_DESCRIPTION_ONE;
-import static draganddrop.studybuddy.logic.commands.CommandTestUtil.VALID_TASK_NAME_ONE;
-
 import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studybuddy.testutil.Assert;
 import draganddrop.studybuddy.testutil.SampleModules;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import draganddrop.studybuddy.model.module.Module;
-
-import draganddrop.studybuddy.model.util.SampleDataUtil;
+import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 public class ModuleTest {
     Module sample1 = SampleModules.getSampleModule()[0];
@@ -22,9 +21,9 @@ public class ModuleTest {
     @Test
     public void equals() {
         //different name but same code -> true
-        assertTrue(sample1.equals(sample2));
+        assertEquals(sample1, sample2);
         //same name but different code -> false
-        assertFalse(sample1.equals(sample3));
+        assertNotEquals(sample1, sample3);
     }
 
     @Test
@@ -36,4 +35,14 @@ public class ModuleTest {
     public void createModuleWithNoNumber_throwsModuleCodeException() {
         Assert.assertThrows(ModuleCodeException.class, ()-> new Module("ABBA"));
     }
+
+    /*@Test
+    public void filterTaskFromTaskListTest() {
+        Module emptyMod = new EmptyModule();
+        emptyMod.filterAndSetInternalTaskList(SampleModules.getSampleTask());
+        for(int i = 0; i < emptyMod.getInternalTaskList().size(); i++) {
+            assertTrue(emptyMod.getInternalTaskList().get(i), SampleModules.getExpectedOutcomeForFilterFunction().get(i));
+        }
+
+    }*/
 }
