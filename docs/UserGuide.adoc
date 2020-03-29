@@ -299,6 +299,9 @@ S- refreshes task tags and due soon list
 [NOTE]
 Both the status tags and due soon list auto-update when changes such as addition, deletion etc are performed. However the refresh function is helpful when the application has been open for a considerable amount of time and the tags/time on due soon list needs an update.
 
+[NOTE]
+This function is linked to <<Due Soon List>> and <<Status Tags>>
+
 *Example:*
 
 U- `refresh`
@@ -399,7 +402,7 @@ By default, it shows the following:
 . A chart of the amount of time you spend on each of your modules
 . Existing stopwatches that are already running
 
-=== Due Soon Tasks
+=== Due Soon List
 
 The due soon task list is always on display in your application. +
 It provides the following functionality:
@@ -409,7 +412,7 @@ It provides the following functionality:
 . It displays a tag with the time left to the deadline.
 . It provides a <<Refresh>> function that allows you to refresh time/state of this list if needed.
 
-=== Status tags
+=== Status Tags
 
 === Interactive Command Prompt
 
