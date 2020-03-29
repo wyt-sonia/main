@@ -88,6 +88,10 @@ public class Task implements Comparable<Task> {
         }
     }
 
+    public LocalDateTime getDueDate() {
+        return getDateTimes()[1];
+    }
+
     public String getTimeLeft() {
         String timeLeft = "due: ";
         df = new SimpleDateFormat("HH:mm dd/MM/yyyy");
