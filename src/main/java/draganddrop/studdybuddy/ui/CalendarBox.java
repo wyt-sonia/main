@@ -44,6 +44,7 @@ public class CalendarBox extends UiPart<Region> {
     private Month calendarMonth;
     private LocalDate localDate;
     private StackPane dueSoonListPanelPlaceholder;
+    private Label dueSoonPanelTitle;
 
     @FXML
     private Label month;
@@ -60,12 +61,21 @@ public class CalendarBox extends UiPart<Region> {
     @FXML
     private Button next;
 
-    public CalendarBox(ObservableList<Task> taskList, StackPane dueSoonListPanelPlaceholder) {
+    public CalendarBox(ObservableList<Task> taskList, StackPane dueSoonListPanelPlaceholder, Label dueSoonPanelTitle) {
         super(FXML);
         this.taskList = taskList;
         Date date = new Date();
         localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         this.dueSoonListPanelPlaceholder = dueSoonListPanelPlaceholder;
+        this.dueSoonPanelTitle = dueSoonPanelTitle;
+
+        //reset data in panels for calendar
+        dueSoonPanelTitle.setText("Click on a date to see tasks");
+        dueSoonListPanelPlaceholder.getChildren().clear();
+        dueSoonListPanelPlaceholder.setBackground(
+                new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        //generatecalendar
         generateCalendar(localDate.getYear(), localDate.getMonth());
 
         taskList.addListener(new ListChangeListener<Task>() {
@@ -190,10 +200,9 @@ public class CalendarBox extends UiPart<Region> {
             LocalDate clickedDate = LocalDate.of(calendarYear, calendarMonth, date);
             ObservableList<Task> taskByDay = generateTaskList(clickedDate);
             TaskListPanel taskByDayPanel = new TaskListPanel(taskByDay);
+            dueSoonPanelTitle.setText("Task for " + clickedDate.toString() + " :");
             dueSoonListPanelPlaceholder.getChildren().clear();
             dueSoonListPanelPlaceholder.getChildren().add(taskByDayPanel.getRoot());
-            //System.out.println(clickedDate);
-            //taskByDay.forEach(System.out::println);
         }
 
     }

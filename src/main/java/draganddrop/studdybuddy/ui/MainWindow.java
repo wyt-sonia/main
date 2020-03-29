@@ -87,7 +87,7 @@ public class MainWindow extends UiPart<Stage> {
     private Pane taskListPanelTitleHolder;
 
     @FXML
-    private Label dueSoonTaskListPanelTitle;
+    private Label dueListPanelTitle;
 
     @FXML
     private Pane dueSoonTaskListPanelTitleHolder;
@@ -264,6 +264,7 @@ public class MainWindow extends UiPart<Stage> {
 
         toggleAllTitle(true);
         setMainTitleText(TITLE);
+        dueListPanelTitle.setText("Task to be due soon");
         dueSoonListPanel = new DueSoonListPanel(logic.getFilteredDueSoonTaskList());
         dueSoonListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
     }
@@ -309,8 +310,8 @@ public class MainWindow extends UiPart<Stage> {
         toggleTaskListPanelTitleView(false);
         setMainTitleText(CALENDAR);
 
-
-        CalendarBox calendar = new CalendarBox(logic.getFilteredTaskList(), dueSoonListPanelPlaceholder);
+        CalendarBox calendar = new CalendarBox(logic.getFilteredTaskList(), dueSoonListPanelPlaceholder,
+                dueListPanelTitle);
         taskListPanelPlaceholder.getChildren().add(calendar.getRoot());
     }
 
