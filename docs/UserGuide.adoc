@@ -19,10 +19,13 @@ By: `Team Drag&Drop`      Since: `Jan 2020`
 
 == Introduction
 
-StudyBuddy is for an application designed for those who *prefer to use a desktop app for managing module related tasks*.
-More importantly, StudyBuddy is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
+. StudyBuddy is an application designed for students. It makes keeping track of all *module related tasks* extremely convenient.
+. The application even provides functions such as visual aids, timers etc to enhance the user experience.
+. StudyBuddy is also *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
+
 If you can type fast, Study Buddy can get your module management done faster than traditional GUI apps.
 Interested?
+
 Jump to the <<Quick Start>> to get started.
 Enjoy!
 
@@ -77,34 +80,78 @@ e.g. typing *`help`* and pressing kbd:[Enter] will display a list of commands yo
 *Command Format*
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-* Items in square brackets are optional e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-* Items with `…`​ after them can be used multiple times including zero times e.g. `[t/TAG]...` can be used as `{nbsp}` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
-* Parameters can be in any order e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+* S and U stand for Study Buddy and User respectively.
+* When a line is preceded by S, it implies that it is a reply displayed by Study Buddy.
+* When a line is preceded by U, it implies that it is a value that must be entered by the user.
+
 ====
 
-==== Viewing help : `help`
+[NOTE]
+These features utilize interactive command prompt. (described in section <<Interactive Command Prompt>> )
 
-Format: `help`
+==== Help :
 
-==== Adding a task: `add`
+Format:
 
-Adds a task to the study buddy +
-Format: `add n/NAME d/DATE e/DETAILS l/LABEL [t/TAG]...`
+U- `help`
 
-[TIP]
-A task can have any number of tags (including 0)
+S- list of commands
+
+. This function displays a list of commands that you can use.
+. It also provides a link to this document, (our user guide) for your convenience.
+
+==== Add:
+
+Format:
+
+U- `add`
+
+S- prompt for name
+
+U- `NAME`
+
+S- list of possible task types, prompt for type index
+
+U- `TYPE INDEX`
+
+S- prompt for deadline
+
+U- `DEADINE`
+
+S- done!
+
+. This function allows you to add a task to your list of tasks.
+. You can assign a name, type, and deadline to your tasks.
+
+[NOTE]
+The application does not allow you to enter a deadline that has already passed. It must be a time in the future.
+
 
 Examples:
 
-* `add n/Kattis Problem d/2020-03-12 e/Minimum Spanning Tree problem l/blue`
-* `add n/Post-Lecture Quiz t/schoolwork d/2020-04-12 e/For Lecture 7 l/green t/CS2103T`
+* `add`
 
-==== Listing all tasks : `list`
+  `Lab 1 submission`
 
-Shows a list of all tasks in the study buddy. +
-Format: `list`
+  `1`
 
-==== Editing a task : `edit`
+  `18:00 23/06/2020`
+
+
+==== List
+
+Format:
+
+U- `list`
+
+S- lists all tasks
+
+. This function allows you to view a list of all your tasks.
+
+[NOTE]
+The application has a list of your tasks that is always on display. However if you use the <<find>> function, you may need <<List>> to navigate back to the complete list.
+
+==== Edit
 
 Edits an existing task in the study buddy. +
 Format: `edit INDEX [n/NAME] [d/DATE] [e/DETAILS] [l/LABEL] [t/TAG]...`
