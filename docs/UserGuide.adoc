@@ -83,7 +83,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will display a list of commands yo
 * S and U stand for Study Buddy and User respectively.
 * When a line is preceded by S, it implies that it is a reply displayed by Study Buddy.
 * When a line is preceded by U, it implies that it is a value that must be entered by the user.
-
+* [enter] indicates hitting the enter key on your keyboard.
 ====
 
 [NOTE]
@@ -127,16 +127,41 @@ S- done!
 The application does not allow you to enter a deadline that has already passed. It must be a time in the future.
 
 
-Examples:
+Example:
 
-* `add`
+U- `add`
 
-  `Lab 1 submission`
+S- Please enter the task name.
 
-  `1`
+U- `Lab 1 submission`
 
-  `18:00 23/06/2020`
+S- The name of task is set to: Lab 1 submission.
 
+Please choose the task type:
+
+1. Assignment
+2. Quiz
+3. Presentation
+4. Meeting
+5. Exam
+6. Others
+
+U- `1`
+
+S- The type of task is set to: Assignment.
+Please enter the deadline with format: HH:mm dd/MM/yyyy
+
+U- `18:00 23/06/2020`
+
+S- The date and time is set to: 18:00 23/06/2020
+
+Press enter again to add the task:
+
+Lab 1 submission Assignment 18:00 23/06/2020
+
+U- `[enter]`
+
+S- Task added successfully!
 
 ==== List
 
