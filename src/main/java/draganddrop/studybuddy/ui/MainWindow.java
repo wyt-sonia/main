@@ -375,10 +375,11 @@ public class MainWindow extends UiPart<Stage> {
      * @param val2 toggles TaskSummaryHolder
      * @param val3 toggles ModuleTabHolder
      */
-    private void customToggleHolders(boolean val1, boolean val2, boolean val3) {
+    private void customToggleHolders(boolean val1, boolean val2, boolean val3, boolean val4) {
         toggleTaskListHolderView(val1);
         toggleTaskSummaryHolderView(val2);
         toggleModTabView(val3);
+        toggleProfileHolderView(val4);
     }
 
 
@@ -398,7 +399,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void toggleAllHoldersInvisible() {
-        customToggleHolders(false, false, false);
+        customToggleHolders(false, false, false, false);
     }
 
     private void toggleTaskSummaryHolderView(boolean val) {
