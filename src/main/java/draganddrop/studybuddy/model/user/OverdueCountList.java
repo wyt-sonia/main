@@ -21,6 +21,7 @@ public class OverdueCountList {
 
     /**
      * increments the completeLate count at current day index
+     *
      * @param dayIndex the day in which the task is completed
      */
     public void addOverdue(int dayIndex) {
@@ -34,6 +35,7 @@ public class OverdueCountList {
 
     /**
      * Returns number of task completed late on the given day
+     *
      * @param dayIndex
      * @return number of tasks completed late on the given day
      */

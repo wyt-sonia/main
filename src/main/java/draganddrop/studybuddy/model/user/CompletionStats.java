@@ -27,6 +27,7 @@ public class CompletionStats {
 
     /**
      * get number of tasks completed today
+     *
      * @return returns the number of tasks completed today
      */
     public int getCompleteCountToday() {

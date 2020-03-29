@@ -15,6 +15,7 @@ public class OverdueStats {
 
     /**
      * Records an overdue task
+     *
      * @param overdueTask task that has gone overdue
      */
     public void recordOverdueTask(Task overdueTask) {
@@ -24,6 +25,7 @@ public class OverdueStats {
 
     /**
      * get number of tasks completed late today
+     *
      * @return returns the number ofo tasks completed late today
      */
     public int getLateCountToday() {

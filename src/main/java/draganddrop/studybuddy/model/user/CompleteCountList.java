@@ -9,7 +9,7 @@ import java.util.List;
 public class CompleteCountList {
     private List<Integer> completeCountList;
 
-    public CompleteCountList () {
+    public CompleteCountList() {
         this.initList();
     }
 
@@ -25,6 +25,7 @@ public class CompleteCountList {
 
     /**
      * increments the complete count at current day index
+     *
      * @param dayIndex the day in which the task is completed
      */
     public void complete(int dayIndex) {
@@ -38,6 +39,7 @@ public class CompleteCountList {
 
     /**
      * Returns number of task completed on the given day
+     *
      * @param dayIndex
      * @return number of tasks completed on the given day
      */
