@@ -3,6 +3,7 @@ package draganddrop.studybuddy.model;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.task.Task;
 
+import draganddrop.studybuddy.model.user.Statistics;
 import javafx.collections.ObservableList;
 
 /**
@@ -27,4 +28,8 @@ public interface ReadOnlyStudyBuddy {
      */
     ObservableList<Task> getTaskList();
 
+    /**
+     * Returns a statistic object.
+     */
+    Statistics getStatistics();
 }

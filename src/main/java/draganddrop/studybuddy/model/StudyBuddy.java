@@ -12,6 +12,7 @@ import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskType;
 import draganddrop.studybuddy.model.task.UniqueTaskList;
 
+import draganddrop.studybuddy.model.user.Statistics;
 import javafx.collections.ObservableList;
 
 /**
@@ -24,6 +25,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     private final UniqueTaskList dueSoonTasks;
     private final UniqueTaskList tasks;
     private final ModuleList moduleList;
+    private final Statistics statistics;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -37,6 +39,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         archivedTasks = new UniqueTaskList();
         dueSoonTasks = new UniqueTaskList();
         moduleList = new ModuleList();
+        statistics = new Statistics();
     }
 
     public StudyBuddy() {
@@ -187,6 +190,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         }
     }
 
+
     /**
      * Adds a task to the task list.
      * The task must not already exist in the task list.
@@ -222,12 +226,6 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         }
     }
 
-    // public void collectTaskBasedOnMod(Module module) throws ModuleCodeException {
-    //     ObservableList<Task> collectedTask = tasks.filterTaskByMod(module);
-    //     int modIndex = moduleList.indexOf(module);
-    //     Module originalModule = moduleList.get(module.toString());
-    //    originalModule.setInternalTaskList(collectedTask);
-    // }
 
     @Override
     public String toString() {
@@ -259,6 +257,11 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
 
     public void setModuleList(List<Module> modules) {
         this.moduleList.setModuleList(modules);
+    }
+
+    @Override
+    public Statistics getStatistics() {
+        return statistics;
     }
 
     public boolean hasModule(Module module) {

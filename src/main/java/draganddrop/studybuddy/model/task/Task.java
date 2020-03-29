@@ -12,6 +12,7 @@ import java.util.Objects;
 
 import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.model.module.Module;
+import draganddrop.studybuddy.model.user.Statistics;
 
 /**
  * pending.
@@ -150,6 +151,7 @@ public class Task implements Comparable<Task> {
             }
             if (!this.isDueSoon()) {
                 if (this.dateTimes[0].isBefore(now) && !this.taskStatus.equals(TaskStatus.OVERDUE)) {
+                    Statistics.recordOverdueTask(this);
                     this.taskStatus = TaskStatus.OVERDUE;
                     return;
                 }
