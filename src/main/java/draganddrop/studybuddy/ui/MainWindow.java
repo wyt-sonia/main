@@ -322,7 +322,6 @@ public class MainWindow extends UiPart<Stage> {
     }
 
 
-
     /**
      * handles calendar to be shown in TaskListHolder.
      */

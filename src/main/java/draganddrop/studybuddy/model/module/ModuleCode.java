@@ -11,85 +11,84 @@ public class ModuleCode {
     private String postfix;
 
     public ModuleCode(String fullModuleCode) throws ModuleCodeException {
+        if (fullModuleCode.length() > 8) {
+            throw new ModuleCodeException("The module code should be at most 8 digits, please check.");
+        }
+        this.prefix = parsePrefix(fullModuleCode);
+        this.number = parseNumber(fullModuleCode);
+        this.postfix = parsePostfix(fullModuleCode);
+    }
+
+    /**
+     * Checks whether the {@code userInput} is module code.
+     *
+     * @param userInput
+     * @return
+     */
+    public static boolean isModuleCode(String userInput) {
+        boolean result = true;
         try {
-            this.prefix = parsePrefix(fullModuleCode);
-            this.number = parseNumber(fullModuleCode);
-            this.postfix = parsePostfix(fullModuleCode);
+            parsePrefix(userInput);
+            parseNumber(userInput);
+            parsePostfix(userInput);
         } catch (ModuleCodeException e) {
-            throw new ModuleCodeException("ModuleCode is invalid!");
+            result = false;
         }
+        return result;
     }
 
     /**
-     * method to parse prefix from the input to ensure correctness of moduleCode.
+     * Parses prefix from the input. Also, Ensure at least the first 2 digits are alphabetical.
      *
      * @param input
      * @return
      * @throws ModuleCodeException
      */
-    private String parsePrefix(String input) throws ModuleCodeException {
+    private static String parsePrefix(String input) throws ModuleCodeException {
         String output = "";
-        int i = 0;
-        while (i < input.length()) {
-            char character = input.charAt(i);
-            try {
-                Integer.parseInt(character + "");
-                break;
-            } catch (NumberFormatException e) {
-                output += character;
-                i++;
-            }
-        }
-
-        if (output.equals("")) {
-            throw new ModuleCodeException("Module prefix not found!!!");
+        if (!Character.isLetter(input.charAt(0))) {
+            throw new ModuleCodeException("Module code prefix not found.");
         } else {
-            return output.toUpperCase();
-        }
-    }
-
-    /**
-     * method to parse number from the input to ensure correctness of moduleCode.
-     *
-     * @param input
-     * @return
-     * @throws ModuleCodeException
-     */
-    private int parseNumber(String input) throws ModuleCodeException {
-        String outputAsString = "";
-        for (int i = 0; i < input.length(); i++) {
-            char character = input.charAt(i);
-            try {
-                Integer.parseInt("" + character);
-                outputAsString += character;
-            } catch (NumberFormatException e) {
-                //ignore
+            for (int i = 0; i < 3; i++) {
+                if (i != 2 && !Character.isLetter(input.charAt(i))) {
+                    throw new ModuleCodeException("Wrong module code prefix format error.");
+                }
+                output += Character.isLetter(input.charAt(i)) ? input.charAt(i) : "";
             }
-        }
-
-        if (outputAsString.equals("")) {
-            throw new ModuleCodeException("Module number not found!!!");
-        } else {
-            int output = Integer.parseInt(outputAsString);
-            return output;
-        }
-    }
-
-    /**
-     * method to parse postfix from the input to ensure correctness of moduleCode.
-     *
-     * @param input
-     * @return
-     */
-    private String parsePostfix(String input) {
-        String output = "";
-        char character = input.charAt(input.length() - 1);
-        try {
-            Integer.parseInt("" + character);
-        } catch (NumberFormatException e) {
-            output += character;
         }
         return output.toUpperCase();
+    }
+
+    /**
+     * Parse the number part of the module code and make sure the number part is 4 digits.
+     *
+     * @param input
+     * @return
+     * @throws ModuleCodeException
+     */
+    private static int parseNumber(String input) throws ModuleCodeException {
+        int result = 0;
+        int startIndex = Character.isDigit(input.charAt(2)) ? 2 : 1;
+        if (input.length() - startIndex > 5 || Character.isDigit(startIndex + 5)) {
+            throw new ModuleCodeException("Please enter a valid module code.");
+        }
+        try {
+            result = Integer.parseInt(input.substring(startIndex, startIndex + 4));
+        } catch (NumberFormatException e) {
+            throw new ModuleCodeException("Please enter a valid module code.");
+        }
+        return result;
+    }
+
+    /**
+     * Parses postfix from the input to ensure correctness of moduleCode.
+     *
+     * @param input
+     * @return
+     */
+    private static String parsePostfix(String input) {
+        return Character.isLetter(input.charAt(input.length() - 1))
+            ? input.substring(input.length() - 1).toUpperCase() : "";
     }
 
     private String getPrefix() {

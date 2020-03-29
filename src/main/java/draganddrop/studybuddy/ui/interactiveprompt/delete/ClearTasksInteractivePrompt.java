@@ -39,10 +39,8 @@ public class ClearTasksInteractivePrompt extends InteractivePrompt {
         switch (currentTerm) {
         case INIT:
             this.reply = "Please press enter to clear all your tasks.\n"
-                    + " Else enter quit to go back.";
+                + " Else enter quit to go back.";
             currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-            lastTerm = InteractivePromptTerms.INIT;
-            terms.add(lastTerm);
             break;
 
         case READY_TO_EXECUTE:
@@ -61,9 +59,24 @@ public class ClearTasksInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
+    public void interruptInteract() {
+
+    }
+
+    @Override
     public void endInteract(String msg) {
         this.reply = msg;
         super.setEndOfCommand(true);
+    }
+
+    @Override
+    public void back() {
+
+    }
+
+    @Override
+    public void next() {
+
     }
 
     /**

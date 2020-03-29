@@ -333,8 +333,15 @@ public class Task implements Comparable<Task> {
 
     @Override
     public String toString() {
-        String string = "";
-        return string;
+        String taskString = "";
+        taskString = "Task Name :" + this.taskName + "\n"
+            + "Task Code: " + this.module.getModuleCode().toString() + "\n"
+            + "Task Type: " + this.getTaskType().toString() + "\n"
+            + "Deadline/Duration: " + this.getTimeString() + "\n"
+            + "Task Description: " + this.taskDescription + "\n"
+            + "Task weight: " + this.weight + "\n"
+            + "Task Estimated Time Cost: " + this.estimatedTimeCost + " hrs\n";
+        return taskString;
     }
 
     /**

@@ -41,7 +41,6 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
                 + "2. Task Name\n"
                 + "3. Creation Date & Time";
             currentTerm = InteractivePromptTerms.SORT_KEYWORD;
-            terms.add(lastTerm);
             break;
 
         case SORT_KEYWORD:
@@ -76,9 +75,24 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
+    public void interruptInteract() {
+
+    }
+
+    @Override
     public void endInteract(String msg) {
         this.reply = msg;
         super.setEndOfCommand(true);
+    }
+
+    @Override
+    public void back() {
+
+    }
+
+    @Override
+    public void next() {
+
     }
 
     /**

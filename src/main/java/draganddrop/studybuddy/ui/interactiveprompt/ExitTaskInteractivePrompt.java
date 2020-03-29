@@ -11,8 +11,6 @@ package draganddrop.studybuddy.ui.interactiveprompt;
 
 import static draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType.EXIT_TASK;
 
-import java.util.ArrayList;
-
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.ExitTaskCommandException;
 
 /**
@@ -25,8 +23,6 @@ public class ExitTaskInteractivePrompt extends InteractivePrompt {
 
     private String reply;
     private InteractivePromptTerms currentTerm;
-    private InteractivePromptTerms lastTerm;
-    private ArrayList<InteractivePromptTerms> terms;
 
 
     public ExitTaskInteractivePrompt() {
@@ -34,26 +30,10 @@ public class ExitTaskInteractivePrompt extends InteractivePrompt {
         this.interactivePromptType = EXIT_TASK;
         this.reply = "";
         this.currentTerm = InteractivePromptTerms.INIT;
-        this.lastTerm = null;
-        this.terms = new ArrayList<>();
     }
 
     @Override
     public String interact(String userInput) {
-        if (userInput.equals("back")) {
-            if (lastTerm != null) { //in the beginning it is null
-                terms.remove(terms.size() - 1);
-                currentTerm = lastTerm;
-                if (lastTerm.equals(InteractivePromptTerms.INIT)) {
-                    lastTerm = null;
-                } else {
-                    lastTerm = terms.get(terms.size() - 1);
-                }
-                userInput = "";
-            } else {
-                this.reply = "Please type quit to exit from this command.";
-            }
-        }
 
         switch (currentTerm) {
 
@@ -83,9 +63,24 @@ public class ExitTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
+    public void interruptInteract() {
+
+    }
+
+    @Override
     public void endInteract(String msg) {
         this.reply = msg;
         super.setEndOfCommand(true);
+    }
+
+    @Override
+    public void back() {
+
+    }
+
+    @Override
+    public void next() {
+
     }
 
     /**
