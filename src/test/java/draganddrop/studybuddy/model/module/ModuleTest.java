@@ -1,22 +1,21 @@
 package draganddrop.studybuddy.model.module;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import org.junit.jupiter.api.Test;
+
 import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studybuddy.testutil.Assert;
 import draganddrop.studybuddy.testutil.SampleModules;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import javafx.collections.ObservableList;
-import org.junit.jupiter.api.Test;
 
-import java.util.List;
 
 public class ModuleTest {
-    Module sample1 = SampleModules.getSampleModule()[0];
-    Module sample2 = SampleModules.getSampleModule()[1];
-    Module sample3 = SampleModules.getSampleModule()[2];
+    private Module sample1 = SampleModules.getSampleModule()[0];
+    private Module sample2 = SampleModules.getSampleModule()[1];
+    private Module sample3 = SampleModules.getSampleModule()[2];
 
     @Test
     public void equals() {
@@ -41,8 +40,9 @@ public class ModuleTest {
         Module emptyMod = new EmptyModule();
         emptyMod.filterAndSetInternalTaskList(SampleModules.getSampleTask());
         ObservableList<?> list = SampleModules.getExpectedOutcomeForFilterFunction();
-        for(int i = 0; i < emptyMod.getInternalTaskList().size(); i++) {
-            assertEquals(emptyMod.getInternalTaskList().get(i), SampleModules.getExpectedOutcomeForFilterFunction().get(i));
+        for (int i = 0; i < emptyMod.getInternalTaskList().size(); i++) {
+            assertEquals(emptyMod.getInternalTaskList().get(i),
+                    SampleModules.getExpectedOutcomeForFilterFunction().get(i));
         }
 
     }
