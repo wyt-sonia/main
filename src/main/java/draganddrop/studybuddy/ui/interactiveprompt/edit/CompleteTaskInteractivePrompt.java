@@ -31,6 +31,8 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
         if (userInput.equals("quit")) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
+        } else {
+            userInput = checkForBackInput(userInput);
         }
 
         switch (currentTerm) {

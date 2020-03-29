@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import draganddrop.studybuddy.commons.exceptions.IllegalValueException;
 import draganddrop.studybuddy.logic.parser.TimeParser;
-import draganddrop.studybuddy.logic.parser.interactivecommandparser.AddTaskCommandParser;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskStatus;
@@ -16,7 +15,7 @@ import draganddrop.studybuddy.model.task.TaskType;
 /**
  * Jackson-friendly version of {@link Task}.
  */
-public class JsonAdaptedTask {
+class JsonAdaptedTask {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Task's %s field is missing!";
 
@@ -84,10 +83,6 @@ public class JsonAdaptedTask {
      */
     public Task toModelType() throws IllegalValueException {
 
-        LocalDateTime[] dateTimes = AddTaskCommandParser
-                .parseDateTime(taskDateTime, TaskType.getType(taskType));
-
-        /*
         // for datetime
         LocalDateTime[] dateTimes;
         String[] timeTerms = taskDateTime.split("-");
@@ -99,8 +94,7 @@ public class JsonAdaptedTask {
         } else {
             dateTimes = new LocalDateTime[1];
             dateTimes[0] = TimeParser.parseDateTime(timeTerms[0]);
-        }*/
-
+        }
 
         LocalDateTime creationDateTime = TimeParser.parseDateTime(taskCreationDateTime);
 

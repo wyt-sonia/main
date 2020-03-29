@@ -38,6 +38,8 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
         if (userInput.equals("quit")) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
+        } else {
+            userInput = checkForBackInput(userInput);
         }
 
         switch (currentTerm) {
@@ -78,9 +80,24 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
+    public void interruptInteract() {
+
+    }
+
+    @Override
     public void endInteract(String reply) {
         this.reply = reply;
         super.setEndOfCommand(true);
+    }
+
+    @Override
+    public void back() {
+
+    }
+
+    @Override
+    public void next() {
+
     }
 
     /**
