@@ -294,6 +294,44 @@
     -fx-background-color: #d9534f;
 }
 
+
+/*Tabs*/
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: rgba(123, 87, 69, 0.7);
+}
+
+.tab-pane{
+    -fx-tab-min-width:100px;
+}
+
+.tab{
+    -fx-padding: 0 0 0 0;
+}
+
+.tab-pane .tab {
+    -fx-background-color: rgba(123, 100, 69, 0.7);
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: rgba(181, 150, 134, 1);
+}
+
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-font-family: "Verdana";
+    -fx-text-fill: rgba(255, 255, 255, 1);
+    -fx-font-size: 14px;
+}
+
+.tab:selected .tab-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: rgba(248, 245, 12, 1);
+    -fx-font-weight: bold;
+}
+
+
+
+
 /*
 .label {
     -fx-font-size: 11pt;
