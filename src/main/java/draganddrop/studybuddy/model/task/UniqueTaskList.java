@@ -21,9 +21,18 @@ import javafx.collections.ObservableList;
  */
 public class UniqueTaskList implements Iterable<Task> {
 
+    private static Statistics statistics;
     private final ObservableList<Task> internalList = FXCollections.observableArrayList();
     private final ObservableList<Task> internalUnmodifiableList =
         FXCollections.unmodifiableObservableList(internalList);
+
+    /**
+     * Set the statistics for unique task list
+     * @param statistics
+     */
+    public static void setStatistics(Statistics statistics) {
+        UniqueTaskList.statistics = statistics;
+    }
 
     public int getSize() {
         return internalList.size();
@@ -152,7 +161,7 @@ public class UniqueTaskList implements Iterable<Task> {
             internalList.set(index, target);
 
             // log statistics
-            Statistics.recordCompletedTask(target);
+            statistics.recordCompletedTask(target);
         }
     }
 

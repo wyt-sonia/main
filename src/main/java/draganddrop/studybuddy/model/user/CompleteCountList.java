@@ -51,4 +51,23 @@ public class CompleteCountList {
             completeLateList.set(dayIndex, currentLateCount + 1);
         }
     }
+
+    /**
+     * Returns number of task completed on the given day
+     * @param dayIndex
+     * @return number of tasks completed on the given day
+     */
+    public int getDailyCompleteCount(int dayIndex) {
+        return completeList.get(dayIndex);
+    }
+
+    /**
+     * Returns number of task completed late on the given day
+     * @param dayIndex
+     * @return number of tasks completed late on the given day
+     */
+    public int getDailyLateCount(int dayIndex) {
+        return completeLateList.get(dayIndex);
+    }
+
 }
