@@ -5,6 +5,6 @@ package draganddrop.studybuddy.model.module;
  */
 public class EmptyModule extends Module {
     public EmptyModule() {
-        super("No Module Allocated", "O0000O");
+        super("No Module Allocated", "OO0000O");
     }
 }

@@ -34,13 +34,22 @@ import javafx.collections.ObservableList;
 public class AddTaskInteractivePrompt extends InteractivePrompt {
     static final String END_OF_COMMAND_MSG = "Task added successfully!";
     static final String END_OF_COMMAND_DUPLICATE_MSG = "Task will not be added! Key in your next command :)";
+    static final String REQUIRED_MODULE_MSG = "Please choose a Module for this task or press enter to skip.\n"
+        + "Index number and module code are both acceptable.\n";
+    static final String REQUIRED_TASK_NAME_MSG = "Please enter the task name.";
+    static final String REQUIRED_TASK_TYPE_MSG = "Please choose the task type:\n" + TaskType.getTypeString();
+    static final String REQUIRED_DATE_TIME_MSG = "Please enter the deadline with format: ";
+    static final String REQUIRED_TASK_DESCRIPTION_MSG = "Please enter task description or press enter to skip.\n";
+    static final String REQUIRED_TASK_WEIGHT_MSG = "Please enter the weight of the task or press enter to skip.\n";
+    static final String REQUIRED_TASK_ESTIMATED_TIME_COST_MSG = "Please enter the estimated number of hours cost.\n";
+    static final String TASK_INFO_HEADER = "The task is ready to be added, press enter again to add the task:\n\n"
+        + "=========== TASK INFO ===========\n";
+
     static final String QUIT_COMMAND_MSG = "Successfully quited from add task command.";
     private String moduleListString = "";
     private ObservableList<Module> modules;
     private boolean isModuleTried = false;
     private Task task;
-
-
 
     public AddTaskInteractivePrompt() {
         super();
@@ -58,22 +67,16 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
 
         switch (currentTerm) {
         case INIT:
-            this.reply = "Please choose a Module for this task or press enter to skip.\n"
-                + "Index number and module code are both acceptable.\n"
-                + "The Modules available are: \n";
+            this.reply = REQUIRED_MODULE_MSG;
+            moduleListString = "The Modules available are: \n";
             this.modules = logic.getFilteredModuleList();
             AtomicInteger counter = new AtomicInteger();
             modules.forEach(m -> {
                 counter.getAndAdd(1);
-                reply += counter + "." + m.getModuleCode() + " " + m.getModuleName() + "\n";
+                moduleListString += counter + "." + m.getModuleCode() + " " + m.getModuleName() + "\n";
             });
-            moduleListString = this.reply;
+            this.reply += moduleListString;
             currentTerm = InteractivePromptTerms.TASK_MODULE;
-            /**
-             * TEMPORARY PLACEHOLDER TO ENABLE FILE SAVE.
-             * REMOVE task.setAttribute once you've create methods to handle these....
-             * By default, Task will go to Module code AA0000. To add to a specific module, use other commands.
-             */
             task.setStatus("pending");
             task.setTaskDescription("No Description");
             task.setWeight(0.0);
@@ -95,7 +98,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 currentTerm = InteractivePromptTerms.TASK_NAME;
                 this.reply = "The module has been set as: " + module.getModuleCode() + " "
                     + module.getModuleName() + "\n\n"
-                    + "Please enter the task name.";
+                    + REQUIRED_TASK_NAME_MSG;
             } catch (AddTaskCommandException e) {
                 isModuleTried = false;
                 reply = e.getErrorMessage() + "\n\n" + moduleListString;
@@ -106,13 +109,12 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             try {
                 userInput = AddTaskCommandParser.parseName(userInput);
                 this.reply = "The name of task is set to: " + userInput + ".\n"
-                    + "Please choose the task type:\n"
-                    + TaskType.getTypeString();
+                    + REQUIRED_TASK_TYPE_MSG;
                 task.setTaskName(userInput);
                 currentTerm = InteractivePromptTerms.TASK_TYPE;
             } catch (AddTaskCommandException ex) {
                 reply = ex.getErrorMessage() + "\n\n"
-                    + "Please enter the task name.";
+                    + REQUIRED_TASK_NAME_MSG;
             }
             break;
 
@@ -122,13 +124,12 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 task.setTaskType(taskType);
 
                 this.reply = "The type of task has been set to: " + taskType.toString() + ".\n"
-                    + "Please enter the deadline with format: ";
+                    + REQUIRED_DATE_TIME_MSG;
                 if (taskType.equals(TaskType.Assignment)) {
                     this.reply += "HH:mm dd/MM/yyyy";
                 } else {
                     this.reply += "HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy";
                 }
-
                 currentTerm = InteractivePromptTerms.TASK_DATETIME;
             } catch (NumberFormatException ex) {
                 reply = (new AddTaskCommandException("wrongIndexFormat")).getErrorMessage();
@@ -149,15 +150,54 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                         + "-" + TimeParser.getDateTimeString(dateTimes[1]);
                 }
 
-                reply = "The date and time is set to: " + userInput + "\n\n"
-                    + "Press enter again to add the task:\n\n"
-                    + "=========== TASK INFO ===========\n"
-                    + task.toString();
+                this.reply = "The date and time is set to: " + userInput + "\n\n"
+                    + REQUIRED_TASK_DESCRIPTION_MSG;
 
-                currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
+                currentTerm = InteractivePromptTerms.TASK_DESCRIPTION;
             } catch (AddTaskCommandException ex) {
-                reply = ex.getErrorMessage();
+                this.reply = ex.getErrorMessage();
             }
+            break;
+
+        case TASK_DESCRIPTION:
+            this.reply = "";
+            if (!userInput.isBlank()) {
+                task.setTaskDescription(userInput);
+                this.reply = "The task description has been set as " + userInput + "\n\n";
+            }
+            this.reply += REQUIRED_TASK_WEIGHT_MSG;
+            currentTerm = InteractivePromptTerms.TASK_WEIGHT;
+            break;
+
+        case TASK_WEIGHT:
+            try {
+                this.reply = "";
+                if (!userInput.isBlank()) {
+                    task.setWeight(AddTaskCommandParser.parseWeight(userInput));
+                    this.reply = "The weight of the task has been set as " + userInput + "\n\n";
+                }
+                this.reply += REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
+                this.currentTerm = InteractivePromptTerms.TASK_ESTIMATED_TIME_COST;
+            } catch (AddTaskCommandException e) {
+                this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_WEIGHT_MSG;
+            }
+
+            break;
+
+        case TASK_ESTIMATED_TIME_COST:
+            try {
+                this.reply = "";
+                if (!userInput.isBlank()) {
+                    task.setEstimatedTimeCost(AddTaskCommandParser.parseTimeCost(userInput));
+                    this.reply = "The estimated number of hours the task might take has been set as "
+                        + userInput + "\n\n";
+                }
+                this.reply += TASK_INFO_HEADER + task.toString();
+                this.currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
+            } catch (AddTaskCommandException e) {
+                this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
+            }
+
             break;
 
         case READY_TO_EXECUTE:
@@ -175,7 +215,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             } catch (ParseException | CommandException e) {
                 e.printStackTrace();
             }
-
             break;
 
         case ADD_DUPLICATE:
@@ -194,18 +233,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             } else {
                 reply = (new AddTaskCommandException("wrongDuplicateFormat")).getErrorMessage();
             }
-            break;
-
-        case TASK_WEIGHT:
-            //TASK_WEIGHT under construction
-            break;
-
-        case TASK_DESCRIPTION:
-            //TASK_DESCRIPTION under construction
-            break;
-
-        case TASK_ESTIMATED_TIME_COST:
-            //TASK_ESTIMATED_TIME_COST under construction
             break;
 
         default:

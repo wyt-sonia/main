@@ -34,9 +34,9 @@ class CreateModuleInteractivePromptTest {
         CreateModuleInteractivePrompt prompt = new CreateModuleInteractivePrompt();
         prompt.interact("");
         prompt.interact("a");
-        String reply = "Module Code: " + "O0000O" + "\n"
+        String reply = "Module Code: " + "OO0000O" + "\n"
                 + "Click 'Enter' again to confirm your changes";
-        assertEquals(reply, prompt.interact("O0000O"));
+        assertEquals(reply, prompt.interact("OO0000O"));
     }
 
     @Test
@@ -44,7 +44,7 @@ class CreateModuleInteractivePromptTest {
         CreateModuleInteractivePrompt prompt = new CreateModuleInteractivePrompt();
         prompt.interact("");
         prompt.interact("a");
-        prompt.interact("O0000O");
+        prompt.interact("OO0000O");
         assertThrows(NullPointerException.class, ()->prompt.interact(""));
     }
 
