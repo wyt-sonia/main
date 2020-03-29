@@ -75,21 +75,6 @@ public class RefreshTaskInteractivePrompt extends InteractivePrompt {
         super.setEndOfCommand(true);
     }
 
-    @Override
-    public void interruptInteract() {
-
-    }
-
-    @Override
-    public void back() {
-
-    }
-
-    @Override
-    public void next() {
-
-    }
-
     /**
      * pending.
      */

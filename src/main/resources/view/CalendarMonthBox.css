@@ -13,7 +13,7 @@
 }
 
 .text-area .content {
-    -fx-padding: 3 5 3 5;
+    -fx-padding: 5 7 5 7;
     -fx-cursor: text;
 }
 
@@ -27,3 +27,5 @@
 .text-area:disabled {
     -fx-opacity: -fx-disabled-opacity;
 }
+
+

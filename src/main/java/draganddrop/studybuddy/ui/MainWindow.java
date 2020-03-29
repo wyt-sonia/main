@@ -9,7 +9,6 @@ import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.logic.parser.exceptions.ParseException;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -27,8 +26,8 @@ import javafx.stage.Stage;
  * a menu bar and space where other JavaFX elements can be placed.
  */
 public class MainWindow extends UiPart<Stage> {
-    private static final String ALL_TASK = "All Task";
-    private static final String TITLE = "Study Buddy ";
+    private static final String ALL_TASK = "All Tasks";
+    private static final String TITLE = "Study Buddy";
     private static final String DUE_SOON_TASK = "Task Due Soon";
     private static final String MODULE = "Modules";
     private static final String ARCHIVED_TASK = "Archived Task";
@@ -92,7 +91,7 @@ public class MainWindow extends UiPart<Stage> {
     private Pane taskListPanelTitleHolder;
 
     @FXML
-    private Label dueSoonTaskListPanelTitle;
+    private Label dueListPanelTitle;
 
     @FXML
     private Pane dueSoonTaskListPanelTitleHolder;
@@ -288,6 +287,7 @@ public class MainWindow extends UiPart<Stage> {
 
         toggleAllTitle(true);
         setMainTitleText(TITLE);
+        dueListPanelTitle.setText(DUE_SOON_TASK);
         dueSoonListPanel = new DueSoonListPanel(logic.getFilteredDueSoonTaskList());
         dueSoonListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
     }
@@ -335,8 +335,8 @@ public class MainWindow extends UiPart<Stage> {
         toggleTaskListPanelTitleView(false);
         setMainTitleText(CALENDAR);
 
-
-        CalendarBox calendar = new CalendarBox(logic.getFilteredTaskList(), dueSoonListPanelPlaceholder);
+        CalendarBox calendar = new CalendarBox(logic.getFilteredTaskList(), dueSoonListPanelPlaceholder,
+                dueListPanelTitle);
         taskListPanelPlaceholder.getChildren().add(calendar.getRoot());
     }
 
@@ -403,8 +403,9 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void toggleTaskSummaryHolderView(boolean val) {
+        taskSummaryHolder.setVisible(val);
+        taskSummaryHolder.setManaged(val);
         setPaneView(taskSummaryHolder, val);
-
     }
 
     private void toggleTaskListHolderView(boolean val) {
