@@ -186,16 +186,24 @@ S- Task added successfully!
 
 ==== List
 
-Format:
+*Format:*
 
 U- `list`
 
 S- lists all tasks
 
+*Description*
+
 . This function allows you to view a list of all your tasks.
 
 [NOTE]
-The application has a list of your tasks that is always on display. However if you use the <<find>> function, you may need <<List>> to navigate back to the complete list.
+The application has a list of your tasks that is always on display. However if you use the <<Find>> function, you may need <<List>> to navigate back to the complete list.
+
+*Example:*
+
+U- `list`
+
+S- Here is the complete list of tasks:
 
 ==== Edit
 
@@ -219,7 +227,7 @@ Edits the date and details of the 1st task to be `2020-05-19` and `tough assignm
 * `edit 2 n/Database project t/` +
 Edits the name of the 2nd task to be `Database project` and clears all existing tags.
 
-==== Locating tasks by name: `find`
+==== Find
 
 Finds tasks whose names contain any of the given keywords. +
 Format: `find KEYWORD [MORE_KEYWORDS]`
@@ -284,6 +292,8 @@ By default, it shows the following:
 . The impending task from the task list, sorted by timing
 . A chart of the amount of time you spend on each of your modules
 . Existing stopwatches that are already running
+
+=== Interactive Command Prompt
 
 === Statistics
 
