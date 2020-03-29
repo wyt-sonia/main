@@ -39,6 +39,15 @@ public class SampleDataUtil {
         };
     }
 
+    public static Module[] getSampleModule() {
+        Module cs2100 = new Module("Computer Organisation", "CS2100");
+        Module cs2100clone1 = new Module("dasadsa" , "CS2100");
+        Module cs2100clone2 = new Module("Computer Organisation", "CS1111");
+        return new Module[]{cs2100, cs2100clone1, cs2100clone2};
+
+    }
+
+
     public static ReadOnlyStudyBuddy getSampleStudyBuddy() {
         StudyBuddy sampleSb = new StudyBuddy();
         ArrayList<Task> sampleTasks = new ArrayList<>();
