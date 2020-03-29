@@ -187,50 +187,6 @@ U- `[enter]`
 
 S- Task added successfully!
 
-==== List
-
-*Format:*
-
-U- `list`
-
-S- lists all tasks
-
-*Description*
-
-. This function allows you to view a list of all your tasks.
-
-[NOTE]
-The application has a list of your tasks that is always on display. However if you use the <<Find>> function, you may need <<List>> to navigate back to the complete list.
-
-*Example:*
-
-U- `list`
-
-S- Here is the complete list of tasks:
-
-==== Edit
-
-Edits an existing task in the study buddy. +
-Format: `edit INDEX [n/NAME] [d/DATE] [e/DETAILS] [l/LABEL] [t/TAG]...`
-
-****
-* Edits the task at the specified `INDEX`.
-The index refers to the index number shown in the displayed person list.
-The index *must be a positive integer* 1, 2, 3, ...
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the task will be removed i.e adding of tags is not cumulative.
-* You can remove all the task's tags by typing `t/` without specifying any tags after it.
-
-****
-
-Examples:
-
-* `edit 1 d/2020-05-19 e/tough assignment +
-Edits the date and details of the 1st task to be `2020-05-19` and `tough assignment` respectively.
-* `edit 2 n/Database project t/` +
-Edits the name of the 2nd task to be `Database project` and clears all existing tags.
-
 ==== Delete
 *Format:*
 
@@ -288,6 +244,95 @@ U- `[enter]`
 
 S- Duplicated task deleted successfully!
 
+==== Find
+
+Finds tasks whose names contain any of the given keywords. +
+Format: `find KEYWORD [MORE_KEYWORDS]`
+
+****
+* The search is case insensitive. e.g `hans` will match `Hans`
+* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+* Only the name is searched.
+* Only full words will be matched e.g. `Han` will not match `Hans`
+* Tasks matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+****
+
+Examples:
+
+* `find John` +
+Returns `john` and `John Doe`
+* `find Betsy Tim John` +
+Returns any task having names `Betsy`, `Tim`, or `John`
+
+[NOTE]
+To navigate back to the always on display list of tasks, you can use the <<List>> function.
+
+==== List
+*Format:*
+
+U- `list`
+
+S- done!
+
+*Description*
+
+. This function allows you to view a list of all your tasks.
+
+*Example:*
+
+U- `list`
+
+S- Here is the complete list of tasks:
+
+==== Refresh
+
+*Format:*
+
+U- `refresh`
+
+S- refreshes task tags and due soon list
+
+*Description*
+
+. This function allows you to refresh/update any tags/due soon tasks.
+
+[NOTE]
+Both the status tags and due soon list auto-update when changes such as addition, deletion etc are performed. However the refresh function is helpful when the application has been open for a considerable amount of time and the tags/time on due soon list needs an update.
+
+*Example:*
+
+U- `refresh`
+
+S- The tasks list will be refreshed. +
+Please press enter again to make the desired changes.
+
+U- `[enter]`
+
+S- Refreshed tasks' status and due soon list!
+
+==== Edit
+
+Edits an existing task in the study buddy. +
+Format: `edit INDEX [n/NAME] [d/DATE] [e/DETAILS] [l/LABEL] [t/TAG]...`
+
+****
+* Edits the task at the specified `INDEX`.
+The index refers to the index number shown in the displayed person list.
+The index *must be a positive integer* 1, 2, 3, ...
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing tags, the existing tags of the task will be removed i.e adding of tags is not cumulative.
+* You can remove all the task's tags by typing `t/` without specifying any tags after it.
+
+****
+
+Examples:
+
+* `edit 1 d/2020-05-19 e/tough assignment +
+Edits the date and details of the 1st task to be `2020-05-19` and `tough assignment` respectively.
+* `edit 2 n/Database project t/` +
+Edits the name of the 2nd task to be `Database project` and clears all existing tags.
+
 ==== Clear
 *Format:*
 
@@ -312,6 +357,13 @@ Else enter quit to go back.
 U- `[enter]`
 
 S- Tasks cleared successfully!
+
+==== Saving the data
+
+*Description:*
+
+Study Buddy data is saved in the hard disk automatically after any command that changes the data. +
+There is no need to save manually!
 
 ==== Exit
 *Format:*
@@ -338,32 +390,6 @@ U- `yes`
 
 S- [exits]
 
-
-==== Find
-
-Finds tasks whose names contain any of the given keywords. +
-Format: `find KEYWORD [MORE_KEYWORDS]`
-
-****
-* The search is case insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Tasks matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
-****
-
-Examples:
-
-* `find John` +
-Returns `john` and `John Doe`
-* `find Betsy Tim John` +
-Returns any task having names `Betsy`, `Tim`, or `John`
-
-==== Saving the data
-
-Address book data are saved in the hard disk automatically after any command that changes the data. +
-There is no need to save manually.
-
 === DashBoard
 
 Your menu where all the things you want to see from the app is right here.
@@ -372,6 +398,18 @@ By default, it shows the following:
 . The impending task from the task list, sorted by timing
 . A chart of the amount of time you spend on each of your modules
 . Existing stopwatches that are already running
+
+=== Due Soon Tasks
+
+The due soon task list is always on display in your application. +
+It provides the following functionality:
+
+. It displays your tasks that are due within the next week. (uses deadline)
+. It automatically updates when you make changes to your main list.
+. It displays a tag with the time left to the deadline.
+. It provides a <<Refresh>> function that allows you to refresh time/state of this list if needed.
+
+=== Status tags
 
 === Interactive Command Prompt
 
