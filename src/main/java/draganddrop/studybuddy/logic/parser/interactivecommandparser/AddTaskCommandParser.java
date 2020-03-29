@@ -7,11 +7,10 @@ import java.util.stream.Collectors;
 import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.InteractiveCommandException;
+import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.module.ModuleCode;
 import draganddrop.studybuddy.model.task.TaskType;
-import draganddrop.studybuddy.model.module.Module;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 
 /**
  * pending.
@@ -117,11 +116,11 @@ public class AddTaskCommandParser {
      */
     public static Module parseModule(String userInput, ObservableList<Module> modules) throws AddTaskCommandException {
         Module result = null;
-        try{
+        try {
             if (ModuleCode.isModuleCode(userInput)) {
                 List<Module> tempModules = modules.stream()
                     .filter(m -> m.getModuleCode().toString().equals(userInput)).collect(Collectors.toList());
-                if(!tempModules.isEmpty()) {
+                if (!tempModules.isEmpty()) {
                     result = tempModules.get(0);
                 } else {
                     throw new AddTaskCommandException("noSuchModuleError");
@@ -133,8 +132,7 @@ public class AddTaskCommandParser {
                 }
                 result = modules.get(index);
             }
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             throw new AddTaskCommandException("wrongIndexFormatError");
         }
         return result;

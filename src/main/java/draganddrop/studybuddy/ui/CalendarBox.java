@@ -110,9 +110,9 @@ public class CalendarBox extends UiPart<Region> {
             Pane p = new Pane();
             p.setBackground(new Background(new BackgroundFill(Color.WHEAT, CornerRadii.EMPTY, Insets.EMPTY)));
             monthBox.add(p, dayOfWeek, j);
-            Label temp_lbl = new Label(i + "");
-            temp_lbl.setPadding(new Insets(2, 2, 2, 4));
-            temp.getChildren().add(temp_lbl);
+            Label tempLbl = new Label(i + "");
+            tempLbl.setPadding(new Insets(2, 2, 2, 4));
+            temp.getChildren().add(tempLbl);
             int count = 0;
             for (Task task : taskList) {
                 LocalDateTime[] ldt = task.getDateTimes();

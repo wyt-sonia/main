@@ -34,25 +34,17 @@ public abstract class InteractivePrompt {
         setEndOfCommand(true);
     }
 
-    ;
-
     public void interruptInteract() {
         // empty
     }
-
-    ;
 
     public void back() {
         // empty
     }
 
-    ;
-
     public void next() {
         // empty
     }
-
-    ;
 
     public boolean isQuit() {
         return isQuit;

@@ -35,10 +35,12 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     static final String END_OF_COMMAND_MSG = "Task added successfully!";
     static final String END_OF_COMMAND_DUPLICATE_MSG = "Task will not be added! Key in your next command :)";
     static final String QUIT_COMMAND_MSG = "Successfully quited from add task command.";
-    String moduleListString = "";
-    protected Task task;
-    protected boolean isModuleTried = false;
-    protected ObservableList<Module> modules;
+    private String moduleListString = "";
+    private ObservableList<Module> modules;
+    private boolean isModuleTried = false;
+    private Task task;
+
+
 
     public AddTaskInteractivePrompt() {
         super();

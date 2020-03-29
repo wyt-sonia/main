@@ -20,6 +20,12 @@ public class ModuleCode {
         }
     }
 
+    /**
+     * Checks whether the {@code userInput} is module code.
+     *
+     * @param userInput
+     * @return
+     */
     public static boolean isModuleCode(String userInput) {
         boolean result = true;
         try {
