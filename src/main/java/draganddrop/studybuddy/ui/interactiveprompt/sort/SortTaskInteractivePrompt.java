@@ -49,7 +49,7 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
                 if (option > 3 || option <= 0) {
                     throw new SortTaskCommandException("invalidOptionRangeError");
                 }
-                reply = "The task  will be sorted by " + sort_option[option - 1] + ". \n "
+                reply = "The task  will be sorted by " + sort_option[option - 1] + ". \n"
                     + " Please click enter again to check the sorted list.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (NumberFormatException ex) {

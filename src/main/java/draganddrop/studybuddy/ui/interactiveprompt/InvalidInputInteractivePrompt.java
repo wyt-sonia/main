@@ -31,5 +31,4 @@ public class InvalidInputInteractivePrompt extends InteractivePrompt {
         this.reply = reply;
         super.setEndOfCommand(true);
     }
-
 }

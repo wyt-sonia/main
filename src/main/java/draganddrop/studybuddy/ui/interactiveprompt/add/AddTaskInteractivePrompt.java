@@ -34,7 +34,7 @@ import javafx.collections.ObservableList;
 public class AddTaskInteractivePrompt extends InteractivePrompt {
     static final String END_OF_COMMAND_MSG = "Task added successfully!";
     static final String END_OF_COMMAND_DUPLICATE_MSG = "Task will not be added! Key in your next command :)";
-    static final String REQUIRED_MODULE_MSG = "Please choose a Module for this task or press enter to skip.\n"
+    static final String REQUIRED_MODULE_MSG = "Please choose a Module for this task or press enter to skip. "
         + "Index number and module code are both acceptable.\n";
     static final String REQUIRED_TASK_NAME_MSG = "Please enter the task name.";
     static final String REQUIRED_TASK_TYPE_MSG = "Please choose the task type:\n" + TaskType.getTypeString();
@@ -48,7 +48,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     static final String QUIT_COMMAND_MSG = "Successfully quited from add task command.";
     private String moduleListString = "";
     private ObservableList<Module> modules;
-    private boolean isModuleTried = false;
     private Task task;
 
     public AddTaskInteractivePrompt() {
@@ -86,12 +85,9 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         case TASK_MODULE:
             try {
                 Module module = null;
-                if (userInput.isBlank() && !isModuleTried) {
+                if (userInput.isBlank()) {
                     module = new EmptyModule();
-                } else if (userInput.isBlank() && isModuleTried) {
-                    throw new AddTaskCommandException("emptyInputError");
                 } else {
-                    isModuleTried = true;
                     module = AddTaskCommandParser.parseModule(userInput, modules);
                 }
                 task.setModule(module);
@@ -100,15 +96,14 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                     + module.getModuleName() + "\n\n"
                     + REQUIRED_TASK_NAME_MSG;
             } catch (AddTaskCommandException e) {
-                isModuleTried = false;
-                reply = e.getErrorMessage() + "\n\n" + moduleListString;
+                reply = e.getErrorMessage() + "\n\n" + REQUIRED_MODULE_MSG + "\n\n" + moduleListString;
             }
             break;
 
         case TASK_NAME:
             try {
                 userInput = AddTaskCommandParser.parseName(userInput);
-                this.reply = "The name of task is set to: " + userInput + ".\n"
+                this.reply = "The name of task is set to: " + userInput + ".\n\n"
                     + REQUIRED_TASK_TYPE_MSG;
                 task.setTaskName(userInput);
                 currentTerm = InteractivePromptTerms.TASK_TYPE;
@@ -132,9 +127,11 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 }
                 currentTerm = InteractivePromptTerms.TASK_DATETIME;
             } catch (NumberFormatException ex) {
-                reply = (new AddTaskCommandException("wrongIndexFormat")).getErrorMessage();
+                reply = (new AddTaskCommandException("wrongIndexFormat")).getErrorMessage()
+                    + "\n\n" + REQUIRED_TASK_TYPE_MSG;
             } catch (AddTaskCommandException ex) {
-                reply = ex.getErrorMessage();
+                reply = ex.getErrorMessage()
+                    + "\n\n" + REQUIRED_TASK_TYPE_MSG;
             }
             break;
 
@@ -161,12 +158,17 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
 
         case TASK_DESCRIPTION:
             this.reply = "";
-            if (!userInput.isBlank()) {
-                task.setTaskDescription(userInput);
-                this.reply = "The task description has been set as " + userInput + "\n\n";
+            try {
+                if (!userInput.isBlank()) {
+                    task.setTaskDescription(userInput);
+                    this.reply = "The task description has been set as " + userInput + "\n\n";
+                }
+                this.reply += REQUIRED_TASK_WEIGHT_MSG;
+                currentTerm = InteractivePromptTerms.TASK_WEIGHT;
+            } catch (AddTaskCommandException e) {
+                this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_DESCRIPTION_MSG;
             }
-            this.reply += REQUIRED_TASK_WEIGHT_MSG;
-            currentTerm = InteractivePromptTerms.TASK_WEIGHT;
+
             break;
 
         case TASK_WEIGHT:
@@ -239,7 +241,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         }
         return reply;
     }
-
 
     @Override
     public void endInteract(String msg) {

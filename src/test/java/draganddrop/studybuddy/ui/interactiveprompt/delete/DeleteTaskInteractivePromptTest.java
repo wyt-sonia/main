@@ -30,7 +30,7 @@ class DeleteTaskInteractivePromptTest {
         DeleteTaskInteractivePrompt prompt = new DeleteTaskInteractivePrompt();
         prompt.interact("");
         String reply = "The task " + model.getAddressBook().getTaskList().get(0).getTaskName()
-                + " will be deleted. \n "
+                + " will be deleted. \n"
                 + " Please click enter again to make the desired deletion.";
         assertEquals(reply, reply);
     }*/
