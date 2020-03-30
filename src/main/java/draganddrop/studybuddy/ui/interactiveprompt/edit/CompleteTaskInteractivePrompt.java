@@ -44,7 +44,7 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
             try {
                 index = Integer.parseInt(userInput);
                 reply = "The task at index " + userInput + " will be mark as Done. \n "
-                    + " Please click enter again to make the desired deletion.";
+                    + " Please click enter again to make the desired z.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (DeleteTaskCommandException ex) {
                 reply = ex.getErrorMessage();

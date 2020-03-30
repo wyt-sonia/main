@@ -15,6 +15,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.delete.DeleteTaskInteractiveP
 import draganddrop.studybuddy.ui.interactiveprompt.edit.ArchiveTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.CompleteTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.EditTaskInteractivePrompt;
+import draganddrop.studybuddy.ui.interactiveprompt.edit.UnarchiveTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.sort.SortTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.view.FindTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.view.HelpInteractivePrompt;
@@ -35,7 +36,7 @@ public class CommandBox extends UiPart<Region> {
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes =
         {"add", "edit", "delete", "archive", "done", "delete duplicates",
-            "clear", "bye", "sort", "refresh", "help", "create mods", "find", "list"};
+            "clear", "bye", "sort", "refresh", "help", "create mods", "find", "list", "unarchive"};
     private final CommandExecutor commandExecutor;
     private InteractivePrompt currentInteractivePrompt;
     @FXML
@@ -100,6 +101,9 @@ public class CommandBox extends UiPart<Region> {
                     break;
                 case "clear":
                     currentInteractivePrompt = new ClearTasksInteractivePrompt();
+                    break;
+                case "unarchive":
+                    currentInteractivePrompt = new UnarchiveTaskInteractivePrompt();
                     break;
                 default:
                     currentInteractivePrompt = new InvalidInputInteractivePrompt();

@@ -15,17 +15,17 @@ import draganddrop.studybuddy.model.task.Task;
 /**
  * Archives an entry in the study buddy.
  */
-public class ArchiveTaskCommand extends Command {
+public class UnarchiveTaskCommand extends Command {
 
-    public static final String COMMAND_WORD = "archive";
+    public static final String COMMAND_WORD = "unarchive";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Archives the selected entry";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": retrieves the selected entry from archived";
 
-    public static final String MESSAGE_ARCHIVE_TASK_SUCCESS = "Archived Task: %1$s";
+    public static final String MESSAGE_ARCHIVE_TASK_SUCCESS = "retrieved Task: %1$s";
 
     private final Index targetIndex;
 
-    public ArchiveTaskCommand(Index targetIndex) {
+    public UnarchiveTaskCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
 
@@ -39,7 +39,7 @@ public class ArchiveTaskCommand extends Command {
         }
 
         Task taskToArchive = lastShownList.get(targetIndex.getZeroBased());
-        model.archiveTask(taskToArchive);
+        model.unarchiveTask(taskToArchive);
 
         return new CommandResult(String.format(MESSAGE_ARCHIVE_TASK_SUCCESS, taskToArchive));
     }
@@ -47,8 +47,8 @@ public class ArchiveTaskCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof ArchiveTaskCommand // instanceof handles nulls
-            && targetIndex.equals(((ArchiveTaskCommand) other).targetIndex)); // state check
+                || (other instanceof UnarchiveTaskCommand // instanceof handles nulls
+                && targetIndex.equals(((UnarchiveTaskCommand) other).targetIndex)); // state check
     }
 
 }

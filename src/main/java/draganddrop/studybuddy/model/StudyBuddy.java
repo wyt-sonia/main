@@ -140,8 +140,22 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
      *
      * @param p must not already exist in the study buddy.
      */
-    public void addArchivedTask(Task p) {
+    public void archiveTask(Task p) {
+        tasks.remove(p);
+        if (this.getDueSoonList().contains(p)) {
+            removeDueSoonTask(p);
+        }
         archivedTasks.add(p);
+    }
+
+    /**
+     * Moves an archived task back to main task list.
+     *
+     * @param p must not already exist in study buddy.
+     */
+    public void unarchiveTask(Task p) {
+        archivedTasks.remove(p);
+        tasks.add(p);
     }
 
     /**

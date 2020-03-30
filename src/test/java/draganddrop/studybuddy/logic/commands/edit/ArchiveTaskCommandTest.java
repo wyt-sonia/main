@@ -29,7 +29,6 @@ class ArchiveTaskCommandTest {
         String expectedMessage = String.format(ArchiveTaskCommand.MESSAGE_ARCHIVE_TASK_SUCCESS, taskToArchive);
 
         ModelManager expectedModel = new ModelManager(model.getStudyBuddy(), new UserPrefs());
-        expectedModel.deleteTask(taskToArchive);
         expectedModel.archiveTask(taskToArchive);
 
         assertCommandSuccess(atCommand, model, expectedMessage, expectedModel);
@@ -52,7 +51,6 @@ class ArchiveTaskCommandTest {
         String expectedMessage = String.format(ArchiveTaskCommand.MESSAGE_ARCHIVE_TASK_SUCCESS, taskToArchive);
 
         Model expectedModel = new ModelManager(model.getStudyBuddy(), new UserPrefs());
-        expectedModel.deleteTask(taskToArchive);
         expectedModel.archiveTask(taskToArchive);
 
         assertCommandSuccess(atCommand, model, expectedMessage, expectedModel);
