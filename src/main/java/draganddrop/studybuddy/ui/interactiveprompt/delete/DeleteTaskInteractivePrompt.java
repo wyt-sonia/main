@@ -92,7 +92,6 @@ public class DeleteTaskInteractivePrompt extends InteractivePrompt {
         super.setEndOfCommand(true);
     }
 
-
     /**
      * pending.
      */

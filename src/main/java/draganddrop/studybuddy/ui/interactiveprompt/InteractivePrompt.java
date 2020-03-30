@@ -34,7 +34,6 @@ public abstract class InteractivePrompt {
         setEndOfCommand(true);
     }
 
-
     public boolean isQuit() {
         return isQuit;
     }
@@ -66,7 +65,7 @@ public abstract class InteractivePrompt {
      * @param quitMessage the message that is displayed upon quitting
      * @return the reply to user
      */
-    public String handleQuitAndBack(String userInput, String quitMessage) {
+    public String handleQuit(String userInput, String quitMessage) {
         if (userInput.equals("quit")) {
             endInteract(quitMessage);
         }

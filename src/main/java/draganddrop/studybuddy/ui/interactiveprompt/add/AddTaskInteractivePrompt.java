@@ -165,8 +165,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 }
                 this.reply += REQUIRED_TASK_WEIGHT_MSG;
                 currentTerm = InteractivePromptTerms.TASK_WEIGHT;
-            }
-            catch (AddTaskCommandException e) {
+            } catch (AddTaskCommandException e) {
                 this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_DESCRIPTION_MSG;
             }
 
