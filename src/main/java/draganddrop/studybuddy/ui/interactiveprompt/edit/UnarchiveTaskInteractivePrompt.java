@@ -42,33 +42,33 @@ public class UnarchiveTaskInteractivePrompt extends InteractivePrompt {
 
         switch (currentTerm) {
 
-            case INIT:
-                this.reply = "Please enter the index number of the archived task.";
-                currentTerm = InteractivePromptTerms.TASK_INDEX;
-                break;
+        case INIT:
+            this.reply = "Please enter the index number of the archived task.";
+            currentTerm = InteractivePromptTerms.TASK_INDEX;
+            break;
 
-            case TASK_INDEX:
-                try {
-                    index = Integer.parseInt(userInput);
-                    reply = "The task at index " + userInput + " will be retrieved. \n "
-                            + " Please press enter again to make the desired changes.";
-                    currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-                } catch (ArchiveTaskCommandException ex) {
-                    reply = ex.getErrorMessage();
-                }
-                break;
+        case TASK_INDEX:
+            try {
+                index = Integer.parseInt(userInput);
+                reply = "The task at index " + userInput + " will be retrieved. \n "
+                        + " Please press enter again to make the desired changes.";
+                currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
+            } catch (ArchiveTaskCommandException ex) {
+                reply = ex.getErrorMessage();
+            }
+            break;
 
-            case READY_TO_EXECUTE:
-                try {
-                    UnarchiveTaskCommand archiveTaskCommand = new UnarchiveTaskCommand(Index.fromZeroBased(index - 1));
-                    logic.executeCommand(archiveTaskCommand);
-                    endInteract(END_OF_COMMAND_MSG);
-                } catch (CommandException | ParseException ex) {
-                    reply = ex.getMessage();
-                }
-                break;
+        case READY_TO_EXECUTE:
+            try {
+                UnarchiveTaskCommand archiveTaskCommand = new UnarchiveTaskCommand(Index.fromZeroBased(index - 1));
+                logic.executeCommand(archiveTaskCommand);
+                endInteract(END_OF_COMMAND_MSG);
+            } catch (CommandException | ParseException ex) {
+                reply = ex.getMessage();
+            }
+            break;
 
-            default:
+        default:
         }
         return reply;
     }

@@ -142,9 +142,13 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
      */
     public void archiveTask(Task p) {
         tasks.remove(p);
-        if (this.getDueSoonList().contains(p)) {
-            removeDueSoonTask(p);
-        }
+        archivedTasks.add(p);
+    }
+
+    /**
+     * Adds to archive task list. (For Json files)
+     */
+    public void addArchiveTask(Task p) {
         archivedTasks.add(p);
     }
 
