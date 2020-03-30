@@ -19,9 +19,15 @@ By: `Team Drag&Drop`      Since: `Jan 2020`
 
 == Introduction
 
-StudyBuddy is for an application designed for those who *prefer to use a desktop app for managing module related tasks*.
+StudyBuddy is a desktop application which is designed for students who *wish to manege their module related tasks*.
 More importantly, StudyBuddy is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
-If you can type fast, Study Buddy can get your module management done faster than traditional GUI apps.
+
+Instead of forcing users to remember long wordy and easy-typo commands,
+StudyBuddy provides an interactive way of communication, which not only improves
+the typo-tolerance of the application, but also makes the application more easy to master.
+
+If you can type fast, StudyBuddy can get your module management done faster than traditional GUI apps.
+
 Interested?
 Jump to the <<Quick Start>> to get started.
 Enjoy!
@@ -40,7 +46,7 @@ image::Ui.png[width="790"]
 e.g. typing *`help`* and pressing kbd:[Enter] will display a list of commands you can use.
 . Some example commands you can try:
 
-**  To list all tasks
+**  To list all tasks (under construction)
 
     list
 
