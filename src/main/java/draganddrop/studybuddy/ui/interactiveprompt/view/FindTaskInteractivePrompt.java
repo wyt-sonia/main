@@ -76,7 +76,7 @@ public class FindTaskInteractivePrompt extends InteractivePrompt {
     }
 
     public String getConfirmationPrompt(String userKeyword) {
-        return "You are searching for the tasks containing " + userKeyword + ". \n "
+        return "You are searching for the tasks containing " + userKeyword + ". \n"
             + "Please click enter again to view the searched list.";
     }
 

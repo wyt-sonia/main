@@ -1,11 +1,10 @@
 package draganddrop.studybuddy.ui;
 
 import draganddrop.studybuddy.logic.parser.TimeParser;
+import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.task.Task;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 
@@ -14,7 +13,7 @@ import javafx.scene.layout.Region;
  */
 public class DueSoonTaskCard extends UiPart<Region> {
 
-    private static final String FXML = "DueSoonTaskListCard.fxml";
+    private static final String FXML = "DueSoonTaskCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -35,13 +34,15 @@ public class DueSoonTaskCard extends UiPart<Region> {
     @FXML
     private Label dateTime;
     @FXML
+    private Label weightAndModule;
+    @FXML
     private Label creationDateTime;
     @FXML
     private Label type;
     @FXML
     private Label id;
     @FXML
-    private FlowPane tags;
+    private HBox tags;
 
     public DueSoonTaskCard(Task task, int displayedIndex) {
         super(FXML);
@@ -51,10 +52,17 @@ public class DueSoonTaskCard extends UiPart<Region> {
         //Module.setText(task.getModule().toString());
         timeLeft.setText(task.getTimeLeft());
         renderTask(task);
-        dateTime.setText("\tDeadline: " + task.getTimeString());
-        creationDateTime.setText("\tCreated: "
-                + TimeParser.getDateTimeString(task.getCreationDateTime()));
+        dateTime.setText("Deadline/Start at: " + task.getTimeString());
+        creationDateTime.setText("Created at: "
+            + TimeParser.getDateTimeString(task.getCreationDateTime()));
         type.setText(task.getTaskType().toString());
+
+        if (task.getModule().equals(new EmptyModule())) {
+            weightAndModule.setVisible(false);
+            weightAndModule.setManaged(false);
+        } else {
+            weightAndModule.setText(task.getWeight() + "% " + task.getModule().toString());
+        }
     }
 
     /**
@@ -102,6 +110,6 @@ public class DueSoonTaskCard extends UiPart<Region> {
         // state check
         DueSoonTaskCard card = (DueSoonTaskCard) other;
         return id.getText().equals(card.id.getText())
-                && task.equals(card.task);
+            && task.equals(card.task);
     }
 }

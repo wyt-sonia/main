@@ -27,6 +27,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 public class DeleteTaskInteractivePrompt extends InteractivePrompt {
     static final String END_OF_COMMAND_MSG = "Task deleted successfully!";
     static final String QUIT_COMMAND_MSG = "Successfully quited from delete task command.";
+    static final String REQUEST_INDEX_MSG = "Please enter the index number of task you wish to delete.";
 
     private int index;
 
@@ -44,23 +45,29 @@ public class DeleteTaskInteractivePrompt extends InteractivePrompt {
 
         switch (currentTerm) {
         case INIT:
-            this.reply = "Please enter the index number of task you wish to delete.";
+            this.reply = REQUEST_INDEX_MSG;
             currentTerm = InteractivePromptTerms.TASK_INDEX;
             break;
 
         case TASK_INDEX:
             try {
+                if (userInput.isBlank()) {
+                    throw new DeleteTaskCommandException("emptyInputError");
+                }
                 index = Integer.parseInt(userInput);
                 if (index > Task.getCurrentTasks().size() || index <= 0) {
                     throw new DeleteTaskCommandException("invalidIndexRangeError");
                 }
-                reply = "The task " + Task.getCurrentTasks().get(index - 1).getTaskName() + " will be deleted. \n "
-                    + " Please click enter again to make the desired deletion.";
+                reply = "The task " + Task.getCurrentTasks().get(index - 1).getTaskName() + " will be deleted. \n\n"
+                    + "Please click enter again to make the desired deletion.";
+
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (NumberFormatException ex) {
-                reply = (new DeleteTaskCommandException("wrongIndexFormatError")).getErrorMessage();
+                reply = (new DeleteTaskCommandException("wrongIndexFormatError")).getErrorMessage()
+                    + "\n\n" + REQUEST_INDEX_MSG;
             } catch (DeleteTaskCommandException ex) {
-                reply = ex.getErrorMessage();
+                reply = ex.getErrorMessage()
+                    + "\n\n" + REQUEST_INDEX_MSG;
             }
             break;
 
@@ -80,25 +87,11 @@ public class DeleteTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void interruptInteract() {
-
-    }
-
-    @Override
     public void endInteract(String msg) {
         this.reply = msg;
         super.setEndOfCommand(true);
     }
 
-    @Override
-    public void back() {
-
-    }
-
-    @Override
-    public void next() {
-
-    }
 
     /**
      * pending.

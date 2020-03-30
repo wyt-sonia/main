@@ -28,6 +28,28 @@ public class AddTaskCommandParser {
         String result = "";
         if (userInput.isBlank()) {
             throw new AddTaskCommandException("emptyInputError");
+        }
+        if (userInput.length() > 20) {
+            throw new AddTaskCommandException("TaskNameLengthError");
+        } else {
+            result = userInput.trim();
+        }
+        return result;
+    }
+
+    /**
+     * Parse the {@code userInput} for task description.
+     *
+     * @param userInput
+     * @return
+     * @throws AddTaskCommandException
+     */
+    public static String parseDescription(String userInput) throws AddTaskCommandException {
+        String result = "";
+        if (userInput.isBlank()) {
+            throw new AddTaskCommandException("emptyInputError");
+        } else if (userInput.length() > 300) {
+            throw new AddTaskCommandException("TaskDescriptionLengthError");
         } else {
             result = userInput.trim();
         }
@@ -137,6 +159,9 @@ public class AddTaskCommandParser {
      */
     public static TaskType parseType(String userInput, int size) throws AddTaskCommandException, NumberFormatException {
         TaskType result;
+        if (userInput.isBlank()) {
+            throw new AddTaskCommandException("emptyInputError");
+        }
         int index = Integer.parseInt(userInput.trim());
         if (index <= 0 || index > size) {
             throw new AddTaskCommandException("invalidIndexRange");

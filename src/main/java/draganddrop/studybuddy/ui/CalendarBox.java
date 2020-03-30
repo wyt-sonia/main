@@ -63,12 +63,13 @@ public class CalendarBox extends UiPart<Region> {
         localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         this.dueSoonListPanelPlaceholder = dueSoonListPanelPlaceholder;
         this.dueSoonPanelTitle = dueSoonPanelTitle;
+        dueSoonPanelTitle.getStyleClass().add("calender_sub_header");
 
         //reset data in panels for calendar
         dueSoonPanelTitle.setText("Click on a date to see tasks");
         dueSoonListPanelPlaceholder.getChildren().clear();
         dueSoonListPanelPlaceholder.setBackground(
-                new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+            new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
 
         //generatecalendar
         generateCalendar(localDate.getYear(), localDate.getMonth());

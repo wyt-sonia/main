@@ -7,7 +7,9 @@ import java.text.ParseException;
 import draganddrop.studybuddy.commons.core.index.Index;
 import draganddrop.studybuddy.logic.commands.edit.CompleteTaskCommand;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
-import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.DeleteTaskCommandException;
+import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.CompleteTaskCommandException;
+import draganddrop.studybuddy.model.task.Task;
+import draganddrop.studybuddy.model.task.TaskStatus;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 
@@ -18,6 +20,7 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
 
     static final String END_OF_COMMAND_MSG = "Task marked as completed successfully!";
     static final String QUIT_COMMAND_MSG = "Successfully quited from complete task command.";
+    static final String REQUEST_INDEX_MSG = "Please enter the index number of task you wish to mark as finished.";
 
     private int index;
 
@@ -36,18 +39,32 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
         switch (currentTerm) {
 
         case INIT:
-            this.reply = "Please enter the index number of task you wish to mark as done.";
+            this.reply = REQUEST_INDEX_MSG;
             currentTerm = InteractivePromptTerms.TASK_INDEX;
             break;
 
         case TASK_INDEX:
             try {
+                if (userInput.isBlank()) {
+                    throw new CompleteTaskCommandException("emptyInputError");
+                }
                 index = Integer.parseInt(userInput);
-                reply = "The task at index " + userInput + " will be mark as Done. \n "
-                    + " Please click enter again to make the desired deletion.";
+                if (index > Task.getCurrentTasks().size() || index <= 0) {
+                    throw new CompleteTaskCommandException("invalidIndexRangeError");
+                } else if (logic.getFilteredTaskList().get(index - 1).getTaskStatus().equals(TaskStatus.FINISHED)) {
+                    throw new CompleteTaskCommandException("taskCompletedError");
+                }
+                reply = "The task " + Task.getCurrentTasks().get(index - 1).getTaskName()
+                    + " will be marked as finished. \n\n"
+                    + "Please click enter again to make the desired action.";
+
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-            } catch (DeleteTaskCommandException ex) {
-                reply = ex.getErrorMessage();
+            } catch (NumberFormatException ex) {
+                reply = (new CompleteTaskCommandException("wrongIndexFormatError")).getErrorMessage()
+                    + "\n\n" + REQUEST_INDEX_MSG;
+            } catch (CompleteTaskCommandException ex) {
+                reply = ex.getErrorMessage()
+                    + "\n\n" + REQUEST_INDEX_MSG;
             }
             break;
 

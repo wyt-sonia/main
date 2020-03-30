@@ -59,24 +59,9 @@ public class ClearTasksInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void interruptInteract() {
-
-    }
-
-    @Override
     public void endInteract(String msg) {
         this.reply = msg;
         super.setEndOfCommand(true);
-    }
-
-    @Override
-    public void back() {
-
-    }
-
-    @Override
-    public void next() {
-
     }
 
     /**

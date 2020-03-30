@@ -12,10 +12,10 @@ import draganddrop.studybuddy.model.task.Task;
  */
 public class Statistics {
 
-    private static CompleteCountList completeCountList;
+    private static CompleteCountList completeCountList = new CompleteCountList();
 
     public Statistics() {
-        completeCountList = new CompleteCountList();
+
     }
 
     /**

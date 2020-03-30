@@ -4,7 +4,6 @@ import java.util.logging.Logger;
 
 import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.model.task.Task;
-
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -28,7 +27,7 @@ public class TaskListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code TaskCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code DetailedTaskCard}.
      */
     static class TaskListViewCell extends ListCell<Task> {
         @Override
@@ -39,7 +38,7 @@ public class TaskListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new TaskCard(task, getIndex() + 1).getRoot());
+                setGraphic(new DetailedTaskCard(task, getIndex() + 1).getRoot());
             }
         }
     }

@@ -42,7 +42,7 @@ public class RefreshTaskInteractivePrompt extends InteractivePrompt {
         switch (currentTerm) {
         case INIT:
             try {
-                reply = "The tasks list will be refreshed.\n "
+                reply = "The tasks list will be refreshed.\n"
                     + " Please press enter again to make the desired changes.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (DueSoonRefreshCommandException ex) {
@@ -71,21 +71,6 @@ public class RefreshTaskInteractivePrompt extends InteractivePrompt {
     public void endInteract(String msg) {
         this.reply = msg;
         super.setEndOfCommand(true);
-    }
-
-    @Override
-    public void interruptInteract() {
-
-    }
-
-    @Override
-    public void back() {
-
-    }
-
-    @Override
-    public void next() {
-
     }
 
     /**

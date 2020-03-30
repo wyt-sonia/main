@@ -7,13 +7,13 @@
 <VBox maxHeight="490.0" maxWidth="-Infinity" prefWidth="1400" fillWidth="true"
       xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <TabPane fx:id="tabPane" stylesheets="@StudyBuddyTheme.css" tabClosingPolicy="UNAVAILABLE">
+        <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
             <tabs>
                 <Tab fx:id="overview" text="Overview">
                     <content>
                         <VBox>
                             <children>
-                                <ListView fx:id="moduleListView" prefWidth="600" VBox.vgrow="ALWAYS"/>
+                                <ListView fx:id="moduleListView" VBox.vgrow="ALWAYS"/>
                             </children>
                         </VBox>
                     </content>
