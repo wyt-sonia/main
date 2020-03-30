@@ -28,7 +28,7 @@ public class FindTaskInteractivePrompt extends InteractivePrompt {
     @Override
     public String interact(String userInput) {
         if (userInput.equals("quit") || userInput.equals("back")) {
-            reply = handleQuitAndBack(userInput, QUIT_COMMAND_MSG);
+            reply = handleQuit(userInput, QUIT_COMMAND_MSG);
         } else {
             reply = handleFind(userInput);
         }

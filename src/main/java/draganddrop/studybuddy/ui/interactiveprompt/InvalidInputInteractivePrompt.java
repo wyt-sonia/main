@@ -27,23 +27,9 @@ public class InvalidInputInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void interruptInteract() {
-
-    }
-
-    @Override
     public void endInteract(String reply) {
         this.reply = reply;
         super.setEndOfCommand(true);
     }
 
-    @Override
-    public void back() {
-
-    }
-
-    @Override
-    public void next() {
-
-    }
 }
