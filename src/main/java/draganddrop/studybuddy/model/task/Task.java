@@ -44,7 +44,7 @@ public class Task implements Comparable<Task> {
     public Task(Module module, TaskType taskType, String taskName, String taskDescription, double weight,
                 TaskStatus taskStatus, LocalDateTime[] dateTimes, double estimatedTimeCost,
                 LocalDateTime creationDateTime) {
-        this.module = module; //not covered yet
+        this.module = module;
         this.taskType = taskType;
         this.taskName = taskName;
         this.taskDescription = taskDescription; //not covered yet

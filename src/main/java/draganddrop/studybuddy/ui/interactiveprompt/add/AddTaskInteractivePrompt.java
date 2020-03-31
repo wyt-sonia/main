@@ -41,7 +41,8 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     static final String REQUIRED_DATE_TIME_MSG = "Please enter the deadline with format: ";
     static final String REQUIRED_TASK_DESCRIPTION_MSG = "Please enter task description or press enter to skip.\n";
     static final String REQUIRED_TASK_WEIGHT_MSG = "Please enter the weight of the task or press enter to skip.\n";
-    static final String REQUIRED_TASK_ESTIMATED_TIME_COST_MSG = "Please enter the estimated number of hours cost.\n";
+    static final String REQUIRED_TASK_ESTIMATED_TIME_COST_MSG = "Please enter the estimated number of hours cost "
+        + "or press enter to skip.\n";
     static final String TASK_INFO_HEADER = "The task is ready to be added, press enter again to add the task:\n\n"
         + "=========== TASK INFO ===========\n";
 
@@ -70,13 +71,10 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             this.reply = REQUIRED_MODULE_MSG;
             moduleListString = "The Modules available are: \n";
             this.modules = logic.getFilteredModuleList();
-            AtomicInteger counter = new AtomicInteger();
-            modules.forEach(m -> {
-                counter.getAndAdd(1);
-                moduleListString += counter + "." + m.getModuleCode() + " " + m.getModuleName() + "\n";
-            });
+            constructModuleList(modules);
             this.reply += moduleListString;
             currentTerm = InteractivePromptTerms.TASK_MODULE;
+
             task.setStatus("pending");
             task.setTaskDescription("No Description");
             task.setWeight(0.0);
@@ -93,8 +91,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 }
                 task.setModule(module);
                 currentTerm = InteractivePromptTerms.TASK_NAME;
-                this.reply = "The module has been set as: " + module.getModuleCode() + " "
-                    + module.getModuleName() + "\n\n"
+                this.reply = checkAndModifyReply(module) + "\n\n"
                     + REQUIRED_TASK_NAME_MSG;
             } catch (AddTaskCommandException e) {
                 reply = e.getErrorMessage() + "\n\n" + REQUIRED_MODULE_MSG + "\n\n" + moduleListString;
@@ -249,6 +246,33 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         super.setEndOfCommand(true);
     }
 
+    /**
+     * hides empty module from the moduleList.
+     * @param moduleList
+     */
+    private void constructModuleList(ObservableList<Module> moduleList) {
+        AtomicInteger counter = new AtomicInteger();
+        moduleList.forEach(m -> {
+            if (!m.equals(new EmptyModule())) {
+                counter.getAndAdd(1);
+                moduleListString += counter + "." + m.getModuleCode() + " " + m.getModuleName() + "\n";
+            }
+        });
+    }
+
+    /**
+     * modify reply if module is empty.
+     * @param module
+     * @return
+     */
+    private String checkAndModifyReply(Module module) {
+        if (!module.equals(new EmptyModule())) {
+            return "The module has been set as: " + module.getModuleCode() + " "
+                    + module.getModuleName();
+        } else {
+            return "This task is not assigned to any modules.";
+        }
+    }
     /**
      * pending.
      */
