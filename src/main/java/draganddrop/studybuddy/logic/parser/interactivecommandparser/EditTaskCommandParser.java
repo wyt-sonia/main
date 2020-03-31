@@ -21,6 +21,9 @@ public class EditTaskCommandParser {
         String result = "";
         if (userInput.isBlank()) {
             throw new EditTaskCommandException("emptyInputError");
+        }
+        if (userInput.length() > 20) {
+            throw new EditTaskCommandException("TaskNameLengthError");
         } else {
             result = userInput.trim();
         }
@@ -67,6 +70,9 @@ public class EditTaskCommandParser {
     public static TaskType parseType(String userInput, int size)
         throws EditTaskCommandException, NumberFormatException {
         TaskType result;
+        if (userInput.isBlank()) {
+            throw new EditTaskCommandException("emptyInputError");
+        }
         int index = Integer.parseInt(userInput.trim());
         if (index <= 0 || index > size) {
             throw new EditTaskCommandException("invalidIndexRangeError");

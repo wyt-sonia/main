@@ -27,8 +27,8 @@ class ArchiveTaskInteractivePromptTest {
     public void interact_secondInput_returnKeywordPrompt() {
         ArchiveTaskInteractivePrompt prompt = new ArchiveTaskInteractivePrompt();
         prompt.interact("");
-        assertEquals("The task at index 1 will be archived. \n "
-                        + " Please press enter again to make the desired changes.",
+        assertEquals("The task at index 1 will be archived. \n"
+                        + "Please press enter again to make the desired changes.",
                 prompt.interact("1"));
     }
 

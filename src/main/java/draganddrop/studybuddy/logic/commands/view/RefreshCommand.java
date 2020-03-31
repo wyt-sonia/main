@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 
+import draganddrop.studybuddy.commons.core.Messages;
 import draganddrop.studybuddy.logic.commands.Command;
 import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.model.Model;
@@ -13,14 +14,6 @@ import draganddrop.studybuddy.model.task.Task;
  * Archives an entry in the study buddy.
  */
 public class RefreshCommand extends Command {
-
-    public static final String MESSAGE_USAGE = "Refreshes the tasks and update their status";
-    public static final String MESSAGE_DUE_SOON_TASK_SUCCESS = "Tasks' status are updated and "
-        + "tasks due soon are displayed";
-
-    public RefreshCommand() {
-
-    }
 
     @Override
     public CommandResult execute(Model model) {
@@ -52,7 +45,7 @@ public class RefreshCommand extends Command {
             }
         }
         model.sortDueSoonTasks();
-        return new CommandResult(String.format(MESSAGE_DUE_SOON_TASK_SUCCESS));
+        return new CommandResult(String.format(Messages.MESSAGE_DUE_SOON_TASK_SUCCESS));
     }
 
     @Override

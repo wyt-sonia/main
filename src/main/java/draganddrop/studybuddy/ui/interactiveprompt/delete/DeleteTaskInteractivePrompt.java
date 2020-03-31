@@ -16,6 +16,7 @@ import java.text.ParseException;
 import draganddrop.studybuddy.commons.core.index.Index;
 import draganddrop.studybuddy.logic.commands.delete.DeleteTaskCommand;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
+import draganddrop.studybuddy.logic.parser.interactivecommandparser.DeleteTaskCommandParser;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.DeleteTaskCommandException;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
@@ -51,23 +52,13 @@ public class DeleteTaskInteractivePrompt extends InteractivePrompt {
 
         case TASK_INDEX:
             try {
-                if (userInput.isBlank()) {
-                    throw new DeleteTaskCommandException("emptyInputError");
-                }
-                index = Integer.parseInt(userInput);
-                if (index > Task.getCurrentTasks().size() || index <= 0) {
-                    throw new DeleteTaskCommandException("invalidIndexRangeError");
-                }
-                reply = "The task " + Task.getCurrentTasks().get(index - 1).getTaskName() + " will be deleted. \n\n"
-                    + "Please click enter again to make the desired deletion.";
-
+                index = DeleteTaskCommandParser.parseIndex(userInput);
+                reply = "The task " + Task.getCurrentTasks().get(index - 1).getTaskName() + " will be deleted.\n"
+                        + "Please click enter again to make the desired deletion.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-            } catch (NumberFormatException ex) {
-                reply = (new DeleteTaskCommandException("wrongIndexFormatError")).getErrorMessage()
-                    + "\n\n" + REQUEST_INDEX_MSG;
             } catch (DeleteTaskCommandException ex) {
                 reply = ex.getErrorMessage()
-                    + "\n\n" + REQUEST_INDEX_MSG;
+                    + "\n" + REQUEST_INDEX_MSG;
             }
             break;
 
