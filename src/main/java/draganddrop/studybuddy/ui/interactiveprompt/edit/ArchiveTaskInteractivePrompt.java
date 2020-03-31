@@ -17,7 +17,6 @@ import draganddrop.studybuddy.commons.core.index.Index;
 import draganddrop.studybuddy.logic.commands.edit.ArchiveTaskCommand;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.ArchiveTaskCommandException;
-import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.DeleteTaskCommandException;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
@@ -63,14 +62,12 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
                 reply = "The task " + Task.getCurrentTasks().get(index - 1).getTaskName() + " will be archived. \n\n"
                     + "Please press enter again to make the desired changes.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-            }
-            catch (NumberFormatException ex) {
+            } catch (NumberFormatException ex) {
                 reply = (new ArchiveTaskCommandException("wrongIndexFormatError")).getErrorMessage()
                     + "\n\n" + REQUEST_INDEX_MSG;
-            }
-            catch (ArchiveTaskCommandException ex) {
+            } catch (ArchiveTaskCommandException ex) {
                 reply = ex.getErrorMessage()
-                + "\n\n" + REQUEST_INDEX_MSG;
+                    + "\n\n" + REQUEST_INDEX_MSG;
             }
             break;
 

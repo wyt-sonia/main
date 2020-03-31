@@ -3,7 +3,6 @@ package draganddrop.studybuddy.model.util;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.model.ReadOnlyStudyBuddy;
 import draganddrop.studybuddy.model.StudyBuddy;
 import draganddrop.studybuddy.model.module.Module;
@@ -15,11 +14,11 @@ import draganddrop.studybuddy.model.task.TaskType;
  * Contains utility methods for populating {@code StudyBuddy} with sample data.
  */
 public class SampleDataUtil {
-    public static String LONG_DESC_WITH_300_CHAR =
-          "This is a long task description with 300 characters. 12345678901234567890123456789012345678901234567"
-        + "This is a long task description with 300 characters. 12345678901234567890123456789012345678901234567"
-        + "This is a long task description with 300 characters. 12345678901234567890123456789012345678901234567";
-    public static String SHORT_DESC = "This is a short description.";
+    private static final String LONG_DESC_WITH_300_CHAR =
+        "This is a long task description with 300 characters. 12345678901234567890123456789012345678901234567"
+            + "This is a long task description with 300 characters. 12345678901234567890123456789012345678901234567"
+            + "This is a long task description with 300 characters. 12345678901234567890123456789012345678901234567";
+    private static final String SHORT_DESC = "This is a short description.";
 
     public static Task[] getSampleTasks() {
         Module cs2103T = new Module("Software Engineering", "CS2103T");
@@ -52,7 +51,7 @@ public class SampleDataUtil {
 
     public static Module[] getSampleModule() {
         Module cs2100 = new Module("Computer Organisation", "CS2100");
-        Module cs2100clone1 = new Module("dasadsa" , "CS2100");
+        Module cs2100clone1 = new Module("dasadsa", "CS2100");
         Module cs2100clone2 = new Module("Computer Organisation", "CS1111");
         return new Module[]{cs2100, cs2100clone1, cs2100clone2};
 
