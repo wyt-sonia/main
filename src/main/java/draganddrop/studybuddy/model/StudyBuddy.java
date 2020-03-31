@@ -8,6 +8,9 @@ import java.util.List;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.module.ModuleList;
 import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
+import draganddrop.studybuddy.model.statistics.CompleteCountList;
+import draganddrop.studybuddy.model.statistics.GeneralStats;
+import draganddrop.studybuddy.model.statistics.OverdueCountList;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskType;
 import draganddrop.studybuddy.model.task.UniqueTaskList;
@@ -25,7 +28,9 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     private final UniqueTaskList dueSoonTasks;
     private final UniqueTaskList tasks;
     private final ModuleList moduleList;
-    private final Statistics statistics;
+    private final CompleteCountList completeCountList;
+    private final OverdueCountList overdueCountList;
+    private final GeneralStats generalStats;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -39,7 +44,9 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         archivedTasks = new UniqueTaskList();
         dueSoonTasks = new UniqueTaskList();
         moduleList = new ModuleList();
-        statistics = new Statistics();
+        completeCountList = new CompleteCountList();
+        overdueCountList = new OverdueCountList();
+        generalStats = new GeneralStats();
     }
 
     public StudyBuddy() {
@@ -51,6 +58,22 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     public StudyBuddy(ReadOnlyStudyBuddy toBeCopied) {
         this();
         resetData(toBeCopied);
+    }
+
+    // Statistics
+    @Override
+    public List<Integer> getCompleteList() {
+        return completeCountList.getCompleteList();
+    }
+
+    @Override
+    public List<Integer> getOverdueList() {
+        return overdueCountList.getOverdueList();
+    }
+
+    @Override
+    public GeneralStats getGeneralStats() {
+        return generalStats;
     }
 
     //// list overwrite operations
@@ -123,6 +146,14 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
 
     public void setDueSoonTasks(List<Task> aTasks) {
         this.dueSoonTasks.setTasks(aTasks);
+    }
+
+    public void setCompleteList(List<Integer> completeList) {
+        this.completeCountList.setCompleteList(completeList);
+    }
+
+    public void setOverdueList(List<Integer> overdueList) {
+        this.overdueCountList.setOverdueList(overdueList);
     }
 
     /**
@@ -259,10 +290,10 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         this.moduleList.setModuleList(modules);
     }
 
-    @Override
+    /*@Override
     public Statistics getStatistics() {
         return statistics;
-    }
+    }*/
 
     public boolean hasModule(Module module) {
         return moduleList.contains(module);

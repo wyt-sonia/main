@@ -1,9 +1,11 @@
 package draganddrop.studybuddy.model;
 
+import java.util.List;
+
 import draganddrop.studybuddy.model.module.Module;
+import draganddrop.studybuddy.model.statistics.GeneralStats;
 import draganddrop.studybuddy.model.task.Task;
 
-import draganddrop.studybuddy.model.statistics.Statistics;
 import javafx.collections.ObservableList;
 
 /**
@@ -28,8 +30,12 @@ public interface ReadOnlyStudyBuddy {
      */
     ObservableList<Task> getTaskList();
 
-    /**
-     * Returns a statistic object.
-     */
-    Statistics getStatistics();
+    // Statistics
+    List<Integer> getCompleteList();
+
+    List<Integer> getOverdueList();
+
+    GeneralStats getGeneralStats();
+
+
 }

@@ -7,15 +7,23 @@ import java.util.List;
  * Counts number of overdue tasks
  */
 public class OverdueCountList {
-    private List<Integer> overdueCountList;
+    private List<Integer> overdueList;
+
+    public List<Integer> getOverdueList() {
+        return overdueList;
+    }
+
+    public void setOverdueList(List<Integer> overdueList) {
+        this.overdueList = overdueList;
+    }
 
     /**
      * initializes an empty overdueCountList
      */
     public void initList() {
-        overdueCountList = new ArrayList<>();
+        overdueList = new ArrayList<>();
         for (int i = 0; i < 366; i++) {
-            overdueCountList.add(0);
+            overdueList.add(0);
         }
     }
 
@@ -25,11 +33,11 @@ public class OverdueCountList {
      * @param dayIndex the day in which the task is completed
      */
     public void addOverdue(int dayIndex) {
-        int currentLateCount = overdueCountList.get(dayIndex);
+        int currentLateCount = overdueList.get(dayIndex);
         if (currentLateCount != 0) {
-            overdueCountList.set(dayIndex, 1);
+            overdueList.set(dayIndex, 1);
         } else {
-            overdueCountList.set(dayIndex, currentLateCount + 1);
+            overdueList.set(dayIndex, currentLateCount + 1);
         }
     }
 
@@ -40,7 +48,7 @@ public class OverdueCountList {
      * @return number of tasks completed late on the given day
      */
     public int getDailyOverdueCount(int dayIndex) {
-        return overdueCountList.get(dayIndex);
+        return overdueList.get(dayIndex);
     }
 
 }

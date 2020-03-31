@@ -7,19 +7,22 @@ import java.util.List;
  * List that contains the count of completed task for each day
  */
 public class CompleteCountList {
-    private List<Integer> completeCountList;
+    private List<Integer> completeList;
 
-    public CompleteCountList() {
-        this.initList();
+    public List<Integer> getCompleteList() {
+        return completeList;
     }
 
+    public void setCompleteList(List<Integer> completeList) {
+        this.completeList = completeList;
+    }
     /**
      * initializes an empty completeCount List
      */
     public void initList() {
-        completeCountList = new ArrayList<>();
+        completeList = new ArrayList<>();
         for (int i = 0; i < 366; i++) {
-            completeCountList.add(0);
+            completeList.add(0);
         }
     }
 
@@ -29,11 +32,11 @@ public class CompleteCountList {
      * @param dayIndex the day in which the task is completed
      */
     public void complete(int dayIndex) {
-        int currentCount = completeCountList.get(dayIndex);
+        int currentCount = completeList.get(dayIndex);
         if (currentCount != 0) {
-            completeCountList.set(dayIndex, 1);
+            completeList.set(dayIndex, 1);
         } else {
-            completeCountList.set(dayIndex, currentCount + 1);
+            completeList.set(dayIndex, currentCount + 1);
         }
     }
 
@@ -44,6 +47,6 @@ public class CompleteCountList {
      * @return number of tasks completed on the given day
      */
     public int getDailyCompleteCount(int dayIndex) {
-        return completeCountList.get(dayIndex);
+        return completeList.get(dayIndex);
     }
 }
