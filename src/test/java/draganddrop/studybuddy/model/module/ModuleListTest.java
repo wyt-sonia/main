@@ -6,15 +6,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
-import draganddrop.studybuddy.model.task.Task;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Test;
 
 import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
+import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.testutil.Assert;
 import draganddrop.studybuddy.testutil.TestModules;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 /**
  * Pending
  */
@@ -62,10 +62,11 @@ public class ModuleListTest {
     public void filterTaskListWorks() {
         Module testModule = TestModules.getSampleModule()[3];
         ObservableList<Task> tasksToBeFiltered = FXCollections.observableArrayList(TestModules.getSampleTask());
-        ObservableList<Task> expectedTasks = TestModules.getSampleTask().filtered(x -> x.getModule().equals(testModule));
+        ObservableList<Task> expectedTasks = TestModules.getSampleTask()
+                .filtered(x -> x.getModule().equals(testModule));
         testModule.filterAndSetInternalTaskList(tasksToBeFiltered);
         assertEquals(expectedTasks, testModule.getInternalTaskList());
-        testModule.getInternalTaskList().forEach( x -> {
+        testModule.getInternalTaskList().forEach(x -> {
             assertTrue(x.getModule().equals(testModule));
         });
     }

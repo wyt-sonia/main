@@ -2,13 +2,12 @@ package draganddrop.studybuddy.model.module;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import draganddrop.studybuddy.testutil.TestModules;
 import org.junit.jupiter.api.Test;
 
 import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studybuddy.testutil.Assert;
+import draganddrop.studybuddy.testutil.TestModules;
 
 public class ModuleTest {
     private Module sample1 = TestModules.getSampleModule()[0];

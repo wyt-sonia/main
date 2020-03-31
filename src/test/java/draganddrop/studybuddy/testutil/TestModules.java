@@ -42,14 +42,4 @@ public class TestModules {
 
         return sampleTaskList;
     }
-
-    public static ObservableList<Task> expectedFilterTask() {
-        Module[] modArr = getSampleModule();
-        ObservableList<Task> sampleTaskList = FXCollections.observableArrayList();
-        sampleTaskList.add(new Task(modArr[3], TaskType.Assignment, "Quiz 1", "Quiz taskDescription",
-                2.0, TaskStatus.PENDING, dateTimesTwo, 1.0, LocalDateTime.now()));
-        sampleTaskList.add(new Task(modArr[3], TaskType.Meeting, "Meeting 1", "Meeting desc", 20.0,
-                TaskStatus.PENDING, dateTimesTwo, 15.0, LocalDateTime.now()));
-        return sampleTaskList;
-    }
 }

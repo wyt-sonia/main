@@ -1,7 +1,8 @@
 package draganddrop.studybuddy.model.module;
 
-import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
+import java.util.stream.IntStream;
 
+import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
 /**
  * ModuleCode. Ensures that the module code keyed in matches the proper format. XX0000.
  */
@@ -45,31 +46,14 @@ public class ModuleCode {
      * @throws ModuleCodeException
      */
     private static String parsePrefix(String input) throws ModuleCodeException {
-        String output = "";
-        /*
-        if (!Character.isLetter(input.charAt(0))) {
-            throw new ModuleCodeException("Module code prefix not found.");
+        StringBuilder builder = new StringBuilder();
+        IntStream.range(0, input.toCharArray().length)
+                .mapToObj(i -> input.toCharArray()[i]).takeWhile(x -> Character.isAlphabetic(x))
+                .forEach(x -> builder.append(x));
+        if (builder.toString().length() < 2 || builder.toString().length() > 3) {
+            throw new ModuleCodeException("Please enter a valid module code.");
         } else {
-            for (int i = 0; i < 3; i++) {
-                if (i != 2 && !Character.isLetter(input.charAt(i))) {
-                    throw new ModuleCodeException("Wrong module code prefix format error.");
-                }
-                output += Character.isLetter(input.charAt(i)) ? input.charAt(i) : "";
-            }
-        }
-        */
-        for (int i = 0; i < input.length(); i++) {
-            if(Character.isAlphabetic(input.charAt(i))) {
-                output += input.charAt(i);
-            } else {
-                break;
-            }
-        }
-
-        if(output.length() < 2 || output.length() > 3) {
-            throw new ModuleCodeException("Wrong module code prefix. Either too short/too long");
-        } else {
-            return output.toUpperCase();
+            return builder.toString().toUpperCase();
         }
     }
 
@@ -81,28 +65,15 @@ public class ModuleCode {
      * @throws ModuleCodeException
      */
     private static int parseNumber(String input) throws ModuleCodeException {
-        int result = 0;
-        int startIndex = 0;
-        //setup counter
-        for(int i = 0; i < input.length(); i++) {
-            if(Character.isAlphabetic(input.charAt(i))) {
-                startIndex++;
-            } else {
-                break;
-            }
+        StringBuilder builder = new StringBuilder();
+        IntStream.range(0, input.toCharArray().length)
+                .mapToObj(i -> input.toCharArray()[i]).filter(x -> Character.isDigit(x))
+                .forEach(x -> builder.append(x));
+        if (builder.toString().length() == 4) {
+            return Integer.parseInt(builder.toString());
+        } else {
+            throw new ModuleCodeException("Please enter a valid module code.");
         }
-
-        //parseInt(). if successful, check whether number exceeds digit length
-        try {
-            result = Integer.parseInt(input.substring(startIndex, startIndex + 4));
-            if(Character.isDigit(startIndex + 4)) {
-                throw new ModuleCodeException("Please enter a valid module code. Number is too long.");
-            }
-        } catch (NumberFormatException| IndexOutOfBoundsException ex) {
-            throw new ModuleCodeException("Please enter a valid module code. Number portion is too short.");
-        }
-
-        return result;
     }
 
     /**
@@ -112,32 +83,16 @@ public class ModuleCode {
      * @return
      */
     private static String parsePostfix(String input) throws ModuleCodeException {
-        int startIndex = 0;
-        //setup counter
-        for(int i = 0; i < input.length(); i++) {
-            if(Character.isAlphabetic(input.charAt(i))) {
-                startIndex++;
-            } else {
-                break;
-            }
-        }
-
-        while(startIndex < input.length()) {
-            if(Character.isDigit(input.charAt(startIndex))) {
-                startIndex++;
-            } else {
-                break;
-            }
-        }
-
-        int postfixLength = input.length() - startIndex;
-        if(postfixLength > 1) {
-            throw new ModuleCodeException("Please enter a valid module code. postfix is too long.");
-        } else if (postfixLength == 0){
-            return "";
+        StringBuilder builder = new StringBuilder();
+        IntStream.range(0, input.toCharArray().length)
+                .mapToObj(i -> input.toCharArray()[i]).dropWhile(x -> Character.isAlphabetic(x))
+                .dropWhile(x -> Character.isDigit(x)).forEach(x -> builder.append(x));
+        if (builder.toString().length() < 2) {
+            return builder.toString();
         } else {
-            return "" + input.charAt(startIndex);
+            throw new ModuleCodeException("Please enter a valid module code.");
         }
+
 
     }
 
