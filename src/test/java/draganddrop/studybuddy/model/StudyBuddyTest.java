@@ -6,10 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Collections;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
 import draganddrop.studybuddy.model.module.Module;
+import draganddrop.studybuddy.model.statistics.GeneralStats;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.testutil.TypicalTasks;
 
@@ -70,6 +72,21 @@ public class StudyBuddyTest {
         }
 
         @Override
+        public List<Integer> getCompleteCountList() {
+            return null;
+        }
+
+        @Override
+        public List<Integer> getOverdueCountList() {
+            return null;
+        }
+
+        @Override
+        public GeneralStats getGeneralStats() {
+            return null;
+        }
+
+        @Override
         public ObservableList<Task> getArchivedList() {
             return null;
         }
@@ -80,7 +97,7 @@ public class StudyBuddyTest {
         }
 
         public ObservableList<Module> getModuleList() {
-            return getModuleList();
+            return null;
         }
     }
 }

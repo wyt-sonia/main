@@ -18,22 +18,6 @@ public class Statistics {
         this.overdueStats = overdueStats;
     }
 
-    public Statistics() {
-    }
-
-    public void setGeneralStats(GeneralStats generalStats) {
-        this.generalStats = generalStats;
-    }
-
-    public void setCompletionStats(CompletionStats completionStats) {
-        this.completionStats = completionStats;
-    }
-
-    public void setOverdueStats(OverdueStats overdueStats) {
-        this.overdueStats = overdueStats;
-    }
-
-
     /**
      * Records the completed task
      *

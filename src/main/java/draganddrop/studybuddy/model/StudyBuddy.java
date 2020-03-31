@@ -11,6 +11,7 @@ import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studybuddy.model.statistics.CompletionStats;
 import draganddrop.studybuddy.model.statistics.GeneralStats;
 import draganddrop.studybuddy.model.statistics.OverdueStats;
+import draganddrop.studybuddy.model.statistics.Statistics;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskType;
 import draganddrop.studybuddy.model.task.UniqueTaskList;
@@ -30,6 +31,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     private final CompletionStats completionStats;
     private final OverdueStats overdueStats;
     private final GeneralStats generalStats;
+    private final Statistics statistics;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -46,6 +48,9 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         completionStats = new CompletionStats();
         overdueStats = new OverdueStats();
         generalStats = new GeneralStats();
+        statistics = new Statistics(generalStats, completionStats, overdueStats);
+        UniqueTaskList.setStatistics(statistics);
+        Task.setStatistics(statistics);
     }
 
     public StudyBuddy() {

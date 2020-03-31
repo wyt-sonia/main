@@ -10,7 +10,6 @@ import java.util.List;
 import draganddrop.studybuddy.commons.util.CollectionUtil;
 import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.model.module.Module;
-import draganddrop.studybuddy.model.statistics.CompletionStats;
 import draganddrop.studybuddy.model.statistics.Statistics;
 import draganddrop.studybuddy.model.task.exceptions.TaskNotFoundException;
 
@@ -31,7 +30,7 @@ public class UniqueTaskList implements Iterable<Task> {
      * Sets the statistics for unique task list
      * @param statistics completionStats used to record tasks completed
      */
-    public void setStatistics(Statistics statistics) {
+    public static void setStatistics(Statistics statistics) {
         UniqueTaskList.statistics = statistics;
     }
 
