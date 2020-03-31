@@ -41,11 +41,13 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     static final String REQUIRED_DATE_TIME_MSG = "Please enter the deadline with format: ";
     static final String REQUIRED_TASK_DESCRIPTION_MSG = "Please enter task description or press enter to skip.\n";
     static final String REQUIRED_TASK_WEIGHT_MSG = "Please enter the weight of the task or press enter to skip.\n";
-    static final String REQUIRED_TASK_ESTIMATED_TIME_COST_MSG = "Please enter the estimated number of hours cost.\n";
+    static final String REQUIRED_TASK_ESTIMATED_TIME_COST_MSG = "Please enter the estimated number of hours cost "
+        + "or press enter to skip.\n";
     static final String TASK_INFO_HEADER = "The task is ready to be added, press enter again to add the task:\n\n"
         + "=========== TASK INFO ===========\n";
 
     static final String QUIT_COMMAND_MSG = "Successfully quited from add task command.";
+
     private String moduleListString = "";
     private ObservableList<Module> modules;
     private Task task;
