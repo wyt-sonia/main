@@ -74,7 +74,7 @@ public class ModuleCode {
     }
 
     /**
-     * Parse the number part of the module code and make sure the number part is 4 digits.
+     * Parse the number part of the module code and make sure the number part is at most 4 digits.
      *
      * @param input
      * @return
@@ -82,19 +82,26 @@ public class ModuleCode {
      */
     private static int parseNumber(String input) throws ModuleCodeException {
         int result = 0;
-        try {
-            int startIndex = Character.isDigit(input.charAt(2)) ? 2 : 1;
-            if (input.length() - startIndex > 5 || Character.isDigit(startIndex + 5)) {
-                throw new ModuleCodeException("Please enter a valid module code.");
+        int startIndex = 0;
+        //setup counter
+        for(int i = 0; i < input.length(); i++) {
+            if(Character.isAlphabetic(input.charAt(i))) {
+                startIndex++;
+            } else {
+                break;
             }
-            try {
-                result = Integer.parseInt(input.substring(startIndex, startIndex + 4));
-            } catch (NumberFormatException e) {
-                throw new ModuleCodeException("Please enter a valid module code.");
-            }
-        } catch (StringIndexOutOfBoundsException ex) {
-            throw new ModuleCodeException("Please enter a valid module code. either number is too long/too short.");
         }
+
+        //parseInt(). if successful, check whether number exceeds digit length
+        try {
+            result = Integer.parseInt(input.substring(startIndex, startIndex + 4));
+            if(Character.isDigit(startIndex + 4)) {
+                throw new ModuleCodeException("Please enter a valid module code. Number is too long.");
+            }
+        } catch (NumberFormatException| IndexOutOfBoundsException ex) {
+            throw new ModuleCodeException("Please enter a valid module code. Number portion is too short.");
+        }
+
         return result;
     }
 
@@ -104,9 +111,34 @@ public class ModuleCode {
      * @param input
      * @return
      */
-    private static String parsePostfix(String input) {
-        return Character.isLetter(input.charAt(input.length() - 1))
-            ? input.substring(input.length() - 1).toUpperCase() : "";
+    private static String parsePostfix(String input) throws ModuleCodeException {
+        int startIndex = 0;
+        //setup counter
+        for(int i = 0; i < input.length(); i++) {
+            if(Character.isAlphabetic(input.charAt(i))) {
+                startIndex++;
+            } else {
+                break;
+            }
+        }
+
+        while(startIndex < input.length()) {
+            if(Character.isDigit(input.charAt(startIndex))) {
+                startIndex++;
+            } else {
+                break;
+            }
+        }
+
+        int postfixLength = input.length() - startIndex;
+        if(postfixLength > 1) {
+            throw new ModuleCodeException("Please enter a valid module code. postfix is too long.");
+        } else if (postfixLength == 0){
+            return "";
+        } else {
+            return "" + input.charAt(startIndex);
+        }
+
     }
 
     private String getPrefix() {

@@ -14,6 +14,26 @@ public class ModuleCodeTest {
     String longPrefix = "FFFF11";
     String longNumbers = "CS1111111111";
     String noNumbers = "CS";
+    String sample2 = "LSM1303A";
+    String postfix = "CS0000X";
+    String noPostfix = "CS0000";
+    String longPostfix = "CS0000XX";
+
+    @Test
+    public void testSampleWith3LetterPrefix() throws ModuleCodeException {
+        new ModuleCode(sample2);
+    }
+
+    @Test
+    public void postFixOptional() throws ModuleCodeException {
+        new ModuleCode(postfix);
+        new ModuleCode(noPostfix);
+    }
+
+    @Test
+    public void moduleCodePostfixTooLong_throwModuleCodeException() {
+        Assert.assertThrows(ModuleCodeException.class, () -> new ModuleCode(longPostfix));
+    }
 
     @Test
     public void isSameModuleCode() throws ModuleCodeException {
