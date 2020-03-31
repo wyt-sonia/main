@@ -1,38 +1,61 @@
 package draganddrop.studybuddy.ui;
 
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.logic.parser.TimeParser;
+import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskStatus;
 import draganddrop.studybuddy.model.task.TaskType;
-
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.chart.AreaChart;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 
 /**
  * Panel containing the summary charts of tasks.
  */
 public class TaskSummaryPanel extends UiPart<Region> {
 
+    private static final String PENDING_COLOR = "#337ab7";
+    private static final String FINISHED_COLOR = "#478e47";
+    private static final String DUE_SOON_COLOR = "#f0ad4e";
+    private static final String OVERDUE_COLOR = "#d9534f";
+
+    private static final String ASSIGNMENT_COLOR = "#ec7561";
+    private static final String QUIZ_COLOR = "#498da4";
+    private static final String PRESENTATION_COLOR = "#a56a91";
+    private static final String MEETING_COLOR = "#609369";
+    private static final String EXAM_COLOR = "#bf5252";
+    private static final String OTHERS_COLOR = "#5fb2ce";
+
+
     private static final String FXML = "TaskSummaryPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(TaskListPanel.class);
     private ObservableList<Task> tempTasks = FXCollections.observableArrayList();
     private ObservableList<Task> archivedTasks;
     private ObservableList<Task> aliveTasks;
+    private ObservableList<Module> modules;
+    private ObservableList<Task> selectedTasks;
+    private StackPane selectedTaskListPanelPlaceholder;
+    private Label selectedTaskListPanelTitle;
 
     @javafx.fxml.FXML
     private PieChart taskSummaryPieChart;
@@ -41,50 +64,80 @@ public class TaskSummaryPanel extends UiPart<Region> {
     private AreaChart taskSummaryAreaChart;
 
     @javafx.fxml.FXML
-    private BarChart taskSummaryBarChart;
+    private StackedBarChart taskSummaryStackedBarChart;
 
-    @javafx.fxml.FXML
-    private LineChart taskSummaryLineChart;
-
-    public TaskSummaryPanel(ObservableList<Task> currentTaskList,
-                            ObservableList<Task> archivedTaskList) {
+    public TaskSummaryPanel(ObservableList<Task> observableCurrentTasks,
+                            ObservableList<Task> observableArchivedTasks, ObservableList<Module> observableModules,
+                            StackPane selectedTaskListPanelPlaceholder,
+                            Label selectedTaskListPanelTitle) {
         super(FXML);
-        archivedTasks = archivedTaskList;
-        aliveTasks = currentTaskList;
-        tempTasks.addAll(currentTaskList);
-        tempTasks.addAll(archivedTaskList);
+        archivedTasks = observableArchivedTasks;
+        aliveTasks = observableCurrentTasks;
+        modules = observableModules;
+        tempTasks.addAll(observableCurrentTasks);
+        tempTasks.addAll(observableArchivedTasks);
+        this.selectedTaskListPanelPlaceholder = selectedTaskListPanelPlaceholder;
+        this.selectedTaskListPanelTitle = selectedTaskListPanelTitle;
+        selectedTaskListPanelPlaceholder.setBackground(
+            new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+
         setUpAreaChart();
         setUpPieChart();
         setUpBarChart();
-        setUpLineChart();
 
-        currentTaskList.addListener(new ListChangeListener<Task>() {
+        observableCurrentTasks.addListener(new ListChangeListener<Task>() {
             @Override
             public void onChanged(Change<? extends Task> t) {
                 tempTasks.clear();
-                tempTasks.addAll(currentTaskList);
-                tempTasks.addAll(archivedTaskList);
+                tempTasks.addAll(observableCurrentTasks);
+                tempTasks.addAll(observableArchivedTasks);
                 setUpAreaChart();
                 setUpPieChart();
                 setUpBarChart();
-                setUpLineChart();
             }
         });
+
+        observableModules.addListener(new ListChangeListener<Module>() {
+            @Override
+            public void onChanged(Change<? extends Module> c) {
+                modules = observableModules;
+                setUpAreaChart();
+            }
+        });
+    }
+
+    /**
+     * Renders the selected task list panel accordingly.
+     */
+    public void renderSelectedListPanel() {
+        selectedTaskListPanelTitle.getStyleClass().add("summary_sub_header");
+        selectedTaskListPanelTitle.setText("Click on Chart to View Related Tasks");
+        selectedTaskListPanelPlaceholder.getChildren().clear();
     }
 
     /**
      * Aim to visualize the portion of different type, status etc.
      */
     private void setUpPieChart() {
-
+        ArrayList<PieChart.Data> datas = new ArrayList<>();
         if (!taskSummaryPieChart.getData().isEmpty()) {
             taskSummaryPieChart.getData().clear();
         }
         for (TaskStatus ts : TaskStatus.getTaskStatusList()) {
             long count = tempTasks.stream().filter(t -> t.getTaskStatus().equals(ts)).count();
-            taskSummaryPieChart.getData().add(new PieChart.Data(ts.convertToString(), count));
+            PieChart.Data tempData = new PieChart.Data(ts.convertToString(), count);
+            datas.add(tempData);
+            taskSummaryPieChart.getData().add(tempData);
         }
-
+        datas.forEach(d -> d.getNode().setOnMouseClicked(e -> {
+            String statusName = d.getName().split(":")[0].trim();
+            selectedTasks = tempTasks.filtered(task ->
+                task.getTaskStatus().equals(TaskStatus.getStatus(statusName)));
+            TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
+            selectedTaskListPanelTitle.setText(d.getName().toUpperCase() + " Tasks");
+            selectedTaskListPanelPlaceholder.getChildren().clear();
+            selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+        }));
         taskSummaryPieChart.setTitle("Summary of Tasks' Status");
         taskSummaryPieChart.getData().forEach(data ->
             data.nameProperty().bind(
@@ -96,34 +149,83 @@ public class TaskSummaryPanel extends UiPart<Region> {
     }
 
     /**
-     * Aim to compare time estimated and actual time used.
+     * Renders the charts accordingly.
+     *
+     * @param data
+     * @param status
+     */
+    private void renderPieChart(PieChart.Data data, String status) {
+        switch (status) {
+        case "pending":
+            break;
+        case "finished":
+            break;
+        case "due":
+            break;
+        case "overdue":
+            break;
+        default:
+        }
+    }
+
+    /**
+     * Shows the changing of number of dues.
      */
     private void setUpAreaChart() {
+        taskSummaryAreaChart.setTitle("Summary of Module Related Tasks' Deadline/Start Date");
+        taskSummaryAreaChart.getYAxis().setLabel("No of Tasks");
+        taskSummaryAreaChart.getXAxis().setLabel("Deadline/Start Date");
 
         if (!taskSummaryAreaChart.getData().isEmpty()) {
             taskSummaryAreaChart.getData().clear();
         }
+        ArrayList<XYChart.Data> datas = new ArrayList<>();
+        ArrayList<XYChart.Series> dataSeries = new ArrayList<>();
 
-        XYChart.Series taskTypeDataSeries = new XYChart.Series();
-        XYChart.Series taskStatusDataSeries = new XYChart.Series();
-        taskTypeDataSeries.setName("Task Type");
-        taskStatusDataSeries.setName("Task Status");
+        ObservableList<Task> sortedTasks = tempTasks.sorted(Comparator.comparing(t -> t.getDateTimes()[0]));
+        LocalDate startDate = sortedTasks.get(0).getDateTimes()[0].toLocalDate();
+        LocalDate endDate = sortedTasks.get(sortedTasks.size() - 1).getDateTimes()[0].toLocalDate();
 
-        Map<TaskType, Long> taskTypeAndCounts = tempTasks.stream()
-            .collect(Collectors.groupingBy(Task::getTaskType, Collectors.counting()));
-
-        Map<TaskStatus, Long> taskStatusAndCounts = tempTasks.stream()
-            .collect(Collectors.groupingBy(Task::getTaskStatus, Collectors.counting()));
-
-        taskTypeAndCounts.forEach((type, count) -> {
-            taskTypeDataSeries.getData().add(new XYChart.Data(type.name(), count));
+        modules.forEach(m -> {
+            XYChart.Series dueDateDataSeries = new XYChart.Series();
+            dueDateDataSeries.setName(m.getModuleCode().toString());
+            for (LocalDate d = startDate; d.isBefore(endDate.plusDays(1)); d = d.plusDays(1)) {
+                LocalDate finalD = d;
+                long numOfTasksDue = tempTasks.stream()
+                    .filter(t -> t.getDateTimes()[0].toLocalDate().equals(finalD) && t.getModule().equals(m)).count();
+                XYChart.Data tempData = new XYChart.Data(TimeParser.getDateString(d), numOfTasksDue);
+                tempData.setExtraValue(m.getModuleCode());
+                dueDateDataSeries.getData().add(tempData);
+                datas.add(tempData);
+            }
+            dataSeries.add(dueDateDataSeries);
         });
 
-        taskStatusAndCounts.forEach((status, count) -> {
-            taskStatusDataSeries.getData().add(new XYChart.Data(status.convertToString(), count));
-        });
+        taskSummaryAreaChart.getData().addAll(dataSeries);
 
-        taskSummaryAreaChart.getData().addAll(taskStatusDataSeries, taskTypeDataSeries);
+        datas.forEach(d -> d.getNode().setOnMouseClicked(e -> {
+            String moduleCode = d.getExtraValue().toString();
+            String dateString = d.getXValue().toString();
+            LocalDate date = TimeParser.parseDate(dateString);
+            selectedTasks = tempTasks.filtered(task ->
+                task.getModule().getModuleCode().toString().equals(moduleCode)
+                    && task.getDateTimes()[0].toLocalDate().isEqual(date));
+            TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
+            selectedTaskListPanelTitle.setText("Tasks of " + moduleCode + " due/start on " + dateString);
+            selectedTaskListPanelPlaceholder.getChildren().clear();
+            selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+        }));
+
+        dataSeries.forEach(d -> d.getNode().setOnMouseClicked(e -> {
+            String moduleCode = d.getName();
+            selectedTasks = tempTasks.filtered(task ->
+                task.getModule().getModuleCode().toString().equals(moduleCode));
+            TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
+            selectedTaskListPanelTitle.setText("Tasks of " + moduleCode);
+            selectedTaskListPanelPlaceholder.getChildren().clear();
+            selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+        }));
+
     }
 
     /**
@@ -132,88 +234,44 @@ public class TaskSummaryPanel extends UiPart<Region> {
      */
     private void setUpBarChart() {
 
-        if (!taskSummaryBarChart.getData().isEmpty()) {
-            taskSummaryBarChart.getData().clear();
+        ArrayList<XYChart.Data> datas = new ArrayList<>();
+        ArrayList<XYChart.Series> dataSeries = new ArrayList<>();
+
+        taskSummaryStackedBarChart.setTitle("Summary of Module Related Tasks' Weight");
+        taskSummaryStackedBarChart.getYAxis().setLabel("Weight %");
+        taskSummaryStackedBarChart.getXAxis().setLabel("Modules");
+
+        if (!taskSummaryStackedBarChart.getData().isEmpty()) {
+            taskSummaryStackedBarChart.getData().clear();
         }
 
-        HashMap<String, XYChart.Series> moduleDataSeries = new HashMap<>();
-
-        Map<String, Map<TaskType, Long>> currentTaskTypeAndCountUnderModules = tempTasks.stream()
-            .collect(Collectors.groupingBy(t -> t.getModule().getModuleCode().toString(),
-                Collectors.groupingBy(Task::getTaskType, Collectors.counting())
-            ));
-
-        currentTaskTypeAndCountUnderModules.forEach((moduleCode, typeAndCount) -> {
-            XYChart.Series series;
-            if (!moduleDataSeries.containsKey(moduleCode)) {
-                series = new XYChart.Series();
-                moduleDataSeries.put(moduleCode, series);
-                series.setName(moduleCode);
-            } else {
-                series = moduleDataSeries.get(moduleCode);
-            }
-            typeAndCount.forEach((type, count) -> {
-                series.getData().add(new XYChart.Data(type.name(), count));
+        for (TaskType taskType : Arrays.asList(TaskType.getTaskTypes())) {
+            XYChart.Series weightDataSeries = new XYChart.Series();
+            weightDataSeries.setName(taskType.toString());
+            modules.forEach(m -> {
+                ObservableList<Task> filteredTasks = tempTasks
+                    .filtered(t -> t.getModule().equals(m) && t.getTaskType().equals(taskType));
+                XYChart.Data tempData = new XYChart.Data(m.getModuleCode().toString(),
+                    filteredTasks.stream().mapToDouble(Task::getWeight).sum());
+                tempData.setExtraValue(m.getModuleCode().toString() + "//" + taskType.toString());
+                weightDataSeries.getData().add(tempData);
+                datas.add(tempData);
             });
-        });
-
-        /*
-        Map<Module, Map<TaskStatus, Long>> taskStatusAndCountUnderModules = taskList.stream()
-            .collect(Collectors.groupingBy(Task::getModule,
-                Collectors.groupingBy(Task::getTaskStatus, Collectors.counting())));
-
-        taskStatusAndCountUnderModules.forEach((module, statusAndCount)->{
-            XYChart.Series series = new XYChart.Series();
-            series.setName(module.getModuleName());
-            moduleDataSeries.add(series);
-
-            statusAndCount.forEach((status, count) -> {
-                series.getData().add(new XYChart.Data(status.convertToString(), count));
-            });
-        });
-        */
-
-        taskSummaryBarChart.getData().addAll(moduleDataSeries.values());
-    }
-
-    /**
-     * Aims to show the changing of number of creation/ finishing/ due task of each day.
-     */
-    private void setUpLineChart() {
-
-        if (!taskSummaryLineChart.getData().isEmpty()) {
-            taskSummaryLineChart.getData().clear();
+            dataSeries.add(weightDataSeries);
         }
 
-        taskSummaryLineChart.getYAxis().setLabel("No of Tasks");
-        taskSummaryLineChart.getXAxis().setLabel("Date & Time");
+        taskSummaryStackedBarChart.getData().addAll(dataSeries);
 
-        XYChart.Series creationInfoSeries = new XYChart.Series();
-        creationInfoSeries.setName("Task creation count");
-        Map<LocalDate, Long> creationInfoList = tempTasks.stream()
-            .collect(Collectors.groupingBy(t -> t.getCreationDateTime().toLocalDate(), Collectors.counting()));
-        creationInfoList.forEach((date, count) -> {
-            creationInfoSeries.getData().add(new XYChart.Data(TimeParser.getDateString(date), count));
-        });
-
-        XYChart.Series dueInfoSeries = new XYChart.Series();
-        dueInfoSeries.setName("Task deadline/start date count");
-        Map<LocalDate, Long> dueInfoList = tempTasks.stream()
-            .collect(Collectors.groupingBy(t -> t.getDateTimes()[0].toLocalDate(), Collectors.counting()));
-        dueInfoList.forEach((date, count) -> {
-            dueInfoSeries.getData().add(new XYChart.Data(TimeParser.getDateString(date), count));
-        });
-
-        XYChart.Series finishInfoSeries = new XYChart.Series();
-        finishInfoSeries.setName("Task completed count");
-        Map<LocalDate, Long> finishInfoList = archivedTasks.stream()
-            .collect(Collectors.groupingBy(t -> t.getCreationDateTime().toLocalDate(), Collectors.counting()));
-        finishInfoList.forEach((date, count) -> {
-            finishInfoSeries.getData().add(new XYChart.Data(TimeParser.getDateString(date), count));
-        });
-
-        taskSummaryLineChart.getData().addAll(creationInfoSeries, dueInfoSeries, finishInfoSeries);
+        datas.forEach(d -> d.getNode().setOnMouseClicked(e -> {
+            String[] test = d.getExtraValue().toString().split("//");
+            String moduleCode = (d.getExtraValue().toString().split("//"))[0];
+            String taskType = (d.getExtraValue().toString().split("//"))[1];
+            selectedTasks = tempTasks.filtered(task -> task.getModule().getModuleCode().toString().equals(moduleCode)
+                && task.getTaskType().toString().equals(taskType));
+            TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
+            selectedTaskListPanelTitle.setText(taskType + " under " + moduleCode);
+            selectedTaskListPanelPlaceholder.getChildren().clear();
+            selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+        }));
     }
-
-
 }

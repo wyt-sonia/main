@@ -94,14 +94,13 @@ public class MainWindow extends UiPart<Stage> {
     private Label dueListPanelTitle;
 
     @FXML
-    private Pane dueSoonTaskListPanelTitleHolder;
+    private Pane dueListPanelTitleHolder;
 
     @FXML
     private Label mainTitle;
 
     @FXML
     private Pane mainTitleHolder;
-
 
 
     public MainWindow(Stage primaryStage, Logic logic) {
@@ -166,7 +165,8 @@ public class MainWindow extends UiPart<Stage> {
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
 
         taskSummaryPanel = new TaskSummaryPanel(logic.getFilteredTaskList(),
-            logic.getFilteredArchivedTaskList());
+            logic.getFilteredArchivedTaskList(), logic.getFilteredModuleList(),
+            dueSoonListPanelPlaceholder, dueListPanelTitle);
         taskSummaryHolder.getChildren().add(taskSummaryPanel.getRoot());
         taskSummaryHolder.setVisible(false);
         taskSummaryHolder.setManaged(false);
@@ -226,8 +226,11 @@ public class MainWindow extends UiPart<Stage> {
     public void handleShowTaskSummary() {
         toggleAllHoldersInvisible();
         toggleTaskSummaryHolderView(true);
+        toggleTaskListHolderView(false, true);
+        taskSummaryPanel.renderSelectedListPanel();
 
         toggleAllTitle(false);
+        toggleDueSoonTaskListPanelTitleView(true);
         toggleMainTitleView(true);
         setMainTitleText(TASK_SUMMARY);
     }
@@ -249,6 +252,7 @@ public class MainWindow extends UiPart<Stage> {
         toggleMainTitleView(true);
         setMainTitleText(PROFILE_PAGE);
     }
+
     /**
      * Closes the application.
      */
@@ -267,7 +271,7 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleShowAllTasks() {
         toggleAllHoldersInvisible();
-        toggleTaskListHolderView(true);
+        toggleTaskListHolderView(true, true);
 
         toggleAllTitle(true);
         setMainTitleText(TITLE);
@@ -283,11 +287,13 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleDueSoonTasks() {
         toggleAllHoldersInvisible();
-        toggleTaskListHolderView(true);
+        toggleTaskListHolderView(true, true);
 
         toggleAllTitle(true);
         setMainTitleText(TITLE);
         dueListPanelTitle.setText(DUE_SOON_TASK);
+        dueListPanelTitle.getStyleClass().clear();
+        dueListPanelTitle.getStyleClass().add("sub_header");
         dueSoonListPanel = new DueSoonListPanel(logic.getFilteredDueSoonTaskList());
         dueSoonListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
     }
@@ -298,7 +304,7 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleShowArchivedTasks() {
         toggleAllHoldersInvisible();
-        toggleTaskListHolderView(true);
+        toggleTaskListHolderView(true, true);
 
         toggleAllTitle(true);
         setMainTitleText(TITLE);
@@ -315,6 +321,7 @@ public class MainWindow extends UiPart<Stage> {
     private void handleShowModules() {
         toggleAllHoldersInvisible();
         toggleModTabView(true);
+        toggleProfileHolderView(false);
 
         toggleAllTitle(false);
         toggleMainTitleView(true);
@@ -328,14 +335,14 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleShowCalendar() {
         toggleAllHoldersInvisible();
-        toggleTaskListHolderView(true);
+        toggleTaskListHolderView(true, true);
 
         toggleAllTitle(true);
         toggleTaskListPanelTitleView(false);
         setMainTitleText(CALENDAR);
 
         CalendarBox calendar = new CalendarBox(logic.getFilteredTaskList(), dueSoonListPanelPlaceholder,
-                dueListPanelTitle);
+            dueListPanelTitle);
         taskListPanelPlaceholder.getChildren().add(calendar.getRoot());
     }
 
@@ -370,12 +377,13 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Toggles list panels according to values assigned. Can add more if there are more windows required for display.
+     *
      * @param val1 toggles TaskListHolder
      * @param val2 toggles TaskSummaryHolder
      * @param val3 toggles ModuleTabHolder
      */
     private void customToggleHolders(boolean val1, boolean val2, boolean val3, boolean val4) {
-        toggleTaskListHolderView(val1);
+        toggleTaskListHolderView(val1, val1);
         toggleTaskSummaryHolderView(val2);
         toggleModTabView(val3);
         toggleProfileHolderView(val4);
@@ -384,6 +392,7 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Toggles title according to values assigned. Can add more if there are more windows required for display.
+     *
      * @param val1 toggles MainTitle
      * @param val2 toggles TaskList(Left side)
      */
@@ -407,8 +416,24 @@ public class MainWindow extends UiPart<Stage> {
         setPaneView(taskSummaryHolder, val);
     }
 
-    private void toggleTaskListHolderView(boolean val) {
-        setPaneView(taskListHolder, val);
+    /**
+     * Toggles the visibility of taskListHolder.
+     *
+     * @param isAllTaskListShow
+     * @param isDueSoonShow
+     */
+    private void toggleTaskListHolderView(boolean isAllTaskListShow, boolean isDueSoonShow) {
+        setPaneView(taskListPanelPlaceholder, isAllTaskListShow);
+        setPaneView(taskListPanelTitleHolder, isAllTaskListShow);
+        setPaneView(dueSoonListPanelPlaceholder, isDueSoonShow);
+        setPaneView(dueListPanelTitleHolder, isDueSoonShow);
+        if (isAllTaskListShow || isDueSoonShow) {
+            taskListHolder.setManaged(true);
+            taskListHolder.setVisible(true);
+        } else {
+            taskListHolder.setManaged(false);
+            taskListHolder.setVisible(false);
+        }
     }
 
     private void toggleModTabView(boolean val) {
@@ -429,7 +454,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void toggleDueSoonTaskListPanelTitleView(boolean val) {
-        setPaneView(dueSoonTaskListPanelTitleHolder, val);
+        setPaneView(dueListPanelTitleHolder, val);
     }
 
     private void setTaskListTitleText(String text) {

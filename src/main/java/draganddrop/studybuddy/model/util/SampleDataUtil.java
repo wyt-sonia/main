@@ -58,7 +58,6 @@ public class SampleDataUtil {
         return new Module[]{emptyModule, cs2101};
     }
 
-
     public static ReadOnlyStudyBuddy getSampleStudyBuddy() {
         StudyBuddy sampleSb = new StudyBuddy();
         ArrayList<Task> sampleTasks = new ArrayList<>();
