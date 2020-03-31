@@ -85,7 +85,7 @@ class JsonSerializableStudyBuddy {
             studyBuddy.addModule(module);
         }
 
-        
+
 
         Task.updateCurrentTaskList(new ArrayList<>(studyBuddy.getTaskList()));
         return studyBuddy;
