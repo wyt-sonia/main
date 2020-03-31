@@ -56,8 +56,9 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
                     + "Click 'Enter' again to confirm your changes";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (ModuleCodeException ex) {
-                reply = "Please key in your module code to include a prefix, a number, then a postfix (Optional).\n"
-                    + "E.g. A1\n        BT102     \n        CS77777X";
+                reply = "Please key in your module code to include a 2-3 letter prefix, a 4-digit number,"
+                        + "then a postfix (Optional).\n"
+                        + "E.g. BA10001\n        CS2030     \n        CS2040C";
             }
             break;
         case READY_TO_EXECUTE:

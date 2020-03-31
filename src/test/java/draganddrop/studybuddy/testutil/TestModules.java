@@ -14,7 +14,7 @@ import javafx.collections.ObservableList;
 /**
  * A sample class for module testing. Includes modules and tasks.
  */
-public class SampleModules {
+public class TestModules {
     private static LocalDateTime[] dateTimesOne = {TimeParser.parseDateTime("23:59 12/12/2020"),
             TimeParser.parseDateTime("23:59 21/12/2020")};
     private static LocalDateTime[] dateTimesTwo = {TimeParser.parseDateTime("23:59 12/04/2020"),
@@ -43,7 +43,7 @@ public class SampleModules {
         return sampleTaskList;
     }
 
-    public static ObservableList<Task> getExpectedOutcomeForFilterFunction() {
+    public static ObservableList<Task> expectedFilterTask() {
         Module[] modArr = getSampleModule();
         ObservableList<Task> sampleTaskList = FXCollections.observableArrayList();
         sampleTaskList.add(new Task(modArr[3], TaskType.Assignment, "Quiz 1", "Quiz taskDescription",

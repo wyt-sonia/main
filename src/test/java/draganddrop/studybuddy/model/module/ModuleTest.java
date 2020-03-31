@@ -2,17 +2,18 @@ package draganddrop.studybuddy.model.module;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import draganddrop.studybuddy.testutil.TestModules;
 import org.junit.jupiter.api.Test;
 
 import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studybuddy.testutil.Assert;
-import draganddrop.studybuddy.testutil.SampleModules;
 
 public class ModuleTest {
-    private Module sample1 = SampleModules.getSampleModule()[0];
-    private Module sample2 = SampleModules.getSampleModule()[1];
-    private Module sample3 = SampleModules.getSampleModule()[2];
+    private Module sample1 = TestModules.getSampleModule()[0];
+    private Module sample2 = TestModules.getSampleModule()[1];
+    private Module sample3 = TestModules.getSampleModule()[2];
 
     @Test
     public void equals() {
@@ -23,24 +24,40 @@ public class ModuleTest {
     }
 
     @Test
-    public void createModuleWithNoPrefix_throwsModuleCodeException() {
-        Assert.assertThrows(ModuleCodeException.class, ()-> new Module("2312312Z"));
+    public void changeModuleNameSucceed() {
+        sample1.setModuleName("New Name");
+        assertEquals(sample1.getModuleName(), "New Name");
     }
 
-    /*@Test
+    @Test
+    public void changeModuleCodeSucceed() throws ModuleCodeException {
+        sample1.setModuleCode("CC1111");
+        assertEquals(sample1.getModuleCode(), new ModuleCode("CC1111"));
+    }
+
+    @Test
+    public void createModuleWithNoPrefix_throwsModuleCodeException() {
+        Assert.assertThrows(ModuleCodeException.class, ()-> new Module("2312312"));
+    }
+
+    @Test
     public void createModuleWithNoNumber_throwsModuleCodeException() {
-        Assert.assertThrows(ModuleCodeException.class, ()-> new Module("AA"));
-    }*/
+        Assert.assertThrows(ModuleCodeException.class, ()-> new Module("CS"));
+    }
 
-    /*@Test
-    public void filterTaskFromTaskListTest() {
-        Module emptyMod = new EmptyModule();
-        emptyMod.filterAndSetInternalTaskList(SampleModules.getSampleTask());
-        ObservableList<?> list = SampleModules.getExpectedOutcomeForFilterFunction();
-        for (int i = 0; i < emptyMod.getInternalTaskList().size(); i++) {
-            assertEquals(emptyMod.getInternalTaskList().get(i),
-                    SampleModules.getExpectedOutcomeForFilterFunction().get(i));
-        }
+    @Test
+    public void createModuleExceedPrefixLength_throwsModuleCodeException() {
+        Assert.assertThrows(ModuleCodeException.class, ()-> new Module("CSSS1000"));
+    }
 
-    }*/
+    @Test
+    public void createModuleExceedLength_throwsModuleCodeException() {
+        Assert.assertThrows(ModuleCodeException.class, ()-> new Module("CS100000000Z"));
+    }
+
+    @Test
+    public void testFilterTaskList() {
+
+    }
+
 }

@@ -46,6 +46,7 @@ public class ModuleCode {
      */
     private static String parsePrefix(String input) throws ModuleCodeException {
         String output = "";
+        /*
         if (!Character.isLetter(input.charAt(0))) {
             throw new ModuleCodeException("Module code prefix not found.");
         } else {
@@ -56,7 +57,20 @@ public class ModuleCode {
                 output += Character.isLetter(input.charAt(i)) ? input.charAt(i) : "";
             }
         }
-        return output.toUpperCase();
+        */
+        for (int i = 0; i < input.length(); i++) {
+            if(Character.isAlphabetic(input.charAt(i))) {
+                output += input.charAt(i);
+            } else {
+                break;
+            }
+        }
+
+        if(output.length() < 2 || output.length() > 3) {
+            throw new ModuleCodeException("Wrong module code prefix. Either too short/too long");
+        } else {
+            return output.toUpperCase();
+        }
     }
 
     /**
@@ -68,14 +82,18 @@ public class ModuleCode {
      */
     private static int parseNumber(String input) throws ModuleCodeException {
         int result = 0;
-        int startIndex = Character.isDigit(input.charAt(2)) ? 2 : 1;
-        if (input.length() - startIndex > 5 || Character.isDigit(startIndex + 5)) {
-            throw new ModuleCodeException("Please enter a valid module code.");
-        }
         try {
-            result = Integer.parseInt(input.substring(startIndex, startIndex + 4));
-        } catch (NumberFormatException e) {
-            throw new ModuleCodeException("Please enter a valid module code.");
+            int startIndex = Character.isDigit(input.charAt(2)) ? 2 : 1;
+            if (input.length() - startIndex > 5 || Character.isDigit(startIndex + 5)) {
+                throw new ModuleCodeException("Please enter a valid module code.");
+            }
+            try {
+                result = Integer.parseInt(input.substring(startIndex, startIndex + 4));
+            } catch (NumberFormatException e) {
+                throw new ModuleCodeException("Please enter a valid module code.");
+            }
+        } catch (StringIndexOutOfBoundsException ex) {
+            throw new ModuleCodeException("Please enter a valid module code. either number is too long/too short.");
         }
         return result;
     }
