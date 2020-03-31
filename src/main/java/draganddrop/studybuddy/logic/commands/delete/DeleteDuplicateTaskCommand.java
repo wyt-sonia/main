@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 
+import draganddrop.studybuddy.commons.core.Messages;
 import draganddrop.studybuddy.logic.commands.Command;
 import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
@@ -17,17 +18,6 @@ public class DeleteDuplicateTaskCommand extends Command {
 
     public static final String COMMAND_WORD = "delete duplicates";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-        + ": Deletes any duplicate tasks in the displayed task list.\n"
-        + "Example: " + COMMAND_WORD;
-
-    public static final String MESSAGE_DELETE_DUPLICATE_TASK_SUCCESS = "Deleted duplicate tasks";
-
-
-    public DeleteDuplicateTaskCommand() {
-
-    }
-
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -37,12 +27,12 @@ public class DeleteDuplicateTaskCommand extends Command {
             for (int j = 0; j < lastShownList.size(); j++) {
                 if (i == j) {
                     continue;
-                } else {
+                }
+                if (i != j) {
                     Task task2 = lastShownList.get(j);
                     if (task1.isSameTask(task2)) {
                         Task taskToDelete = lastShownList.get(i);
                         model.deleteTask(taskToDelete);
-
                         lastShownList = model.getFilteredTaskList();
                         break;
                     } else {
@@ -52,7 +42,7 @@ public class DeleteDuplicateTaskCommand extends Command {
             }
         }
 
-        return new CommandResult(String.format(MESSAGE_DELETE_DUPLICATE_TASK_SUCCESS));
+        return new CommandResult(String.format(Messages.MESSAGE_DELETE_DUPLICATE_TASK_SUCCESS));
     }
 
     @Override

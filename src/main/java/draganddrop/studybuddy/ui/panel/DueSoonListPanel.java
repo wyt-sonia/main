@@ -1,9 +1,12 @@
-package draganddrop.studybuddy.ui;
+package draganddrop.studybuddy.ui.panel;
 
 import java.util.logging.Logger;
 
 import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.model.task.Task;
+import draganddrop.studybuddy.ui.UiPart;
+import draganddrop.studybuddy.ui.card.DueSoonTaskCard;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -11,25 +14,25 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 
 /**
- * Panel containing the list of persons.
+ * Panel containing the list of tasks due soon.
  */
-public class TaskListPanel extends UiPart<Region> {
-    private static final String FXML = "TaskListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(TaskListPanel.class);
+public class DueSoonListPanel extends UiPart<Region> {
+    private static final String FXML = "DueSoonListPanel.fxml";
+    private final Logger logger = LogsCenter.getLogger(DueSoonListPanel.class);
 
     @FXML
-    private ListView<Task> taskListView;
+    private ListView<Task> dueSoonListView;
 
-    public TaskListPanel(ObservableList<Task> taskList) {
+    public DueSoonListPanel(ObservableList<Task> taskList) {
         super(FXML);
-        taskListView.setItems(taskList);
-        taskListView.setCellFactory(listView -> new TaskListViewCell());
+        dueSoonListView.setItems(taskList);
+        dueSoonListView.setCellFactory(listView -> new TaskListViewCell());
     }
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code DetailedTaskCard}.
      */
-    static class TaskListViewCell extends ListCell<Task> {
+    class TaskListViewCell extends ListCell<Task> {
         @Override
         protected void updateItem(Task task, boolean empty) {
             super.updateItem(task, empty);
@@ -38,8 +41,9 @@ public class TaskListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new DetailedTaskCard(task, getIndex() + 1).getRoot());
+                setGraphic(new DueSoonTaskCard(task, getIndex() + 1).getRoot());
             }
         }
     }
+
 }

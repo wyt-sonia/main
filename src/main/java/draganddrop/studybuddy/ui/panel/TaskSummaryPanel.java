@@ -1,4 +1,4 @@
-package draganddrop.studybuddy.ui;
+package draganddrop.studybuddy.ui.panel;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -11,6 +11,8 @@ import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskStatus;
 import draganddrop.studybuddy.model.task.TaskType;
+
+import draganddrop.studybuddy.ui.UiPart;
 
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;

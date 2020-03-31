@@ -8,7 +8,14 @@ import draganddrop.studybuddy.logic.Logic;
 import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.logic.parser.exceptions.ParseException;
+import draganddrop.studybuddy.ui.box.CalendarBox;
+import draganddrop.studybuddy.ui.box.CommandBox;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
+import draganddrop.studybuddy.ui.panel.DueSoonListPanel;
+import draganddrop.studybuddy.ui.panel.ModuleListPanel;
+import draganddrop.studybuddy.ui.panel.TaskListPanel;
+import draganddrop.studybuddy.ui.panel.TaskSummaryPanel;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
