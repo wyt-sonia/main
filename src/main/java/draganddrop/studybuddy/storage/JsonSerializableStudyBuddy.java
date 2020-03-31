@@ -38,7 +38,7 @@ class JsonSerializableStudyBuddy {
      * Constructs a {@code JsonSerializableStudyBuddy} with the given tasks.
      */
     @JsonCreator
-    public JsonSerializableStudyBuddy(@JsonProperty("Tasks") List<JsonAdaptedTask> tasks) {
+    public JsonSerializableStudyBuddy(@JsonProperty("tasks") List<JsonAdaptedTask> tasks) {
         this.tasks.addAll(tasks);
     }
 

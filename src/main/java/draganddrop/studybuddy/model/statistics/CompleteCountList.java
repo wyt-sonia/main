@@ -9,7 +9,9 @@ import java.util.List;
 public class CompleteCountList {
     private List<Integer> completeList;
 
-    public CompleteCountList() {}
+    public CompleteCountList() {
+        this.initList();
+    }
 
     public CompleteCountList(List<Integer> completeList) {
         this.completeList = completeList;
