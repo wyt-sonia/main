@@ -42,7 +42,7 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
             try {
                 userInput = AddTaskCommandParser.parseName(userInput);
                 this.reply = "The name of module is set to: " + userInput + ".\n"
-                        + "Now key in your module code";
+                    + "Now key in your module code";
                 module.setModuleName(userInput);
                 currentTerm = InteractivePromptTerms.MODULE_CODE;
             } catch (AddTaskCommandException ex) {
@@ -53,11 +53,11 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
             try {
                 module.setModuleCode(userInput);
                 this.reply = "Module Code: " + module.toString() + "\n"
-                        + "Click 'Enter' again to confirm your changes";
+                    + "Click 'Enter' again to confirm your changes";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (ModuleCodeException ex) {
                 reply = "Please key in your module code to include a prefix, a number, then a postfix (Optional).\n"
-                        + "E.g. A1\n        BT102     \n        CS77777X";
+                    + "E.g. A1\n        BT102     \n        CS77777X";
             }
             break;
         case READY_TO_EXECUTE:
@@ -80,24 +80,8 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void interruptInteract() {
-
-    }
-
-    @Override
     public void endInteract(String msg) {
         this.reply = msg;
         super.setEndOfCommand(true);
-    }
-
-
-    @Override
-    public void back() {
-
-    }
-
-    @Override
-    public void next() {
-
     }
 }

@@ -73,10 +73,6 @@ public class UnarchiveTaskInteractivePrompt extends InteractivePrompt {
         return reply;
     }
 
-    @Override
-    public void interruptInteract() {
-
-    }
 
     @Override
     public void endInteract(String reply) {
@@ -84,15 +80,6 @@ public class UnarchiveTaskInteractivePrompt extends InteractivePrompt {
         super.setEndOfCommand(true);
     }
 
-    @Override
-    public void back() {
-
-    }
-
-    @Override
-    public void next() {
-
-    }
 
     /**
      * pending.
