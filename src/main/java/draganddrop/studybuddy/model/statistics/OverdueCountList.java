@@ -9,6 +9,12 @@ import java.util.List;
 public class OverdueCountList {
     private List<Integer> overdueList;
 
+    public OverdueCountList() {}
+
+    public OverdueCountList(List<Integer> overdueList) {
+        this.overdueList = overdueList;
+    }
+
     public List<Integer> getOverdueList() {
         return overdueList;
     }

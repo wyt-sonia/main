@@ -9,6 +9,12 @@ import java.util.List;
 public class CompleteCountList {
     private List<Integer> completeList;
 
+    public CompleteCountList() {}
+
+    public CompleteCountList(List<Integer> completeList) {
+        this.completeList = completeList;
+    }
+
     public List<Integer> getCompleteList() {
         return completeList;
     }

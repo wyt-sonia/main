@@ -35,10 +35,10 @@ class JsonSerializableStudyBuddy {
     private final GeneralStats generalStats = new GeneralStats();
 
     /**
-     * Constructs a {@code JsonSerializableStudyBuddy} with the given persons.
+     * Constructs a {@code JsonSerializableStudyBuddy} with the given tasks.
      */
     @JsonCreator
-    public JsonSerializableStudyBuddy(@JsonProperty("tasks") List<JsonAdaptedTask> tasks) {
+    public JsonSerializableStudyBuddy(@JsonProperty("Tasks") List<JsonAdaptedTask> tasks) {
         this.tasks.addAll(tasks);
     }
 
@@ -84,8 +84,9 @@ class JsonSerializableStudyBuddy {
             }
             studyBuddy.addModule(module);
         }
-
-
+        studyBuddy.setCompleteList(this.completeList);
+        studyBuddy.setOverdueList(this.overdueList);
+        studyBuddy.getGeneralStats().copy(this.generalStats);
 
         Task.updateCurrentTaskList(new ArrayList<>(studyBuddy.getTaskList()));
         return studyBuddy;
