@@ -8,9 +8,9 @@ import java.util.List;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.module.ModuleList;
 import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
-import draganddrop.studybuddy.model.statistics.CompleteCountList;
+import draganddrop.studybuddy.model.statistics.CompletionStats;
 import draganddrop.studybuddy.model.statistics.GeneralStats;
-import draganddrop.studybuddy.model.statistics.OverdueCountList;
+import draganddrop.studybuddy.model.statistics.OverdueStats;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskType;
 import draganddrop.studybuddy.model.task.UniqueTaskList;
@@ -27,8 +27,8 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     private final UniqueTaskList dueSoonTasks;
     private final UniqueTaskList tasks;
     private final ModuleList moduleList;
-    private final CompleteCountList completeCountList;
-    private final OverdueCountList overdueCountList;
+    private final CompletionStats completionStats;
+    private final OverdueStats overdueStats;
     private final GeneralStats generalStats;
 
     /*
@@ -43,8 +43,8 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         archivedTasks = new UniqueTaskList();
         dueSoonTasks = new UniqueTaskList();
         moduleList = new ModuleList();
-        completeCountList = new CompleteCountList();
-        overdueCountList = new OverdueCountList();
+        completionStats = new CompletionStats();
+        overdueStats = new OverdueStats();
         generalStats = new GeneralStats();
     }
 
@@ -61,13 +61,13 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
 
     // Statistics
     @Override
-    public List<Integer> getCompleteList() {
-        return completeCountList.getCompleteList();
+    public List<Integer> getCompleteCountList() {
+        return completionStats.getCompleteCountList();
     }
 
     @Override
-    public List<Integer> getOverdueList() {
-        return overdueCountList.getOverdueList();
+    public List<Integer> getOverdueCountList() {
+        return overdueStats.getOverdueCountList();
     }
 
     @Override
@@ -148,11 +148,11 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     }
 
     public void setCompleteList(List<Integer> completeList) {
-        this.completeCountList.setCompleteList(completeList);
+        this.completionStats.setCompleteCountList(completeList);
     }
 
     public void setOverdueList(List<Integer> overdueList) {
-        this.overdueCountList.setOverdueList(overdueList);
+        this.overdueStats.setOverdueList(overdueList);
     }
 
     /**

@@ -1,35 +1,61 @@
 package draganddrop.studybuddy.model.statistics;
 
-import draganddrop.studybuddy.model.task.Task;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Statistics about number of overdue tasks
+ * Stores statistics about number of overdue tasks
  */
 public class OverdueStats {
+    /**
+     * A list containing daily number of overdue tasks
+     */
+    private List<Integer> overdueList;
 
-    private OverdueCountList overdueCountList;
+    public OverdueStats() {
+        this.initList();
+    }
 
-    public OverdueStats(OverdueCountList overdueCountList) {
-        this.overdueCountList = overdueCountList;
+    public List<Integer> getOverdueCountList() {
+        return overdueList;
+    }
+
+    public void setOverdueList(List<Integer> overdueList) {
+        this.overdueList = overdueList;
     }
 
     /**
-     * Records an overdue task
-     *
-     * @param overdueTask task that has gone overdue
+     * initializes an empty overdueCountList
      */
-    public void recordOverdueTask(Task overdueTask) {
-        int dayIndex = StatsUtil.getDayIndex();
-        overdueCountList.addOverdue(dayIndex);
+    public void initList() {
+        overdueList = new ArrayList<>();
+        for (int i = 0; i < 366; i++) {
+            overdueList.add(0);
+        }
     }
 
     /**
-     * get number of tasks completed late today
+     * increments the completeLate count at current day index
      *
-     * @return returns the number ofo tasks completed late today
+     * @param dayIndex the day in which the task is completed
      */
-    public int getLateCountToday() {
-        return overdueCountList.getDailyOverdueCount(StatsUtil.getDayIndex());
+    public void addOverdue(int dayIndex) {
+        int currentLateCount = overdueList.get(dayIndex);
+        if (currentLateCount != 0) {
+            overdueList.set(dayIndex, 1);
+        } else {
+            overdueList.set(dayIndex, currentLateCount + 1);
+        }
+    }
+
+    /**
+     * Returns number of task completed late on the given day
+     *
+     * @param dayIndex
+     * @return number of tasks completed late on the given day
+     */
+    public int getDailyOverdueCount(int dayIndex) {
+        return overdueList.get(dayIndex);
     }
 
 }

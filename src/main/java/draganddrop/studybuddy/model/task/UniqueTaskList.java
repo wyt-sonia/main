@@ -11,6 +11,7 @@ import draganddrop.studybuddy.commons.util.CollectionUtil;
 import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.statistics.CompletionStats;
+import draganddrop.studybuddy.model.statistics.Statistics;
 import draganddrop.studybuddy.model.task.exceptions.TaskNotFoundException;
 
 import javafx.collections.FXCollections;
@@ -21,17 +22,17 @@ import javafx.collections.ObservableList;
  */
 public class UniqueTaskList implements Iterable<Task> {
 
-    private static CompletionStats completionStats;
+    private static Statistics statistics;
     private final ObservableList<Task> internalList = FXCollections.observableArrayList();
     private final ObservableList<Task> internalUnmodifiableList =
         FXCollections.unmodifiableObservableList(internalList);
 
     /**
-     * Set the completion statistics for unique task list
-     * @param completionStats completionStats used to record tasks completed
+     * Sets the statistics for unique task list
+     * @param statistics completionStats used to record tasks completed
      */
-    public void setCompletionStats(CompletionStats completionStats) {
-        UniqueTaskList.completionStats = completionStats;
+    public void setStatistics(Statistics statistics) {
+        UniqueTaskList.statistics = statistics;
     }
 
     public int getSize() {
@@ -161,7 +162,7 @@ public class UniqueTaskList implements Iterable<Task> {
             internalList.set(index, target);
 
             // log statistics
-            completionStats.recordCompletedTask(target);
+            statistics.recordCompletedTask(target);
         }
     }
 

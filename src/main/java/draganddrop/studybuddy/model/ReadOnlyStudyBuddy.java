@@ -31,9 +31,9 @@ public interface ReadOnlyStudyBuddy {
     ObservableList<Task> getTaskList();
 
     // Statistics
-    List<Integer> getCompleteList();
+    List<Integer> getCompleteCountList();
 
-    List<Integer> getOverdueList();
+    List<Integer> getOverdueCountList();
 
     GeneralStats getGeneralStats();
 

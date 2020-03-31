@@ -1,37 +1,69 @@
 package draganddrop.studybuddy.model.statistics;
 
-import java.time.LocalDateTime;
-
-import draganddrop.studybuddy.model.task.Task;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Statistics about number of tasks completed
+ * Stores statistics about number of tasks completed
  */
 public class CompletionStats {
-    private CompleteCountList completeCountList;
+    /**
+     * List that contains the count of completed task for each day
+     */
+    private List<Integer> completeCountList;
 
-    public CompletionStats(CompleteCountList completeCountList) {
+    public CompletionStats() {
+        this.initList();
+    }
+
+    public List<Integer> getCompleteCountList() {
+        return completeCountList;
+    }
+
+    public void setCompleteCountList(List<Integer> completeCountList) {
         this.completeCountList = completeCountList;
     }
 
     /**
-     * Records the completed task
-     *
-     * @param completedTask the task that has just been completed
+     * initializes an empty completeCount List
      */
-    public void recordCompletedTask(Task completedTask) {
-        LocalDateTime timeOfCompletion = completedTask.getFinishDateTime();
-        int dayIndex = StatsUtil.getDayIndex();
-        completeCountList.complete(dayIndex);
+    public void initList() {
+        completeCountList = new ArrayList<>();
+        for (int i = 0; i < 366; i++) {
+            completeCountList.add(0);
+        }
     }
 
     /**
-     * get number of tasks completed today
+     * increments the complete count at current day index
      *
-     * @return returns the number of tasks completed today
+     * @param dayIndex the day in which the task is completed
      */
-    public int getCompleteCountToday() {
-        return completeCountList.getDailyCompleteCount(StatsUtil.getDayIndex());
+    public void complete(int dayIndex) {
+        int currentCount = completeCountList.get(dayIndex);
+        if (currentCount != 0) {
+            completeCountList.set(dayIndex, 1);
+        } else {
+            completeCountList.set(dayIndex, currentCount + 1);
+        }
     }
 
+    /**
+     * Returns number of task completed on the given day
+     *
+     * @param dayIndex the day of interest
+     * @return number of tasks completed on the given day
+     */
+    public int getDailyCompleteCount(int dayIndex) {
+        return completeCountList.get(dayIndex);
+    }
+
+    /**
+     * Returns a list containing the number of tasks completed daily over the past 7 days
+     * @param dayIndex the day of interest
+     * @return a list containing the number of tasks completed daily over the past 7 days
+     */
+    public List<Integer> getWeeklyCompleteCount(int dayIndex) {
+        return completeCountList.subList(dayIndex - 6, dayIndex + 1);
+    }
 }

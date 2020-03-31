@@ -30,8 +30,8 @@ class JsonSerializableStudyBuddy {
     private final List<JsonAdaptedTask> tasks = new ArrayList<>();
     private final List<JsonAdaptedTask> dueSoonTasks = new ArrayList<>();
     private final List<JsonAdaptedModule> modules = new ArrayList<>();
-    private final List<Integer> completeList = new ArrayList<>();
-    private final List<Integer> overdueList = new ArrayList<>();
+    private final List<Integer> completeCountList = new ArrayList<>();
+    private final List<Integer> overdueCountList = new ArrayList<>();
     private final GeneralStats generalStats = new GeneralStats();
 
     /**
@@ -54,8 +54,8 @@ class JsonSerializableStudyBuddy {
         dueSoonTasks.addAll(source.getTaskList().stream()
                 .map(JsonAdaptedTask::new).collect(Collectors.toList()));
         modules.addAll(source.getModuleList().stream().map(JsonAdaptedModule::new).collect(Collectors.toList()));
-        completeList.addAll(source.getCompleteList());
-        overdueList.addAll(source.getOverdueList());
+        completeCountList.addAll(source.getCompleteCountList());
+        overdueCountList.addAll(source.getOverdueCountList());
         generalStats.copy(source.getGeneralStats());
     }
 
@@ -84,8 +84,8 @@ class JsonSerializableStudyBuddy {
             }
             studyBuddy.addModule(module);
         }
-        studyBuddy.setCompleteList(this.completeList);
-        studyBuddy.setOverdueList(this.overdueList);
+        studyBuddy.setCompleteList(this.completeCountList);
+        studyBuddy.setOverdueList(this.overdueCountList);
         studyBuddy.getGeneralStats().copy(this.generalStats);
 
         Task.updateCurrentTaskList(new ArrayList<>(studyBuddy.getTaskList()));
