@@ -57,7 +57,6 @@ public class SampleDataUtil {
 
     }
 
-
     public static ReadOnlyStudyBuddy getSampleStudyBuddy() {
         StudyBuddy sampleSb = new StudyBuddy();
         ArrayList<Task> sampleTasks = new ArrayList<>();

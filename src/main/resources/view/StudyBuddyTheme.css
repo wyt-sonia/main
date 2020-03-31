@@ -342,6 +342,14 @@
    -fx-background-color: derive(-fx-focus-color, 30%);
 }
 
+/*Summary style*/
+.summary_sub_header {
+    -fx-font-family: 'AL_Nevrada_PersonalUseOnly';
+    -fx-font-size: 16pt;
+    -fx-text-fill: rgba(123, 87, 69, 1);
+    -fx-text-weight: bold;
+}
+
 /*calender style*/
 .calender_panel {
     -fx-background-color: #94a57e;

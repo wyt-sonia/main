@@ -11,17 +11,23 @@ import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskStatus;
 import draganddrop.studybuddy.model.task.TaskType;
-
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 
 /**
  * Panel containing the summary charts of tasks.
@@ -33,6 +39,9 @@ public class TaskSummaryPanel extends UiPart<Region> {
     private ObservableList<Task> tempTasks = FXCollections.observableArrayList();
     private ObservableList<Task> archivedTasks;
     private ObservableList<Task> aliveTasks;
+    private ObservableList<Task> selectedTasks;
+    private StackPane selectedTaskListPanelPlaceholder;
+    private Label selectedTaskListPanelTitle;
 
     @javafx.fxml.FXML
     private PieChart taskSummaryPieChart;
@@ -47,12 +56,18 @@ public class TaskSummaryPanel extends UiPart<Region> {
     private LineChart taskSummaryLineChart;
 
     public TaskSummaryPanel(ObservableList<Task> currentTaskList,
-                            ObservableList<Task> archivedTaskList) {
+                            ObservableList<Task> archivedTaskList, StackPane selectedTaskListPanelPlaceholder,
+                            Label selectedTaskListPanelTitle) {
         super(FXML);
         archivedTasks = archivedTaskList;
         aliveTasks = currentTaskList;
         tempTasks.addAll(currentTaskList);
         tempTasks.addAll(archivedTaskList);
+        this.selectedTaskListPanelPlaceholder = selectedTaskListPanelPlaceholder;
+        this.selectedTaskListPanelTitle = selectedTaskListPanelTitle;
+        selectedTaskListPanelPlaceholder.setBackground(
+            new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+
         setUpAreaChart();
         setUpPieChart();
         setUpBarChart();
@@ -70,6 +85,12 @@ public class TaskSummaryPanel extends UiPart<Region> {
                 setUpLineChart();
             }
         });
+    }
+
+    public void renderSelectedListPanel() {
+        selectedTaskListPanelTitle.getStyleClass().add("summary_sub_header");
+        selectedTaskListPanelTitle.setText("Click on Chart to View Related Tasks");
+        selectedTaskListPanelPlaceholder.getChildren().clear();
     }
 
     /**
