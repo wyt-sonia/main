@@ -44,6 +44,7 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
 
         case INIT:
             this.reply = "Please enter the index number of task you wish to archive.";
+            currentTerm = InteractivePromptTerms.TASK_INDEX;
             break;
 
         case TASK_INDEX:

@@ -46,6 +46,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         + "=========== TASK INFO ===========\n";
 
     static final String QUIT_COMMAND_MSG = "Successfully quited from add task command.";
+
     private String moduleListString = "";
     private ObservableList<Module> modules;
     private Task task;

@@ -89,7 +89,7 @@ public class Task implements Comparable<Task> {
     }
 
     public LocalDateTime getDueDate() {
-        return getDateTimes()[1];
+        return getDateTimes()[0];
     }
 
     public String getTimeLeft() {
