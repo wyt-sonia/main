@@ -29,7 +29,7 @@ public class ModuleList {
     public boolean contains(Module module) {
         final Module moduleForPredicate = module;
         FilteredList<Module> filteredList = internalList.filtered((x) -> x.equals(moduleForPredicate));
-        return filteredList.isEmpty() ? false : true;
+        return !filteredList.isEmpty();
 
     }
 
@@ -110,6 +110,10 @@ public class ModuleList {
         }
     }
 
+    public Module get(int index) {
+        return this.internalList.get(index);
+    }
+
     public void setModuleList(List<Module> replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement);
@@ -117,5 +121,9 @@ public class ModuleList {
 
     public int indexOf(Module module) {
         return internalList.indexOf(module);
+    }
+
+    public int getSize() {
+        return internalList.size();
     }
 }

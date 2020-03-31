@@ -47,6 +47,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         + "=========== TASK INFO ===========\n";
 
     static final String QUIT_COMMAND_MSG = "Successfully quited from add task command.";
+
     private String moduleListString = "";
     private ObservableList<Module> modules;
     private Task task;
@@ -70,13 +71,10 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             this.reply = REQUIRED_MODULE_MSG;
             moduleListString = "The Modules available are: \n";
             this.modules = logic.getFilteredModuleList();
-            AtomicInteger counter = new AtomicInteger();
-            modules.forEach(m -> {
-                counter.getAndAdd(1);
-                moduleListString += counter + "." + m.getModuleCode() + " " + m.getModuleName() + "\n";
-            });
+            constructModuleList(modules);
             this.reply += moduleListString;
             currentTerm = InteractivePromptTerms.TASK_MODULE;
+
             task.setStatus("pending");
             task.setTaskDescription("No Description");
             task.setWeight(0.0);
@@ -93,8 +91,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 }
                 task.setModule(module);
                 currentTerm = InteractivePromptTerms.TASK_NAME;
-                this.reply = "The module has been set as: " + module.getModuleCode() + " "
-                    + module.getModuleName() + "\n\n"
+                this.reply = checkAndModifyReply(module) + "\n\n"
                     + REQUIRED_TASK_NAME_MSG;
             } catch (AddTaskCommandException e) {
                 reply = e.getErrorMessage() + "\n\n" + REQUIRED_MODULE_MSG + "\n\n" + moduleListString;
@@ -249,6 +246,33 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         super.setEndOfCommand(true);
     }
 
+    /**
+     * hides empty module from the moduleList.
+     * @param moduleList
+     */
+    private void constructModuleList(ObservableList<Module> moduleList) {
+        AtomicInteger counter = new AtomicInteger();
+        moduleList.forEach(m -> {
+            if (!m.equals(new EmptyModule())) {
+                counter.getAndAdd(1);
+                moduleListString += counter + "." + m.getModuleCode() + " " + m.getModuleName() + "\n";
+            }
+        });
+    }
+
+    /**
+     * modify reply if module is empty.
+     * @param module
+     * @return
+     */
+    private String checkAndModifyReply(Module module) {
+        if (!module.equals(new EmptyModule())) {
+            return "The module has been set as: " + module.getModuleCode() + " "
+                    + module.getModuleName();
+        } else {
+            return "This task is not assigned to any modules.";
+        }
+    }
     /**
      * pending.
      */

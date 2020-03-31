@@ -5,6 +5,7 @@ import static draganddrop.studybuddy.testutil.TypicalTasks.getTypicalTaskList;
 
 import org.junit.jupiter.api.Test;
 
+import draganddrop.studybuddy.commons.core.Messages;
 import draganddrop.studybuddy.logic.commands.delete.ClearTasksCommand;
 import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.ModelManager;
@@ -18,7 +19,7 @@ public class ClearTasksCommandTest {
         Model model = new ModelManager();
         Model expectedModel = new ModelManager();
 
-        assertCommandSuccess(new ClearTasksCommand(), model, ClearTasksCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ClearTasksCommand(), model, Messages.MESSAGE_CLEAR_SUCCESS, expectedModel);
     }
 
     @Test
@@ -27,7 +28,7 @@ public class ClearTasksCommandTest {
         Model expectedModel = new ModelManager(getTypicalTaskList(), new UserPrefs());
         expectedModel.setStudyBuddy(new StudyBuddy());
 
-        assertCommandSuccess(new ClearTasksCommand(), model, ClearTasksCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ClearTasksCommand(), model, Messages.MESSAGE_CLEAR_SUCCESS, expectedModel);
     }
 
 }
