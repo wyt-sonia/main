@@ -104,7 +104,7 @@ public class Module {
     public boolean equals(Object other) {
         if (other instanceof Module) {
             ModuleCode otherModuleCode = ((Module) other).moduleCode;
-            return this.moduleCode.equals(otherModuleCode) ? true : false;
+            return this.moduleCode.equals(otherModuleCode);
         } else {
             return false;
         }
