@@ -69,7 +69,7 @@ class JsonSerializableStudyBuddy {
         }
         for (JsonAdaptedTask jsonAdaptedTask : archivedTasks) {
             Task task = jsonAdaptedTask.toModelType();
-            studyBuddy.addArchivedTask(task);
+            studyBuddy.addArchiveTask(task);
         }
         for (JsonAdaptedModule jsonAdaptedModule : modules) {
             Module module = jsonAdaptedModule.toModelType();

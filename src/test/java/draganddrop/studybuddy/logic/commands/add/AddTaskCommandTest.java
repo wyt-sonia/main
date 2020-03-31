@@ -121,6 +121,11 @@ class AddTaskCommandTest {
         }
 
         @Override
+        public void unarchiveTask(Task task) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void addDueSoonTask(Task task) {
             throw new AssertionError("This method should not be called.");
         }

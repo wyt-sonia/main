@@ -153,7 +153,13 @@ public class ModelManager implements Model {
 
     @Override
     public void archiveTask(Task task) {
-        studyBuddy.addArchivedTask(task);
+        studyBuddy.archiveTask(task);
+        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+    }
+
+    @Override
+    public void unarchiveTask(Task task) {
+        studyBuddy.unarchiveTask(task);
         updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
     }
 
