@@ -58,7 +58,7 @@ public class DeleteTaskInteractivePrompt extends InteractivePrompt {
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (DeleteTaskCommandException ex) {
                 reply = ex.getErrorMessage()
-                        + "\n" + REQUEST_INDEX_MSG;
+                    + "\n" + REQUEST_INDEX_MSG;
             }
             break;
 
