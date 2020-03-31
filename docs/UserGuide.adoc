@@ -247,6 +247,34 @@ U- `[enter]`
 
 S- Duplicated task deleted successfully!
 
+==== Archive/ Unarchive
+This commands stores the specified task into a separate list.
+
+*Example:*
+
+After a hard days work, you completed some tasks. You don't want them in your to-do list anymore, but you don't want to delete them; some of the information in the task card could still be useful.
+
+You can always store them in an archive!
+
+To `archive`:
+
+. Initiate the command using keyword `archive`
+. Study Buddy should respond with:
++
+image::archive_1.png[width="790", title="Study Buddy's reponse to 'archive'"]
+. Type the index of the task you want to archive.
++
+image::archive_2.png[width="790", title="Study Buddy's reponse to task index"]
+. Press `enter` again to confirm
+. Task has been archived! You can view all archived task under the `StudyBuddy` -> `Archived Tasks` tab.
++
+image::archive_3.png[width="790", title="View archived tasks"]
+
+****
+* To `unarchive` a task, and add it back to the main list, simply follow the same set of commands, but replace the `archive` keyword with `unarchive`
+* Remember to use the index in the *Archived Task* instead of *All Tasks*
+****
+
 ==== Find
 
 Finds tasks whose names contain any of the given keywords. +
@@ -442,11 +470,13 @@ The calendar feature allows you to visualise your schedule by displaying the num
 
 The calendar feature can be toggled by clicking `Calendar` -> `Display`
 
-image::calender_init.png[width="790", align= "left"]
+image::calender_init.png[width="790", align= "left", title="calendar interface"]
 
 * `Previous` and `Next` buttons can be used to navigate through previous and next months respectively. `Home` button brings you to the current date, which is in a blue border.
 
 * Clicking on any date will show you all tasks for that day. Keep in mind that the *Index* shown in this panel cannot be used for other commands.
+
+image::calendar_after_choose_date.png[width="790"", align="left", title="calendar after clicking on a date"]
 
 === UI
 

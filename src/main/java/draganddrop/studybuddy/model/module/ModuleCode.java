@@ -1,7 +1,8 @@
 package draganddrop.studybuddy.model.module;
 
-import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
+import java.util.stream.IntStream;
 
+import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
 /**
  * ModuleCode. Ensures that the module code keyed in matches the proper format. XX0000.
  */
@@ -45,39 +46,34 @@ public class ModuleCode {
      * @throws ModuleCodeException
      */
     private static String parsePrefix(String input) throws ModuleCodeException {
-        String output = "";
-        if (!Character.isLetter(input.charAt(0))) {
-            throw new ModuleCodeException("Module code prefix not found.");
+        StringBuilder builder = new StringBuilder();
+        IntStream.range(0, input.toCharArray().length)
+                .mapToObj(i -> input.toCharArray()[i]).takeWhile(x -> Character.isAlphabetic(x))
+                .forEach(x -> builder.append(x));
+        if (builder.toString().length() < 2 || builder.toString().length() > 3) {
+            throw new ModuleCodeException("Please enter a valid module code.");
         } else {
-            for (int i = 0; i < 3; i++) {
-                if (i != 2 && !Character.isLetter(input.charAt(i))) {
-                    throw new ModuleCodeException("Wrong module code prefix format error.");
-                }
-                output += Character.isLetter(input.charAt(i)) ? input.charAt(i) : "";
-            }
+            return builder.toString().toUpperCase();
         }
-        return output.toUpperCase();
     }
 
     /**
-     * Parse the number part of the module code and make sure the number part is 4 digits.
+     * Parse the number part of the module code and make sure the number part is at most 4 digits.
      *
      * @param input
      * @return
      * @throws ModuleCodeException
      */
     private static int parseNumber(String input) throws ModuleCodeException {
-        int result = 0;
-        int startIndex = Character.isDigit(input.charAt(2)) ? 2 : 1;
-        if (input.length() - startIndex > 5 || Character.isDigit(startIndex + 5)) {
+        StringBuilder builder = new StringBuilder();
+        IntStream.range(0, input.toCharArray().length)
+                .mapToObj(i -> input.toCharArray()[i]).filter(x -> Character.isDigit(x))
+                .forEach(x -> builder.append(x));
+        if (builder.toString().length() == 4) {
+            return Integer.parseInt(builder.toString());
+        } else {
             throw new ModuleCodeException("Please enter a valid module code.");
         }
-        try {
-            result = Integer.parseInt(input.substring(startIndex, startIndex + 4));
-        } catch (NumberFormatException e) {
-            throw new ModuleCodeException("Please enter a valid module code.");
-        }
-        return result;
     }
 
     /**
@@ -86,9 +82,18 @@ public class ModuleCode {
      * @param input
      * @return
      */
-    private static String parsePostfix(String input) {
-        return Character.isLetter(input.charAt(input.length() - 1))
-            ? input.substring(input.length() - 1).toUpperCase() : "";
+    private static String parsePostfix(String input) throws ModuleCodeException {
+        StringBuilder builder = new StringBuilder();
+        IntStream.range(0, input.toCharArray().length)
+                .mapToObj(i -> input.toCharArray()[i]).dropWhile(x -> Character.isAlphabetic(x))
+                .dropWhile(x -> Character.isDigit(x)).forEach(x -> builder.append(x));
+        if (builder.toString().length() < 2) {
+            return builder.toString();
+        } else {
+            throw new ModuleCodeException("Please enter a valid module code.");
+        }
+
+
     }
 
     private String getPrefix() {

@@ -110,6 +110,13 @@ public interface Model {
     void archiveTask(Task task);
 
     /**
+     * Moves an aarchived task back to main tasklist.
+     *
+     *
+     */
+    void unarchiveTask(Task task);
+
+    /**
      * Adds the given task.
      *
      * @param task must not already exist in the study buddy.
