@@ -218,6 +218,13 @@
     -fx-text-fill: #3c2e2c;
 }
 
+.module_lbl {
+    -fx-background-color: #769cce;
+    -fx-background-radius: 4;
+	-fx-text-fill: white !important;
+	-fx-label-padding: 0.2em 0.5em 0.2em 0.5em;
+}
+
 /* task types style */
 .assignment_lbl,
 .quiz_lbl,
@@ -341,6 +348,13 @@
     -fx-background-radius: 10 10 0 0;
     -fx-text-fill: white;
     -fx-effect: innershadow(gaussian, white, 10, 0, 0, 0);
+}
+
+.calender_sub_header {
+    -fx-font-family: 'AL_Nevrada_PersonalUseOnly';
+    -fx-font-size: 16pt;
+    -fx-text-fill: rgba(123, 87, 69, 1);
+    -fx-text-weight: bold;
 }
 
 .calender_lbl_lg {

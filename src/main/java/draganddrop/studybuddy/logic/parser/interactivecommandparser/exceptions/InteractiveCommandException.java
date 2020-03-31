@@ -15,6 +15,18 @@ public class InteractiveCommandException extends RuntimeException {
             errorMessage = "The input is empty, please check again.";
             break;
 
+        case "taskCompletedError":
+            errorMessage = "The task you choosed is completed already";
+            break;
+
+        case "TaskNameLengthError":
+            errorMessage = "The maximum length of task name is 20 characters, please check.";
+            break;
+
+        case "TaskDescriptionLengthError":
+            errorMessage = "The maximum length of task description is 300 characters, please check.";
+            break;
+
         case "wrongWeightFormatError":
             errorMessage = "Please enter decimal number for task task weight.";
             break;
@@ -52,7 +64,7 @@ public class InteractiveCommandException extends RuntimeException {
             break;
 
         case "dataTimeFormatError":
-            errorMessage = "Invalid date time format, please follow the format below:\n  "
+            errorMessage = "Invalid date time format, please follow the format below:\n\n"
                 + "Event: HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy\n"
                 + "e.g. 12:00 01/01/2020-14:00 01/01/2020\n"
                 + "Rest : HH:mm dd/MM/yyyy   e.g. 12:00 01/01/2020\n";

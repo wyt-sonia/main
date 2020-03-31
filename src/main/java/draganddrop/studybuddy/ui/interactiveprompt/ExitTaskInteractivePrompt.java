@@ -39,7 +39,7 @@ public class ExitTaskInteractivePrompt extends InteractivePrompt {
 
         case INIT:
             try {
-                reply = "Are you sure you want to quit?\n "
+                reply = "Are you sure you want to quit?\n"
                     + "Please press enter yes if you would like to close the application.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (ExitTaskCommandException ex) {
@@ -63,24 +63,9 @@ public class ExitTaskInteractivePrompt extends InteractivePrompt {
     }
 
     @Override
-    public void interruptInteract() {
-
-    }
-
-    @Override
     public void endInteract(String msg) {
         this.reply = msg;
         super.setEndOfCommand(true);
-    }
-
-    @Override
-    public void back() {
-
-    }
-
-    @Override
-    public void next() {
-
     }
 
     /**

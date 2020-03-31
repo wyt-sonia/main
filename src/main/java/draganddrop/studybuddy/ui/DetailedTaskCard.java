@@ -3,19 +3,17 @@ package draganddrop.studybuddy.ui;
 import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.task.Task;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 
 /**
  * An UI component that displays information of a {@code Person}.
  */
-public class TaskCard extends UiPart<Region> {
+public class DetailedTaskCard extends UiPart<Region> {
 
-    private static final String FXML = "TaskListCard.fxml";
+    private static final String FXML = "DetailedTaskCard.fxml";
 
     public final Task task;
 
@@ -28,6 +26,12 @@ public class TaskCard extends UiPart<Region> {
     @FXML
     private Label status;
     @FXML
+    private Label weight;
+    @FXML
+    private Label estimatedTimeCost;
+    @FXML
+    private Label description;
+    @FXML
     private Label dateTime;
     @FXML
     private Label creationDateTime;
@@ -36,26 +40,30 @@ public class TaskCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private FlowPane tags;
+    private HBox tags;
 
 
-    public TaskCard(Task task, int displayedIndex) {
+    public DetailedTaskCard(Task task, int displayedIndex) {
         super(FXML);
         this.task = task;
         id.setText(displayedIndex + ". ");
         taskName.setText(task.getTaskName());
+        description.setText("Task Description: " + task.getTaskDescription());
+        weight.setText("Task Weight: " + task.getWeight() + "%");
+        estimatedTimeCost.setText("Estimated Time Needed: " + task.getEstimatedTimeCost() + " hr/hrs");
 
         if (task.getModule().equals(new EmptyModule())) {
             module.setVisible(false);
             module.setManaged(false);
         } else {
             module.setText(task.getModule().toString());
+            module.getStyleClass().add("module_lbl");
         }
 
         status.setText(task.getTaskStatus().convertToString());
         renderTask(task);
-        dateTime.setText("\tDeadline: " + task.getTimeString());
-        creationDateTime.setText("\tCreated: "
+        dateTime.setText("Deadline/Duration: " + task.getTimeString());
+        creationDateTime.setText("Created at: "
             + TimeParser.getDateTimeString(task.getCreationDateTime()));
         type.setText(task.getTaskType().toString());
     }
@@ -113,13 +121,13 @@ public class TaskCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof TaskCard)) {
+        if (!(other instanceof DetailedTaskCard)) {
             return false;
         }
 
         // state check
-        TaskCard card = (TaskCard) other;
-        return id.getText().equals(card.id.getText())
-            && task.equals(card.task);
+        DetailedTaskCard detailedTaskCard = (DetailedTaskCard) other;
+        return id.getText().equals(detailedTaskCard.id.getText())
+            && task.equals(detailedTaskCard.task);
     }
 }

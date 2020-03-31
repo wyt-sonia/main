@@ -14,10 +14,8 @@
             <HBox fx:id="resultPane" maxWidth="1.7976931348623157E308" prefHeight="${resultPane.parent.height}"
                   prefWidth="${resultPane.parent.width}">
                 <children>
-
-                    <TextArea fx:id="resultDisplay" editable="false" maxHeight="150.0"
-                              prefHeight="${resultPane.parent.height}" wrapText="true" HBox.hgrow="ALWAYS"/>
-
+                    <TextArea fx:id="resultDisplay" editable="false" wrapText="true" HBox.hgrow="ALWAYS"
+                              maxHeight="150.0"/>
                     <ImageView fitHeight="120.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true"
                                HBox.hgrow="NEVER">
                         <image>

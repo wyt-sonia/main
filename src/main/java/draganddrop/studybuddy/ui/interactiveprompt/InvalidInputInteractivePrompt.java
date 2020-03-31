@@ -16,46 +16,19 @@ public class InvalidInputInteractivePrompt extends InteractivePrompt {
 
     public InvalidInputInteractivePrompt() {
         super();
-        this.reply = "";
         this.interactivePromptType = INVALID_MSG;
-        this.currentTerm = InteractivePromptTerms.INIT;
     }
 
 
     @Override
     public String interact(String userInput) {
-        switch (currentTerm) {
-
-        case INIT:
-            this.reply = HELP_MSG;
-            currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-            break;
-
-        case READY_TO_EXECUTE:
-        default:
-            endInteract("");
-        }
+        endInteract(HELP_MSG);
         return reply;
-    }
-
-    @Override
-    public void interruptInteract() {
-
     }
 
     @Override
     public void endInteract(String reply) {
         this.reply = reply;
         super.setEndOfCommand(true);
-    }
-
-    @Override
-    public void back() {
-
-    }
-
-    @Override
-    public void next() {
-
     }
 }
