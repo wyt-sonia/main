@@ -1,8 +1,5 @@
 package draganddrop.studybuddy.ui.panel;
 
-import java.util.logging.Logger;
-
-import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.ui.UiPart;
 import draganddrop.studybuddy.ui.card.DueSoonTaskCard;
@@ -18,7 +15,6 @@ import javafx.scene.layout.Region;
  */
 public class DueSoonListPanel extends UiPart<Region> {
     private static final String FXML = "DueSoonListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(DueSoonListPanel.class);
 
     @FXML
     private ListView<Task> dueSoonListView;
@@ -36,7 +32,6 @@ public class DueSoonListPanel extends UiPart<Region> {
         @Override
         protected void updateItem(Task task, boolean empty) {
             super.updateItem(task, empty);
-
             if (empty || task == null) {
                 setGraphic(null);
                 setText(null);
