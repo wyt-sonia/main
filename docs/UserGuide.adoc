@@ -112,7 +112,7 @@ S- Here is the list of available commands: +
 14. create mods +
 User Guide: https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html
 
-==== Add:
+==== Add
 
 *Format:*
 
@@ -416,13 +416,28 @@ By default, it shows the following:
 
 === Due Soon Tasks
 
-The due soon task list is always on display in your application. +
+The due soon task list is always on display in your application under `Study Buddy` -> `All tasks`
+
 It provides the following functionality:
 
-. It displays your tasks that are due within the next week. (uses deadline)
-. It automatically updates when you make changes to your main list.
+. It displays your tasks that are due within the next week. (uses deadline you have provided)
++
+image::duesoon1.png[width="790", align= "left", title="Due Soon List"]
+
+. It automatically sorts these tasks in an ascending order of deadlines.
++
+image::duesoon3.png[width="790", align= "left", title="Due Soon List"]
+
+. It automatically adds applicable tasks when you make changes to your main list, such as add (<<Add>>) or delete (<<Delete>>).
+
 . It displays a tag with the time left to the deadline.
++
+image::duesoon2.png[width="790", align= "left", title="Due Soon List"]
+
 . It provides a <<Refresh>> function that allows you to refresh time/state of this list if needed.
+
+[NOTE]
+Time left is never displayed in days and minutes. Hence if the current time is 9:00 am on 01/04/2020 and the task deadline is 9:02 am on 02/04/2020, it will show time left as 1 day. (not 1 day and 2 minutes)
 
 === Status Tags
 
