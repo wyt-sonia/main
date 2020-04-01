@@ -72,9 +72,11 @@ public class TaskSummaryPanel extends UiPart<Region> {
         selectedTaskListPanelPlaceholder.setBackground(
             new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        setUpAreaChart();
-        setUpPieChart();
-        setUpBarChart();
+        if(tempTasks != null && tempTasks.size() > 0) {
+            setUpAreaChart();
+            setUpPieChart();
+            setUpBarChart();
+        }
 
         observableCurrentTasks.addListener(new ListChangeListener<Task>() {
             @Override

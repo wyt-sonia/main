@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.module.ModuleList;
 import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
@@ -267,7 +268,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     }
 
     public void setModuleInTask(Task target, Module module) throws ModuleCodeException {
-        if (moduleList.contains(module)) {
+        if (moduleList.contains(module) || module.equals(new EmptyModule())) {
             tasks.setTaskMod(target, module);
         } else {
             throw new ModuleCodeException("Module does not exist in studyBuddy!");
