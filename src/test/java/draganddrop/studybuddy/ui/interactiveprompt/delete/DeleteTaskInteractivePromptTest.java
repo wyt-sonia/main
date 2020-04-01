@@ -12,6 +12,9 @@ import draganddrop.studybuddy.model.UserPrefs;
 class DeleteTaskInteractivePromptTest {
 
     private Model model = new ModelManager(getTypicalTaskList(), new UserPrefs());
+    private String fieldsString = "";
+
+
     @Test
     public void interact_quitCommand_returnMessage() {
         DeleteTaskInteractivePrompt prompt = new DeleteTaskInteractivePrompt();
