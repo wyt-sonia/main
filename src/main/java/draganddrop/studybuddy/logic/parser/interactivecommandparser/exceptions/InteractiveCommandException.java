@@ -23,11 +23,11 @@ public class InteractiveCommandException extends RuntimeException {
             errorMessage = "The task you chose is completed already";
             break;
 
-        case "TaskNameLengthError":
+        case "taskNameLengthError":
             errorMessage = "The maximum length of task name is 20 characters, please check.";
             break;
 
-        case "TaskDescriptionLengthError":
+        case "taskDescriptionLengthError":
             errorMessage = "The maximum length of task description is 300 characters, please check.";
             break;
 
@@ -72,7 +72,6 @@ public class InteractiveCommandException extends RuntimeException {
                 + "Assignment : HH:mm dd/MM/yyyy   e.g. 12:00 01/01/2020\n\n"
                 + "Rest: HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy\n"
                 + "e.g. 12:00 01/01/2020-14:00 01/01/2020\n";
-
             break;
 
         case "pastDateTime":

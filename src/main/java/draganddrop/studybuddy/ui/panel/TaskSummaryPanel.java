@@ -13,9 +13,7 @@ import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskStatus;
 import draganddrop.studybuddy.model.task.TaskType;
-
 import draganddrop.studybuddy.ui.UiPart;
-
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -72,9 +70,11 @@ public class TaskSummaryPanel extends UiPart<Region> {
         selectedTaskListPanelPlaceholder.setBackground(
             new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        setUpAreaChart();
-        setUpPieChart();
-        setUpBarChart();
+        if (tempTasks != null && tempTasks.size() > 0) {
+            setUpAreaChart();
+            setUpPieChart();
+            setUpBarChart();
+        }
 
         observableCurrentTasks.addListener(new ListChangeListener<Task>() {
             @Override
@@ -253,7 +253,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
             d.getNode().setOnMouseClicked(e -> {
                 selectedTasks = tempTasks
                     .filtered(task -> task.getModule().getModuleCode().toString().equals(moduleCode)
-                    && task.getTaskType().toString().equals(taskType));
+                        && task.getTaskType().toString().equals(taskType));
                 TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
                 selectedTaskListPanelTitle.setText(taskType + " under " + moduleCode);
                 selectedTaskListPanelPlaceholder.getChildren().clear();

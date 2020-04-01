@@ -37,7 +37,7 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
 
     @Override
     public String interact(String userInput) {
-        if (userInput.equals("quit")) {
+        if ("quit".equals(userInput)) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
         }
@@ -90,15 +90,5 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
     public void endInteract(String reply) {
         this.reply = reply;
         super.setEndOfCommand(true);
-    }
-
-    /**
-     * pending.
-     */
-    private String dateTime() {
-        String result = "";
-
-
-        return result;
     }
 }

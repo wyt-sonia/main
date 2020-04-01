@@ -1,123 +1,375 @@
 package draganddrop.studybuddy.ui.interactiveprompt.add;
 
+import static draganddrop.studybuddy.testutil.TestModules.getSampleModule;
+import static draganddrop.studybuddy.testutil.TypicalTasks.getTypicalTaskList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.nio.file.Path;
+import java.time.LocalDateTime;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+import draganddrop.studybuddy.logic.LogicManager;
+import draganddrop.studybuddy.logic.parser.TimeParser;
+import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
+import draganddrop.studybuddy.model.Model;
+import draganddrop.studybuddy.model.ModelManager;
+import draganddrop.studybuddy.model.UserPrefs;
+import draganddrop.studybuddy.model.module.Module;
+import draganddrop.studybuddy.model.task.TaskType;
+import draganddrop.studybuddy.storage.JsonStudyBuddyStorage;
+import draganddrop.studybuddy.storage.JsonUserPrefsStorage;
+import draganddrop.studybuddy.storage.StorageManager;
 
 class AddTaskInteractivePromptTest {
 
-    /*
+    @TempDir
+    public Path testFolder;
+    private AddTaskInteractivePrompt prompt = new AddTaskInteractivePrompt();
+    private Model modelStub = new ModelManager(getTypicalTaskList(), new UserPrefs());
+    private LocalDateTime endDateTime = LocalDateTime.now().plusDays(20);
+    private LocalDateTime startDateTime = LocalDateTime.now().plusDays(10);
+
+    @BeforeEach
+    public void setUp() {
+        JsonStudyBuddyStorage studyBuddyStorage = new JsonStudyBuddyStorage(getTempFilePath("ab"));
+        JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
+        StorageManager storageStub = new StorageManager(studyBuddyStorage, userPrefsStorage);
+        LogicManager logicStub = new LogicManager(modelStub, storageStub);
+        for (Module m : getSampleModule()) {
+            logicStub.getStudyBuddy().getModuleList().add(m);
+        }
+        prompt.setLogic(logicStub);
+    }
+
+    private Path getTempFilePath(String fileName) {
+        return testFolder.resolve(fileName);
+    }
+
     @Test
     public void interact_firstInput_returnKeywordPrompt() {
-        AddTaskInteractivePrompt prompt = new AddTaskInteractivePrompt();
-        assertEquals("Please enter the task name.", prompt.interact("add"));
-    }*/
+        assertTrue(prompt.interact("").contains(prompt.REQUIRED_MODULE_MSG));
+    }
 
     @Test
     public void interact_quitCommand_returnMessage() {
-        AddTaskInteractivePrompt prompt = new AddTaskInteractivePrompt();
         assertEquals(AddTaskInteractivePrompt.QUIT_COMMAND_MSG, prompt.interact("quit"));
     }
 
-    /*
     @Test
-    public void interact_backCommand_returnMessage() {
-        AddTaskInteractivePrompt prompt = new AddTaskInteractivePrompt();
-        assertEquals("Please enter the task name.", prompt.interact("back"));
-    }*/
-
-    /*
-    @Test
-    public void interact_secondInput_returnPrompt() {
-        AddTaskInteractivePrompt prompt = new AddTaskInteractivePrompt();
-        prompt.interact("add");
-        String userInput = AddTaskCommandParser.parseName("1");
-        String reply = "The name of task is set to: " + userInput + ".\n"
-                + "Please choose the task type:\n"
-                + TaskType.getTypeString();
-        assertEquals(reply, prompt.interact("1"));
-    }
-
-
-    @Test
-    public void interact_thirdInput_returnPromptAss() {
-        AddTaskInteractivePrompt prompt = new AddTaskInteractivePrompt();
-        prompt.interact("add");
-        prompt.interact("1");
-        TaskType taskType = AddTaskCommandParser.parseType("1", TaskType.getTaskTypes().length);
-        String reply = "The type of task is set to: " + taskType.toString() + ".\n"
-                + "Please enter the deadline with format: "
-                + "HH:mm dd/MM/yyyy";
-        assertEquals(reply, prompt.interact("1"));
-    }
-
-    @Test
-    public void interact_thirdInput_returnPromptOthers() {
-        AddTaskInteractivePrompt prompt = new AddTaskInteractivePrompt();
-        prompt.interact("add");
-        prompt.interact("1");
-        TaskType taskType = AddTaskCommandParser.parseType("2", TaskType.getTaskTypes().length);
-        String reply = "The type of task is set to: " + taskType.toString() + ".\n"
-                + "Please enter the deadline with format: "
-                + "HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy";
-        assertEquals(reply, prompt.interact("2"));
-    }
-     */
-
-    /*
-    @Test
-    public void interact_thirdInput_returnPromptError() {
-        AddTaskInteractivePrompt prompt = new AddTaskInteractivePrompt();
-        prompt.interact("add");
-        prompt.interact("1");
-        Assertions.assertEquals(new AddTaskCommandException("wrongIndexFormat").getMessage(), prompt.interact("10"));
-    }*/
-
-    /*
-    @Test
-    public void interact_fourthInput_returnPromptAss() {
-        AddTaskInteractivePrompt prompt = new AddTaskInteractivePrompt();
-        prompt.interact("add");
-        prompt.interact("1");
-        prompt.interact("1");
-        String userInput = "00:00 31/12/2020";
-        LocalDateTime[] dateTimes = AddTaskCommandParser.parseDateTime(userInput, TaskType.Assignment);
-        userInput = TimeParser.getDateTimeString(dateTimes[0]);
-        String reply = "The date and time is set to: " + userInput + "\n"
-                + "Press enter again to add the task:\n"
-                + "1" + " " + TaskType.Assignment.toString() + " "
-                + "00:00 31/12/2020";
-        assertEquals(reply, prompt.interact("00:00 31/12/2020"));
-    }*/
-
-    /*
-    @Test
-    public void interact_fourthInput_returnPromptOther() {
-        AddTaskInteractivePrompt prompt = new AddTaskInteractivePrompt();
-        prompt.interact("add");
+    public void interact_moduleIndexWrongFormat_returnErrorMessage() {
         prompt.interact("");
-        prompt.interact("1");
-        prompt.interact("2");
-        String userInput = "12:00 31/12/2020-14:00 31/12/2020";
-        LocalDateTime[] dateTimes = AddTaskCommandParser.parseDateTime(userInput, TaskType.Quiz);
-        userInput = TimeParser.getDateTimeString(dateTimes[0])
-                + "-" + TimeParser.getDateTimeString(dateTimes[1]);
-        String reply = "The date and time is set to: " + userInput + "\n"
-                + "Press enter again to add the task:\n"
-                + "1" + " " + TaskType.Quiz.toString() + " "
-                + "12:00 31/12/2020-12:00 31/12/2020";
-        assertEquals(reply, prompt.interact("12:00 31/12/2020-14:00 31/12/2020"));
+        assertTrue(prompt.interact("wrongIndexFormat")
+            .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
     }
-    */
 
-    /*@Test
-    public void interact_fifthInput_returnPrompt() {
-        AddTaskInteractivePrompt prompt = new AddTaskInteractivePrompt();
-        prompt.interact("add");
-        prompt.interact("1");
-        prompt.interact("1");
-        prompt.interact("00:00 31/12/2020");
-        assertThrows(NullPointerException.class, ()->prompt.interact(""));
-    }*/
+    @Test
+    public void interact_multipleModuleIndexWrongFormat_returnErrorMessage() {
+        prompt.interact("");
+        assertTrue(prompt.interact("wrongIndexFormat")
+            .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
+        assertTrue(prompt.interact("wrongIndexFormat")
+            .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
+        assertTrue(prompt.interact("wrongIndexFormat")
+            .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
+    }
 
+    @Test
+    public void interact_multipleModuleIndexWrongFormatFollowByCorrectIndex_returnErrorMessage() {
+        prompt.interact("");
+        assertTrue(prompt.interact("wrongIndexFormat")
+            .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
+        assertTrue(prompt.interact("wrongIndexFormat")
+            .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
+        assertTrue(prompt.interact("1").contains("The module has been set as: "
+            + modelStub.getStudyBuddy().getModuleList().get(0).toString()));
+    }
+
+    @Test
+    public void interact_moduleCode_returnMessage() {
+        Module module = modelStub.getStudyBuddy().getModuleList().get(0);
+        prompt.interact("");
+        assertTrue(prompt.interact(module.getModuleCode().toString())
+            .contains("The module has been set as: " + module.toString()));
+    }
+
+    @Test
+    public void interact_invalidModuleCode_returnMessage() {
+        prompt.interact("");
+        assertTrue(prompt.interact("CSCSCS")
+            .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_moduleIndexOutOfRangeZero_returnErrorMessage() {
+        prompt.interact("");
+        assertTrue(prompt.interact("0")
+            .contains(new AddTaskCommandException("invalidIndexRangeError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_moduleIndexOutOfRangeSizePluOne_returnErrorMessage() {
+        int size = modelStub.getStudyBuddy().getModuleList().size();
+        prompt.interact("");
+        assertTrue(prompt.interact(size + 1 + "")
+            .contains(new AddTaskCommandException("invalidIndexRangeError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_validModuleCode_returnMessage() {
+        String code = modelStub.getStudyBuddy().getModuleList().get(0).getModuleCode().toString();
+        prompt.interact("");
+        assertTrue(prompt.interact(code)
+            .contains(code));
+    }
+
+    @Test
+    public void interact_pastDateTime_returnErrorMessage() {
+        LocalDateTime pastDateTime = LocalDateTime.now().minusDays(1);
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("1");
+        assertTrue(prompt.interact(TimeParser.getDateTimeString(pastDateTime))
+            .contains(new AddTaskCommandException("pastDateTime").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_endBeforeStartDateTime_returnErrorMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("2");
+        assertTrue(prompt.interact(TimeParser.getDateTimeString(endDateTime)
+            + "-" + TimeParser.getDateTimeString(startDateTime))
+            .contains(new AddTaskCommandException("eventEndBeforeStartError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_validDateTime_returnMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("2");
+        assertTrue(prompt.interact(TimeParser.getDateTimeString(startDateTime)
+            + "-" + TimeParser.getDateTimeString(endDateTime))
+            .contains(TimeParser.getDateTimeString(startDateTime) + "-" + TimeParser.getDateTimeString(endDateTime)));
+    }
+
+    @Test
+    public void interact_emptyTaskIndex_returnErrorMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        assertTrue(prompt.interact("")
+            .contains(new AddTaskCommandException("emptyInputError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_emptyTaskName_returnErrorMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        assertTrue(prompt.interact("")
+            .contains(new AddTaskCommandException("emptyInputError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_tooLongTaskName_returnErrorMessage() {
+        String longTaskName = "This Task Name is Longer Than 20 Char";
+        prompt.interact("");
+        prompt.interact("");
+        assertTrue(prompt.interact(longTaskName)
+            .contains(new AddTaskCommandException("taskNameLengthError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_validTaskName_returnMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        assertTrue(prompt.interact("taskName")
+            .contains("The name of task is set to: taskName."));
+    }
+
+    @Test
+    public void interact_wrongTaskTypeIndexFormat_returnErrorMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        assertTrue(prompt.interact("wrongIndexFormat")
+            .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_wrongTaskTypeIndexRangeZero_returnErrorMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("0");
+        assertTrue(prompt.interact("0")
+            .contains(new AddTaskCommandException("invalidIndexRangeError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_wrongTaskTypeIndexRangeSizePlusOne_returnErrorMessage() {
+        int size = TaskType.getTaskTypes().length;
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        assertTrue(prompt.interact(size + 1 + "")
+            .contains(new AddTaskCommandException("invalidIndexRangeError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_validTaskTypeIndex_returnMessage() {
+        int size = TaskType.getTaskTypes().length;
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        assertTrue(prompt.interact(size + "")
+            .contains(TaskType.getTaskTypes()[size - 1].toString()));
+    }
+
+    @Test
+    public void interact_tooLongTaskDescIndex_returnErrorMessage() {
+        String longTaskDescription = "Thistaskdescriptionismorethan300characterslong"
+            + "Thistaskdescriptionismorethan300characterslong"
+            + "Thistaskdescriptionismorethan300characterslong"
+            + "Thistaskdescriptionismorethan300characterslong"
+            + "Thistaskdescriptionismorethan300characterslong"
+            + "Thistaskdescriptionismorethan300characterslong"
+            + "Thistaskdescriptionismorethan300characterslong"
+            + "Thistaskdescriptionismorethan300characterslong"
+            + "Thistaskdescriptionismorethan300characterslong";
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("2");
+        prompt.interact(TimeParser.getDateTimeString(startDateTime)
+            + "-" + TimeParser.getDateTimeString(endDateTime));
+        assertTrue(prompt.interact(longTaskDescription)
+            .contains(new AddTaskCommandException("taskDescriptionLengthError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_emptyTaskDescIndex_returnMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("2");
+        prompt.interact(TimeParser.getDateTimeString(startDateTime)
+            + "-" + TimeParser.getDateTimeString(endDateTime));
+        assertTrue(prompt.interact("")
+            .contains("Please enter the weight of the task or press enter to skip."));
+    }
+
+    @Test
+    public void interact_wrongWeightFormat_returnErrorMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("2");
+        prompt.interact(TimeParser.getDateTimeString(startDateTime)
+            + "-" + TimeParser.getDateTimeString(endDateTime));
+        prompt.interact("");
+        assertTrue(prompt.interact("wrongWeightFormat")
+            .contains(new AddTaskCommandException("wrongWeightFormatError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_wrongWeightValueOver100_returnErrorMessage() {
+
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("2");
+        prompt.interact(TimeParser.getDateTimeString(startDateTime)
+            + "-" + TimeParser.getDateTimeString(endDateTime));
+        prompt.interact("");
+        assertTrue(prompt.interact("101")
+            .contains(new AddTaskCommandException("wrongWeightRangeError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_wrongWeightValueNegative_returnErrorMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("2");
+        prompt.interact(TimeParser.getDateTimeString(startDateTime)
+            + "-" + TimeParser.getDateTimeString(endDateTime));
+        prompt.interact("");
+        assertTrue(prompt.interact("-1")
+            .contains(new AddTaskCommandException("wrongWeightRangeError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_emptyWeight_returnMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("2");
+        prompt.interact(TimeParser.getDateTimeString(startDateTime)
+            + "-" + TimeParser.getDateTimeString(endDateTime));
+        prompt.interact("");
+        assertTrue(prompt.interact("")
+            .contains("Please enter the estimated number of hours cost or press enter to skip."));
+    }
+
+    @Test
+    public void interact_validWeightValue_returnMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("2");
+        prompt.interact(TimeParser.getDateTimeString(startDateTime)
+            + "-" + TimeParser.getDateTimeString(endDateTime));
+        prompt.interact("");
+        assertTrue(prompt.interact("10")
+            .contains("Please enter the estimated number of hours cost or press enter to skip."));
+    }
+
+    @Test
+    public void interact_wrongTimeCostFormat_returnErrorMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("2");
+        prompt.interact(TimeParser.getDateTimeString(startDateTime)
+            + "-" + TimeParser.getDateTimeString(endDateTime));
+        prompt.interact("");
+        prompt.interact("");
+        assertTrue(prompt.interact("wrongTimeCostFormat")
+            .contains(new AddTaskCommandException("wrongEstimatedTimeFormatError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_wrongTimeCostValueNegative_returnErrorMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("2");
+        prompt.interact(TimeParser.getDateTimeString(startDateTime)
+            + "-" + TimeParser.getDateTimeString(endDateTime));
+        prompt.interact("");
+        prompt.interact("");
+        assertTrue(prompt.interact("-1")
+            .contains(new AddTaskCommandException("wrongEstimatedTimeRangeError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_validTimeCostValue_returnMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("2");
+        prompt.interact(TimeParser.getDateTimeString(startDateTime)
+            + "-" + TimeParser.getDateTimeString(endDateTime));
+        prompt.interact("");
+        prompt.interact("");
+        assertTrue(prompt.interact("10")
+            .contains("The estimated number of hours the task might take has been set as 10"));
+    }
 }

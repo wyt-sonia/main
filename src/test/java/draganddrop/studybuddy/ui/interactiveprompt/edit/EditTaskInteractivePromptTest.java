@@ -5,18 +5,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import draganddrop.studybuddy.logic.LogicManager;
+import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.EditTaskCommandException;
 import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.ModelManager;
 import draganddrop.studybuddy.model.UserPrefs;
+import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskField;
+import draganddrop.studybuddy.model.task.TaskType;
 import draganddrop.studybuddy.storage.JsonStudyBuddyStorage;
 import draganddrop.studybuddy.storage.JsonUserPrefsStorage;
 import draganddrop.studybuddy.storage.StorageManager;
@@ -109,32 +113,32 @@ class EditTaskInteractivePromptTest {
     @Test
     public void interact_taskFieldIndexWrongFormat_returnErrorMessage() {
         prompt.interact("");
-        prompt.interact("0");
-        assertEquals(new EditTaskCommandException("wrongIndexFormatError").getErrorMessage(),
-            prompt.interact("wrongIndexFormat"));
+        prompt.interact("1");
+        prompt.interact("wrongIndexFormat");
+        assertTrue(prompt.interact("wrongIndexFormat")
+            .contains(new EditTaskCommandException("wrongIndexFormatError").getErrorMessage()));
     }
 
     @Test
     public void interact_taskFieldIndexOutOfRangeZero_returnErrorMessage() {
         prompt.interact("");
-        prompt.interact("0");
-        assertEquals(new EditTaskCommandException("invalidIndexRangeError").getErrorMessage(),
-            prompt.interact("0"));
+        prompt.interact("1");
+        assertTrue(prompt.interact("0")
+            .contains(new EditTaskCommandException("invalidIndexRangeError").getErrorMessage()));
     }
 
     @Test
     public void interact_taskFieldIndexOutOfRangeSizePlusOne_returnErrorMessage() {
-        prompt.interact("");
-        prompt.interact("0");
         int size = TaskField.values().length;
-        assertEquals(new EditTaskCommandException("invalidIndexRangeError").getErrorMessage(),
-            prompt.interact(size + 1 + ""));
+        prompt.interact("");
+        prompt.interact("1");
+        assertTrue(prompt.interact(size + 1 + "")
+            .contains(new EditTaskCommandException("invalidIndexRangeError").getErrorMessage()));
     }
 
     @Test
     public void interact_taskEmptyNameError_returnErrorMessage() {
         prompt.interact("");
-        prompt.interact("0");
         prompt.interact("2");
         prompt.interact("2");
         String expectedResponse = new EditTaskCommandException("emptyInputError").getErrorMessage() + "\n\n"
@@ -145,7 +149,6 @@ class EditTaskInteractivePromptTest {
     @Test
     public void interact_taskWeightError_returnErrorMessage() {
         prompt.interact("");
-        prompt.interact("0");
         prompt.interact("2");
         prompt.interact("6");
         assertTrue(prompt.interact("101")
@@ -155,10 +158,85 @@ class EditTaskInteractivePromptTest {
     @Test
     public void interact_taskWeightErrorNegative_returnErrorMessage() {
         prompt.interact("");
-        prompt.interact("0");
         prompt.interact("2");
         prompt.interact("6");
         assertTrue(prompt.interact("-1")
             .contains(new EditTaskCommandException("wrongWeightRangeError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_editTaskName_returnErrorMessage() {
+        String newName = "new task name";
+        prompt.interact("");
+        prompt.interact("2");
+        prompt.interact("2");
+        prompt.interact(newName);
+        assertEquals(newName, modelStub.getStudyBuddy().getTaskList().get(1).getTaskName());
+    }
+
+    @Test
+    public void interact_editModule_returnErrorMessage() {
+        prompt.interact("");
+        prompt.interact("2");
+        prompt.interact("1");
+        prompt.interact("");
+        assertEquals(new EmptyModule(), modelStub.getStudyBuddy().getTaskList().get(1).getModule());
+    }
+
+    @Test
+    public void interact_editTaskWeight_returnErrorMessage() {
+        prompt.interact("");
+        prompt.interact("2");
+        prompt.interact("6");
+        prompt.interact("0.0");
+        assertEquals(0.0, modelStub.getStudyBuddy().getTaskList().get(1).getWeight());
+    }
+
+    @Test
+    public void interact_editTaskDescription_returnErrorMessage() {
+        String taskDescription = "taskDescription";
+        prompt.interact("");
+        prompt.interact("2");
+        prompt.interact("5");
+        prompt.interact(taskDescription);
+        assertEquals(taskDescription, modelStub.getStudyBuddy().getTaskList().get(1).getTaskDescription());
+    }
+
+    @Test
+    public void interact_editTaskTimeCost_returnErrorMessage() {
+        double timeCost = 10.0;
+        prompt.interact("");
+        prompt.interact("2");
+        prompt.interact("7");
+        prompt.interact(timeCost + "");
+        assertEquals(timeCost, modelStub.getStudyBuddy().getTaskList().get(1).getEstimatedTimeCost());
+    }
+
+    @Test
+    public void interact_editTaskType_returnErrorMessage() {
+        TaskType taskType = TaskType.getTaskTypes()[0];
+        prompt.interact("");
+        prompt.interact("2");
+        prompt.interact("3");
+        prompt.interact("1");
+        assertEquals(taskType, modelStub.getStudyBuddy().getTaskList().get(1).getTaskType());
+    }
+
+    @Test
+    public void interact_editTaskDate_returnErrorMessage() {
+        int index = 0;
+        for (Task t : modelStub.getStudyBuddy().getTaskList()) {
+            if (t.getTaskType().equals(TaskType.Assignment)) {
+                index = modelStub.getStudyBuddy().getTaskList().indexOf(t);
+                break;
+            }
+        }
+        String dateTime = TimeParser.getDateTimeString(LocalDateTime.now().plusDays(7));
+        prompt.interact("");
+        prompt.interact(index + 1 + "");
+        prompt.interact("4");
+        prompt.interact(dateTime);
+        assertEquals(dateTime,
+            TimeParser.getDateTimeString(modelStub.getStudyBuddy().getTaskList().get(index).getDateTimes()[0]));
     }
 }

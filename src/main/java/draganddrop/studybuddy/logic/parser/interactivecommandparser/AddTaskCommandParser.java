@@ -30,7 +30,7 @@ public class AddTaskCommandParser {
             throw new AddTaskCommandException("emptyInputError");
         }
         if (userInput.length() > 20) {
-            throw new AddTaskCommandException("TaskNameLengthError");
+            throw new AddTaskCommandException("taskNameLengthError");
         } else {
             result = userInput.trim();
         }
@@ -49,7 +49,7 @@ public class AddTaskCommandParser {
         if (userInput.isBlank()) {
             throw new AddTaskCommandException("emptyInputError");
         } else if (userInput.length() > 300) {
-            throw new AddTaskCommandException("TaskDescriptionLengthError");
+            throw new AddTaskCommandException("taskDescriptionLengthError");
         } else {
             result = userInput.trim();
         }
@@ -164,7 +164,7 @@ public class AddTaskCommandParser {
         }
         int index = Integer.parseInt(userInput.trim());
         if (index <= 0 || index > size) {
-            throw new AddTaskCommandException("invalidIndexRange");
+            throw new AddTaskCommandException("invalidIndexRangeError");
         } else {
             result = TaskType.getTaskTypes()[index - 1];
         }
