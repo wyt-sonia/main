@@ -12,6 +12,7 @@ import draganddrop.studybuddy.commons.exceptions.IllegalValueException;
 import draganddrop.studybuddy.model.ReadOnlyStudyBuddy;
 import draganddrop.studybuddy.model.StudyBuddy;
 import draganddrop.studybuddy.model.module.Module;
+import draganddrop.studybuddy.model.statistics.GeneralStats;
 import draganddrop.studybuddy.model.task.Task;
 
 /**
@@ -29,15 +30,17 @@ class JsonSerializableStudyBuddy {
     private final List<JsonAdaptedTask> tasks = new ArrayList<>();
     private final List<JsonAdaptedTask> dueSoonTasks = new ArrayList<>();
     private final List<JsonAdaptedModule> modules = new ArrayList<>();
+    private final List<Integer> completeCountList = new ArrayList<>();
+    private final List<Integer> overdueCountList = new ArrayList<>();
+    private final GeneralStats generalStats = new GeneralStats();
 
     /**
-     * Constructs a {@code JsonSerializableStudyBuddy} with the given persons.
+     * Constructs a {@code JsonSerializableStudyBuddy} with the given tasks.
      */
     @JsonCreator
     public JsonSerializableStudyBuddy(@JsonProperty("tasks") List<JsonAdaptedTask> tasks) {
         this.tasks.addAll(tasks);
     }
-
 
     /**
      * Converts a given {@code ReadOnlyStudyBuddy} into this class for Jackson use.
@@ -51,6 +54,9 @@ class JsonSerializableStudyBuddy {
         dueSoonTasks.addAll(source.getTaskList().stream()
                 .map(JsonAdaptedTask::new).collect(Collectors.toList()));
         modules.addAll(source.getModuleList().stream().map(JsonAdaptedModule::new).collect(Collectors.toList()));
+        completeCountList.addAll(source.getCompleteCountList());
+        overdueCountList.addAll(source.getOverdueCountList());
+        generalStats.copy(source.getGeneralStats());
     }
 
     /**
@@ -78,6 +84,9 @@ class JsonSerializableStudyBuddy {
             }
             studyBuddy.addModule(module);
         }
+        studyBuddy.setCompleteList(this.completeCountList);
+        studyBuddy.setOverdueList(this.overdueCountList);
+        studyBuddy.getGeneralStats().copy(this.generalStats);
 
         Task.updateCurrentTaskList(new ArrayList<>(studyBuddy.getTaskList()));
         return studyBuddy;

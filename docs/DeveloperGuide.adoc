@@ -477,7 +477,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 [appendix]
 == Use Cases
 
-(For all use cases below, the *System* is `Study Buddy` and the *Actor* is the `user`, unless specified otherwise)
+(For all use cases below, the *System* is `Study Buddy` and the *Actor* is the `statistics`, unless specified otherwise)
 
 [discrete]
 === Use case: Delete task
