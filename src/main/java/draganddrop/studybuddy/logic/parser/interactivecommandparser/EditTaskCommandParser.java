@@ -31,7 +31,7 @@ public class EditTaskCommandParser {
             throw new EditTaskCommandException("emptyInputError");
         }
         if (userInput.length() > 20) {
-            throw new EditTaskCommandException("TaskNameLengthError");
+            throw new EditTaskCommandException("taskNameLengthError");
         } else {
             result = userInput.trim();
         }
@@ -50,7 +50,7 @@ public class EditTaskCommandParser {
         if (userInput.isBlank()) {
             throw new EditTaskCommandException("emptyInputError");
         } else if (userInput.length() > 300) {
-            throw new EditTaskCommandException("TaskDescriptionLengthError");
+            throw new EditTaskCommandException("taskDescriptionLengthError");
         } else {
             result = userInput.trim();
         }

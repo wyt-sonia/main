@@ -70,7 +70,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         case INIT:
             this.reply = REQUIRED_MODULE_MSG;
             moduleListString = "The Modules available are: \n";
-            this.modules = logic.getFilteredModuleList();
+            this.modules = logic.getStudyBuddy().getModuleList();
             constructModuleList(modules);
             this.reply += moduleListString;
             currentTerm = InteractivePromptTerms.TASK_MODULE;
@@ -125,7 +125,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 }
                 currentTerm = InteractivePromptTerms.TASK_DATETIME;
             } catch (NumberFormatException ex) {
-                reply = (new AddTaskCommandException("wrongIndexFormat")).getErrorMessage()
+                reply = (new AddTaskCommandException("wrongIndexFormatError")).getErrorMessage()
                     + "\n\n" + REQUIRED_TASK_TYPE_MSG;
             } catch (AddTaskCommandException ex) {
                 reply = ex.getErrorMessage()
@@ -137,7 +137,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             try {
                 LocalDateTime[] dateTimes = AddTaskCommandParser.parseDateTime(userInput, task.getTaskType());
                 task.setDateTimes(dateTimes);
-
                 if (dateTimes.length == 1) {
                     userInput = TimeParser.getDateTimeString(dateTimes[0]);
                 } else {
@@ -158,7 +157,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             this.reply = "";
             try {
                 if (!userInput.isBlank()) {
-                    task.setTaskDescription(userInput);
+                    task.setTaskDescription(AddTaskCommandParser.parseDescription(userInput));
                     this.reply = "The task description has been set as " + userInput + "\n\n";
                 }
                 this.reply += REQUIRED_TASK_WEIGHT_MSG;

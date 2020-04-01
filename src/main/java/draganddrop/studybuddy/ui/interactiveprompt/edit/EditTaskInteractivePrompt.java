@@ -9,7 +9,6 @@ import draganddrop.studybuddy.commons.core.index.Index;
 import draganddrop.studybuddy.logic.commands.edit.EditTaskCommand;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.logic.parser.TimeParser;
-import draganddrop.studybuddy.logic.parser.exceptions.ParseException;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.EditTaskCommandParser;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.EditTaskCommandException;
 import draganddrop.studybuddy.model.module.EmptyModule;
@@ -28,6 +27,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
     static final String END_OF_COMMAND_MSG = "Task edited successfully";
     static final String QUIT_COMMAND_MSG = "Successfully quit from the edit task command";
 
+    static final String REQUIRED_TASK_FIELD_MSG = "Please choose the field that you wish to edit for task: ";
     static final String REQUIRED_MODULE_MSG = "Please choose a Module for this task or press enter to skip. "
         + "Index number and module code are both acceptable.\n";
     static final String REQUIRED_TASK_NAME_MSG = "Please enter the task name.";
@@ -193,10 +193,13 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         case TASK_WEIGHT:
             try {
                 double newWeight = 0;
+                boolean isWeightSizeValid = true;
                 if (!userInput.isBlank()) {
                     newWeight = EditTaskCommandParser.parseWeight(userInput);
-                    boolean isWeightSizeValid = isWeightSizeValid(newWeight, logic.getFilteredTaskList()
-                        .get(taskIndex.getZeroBased()).getModule());
+                    if (newWeight > 0) {
+                        isWeightSizeValid = isWeightSizeValid(newWeight, logic.getFilteredTaskList()
+                            .get(taskIndex.getZeroBased()).getModule());
+                    }
                     if (!isWeightSizeValid) {
                         throw new EditTaskCommandException("moduleWeightOverloadError");
                     }
@@ -261,7 +264,6 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
      * @return an int of task number
      */
     public int parseTaskNumber(String userInput) {
-        boolean isParseSuccessful = true;
         int taskNum = -1;
 
         try {
@@ -273,7 +275,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                 throw new EditTaskCommandException("invalidIndexRangeError");
             }
             String taskName = logic.getFilteredTaskList().get(taskNum - 1).getTaskName();
-            this.reply = "Please choose the field that you wish to edit for task: " + taskName + ".\n\n"
+            this.reply = REQUIRED_TASK_FIELD_MSG + taskName + ".\n\n"
                 + TaskField.getFieldString();
             this.currentTerm = InteractivePromptTerms.TASK_FIELD;
         } catch (NumberFormatException e) {
@@ -291,28 +293,27 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
      * @return a TaskField
      */
     public TaskField parseTaskFieldNumber(String userInput) {
-        boolean isParseSuccessful = true;
+        String taskName = logic.getFilteredTaskList().get(taskNumber - 1).getTaskName();
         TaskField taskField = null;
 
         try {
             int taskFieldNumber = Integer.parseInt(userInput);
             if (taskFieldNumber > 7 || taskFieldNumber < 1) {
-                throw new ParseException("task field number not in range");
+                throw new EditTaskCommandException("invalidIndexRangeError");
             }
             taskField = TaskField.getTaskFieldFromNumber(taskFieldNumber);
-        } catch (NumberFormatException | ParseException ex) {
-            isParseSuccessful = false;
-        }
-
-        if (isParseSuccessful) {
             assert (taskField != null);
             this.reply = getTaskFieldMessage(taskField);
             this.currentTerm = InteractivePromptTerms.NEW_VALUE;
-        } else {
-            // prompt for a new value
-            this.reply = "Please choose a valid task field index";
-            this.currentTerm = InteractivePromptTerms.TASK_FIELD;
         }
+        catch (NumberFormatException e) {
+            this.reply = new EditTaskCommandException("wrongIndexFormatError").getErrorMessage();
+        }
+        catch (EditTaskCommandException e) {
+            this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_FIELD_MSG + taskName + ".\n\n"
+                + TaskField.getFieldString();
+        }
+
         return taskField;
     }
 
