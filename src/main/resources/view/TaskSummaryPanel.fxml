@@ -16,7 +16,7 @@
                   </padding></PieChart>
                 </content>
             </Tab>
-            <Tab text="Area Chart">
+            <Tab text="Module Related Tasks' Deadline/Start Date ">
                 <content>
                     <AreaChart fx:id="taskSummaryAreaChart" VBox.vgrow="ALWAYS">
                         <xAxis>
@@ -31,7 +31,7 @@
                     </AreaChart>
                 </content>
             </Tab>
-            <Tab text="Bar Chart">
+            <Tab text="Module Related Task Weight">
                 <content>
                     <StackedBarChart fx:id="taskSummaryStackedBarChart" VBox.vgrow="ALWAYS">
                         <xAxis>

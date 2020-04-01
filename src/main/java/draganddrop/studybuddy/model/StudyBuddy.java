@@ -245,6 +245,19 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         tasks.setTaskName(target, newTaskName);
     }
 
+    public void setTaskDescription(Task target, String newTaskDescription) {
+        tasks.setTaskDescription(target, newTaskDescription);
+    }
+
+    public void setTaskTimeCost(Task target, double newTaskTimeCost) {
+        tasks.setTaskTimeCost(target, newTaskTimeCost);
+    }
+
+    public void setTaskWeight(Task target, double newTaskWeight) {
+        tasks.setTaskWeight(target, newTaskWeight);
+    }
+
+
     public void setTaskType(Task target, TaskType newTaskType) {
         tasks.setTaskType(target, newTaskType);
     }
