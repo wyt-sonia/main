@@ -1,4 +1,4 @@
-package draganddrop.studybuddy.ui;
+package draganddrop.studybuddy.ui.panel;
 
 import java.util.logging.Logger;
 
@@ -6,6 +6,9 @@ import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.task.Task;
+import draganddrop.studybuddy.ui.UiPart;
+import draganddrop.studybuddy.ui.card.ModCard;
+
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

@@ -5,15 +5,14 @@ import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.D
 import draganddrop.studybuddy.model.task.Task;
 
 /**
- * pending.
+ * Parses the index for a delete command.
  */
 public class DeleteTaskCommandParser {
 
     /**
-     * Parse the {@code userInput} for task name.
-     *
+     * Parse the {@code userInput} for index value.
      * @param userInput
-     * @return
+     * @return integer index
      * @throws AddTaskCommandException
      */
     public static int parseIndex(String userInput) throws DeleteTaskCommandException {

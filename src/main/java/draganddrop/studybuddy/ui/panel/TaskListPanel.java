@@ -1,9 +1,12 @@
-package draganddrop.studybuddy.ui;
+package draganddrop.studybuddy.ui.panel;
 
 import java.util.logging.Logger;
 
 import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.model.task.Task;
+import draganddrop.studybuddy.ui.UiPart;
+import draganddrop.studybuddy.ui.card.DetailedTaskCard;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;

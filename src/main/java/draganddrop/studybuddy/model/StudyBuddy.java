@@ -20,7 +20,7 @@ import javafx.collections.ObservableList;
 
 /**
  * Wraps all data at the study buddy
- * Duplicates are not allowed (by .isSamePerson comparison)
+ * Duplicates are allowed.
  */
 public class StudyBuddy implements ReadOnlyStudyBuddy {
 
@@ -57,7 +57,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     }
 
     /**
-     * Creates an StudyBuddy using the Persons in the {@code toBeCopied}
+     * Creates an StudyBuddy using the Tasks in the {@code toBeCopied}
      */
     public StudyBuddy(ReadOnlyStudyBuddy toBeCopied) {
         this();

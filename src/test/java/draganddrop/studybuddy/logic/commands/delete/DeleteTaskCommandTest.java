@@ -26,7 +26,7 @@ public class DeleteTaskCommandTest {
         Task taskToDelete = model.getFilteredTaskList().get(INDEX_FIRST_TASK.getZeroBased());
         DeleteTaskCommand atCommand = new DeleteTaskCommand(INDEX_FIRST_TASK);
 
-        String expectedMessage = String.format(DeleteTaskCommand.MESSAGE_DELETE_TASK_SUCCESS, taskToDelete);
+        String expectedMessage = String.format(Messages.MESSAGE_DELETE_TASK_SUCCESS, taskToDelete);
 
         ModelManager expectedModel = new ModelManager(model.getStudyBuddy(), new UserPrefs());
         expectedModel.deleteTask(taskToDelete);
@@ -48,7 +48,7 @@ public class DeleteTaskCommandTest {
         Task taskToDelete = model.getFilteredTaskList().get(INDEX_FIRST_TASK.getZeroBased());
         DeleteTaskCommand deleteCommand = new DeleteTaskCommand(INDEX_FIRST_TASK);
 
-        String expectedMessage = String.format(DeleteTaskCommand.MESSAGE_DELETE_TASK_SUCCESS, taskToDelete);
+        String expectedMessage = String.format(Messages.MESSAGE_DELETE_TASK_SUCCESS, taskToDelete);
 
         Model expectedModel = new ModelManager(model.getStudyBuddy(), new UserPrefs());
         expectedModel.deleteTask(taskToDelete);

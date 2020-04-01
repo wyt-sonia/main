@@ -26,9 +26,8 @@ By: `Team Drag&Drop`      Since: `Jan 2020`
 Study Buddy is a desktop application which is designed for students who *wish to manege their module related tasks*.
 More importantly, Study Buddy is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
 
-Instead of forcing you to remember long wordy and easy-typo commands,
-Study Buddy *provides an interactive way of communication*, which not only improves
-the typo-tolerance of the application, but also makes the application more easy to master.
+You will never have to remember long, wordy commands to use your command line interface, since
+Study Buddy *provides an interactive way of communication*, which not only helps to prevent typos, but also makes the application much easier to use!
 
 If you can type fast, Study Buddy can get your module management done faster than traditional GUI apps.
 
@@ -53,28 +52,14 @@ you may refer to the guide below.
 +
 image::Ui.png[width="790", title="Study Buddy Dashboard"]
 +
-. The box with hint `Please enter your command here...` is the entry for your commands. You can key in your desired command
-here and pressing kbd:[Enter] to execute.
-. To check the available command, you can key in *`help`* and pressing kbd:[Enter] and you are also
-welcome to refer to <<Features>> for details of each command.
+. The box with the words `Enter your command here...` is where you can key in your desired command and click kbd:[Enter] to execute.
+. To view a list of available command, you can key in *`help`* and click kbd:[Enter]. A more detailed description of our features is available in
+<<Features>> of this document.
 
 
 [TIP]
 Study Buddy will analyze your input and reply accordingly. +
-Hope you enjoy.
-
-== User Interface
-=== Dashboard
-=== Menu
-=== Modules
-=== Archived Task
-=== Statistics
-=== Calendar
-=== Profile
-
-== Task and Module Structure
-=== Task
-=== Module
+Hope you enjoy!
 
 [[Features]]
 == Features
@@ -191,61 +176,49 @@ U- `[enter]`
 S- Task added successfully!
 
 ==== Delete
-*Format:*
-
-U- `delete`
-
-S- prompt for task index
-
-U- `INDEX`
-
-S- done!
-
-*Description:*
-
-. This function allows you to delete a task from your list of tasks.
-. You can refer to the list of tasks to determine the respective index number.
-
-[NOTE]
-The application does not allow you to enter an invalid index number. If you happen to enter one, just try again!
-
+This commands deletes a task from the existing list, using the index provided by you.
 
 *Example:*
 
-U- `delete`
+After having added a task, you realise that there has been a change and you do not need to do that task anymore.
 
-S- Please enter the index number of task you wish to delete.
+Study Buddy provides you an option to delete that task from the list!
 
-U- `1`
+To `delete`:
 
-S- The task Lab 1 submission will be deleted. +
-Please click enter again to make the desired deletion.
+. Initiate the command using keyword `delete`
+. Study Buddy should respond with:
++
+image::deleteResponse2.png[width="790", title="Reponse to 'delete'"]
+. Type the index of the task you want to delete.
++
+image::deleteResponse3.png[width="790", title="Reponse to delete index 1"]
+. Press `enter` again to confirm
+. Task has been deleted! You will notice that the task at the index you selected has disappeared from the list of tasks.
++
+image::deleteResponse1.png[width="790", title="Updated list (without deleted task)"]
 
-U- `[enter]`
-
-S- Task deleted successfully!
 
 ==== Delete duplicates
-*Format:*
-
-U- `delete duplicates`
-
-S- done!
-
-*Description:*
-
-. This function allows you delete any duplicate tasks in your list of tasks.
+This commands deletes all duplicated tasks in the list.
 
 *Example:*
 
-U- `delete`
+After having added a duplicated task, you realise that there is no more need for this duplicate task. Yet you do not want to scroll through the entire list to delete it.
 
-S- The duplicate tasks will be deleted +
-Please press enter again to make the desired changes.
+Study Buddy provides you an option to delete all your duplicate tasks from the list!
 
-U- `[enter]`
+To `delete duplicates`:
 
-S- Duplicated task deleted successfully!
+. Initiate the command using keyword `delete duplicates`
+. Study Buddy should respond with:
++
+image::deleteDuplicates1.png[width="790", title="Reponse to 'delete duplicates'"]
+
+. Press `enter` again to confirm
+. Duplicate tasks have been deleted! You will notice that only one copy (most recent) of each task will be left in the list.
++
+image::deleteDuplicates2.png[width="790", title="Updated list (without duplicate tasks)"]
 
 ==== Archive/ Unarchive
 This commands stores the specified task into a separate list.
@@ -316,30 +289,40 @@ U- `list`
 S- Here is the complete list of tasks:
 
 ==== Refresh
-
-*Format:*
-
-U- `refresh`
-
-S- refreshes task tags and due soon list
-
-*Description*
-
-. This function allows you to refresh/update any tags/due soon tasks.
+This commands refreshes the list of tasks due soon as well as status tags.
 
 [NOTE]
-Both the status tags and due soon list auto-update when changes such as addition, deletion etc are performed. However the refresh function is helpful when the application has been open for a considerable amount of time and the tags/time on due soon list needs an update.
+Due soon list shows tasks due within the next week. Details are in <<Due Soon Tasks>>
+[NOTE]
+Status tags include information on the tasks' status. Details are in <<Status Tags>>
 
 *Example:*
 
-U- `refresh`
+Say you left Study Buddy open overnight because you fell asleep studying. When you wake up, you notice that the time left for the deadline on the due soon tasks is not accurate.
 
-S- The tasks list will be refreshed. +
-Please press enter again to make the desired changes.
+You can refresh them!
 
-U- `[enter]`
+To `refresh`:
 
-S- Refreshed tasks' status and due soon list!
+. Say this is what Study Buddy looks like.
++
+image::refresh1.png[width="790", title="Current state (needs to be refreshed)"]
++
+
+Suppose you notice that the task "Submit UG" is not due "now" anymore because some time has past since the deadline.
+
+. Initiate the refresh command using keyword `refresh`
+. Study Buddy should respond with:
++
+image::refresh2.png[width="790", title="Reponse to 'refresh'"]
+
+. Press `enter` again to confirm
+. Tasks have been refreshed!
++
+image::refresh3.png[width="790", title="View refreshed Study Buddy"]
++
+
+You will notice that the overdue task has now moved out of the due soon list and has the updated status tag "overdue".
 
 ==== Edit
 
@@ -365,29 +348,31 @@ Edits the date and details of the 1st task to be `2020-05-19` and `tough assignm
 Edits the name of the 2nd task to be `Database project` and clears all existing tags.
 
 ==== Clear
-*Format:*
+This commands clears all data in the Study Buddy.
 
-U- `clear`
-
-S- done!
-
-*Description:*
-
-. This function allows you clear your entire list.
-
-[NOTE]
-This function will clear any data you have entered into the application. Use it with caution!
+[TIP]
+Be careful with this command! It will remove any data you may have entered into the Study Buddy and you cannot retrieve it.
 
 *Example:*
 
-U- `clear`
+Say you have finished a semester and would like to clear everything in your Study Buddy and start over.
 
-S- Please press enter to clear all your tasks. +
-Else enter quit to go back.
+You can always clear everything!
 
-U- `[enter]`
+To `clear`:
 
-S- Tasks cleared successfully!
+. Initiate the command using keyword `clear`
+. Study Buddy should respond with:
++
+image::clear1.png[width="790", title="Reponse to 'clear'"]
+
+[NOTE]
+You can enter `quit` if you wish to go back!
+
+. Press `enter` again to confirm
+. Study Buddy has been cleared completely!
++
+image::clear2.png[width="790", title="View empty Study Buddy"]
 
 ==== Saving the data
 
@@ -397,29 +382,28 @@ Study Buddy data is saved in the hard disk automatically after any command that 
 There is no need to save manually!
 
 ==== Exit
-*Format:*
-
-U- `bye`
-
-S- done!
-
-*Description:*
-
-. This function allows you close the application.
+This command exits from Study Buddy.
 
 [NOTE]
-Your data will be saved and reloaded when you reopen the application!
+All your data will be saved and reloaded when you open the application later! You can find details about this in <<Saving the data>>
 
 *Example:*
 
-U- `bye`
+After working all day, you would like to close the application and have a good night's sleep.
 
-S- Are you sure you want to quit? +
-Please press enter yes if you would like to close the application.
+You can always exit the application!
 
-U- `yes`
+To `exit`:
 
-S- [exits]
+. Initiate the command using keyword `bye`
+. Study Buddy should respond with:
++
+image::exit1.png[width="790", title="Reponse to 'bye'"]
+. Type 'yes' if you want to exit and anything else if you do not wish to exit.
++
+image::exit2.png[width="790", title="Reponse to any command other than 'yes'"]
++
+In response to yes, the application should simply close.
 
 === DashBoard
 
@@ -440,7 +424,7 @@ It provides the following functionality:
 . It displays a tag with the time left to the deadline.
 . It provides a <<Refresh>> function that allows you to refresh time/state of this list if needed.
 
-=== Status tags
+=== Status Tags
 
 === Interactive Command Prompt
 

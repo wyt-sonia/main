@@ -1,6 +1,8 @@
-package draganddrop.studybuddy.ui;
+package draganddrop.studybuddy.ui.card;
 
 import draganddrop.studybuddy.model.module.Module;
+
+import draganddrop.studybuddy.ui.UiPart;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

@@ -1,4 +1,4 @@
-package draganddrop.studybuddy.ui;
+package draganddrop.studybuddy.ui.box;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,6 +10,9 @@ import java.util.logging.Logger;
 import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.UniqueTaskList;
+import draganddrop.studybuddy.ui.UiPart;
+import draganddrop.studybuddy.ui.panel.TaskListPanel;
+
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

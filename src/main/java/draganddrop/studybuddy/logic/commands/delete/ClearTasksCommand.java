@@ -9,7 +9,7 @@ import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.StudyBuddy;
 
 /**
- * Clears the study buddy.
+ * Clears all data in study buddy.
  */
 public class ClearTasksCommand extends Command {
 

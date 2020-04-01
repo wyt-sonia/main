@@ -46,6 +46,7 @@ public class FindTaskInteractivePrompt extends InteractivePrompt {
             this.reply = KEYWORD_PROMPT;
             currentTerm = InteractivePromptTerms.FIND_KEYWORD;
             break;
+
         case FIND_KEYWORD:
             userKeyword = userInput;
             reply = getConfirmationPrompt(userKeyword);

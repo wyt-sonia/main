@@ -1,9 +1,10 @@
-package draganddrop.studybuddy.ui;
+package draganddrop.studybuddy.ui.box;
 
 import draganddrop.studybuddy.logic.Logic;
 import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.logic.parser.exceptions.ParseException;
+import draganddrop.studybuddy.ui.UiPart;
 import draganddrop.studybuddy.ui.interactiveprompt.ExitTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InvalidInputInteractivePrompt;
