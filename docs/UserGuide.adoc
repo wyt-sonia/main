@@ -375,13 +375,6 @@ You can enter `quit` if you wish to go back!
 +
 image::clear2.png[width="790", title="View empty Study Buddy"]
 
-==== Saving the data
-
-*Description:*
-
-Study Buddy data is saved in the hard disk automatically after any command that changes the data. +
-There is no need to save manually!
-
 ==== Exit
 This command exits from Study Buddy.
 
@@ -405,6 +398,13 @@ image::exit1.png[width="790", title="Reponse to 'bye'"]
 image::exit2.png[width="790", title="Reponse to any command other than 'yes'"]
 +
 In response to yes, the application should simply close.
+
+=== Saving Data
+
+Study Buddy data is automatically saved in the hard disk after any command that changes the data.
++ There is no need to save manually.
+
+When the application is closed and re-opened, you should be able to see all the data you had added previously!
 
 === DashBoard
 
@@ -505,7 +505,7 @@ These include:
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
-*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Study Buddy folder.
+*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Study Buddy folder (should be under data -> taskList.json).
 
 == Command Summary
 
