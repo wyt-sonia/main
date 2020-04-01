@@ -13,7 +13,7 @@ import draganddrop.studybuddy.model.StudyBuddy;
  */
 public class ClearTasksCommand extends Command {
 
-    public static final String COMMAND_WORD = "clear";
+    final public static String COMMAND_WORD = "clear";
 
     @Override
     public CommandResult execute(Model model) {

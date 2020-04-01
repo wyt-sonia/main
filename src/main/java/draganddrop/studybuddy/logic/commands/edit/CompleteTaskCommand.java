@@ -16,8 +16,8 @@ import draganddrop.studybuddy.model.task.Task;
  * Completes a task.
  */
 public class CompleteTaskCommand extends Command {
-    public static final String COMMAND_WORD = "Complete";
-    public static final String MESSAGE_USAGE = COMMAND_WORD
+    final public static String COMMAND_WORD = "Complete";
+    final public static String MESSAGE_USAGE = COMMAND_WORD
         + ": Complete the task based on the displayed list.\n"
         + "Parameters: INDEX (must be a positive integer)\n"
         + "Example: " + COMMAND_WORD + " 1";

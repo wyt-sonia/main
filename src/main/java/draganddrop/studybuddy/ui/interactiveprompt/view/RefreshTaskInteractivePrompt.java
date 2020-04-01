@@ -24,8 +24,8 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
  */
 public class RefreshTaskInteractivePrompt extends InteractivePrompt {
 
-    private static final String END_OF_COMMAND_MSG = "Tasks' status and due soon list is refreshed!";
-    private static final String QUIT_COMMAND_MSG = "Successfully quited from refresh command.";
+    final private static String END_OF_COMMAND_MSG = "Tasks' status and due soon list is refreshed!";
+    final private static String QUIT_COMMAND_MSG = "Successfully quited from refresh command.";
 
     public RefreshTaskInteractivePrompt() {
         super();

@@ -28,7 +28,7 @@ import draganddrop.studybuddy.commons.exceptions.DataConversionException;
  */
 public class JsonUtil {
 
-    private static final Logger logger = LogsCenter.getLogger(JsonUtil.class);
+    final private static Logger logger = LogsCenter.getLogger(JsonUtil.class);
 
     private static ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules()
         .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)

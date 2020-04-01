@@ -17,7 +17,7 @@ import draganddrop.studybuddy.model.task.Task;
  */
 public class DeleteTaskCommand extends Command {
 
-    public static final String COMMAND_WORD = "delete";
+    final public static String COMMAND_WORD = "delete";
     private final Index targetIndex;
 
     public DeleteTaskCommand(Index targetIndex) {

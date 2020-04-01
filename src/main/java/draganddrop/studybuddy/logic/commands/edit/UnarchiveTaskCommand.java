@@ -17,11 +17,11 @@ import draganddrop.studybuddy.model.task.Task;
  */
 public class UnarchiveTaskCommand extends Command {
 
-    public static final String COMMAND_WORD = "unarchive";
+    final public static String COMMAND_WORD = "unarchive";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": retrieves the selected entry from archived";
+    final public static String MESSAGE_USAGE = COMMAND_WORD + ": retrieves the selected entry from archived";
 
-    public static final String MESSAGE_ARCHIVE_TASK_SUCCESS = "retrieved Task: %1$s";
+    final public static String MESSAGE_ARCHIVE_TASK_SUCCESS = "retrieved Task: %1$s";
 
     private final Index targetIndex;
 

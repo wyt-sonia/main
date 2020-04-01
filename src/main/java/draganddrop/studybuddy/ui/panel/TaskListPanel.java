@@ -17,7 +17,7 @@ import javafx.scene.layout.Region;
  * Panel containing the list of persons.
  */
 public class TaskListPanel extends UiPart<Region> {
-    private static final String FXML = "TaskListPanel.fxml";
+    final private static String FXML = "TaskListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(TaskListPanel.class);
 
     @FXML

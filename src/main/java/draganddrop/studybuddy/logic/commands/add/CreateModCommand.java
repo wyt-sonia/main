@@ -12,13 +12,13 @@ import draganddrop.studybuddy.model.module.Module;
  * A command to create modules.
  */
 public class CreateModCommand extends Command {
-    public static final String COMMAND_WORD = "create mod";
+    final public static String COMMAND_WORD = "create mod";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a new mod. "
+    final public static String MESSAGE_USAGE = COMMAND_WORD + ": Adds a new mod. "
         + "Parameters: Name & Code";
 
-    public static final String MESSAGE_SUCCESS = "New Mod added: %1$s";
-    public static final String MESSAGE_DUPLICATE_TASK = "This module already exists in the study buddy";
+    final public static String MESSAGE_SUCCESS = "New Mod added: %1$s";
+    final public static String MESSAGE_DUPLICATE_TASK = "This module already exists in the study buddy";
 
     private final Module mod;
 

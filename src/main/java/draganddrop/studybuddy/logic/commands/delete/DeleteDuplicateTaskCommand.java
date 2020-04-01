@@ -15,7 +15,7 @@ import draganddrop.studybuddy.model.task.Task;
  */
 public class DeleteDuplicateTaskCommand extends Command {
 
-    public static final String COMMAND_WORD = "delete duplicates";
+    final public static String COMMAND_WORD = "delete duplicates";
 
     @Override
     public CommandResult execute(Model model) {

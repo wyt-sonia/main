@@ -17,7 +17,7 @@ import draganddrop.studybuddy.model.task.TaskType;
  */
 class JsonAdaptedTask {
 
-    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Task's %s field is missing!";
+    final public static String MISSING_FIELD_MESSAGE_FORMAT = "Task's %s field is missing!";
 
     private final String taskName;
     private final String taskDateTime;

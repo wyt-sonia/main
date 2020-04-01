@@ -18,7 +18,7 @@ import draganddrop.studybuddy.commons.exceptions.DataConversionException;
 
 public class ConfigUtilTest {
 
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "ConfigUtilTest");
+    final private static Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "ConfigUtilTest");
 
     @TempDir
     public Path tempDir;

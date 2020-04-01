@@ -15,7 +15,7 @@ import draganddrop.studybuddy.testutil.TestUtil;
  */
 public class JsonUtilTest {
 
-    private static final Path SERIALIZATION_FILE = TestUtil.getFilePathInSandboxFolder("serialize.json");
+    final private static Path SERIALIZATION_FILE = TestUtil.getFilePathInSandboxFolder("serialize.json");
 
     @Test
     public void serializeObjectToJsonFile_noExceptionThrown() throws IOException {

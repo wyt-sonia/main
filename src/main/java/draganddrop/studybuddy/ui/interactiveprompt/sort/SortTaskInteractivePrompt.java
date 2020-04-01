@@ -15,9 +15,9 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
  * A interactive prompt for sorting task list.
  */
 public class SortTaskInteractivePrompt extends InteractivePrompt {
-    private static final String END_OF_COMMAND_MSG = "Task sorted successfully!";
-    private static final String QUIT_COMMAND_MSG = "Successfully quited from sort task command.";
-    private static final String[] sort_option = {"Deadline / Task Start Date", "Task Name", "Creation DateTime"};
+    final private static String END_OF_COMMAND_MSG = "Task sorted successfully!";
+    final private static String QUIT_COMMAND_MSG = "Successfully quited from sort task command.";
+    final private static String[] sort_option = {"Deadline / Task Start Date", "Task Name", "Creation DateTime"};
 
     private int option;
     private String userInput;

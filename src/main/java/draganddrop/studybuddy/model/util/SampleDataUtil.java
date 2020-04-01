@@ -15,11 +15,11 @@ import draganddrop.studybuddy.model.task.TaskType;
  * Contains utility methods for populating {@code StudyBuddy} with sample data.
  */
 public class SampleDataUtil {
-    private static final String LONG_DESC_WITH_300_CHAR =
+    final private static String LONG_DESC_WITH_300_CHAR =
         "This is a long task description with 300 characters. 12345678901234567890123456789012345678901234567"
             + "This is a long task description with 300 characters. 12345678901234567890123456789012345678901234567"
             + "This is a long task description with 300 characters. 12345678901234567890123456789012345678901234567";
-    private static final String SHORT_DESC = "This is a short description.";
+    final private static String SHORT_DESC = "This is a short description.";
 
     public static Task[] getSampleTasks() {
         Module emptyModule = new EmptyModule();

@@ -8,7 +8,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
  * The interactive prompt for the help command. Returns the help message immediately
  */
 public class HelpInteractivePrompt extends InteractivePrompt {
-    private static final String END_OF_COMMAND_MSG =
+    final private static String END_OF_COMMAND_MSG =
         "Here are the list of available commands:" + System.lineSeparator()
             + "1. add  2. delete  3. edit  4. bye  5. sort  6. find  7. done  8. delete duplicates  "
             + "9. sort  10. archive  11. help  12. list  13. clear 14. create mods"

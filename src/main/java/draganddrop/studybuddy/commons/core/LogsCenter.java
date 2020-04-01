@@ -16,13 +16,13 @@ import java.util.logging.SimpleFormatter;
  * file reaches 5MB big, up to a maximum of 5 files.<br>
  */
 public class LogsCenter {
-    private static final int MAX_FILE_COUNT = 5;
-    private static final int MAX_FILE_SIZE_IN_BYTES = (int) (Math.pow(2, 20) * 5); // 5MB
-    private static final String LOG_FILE = "studybuddy.log";
+    final private static int MAX_FILE_COUNT = 5;
+    final private static int MAX_FILE_SIZE_IN_BYTES = (int) (Math.pow(2, 20) * 5); // 5MB
+    final private static String LOG_FILE = "studybuddy.log";
     private static Level currentLogLevel = Level.INFO;
     private static FileHandler fileHandler;
     private static ConsoleHandler consoleHandler;
-    private static final Logger logger = LogsCenter.getLogger(LogsCenter.class);
+    final private static Logger logger = LogsCenter.getLogger(LogsCenter.class);
 
     /**
      * Initializes with a custom log level (specified in the {@code config} object)

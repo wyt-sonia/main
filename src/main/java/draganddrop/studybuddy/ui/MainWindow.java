@@ -33,16 +33,16 @@ import javafx.stage.Stage;
  * a menu bar and space where other JavaFX elements can be placed.
  */
 public class MainWindow extends UiPart<Stage> {
-    private static final String ALL_TASK = "All Tasks";
-    private static final String TITLE = "Study Buddy";
-    private static final String DUE_SOON_TASK = "Tasks Due Soon";
-    private static final String MODULE = "Modules";
-    private static final String ARCHIVED_TASK = "Archived Task";
-    private static final String CALENDAR = "Calendar";
-    private static final String TASK_SUMMARY = "Task Summary";
-    private static final String PROFILE_PAGE = "Profile Page";
+    final private static String ALL_TASK = "All Tasks";
+    final private static String TITLE = "Study Buddy";
+    final private static String DUE_SOON_TASK = "Tasks Due Soon";
+    final private static String MODULE = "Modules";
+    final private static String ARCHIVED_TASK = "Archived Task";
+    final private static String CALENDAR = "Calendar";
+    final private static String TASK_SUMMARY = "Task Summary";
+    final private static String PROFILE_PAGE = "Profile Page";
 
-    private static final String FXML = "MainWindow.fxml";
+    final private static String FXML = "MainWindow.fxml";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 

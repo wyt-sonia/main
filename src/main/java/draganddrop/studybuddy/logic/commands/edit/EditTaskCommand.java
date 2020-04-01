@@ -22,8 +22,8 @@ import draganddrop.studybuddy.model.task.TaskType;
  * Edits the details of an existing task in the study buddy.
  */
 public class EditTaskCommand extends Command {
-    public static final String COMMAND_WORD = "edit";
-    public static final String EDIT_TASK_SUCCESS = "Task has been edited successfully";
+    final public static String COMMAND_WORD = "edit";
+    final public static String EDIT_TASK_SUCCESS = "Task has been edited successfully";
     private final Index targetIndex;
     private final TaskField taskField;
     private String newTaskName = null;

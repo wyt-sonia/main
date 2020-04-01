@@ -18,9 +18,9 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
  */
 public class CompleteTaskInteractivePrompt extends InteractivePrompt {
 
-    public static final String QUIT_COMMAND_MSG = "Successfully quited from complete task command.";
-    private static final String END_OF_COMMAND_MSG = "Task marked as completed successfully!";
-    private static final String REQUEST_INDEX_MSG = "Please enter the index number "
+    final public static String QUIT_COMMAND_MSG = "Successfully quited from complete task command.";
+    final private static String END_OF_COMMAND_MSG = "Task marked as completed successfully!";
+    final private static String REQUEST_INDEX_MSG = "Please enter the index number "
         + "of task you wish to mark as finished.";
 
     private int index;

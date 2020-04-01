@@ -15,7 +15,7 @@ import javafx.scene.layout.Region;
  */
 public class DetailedTaskCard extends UiPart<Region> {
 
-    private static final String FXML = "DetailedTaskCard.fxml";
+    final private static String FXML = "DetailedTaskCard.fxml";
 
     public final Task task;
 

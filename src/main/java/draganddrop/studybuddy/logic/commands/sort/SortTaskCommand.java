@@ -18,14 +18,14 @@ import javafx.collections.ObservableList;
  */
 public class SortTaskCommand extends Command {
 
-    public static final String COMMAND_WORD = "sort";
+    final public static String COMMAND_WORD = "sort";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
+    final public static String MESSAGE_USAGE = COMMAND_WORD
         + ": Sort the tasks by keyword chosen by user. \n"
         + "Parameters: Sort Keyword (1 (deadline / task start date), 2 (task name) and 3 creation datetime)\n"
         + "Example: " + COMMAND_WORD + " 1 ";
 
-    public static final String MESSAGE_SORT_TASK_SUCCESS = "Sort Task: %1$s";
+    final public static String MESSAGE_SORT_TASK_SUCCESS = "Sort Task: %1$s";
 
     private String sortKeyword;
 

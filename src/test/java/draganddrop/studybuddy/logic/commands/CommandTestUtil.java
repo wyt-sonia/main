@@ -21,18 +21,18 @@ import draganddrop.studybuddy.model.task.TaskNameContainsKeywordsPredicate;
  */
 public class CommandTestUtil {
 
-    public static final String VALID_TASK_NAME_ONE = "Project meeting";
-    public static final String VALID_TASK_NAME_TWO = "Job application";
-    public static final String VALID_TASK_TYPE_THREE = "Assignment";
-    public static final String VALID_TASK_TYPE_FOUR = "Quiz";
-    public static final String VALID_DESCRIPTION_ONE = "Project";
-    public static final String VALID_DESCRIPTION_TWO = "Final draft of Project";
-    public static final String VALID_MODULE_ONE = "CS2103T";
-    public static final String VALID_MODULE_TWO = "CS2101";
-    public static final String VALID_DATE_ONE = "17:00 28/04/2060";
-    public static final String VALID_DATE_TWO = "00:00 29/06/2040- 13:00 30/06/2040";
+    final public static String VALID_TASK_NAME_ONE = "Project meeting";
+    final public static String VALID_TASK_NAME_TWO = "Job application";
+    final public static String VALID_TASK_TYPE_THREE = "Assignment";
+    final public static String VALID_TASK_TYPE_FOUR = "Quiz";
+    final public static String VALID_DESCRIPTION_ONE = "Project";
+    final public static String VALID_DESCRIPTION_TWO = "Final draft of Project";
+    final public static String VALID_MODULE_ONE = "CS2103T";
+    final public static String VALID_MODULE_TWO = "CS2101";
+    final public static String VALID_DATE_ONE = "17:00 28/04/2060";
+    final public static String VALID_DATE_TWO = "00:00 29/06/2040- 13:00 30/06/2040";
 
-    public static final String INVALID_DATE_ONE = "12/12/12";
+    final public static String INVALID_DATE_ONE = "12/12/12";
 
 
     /**

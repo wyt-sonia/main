@@ -16,11 +16,11 @@ import javafx.fxml.FXML;
 
 public class UiPartTest {
 
-    private static final String MISSING_FILE_PATH = "UiPartTest/missingFile.fxml";
-    private static final String INVALID_FILE_PATH = "UiPartTest/invalidFile.fxml";
-    private static final String VALID_FILE_PATH = "UiPartTest/validFile.fxml";
-    private static final String VALID_FILE_WITH_FX_ROOT_PATH = "UiPartTest/validFileWithFxRoot.fxml";
-    private static final TestFxmlObject VALID_FILE_ROOT = new TestFxmlObject("Hello World!");
+    final private static String MISSING_FILE_PATH = "UiPartTest/missingFile.fxml";
+    final private static String INVALID_FILE_PATH = "UiPartTest/invalidFile.fxml";
+    final private static String VALID_FILE_PATH = "UiPartTest/validFile.fxml";
+    final private static String VALID_FILE_WITH_FX_ROOT_PATH = "UiPartTest/validFileWithFxRoot.fxml";
+    final private static TestFxmlObject VALID_FILE_ROOT = new TestFxmlObject("Hello World!");
 
     @TempDir
     public Path testFolder;
