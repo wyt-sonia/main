@@ -23,8 +23,8 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
  * pending.
  */
 public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
-    private static final String END_OF_COMMAND_MSG = "Duplicated task deleted successfully!";
     public static final String QUIT_COMMAND_MSG = "Successfully quited from delete duplication command.";
+    private static final String END_OF_COMMAND_MSG = "Duplicated task deleted successfully!";
 
     public DeleteDuplicateTaskInteractivePrompt() {
         super();

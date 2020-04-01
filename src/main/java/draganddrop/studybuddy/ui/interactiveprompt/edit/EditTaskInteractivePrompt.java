@@ -24,8 +24,8 @@ import javafx.collections.ObservableList;
  * Interactive prompt for editing tasks
  */
 public class EditTaskInteractivePrompt extends InteractivePrompt {
-    private static final String END_OF_COMMAND_MSG = "Task edited successfully";
     public static final String QUIT_COMMAND_MSG = "Successfully quit from the edit task command";
+    private static final String END_OF_COMMAND_MSG = "Task edited successfully";
 
     private static final String REQUIRED_TASK_FIELD_MSG = "Please choose the field that you wish to edit for task: ";
     private static final String REQUIRED_MODULE_MSG = "Please choose a Module for this task or press enter to skip. "

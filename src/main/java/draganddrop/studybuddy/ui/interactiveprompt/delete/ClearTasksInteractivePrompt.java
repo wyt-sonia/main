@@ -21,8 +21,8 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType;
  * pending.
  */
 public class ClearTasksInteractivePrompt extends InteractivePrompt {
-    private static final String END_OF_COMMAND_MSG = "Tasks cleared successfully!";
     public static final String QUIT_COMMAND_MSG = "Successfully cleared all tasks.";
+    private static final String END_OF_COMMAND_MSG = "Tasks cleared successfully!";
 
     public ClearTasksInteractivePrompt() {
         super();
