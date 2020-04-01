@@ -269,10 +269,10 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                 throw new EditTaskCommandException("emptyInputError");
             }
             taskNum = Integer.parseInt(userInput);
-            if (taskNum > Task.getCurrentTasks().size() || taskNum < 1) {
+            if (taskNum > logic.getFilteredTaskList().size() || taskNum < 1) {
                 throw new EditTaskCommandException("invalidIndexRangeError");
             }
-            String taskName = Task.getCurrentTasks().get(taskNum - 1).getTaskName();
+            String taskName = logic.getFilteredTaskList().get(taskNum - 1).getTaskName();
             this.reply = "Please choose the field that you wish to edit for task: " + taskName + ".\n\n"
                 + TaskField.getFieldString();
             this.currentTerm = InteractivePromptTerms.TASK_FIELD;
