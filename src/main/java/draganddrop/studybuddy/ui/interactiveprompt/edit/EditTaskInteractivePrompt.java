@@ -24,19 +24,21 @@ import javafx.collections.ObservableList;
  * Interactive prompt for editing tasks
  */
 public class EditTaskInteractivePrompt extends InteractivePrompt {
-    static final String END_OF_COMMAND_MSG = "Task edited successfully";
-    static final String QUIT_COMMAND_MSG = "Successfully quit from the edit task command";
+    public static final String QUIT_COMMAND_MSG = "Successfully quit from the edit task command";
+    private static final String END_OF_COMMAND_MSG = "Task edited successfully";
 
-    static final String REQUIRED_TASK_FIELD_MSG = "Please choose the field that you wish to edit for task: ";
-    static final String REQUIRED_MODULE_MSG = "Please choose a Module for this task or press enter to skip. "
+    private static final String REQUIRED_TASK_FIELD_MSG = "Please choose the field that you wish to edit for task: ";
+    private static final String REQUIRED_MODULE_MSG = "Please choose a Module for this task or press enter to skip. "
         + "Index number and module code are both acceptable.\n";
-    static final String REQUIRED_TASK_NAME_MSG = "Please enter the task name.";
-    static final String REQUIRED_TASK_TYPE_MSG = "Please choose the task type:\n";
-    static final String REQUIRED_DATE_TIME_MSG = "Please enter the deadline/duration with format: ";
-    static final String REQUIRED_TASK_DESCRIPTION_MSG = "Please enter task description or press enter to skip.\n";
-    static final String REQUIRED_TASK_WEIGHT_MSG = "Please enter the weight of the task or press enter to skip.\n";
-    static final String REQUIRED_TASK_ESTIMATED_TIME_COST_MSG = "Please enter the estimated number of hours cost "
+    private static final String REQUIRED_TASK_NAME_MSG = "Please enter the task name.";
+    private static final String REQUIRED_TASK_TYPE_MSG = "Please choose the task type:\n";
+    private static final String REQUIRED_DATE_TIME_MSG = "Please enter the deadline/duration with format: ";
+    private static final String REQUIRED_TASK_DESCRIPTION_MSG = "Please enter task "
+        + "description or press enter to skip.\n";
+    private static final String REQUIRED_TASK_WEIGHT_MSG = "Please enter the weight of the task "
         + "or press enter to skip.\n";
+    private static final String REQUIRED_TASK_ESTIMATED_TIME_COST_MSG = "Please enter the "
+        + "estimated number of hours cost or press enter to skip.\n";
 
 
     private int taskNumber;
@@ -52,7 +54,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
 
     @Override
     public String interact(String userInput) {
-        if (isQuitOrBack(userInput)) {
+        if (isQuit(userInput)) {
             this.reply = handleQuit(userInput, QUIT_COMMAND_MSG);
         } else {
             this.reply = handleEdit(userInput);

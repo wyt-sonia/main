@@ -38,6 +38,16 @@ public abstract class InteractivePrompt {
         return isQuit;
     }
 
+    /**
+     * checks if the userInput is quit or back
+     *
+     * @param userInput
+     * @return true if the userInput is quit or back, false otherwise
+     */
+    public boolean isQuit(String userInput) {
+        return "quit".equals(userInput);
+    }
+
     public void setQuit(boolean quit) {
         isQuit = quit;
     }
@@ -70,15 +80,5 @@ public abstract class InteractivePrompt {
             endInteract(quitMessage);
         }
         return reply;
-    }
-
-    /**
-     * checks if the userInput is quit or back
-     *
-     * @param userInput
-     * @return true if the userInput is quit or back, false otherwise
-     */
-    public boolean isQuitOrBack(String userInput) {
-        return "quit".equals(userInput) || userInput.equals("back");
     }
 }

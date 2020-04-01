@@ -50,24 +50,24 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_firstInput_returnKeywordPrompt() {
+    public void addTaskInteractivePromptTestInteractFirstInputReturnKeywordPrompt() {
         assertTrue(prompt.interact("").contains(prompt.REQUIRED_MODULE_MSG));
     }
 
     @Test
-    public void interact_quitCommand_returnMessage() {
+    public void addTaskInteractivePromptTestInteractQuitCommandReturnMessage() {
         assertEquals(AddTaskInteractivePrompt.QUIT_COMMAND_MSG, prompt.interact("quit"));
     }
 
     @Test
-    public void interact_moduleIndexWrongFormat_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractModuleIndexWrongFormatReturnErrorMessage() {
         prompt.interact("");
         assertTrue(prompt.interact("wrongIndexFormat")
             .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
     }
 
     @Test
-    public void interact_multipleModuleIndexWrongFormat_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractMultipleModuleIndexWrongFormatReturnErrorMessage() {
         prompt.interact("");
         assertTrue(prompt.interact("wrongIndexFormat")
             .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
@@ -78,7 +78,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_multipleModuleIndexWrongFormatFollowByCorrectIndex_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractMultipleModuleIndexWrongFormatFollowByValidIndexReturnMessage() {
         prompt.interact("");
         assertTrue(prompt.interact("wrongIndexFormat")
             .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
@@ -89,7 +89,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_moduleCode_returnMessage() {
+    public void addTaskInteractivePromptTestInteractModuleCodeReturnMessage() {
         Module module = modelStub.getStudyBuddy().getModuleList().get(0);
         prompt.interact("");
         assertTrue(prompt.interact(module.getModuleCode().toString())
@@ -97,21 +97,21 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_invalidModuleCode_returnMessage() {
+    public void addTaskInteractivePromptTestInteractInvalidModuleCodeReturnMessage() {
         prompt.interact("");
         assertTrue(prompt.interact("CSCSCS")
             .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
     }
 
     @Test
-    public void interact_moduleIndexOutOfRangeZero_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractModuleIndexOutOfRangeZeroReturnErrorMessage() {
         prompt.interact("");
         assertTrue(prompt.interact("0")
             .contains(new AddTaskCommandException("invalidIndexRangeError").getErrorMessage()));
     }
 
     @Test
-    public void interact_moduleIndexOutOfRangeSizePluOne_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractModuleIndexOutOfRangeSizePluOneReturnErrorMessage() {
         int size = modelStub.getStudyBuddy().getModuleList().size();
         prompt.interact("");
         assertTrue(prompt.interact(size + 1 + "")
@@ -119,7 +119,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_validModuleCode_returnMessage() {
+    public void addTaskInteractivePromptTestInteractValidModuleCodeReturnMessage() {
         String code = modelStub.getStudyBuddy().getModuleList().get(0).getModuleCode().toString();
         prompt.interact("");
         assertTrue(prompt.interact(code)
@@ -127,7 +127,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_pastDateTime_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractPastDateTimeReturnErrorMessage() {
         LocalDateTime pastDateTime = LocalDateTime.now().minusDays(1);
         prompt.interact("");
         prompt.interact("");
@@ -138,7 +138,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_endBeforeStartDateTime_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractEndBeforeStartDateTimeReturnErrorMessage() {
         prompt.interact("");
         prompt.interact("");
         prompt.interact("taskName");
@@ -149,7 +149,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_validDateTime_returnMessage() {
+    public void addTaskInteractivePromptTestInteractValidDateTimeReturnMessage() {
         prompt.interact("");
         prompt.interact("");
         prompt.interact("taskName");
@@ -160,7 +160,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_emptyTaskIndex_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractEmptyTaskIndexReturnErrorMessage() {
         prompt.interact("");
         prompt.interact("");
         prompt.interact("taskName");
@@ -169,7 +169,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_emptyTaskName_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractEmptyTaskNameReturnErrorMessage() {
         prompt.interact("");
         prompt.interact("");
         assertTrue(prompt.interact("")
@@ -177,7 +177,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_tooLongTaskName_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractTooLongTaskNameReturnErrorMessage() {
         String longTaskName = "This Task Name is Longer Than 20 Char";
         prompt.interact("");
         prompt.interact("");
@@ -186,7 +186,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_validTaskName_returnMessage() {
+    public void addTaskInteractivePromptTestInteractValidTaskNameReturnMessage() {
         prompt.interact("");
         prompt.interact("");
         assertTrue(prompt.interact("taskName")
@@ -194,7 +194,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_wrongTaskTypeIndexFormat_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractWrongTaskTypeIndexFormatReturnErrorMessage() {
         prompt.interact("");
         prompt.interact("");
         prompt.interact("taskName");
@@ -203,7 +203,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_wrongTaskTypeIndexRangeZero_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractWrongTaskTypeIndexRangeZeroReturnErrorMessage() {
         prompt.interact("");
         prompt.interact("");
         prompt.interact("taskName");
@@ -213,7 +213,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_wrongTaskTypeIndexRangeSizePlusOne_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractWrongTaskTypeIndexRangeSizePlusOneReturnErrorMessage() {
         int size = TaskType.getTaskTypes().length;
         prompt.interact("");
         prompt.interact("");
@@ -223,7 +223,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_validTaskTypeIndex_returnMessage() {
+    public void addTaskInteractivePromptTestInteractValidTaskTypeIndexReturnMessage() {
         int size = TaskType.getTaskTypes().length;
         prompt.interact("");
         prompt.interact("");
@@ -233,7 +233,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_tooLongTaskDescIndex_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractTooLongTaskDescIndexReturnErrorMessage() {
         String longTaskDescription = "Thistaskdescriptionismorethan300characterslong"
             + "Thistaskdescriptionismorethan300characterslong"
             + "Thistaskdescriptionismorethan300characterslong"
@@ -254,7 +254,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_emptyTaskDescIndex_returnMessage() {
+    public void addTaskInteractivePromptTestInteractEmptyTaskDescIndexReturnMessage() {
         prompt.interact("");
         prompt.interact("");
         prompt.interact("taskName");
@@ -266,7 +266,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_wrongWeightFormat_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractWrongWeightFormatReturnErrorMessage() {
         prompt.interact("");
         prompt.interact("");
         prompt.interact("taskName");
@@ -279,7 +279,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_wrongWeightValueOver100_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractWrongWeightValueOver100ReturnErrorMessage() {
 
         prompt.interact("");
         prompt.interact("");
@@ -293,7 +293,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_wrongWeightValueNegative_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractWrongWeightValueNegativeReturnErrorMessage() {
         prompt.interact("");
         prompt.interact("");
         prompt.interact("taskName");
@@ -306,7 +306,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_emptyWeight_returnMessage() {
+    public void addTaskInteractivePromptTestInteractEmptyWeightReturnMessage() {
         prompt.interact("");
         prompt.interact("");
         prompt.interact("taskName");
@@ -319,7 +319,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_validWeightValue_returnMessage() {
+    public void addTaskInteractivePromptTestInteractValidWeightValueReturnMessage() {
         prompt.interact("");
         prompt.interact("");
         prompt.interact("taskName");
@@ -332,7 +332,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_wrongTimeCostFormat_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractWrongTimeCostFormatReturnErrorMessage() {
         prompt.interact("");
         prompt.interact("");
         prompt.interact("taskName");
@@ -346,7 +346,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_wrongTimeCostValueNegative_returnErrorMessage() {
+    public void addTaskInteractivePromptTestInteractWrongTimeCostValueNegativeReturnErrorMessage() {
         prompt.interact("");
         prompt.interact("");
         prompt.interact("taskName");
@@ -360,7 +360,7 @@ class AddTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_validTimeCostValue_returnMessage() {
+    public void addTaskInteractivePromptTestInteractValidTimeCostValueReturnMessage() {
         prompt.interact("");
         prompt.interact("");
         prompt.interact("taskName");
