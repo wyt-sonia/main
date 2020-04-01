@@ -28,7 +28,7 @@ import javafx.stage.Stage;
 public class MainWindow extends UiPart<Stage> {
     private static final String ALL_TASK = "All Tasks";
     private static final String TITLE = "Study Buddy";
-    private static final String DUE_SOON_TASK = "Task Due Soon";
+    private static final String DUE_SOON_TASK = "Tasks Due Soon";
     private static final String MODULE = "Modules";
     private static final String ARCHIVED_TASK = "Archived Task";
     private static final String CALENDAR = "Calendar";

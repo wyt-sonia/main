@@ -33,8 +33,6 @@
                                   text="All Tasks"/>
                         <MenuItem mnemonicParsing="false" onAction="#handleShowArchivedTasks"
                                   style="-fx-font-size: 10pt;" text="Archived Tasks"/>
-                        <MenuItem mnemonicParsing="false" onAction="#handleDueSoonTasks" style="-fx-font-size: 10pt;"
-                                  text="Due Soon Task"/>
                         <MenuItem mnemonicParsing="false" onAction="#handleExit" style="-fx-font-size: 10pt;"
                                   text="Exit"/>
                     </Menu>
