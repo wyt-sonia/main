@@ -28,8 +28,6 @@ class AddTaskInteractivePromptTest {
 
     @TempDir
     public Path testFolder;
-    private StorageManager storageStub;
-    private LogicManager logicStub;
     private AddTaskInteractivePrompt prompt = new AddTaskInteractivePrompt();
     private Model modelStub = new ModelManager(getTypicalTaskList(), new UserPrefs());
     private LocalDateTime endDateTime = LocalDateTime.now().plusDays(20);
@@ -39,8 +37,8 @@ class AddTaskInteractivePromptTest {
     public void setUp() {
         JsonStudyBuddyStorage studyBuddyStorage = new JsonStudyBuddyStorage(getTempFilePath("ab"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
-        storageStub = new StorageManager(studyBuddyStorage, userPrefsStorage);
-        logicStub = new LogicManager(modelStub, storageStub);
+        StorageManager storageStub = new StorageManager(studyBuddyStorage, userPrefsStorage);
+        LogicManager logicStub = new LogicManager(modelStub, storageStub);
         for (Module m : getSampleModule()) {
             logicStub.getStudyBuddy().getModuleList().add(m);
         }
@@ -92,7 +90,7 @@ class AddTaskInteractivePromptTest {
 
     @Test
     public void interact_moduleCode_returnMessage() {
-        Module module = logicStub.getStudyBuddy().getModuleList().get(0);
+        Module module = modelStub.getStudyBuddy().getModuleList().get(0);
         prompt.interact("");
         assertTrue(prompt.interact(module.getModuleCode().toString())
             .contains("The module has been set as: " + module.toString()));
@@ -114,7 +112,7 @@ class AddTaskInteractivePromptTest {
 
     @Test
     public void interact_moduleIndexOutOfRangeSizePluOne_returnErrorMessage() {
-        int size = logicStub.getStudyBuddy().getModuleList().size();
+        int size = modelStub.getStudyBuddy().getModuleList().size();
         prompt.interact("");
         assertTrue(prompt.interact(size + 1 + "")
             .contains(new AddTaskCommandException("invalidIndexRangeError").getErrorMessage()));
@@ -122,7 +120,7 @@ class AddTaskInteractivePromptTest {
 
     @Test
     public void interact_validModuleCode_returnMessage() {
-        String code = logicStub.getStudyBuddy().getModuleList().get(0).getModuleCode().toString();
+        String code = modelStub.getStudyBuddy().getModuleList().get(0).getModuleCode().toString();
         prompt.interact("");
         assertTrue(prompt.interact(code)
             .contains(code));
@@ -209,7 +207,7 @@ class AddTaskInteractivePromptTest {
         prompt.interact("");
         prompt.interact("");
         prompt.interact("taskName");
-        String t = prompt.interact("0");
+        prompt.interact("0");
         assertTrue(prompt.interact("0")
             .contains(new AddTaskCommandException("invalidIndexRangeError").getErrorMessage()));
     }

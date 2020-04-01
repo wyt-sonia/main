@@ -232,10 +232,10 @@ class EditTaskInteractivePromptTest {
             }
         }
         String dateTime = TimeParser.getDateTimeString(LocalDateTime.now().plusDays(7));
-        String t = prompt.interact("");
-        String t1 = prompt.interact(index + 1 + "");
-        String t2 = prompt.interact("4");
-        String t3 = prompt.interact(dateTime);
+        prompt.interact("");
+        prompt.interact(index + 1 + "");
+        prompt.interact("4");
+        prompt.interact(dateTime);
         assertEquals(dateTime,
             TimeParser.getDateTimeString(modelStub.getStudyBuddy().getTaskList().get(index).getDateTimes()[0]));
     }
