@@ -14,7 +14,7 @@ import javafx.scene.layout.Region;
  * Panel containing the list of tasks due soon.
  */
 public class DueSoonListPanel extends UiPart<Region> {
-    final private static String FXML = "DueSoonListPanel.fxml";
+    private static final String FXML = "DueSoonListPanel.fxml";
 
     @FXML
     private ListView<Task> dueSoonListView;

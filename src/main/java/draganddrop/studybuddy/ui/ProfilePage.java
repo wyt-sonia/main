@@ -13,7 +13,7 @@ import javafx.scene.layout.Region;
  * Profile page that contains usage statistics
  */
 public class ProfilePage extends UiPart<Region> {
-    final private static String FXML = "ProfilePage.fxml";
+    private static final String FXML = "ProfilePage.fxml";
     private final Logger logger = LogsCenter.getLogger(ProfilePage.class);
     private ObservableList<Task> taskList;
 

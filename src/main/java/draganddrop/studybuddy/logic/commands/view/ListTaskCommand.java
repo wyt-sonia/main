@@ -11,9 +11,9 @@ import draganddrop.studybuddy.model.Model;
  * Represent a ListTaskCommand that can List all persons in the task list to the user.
  */
 public class ListTaskCommand extends Command {
-    final public static String COMMAND_WORD = "list";
+    public static final String COMMAND_WORD = "list";
 
-    final public static String MESSAGE_SUCCESS = "Listed all persons";
+    public static final String MESSAGE_SUCCESS = "Listed all persons";
 
 
     @Override

@@ -32,7 +32,7 @@ import javafx.scene.text.TextAlignment;
  * FXML switched to ModuleListPanel. Can show task under each module.
  */
 public class ModuleListPanel extends UiPart<Region> {
-    final private static String FXML = "ModuleListPanel.fxml";
+    private static final String FXML = "ModuleListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ModuleListPanel.class);
     private ObservableList<Module> moduleObservableList;
     private ObservableList<Task> tasks;

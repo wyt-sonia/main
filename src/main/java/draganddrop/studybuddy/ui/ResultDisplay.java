@@ -11,7 +11,7 @@ import javafx.scene.layout.Region;
  */
 public class ResultDisplay extends UiPart<Region> {
 
-    final private static String FXML = "ResultDisplay.fxml";
+    private static final String FXML = "ResultDisplay.fxml";
 
     @FXML
     private TextArea resultDisplay;

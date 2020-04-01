@@ -36,7 +36,7 @@ import javafx.scene.paint.Color;
  */
 public class TaskSummaryPanel extends UiPart<Region> {
 
-    final private static String FXML = "TaskSummaryPanel.fxml";
+    private static final String FXML = "TaskSummaryPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(TaskListPanel.class);
     private ObservableList<Task> tempTasks = FXCollections.observableArrayList();
     private ObservableList<Task> archivedTasks;

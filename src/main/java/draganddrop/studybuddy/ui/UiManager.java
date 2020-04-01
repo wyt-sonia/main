@@ -18,10 +18,10 @@ import javafx.stage.Stage;
  */
 public class UiManager implements Ui {
 
-    final public static String ALERT_DIALOG_PANE_FIELD_ID = "alertDialogPane";
+    public static final String ALERT_DIALOG_PANE_FIELD_ID = "alertDialogPane";
 
-    final private static Logger logger = LogsCenter.getLogger(UiManager.class);
-    final private static String ICON_APPLICATION = "/images/study_buddy.png";
+    private static final Logger logger = LogsCenter.getLogger(UiManager.class);
+    private static final String ICON_APPLICATION = "/images/study_buddy.png";
 
     private Logic logic;
     private MainWindow mainWindow;

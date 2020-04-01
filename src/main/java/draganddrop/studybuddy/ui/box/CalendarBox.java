@@ -35,7 +35,7 @@ import javafx.scene.paint.Color;
  * Will cleanup code.
  */
 public class CalendarBox extends UiPart<Region> {
-    final private static String FXML = "Calendar.fxml";
+    private static final String FXML = "Calendar.fxml";
     private final Logger logger = LogsCenter.getLogger(CalendarBox.class);
     private ObservableList<Task> taskList;
     private int calendarYear;

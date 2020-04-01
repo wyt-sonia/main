@@ -11,11 +11,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public class Version implements Comparable<Version> {
 
-    final public static String VERSION_REGEX = "V(\\d+)\\.(\\d+)\\.(\\d+)(ea)?";
+    public static final String VERSION_REGEX = "V(\\d+)\\.(\\d+)\\.(\\d+)(ea)?";
 
-    final private static String EXCEPTION_STRING_NOT_VERSION = "String is not a valid Version. %s";
+    private static final String EXCEPTION_STRING_NOT_VERSION = "String is not a valid Version. %s";
 
-    final private static Pattern VERSION_PATTERN = Pattern.compile(VERSION_REGEX);
+    private static final Pattern VERSION_PATTERN = Pattern.compile(VERSION_REGEX);
 
     private final int major;
     private final int minor;

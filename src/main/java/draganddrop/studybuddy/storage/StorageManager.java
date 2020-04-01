@@ -16,7 +16,7 @@ import draganddrop.studybuddy.model.UserPrefs;
  */
 public class StorageManager implements Storage {
 
-    final private static Logger logger = LogsCenter.getLogger(StorageManager.class);
+    private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private StudyBuddyStorage studyBuddyStorage;
     private UserPrefsStorage userPrefsStorage;
 

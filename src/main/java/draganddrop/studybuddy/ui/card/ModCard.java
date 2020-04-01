@@ -13,7 +13,7 @@ import javafx.scene.layout.Region;
  * module for display
  */
 public class ModCard extends UiPart<Region> {
-    final private static String FXML = "ModCard.fxml";
+    private static final String FXML = "ModCard.fxml";
     public final Module module;
 
     @FXML

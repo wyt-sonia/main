@@ -13,17 +13,17 @@ import draganddrop.studybuddy.model.task.TaskType;
  */
 public class TaskBuilder {
 
-    final public static String DEFAULT_MODULE = "CS2103T";
-    final public static String DEFAULT_NAME = "Team project";
-    final public static String DEFAULT_TASKDESCRIPTION = "Team project";
-    final public static double DEFAULT_ESTIMATEDTIME = 45.5;
+    public static final String DEFAULT_MODULE = "CS2103T";
+    public static final String DEFAULT_NAME = "Team project";
+    public static final String DEFAULT_TASKDESCRIPTION = "Team project";
+    public static final double DEFAULT_ESTIMATEDTIME = 45.5;
 
-    final public static TaskType DEFAULT_TASKTYPE = TaskType.Others;
-    final public static TaskStatus DEFAULT_TASKSTATUS = TaskStatus.PENDING;
-    final public static double DEFAULT_TASKWEIGHT = 45.0;
-    final public static LocalDateTime[] DEFAULT_DATETIME = {TimeParser.parseDateTime("23:59 12/12/2020"),
+    public static final TaskType DEFAULT_TASKTYPE = TaskType.Others;
+    public static final TaskStatus DEFAULT_TASKSTATUS = TaskStatus.PENDING;
+    public static final double DEFAULT_TASKWEIGHT = 45.0;
+    public static final LocalDateTime[] DEFAULT_DATETIME = {TimeParser.parseDateTime("23:59 12/12/2020"),
         TimeParser.parseDateTime("23:59 10/10/2020")};
-    final public static LocalDateTime DEFAULT_CREATION_DATETIME = LocalDateTime.now();
+    public static final LocalDateTime DEFAULT_CREATION_DATETIME = LocalDateTime.now();
 
     private Module module;
     private TaskType taskType;

@@ -15,7 +15,7 @@ import javafx.scene.layout.Region;
  */
 public class DueSoonTaskCard extends UiPart<Region> {
 
-    final private static String FXML = "DueSoonTaskCard.fxml";
+    private static final String FXML = "DueSoonTaskCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.

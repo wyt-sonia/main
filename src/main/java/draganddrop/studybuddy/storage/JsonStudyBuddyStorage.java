@@ -19,7 +19,7 @@ import draganddrop.studybuddy.model.ReadOnlyStudyBuddy;
  */
 public class JsonStudyBuddyStorage implements StudyBuddyStorage {
 
-    final private static Logger logger = LogsCenter.getLogger(JsonStudyBuddyStorage.class);
+    private static final Logger logger = LogsCenter.getLogger(JsonStudyBuddyStorage.class);
 
     private Path filePath;
 

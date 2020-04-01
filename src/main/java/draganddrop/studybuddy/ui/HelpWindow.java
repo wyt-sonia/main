@@ -16,11 +16,11 @@ import javafx.stage.Stage;
  */
 public class HelpWindow extends UiPart<Stage> {
 
-    final public static String USERGUIDE_URL = "https://se-education.org/pendingupdate/UserGuide.html";
-    final public static String HELP_MESSAGE = "Refer to the user guide: " + USERGUIDE_URL;
+    public static final String USERGUIDE_URL = "https://se-education.org/pendingupdate/UserGuide.html";
+    public static final String HELP_MESSAGE = "Refer to the user guide: " + USERGUIDE_URL;
 
-    final private static Logger logger = LogsCenter.getLogger(HelpWindow.class);
-    final private static String FXML = "HelpWindow.fxml";
+    private static final Logger logger = LogsCenter.getLogger(HelpWindow.class);
+    private static final String FXML = "HelpWindow.fxml";
 
     @FXML
     private Button copyButton;

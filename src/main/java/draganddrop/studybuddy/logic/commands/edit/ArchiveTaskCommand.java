@@ -17,11 +17,11 @@ import draganddrop.studybuddy.model.task.Task;
  */
 public class ArchiveTaskCommand extends Command {
 
-    final public static String COMMAND_WORD = "archive";
+    public static final String COMMAND_WORD = "archive";
 
-    final public static String MESSAGE_USAGE = COMMAND_WORD + ": Archives the selected entry";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Archives the selected entry";
 
-    final public static String MESSAGE_ARCHIVE_TASK_SUCCESS = "Archived Task: %1$s";
+    public static final String MESSAGE_ARCHIVE_TASK_SUCCESS = "Archived Task: %1$s";
 
     private final Index targetIndex;
 

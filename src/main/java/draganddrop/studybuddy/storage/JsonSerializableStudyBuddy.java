@@ -21,10 +21,10 @@ import draganddrop.studybuddy.model.task.Task;
 @JsonRootName(value = "studyBuddy")
 class JsonSerializableStudyBuddy {
 
-    //final private static String MESSAGE_DUPLICATE_TASK = "Task list contains duplicate task(s).";
-    //final private static String MESSAGE_DUPLICATE_ARCHIVED_TASK = "Archived contains duplicate task(s).";
-    final private static String MESSAGE_DUPLICATE_MODULES = "Module List contains duplicate module(s).";
-    //final private static String MESSAGE_DUPLICATE_DUE_SOON_TASK = "Due soon list contains duplicate task(s).";
+    //private static final String MESSAGE_DUPLICATE_TASK = "Task list contains duplicate task(s).";
+    //private static final String MESSAGE_DUPLICATE_ARCHIVED_TASK = "Archived contains duplicate task(s).";
+    private static final String MESSAGE_DUPLICATE_MODULES = "Module List contains duplicate module(s).";
+    //private static final String MESSAGE_DUPLICATE_DUE_SOON_TASK = "Due soon list contains duplicate task(s).";
 
     private final List<JsonAdaptedTask> archivedTasks = new ArrayList<>();
     private final List<JsonAdaptedTask> tasks = new ArrayList<>();

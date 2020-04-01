@@ -13,7 +13,7 @@ import draganddrop.studybuddy.model.task.Task;
  */
 public class TimeParser {
 
-    final public static DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     /**
      * Parses valid dateTime string to LocalDateTime variable.

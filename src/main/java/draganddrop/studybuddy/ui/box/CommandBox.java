@@ -33,9 +33,9 @@ import javafx.scene.layout.Region;
  */
 public class CommandBox extends UiPart<Region> {
 
-    final public static String ERROR_STYLE_CLASS = "error";
-    final private static String FXML = "CommandBox.fxml";
-    final private static String[] interactiveCommandTypes =
+    public static final String ERROR_STYLE_CLASS = "error";
+    private static final String FXML = "CommandBox.fxml";
+    private static final String[] interactiveCommandTypes =
         {"add", "edit", "delete", "archive", "done", "delete duplicates",
             "clear", "bye", "sort", "refresh", "help", "create mods", "find", "list", "unarchive"};
     private final CommandExecutor commandExecutor;

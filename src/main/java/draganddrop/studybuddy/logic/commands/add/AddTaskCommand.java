@@ -13,13 +13,13 @@ import draganddrop.studybuddy.model.task.Task;
  */
 public class AddTaskCommand extends Command {
 
-    final public static String COMMAND_WORD = "add";
+    public static final String COMMAND_WORD = "add";
 
-    final public static String MESSAGE_USAGE = COMMAND_WORD + ": Adds a task to the task list. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a task to the task list. "
         + "Parameters: TaskName, TaskType, TaskDateTime";
 
-    final public static String MESSAGE_SUCCESS = "New Task added: %1$s";
-    final public static String MESSAGE_DUPLICATE_TASK = "This Task already exists. Are you sure you want to proceed?";
+    public static final String MESSAGE_SUCCESS = "New Task added: %1$s";
+    public static final String MESSAGE_DUPLICATE_TASK = "This Task already exists. Are you sure you want to proceed?";
 
     private final Task toAdd;
 

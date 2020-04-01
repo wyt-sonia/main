@@ -10,7 +10,7 @@ import java.util.logging.Level;
  */
 public class Config {
 
-    final public static Path DEFAULT_CONFIG_FILE = Paths.get("config.json");
+    public static final Path DEFAULT_CONFIG_FILE = Paths.get("config.json");
 
     // Config values customizable through config file
     private Level logLevel = Level.INFO;

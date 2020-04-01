@@ -15,9 +15,9 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
  * A interactive prompt for finding tasks in the list.
  */
 public class FindTaskInteractivePrompt extends InteractivePrompt {
-    final private static String END_OF_COMMAND_MSG = "Here are the list of tasks matching the keyword.";
-    final private static String QUIT_COMMAND_MSG = "Successfully quited from find task command.";
-    final private static String KEYWORD_PROMPT = "Please type in a keyword that you want to search for.\n";
+    private static final String END_OF_COMMAND_MSG = "Here are the list of tasks matching the keyword.";
+    private static final String QUIT_COMMAND_MSG = "Successfully quited from find task command.";
+    private static final String KEYWORD_PROMPT = "Please type in a keyword that you want to search for.\n";
     private String userKeyword;
 
     public FindTaskInteractivePrompt() {

@@ -21,11 +21,11 @@ public class Task implements Comparable<Task> {
     /**
      * The acceptable data and time format.
      */
-    final public static DateTimeFormatter DATETIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
-    final private static int MINUTES_DIVISOR = (1000 * 60);
-    final private static int HOURS_DIVISOR = (1000 * 60 * 60);
-    final private static int DAYS_DIVISOR = (1000 * 60 * 60 * 24);
-    final private static int MINUTES_IN_WEEK = (7 * 24 * 60);
+    public static final DateTimeFormatter DATETIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
+    private static final int MINUTES_DIVISOR = (1000 * 60);
+    private static final int HOURS_DIVISOR = (1000 * 60 * 60);
+    private static final int DAYS_DIVISOR = (1000 * 60 * 60 * 24);
+    private static final int MINUTES_IN_WEEK = (7 * 24 * 60);
     private static Statistics statistics;
     private static ArrayList<Task> currentTasks = new ArrayList<>();
 

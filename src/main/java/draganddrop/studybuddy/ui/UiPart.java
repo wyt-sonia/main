@@ -18,7 +18,7 @@ public abstract class UiPart<T> {
     /**
      * Resource folder where FXML files are stored.
      */
-    final public static String FXML_FILE_FOLDER = "/view/";
+    public static final String FXML_FILE_FOLDER = "/view/";
 
     private final FXMLLoader fxmlLoader = new FXMLLoader();
 
