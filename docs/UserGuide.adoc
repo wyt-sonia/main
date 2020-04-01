@@ -308,6 +308,7 @@ To `refresh`:
 +
 image::refresh1.png[width="790", title="Current state (needs to be refreshed)"]
 +
+
 Suppose you notice that the task "Submit UG" is not due "now" anymore because some time has past since the deadline.
 
 . Initiate the refresh command using keyword `refresh`
@@ -320,6 +321,7 @@ image::refresh2.png[width="790", title="Reponse to 'refresh'"]
 +
 image::refresh3.png[width="790", title="View refreshed Study Buddy"]
 +
+
 You will notice that the overdue task has now moved out of the due soon list and has the updated status tag "overdue".
 
 ==== Edit
