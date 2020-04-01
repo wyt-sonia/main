@@ -190,6 +190,7 @@ To `delete`:
 . Study Buddy should respond with:
 +
 image::deleteResponse2.png[width="790", title="Reponse to 'delete'"]
+
 . Type the index of the task you want to delete.
 +
 image::deleteResponse3.png[width="790", title="Reponse to delete index 1"]
