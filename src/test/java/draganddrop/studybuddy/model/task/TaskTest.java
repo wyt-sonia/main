@@ -42,7 +42,7 @@ public class TaskTest {
         assertTrue(task1.equals(task1));
 
         // null -> returns false
-        assertFalse(task1.equals(null));
+        assertFalse(task1 == null);
 
         // different type -> returns false
         assertFalse(task1.equals(5));

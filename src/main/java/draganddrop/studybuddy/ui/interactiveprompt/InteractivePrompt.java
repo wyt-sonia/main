@@ -66,7 +66,7 @@ public abstract class InteractivePrompt {
      * @return the reply to user
      */
     public String handleQuit(String userInput, String quitMessage) {
-        if (userInput.equals("quit")) {
+        if ("quit".equals(userInput)) {
             endInteract(quitMessage);
         }
         return reply;
@@ -79,6 +79,6 @@ public abstract class InteractivePrompt {
      * @return true if the userInput is quit or back, false otherwise
      */
     public boolean isQuitOrBack(String userInput) {
-        return userInput.equals("quit") || userInput.equals("back");
+        return "quit".equals(userInput) || userInput.equals("back");
     }
 }

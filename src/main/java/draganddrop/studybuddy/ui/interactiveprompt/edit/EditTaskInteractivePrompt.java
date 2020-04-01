@@ -67,7 +67,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
      * @return reply to user
      */
     public String handleEdit(String userInput) {
-        if (userInput.equals("quit")) {
+        if ("quit".equals(userInput)) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
         }
@@ -309,11 +309,9 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
             assert (taskField != null);
             this.reply = getTaskFieldMessage(taskField);
             this.currentTerm = InteractivePromptTerms.NEW_VALUE;
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             this.reply = new EditTaskCommandException("wrongIndexFormatError").getErrorMessage();
-        }
-        catch (EditTaskCommandException e) {
+        } catch (EditTaskCommandException e) {
             this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_FIELD_MSG + taskName + ".\n\n"
                 + TaskField.getFieldString();
         }
