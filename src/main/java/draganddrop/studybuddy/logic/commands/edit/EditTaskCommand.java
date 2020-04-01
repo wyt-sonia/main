@@ -27,6 +27,9 @@ public class EditTaskCommand extends Command {
     private final Index targetIndex;
     private final TaskField taskField;
     private String newTaskName = null;
+    private String newTaskDescription = "";
+    private double newTaskWeight = 0.0;
+    private double newTaskTimeCost = 0.0;
     private TaskType newTaskType = null;
     private LocalDateTime[] newDateTimes = null;
     private Module newModule = null;
@@ -45,6 +48,16 @@ public class EditTaskCommand extends Command {
 
     public void provideNewTaskName(String newTaskName) {
         this.newTaskName = newTaskName;
+    }
+
+    public void provideNewTaskWeight(double newTaskWeight) {
+        this.newTaskWeight = newTaskWeight;
+    }
+    public void provideNewTaskDescription(String newTaskDescription) {
+        this.newTaskDescription = newTaskDescription;
+    }
+    public void provideNewTaskTimeCost(double newTaskTimeCost) {
+        this.newTaskTimeCost = newTaskTimeCost;
     }
 
     public void provideNewTaskType(TaskType newTaskType) {
@@ -71,12 +84,24 @@ public class EditTaskCommand extends Command {
             requireNonNull(newTaskName);
             model.setTaskName(taskToEdit, newTaskName);
             break;
+        case TASK_DESCRIPTION:
+            requireNonNull(newTaskDescription);
+            model.setTaskDescription(taskToEdit, newTaskDescription);
+            break;
+        case TASK_WEIGHT:
+            requireNonNull(newTaskWeight);
+            model.setTaskWeight(taskToEdit, newTaskWeight);
+            break;
+        case TASK_ESTIMATED_TIME_COST:
+            requireNonNull(newTaskTimeCost);
+            model.setTaskTimeCost(taskToEdit, newTaskTimeCost);
+            break;
         case TASK_TYPE:
             requireNonNull(newTaskType);
             model.setTaskType(taskToEdit, newTaskType);
             break;
         case TASK_DATETIME:
-            requireNonNull(newTaskType);
+            requireNonNull(newDateTimes);
             model.setTaskDateTime(taskToEdit, newDateTimes);
             break;
         case TASK_MODULE:

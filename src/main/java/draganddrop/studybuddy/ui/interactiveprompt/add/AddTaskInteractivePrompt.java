@@ -38,7 +38,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         + "Index number and module code are both acceptable.\n";
     static final String REQUIRED_TASK_NAME_MSG = "Please enter the task name.";
     static final String REQUIRED_TASK_TYPE_MSG = "Please choose the task type:\n" + TaskType.getTypeString();
-    static final String REQUIRED_DATE_TIME_MSG = "Please enter the deadline with format: ";
+    static final String REQUIRED_DATE_TIME_MSG = "Please enter the deadline/duration with format: ";
     static final String REQUIRED_TASK_DESCRIPTION_MSG = "Please enter task description or press enter to skip.\n";
     static final String REQUIRED_TASK_WEIGHT_MSG = "Please enter the weight of the task or press enter to skip.\n";
     static final String REQUIRED_TASK_ESTIMATED_TIME_COST_MSG = "Please enter the estimated number of hours cost "
@@ -166,14 +166,25 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             } catch (AddTaskCommandException e) {
                 this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_DESCRIPTION_MSG;
             }
-
             break;
 
         case TASK_WEIGHT:
             try {
                 this.reply = "";
                 if (!userInput.isBlank()) {
-                    task.setWeight(AddTaskCommandParser.parseWeight(userInput));
+                    double weight = AddTaskCommandParser.parseWeight(userInput);
+                    ObservableList<Task> tempTasks = logic.getFilteredTaskList();
+                    tempTasks.addAll(logic.getFilteredArchivedTaskList());
+                    double moduleWeightSum = tempTasks
+                        .stream()
+                        .filter(t -> t.getModule().equals(task.getModule()))
+                        .mapToDouble(Task::getWeight).sum();
+                    if (moduleWeightSum + weight <= 100) {
+                        task.setWeight(weight);
+                    } else {
+                        throw new AddTaskCommandException("moduleWeightOverloadError");
+                    }
+
                     this.reply = "The weight of the task has been set as " + userInput + "\n\n";
                 }
                 this.reply += REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;

@@ -15,8 +15,12 @@ public class InteractiveCommandException extends RuntimeException {
             errorMessage = "The input is empty, please check again.";
             break;
 
+        case "moduleWeightOverloadError":
+            errorMessage = "The maximum sum of task's weights under the same module is 100.0, please check.";
+            break;
+
         case "taskCompletedError":
-            errorMessage = "The task you choosed is completed already";
+            errorMessage = "The task you chose is completed already";
             break;
 
         case "TaskNameLengthError":
@@ -65,9 +69,10 @@ public class InteractiveCommandException extends RuntimeException {
 
         case "dataTimeFormatError":
             errorMessage = "Invalid date time format, please follow the format below:\n\n"
-                + "Event: HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy\n"
-                + "e.g. 12:00 01/01/2020-14:00 01/01/2020\n"
-                + "Rest : HH:mm dd/MM/yyyy   e.g. 12:00 01/01/2020\n";
+                + "Assignment : HH:mm dd/MM/yyyy   e.g. 12:00 01/01/2020\n\n"
+                + "Rest: HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy\n"
+                + "e.g. 12:00 01/01/2020-14:00 01/01/2020\n";
+
             break;
 
         case "pastDateTime":

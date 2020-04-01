@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.logic.parser.TimeParser;
+import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskStatus;
@@ -33,19 +34,6 @@ import javafx.scene.paint.Color;
  * Panel containing the summary charts of tasks.
  */
 public class TaskSummaryPanel extends UiPart<Region> {
-
-    private static final String PENDING_COLOR = "#337ab7";
-    private static final String FINISHED_COLOR = "#478e47";
-    private static final String DUE_SOON_COLOR = "#f0ad4e";
-    private static final String OVERDUE_COLOR = "#d9534f";
-
-    private static final String ASSIGNMENT_COLOR = "#ec7561";
-    private static final String QUIZ_COLOR = "#498da4";
-    private static final String PRESENTATION_COLOR = "#a56a91";
-    private static final String MEETING_COLOR = "#609369";
-    private static final String EXAM_COLOR = "#bf5252";
-    private static final String OTHERS_COLOR = "#5fb2ce";
-
 
     private static final String FXML = "TaskSummaryPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(TaskListPanel.class);
@@ -149,26 +137,6 @@ public class TaskSummaryPanel extends UiPart<Region> {
     }
 
     /**
-     * Renders the charts accordingly.
-     *
-     * @param data
-     * @param status
-     */
-    private void renderPieChart(PieChart.Data data, String status) {
-        switch (status) {
-        case "pending":
-            break;
-        case "finished":
-            break;
-        case "due":
-            break;
-        case "overdue":
-            break;
-        default:
-        }
-    }
-
-    /**
      * Shows the changing of number of dues.
      */
     private void setUpAreaChart() {
@@ -188,7 +156,12 @@ public class TaskSummaryPanel extends UiPart<Region> {
 
         modules.forEach(m -> {
             XYChart.Series dueDateDataSeries = new XYChart.Series();
-            dueDateDataSeries.setName(m.getModuleCode().toString());
+            if (m.getModuleCode().equals(new EmptyModule().getModuleCode())) {
+                dueDateDataSeries.setName("Not Module Related");
+            } else {
+                dueDateDataSeries.setName(m.getModuleCode().toString());
+            }
+
             for (LocalDate d = startDate; d.isBefore(endDate.plusDays(1)); d = d.plusDays(1)) {
                 LocalDate finalD = d;
                 long numOfTasksDue = tempTasks.stream()
@@ -211,17 +184,26 @@ public class TaskSummaryPanel extends UiPart<Region> {
                 task.getModule().getModuleCode().toString().equals(moduleCode)
                     && task.getDateTimes()[0].toLocalDate().isEqual(date));
             TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
-            selectedTaskListPanelTitle.setText("Tasks of " + moduleCode + " due/start on " + dateString);
+            if (moduleCode.equals(new EmptyModule().getModuleCode().toString())) {
+                selectedTaskListPanelTitle.setText("Tasks due/start on " + dateString);
+            } else {
+                selectedTaskListPanelTitle.setText("Tasks of " + moduleCode + " due/start on " + dateString);
+            }
             selectedTaskListPanelPlaceholder.getChildren().clear();
             selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
         }));
 
         dataSeries.forEach(d -> d.getNode().setOnMouseClicked(e -> {
-            String moduleCode = d.getName();
+            String moduleCode = d.getName().equals("Not Module Related")
+                ? new EmptyModule().getModuleCode().toString() : d.getName();
             selectedTasks = tempTasks.filtered(task ->
                 task.getModule().getModuleCode().toString().equals(moduleCode));
             TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
-            selectedTaskListPanelTitle.setText("Tasks of " + moduleCode);
+            if (moduleCode.equals(new EmptyModule().getModuleCode().toString())) {
+                selectedTaskListPanelTitle.setText("Tasks without related module");
+            } else {
+                selectedTaskListPanelTitle.setText("Tasks under " + moduleCode);
+            }
             selectedTaskListPanelPlaceholder.getChildren().clear();
             selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
         }));
@@ -262,16 +244,18 @@ public class TaskSummaryPanel extends UiPart<Region> {
 
         taskSummaryStackedBarChart.getData().addAll(dataSeries);
 
-        datas.forEach(d -> d.getNode().setOnMouseClicked(e -> {
-            String[] test = d.getExtraValue().toString().split("//");
+        datas.forEach(d -> {
             String moduleCode = (d.getExtraValue().toString().split("//"))[0];
             String taskType = (d.getExtraValue().toString().split("//"))[1];
-            selectedTasks = tempTasks.filtered(task -> task.getModule().getModuleCode().toString().equals(moduleCode)
-                && task.getTaskType().toString().equals(taskType));
-            TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
-            selectedTaskListPanelTitle.setText(taskType + " under " + moduleCode);
-            selectedTaskListPanelPlaceholder.getChildren().clear();
-            selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
-        }));
+            d.getNode().setOnMouseClicked(e -> {
+                selectedTasks = tempTasks
+                    .filtered(task -> task.getModule().getModuleCode().toString().equals(moduleCode)
+                    && task.getTaskType().toString().equals(taskType));
+                TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
+                selectedTaskListPanelTitle.setText(taskType + " under " + moduleCode);
+                selectedTaskListPanelPlaceholder.getChildren().clear();
+                selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+            });
+        });
     }
 }

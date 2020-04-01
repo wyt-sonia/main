@@ -171,6 +171,48 @@ public class UniqueTaskList implements Iterable<Task> {
     }
 
     /**
+     * Set the task estimated time cost.
+     *
+     * @param target a task
+     * @param newTaskTimeCost the new estimated time cost of the task
+     */
+    public void setTaskTimeCost(Task target, double newTaskTimeCost) {
+        requireNonNull(target);
+        requireNonNull(newTaskTimeCost);
+        target.setEstimatedTimeCost(newTaskTimeCost);
+        int index = internalList.indexOf(target);
+        internalList.set(index, target);
+    }
+
+    /**
+     * Set the task weight.
+     *
+     * @param target a task
+     * @param newTaskWeight the new weight of the task
+     */
+    public void setTaskWeight(Task target, double newTaskWeight) {
+        requireNonNull(target);
+        requireNonNull(newTaskWeight);
+        target.setWeight(newTaskWeight);
+        int index = internalList.indexOf(target);
+        internalList.set(index, target);
+    }
+
+    /**
+     * Set the task description.
+     *
+     * @param target a task
+     * @param newTaskDescription the new name of the task
+     */
+    public void setTaskDescription(Task target, String newTaskDescription) {
+        requireNonNull(target);
+        requireNonNull(newTaskDescription);
+        target.setTaskDescription(newTaskDescription);
+        int index = internalList.indexOf(target);
+        internalList.set(index, target);
+    }
+
+    /**
      * Set the task type
      * @param target a task
      * @param newTaskType the new task type

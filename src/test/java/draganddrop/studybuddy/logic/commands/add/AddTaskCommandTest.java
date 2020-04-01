@@ -81,6 +81,21 @@ class AddTaskCommandTest {
         }
 
         @Override
+        public void setTaskDescription(Task target, String newTaskDescription) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setTaskWeight(Task target, double newTaskWeight) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setTaskTimeCost(Task target, double newTaskTimeCost) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
             throw new AssertionError("This method should not be called.");
         }
