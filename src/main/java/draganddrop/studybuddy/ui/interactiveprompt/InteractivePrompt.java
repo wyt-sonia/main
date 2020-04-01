@@ -78,7 +78,7 @@ public abstract class InteractivePrompt {
      * @param userInput
      * @return true if the userInput is quit or back, false otherwise
      */
-    public boolean isQuitOrBack(String userInput) {
-        return "quit".equals(userInput) || userInput.equals("back");
+    public boolean isQuit(String userInput) {
+        return "quit".equals(userInput);
     }
 }

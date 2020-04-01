@@ -32,21 +32,21 @@ import javafx.collections.ObservableList;
  * A interactive prompt for adding new task.
  */
 public class AddTaskInteractivePrompt extends InteractivePrompt {
-    static final String END_OF_COMMAND_MSG = "Task added successfully!";
-    static final String END_OF_COMMAND_DUPLICATE_MSG = "Task will not be added! Key in your next command :)";
-    static final String REQUIRED_MODULE_MSG = "Please choose a Module for this task or press enter to skip. "
+    private static final String END_OF_COMMAND_MSG = "Task added successfully!";
+    private static final String END_OF_COMMAND_DUPLICATE_MSG = "Task will not be added! Key in your next command :)";
+    private static final String REQUIRED_MODULE_MSG = "Please choose a Module for this task or press enter to skip. "
         + "Index number and module code are both acceptable.\n";
-    static final String REQUIRED_TASK_NAME_MSG = "Please enter the task name.";
-    static final String REQUIRED_TASK_TYPE_MSG = "Please choose the task type:\n" + TaskType.getTypeString();
-    static final String REQUIRED_DATE_TIME_MSG = "Please enter the deadline/duration with format: ";
-    static final String REQUIRED_TASK_DESCRIPTION_MSG = "Please enter task description or press enter to skip.\n";
-    static final String REQUIRED_TASK_WEIGHT_MSG = "Please enter the weight of the task or press enter to skip.\n";
-    static final String REQUIRED_TASK_ESTIMATED_TIME_COST_MSG = "Please enter the estimated number of hours cost "
+    private static final String REQUIRED_TASK_NAME_MSG = "Please enter the task name.";
+    private static final String REQUIRED_TASK_TYPE_MSG = "Please choose the task type:\n" + TaskType.getTypeString();
+    private static final String REQUIRED_DATE_TIME_MSG = "Please enter the deadline/duration with format: ";
+    private static final String REQUIRED_TASK_DESCRIPTION_MSG = "Please enter task description or press enter to skip.\n";
+    private static final String REQUIRED_TASK_WEIGHT_MSG = "Please enter the weight of the task or press enter to skip.\n";
+    private static final String REQUIRED_TASK_ESTIMATED_TIME_COST_MSG = "Please enter the estimated number of hours cost "
         + "or press enter to skip.\n";
-    static final String TASK_INFO_HEADER = "The task is ready to be added, press enter again to add the task:\n\n"
+    private static final String TASK_INFO_HEADER = "The task is ready to be added, press enter again to add the task:\n\n"
         + "=========== TASK INFO ===========\n";
 
-    static final String QUIT_COMMAND_MSG = "Successfully quited from add task command.";
+    private static final String QUIT_COMMAND_MSG = "Successfully quited from add task command.";
 
     private String moduleListString = "";
     private ObservableList<Module> modules;
