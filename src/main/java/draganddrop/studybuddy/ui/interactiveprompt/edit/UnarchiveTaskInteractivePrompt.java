@@ -25,7 +25,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
  */
 public class UnarchiveTaskInteractivePrompt extends InteractivePrompt {
     private static final String END_OF_COMMAND_MSG = "Task retrieved successfully!";
-    private static final String QUIT_COMMAND_MSG = "Successfully quited from unarchive command.";
+    public static final String QUIT_COMMAND_MSG = "Successfully quited from unarchive command.";
     private int index;
 
     public UnarchiveTaskInteractivePrompt() {

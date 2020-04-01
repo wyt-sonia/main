@@ -27,7 +27,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
  */
 public class DeleteTaskInteractivePrompt extends InteractivePrompt {
     private static final String END_OF_COMMAND_MSG = "Task deleted successfully!";
-    private static final String QUIT_COMMAND_MSG = "Successfully quited from delete task command.";
+    public static final String QUIT_COMMAND_MSG = "Successfully quited from delete task command.";
     private static final String REQUEST_INDEX_MSG = "Please enter the index number of task you wish to delete.";
 
     private int index;
