@@ -4,11 +4,11 @@ package draganddrop.studybuddy.model.statistics;
  * stores general statistics
  */
 public class GeneralStats {
-    private int score;
+    private int goal;
 
-    private GeneralStats(int score) {
+    private GeneralStats(int goal) {
         super();
-        this.score = score;
+        this.goal = goal;
     }
 
     public GeneralStats() {
@@ -19,14 +19,14 @@ public class GeneralStats {
      * Copies the values of this generalStats object
      */
     public void copy(GeneralStats generalStats) {
-        this.score = generalStats.getScore();
+        this.goal = generalStats.getGoal();
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setGoal(int goal) {
+        this.goal = goal;
     }
 
-    public int getScore() {
-        return score;
+    public int getGoal() {
+        return goal;
     }
 }

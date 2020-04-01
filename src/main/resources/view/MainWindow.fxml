@@ -56,7 +56,8 @@
                     </Menu>
                     <Menu mnemonicParsing="false">
                         <graphic>
-                            <Label fx:id="ProfileMenuLabel" text="Profile" onMouseClicked="#handleShowProfile"/>
+                            <Label fx:id="ProductivityMenuLabel" text="Productivity"
+                                   onMouseClicked="#handleShowProductivity"/>
                         </graphic>
                     </Menu>
                 </MenuBar>
@@ -133,7 +134,7 @@
                                    HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS"/>
                     </VBox>
                 </HBox>
-                <StackPane fx:id="profilePageHolder" maxHeight="1.7976931348623157E308"
+                <StackPane fx:id="productivityPageHolder" maxHeight="1.7976931348623157E308"
                            maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                     <padding>
                         <Insets left="10.0" right="10.0"/>

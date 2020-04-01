@@ -13,6 +13,7 @@ import draganddrop.studybuddy.model.ReadOnlyStudyBuddy;
 import draganddrop.studybuddy.model.StudyBuddy;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.statistics.GeneralStats;
+import draganddrop.studybuddy.model.statistics.ScoreStats;
 import draganddrop.studybuddy.model.task.Task;
 
 /**
@@ -33,6 +34,7 @@ class JsonSerializableStudyBuddy {
     private final List<Integer> completeCountList = new ArrayList<>();
     private final List<Integer> overdueCountList = new ArrayList<>();
     private final GeneralStats generalStats = new GeneralStats();
+    private final ScoreStats scoreStats = new ScoreStats();
 
     /**
      * Constructs a {@code JsonSerializableStudyBuddy} with the given tasks.
@@ -57,6 +59,7 @@ class JsonSerializableStudyBuddy {
         completeCountList.addAll(source.getCompleteCountList());
         overdueCountList.addAll(source.getOverdueCountList());
         generalStats.copy(source.getGeneralStats());
+        scoreStats.copy(source.getScoreStats());
     }
 
     /**
@@ -87,6 +90,7 @@ class JsonSerializableStudyBuddy {
         studyBuddy.setCompleteList(this.completeCountList);
         studyBuddy.setOverdueList(this.overdueCountList);
         studyBuddy.getGeneralStats().copy(this.generalStats);
+        studyBuddy.getScoreStats().copy(this.scoreStats);
 
         Task.updateCurrentTaskList(new ArrayList<>(studyBuddy.getTaskList()));
         return studyBuddy;

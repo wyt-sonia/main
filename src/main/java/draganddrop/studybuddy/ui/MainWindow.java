@@ -40,7 +40,7 @@ public class MainWindow extends UiPart<Stage> {
     private static final String ARCHIVED_TASK = "Archived Task";
     private static final String CALENDAR = "Calendar";
     private static final String TASK_SUMMARY = "Task Summary";
-    private static final String PROFILE_PAGE = "Profile Page";
+    private static final String PRODUCTIVITY_PAGE = "Your Productivity";
 
     private static final String FXML = "MainWindow.fxml";
 
@@ -56,7 +56,7 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private ModuleListPanel moduleListPanel;
-    private ProfilePage profilePage;
+    private ProductivityPage productivityPage;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -89,7 +89,7 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane modulePaneHolder;
 
     @FXML
-    private StackPane profilePageHolder;
+    private StackPane productivityPageHolder;
 
     @FXML
     private Label taskListPanelTitle;
@@ -178,11 +178,11 @@ public class MainWindow extends UiPart<Stage> {
         taskSummaryHolder.setVisible(false);
         taskSummaryHolder.setManaged(false);
 
-        //Profile page
-        profilePage = new ProfilePage(logic.getFilteredTaskList());
-        profilePageHolder.getChildren().add(profilePage.getRoot());
-        profilePageHolder.setVisible(false);
-        profilePageHolder.setManaged(false);
+        //Productivity page
+        productivityPage = new ProductivityPage(logic.getFilteredTaskList());
+        productivityPageHolder.getChildren().add(productivityPage.getRoot());
+        productivityPageHolder.setVisible(false);
+        productivityPageHolder.setManaged(false);
 
         moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList(), logic.getFilteredTaskList());
         modulePaneHolder.getChildren().add(moduleListPanel.getRoot());
@@ -248,16 +248,16 @@ public class MainWindow extends UiPart<Stage> {
 
 
     /**
-     * handles showing the profile page
+     * handles showing the productivity page
      */
     @FXML
-    private void handleShowProfile() {
+    private void handleShowProductivity() {
         toggleAllHoldersInvisible();
-        toggleProfileHolderView(true);
+        toggleProductivityHolderView(true);
 
         toggleAllTitle(false);
         toggleMainTitleView(true);
-        setMainTitleText(PROFILE_PAGE);
+        setMainTitleText(PRODUCTIVITY_PAGE);
     }
 
     /**
@@ -328,7 +328,7 @@ public class MainWindow extends UiPart<Stage> {
     private void handleShowModules() {
         toggleAllHoldersInvisible();
         toggleModTabView(true);
-        toggleProfileHolderView(false);
+        toggleProductivityHolderView(false);
 
         toggleAllTitle(false);
         toggleMainTitleView(true);
@@ -393,7 +393,7 @@ public class MainWindow extends UiPart<Stage> {
         toggleTaskListHolderView(val1, val1);
         toggleTaskSummaryHolderView(val2);
         toggleModTabView(val3);
-        toggleProfileHolderView(val4);
+        toggleProductivityHolderView(val4);
     }
 
 
@@ -447,8 +447,8 @@ public class MainWindow extends UiPart<Stage> {
         setPaneView(modulePaneHolder, val);
     }
 
-    private void toggleProfileHolderView(boolean val) {
-        setPaneView(profilePageHolder, val);
+    private void toggleProductivityHolderView(boolean val) {
+        setPaneView(productivityPageHolder, val);
     }
 
 
