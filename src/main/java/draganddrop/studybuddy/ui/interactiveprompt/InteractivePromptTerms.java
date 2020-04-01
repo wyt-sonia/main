@@ -23,5 +23,6 @@ public enum InteractivePromptTerms {
     // for edit
     TASK_NUMBER,
     TASK_FIELD,
-    NEW_VALUE;
+    NEW_VALUE,
+    CHOICE;
 }

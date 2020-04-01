@@ -26,9 +26,8 @@ By: `Team Drag&Drop`      Since: `Jan 2020`
 Study Buddy is a desktop application which is designed for students who *wish to manege their module related tasks*.
 More importantly, Study Buddy is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
 
-Instead of forcing you to remember long wordy and easy-typo commands,
-Study Buddy *provides an interactive way of communication*, which not only improves
-the typo-tolerance of the application, but also makes the application more easy to master.
+You will never have to remember long, wordy commands to use your command line interface, since
+Study Buddy *provides an interactive way of communication*, which not only helps to prevent typos, but also makes the application much easier to use!
 
 If you can type fast, Study Buddy can get your module management done faster than traditional GUI apps.
 
@@ -53,15 +52,14 @@ you may refer to the guide below.
 +
 image::Ui.png[width="790", title="Study Buddy Dashboard"]
 +
-. The box with hint `Please enter your command here...` is the entry for your commands. You can key in your desired command
-here and pressing kbd:[Enter] to execute.
-. To check the available command, you can key in *`help`* and pressing kbd:[Enter] and you are also
-welcome to refer to <<Features>> for details of each command.
+. The box with the words `Enter your command here...` is where you can key in your desired command and click kbd:[Enter] to execute.
+. To view a list of available command, you can key in *`help`* and click kbd:[Enter]. A more detailed description of our features is available in
+<<Features>> of this document.
 
 
 [TIP]
 Study Buddy will analyze your input and reply accordingly. +
-Hope you enjoy.
+Hope you enjoy!
 
 == User Interface
 === Dashboard

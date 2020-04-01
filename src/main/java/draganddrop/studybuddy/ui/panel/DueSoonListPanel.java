@@ -26,7 +26,7 @@ public class DueSoonListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code DetailedTaskCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Task} using a {@code DetailedTaskCard}.
      */
     class TaskListViewCell extends ListCell<Task> {
         @Override

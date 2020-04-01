@@ -13,7 +13,7 @@ import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.task.Task;
 
 /**
- * Archives an entry in the study buddy.
+ * Refreshes the due soon list as well as status tags.
  */
 public class RefreshCommand extends Command {
 

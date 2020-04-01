@@ -7,7 +7,6 @@ import java.util.List;
 import draganddrop.studybuddy.commons.core.Messages;
 import draganddrop.studybuddy.logic.commands.Command;
 import draganddrop.studybuddy.logic.commands.CommandResult;
-import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.task.Task;
 
@@ -19,7 +18,7 @@ public class DeleteDuplicateTaskCommand extends Command {
     public static final String COMMAND_WORD = "delete duplicates";
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(Model model) {
         requireNonNull(model);
         List<Task> lastShownList = model.getFilteredTaskList();
         for (int i = 0; i < lastShownList.size(); i++) {
