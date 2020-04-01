@@ -247,11 +247,15 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         boolean isValid = true;
         ObservableList<Task> tempTasks = logic.getFilteredTaskList();
         tempTasks.addAll(logic.getFilteredArchivedTaskList());
-        double moduleWeightSum = tempTasks
+        double moduleWeightSum = logic.getStudyBuddy().getTaskList()
             .stream()
             .filter(t -> t.getModule().equals(targetModule))
             .mapToDouble(Task::getWeight).sum();
-        if (moduleWeightSum + toBeAddWeight > 100) {
+        double moduleWeightSumArchived = logic.getStudyBuddy().getArchivedList()
+            .stream()
+            .filter(t -> t.getModule().equals(targetModule))
+            .mapToDouble(Task::getWeight).sum();
+        if (moduleWeightSum + moduleWeightSumArchived + toBeAddWeight <= 100) {
             isValid = false;
         }
         return isValid;

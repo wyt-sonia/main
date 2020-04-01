@@ -306,4 +306,72 @@ class AddTaskInteractivePromptTest {
         assertTrue(prompt.interact("-1")
             .contains(new AddTaskCommandException("wrongWeightRangeError").getErrorMessage()));
     }
+
+    @Test
+    public void interact_emptyWeight_returnMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("2");
+        prompt.interact(TimeParser.getDateTimeString(startDateTime)
+            + "-" + TimeParser.getDateTimeString(endDateTime));
+        prompt.interact("");
+        assertTrue(prompt.interact("")
+            .contains("Please enter the estimated number of hours cost or press enter to skip."));
+    }
+
+    @Test
+    public void interact_validWeightValue_returnMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("2");
+        prompt.interact(TimeParser.getDateTimeString(startDateTime)
+            + "-" + TimeParser.getDateTimeString(endDateTime));
+        prompt.interact("");
+        assertTrue(prompt.interact("10")
+            .contains("Please enter the estimated number of hours cost or press enter to skip."));
+    }
+
+    @Test
+    public void interact_wrongTimeCostFormat_returnErrorMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("2");
+        prompt.interact(TimeParser.getDateTimeString(startDateTime)
+            + "-" + TimeParser.getDateTimeString(endDateTime));
+        prompt.interact("");
+        prompt.interact("");
+        assertTrue(prompt.interact("wrongTimeCostFormat")
+            .contains(new AddTaskCommandException("wrongEstimatedTimeFormatError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_wrongTimeCostValueNegative_returnErrorMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("2");
+        prompt.interact(TimeParser.getDateTimeString(startDateTime)
+            + "-" + TimeParser.getDateTimeString(endDateTime));
+        prompt.interact("");
+        prompt.interact("");
+        assertTrue(prompt.interact("-1")
+            .contains(new AddTaskCommandException("wrongEstimatedTimeRangeError").getErrorMessage()));
+    }
+
+    @Test
+    public void interact_validTimeCostValue_returnMessage() {
+        prompt.interact("");
+        prompt.interact("");
+        prompt.interact("taskName");
+        prompt.interact("2");
+        prompt.interact(TimeParser.getDateTimeString(startDateTime)
+            + "-" + TimeParser.getDateTimeString(endDateTime));
+        prompt.interact("");
+        prompt.interact("");
+        assertTrue(prompt.interact("10")
+            .contains("The estimated number of hours the task might take has been set as 10"));
+    }
 }

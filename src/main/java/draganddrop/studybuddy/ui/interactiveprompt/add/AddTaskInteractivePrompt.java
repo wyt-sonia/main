@@ -172,13 +172,15 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 this.reply = "";
                 if (!userInput.isBlank()) {
                     double weight = AddTaskCommandParser.parseWeight(userInput);
-                    ObservableList<Task> tempTasks = logic.getFilteredTaskList();
-                    tempTasks.addAll(logic.getFilteredArchivedTaskList());
-                    double moduleWeightSum = tempTasks
+                    double moduleWeightSum = logic.getStudyBuddy().getTaskList()
                         .stream()
                         .filter(t -> t.getModule().equals(task.getModule()))
                         .mapToDouble(Task::getWeight).sum();
-                    if (moduleWeightSum + weight <= 100) {
+                    double moduleWeightSumArchived = logic.getStudyBuddy().getArchivedList()
+                        .stream()
+                        .filter(t -> t.getModule().equals(task.getModule()))
+                        .mapToDouble(Task::getWeight).sum();
+                    if (moduleWeightSum + moduleWeightSumArchived + weight <= 100) {
                         task.setWeight(weight);
                     } else {
                         throw new AddTaskCommandException("moduleWeightOverloadError");
