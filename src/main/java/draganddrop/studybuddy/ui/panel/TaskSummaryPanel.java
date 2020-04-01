@@ -154,15 +154,9 @@ public class TaskSummaryPanel extends UiPart<Region> {
         ArrayList<XYChart.Series> dataSeries = new ArrayList<>();
 
         ObservableList<Task> sortedTasks = tempTasks.sorted(Comparator.comparing(t -> t.getDateTimes()[0]));
-        LocalDate startDate = null;
-        LocalDate endDate = null;
+        LocalDate startDate = sortedTasks.get(0).getDateTimes()[0].toLocalDate();
+        LocalDate endDate = sortedTasks.get(sortedTasks.size() - 1).getDateTimes()[0].toLocalDate();
 
-        if (Task.getCurrentTasks().size() != 0) {
-            startDate = sortedTasks.get(0).getDateTimes()[0].toLocalDate();
-            endDate = sortedTasks.get(sortedTasks.size() - 1).getDateTimes()[0].toLocalDate();
-        }
-        LocalDate finalStartDate = startDate;
-        LocalDate finalEndDate = endDate;
         modules.forEach(m -> {
             XYChart.Series dueDateDataSeries = new XYChart.Series();
             if (m.getModuleCode().equals(new EmptyModule().getModuleCode())) {
@@ -171,7 +165,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
                 dueDateDataSeries.setName(m.getModuleCode().toString());
             }
 
-            for (LocalDate d = finalStartDate; d.isBefore(finalEndDate.plusDays(1)); d = d.plusDays(1)) {
+            for (LocalDate d = startDate; d.isBefore(endDate.plusDays(1)); d = d.plusDays(1)) {
                 LocalDate finalD = d;
                 long numOfTasksDue = tempTasks.stream()
                     .filter(t -> t.getDateTimes()[0].toLocalDate().equals(finalD) && t.getModule().equals(m)).count();
