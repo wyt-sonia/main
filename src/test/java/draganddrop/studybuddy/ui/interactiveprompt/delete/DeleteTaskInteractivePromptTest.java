@@ -12,6 +12,9 @@ import draganddrop.studybuddy.model.UserPrefs;
 class DeleteTaskInteractivePromptTest {
 
     private Model model = new ModelManager(getTypicalTaskList(), new UserPrefs());
+    private String fieldsString = "";
+
+
     @Test
     public void interact_quitCommand_returnMessage() {
         DeleteTaskInteractivePrompt prompt = new DeleteTaskInteractivePrompt();
@@ -25,14 +28,14 @@ class DeleteTaskInteractivePromptTest {
                 prompt.interact(""));
     }
 
-    /*@Test
+    @Test
     public void interact_secondInput_returnKeywordPrompt() {
         DeleteTaskInteractivePrompt prompt = new DeleteTaskInteractivePrompt();
         prompt.interact("");
-        String reply = "The task " + model.getAddressBook().getTaskList().get(0).getTaskName()
-                + " will be deleted. \n"
+        String reply = "The task " + model.getStudyBuddy().getTaskList().get(0).getTaskName()
+                + " will be deleted. \n "
                 + " Please click enter again to make the desired deletion.";
         assertEquals(reply, reply);
-    }*/
+    }
 
 }

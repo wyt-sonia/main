@@ -67,6 +67,7 @@ public interface Model {
     boolean hasTask(Task task);
 
     public void deleteDueSoonTask(Task target);
+
     /**
      * completes the given task.
      * The task must exist in the study buddy.
@@ -74,21 +75,48 @@ public interface Model {
     void completeTask(Task target);
 
     /**
-     * Set the task name
+     * Set the task name.
+     *
      * @param target a task
      * @param newTaskName the new name of the task
      */
     void setTaskName(Task target, String newTaskName);
 
     /**
-     * Set the task type
+     * Set the task description.
+     *
+     * @param target a task
+     * @param newTaskDescription the new description of the task
+     */
+    void setTaskDescription(Task target, String newTaskDescription);
+
+    /**
+     * Set the task weight.
+     *
+     * @param target a task
+     * @param newTaskWeight the new weight of the task
+     */
+    void setTaskWeight(Task target, double newTaskWeight);
+
+    /**
+     * Set the task estimated time cost.
+     * @param target a task
+     * @param newTaskTimeCost the new time cost of the task
+     */
+    void setTaskTimeCost(Task target, double newTaskTimeCost);
+
+
+    /**
+     * Set the task type.
+     *
      * @param target a task
      * @param newTaskType the new task type
      */
     void setTaskType(Task target, TaskType newTaskType);
 
     /**
-     * Set the task date time
+     * Set the task date time.
+     *
      * @param target a task
      * @param newDateTimes the new date and time
      */
@@ -110,6 +138,12 @@ public interface Model {
     void archiveTask(Task task);
 
     /**
+     * Moves an archived task back to main taskList.
+     *
+     */
+    void unarchiveTask(Task task);
+
+    /**
      * Adds the given task.
      *
      * @param task must not already exist in the study buddy.
@@ -118,6 +152,7 @@ public interface Model {
 
     /**
      * Adds the given task.
+     *
      * {@code task} must not already exist in the task list.
      */
     void addTask(Task task);
@@ -142,6 +177,7 @@ public interface Model {
 
     /**
      * Returns a List of modules
+     *
      * @return
      */
     ObservableList<Module> getFilteredModuleList();

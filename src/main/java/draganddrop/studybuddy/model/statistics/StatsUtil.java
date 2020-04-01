@@ -1,38 +1,14 @@
-package draganddrop.studybuddy.model.user;
+package draganddrop.studybuddy.model.statistics;
 
 import static java.time.temporal.TemporalAdjusters.firstDayOfYear;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-import draganddrop.studybuddy.model.task.Task;
-
 /**
- * Usage statistics for the user
+ * Contains utility methods for handling statistics
  */
-public class Statistics {
-
-    private static CompleteCountList completeCountList = new CompleteCountList();
-
-    public Statistics() {
-
-    }
-
-    /**
-     * Records the completed task
-     *
-     * @param completedTask the task that has just been completed
-     */
-    public static void recordCompletedTask(Task completedTask) {
-        LocalDateTime timeOfCompletion = completedTask.getFinishDateTime();
-        int dayIndex = getDayIndex();
-        completeCountList.complete(dayIndex);
-        LocalDateTime taskDueDate = completedTask.getDueDate();
-        if (isLate(taskDueDate)) {
-            completeCountList.completeLate(dayIndex);
-        }
-    }
-
+public class StatsUtil {
     /**
      * utility method to get the number of days between two LocalDateTime
      *

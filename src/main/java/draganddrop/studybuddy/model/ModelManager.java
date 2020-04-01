@@ -117,6 +117,21 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void setTaskWeight(Task target, double taskWeight) {
+        studyBuddy.setTaskWeight(target, taskWeight);
+    }
+
+    @Override
+    public void setTaskTimeCost(Task target, double taskTiemCost) {
+        studyBuddy.setTaskTimeCost(target, taskTiemCost);
+    }
+
+    @Override
+    public void setTaskDescription(Task target, String taskDescription) {
+        studyBuddy.setTaskDescription(target, taskDescription);
+    }
+
+    @Override
     public void setTaskType(Task target, TaskType newTaskType) {
         studyBuddy.setTaskType(target, newTaskType);
     }
@@ -153,7 +168,13 @@ public class ModelManager implements Model {
 
     @Override
     public void archiveTask(Task task) {
-        studyBuddy.addArchivedTask(task);
+        studyBuddy.archiveTask(task);
+        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+    }
+
+    @Override
+    public void unarchiveTask(Task task) {
+        studyBuddy.unarchiveTask(task);
         updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
     }
 

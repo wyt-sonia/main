@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import draganddrop.studybuddy.model.ReadOnlyStudyBuddy;
 import draganddrop.studybuddy.model.StudyBuddy;
+import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskStatus;
@@ -21,7 +22,7 @@ public class SampleDataUtil {
     private static final String SHORT_DESC = "This is a short description.";
 
     public static Task[] getSampleTasks() {
-        Module cs2103T = new Module("Software Engineering", "CS2103T");
+        Module emptyModule = new EmptyModule();
         Module cs2101 = new Module("Effective Communication for Computing Professionals",
             "CS2101");
 
@@ -37,12 +38,13 @@ public class SampleDataUtil {
 
 
         return new Task[]{
-            new Task(cs2103T, TaskType.Assignment, "Ass 1", SHORT_DESC, 20.0,
+
+            new Task(emptyModule, TaskType.Assignment, "Ass 1", SHORT_DESC, 20.0,
                 TaskStatus.PENDING, dueSoonDateTime, 5.0, creationDateTime),
             new Task(cs2101, TaskType.Presentation, "Presentation 1",
                 LONG_DESC_WITH_300_CHAR, 20.0, TaskStatus.FINISHED, dueSoonDuration,
                 3.0, creationDateTime),
-            new Task(cs2103T, TaskType.Assignment, "Quiz 1", SHORT_DESC,
+            new Task(emptyModule, TaskType.Assignment, "Quiz 1", SHORT_DESC,
                 2.0, TaskStatus.PENDING, pendingDateTime, 1.0, creationDateTime),
             new Task(cs2101, TaskType.Meeting, "Meeting 1", LONG_DESC_WITH_300_CHAR, 20.0,
                 TaskStatus.PENDING, pendingDuration, 15.0, creationDateTime)
@@ -50,13 +52,11 @@ public class SampleDataUtil {
     }
 
     public static Module[] getSampleModule() {
-        Module cs2100 = new Module("Computer Organisation", "CS2100");
-        Module cs2100clone1 = new Module("dasadsa", "CS2100");
-        Module cs2100clone2 = new Module("Computer Organisation", "CS1111");
-        return new Module[]{cs2100, cs2100clone1, cs2100clone2};
-
+        Module emptyModule = new EmptyModule();
+        Module cs2101 = new Module("Effective Communication for Computing Professionals",
+                "CS2101");
+        return new Module[]{emptyModule, cs2101};
     }
-
 
     public static ReadOnlyStudyBuddy getSampleStudyBuddy() {
         StudyBuddy sampleSb = new StudyBuddy();
@@ -64,6 +64,10 @@ public class SampleDataUtil {
         for (Task sampleTask : getSampleTasks()) {
             sampleSb.addTask(sampleTask);
             sampleTasks.add(sampleTask);
+        }
+
+        for (Module mod: getSampleModule()) {
+            sampleSb.addModule(mod);
         }
         Task.updateCurrentTaskList(sampleTasks);
         return sampleSb;

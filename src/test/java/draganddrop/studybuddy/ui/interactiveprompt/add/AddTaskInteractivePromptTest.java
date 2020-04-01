@@ -110,8 +110,7 @@ class AddTaskInteractivePromptTest {
     }
     */
 
-    /*
-    @Test
+    /*@Test
     public void interact_fifthInput_returnPrompt() {
         AddTaskInteractivePrompt prompt = new AddTaskInteractivePrompt();
         prompt.interact("add");

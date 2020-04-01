@@ -2,6 +2,7 @@ package draganddrop.studybuddy.logic.parser;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.InteractiveCommandException;
@@ -11,6 +12,8 @@ import draganddrop.studybuddy.model.task.Task;
  * pending.
  */
 public class TimeParser {
+
+    public static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     /**
      * Parses valid dateTime string to LocalDateTime variable.
@@ -27,6 +30,23 @@ public class TimeParser {
             throw new InteractiveCommandException("dataTimeFormatError");
         }
         return inputTime;
+    }
+
+    /**
+     * Parses valid date string to LocalDate variable.
+     *
+     * @param userInput
+     * @return
+     * @throws InteractiveCommandException
+     */
+    public static LocalDate parseDate(String userInput) throws InteractiveCommandException {
+        LocalDate inputDate = null;
+        try {
+            inputDate = LocalDate.parse(userInput.trim(), DATE_FORMAT);
+        } catch (DateTimeParseException e) {
+            throw new InteractiveCommandException("dataTimeFormatError");
+        }
+        return inputDate;
     }
 
 

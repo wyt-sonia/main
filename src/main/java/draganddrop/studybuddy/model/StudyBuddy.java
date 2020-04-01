@@ -8,6 +8,10 @@ import java.util.List;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.module.ModuleList;
 import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
+import draganddrop.studybuddy.model.statistics.CompletionStats;
+import draganddrop.studybuddy.model.statistics.GeneralStats;
+import draganddrop.studybuddy.model.statistics.OverdueStats;
+import draganddrop.studybuddy.model.statistics.Statistics;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskType;
 import draganddrop.studybuddy.model.task.UniqueTaskList;
@@ -24,6 +28,10 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     private final UniqueTaskList dueSoonTasks;
     private final UniqueTaskList tasks;
     private final ModuleList moduleList;
+    private final CompletionStats completionStats;
+    private final OverdueStats overdueStats;
+    private final GeneralStats generalStats;
+    private final Statistics statistics;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -37,6 +45,12 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         archivedTasks = new UniqueTaskList();
         dueSoonTasks = new UniqueTaskList();
         moduleList = new ModuleList();
+        completionStats = new CompletionStats();
+        overdueStats = new OverdueStats();
+        generalStats = new GeneralStats();
+        statistics = new Statistics(generalStats, completionStats, overdueStats);
+        UniqueTaskList.setStatistics(statistics);
+        Task.setStatistics(statistics);
     }
 
     public StudyBuddy() {
@@ -48,6 +62,22 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     public StudyBuddy(ReadOnlyStudyBuddy toBeCopied) {
         this();
         resetData(toBeCopied);
+    }
+
+    // Statistics
+    @Override
+    public List<Integer> getCompleteCountList() {
+        return completionStats.getCompleteCountList();
+    }
+
+    @Override
+    public List<Integer> getOverdueCountList() {
+        return overdueStats.getOverdueCountList();
+    }
+
+    @Override
+    public GeneralStats getGeneralStats() {
+        return generalStats;
     }
 
     //// list overwrite operations
@@ -122,6 +152,14 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         this.dueSoonTasks.setTasks(aTasks);
     }
 
+    public void setCompleteList(List<Integer> completeList) {
+        this.completionStats.setCompleteCountList(completeList);
+    }
+
+    public void setOverdueList(List<Integer> overdueList) {
+        this.overdueStats.setOverdueList(overdueList);
+    }
+
     /**
      * Resets the existing data of this {@code StudyBuddy} with {@code newData}.
      */
@@ -140,8 +178,26 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
      *
      * @param p must not already exist in the study buddy.
      */
-    public void addArchivedTask(Task p) {
+    public void archiveTask(Task p) {
+        tasks.remove(p);
         archivedTasks.add(p);
+    }
+
+    /**
+     * Adds to archive task list. (For Json files)
+     */
+    public void addArchiveTask(Task p) {
+        archivedTasks.add(p);
+    }
+
+    /**
+     * Moves an archived task back to main task list.
+     *
+     * @param p must not already exist in study buddy.
+     */
+    public void unarchiveTask(Task p) {
+        archivedTasks.remove(p);
+        tasks.add(p);
     }
 
     /**
@@ -169,6 +225,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         }
     }
 
+
     /**
      * Adds a task to the task list.
      * The task must not already exist in the task list.
@@ -188,6 +245,19 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         tasks.setTaskName(target, newTaskName);
     }
 
+    public void setTaskDescription(Task target, String newTaskDescription) {
+        tasks.setTaskDescription(target, newTaskDescription);
+    }
+
+    public void setTaskTimeCost(Task target, double newTaskTimeCost) {
+        tasks.setTaskTimeCost(target, newTaskTimeCost);
+    }
+
+    public void setTaskWeight(Task target, double newTaskWeight) {
+        tasks.setTaskWeight(target, newTaskWeight);
+    }
+
+
     public void setTaskType(Task target, TaskType newTaskType) {
         tasks.setTaskType(target, newTaskType);
     }
@@ -204,12 +274,6 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         }
     }
 
-    // public void collectTaskBasedOnMod(Module module) throws ModuleCodeException {
-    //     ObservableList<Task> collectedTask = tasks.filterTaskByMod(module);
-    //     int modIndex = moduleList.indexOf(module);
-    //     Module originalModule = moduleList.get(module.toString());
-    //    originalModule.setInternalTaskList(collectedTask);
-    // }
 
     @Override
     public String toString() {
@@ -242,6 +306,11 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     public void setModuleList(List<Module> modules) {
         this.moduleList.setModuleList(modules);
     }
+
+    /*@Override
+    public Statistics getStatistics() {
+        return statistics;
+    }*/
 
     public boolean hasModule(Module module) {
         return moduleList.contains(module);

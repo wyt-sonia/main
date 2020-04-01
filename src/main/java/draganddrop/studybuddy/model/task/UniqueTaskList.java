@@ -10,9 +10,9 @@ import java.util.List;
 import draganddrop.studybuddy.commons.util.CollectionUtil;
 import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.model.module.Module;
+import draganddrop.studybuddy.model.statistics.Statistics;
 import draganddrop.studybuddy.model.task.exceptions.TaskNotFoundException;
 
-import draganddrop.studybuddy.model.user.Statistics;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -21,9 +21,18 @@ import javafx.collections.ObservableList;
  */
 public class UniqueTaskList implements Iterable<Task> {
 
+    private static Statistics statistics;
     private final ObservableList<Task> internalList = FXCollections.observableArrayList();
     private final ObservableList<Task> internalUnmodifiableList =
         FXCollections.unmodifiableObservableList(internalList);
+
+    /**
+     * Sets the statistics for unique task list
+     * @param statistics completionStats used to record tasks completed
+     */
+    public static void setStatistics(Statistics statistics) {
+        UniqueTaskList.statistics = statistics;
+    }
 
     public int getSize() {
         return internalList.size();
@@ -152,7 +161,7 @@ public class UniqueTaskList implements Iterable<Task> {
             internalList.set(index, target);
 
             // log statistics
-            Statistics.recordCompletedTask(target);
+            statistics.recordCompletedTask(target);
         }
     }
 
@@ -166,6 +175,48 @@ public class UniqueTaskList implements Iterable<Task> {
         requireNonNull(target);
         requireNonNull(newTaskName);
         target.setTaskName(newTaskName);
+        int index = internalList.indexOf(target);
+        internalList.set(index, target);
+    }
+
+    /**
+     * Set the task estimated time cost.
+     *
+     * @param target a task
+     * @param newTaskTimeCost the new estimated time cost of the task
+     */
+    public void setTaskTimeCost(Task target, double newTaskTimeCost) {
+        requireNonNull(target);
+        requireNonNull(newTaskTimeCost);
+        target.setEstimatedTimeCost(newTaskTimeCost);
+        int index = internalList.indexOf(target);
+        internalList.set(index, target);
+    }
+
+    /**
+     * Set the task weight.
+     *
+     * @param target a task
+     * @param newTaskWeight the new weight of the task
+     */
+    public void setTaskWeight(Task target, double newTaskWeight) {
+        requireNonNull(target);
+        requireNonNull(newTaskWeight);
+        target.setWeight(newTaskWeight);
+        int index = internalList.indexOf(target);
+        internalList.set(index, target);
+    }
+
+    /**
+     * Set the task description.
+     *
+     * @param target a task
+     * @param newTaskDescription the new name of the task
+     */
+    public void setTaskDescription(Task target, String newTaskDescription) {
+        requireNonNull(target);
+        requireNonNull(newTaskDescription);
+        target.setTaskDescription(newTaskDescription);
         int index = internalList.indexOf(target);
         internalList.set(index, target);
     }

@@ -14,12 +14,11 @@ class CreateModuleInteractivePromptTest {
                 prompt.interact(""));
     }
 
-    //quit does not work
-    /*@Test
-    public void interact_backCommand_returnMessage() {
+    @Test
+    public void interact_quitCommand_returnMessage() {
         CreateModuleInteractivePrompt prompt = new CreateModuleInteractivePrompt();
-        assertEquals("", prompt.interact("back"));
-    }*/
+        assertEquals(CreateModuleInteractivePrompt.QUIT_COMMAND_MSG, prompt.interact("quit"));
+    }
 
     @Test
     public void interact_secondInput_returnKeywordPrompt() {

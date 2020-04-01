@@ -57,7 +57,6 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
                 reply = "The task " + Task.getCurrentTasks().get(index - 1).getTaskName()
                     + " will be marked as finished. \n\n"
                     + "Please click enter again to make the desired action.";
-
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (NumberFormatException ex) {
                 reply = (new CompleteTaskCommandException("wrongIndexFormatError")).getErrorMessage()
