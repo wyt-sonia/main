@@ -1,6 +1,9 @@
 package draganddrop.studybuddy.model;
 
+import java.util.List;
+
 import draganddrop.studybuddy.model.module.Module;
+import draganddrop.studybuddy.model.statistics.GeneralStats;
 import draganddrop.studybuddy.model.task.Task;
 
 import javafx.collections.ObservableList;
@@ -26,5 +29,13 @@ public interface ReadOnlyStudyBuddy {
      * This list will not contain any duplicate tasks.
      */
     ObservableList<Task> getTaskList();
+
+    // Statistics
+    List<Integer> getCompleteCountList();
+
+    List<Integer> getOverdueCountList();
+
+    GeneralStats getGeneralStats();
+
 
 }
