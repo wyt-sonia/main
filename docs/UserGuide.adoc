@@ -182,7 +182,7 @@ This commands deletes a task from the existing list, using the index provided by
 
 After having added a task, you realise that there has been a change and you do not need to do that task anymore.
 
-Study Buddy provides you an option to delete your tasks from the list!
+Study Buddy provides you an option to delete that task from the list!
 
 To `delete`:
 
