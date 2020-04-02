@@ -180,60 +180,61 @@ To `add`:
 . Initiate the command using keyword `add`
 . Study Buddy should respond with `a list of available modules` as:
 +
-image::add_module.png[width="600", title="Reponse to 'add'"]
+image::basic/add/add_module.png[width="600", title="Reponse to 'add'"]
 +
 . You can link this task with a module by entering its `MODULE CODE` | `INDEX NUMBER OF MODULE` here
 , or you can press kbd:[enter] to skip. Here we use `1` (CS2101) as an example.
 . Study Buddy should respond with the module selected and the request of task name as:
 +
-image::add_task_name.png[width="600", title="Asks for task's name"]
+image::basic/add/add_task_name.png[width="600", title="Asks for task's name"]
 +
 . Here we use `new task` as an example.
 . Study Buddy should respond with the task name defined and the request of task type as:
 +
-image::add_task_type.png[width="600", title="Asks for task's type"]
+image::basic/add/add_task_type.png[width="600", title="Asks for task's type"]
 +
 . Here we use `1` (Assignment) as an example.
 . Study Buddy should respond with the task type defined and the request of task's date time information as:
 +
-image::add_date_time.png[width="600", title="Asks for task's date time"]
+image::basic/add/add_date_time.png[width="600", title="Asks for task's date time"]
 +
 . Here we use `14:00 04/05/2020` as an example.
 . Study Buddy should respond with the date time defined and the request of task's description as:
 +
-image::add_desc.png[width="600", title="Asks for task's description"]
+image::basic/add/add_desc.png[width="600", title="Asks for task's description"]
 +
 . Here we use `new task description` as an example.
 . Study Buddy should respond with the description defined and the request of task's weight as:
 +
-image::add_weight.png[width="600", title="Asks for task's weight"]
+image::basic/add/add_weight.png[width="600", title="Asks for task's weight"]
 +
 . Here we use `10` as an example.
 . Study Buddy should respond with the weight defined and the request of the estimated number of hours needed as:
 +
-image::add_time_cost.png[width="600", title="Asks for estimated number of hours needed"]
+image::basic/add/add_time_cost.png[width="600", title="Asks for estimated number of hours needed"]
 +
 . Here we use `10` as an example.
 . Study Buddy should respond with the task details collected and the request of your confirmation to perform the command as:
 +
-image::add_task_info_1.png[width="600", title="Asks for user conformation to add a new task"]
+image::basic/add/add_task_info_1.png[width="600", title="Asks for user conformation to add a new task"]
 +
-image::add_task_info_2.png[width="600", title="Task details collected"]
+image::basic/add/add_task_info_2.png[width="600", title="Task details collected"]
 +
 . Now, by pressing kbd:[enter] the new task will be added into your Study Buddy.
 . Study Buddy should respond as:
 +
-image::add_result.png[width="600", title="New task added"]
+image::basic/add/add_result.png[width="600", title="New task added"]
 
 [TIP]
 You can use `quit` command to quit from each step.
+
 
 ==== Edit
 
 This command is for you to edit an existing task.
 To indicate the task you want to edit, you need to provide its index number.
 
-image::deleteResponse2.png[width="600", title="Index number"]
+//image::basic/edit/.png[width="600", title="Index number"]
 
 *Example:*
 
@@ -248,22 +249,22 @@ To `edit`:
 . Initiate the command using keyword `edit`
 . Study Buddy should respond with:
 +
-image::edit_index.png[width="600", title="Reponse to 'edit'"]
+image::basic/edit/edit_index.png[width="600", title="Reponse to 'edit'"]
 +
 . Type the index of the task you want to edit. here use `1` (Quiz 1) as an example.
 . The Study Buddy should respond with:
 +
-image::edit_response_index.png[width="600", title="List of editable fields"]
+image::basic/edit/edit_response_index.png[width="600", title="List of editable fields"]
 +
 . Type the index of the field you want to edit, here use `2` (task name) as an example.
 . The Study Buddy should respond with:
 +
-image::edit_response_task_name.png[width="600", title="Asks for new task name"]
+image::basic/edit/edit_response_task_name.png[width="600", title="Asks for new task name"]
 +
 . Enter new task name, here use `new task` as an example.
 . The Study Buddy should respond as below with updated field.
 +
-image::edit_result.png[width="600", title="Task edited"]
+image::basic/edit/edit_result.png[width="600", title="Task edited"]
 
 ==== Clear
 This commands clears all data in the Study Buddy.
@@ -282,7 +283,7 @@ To `clear`:
 . Initiate the command using keyword `clear`
 . Study Buddy should respond with:
 +
-image::clear1.png[width="790", title="Response to 'clear'"]
+image::clear/clear1.png[width="790", title="Response to 'clear'"]
 +
 [NOTE]
 You can enter `quit` if you wish to go back!
@@ -290,7 +291,7 @@ You can enter `quit` if you wish to go back!
 . Press `enter` again to confirm
 . Study Buddy has been cleared completely!
 +
-image::clear2.png[width="790", title="View empty Study Buddy"]
+image::clear/clear2.png[width="790", title="View empty Study Buddy"]
 
 
 ==== Delete
@@ -307,15 +308,15 @@ To `delete`:
 . Initiate the command using keyword `delete`
 . Study Buddy should respond with:
 +
-image::deleteResponse2.png[width="790", title="Response to 'delete'"]
+image::basic/delete/deleteResponse2.png[width="790", title="Response to 'delete'"]
 
 . Type the index of the task you want to delete.
 +
-image::deleteResponse3.png[width="790", title="Response to delete index 1"]
+image::basic/delete/deleteResponse3.png[width="790", title="Response to delete index 1"]
 . Press `enter` again to confirm
 . Task has been deleted! You will notice that the task at the index you selected has disappeared from the list of tasks.
 +
-image::deleteResponse1.png[width="790", title="Updated list (without deleted task)"]
+image::basic/delete/deleteResponse1.png[width="790", title="Updated list (without deleted task)"]
 
 
 ==== Delete duplicates
@@ -336,12 +337,12 @@ To `delete duplicates`:
 . Initiate the command using keyword `delete duplicates`
 . Study Buddy should respond with:
 +
-image::deleteDuplicates1.png[width="790", title="Respons to 'delete duplicates'"]
+image::basic/deleteduplicate/deleteDuplicates1.png[width="790", title="Respons to 'delete duplicates'"]
 
 . Press `enter` again to confirm
 . Duplicate tasks have been deleted! You will notice that only one copy (most recent) of each task will be left in the list.
 +
-image::deleteDuplicates2.png[width="790", title="Updated list (without duplicate tasks)"]
+image::basic/deleteduplicate/deleteDuplicates2.png[width="790", title="Updated list (without duplicate tasks)"]
 
 ==== Archive/ Unarchive
 This commands stores the specified task into a separate list.
@@ -357,14 +358,14 @@ To `archive`:
 . Initiate the command using keyword `archive`
 . Study Buddy should respond with:
 +
-image::archive_1.png[width="790", title="Study Buddy's respons to 'archive'"]
+image::basic/archive/archive_1.png[width="790", title="Study Buddy's respons to 'archive'"]
 . Type the index of the task you want to archive.
 +
-image::archive_2.png[width="790", title="Study Buddy's respons to task index"]
+image::basic/archive/archive_2.png[width="790", title="Study Buddy's respons to task index"]
 . Press `enter` again to confirm
 . Task has been archived! You can view all archived task under the `StudyBuddy` -> `Archived Tasks` tab.
 +
-image::archive_3.png[width="790", title="View archived tasks"]
+image::basic/archive/archive_3.png[width="790", title="View archived tasks"]
 
 ****
 * To `unarchive` a task, and add it back to the main list, simply follow the same set of commands, but replace the `archive` keyword with `unarchive`
@@ -382,7 +383,7 @@ image::archive_3.png[width="790", title="View archived tasks"]
 .. Task Name
 .. Creation Date & Time
 
-image::beforeSort.png[width="790", title="All Task Panel"]
+image::basic/sort/beforeSort.png[width="790", title="All Task Panel"]
 
 *Format*
 
@@ -485,7 +486,7 @@ To `refresh`:
 
 . Say this is what Study Buddy looks like.
 +
-image::refresh1.png[width="790", title="Current state (needs to be refreshed)"]
+image::basic/refresh/refresh1.png[width="790", title="Current state (needs to be refreshed)"]
 +
 
 Suppose you notice that the task "Submit UG" is not due "now" anymore because some time has past since the deadline.
@@ -493,12 +494,12 @@ Suppose you notice that the task "Submit UG" is not due "now" anymore because so
 . Initiate the refresh command using keyword `refresh`
 . Study Buddy should respond with:
 +
-image::refresh2.png[width="790", title="Respons to 'refresh'"]
+image::basic/refresh/refresh2.png[width="790", title="Respons to 'refresh'"]
 
 . Press `enter` again to confirm
 . Tasks have been refreshed!
 +
-image::refresh3.png[width="790", title="View refreshed Study Buddy"]
+image::basic/refresh/refresh3.png[width="790", title="View refreshed Study Buddy"]
 +
 
 You will notice that the overdue task has now moved out of the due soon list and has the updated status tag "overdue".
@@ -520,10 +521,10 @@ To `exit`:
 . Initiate the command using keyword `bye`
 . Study Buddy should respond with:
 +
-image::exit1.png[width="790", title="Respons to 'bye'"]
+image::basic/exit/exit1.png[width="790", title="Respons to 'bye'"]
 . Type 'yes' if you want to exit and anything else if you do not wish to exit.
 +
-image::exit2.png[width="790", title="Respons to any command other than 'yes'"]
+image::basic/exit/exit2.png[width="790", title="Respons to any command other than 'yes'"]
 +
 In response to yes, the application should simply close.
 
@@ -532,16 +533,7 @@ In response to yes, the application should simply close.
 Study Buddy data is automatically saved in the hard disk after any command that changes the data.
 + There is no need to save manually.
 
-When the application is closed and re-opened, you should be able to see all the data you had added previously!
-
-=== DashBoard
-
-Your menu where all the things you want to see from the app is right here.
-By default, it shows the following:
-
-. `All Task` The impending task from the task list, sorted by timing
-. `Tasks Due Soon` Similar to `All Task`, but it shows tasks with upcoming deadlines.
-
+When the application is closed and re-opened, you should be able to see all the data you have added previously!
 
 === Due Soon Tasks
 
@@ -551,17 +543,17 @@ It provides the following functionality:
 
 . It displays your tasks that are due within the next week. (uses deadline you have provided)
 +
-image::duesoon1.png[width="790", align= "left", title="Due Soon List"]
+image::duesoon/duesoon1.png[width="790", align= "left", title="Due Soon List"]
 
 . It automatically sorts these tasks in an ascending order of deadlines.
 +
-image::duesoon3.png[width="790", align= "left", title="Due Soon List"]
+image::duesoon/duesoon3.png[width="790", align= "left", title="Due Soon List"]
 
 . It automatically adds applicable tasks when you make changes to your main list, such as add (<<Add>>) or delete (<<Delete>>).
 
 . It displays a tag with the time left to the deadline.
 +
-image::duesoon2.png[width="790", align= "left", title="Due Soon List"]
+image::duesoon/duesoon2.png[width="790", align= "left", title="Due Soon List"]
 
 . It provides a <<Refresh>> function that allows you to refresh time/state of this list if needed.
 
@@ -574,7 +566,7 @@ Due soon list will never display finished tasks. If you unarchive a completed ta
 === Modules
 The Modules tab is an easy way for students to organise their task, homework and deadlines into various modules.
 
-image::Module-bar.png[title = "`Modules` in the menu bar"]
+image::module/Module-bar.png[title = "`Modules` in the menu bar"]
 
 By default, the Modules tab shows the following:
 
@@ -587,12 +579,12 @@ all tasks will show up here if you have not allocated any tasks to the modules.
 
 To navigate to the modules page, click on `Modules` in the menu bar.
 
-image::Module-bar-2.png[]
+image::module/Module-bar-2.png[]
 
 
 Then click on `Show Modules`. The module page should show up.
 
-image::Modules-page.png[]
+image::module/Modules-page.png[]
 
 The leftmost tab shows the *overview* of all your modules. it displays the module's name and their code.
 
@@ -704,54 +696,46 @@ Module deleted! All existing task in this module will be moved to `No Module All
 . Navigate to Statistics Page
 - You can press the Statistics button in the menu bar to navigate to Statistics Page
 +
-image::entryOfStatistics.png[width="790", align= "left", title="Statistics entry"]
+image::stats/entryOfStatistics.png[width="790", align= "left", title="Statistics entry"]
 
 .  UI introduction & Charts Provided
 .. After press Statistics button from menu bar, the Statistics page will display as its initial status.
 +
-image::initStatisticsPage.png[width="790", align= "left", title="Statistics initial page"]
+image::stats/initStatisticsPage.png[width="790", align= "left", title="Statistics initial page"]
 .. The left panel displays different charts, and the right panel will display related tasks when you clicking on the chart.
 +
 ... *Task Status*
 +
-image::pieChartClick.png[width="790", align= "left", title="right panel update when clicking on pie chart"]
+image::stats/pieChartClick.png[width="790", align= "left", title="right panel update when clicking on pie chart"]
 +
 ... *Module related tasks' deadline/ start date*
 +
-image::areaChartClickOnArea.png[width="790", align= "left", title="right panel update when clicking on area chart's area"]
+image::stats/areaChartClickOnArea.png[width="790", align= "left", title="right panel update when clicking on area chart's area"]
 +
-image::areaChartClickDataPoint.png[width="790", align= "left", title="right panel update when clicking on area chart's data point"]
+image::stats/areaChartClickDataPoint.png[width="790", align= "left", title="right panel update when clicking on area chart's data point"]
 +
 ... *Module related tasks' weight* +
 +
-image::barChartClick.png[width="790", align= "left", title="right panel update when clicking on bar chart"]
+image::stats/barChartClick.png[width="790", align= "left", title="right panel update when clicking on bar chart"]
 . Dynamic updating
 +
 Each chart will update automatically when you perform `add` `edit` `delete` `sort`  `find` `archive` `done` `list` and `clear`
 +
 The color theme will also change randomly, hope you enjoy :)
 
-=== Timers
-
-The timer feature comprises several other features that manage time.
-Students can use it to plan their schedule, taking into account the various quizzes, assignments and deadlines they have.
-Features like that include:
-
-. An alarm that notifies you when a deadline is approaching
-. A stopwatch, which you can use to time how long you spent on the task
 
 === Calendar
 The calendar feature allows you to visualise your schedule by displaying the number of task you have for the month. This allows students to plan their time efficiently.
 
 The calendar feature can be toggled by clicking `Calendar` -> `Display`
 
-image::calender_init.png[width="790", align= "left", title="calendar interface"]
+image::calendar/calender_init.png[width="790", align= "left", title="calendar interface"]
 
 * `Previous` and `Next` buttons can be used to navigate through previous and next months respectively. `Home` button brings you to the current date, which is in a blue border.
 
 * Clicking on any date will show you all tasks for that day. Keep in mind that the *Index* shown in this panel cannot be used for other commands.
 
-image::calendar_after_choose_date.png[width="790"", align="left", title="calendar after clicking on a date"]
+image::calendar/calendar_after_choose_date.png[width="790"", align="left", title="calendar after clicking on a date"]
 
 === Profile
 
