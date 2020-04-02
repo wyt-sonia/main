@@ -33,7 +33,7 @@ If you can type fast, Study Buddy can get your module management done faster tha
 
 Currently, Study Buddy support both Windows and Mac systems. If you are interested, please jump to the <<Quick Start>> to get started.
 
-Hope you enjoy : )
+Hope you enjoy!
 
 == Quick Start
 
@@ -58,8 +58,7 @@ image::Ui.png[width="790", title="Study Buddy Dashboard"]
 
 
 [TIP]
-Study Buddy will analyze your input and reply accordingly. +
-Hope you enjoy!
+Study Buddy will analyze your input and reply accordingly.
 
 [[Features]]
 == Features
@@ -103,57 +102,13 @@ S- &#160;Here is the list of available commands: +
 &#160;&#160;&#160;&#160;&#160;&#160;User Guide: https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html
 
 ==== Add
+This command is for you to record a new task into Study Buddy.
 
-*Description:*
-
-. This command is for you to record a new task into Study Buddy.
-. Through the interaction, task's details will be collected.
+- Through the interaction, task's details will be collected.
 .. Required information: task name, task type, task deadline or duration
 .. Optional information: module, task description, task weight, estimated number of hours needed
-
-*Format:*
-
-****
-
-U- `add`
-
-S-  asks for module information and provides the list of available modules
-
-U- `MODULE CODE` | `INDEX NUMBER OF MODULE` | press kbd:[enter] to skip
-
-S- asks for task name
-
-U- `TASK NAME`
-
-S- asks for task type and provides the list of available task types
-
-U- `INDEX NUMBER OF TASK TYPE`
-
-S- asks for deadline or duration of the task
-
-U- `TASK DEADLINE OR DURATION`
-
-S- asks for task description
-
-U- `TASK DESCRIPTION` | press kbd:[enter] to skip
-
-S- asks for the weight of the task
-
-U- `TASK WEIGHT` | press kbd:[enter] to skip
-
-S- asks for estimated number of hours needed for this task
-
-U- `ESTIMATED NUMBER OF HOURS NEEDED` | press kbd:[enter] to skip
-
-S- provides the collected task details and asks for your confirmation to execute
-
-U- press kbd:[enter]
-
-S- Task added successfully!
-
-****
-
-*Input format requirement:*
+.. Input format requirement:
++
 [cols="1,2,1", options="header"]
 |===
 |Information Type |Format Requirement| Example
@@ -207,165 +162,113 @@ Meeting: +
 |Positive integer or float number
 |10.0
 |===
-
-Other constraints::
-. The application does not allow you to assign date time that has already passed to a task.
++
+.. Other constraints::
+... The application does not allow you to assign date time that has already passed to a task.
 It must be a time in the future.
-. For duration, the two dates should follow the order of `start date`-`end date`, the `end date` should
+... For duration, the two dates should follow the order of `start date`-`end date`, the `end date` should
 be later than `start date`.
-. The total weight of tasks under the same module is caped to 100.0.
-. All `index numbers` should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).
-.
+... The total weight of tasks under the same module is caped to 100.0.
+... All `index numbers` should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).
 
 [NOTE]
 The application allows for addition of duplicate tasks. It will however confirm with you if you are sure you want to add a duplicate.
 
-*Example:*
 
-****
+To `add`:
 
-U- `add`
+. Initiate the command using keyword `add`
+. Study Buddy should respond with `a list of available modules` as:
++
+image::add_module.png[width="600", title="Reponse to 'add'"]
++
+. You can link this task with a module by entering its `MODULE CODE` | `INDEX NUMBER OF MODULE` here
+, or you can press kbd:[enter] to skip. Here we use `1` (CS2101) as an example.
+. Study Buddy should respond with the module selected and the request of task name as:
++
+image::add_task_name.png[width="600", title="Asks for task's name"]
++
+. Here we use `new task` as an example.
+. Study Buddy should respond with the task name defined and the request of task type as:
++
+image::add_task_type.png[width="600", title="Asks for task's type"]
++
+. Here we use `1` (Assignment) as an example.
+. Study Buddy should respond with the task type defined and the request of task's date time information as:
++
+image::add_date_time.png[width="600", title="Asks for task's date time"]
++
+. Here we use `14:00 04/05/2020` as an example.
+. Study Buddy should respond with the date time defined and the request of task's description as:
++
+image::add_desc.png[width="600", title="Asks for task's description"]
++
+. Here we use `new task description` as an example.
+. Study Buddy should respond with the description defined and the request of task's weight as:
++
+image::add_weight.png[width="600", title="Asks for task's weight"]
++
+. Here we use `10` as an example.
+. Study Buddy should respond with the weight defined and the request of the estimated number of hours needed as:
++
+image::add_time_cost.png[width="600", title="Asks for estimated number of hours needed"]
++
+. Here we use `10` as an example.
+. Study Buddy should respond with the task details collected and the request of your confirmation to perform the command as:
++
+image::add_task_info_1.png[width="600", title="Asks for user conformation to add a new task"]
++
+image::add_task_info_2.png[width="600", title="Task details collected"]
++
+. Now, by pressing kbd:[enter] the new task will be added into your Study Buddy.
+. Study Buddy should respond as:
++
+image::add_result.png[width="600", title="New task added"]
 
-S- Please choose a Module for this task or press enter to skip. Index number and module code are both acceptable. +
-&#160;&#160;&#160;&#160;The Modules available are: +
-&#160;&#160;&#160;&#160;1.CS2101 Effective Communication for Computing Professionals +
-&#160;&#160;&#160;&#160;2.CS2103T Software Engineering
-
-U- `1`
-
-S- The module has been set as: CS2101 Effective Communication for Computing Professionals
-
-&#160;&#160;&#160;&#160;Please enter the task name.
-
-U- `Weekly Quiz 1`
-
-S- The name of task is set to: Weekly Quiz 1.
-
-&#160;&#160;&#160;&#160;Please choose the task type: +
-&#160;&#160;&#160;&#160;1. Assignment +
-&#160;&#160;&#160;&#160;2. Quiz +
-&#160;&#160;&#160;&#160;3. Presentation +
-&#160;&#160;&#160;&#160;4. Meeting +
-&#160;&#160;&#160;&#160;5. Exam +
-&#160;&#160;&#160;&#160;6. Others
-
-U- `2`
-
-S- The type of task has been set to: Quiz.
-
-&#160;&#160;&#160;&#160;Please enter the deadline/duration with format: HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy
-
-U- `12:00 10/04/2020-14:00 17/04/2020`
-
-S- The date and time is set to: 12:00 10/04/2020-14:00 17/04/2020
-
-&#160;&#160;&#160;&#160;Please enter task description or press enter to skip.
-
-U- `Read the topic first!!`
-
-S- The task description has been set as Read the topic first!!
-
-&#160;&#160;&#160;&#160;Please enter the weight of the task or press enter to skip.
-
-U- `5`
-
-S- The weight of the task has been set as 5
-
-&#160;&#160;&#160;&#160;Please enter the estimated number of hours cost or press enter to skip.
-
-U- `1`
-
-S- The estimated number of hours the task might take has been set as 1
-
-&#160;&#160;&#160;&#160;The task is ready to be added, press enter again to add the task:
-
-&#160;&#160;&#160;&#160;=========== TASK INFO =========== +
-&#160;&#160;&#160;&#160;Task Name :Weekly Quiz 1 +
-&#160;&#160;&#160;&#160;Task Code: CS2101 +
-&#160;&#160;&#160;&#160;Task Type: Quiz +
-&#160;&#160;&#160;&#160;Deadline/Duration: 12:00 10/04/2020-12:00 10/04/2020 +
-&#160;&#160;&#160;&#160;Task Description: Read the topic first!! +
-&#160;&#160;&#160;&#160;Task weight: 5.0 +
-&#160;&#160;&#160;&#160;Task Estimated Time Cost: 1.0 hrs
-
-U- `[enter]`
-
-S- Task added successfully!
-
-****
+[TIP]
+You can use `quit` command to quit from each step.
 
 ==== Edit
 
-*Description*
+This command is for you to edit an existing task.
+To indicate the task you want to edit, you need to provide its index number.
 
-. This command is for you to edit an existing task.
-. To indicate the task you want to edit, you need to provide its index number.
-
-image::deleteResponse2.png[width="790", title="Index number"]
-
-*Format*
-
-****
-
-U- `edit`
-
-S- asks for index number of target task
-
-U- `INDEX NUMBER OF THE TASK`
-
-S- asks for field you want to update and provides the editable fields
-
-U- `INDEX NUMBER OF THE FIELD`
-
-S- asks for the new value
-
-U- `NEW VALID VALUE` + `[enter]`
-
-S- Task edited successfully
-
-****
-
-[NOTE]
-Each new value and index number entered will be checked under the same constrain of add command. +
+image::deleteResponse2.png[width="600", title="Index number"]
 
 *Example:*
 
-****
-
-U- `edit`
-
-S- Please enter the index of the task that you wish to edit.
-
-U- `1`
-
-S- Please choose the field that you wish to edit for task: Sample Task Name.
-
-&#160;&#160;&#160;&#160;1. Task module +
-&#160;&#160;&#160;&#160;2. Task name +
-&#160;&#160;&#160;&#160;3. Task type +
-&#160;&#160;&#160;&#160;4. Task due date and time/ duration +
-&#160;&#160;&#160;&#160;5. Task description +
-&#160;&#160;&#160;&#160;6. Task weight +
-&#160;&#160;&#160;&#160;7. Estimated number of hour cost
-
-U- `2`
-
-S- You are now editing the Task name field +
-&#160;&#160;&#160;&#160;Please enter the task name.
-
-U- `New Task Name` + `[enter]`
-
-S- Task edited successfully
-
-****
+When you want to update some details of a task or there are some typo in an existing
+task. You can use this command to edit as you wish.
 
 [NOTE]
-After successfully edit the task, the related task record entry will update automatically.
+Each new value and index number entered will be checked under the same constrain of add command.
+
+To `edit`:
+
+. Initiate the command using keyword `edit`
+. Study Buddy should respond with:
++
+image::edit_index.png[width="600", title="Reponse to 'edit'"]
++
+. Type the index of the task you want to edit. here use `1` (Quiz 1) as an example.
+. The Study Buddy should respond with:
++
+image::edit_response_index.png[width="600", title="List of editable fields"]
++
+. Type the index of the field you want to edit, here use `2` (task name) as an example.
+. The Study Buddy should respond with:
++
+image::edit_response_task_name.png[width="600", title="Asks for new task name"]
++
+. Enter new task name, here use `new task` as an example.
+. The Study Buddy should respond as below with updated field.
++
+image::edit_result.png[width="600", title="Task edited"]
 
 ==== Clear
 This commands clears all data in the Study Buddy.
 
-[TIP]
+[WARNING]
 Be careful with this command! It will remove any data you may have entered into the Study Buddy and you cannot retrieve it.
 
 *Example:*
@@ -379,11 +282,11 @@ To `clear`:
 . Initiate the command using keyword `clear`
 . Study Buddy should respond with:
 +
-image::clear1.png[width="790", title="Reponse to 'clear'"]
-
+image::clear1.png[width="790", title="Response to 'clear'"]
++
 [NOTE]
 You can enter `quit` if you wish to go back!
-
++
 . Press `enter` again to confirm
 . Study Buddy has been cleared completely!
 +
@@ -404,11 +307,11 @@ To `delete`:
 . Initiate the command using keyword `delete`
 . Study Buddy should respond with:
 +
-image::deleteResponse2.png[width="790", title="Reponse to 'delete'"]
+image::deleteResponse2.png[width="790", title="Response to 'delete'"]
 
 . Type the index of the task you want to delete.
 +
-image::deleteResponse3.png[width="790", title="Reponse to delete index 1"]
+image::deleteResponse3.png[width="790", title="Response to delete index 1"]
 . Press `enter` again to confirm
 . Task has been deleted! You will notice that the task at the index you selected has disappeared from the list of tasks.
 +
@@ -417,6 +320,10 @@ image::deleteResponse1.png[width="790", title="Updated list (without deleted tas
 
 ==== Delete duplicates
 This commands deletes all duplicated tasks in the list.
+
+[NOTE]
+A task is considered duplicate when the name, type, module, description, weightage, estimated time cost and deadline are the same. (Status is not checked)
+
 
 *Example:*
 
@@ -429,7 +336,7 @@ To `delete duplicates`:
 . Initiate the command using keyword `delete duplicates`
 . Study Buddy should respond with:
 +
-image::deleteDuplicates1.png[width="790", title="Reponse to 'delete duplicates'"]
+image::deleteDuplicates1.png[width="790", title="Respons to 'delete duplicates'"]
 
 . Press `enter` again to confirm
 . Duplicate tasks have been deleted! You will notice that only one copy (most recent) of each task will be left in the list.
@@ -450,10 +357,10 @@ To `archive`:
 . Initiate the command using keyword `archive`
 . Study Buddy should respond with:
 +
-image::archive_1.png[width="790", title="Study Buddy's reponse to 'archive'"]
+image::archive_1.png[width="790", title="Study Buddy's respons to 'archive'"]
 . Type the index of the task you want to archive.
 +
-image::archive_2.png[width="790", title="Study Buddy's reponse to task index"]
+image::archive_2.png[width="790", title="Study Buddy's respons to task index"]
 . Press `enter` again to confirm
 . Task has been archived! You can view all archived task under the `StudyBuddy` -> `Archived Tasks` tab.
 +
@@ -586,7 +493,7 @@ Suppose you notice that the task "Submit UG" is not due "now" anymore because so
 . Initiate the refresh command using keyword `refresh`
 . Study Buddy should respond with:
 +
-image::refresh2.png[width="790", title="Reponse to 'refresh'"]
+image::refresh2.png[width="790", title="Respons to 'refresh'"]
 
 . Press `enter` again to confirm
 . Tasks have been refreshed!
@@ -613,10 +520,10 @@ To `exit`:
 . Initiate the command using keyword `bye`
 . Study Buddy should respond with:
 +
-image::exit1.png[width="790", title="Reponse to 'bye'"]
+image::exit1.png[width="790", title="Respons to 'bye'"]
 . Type 'yes' if you want to exit and anything else if you do not wish to exit.
 +
-image::exit2.png[width="790", title="Reponse to any command other than 'yes'"]
+image::exit2.png[width="790", title="Respons to any command other than 'yes'"]
 +
 In response to yes, the application should simply close.
 
@@ -661,9 +568,8 @@ image::duesoon2.png[width="790", align= "left", title="Due Soon List"]
 [NOTE]
 Time left is never displayed in days and minutes. Hence if the current time is 9:00 am on 01/04/2020 and the task deadline is 9:02 am on 02/04/2020, it will show time left as 1 day. (not 1 day and 2 minutes)
 
-=== Status Tags
-
-=== Interactive Command Prompt
+[IMPORTANT]
+Due soon list will never display finished tasks. If you unarchive a completed task, it will not appear in the due soon list.
 
 === Modules
 The Modules tab is an easy way for students to organise their task, homework and deadlines into various modules.
@@ -825,10 +731,6 @@ Each chart will update automatically when you perform `add` `edit` `delete` `sor
 +
 The color theme will also change randomly, hope you enjoy :)
 
-
-
-
-
 === Timers
 
 The timer feature comprises several other features that manage time.
@@ -850,11 +752,6 @@ image::calender_init.png[width="790", align= "left", title="calendar interface"]
 * Clicking on any date will show you all tasks for that day. Keep in mind that the *Index* shown in this panel cannot be used for other commands.
 
 image::calendar_after_choose_date.png[width="790"", align="left", title="calendar after clicking on a date"]
-
-=== UI
-
-You can customize the appearance of your app.
-You can change the colour of the background, as well as for different modules
 
 === Profile
 

@@ -33,7 +33,6 @@ public class DeleteDuplicateTaskCommand extends Command {
                         Task taskToDelete = lastShownList.get(i);
                         model.deleteTask(taskToDelete);
                         lastShownList = model.getFilteredTaskList();
-                        break;
                     } else {
                         continue;
                     }
