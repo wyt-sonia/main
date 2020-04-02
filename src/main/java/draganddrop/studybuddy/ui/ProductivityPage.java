@@ -12,21 +12,21 @@ import javafx.scene.layout.Region;
 /**
  * Profile page that contains usage statistics
  */
-public class ProfilePage extends UiPart<Region> {
-    private static final String FXML = "ProfilePage.fxml";
-    private final Logger logger = LogsCenter.getLogger(ProfilePage.class);
+public class ProductivityPage extends UiPart<Region> {
+    private static final String FXML = "ProductivityPage.fxml";
+    private final Logger logger = LogsCenter.getLogger(ProductivityPage.class);
     private ObservableList<Task> taskList;
 
     @javafx.fxml.FXML
-    private LineChart<Integer, Integer> profileLineChart;
+    private LineChart<Integer, Integer> productivityLineChart;
 
-    public ProfilePage(ObservableList<Task> taskList) {
+    public ProductivityPage(ObservableList<Task> taskList) {
         super(FXML);
         this.taskList = taskList;
         taskList.addListener(new ListChangeListener<Task>() {
             @Override
             public void onChanged(Change<? extends Task> t) {
-                generateProfilePage();
+                generateProductivityPage();
             }
         });
     }
@@ -35,15 +35,15 @@ public class ProfilePage extends UiPart<Region> {
      */
     private void setUpLineChart() {
 
-        if (!profileLineChart.getData().isEmpty()) {
-            profileLineChart.getData().clear();
+        if (!productivityLineChart.getData().isEmpty()) {
+            productivityLineChart.getData().clear();
         }
 
-        profileLineChart.getYAxis().setLabel("Task completed");
-        profileLineChart.getXAxis().setLabel("Day");
+        productivityLineChart.getYAxis().setLabel("Task completed");
+        productivityLineChart.getXAxis().setLabel("Day");
     }
 
-    public void generateProfilePage() {
+    public void generateProductivityPage() {
 
     }
 }
