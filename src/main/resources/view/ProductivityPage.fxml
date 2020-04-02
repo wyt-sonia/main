@@ -5,6 +5,7 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,14 +18,21 @@
         <tabs>
           <Tab text="Daily">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane fx:id="progressBar" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="dailyStatsLabel" layoutX="86.0" layoutY="26.0" text="0 / 5 tasks ">
+                        <Label fx:id="dailyStatsLabel" layoutX="253.0" layoutY="158.0" text="0 / 5 tasks ">
                            <font>
-                              <Font name="System Bold" size="12.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font></Label>
-                        <Label fx:id="streakLabel" layoutX="26.0" layoutY="54.0" text="You have completed your goal 0 days in a row." />
-                        <Label fx:id="preDailyStatsLabel" layoutX="26.0" layoutY="26.0" text="Daily goal: " />
+                        <Label fx:id="streakLabel" layoutX="38.0" layoutY="224.0" text="You have completed your goal 0 days in a row.">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
+                        <Label fx:id="preDailyStatsLabel" layoutX="182.0" layoutY="158.0" text="Daily goal: ">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
+                        <ProgressIndicator fx:id="progressIndicator" layoutX="197.0" layoutY="26.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="119.0" prefWidth="111.0" progress="0.0" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -34,7 +42,11 @@
                      <children>
                         <AnchorPane>
                            <children>
-                              <Label fx:id="weeklyStatsLabel" layoutX="14.0" layoutY="13.0" prefHeight="42.0" prefWidth="568.0" text="You have completed 12 tasks this week" />
+                              <Label fx:id="weeklyStatsLabel" layoutX="35.0" layoutY="12.0" prefHeight="42.0" prefWidth="568.0" text="You have completed 12 tasks this week">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="255.0" prefWidth="558.0">
@@ -56,15 +68,27 @@
               <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="prePointsLabel" layoutX="34.0" layoutY="41.0" text="You have" />
-                        <Label fx:id="rankLabel" layoutX="89.0" layoutY="20.0" text="Beginner">
+                        <Label fx:id="prePointsLabel" layoutX="34.0" layoutY="41.0" text="You have">
                            <font>
-                              <Font name="System Bold" size="12.0" />
+                              <Font size="14.0" />
+                           </font></Label>
+                        <Label fx:id="rankLabel" layoutX="97.0" layoutY="20.0" text="Beginner">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="preRankLabel" layoutX="34.0" layoutY="20.0" text="You are a" />
-                        <Label fx:id="ppLabel" layoutX="87.0" layoutY="41.0" text="0 PP" />
-                        <Label fx:id="nextRankLabel" layoutX="34.0" layoutY="57.0" text="20 PP more to become a Novice" />
+                        <Label fx:id="preRankLabel" layoutX="34.0" layoutY="20.0" text="You are a">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
+                        <Label fx:id="ppLabel" layoutX="95.0" layoutY="41.0" text="0 PP">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
+                        <Label fx:id="nextRankLabel" layoutX="34.0" layoutY="62.0" text="20 PP more to become a Novice">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
                         <AreaChart fx:id="ppAreaChart" layoutX="33.0" layoutY="84.0" prefHeight="260.0" prefWidth="520.0">
                           <xAxis>
                             <CategoryAxis side="BOTTOM" />
