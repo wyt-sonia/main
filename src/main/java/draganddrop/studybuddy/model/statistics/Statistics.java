@@ -1,6 +1,6 @@
 package draganddrop.studybuddy.model.statistics;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 import draganddrop.studybuddy.model.task.Task;
 
@@ -21,15 +21,24 @@ public class Statistics {
         this.scoreStats = scoreStats;
     }
 
+    // Completion Stats
     /**
      * Records the completed task
      *
      * @param completedTask the task that has just been completed
      */
     public void recordCompletedTask(Task completedTask) {
-        LocalDateTime timeOfCompletion = completedTask.getFinishDateTime();
         int dayIndex = StatsUtil.getDayIndex();
+        addScore(10);
         completionStats.complete(dayIndex);
+    }
+
+    /**
+     * Records the added task
+     * @param addedTask
+     */
+    public void recordAddedTask(Task addedTask) {
+        addScore(1);
     }
 
     /**
@@ -41,6 +50,21 @@ public class Statistics {
         return completionStats.getDailyCompleteCount(StatsUtil.getDayIndex());
     }
 
+    public int getCompleteCountThisWeek() {
+        List<Integer> weeklyCompleteCountList = completionStats.getWeeklyCompleteCountList(StatsUtil.getDayIndex());
+        return StatsUtil.sumIntegerList(weeklyCompleteCountList);
+    }
+
+    public List<Integer> getWeeklyCompleteCountList() {
+        return completionStats.getWeeklyCompleteCountList(StatsUtil.getDayIndex());
+    }
+
+    public int getOverdueCountThisWeek() {
+        List<Integer> weeklyOverdueCountList = overdueStats.getWeeklyOverdueCountList(StatsUtil.getDayIndex());
+        return StatsUtil.sumIntegerList(weeklyOverdueCountList);
+    }
+
+    // Overdue stats
     /**
      * Records an overdue task
      *
@@ -49,6 +73,7 @@ public class Statistics {
     public void recordOverdueTask(Task overdueTask) {
         int dayIndex = StatsUtil.getDayIndex();
         overdueStats.addOverdue(dayIndex);
+        addScore(-1);
     }
 
     /**
@@ -60,6 +85,7 @@ public class Statistics {
         return overdueStats.getDailyOverdueCount(StatsUtil.getDayIndex());
     }
 
+    // Score stats
     /**
      * get today's score
      * @return today's score
@@ -68,11 +94,47 @@ public class Statistics {
         return scoreStats.getDailyScore(StatsUtil.getDayIndex());
     }
 
+    public List<Integer> getWeeklyScores() {
+        return scoreStats.getWeeklyScores(StatsUtil.getDayIndex());
+    }
+
     /**
      * adds to the current score
      * @param scoreToAdd score to be added
      */
     public void addScore(int scoreToAdd) {
         scoreStats.addScore(StatsUtil.getDayIndex(), scoreToAdd);
+    }
+
+    /**
+     * get user's goal for number of tasks
+     * @return user's goal
+     */
+    public int getGoal() {
+        return generalStats.getGoal();
+    }
+
+    /**
+     * get user's current streak;
+     * @return user's streak
+     */
+    public int getStreak() {
+        return generalStats.getStreak();
+    }
+
+    /**
+     * return user's rank
+     * @return user's rank
+     */
+    public String getRank() {
+        return scoreStats.getRank();
+    }
+
+    /**
+     * return a String of the user's next rank
+     * @return user's next rank
+     */
+    public String getNextRank() {
+        return scoreStats.getNextRank();
     }
 }

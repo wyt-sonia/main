@@ -18,6 +18,7 @@ import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskType;
 import draganddrop.studybuddy.model.task.UniqueTaskList;
 
+import draganddrop.studybuddy.ui.ProductivityPage;
 import javafx.collections.ObservableList;
 
 /**
@@ -52,9 +53,11 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         overdueStats = new OverdueStats();
         generalStats = new GeneralStats();
         scoreStats = new ScoreStats();
+        // the singleton instance of statistics is created here
         statistics = new Statistics(generalStats, completionStats, overdueStats, scoreStats);
         UniqueTaskList.setStatistics(statistics);
         Task.setStatistics(statistics);
+        ProductivityPage.setStatistics(statistics);
     }
 
     public StudyBuddy() {
@@ -69,6 +72,10 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     }
 
     // Statistics
+    public Statistics getStatistics() {
+        return statistics;
+    }
+
     @Override
     public List<Integer> getCompleteCountList() {
         return completionStats.getCompleteCountList();
@@ -169,7 +176,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     }
 
     public void setOverdueList(List<Integer> overdueList) {
-        this.overdueStats.setOverdueList(overdueList);
+        this.overdueStats.setOverdueCountList(overdueList);
     }
 
     /**
@@ -181,6 +188,10 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         setDueSoonTasks(newData.getDueSoonList());
         setTasks(newData.getTaskList());
         setModuleList(newData.getModuleList());
+        setCompleteList(newData.getCompleteCountList());
+        setOverdueList(newData.getOverdueCountList());
+        generalStats.copy(newData.getGeneralStats());
+        scoreStats.copy(newData.getScoreStats());
     }
 
     //// task-level operations
