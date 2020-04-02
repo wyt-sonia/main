@@ -16,7 +16,8 @@ import java.text.ParseException;
 import draganddrop.studybuddy.commons.core.index.Index;
 import draganddrop.studybuddy.logic.commands.edit.UnarchiveTaskCommand;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
-import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.ArchiveTaskCommandException;
+import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.UnarchiveTaskCommandException;
+import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 
@@ -26,6 +27,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 public class UnarchiveTaskInteractivePrompt extends InteractivePrompt {
     public static final String QUIT_COMMAND_MSG = "Successfully quited from unarchive command.";
     private static final String END_OF_COMMAND_MSG = "Task retrieved successfully!";
+    private static final String REQUEST_INDEX_MSG = "Please enter the index number of task you wish to retrieve.";
     private int index;
 
     public UnarchiveTaskInteractivePrompt() {
@@ -49,12 +51,23 @@ public class UnarchiveTaskInteractivePrompt extends InteractivePrompt {
 
         case TASK_INDEX:
             try {
+                if (userInput.isBlank()) {
+                    throw new UnarchiveTaskCommandException("emptyInputError");
+                }
                 index = Integer.parseInt(userInput);
-                reply = "The task at index " + userInput + " will be retrieved. \n "
-                        + " Please press enter again to make the desired changes.";
+                if (index > Task.getArchivedTasks().size() || index <= 0) {
+                    throw new UnarchiveTaskCommandException("invalidIndexRangeError");
+                }
+                index = Integer.parseInt(userInput);
+                reply = "The task " + Task.getArchivedTasks().get(index - 1).getTaskName() + " will be retrieved. \n\n"
+                        + "Please press enter again to make the desired changes.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-            } catch (ArchiveTaskCommandException ex) {
-                reply = ex.getErrorMessage();
+            } catch (NumberFormatException ex) {
+                reply = (new UnarchiveTaskCommandException("wrongIndexFormatError")).getErrorMessage()
+                        + "\n\n" + REQUEST_INDEX_MSG;
+            } catch (UnarchiveTaskCommandException ex) {
+                reply = ex.getErrorMessage()
+                        + "\n\n" + REQUEST_INDEX_MSG;
             }
             break;
 

@@ -68,6 +68,7 @@ public class LogicManager implements Logic {
             storage.saveStudyBuddy(model.getStudyBuddy());
             // keep track of task list
             Task.updateCurrentTaskList(new ArrayList<Task>(getStudyBuddy().getTaskList()));
+            Task.updateArchivedTaskList(new ArrayList<>(getStudyBuddy().getArchivedList()));
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }

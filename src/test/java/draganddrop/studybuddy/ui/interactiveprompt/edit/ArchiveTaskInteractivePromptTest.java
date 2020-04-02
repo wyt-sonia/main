@@ -1,43 +1,57 @@
 package draganddrop.studybuddy.ui.interactiveprompt.edit;
 
+import static draganddrop.studybuddy.testutil.Assert.assertThrows;
+import static draganddrop.studybuddy.testutil.TypicalTasks.getSampleTasks;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import draganddrop.studybuddy.model.task.Task;
 
 /**
  * This is the test class for clear tasks interactive prompt
  */
 class ArchiveTaskInteractivePromptTest {
 
+    @BeforeEach
+    public void setup() {
+        ArrayList<Task> temp = new ArrayList<>(Arrays.asList(getSampleTasks()));
+        Task.updateCurrentTaskList(temp);
+    }
+
     @Test
-    public void interact_quitCommand_returnMessage() {
+    public void interactQuitCommandReturnMessage() {
         ArchiveTaskInteractivePrompt prompt = new ArchiveTaskInteractivePrompt();
         assertEquals(ArchiveTaskInteractivePrompt.QUIT_COMMAND_MSG, prompt.interact("quit"));
     }
 
     @Test
-    public void interact_firstInput_returnKeywordPrompt() {
+    public void interactFirstInputReturnKeywordPrompt() {
         ArchiveTaskInteractivePrompt prompt = new ArchiveTaskInteractivePrompt();
         assertEquals("Please enter the index number of task you wish to archive.",
                 prompt.interact(""));
     }
 
-    /*@Test
-    public void interact_secondInput_returnKeywordPrompt() {
+    @Test
+    public void interactSecondInputReturnKeywordPrompt() {
         ArchiveTaskInteractivePrompt prompt = new ArchiveTaskInteractivePrompt();
         prompt.interact("");
-        assertEquals("The task at index 1 will be archived. \n"
+        assertEquals("The task " + Task.getCurrentTasks().get(0).getTaskName() + " will be archived. \n\n"
                         + "Please press enter again to make the desired changes.",
                 prompt.interact("1"));
-    }*/
+    }
 
-    /*@Test
-    public void interact_thirdInput_returnPrompt() {
+    @Test
+    public void interactThirdInputReturnPrompt() {
         ArchiveTaskInteractivePrompt prompt = new ArchiveTaskInteractivePrompt();
         prompt.interact("");
         prompt.interact("1");
         assertThrows(NullPointerException.class, ()->prompt.interact(""));
-    }*/
+    }
 
 
 
