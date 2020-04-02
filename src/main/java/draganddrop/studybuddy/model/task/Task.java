@@ -296,16 +296,20 @@ public class Task implements Comparable<Task> {
      * @return true if it is due soon, else false
      */
     public boolean isDueSoon() {
-        df = new SimpleDateFormat("HH:mm dd/MM/yyyy");
-        dateObj = new Date();
-        long difference = 0;
-        try {
-            difference = df.parse(this.getTimeString()).getTime() - dateObj.getTime();
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if (getTaskStatus() != TaskStatus.FINISHED) {
+            df = new SimpleDateFormat("HH:mm dd/MM/yyyy");
+            dateObj = new Date();
+            long difference = 0;
+            try {
+                difference = df.parse(this.getTimeString()).getTime() - dateObj.getTime();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            float minsBetween = (difference / MINUTES_DIVISOR);
+            return minsBetween <= MINUTES_IN_WEEK && minsBetween >= 0;
+        } else {
+            return false;
         }
-        float minsBetween = (difference / MINUTES_DIVISOR);
-        return minsBetween <= MINUTES_IN_WEEK && minsBetween >= 0;
     }
 
     @Override
