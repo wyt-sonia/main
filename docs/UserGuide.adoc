@@ -33,7 +33,7 @@ If you can type fast, Study Buddy can get your module management done faster tha
 
 Currently, Study Buddy support both Windows and Mac systems. If you are interested, please jump to the <<Quick Start>> to get started.
 
-Hope you enjoy : )
+Hope you enjoy!
 
 == Quick Start
 
@@ -58,8 +58,7 @@ image::Ui.png[width="790", title="Study Buddy Dashboard"]
 
 
 [TIP]
-Study Buddy will analyze your input and reply accordingly. +
-Hope you enjoy!
+Study Buddy will analyze your input and reply accordingly.
 
 [[Features]]
 == Features
