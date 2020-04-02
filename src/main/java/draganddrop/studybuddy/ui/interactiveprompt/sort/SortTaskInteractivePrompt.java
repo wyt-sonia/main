@@ -50,7 +50,7 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
                     throw new SortTaskCommandException("invalidOptionRangeError");
                 }
                 reply = "The task  will be sorted by " + sort_option[option - 1] + ". \n"
-                    + " Please click enter again to check the sorted list.";
+                    + "Please click enter again to check the sorted list.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (NumberFormatException ex) {
                 reply = (new DeleteTaskCommandException("wrongOptionFormatError")).getErrorMessage();
@@ -80,11 +80,4 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
         super.setEndOfCommand(true);
     }
 
-    /**
-     * pending.
-     */
-    private String dateTime() {
-        String result = "";
-        return result;
-    }
 }
