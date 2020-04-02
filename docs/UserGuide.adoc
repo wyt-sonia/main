@@ -608,7 +608,7 @@ image::module/module_7.png[]
 Click on `Create`. A prompt will show up at the bottom of the screen.
 Key in the name of your module. The name of this module cannot be the same as your existing modules.
 
-image::module/module_8.png[title = "setting module name as "New Module"]
+image::module/module_8.png[title = "setting module name as 'New Module'"]
 
 Now key in your Module code. Your Module code should have a 2-3 letter prefix, a 4-digit number, followed
 by a single postfix.
