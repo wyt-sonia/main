@@ -109,12 +109,9 @@
                         <StackPane fx:id="dueSoonListPanelPlaceholder" prefWidth="${mainTitle.parent.width}" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" />
                     </VBox>
                 </HBox>
-<<<<<<< HEAD
-                <StackPane fx:id="profilePageHolder" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-=======
+
                 <StackPane fx:id="productivityPageHolder" maxHeight="1.7976931348623157E308"
                            maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
->>>>>>> aa0446e57d5bb828bdd9f828806ad4bef06efa4b
                     <padding>
                         <Insets left="10.0" right="10.0" />
                     </padding>
