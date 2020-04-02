@@ -69,6 +69,7 @@ class JsonSerializableStudyBuddy {
      */
     public StudyBuddy toModelType() throws IllegalValueException {
         StudyBuddy studyBuddy = new StudyBuddy();
+
         for (JsonAdaptedTask jsonAdaptedTask : tasks) {
             Task task = jsonAdaptedTask.toModelType();
             if (task.isStatusExpired()) {
@@ -87,10 +88,12 @@ class JsonSerializableStudyBuddy {
             }
             studyBuddy.addModule(module);
         }
+
         studyBuddy.setCompleteList(this.completeCountList);
         studyBuddy.setOverdueList(this.overdueCountList);
         studyBuddy.getGeneralStats().copy(this.generalStats);
         studyBuddy.getScoreStats().copy(this.scoreStats);
+
 
         Task.updateCurrentTaskList(new ArrayList<>(studyBuddy.getTaskList()));
         Task.updateArchivedTaskList(new ArrayList<>(studyBuddy.getArchivedList()));
