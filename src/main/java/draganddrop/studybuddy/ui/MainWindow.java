@@ -6,11 +6,11 @@ import draganddrop.studybuddy.commons.core.GuiSettings;
 import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.logic.Logic;
 import draganddrop.studybuddy.logic.commands.CommandResult;
-import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
-import draganddrop.studybuddy.logic.parser.exceptions.ParseException;
 import draganddrop.studybuddy.ui.box.CalendarBox;
 import draganddrop.studybuddy.ui.box.CommandBox;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
+import draganddrop.studybuddy.ui.interactiveprompt.add.CreateModuleInteractivePrompt;
+import draganddrop.studybuddy.ui.interactiveprompt.edit.EditModInteractivePrompt;
 import draganddrop.studybuddy.ui.panel.DueSoonListPanel;
 import draganddrop.studybuddy.ui.panel.ModuleListPanel;
 import draganddrop.studybuddy.ui.panel.TaskListPanel;
@@ -57,6 +57,7 @@ public class MainWindow extends UiPart<Stage> {
     private HelpWindow helpWindow;
     private ModuleListPanel moduleListPanel;
     private ProfilePage profilePage;
+    private CommandBox commandBox;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -198,7 +199,7 @@ public class MainWindow extends UiPart<Stage> {
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getStudyBuddyFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
-        CommandBox commandBox = new CommandBox(this::executeCommand);
+        commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 
@@ -335,6 +336,27 @@ public class MainWindow extends UiPart<Stage> {
         setMainTitleText(MODULE);
     }
 
+    /**
+     * on clicked: leads to createModuleInteractivePrompt.
+     */
+    @FXML
+    private void handleCreateMod() {
+        handleShowModules();
+        commandBox.run(new CreateModuleInteractivePrompt());
+        commandBox.handleCommandEntered();
+
+    }
+
+    /**
+     * on clicked: leads to EditModInteractivePrompt.
+     */
+    @FXML
+    private void handleEditMod() {
+        handleShowModules();
+        commandBox.run(new EditModInteractivePrompt());
+        commandBox.handleCommandEntered();
+    }
+
 
     /**
      * handles calendar to be shown in TaskListHolder.
@@ -366,9 +388,7 @@ public class MainWindow extends UiPart<Stage> {
      *
      * @see Logic#execute(String)
      */
-    private CommandResult executeCommand(InteractivePrompt currentInteractivePrompt, String commandText)
-        throws CommandException, ParseException {
-
+    private CommandResult executeCommand(InteractivePrompt currentInteractivePrompt, String commandText) {
         currentInteractivePrompt.setLogic(logic);
         String reply = currentInteractivePrompt.interact(commandText);
         resultDisplay.setFeedbackToUser(reply);

@@ -211,6 +211,21 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void changeModName(Module oldMod, Module newMod) throws ModuleCodeException {
+        studyBuddy.changeModuleName(oldMod, newMod);
+    }
+
+    @Override
+    public void changeModCode(Module oldMod, Module newMod) throws ModuleCodeException {
+        studyBuddy.changeModuleCode(oldMod, newMod);
+    }
+
+    @Override
+    public void deleteMod(Module mod) throws ModuleCodeException {
+        studyBuddy.deleteMod(mod);
+    }
+
+    @Override
     public void setTask(Task target, Task editedTask) {
         CollectionUtil.requireAllNonNull(target, editedTask);
 

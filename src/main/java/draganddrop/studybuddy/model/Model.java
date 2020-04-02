@@ -164,6 +164,11 @@ public interface Model {
 
     void addMod(Module mod);
 
+    void changeModName(Module oldMod, Module newMod) throws ModuleCodeException;
+
+    void changeModCode(Module oldMod, Module newMod) throws ModuleCodeException;
+
+    void deleteMod(Module mod) throws ModuleCodeException;
 
     /**
      * Returns an unmodifiable view of the filtered task list
