@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.AreaChart?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ProgressIndicator?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TabPane prefHeight="400.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -20,19 +14,20 @@
             <content>
               <AnchorPane fx:id="progressBar" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="dailyStatsLabel" layoutX="253.0" layoutY="158.0" text="0 / 5 tasks ">
+                        <Label fx:id="dailyStatsLabel" layoutX="293.0" layoutY="195.0" text="0 / 5 tasks ">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
-                        <Label fx:id="streakLabel" layoutX="38.0" layoutY="224.0" text="You have completed your goal 0 days in a row.">
+                        <Label fx:id="streakLabel" layoutX="43.0" layoutY="273.0" text="You have completed your goal 0 days in a row.">
                            <font>
                               <Font size="14.0" />
                            </font></Label>
-                        <Label fx:id="preDailyStatsLabel" layoutX="182.0" layoutY="158.0" text="Daily goal: ">
+                        <Label fx:id="preDailyStatsLabel" layoutX="222.0" layoutY="195.0" text="Daily goal: ">
                            <font>
                               <Font size="14.0" />
                            </font></Label>
-                        <ProgressIndicator fx:id="progressIndicator" layoutX="197.0" layoutY="26.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="119.0" prefWidth="111.0" progress="0.0" />
+                        <ProgressIndicator fx:id="progressIndicator" layoutX="226.0" layoutY="38.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="146.0" prefWidth="134.0" progress="0.0" styleClass="u-red-progress" />
+                        <Circle fx:id="progressCentre" fill="WHITE" layoutX="293.0" layoutY="102.0" radius="48.0" stroke="#bc002a" strokeType="INSIDE" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -42,7 +37,7 @@
                      <children>
                         <AnchorPane>
                            <children>
-                              <Label fx:id="weeklyStatsLabel" layoutX="35.0" layoutY="12.0" prefHeight="42.0" prefWidth="568.0" text="You have completed 12 tasks this week">
+                              <Label fx:id="weeklyStatsLabel" layoutX="35.0" layoutY="18.0" prefHeight="42.0" prefWidth="568.0" text="You have completed 12 tasks this week">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
