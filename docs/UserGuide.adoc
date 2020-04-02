@@ -68,11 +68,11 @@ Hope you enjoy!
 *Command Format*
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-* S and U stand for Study Buddy and User respectively.
-* When a line is preceded by S, it implies that it is a reply displayed by Study Buddy.
-* When a line is preceded by U, it implies that it is a value that must be entered by the user.
-* [enter] indicates hitting the enter key on your keyboard.
-* [exits] indicates that application has closed
+* *S* and *U* stand for *Study Buddy* and *User* respectively.
+* When a line is preceded by *S*, it implies that it is a *reply displayed by Study Buddy*.
+* When a line is preceded by *U*, it implies that it is a value that must be *entered by the user*.
+* *[enter]* indicates *hitting the enter key on your keyboard*.
+* *[exits]* indicates that *application has closed*.
 ====
 
 [NOTE]
@@ -88,7 +88,7 @@ S- list of commands
 
 *Description:*
 
-. This function displays a list of commands that you can use.
+. This function displays a list of interactive commands that you can use.
 . It also provides a link to this document, (our user guide) for your convenience.
 
 *Example:*

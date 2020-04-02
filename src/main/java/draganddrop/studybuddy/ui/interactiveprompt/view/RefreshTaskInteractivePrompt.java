@@ -73,13 +73,4 @@ public class RefreshTaskInteractivePrompt extends InteractivePrompt {
         super.setEndOfCommand(true);
     }
 
-    /**
-     * pending.
-     */
-    private String dateTime() {
-        String result = "";
-
-
-        return result;
-    }
 }

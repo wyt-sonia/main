@@ -288,11 +288,4 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             return "This task is not assigned to any modules.";
         }
     }
-
-    /**
-     * pending.
-     */
-    private String dateTime() {
-        return "";
-    }
 }

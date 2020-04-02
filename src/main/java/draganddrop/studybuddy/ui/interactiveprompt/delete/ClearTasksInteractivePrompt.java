@@ -63,12 +63,4 @@ public class ClearTasksInteractivePrompt extends InteractivePrompt {
         this.reply = msg;
         super.setEndOfCommand(true);
     }
-
-    /**
-     * pending.
-     */
-    private String dateTime() {
-        String result = "";
-        return result;
-    }
 }

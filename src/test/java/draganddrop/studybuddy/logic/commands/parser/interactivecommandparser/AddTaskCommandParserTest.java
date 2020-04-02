@@ -13,7 +13,7 @@ public class AddTaskCommandParserTest {
     private AddTaskCommandParser parser = new AddTaskCommandParser();
 
     @Test
-    public void parse_name_check() {
+    public void addTaskCommandParserTestParseNameCheck() {
         assertThrows(AddTaskCommandException.class, () -> {
             parser.parseName("Thistasknameismorethan20characterslong"); });
         assertThrows(AddTaskCommandException.class, () -> {
@@ -22,7 +22,7 @@ public class AddTaskCommandParserTest {
     }
 
     @Test
-    public void parse_description_check() {
+    public void addTaskCommandParserTestParseDescriptionCheck() {
         assertThrows(AddTaskCommandException.class, () -> {
             parser.parseDescription("Thistaskdescriptionismorethan300characterslong"
                     + "Thistaskdescriptionismorethan300characterslong"
@@ -39,7 +39,7 @@ public class AddTaskCommandParserTest {
     }
 
     @Test
-    public void parse_date_check() {
+    public void addTaskCommandParserTestParseDateCheck() {
         assertThrows(AddTaskCommandException.class, () -> {
             parser.parseDateTime("Thisisnotavaliddate", TaskType.Assignment); });
         assertThrows(AddTaskCommandException.class, () -> {
@@ -51,49 +51,49 @@ public class AddTaskCommandParserTest {
     }
 
     @Test
-    public void parse_assignmentInvalidDate_check() {
+    public void addTaskCommandParserTestParseAssignmentInvalidDateCheck() {
         String userInput = "18:0023/03/2080";
         assertThrows(AddTaskCommandException.class, () -> {
             parser.parseDateTime(userInput, TaskType.Assignment); });
     }
 
     @Test
-    public void parse_quizInvalidDate_check() {
+    public void addTaskCommandParserTestParseQuizInvalidDateCheck() {
         String userInput = "18:00 23/03/2080 to 19:00 23/03/2080";
         assertThrows(AddTaskCommandException.class, () -> {
             parser.parseDateTime(userInput, TaskType.Quiz); });
     }
 
     @Test
-    public void parse_examInvalidDate_check() {
+    public void addTaskCommandParserTestParseExamInvalidDateCheck() {
         String userInput = "18:00 23/03/2080 to 19:00 23/03/2080";
         assertThrows(AddTaskCommandException.class, () -> {
             parser.parseDateTime(userInput, TaskType.Exam); });
     }
 
     @Test
-    public void parse_meetingInvalidDate_check() {
+    public void addTaskCommandParserTestParseMeetingInvalidDateCheck() {
         String userInput = "18:00 23/03/2080 to 19:00 23/03/2080";
         assertThrows(AddTaskCommandException.class, () -> {
             parser.parseDateTime(userInput, TaskType.Meeting); });
     }
 
     @Test
-    public void parse_presentationInvalidDate_check() {
+    public void addTaskCommandParserTestParsePresentationInvalidDateCheck() {
         String userInput = "18:00 23/03/2080 to 19:00 23/03/2080";
         assertThrows(AddTaskCommandException.class, () -> {
             parser.parseDateTime(userInput, TaskType.Presentation); });
     }
 
     @Test
-    public void parse_othersInvalidDate_check() {
+    public void addTaskCommandParserTestParseOthersInvalidDateCheck() {
         String userInput = "18:00 23/03/2080 to 19:00 23/03/2080";
         assertThrows(AddTaskCommandException.class, () -> {
             parser.parseDateTime(userInput, TaskType.Others); });
     }
 
     @Test
-    public void parse_invalidType_check() {
+    public void addTaskCommandParserTestParseInvalidTypeCheck() {
         String userInput = "10";
         assertThrows(AddTaskCommandException.class, () -> {
             parser.parseType(userInput, TaskType.getTaskTypes().length); });
@@ -102,14 +102,14 @@ public class AddTaskCommandParserTest {
     }
 
     @Test
-    public void parse_validType_check() {
+    public void addTaskCommandParserTestParseValidTypeCheck() {
         String userInput = "1";
         assertEquals(TaskType.Assignment,
             parser.parseType(userInput, TaskType.getTaskTypes().length));
     }
 
     @Test
-    public void parse_weight_check() {
+    public void addTaskCommandParserTestParseWeightCheck() {
         String userInput = "1000.0";
         assertThrows(AddTaskCommandException.class, () -> {
             parser.parseWeight(userInput); });
@@ -118,7 +118,7 @@ public class AddTaskCommandParserTest {
     }
 
     @Test
-    public void parse_estimatedTime_check() {
+    public void addTaskCommandParserTestParseEstimatedTimeCheck() {
         String userInput = "-6.0";
         assertThrows(AddTaskCommandException.class, () -> {
             parser.parseWeight(userInput); });

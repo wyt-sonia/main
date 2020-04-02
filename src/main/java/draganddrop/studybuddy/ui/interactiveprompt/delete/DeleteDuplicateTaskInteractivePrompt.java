@@ -72,13 +72,4 @@ public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
         super.setEndOfCommand(true);
     }
 
-    /**
-     * pending.
-     */
-    private String dateTime() {
-        String result = "";
-
-
-        return result;
-    }
 }
