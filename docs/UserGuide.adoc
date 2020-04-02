@@ -661,7 +661,7 @@ Now you have 3 options. You can choose to:
 
 Key in the index of your option.
 
-====== 1. Change Module Name
+===== 1. Change Module Name
 
 image::module/module_16.png[]
 
@@ -672,7 +672,7 @@ image::module/module_17.png[title = "Module BA1001's name has changed from 'CS' 
 
 Module name changed!
 
-====== 2. Change Module Code
+===== 2. Change Module Code
 
 image::module/module_18.png[]
 
@@ -683,7 +683,7 @@ image::module/module_19.png[title = "Module code BA1001 has changed to CS3230"]
 
 Module code changed!
 
-====== 2. Delete Module
+===== 3. Delete Module
 
 image::module/module_20.png[]
 
