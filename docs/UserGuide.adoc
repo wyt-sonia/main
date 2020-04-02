@@ -539,9 +539,9 @@ When the application is closed and re-opened, you should be able to see all the 
 Your menu where all the things you want to see from the app is right here.
 By default, it shows the following:
 
-. The impending task from the task list, sorted by timing
-. A chart of the amount of time you spend on each of your modules
-. Existing stopwatches that are already running
+. `All Task` The impending task from the task list, sorted by timing
+. `Tasks Due Soon` Similar to `All Task`, but it shows tasks with upcoming deadlines.
+
 
 === Due Soon Tasks
 
@@ -570,6 +570,123 @@ Time left is never displayed in days and minutes. Hence if the current time is 9
 
 [NOTE]
 Due soon list will never display finished tasks. If you unarchive a completed task, it will not appear in the due soon list.
+
+=== Modules
+The Modules tab is an easy way for students to organise their task, homework and deadlines into various modules.
+
+image::Module-bar.png[title = "`Modules` in the menu bar"]
+
+By default, the Modules tab shows the following:
+
+.. *Overview*. This tab shows all the modules you will be taking for this semester.
+
+.. *No Module Allocated*. This tab shows the list of tasks that has not yet been allocated to any module. By default,
+all tasks will show up here if you have not allocated any tasks to the modules.
+
+==== Navigation
+
+To navigate to the modules page, click on `Modules` in the menu bar.
+
+image::Module-bar-2.png[]
+
+
+Then click on `Show Modules`. The module page should show up.
+
+image::Modules-page.png[]
+
+The leftmost tab shows the *overview* of all your modules. it displays the module's name and their code.
+
+image::[]
+
+The rightmost tab shows the list of task that has not been allocated to any modules.
+
+image::[]
+
+The tabs in the middle are modules that you have added to the modules page.
+
+
+==== Functions
+==== Create Modules
+
+To create a module, click on `Modules` in the menu bar.
+
+image::[]
+
+Click on `Create`. A prompt will show up at the bottom of the screen.
+Key in the name of your module. The name of this module cannot be the same as your existing modules.
+
+image::[]
+
+Now key in your Module code. Your Module code should have a 2-3 letter prefix, a 4-digit number, followed
+by a single postfix.
+```
+Correct Module Codes:
+LSM1303
+CS2040C
+IS1103
+MA1521
+
+Incorrect Module Codes:
+CSSS1234    - Prefix is too long
+C0001       - Prefix is too short
+ZZ12345     - number is more than 4 digits
+A1111XX     - Postfix is too long
+
+```
+
+image::[]
+
+
+Press enter one more time to confirm.
+
+image::[]
+
+Congratulations, you have added a module to your modules page!
+
+
+==== Edit Modules
+
+To create a module, click on `Modules` in the menu bar.
+
+image::[]
+
+Click on `Edit`. A prompt will show up at the bottom of the screen.
+Key in the code of the module that you want to edit.
+
+image::[]
+
+Now you have 3 options. You can choose to:
+
+. Change Module name.
+. Change Module code.
+. Delete Module.
+
+Key in the index of your option.
+
+====== 1. Change Module Name
+
+Now key in your new module name.
+
+image::[]
+
+Module name changed!
+
+====== 2. Change Module Code
+
+Now key in your new module code. Make sure it follows the correct format
+as written in 3.7.3.
+
+image::[]
+
+Module code changed!
+
+====== 2. Delete Module
+
+image::[]
+
+Press Enter again to confirmed.
+
+Module deleted! All existing task in this module will be moved to `No Module Allocated` tab.
 
 === Statistics
 
