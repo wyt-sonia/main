@@ -15,8 +15,6 @@ import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.statistics.GeneralStats;
 import draganddrop.studybuddy.model.statistics.ScoreStats;
 import draganddrop.studybuddy.model.task.Task;
-import draganddrop.studybuddy.model.task.UniqueTaskList;
-import draganddrop.studybuddy.ui.ProductivityPage;
 
 /**
  * An Immutable StudyBuddy that is serializable to JSON format.
