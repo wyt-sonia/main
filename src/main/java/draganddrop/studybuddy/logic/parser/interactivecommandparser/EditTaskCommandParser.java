@@ -47,9 +47,7 @@ public class EditTaskCommandParser {
      */
     public static String parseDescription(String userInput) throws EditTaskCommandException {
         String result = "";
-        if (userInput.isBlank()) {
-            throw new EditTaskCommandException("emptyInputError");
-        } else if (userInput.length() > 300) {
+        if (userInput.length() > 300) {
             throw new EditTaskCommandException("taskDescriptionLengthError");
         } else {
             result = userInput.trim();

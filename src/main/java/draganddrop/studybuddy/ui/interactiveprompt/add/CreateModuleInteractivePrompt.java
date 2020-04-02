@@ -17,7 +17,7 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
     public static final String MODULE_CODE_FORMAT = "Please key in your module code to include a 2-3 letter prefix,"
             + " a 4-digit number,"
             + "then a postfix (Optional).\n"
-            + "E.g. BA1001\n        CS2030J     \n        LSM2040C";
+            + "E.g. BA1001\n       CS2030J     \n       LSM2040C";
     static final String QUIT_COMMAND_MSG = "Successfully quited from create mod command.";
 
     private Module module;

@@ -24,10 +24,10 @@ public class EditModInteractivePrompt extends InteractivePrompt {
     static final String QUIT_COMMAND_MSG = "Successfully quited from editing module.";
     static final String REQUIRED_MODULE_MSG = "Please key in a module code from the list.\n";
     static final String CHOICES = "What would you like to do? Key in the index of the action"
-            + "that you wish to perform.\n"
-            + "1. Change Name\n"
-            + "2. Change Module code\n"
-            + "3. Delete Module\n";
+        + "that you wish to perform.\n"
+        + "1. Change Name\n"
+        + "2. Change Module code\n"
+        + "3. Delete Module\n";
 
     private Module oldModule;
     private Module newModule;
@@ -55,12 +55,12 @@ public class EditModInteractivePrompt extends InteractivePrompt {
                 boolean hasModule = logic.getFilteredModuleList().contains(oldModule);
                 if (!hasModule || oldModule.equals(new EmptyModule())) { //Ensure emptyMod is never touched
                     reply = "Module does not exist in Study Buddy! Key in another module, or click 'Modules/"
-                            + "Create' in the menu bar.";
+                        + "Create' in the menu bar.";
                 } else {
                     oldModule = logic.getFilteredModuleList().get(logic.getFilteredModuleList().indexOf(oldModule));
                     newModule.setModuleName(oldModule.getModuleName());
                     reply = "Module retrieved\n" + newModule.getModuleName() + ": " + newModule.getModuleCode() + "\n"
-                            + CHOICES;
+                        + CHOICES;
                     currentTerm = InteractivePromptTerms.PICK;
                 }
             } catch (ModuleCodeException ex) {
@@ -82,7 +82,7 @@ public class EditModInteractivePrompt extends InteractivePrompt {
                 case DELETE_MODULE:
                     currentTerm = InteractivePromptTerms.DELETE_MOD;
                     reply = "Are you sure you want to delete this module? All task in this module will be "
-                            + "relocated to 'No Module Allocated' tab. Press enter to proceed";
+                        + "relocated to 'No Module Allocated' tab. Press enter to proceed";
                     break;
                 default:
                     reply = CHOICES;
@@ -98,9 +98,9 @@ public class EditModInteractivePrompt extends InteractivePrompt {
                 try {
                     newModule.setModuleName(userInput);
                     logic.executeCommand(new EditModCommand(oldModule, newModule,
-                            InteractivePromptTerms.CHANGE_MOD_NAME));
+                        InteractivePromptTerms.CHANGE_MOD_NAME));
                     reply = "Your module " + oldModule.getModuleCode().toString() + " is now renamed "
-                            + newModule.getModuleName();
+                        + newModule.getModuleName();
                     endInteract(END_OF_COMMAND_MSG + reply);
                 } catch (CommandException | ParseException ex) {
                     reply = ex.getMessage();
@@ -114,9 +114,9 @@ public class EditModInteractivePrompt extends InteractivePrompt {
                 try {
                     newModule.setModuleCode(userInput);
                     logic.executeCommand(new EditModCommand(oldModule, newModule,
-                            InteractivePromptTerms.CHANGE_MOD_CODE));
+                        InteractivePromptTerms.CHANGE_MOD_CODE));
                     reply = "Your module " + oldModule.getModuleCode().toString() + " is now coded "
-                            + newModule.getModuleCode().toString();
+                        + newModule.getModuleCode().toString();
                     endInteract(END_OF_COMMAND_MSG + reply);
                 } catch (ModuleCodeException | CommandException | ParseException ex) {
                     reply = ex.getMessage();
