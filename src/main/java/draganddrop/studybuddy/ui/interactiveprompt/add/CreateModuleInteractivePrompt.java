@@ -16,7 +16,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType;
  * An interactive prompt for creating modules.
  */
 public class CreateModuleInteractivePrompt extends InteractivePrompt {
-    public final static String QUIT_COMMAND_MSG = "Successfully quited from create mod command.";
+    public static final String QUIT_COMMAND_MSG = "Successfully quited from create mod command.";
     private Module module;
 
     public CreateModuleInteractivePrompt() {
