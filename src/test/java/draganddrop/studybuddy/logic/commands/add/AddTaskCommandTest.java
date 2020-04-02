@@ -65,7 +65,7 @@ class AddTaskCommandTest {
         assertFalse(add1command.equals(1));
 
         //null -> returns false
-        assertFalse(add1command.equals(null));
+        assertFalse(add1command == null);
 
         //diff task -> returns false
         assertFalse(add1command.equals(add2command));

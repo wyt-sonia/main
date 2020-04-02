@@ -21,8 +21,8 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType;
  * pending.
  */
 public class ClearTasksInteractivePrompt extends InteractivePrompt {
-    static final String END_OF_COMMAND_MSG = "Tasks cleared successfully!";
-    static final String QUIT_COMMAND_MSG = "Successfully cleared all tasks.";
+    public static final String QUIT_COMMAND_MSG = "Successfully cleared all tasks.";
+    private static final String END_OF_COMMAND_MSG = "Tasks cleared successfully!";
 
     public ClearTasksInteractivePrompt() {
         super();
@@ -31,7 +31,7 @@ public class ClearTasksInteractivePrompt extends InteractivePrompt {
 
     @Override
     public String interact(String userInput) {
-        if (userInput.equals("quit")) {
+        if ("quit".equals(userInput)) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
         }
@@ -62,13 +62,5 @@ public class ClearTasksInteractivePrompt extends InteractivePrompt {
     public void endInteract(String msg) {
         this.reply = msg;
         super.setEndOfCommand(true);
-    }
-
-    /**
-     * pending.
-     */
-    private String dateTime() {
-        String result = "";
-        return result;
     }
 }

@@ -25,9 +25,9 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
  * pending.
  */
 public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
-    static final String END_OF_COMMAND_MSG = "Task archived successfully!";
-    static final String QUIT_COMMAND_MSG = "Successfully quited from archive command.";
-    static final String REQUEST_INDEX_MSG = "Please enter the index number of task you wish to archive.";
+    public static final String QUIT_COMMAND_MSG = "Successfully quited from archive command.";
+    private static final String END_OF_COMMAND_MSG = "Task archived successfully!";
+    private static final String REQUEST_INDEX_MSG = "Please enter the index number of task you wish to archive.";
     private int index;
 
     public ArchiveTaskInteractivePrompt() {
@@ -37,7 +37,7 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
 
     @Override
     public String interact(String userInput) {
-        if (userInput.equals("quit")) {
+        if ("quit".equals(userInput)) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
         }
@@ -90,15 +90,5 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
     public void endInteract(String reply) {
         this.reply = reply;
         super.setEndOfCommand(true);
-    }
-
-    /**
-     * pending.
-     */
-    private String dateTime() {
-        String result = "";
-
-
-        return result;
     }
 }

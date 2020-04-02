@@ -18,8 +18,8 @@ import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.E
  */
 public class ExitTaskInteractivePrompt extends InteractivePrompt {
 
-    static final String END_OF_COMMAND_NO_EXIT_MSG = "Thank you for staying!";
-    static final String END_OF_COMMAND_MSG = "Exit successfully!";
+    private static final String END_OF_COMMAND_NO_EXIT_MSG = "Thank you for staying!";
+    private static final String END_OF_COMMAND_MSG = "Exit successfully!";
 
     private String reply;
     private InteractivePromptTerms currentTerm;
@@ -66,15 +66,5 @@ public class ExitTaskInteractivePrompt extends InteractivePrompt {
     public void endInteract(String msg) {
         this.reply = msg;
         super.setEndOfCommand(true);
-    }
-
-    /**
-     * pending.
-     */
-    private String dateTime() {
-        String result = "";
-
-
-        return result;
     }
 }

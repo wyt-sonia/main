@@ -24,8 +24,8 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
  * pending.
  */
 public class UnarchiveTaskInteractivePrompt extends InteractivePrompt {
-    static final String END_OF_COMMAND_MSG = "Task retrieved successfully!";
-    static final String QUIT_COMMAND_MSG = "Successfully quited from unarchive command.";
+    public static final String QUIT_COMMAND_MSG = "Successfully quited from unarchive command.";
+    private static final String END_OF_COMMAND_MSG = "Task retrieved successfully!";
     private int index;
 
     public UnarchiveTaskInteractivePrompt() {
@@ -35,7 +35,7 @@ public class UnarchiveTaskInteractivePrompt extends InteractivePrompt {
 
     @Override
     public String interact(String userInput) {
-        if (userInput.equals("quit")) {
+        if ("quit".equals(userInput)) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
         }
@@ -80,14 +80,4 @@ public class UnarchiveTaskInteractivePrompt extends InteractivePrompt {
         super.setEndOfCommand(true);
     }
 
-
-    /**
-     * pending.
-     */
-    private String dateTime() {
-        String result = "";
-
-
-        return result;
-    }
 }

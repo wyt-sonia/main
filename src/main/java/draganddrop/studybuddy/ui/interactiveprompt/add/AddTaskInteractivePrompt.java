@@ -32,21 +32,22 @@ import javafx.collections.ObservableList;
  * A interactive prompt for adding new task.
  */
 public class AddTaskInteractivePrompt extends InteractivePrompt {
-    static final String END_OF_COMMAND_MSG = "Task added successfully!";
-    static final String END_OF_COMMAND_DUPLICATE_MSG = "Task will not be added! Key in your next command :)";
-    static final String REQUIRED_MODULE_MSG = "Please choose a Module for this task or press enter to skip. "
+    public static final String REQUIRED_MODULE_MSG = "Please choose a Module for this task or press enter to skip. "
         + "Index number and module code are both acceptable.\n";
-    static final String REQUIRED_TASK_NAME_MSG = "Please enter the task name.";
-    static final String REQUIRED_TASK_TYPE_MSG = "Please choose the task type:\n" + TaskType.getTypeString();
-    static final String REQUIRED_DATE_TIME_MSG = "Please enter the deadline/duration with format: ";
-    static final String REQUIRED_TASK_DESCRIPTION_MSG = "Please enter task description or press enter to skip.\n";
-    static final String REQUIRED_TASK_WEIGHT_MSG = "Please enter the weight of the task or press enter to skip.\n";
-    static final String REQUIRED_TASK_ESTIMATED_TIME_COST_MSG = "Please enter the estimated number of hours cost "
+    public static final String QUIT_COMMAND_MSG = "Successfully quited from add task command.";
+    private static final String END_OF_COMMAND_MSG = "Task added successfully!";
+    private static final String END_OF_COMMAND_DUPLICATE_MSG = "Task will not be added! Key in your next command :)";
+    private static final String REQUIRED_TASK_NAME_MSG = "Please enter the task name.";
+    private static final String REQUIRED_TASK_TYPE_MSG = "Please choose the task type:\n" + TaskType.getTypeString();
+    private static final String REQUIRED_DATE_TIME_MSG = "Please enter the deadline/duration with format: ";
+    private static final String REQUIRED_TASK_DESCRIPTION_MSG = "Please enter task description "
         + "or press enter to skip.\n";
-    static final String TASK_INFO_HEADER = "The task is ready to be added, press enter again to add the task:\n\n"
-        + "=========== TASK INFO ===========\n";
-
-    static final String QUIT_COMMAND_MSG = "Successfully quited from add task command.";
+    private static final String REQUIRED_TASK_WEIGHT_MSG = "Please enter the weight of the task "
+        + "or press enter to skip.\n";
+    private static final String REQUIRED_TASK_ESTIMATED_TIME_COST_MSG = "Please enter the estimated "
+        + "number of hours cost or press enter to skip.\n";
+    private static final String TASK_INFO_HEADER = "The task is ready to be added, press enter "
+        + "again to add the task:\n\n=========== TASK INFO ===========\n";
 
     private String moduleListString = "";
     private ObservableList<Module> modules;
@@ -61,7 +62,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
 
     @Override
     public String interact(String userInput) {
-        if (userInput.equals("quit")) {
+        if ("quit".equals(userInput)) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
         }
@@ -70,7 +71,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         case INIT:
             this.reply = REQUIRED_MODULE_MSG;
             moduleListString = "The Modules available are: \n";
-            this.modules = logic.getFilteredModuleList();
+            this.modules = logic.getStudyBuddy().getModuleList();
             constructModuleList(modules);
             this.reply += moduleListString;
             currentTerm = InteractivePromptTerms.TASK_MODULE;
@@ -116,7 +117,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 TaskType taskType = AddTaskCommandParser.parseType(userInput, TaskType.getTaskTypes().length);
                 task.setTaskType(taskType);
 
-                this.reply = "The type of task has been set to: " + taskType.toString() + ".\n"
+                this.reply = "The type of task has been set to: " + taskType.toString() + ".\n\n"
                     + REQUIRED_DATE_TIME_MSG;
                 if (taskType.equals(TaskType.Assignment)) {
                     this.reply += "HH:mm dd/MM/yyyy";
@@ -125,7 +126,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 }
                 currentTerm = InteractivePromptTerms.TASK_DATETIME;
             } catch (NumberFormatException ex) {
-                reply = (new AddTaskCommandException("wrongIndexFormat")).getErrorMessage()
+                reply = (new AddTaskCommandException("wrongIndexFormatError")).getErrorMessage()
                     + "\n\n" + REQUIRED_TASK_TYPE_MSG;
             } catch (AddTaskCommandException ex) {
                 reply = ex.getErrorMessage()
@@ -137,7 +138,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             try {
                 LocalDateTime[] dateTimes = AddTaskCommandParser.parseDateTime(userInput, task.getTaskType());
                 task.setDateTimes(dateTimes);
-
                 if (dateTimes.length == 1) {
                     userInput = TimeParser.getDateTimeString(dateTimes[0]);
                 } else {
@@ -158,7 +158,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             this.reply = "";
             try {
                 if (!userInput.isBlank()) {
-                    task.setTaskDescription(userInput);
+                    task.setTaskDescription(AddTaskCommandParser.parseDescription(userInput));
                     this.reply = "The task description has been set as " + userInput + "\n\n";
                 }
                 this.reply += REQUIRED_TASK_WEIGHT_MSG;
@@ -173,13 +173,15 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 this.reply = "";
                 if (!userInput.isBlank()) {
                     double weight = AddTaskCommandParser.parseWeight(userInput);
-                    ObservableList<Task> tempTasks = logic.getFilteredTaskList();
-                    tempTasks.addAll(logic.getFilteredArchivedTaskList());
-                    double moduleWeightSum = tempTasks
+                    double moduleWeightSum = logic.getStudyBuddy().getTaskList()
                         .stream()
                         .filter(t -> t.getModule().equals(task.getModule()))
                         .mapToDouble(Task::getWeight).sum();
-                    if (moduleWeightSum + weight <= 100) {
+                    double moduleWeightSumArchived = logic.getStudyBuddy().getArchivedList()
+                        .stream()
+                        .filter(t -> t.getModule().equals(task.getModule()))
+                        .mapToDouble(Task::getWeight).sum();
+                    if (moduleWeightSum + moduleWeightSumArchived + weight <= 100) {
                         task.setWeight(weight);
                     } else {
                         throw new AddTaskCommandException("moduleWeightOverloadError");
@@ -259,6 +261,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
 
     /**
      * hides empty module from the moduleList.
+     *
      * @param moduleList
      */
     private void constructModuleList(ObservableList<Module> moduleList) {
@@ -273,21 +276,16 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
 
     /**
      * modify reply if module is empty.
+     *
      * @param module
      * @return
      */
     private String checkAndModifyReply(Module module) {
         if (!module.equals(new EmptyModule())) {
             return "The module has been set as: " + module.getModuleCode() + " "
-                    + module.getModuleName();
+                + module.getModuleName();
         } else {
             return "This task is not assigned to any modules.";
         }
-    }
-    /**
-     * pending.
-     */
-    private String dateTime() {
-        return "";
     }
 }

@@ -12,6 +12,7 @@ import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studybuddy.model.statistics.CompletionStats;
 import draganddrop.studybuddy.model.statistics.GeneralStats;
 import draganddrop.studybuddy.model.statistics.OverdueStats;
+import draganddrop.studybuddy.model.statistics.ScoreStats;
 import draganddrop.studybuddy.model.statistics.Statistics;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskType;
@@ -33,6 +34,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     private final OverdueStats overdueStats;
     private final GeneralStats generalStats;
     private final Statistics statistics;
+    private final ScoreStats scoreStats;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -49,7 +51,8 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         completionStats = new CompletionStats();
         overdueStats = new OverdueStats();
         generalStats = new GeneralStats();
-        statistics = new Statistics(generalStats, completionStats, overdueStats);
+        scoreStats = new ScoreStats();
+        statistics = new Statistics(generalStats, completionStats, overdueStats, scoreStats);
         UniqueTaskList.setStatistics(statistics);
         Task.setStatistics(statistics);
     }
@@ -81,6 +84,10 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         return generalStats;
     }
 
+    @Override
+    public ScoreStats getScoreStats() {
+        return scoreStats;
+    }
     //// list overwrite operations
 
     /**
@@ -181,6 +188,10 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
      */
     public void archiveTask(Task p) {
         tasks.remove(p);
+        if (this.getDueSoonList().contains(p)) {
+            removeDueSoonTask(p);
+            sortDueSoonTasks();
+        }
         archivedTasks.add(p);
     }
 
@@ -198,6 +209,9 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
      */
     public void unarchiveTask(Task p) {
         archivedTasks.remove(p);
+        if (p.isDueSoon()) {
+            addDueSoonTask(p);
+        }
         tasks.add(p);
     }
 
@@ -321,7 +335,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     }
 
     public void setModuleInTask(Task target, Module module) throws ModuleCodeException {
-        if (moduleList.contains(module)) {
+        if (moduleList.contains(module) || module.equals(new EmptyModule())) {
             tasks.setTaskMod(target, module);
         } else {
             throw new ModuleCodeException("Module does not exist in studyBuddy!");

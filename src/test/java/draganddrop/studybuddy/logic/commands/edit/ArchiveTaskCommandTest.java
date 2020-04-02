@@ -72,7 +72,7 @@ class ArchiveTaskCommandTest {
         assertFalse(archiveFirstCommand.equals(1));
 
         // null -> returns false
-        assertFalse(archiveFirstCommand.equals(null));
+        assertFalse(archiveFirstCommand == null);
 
         // different person -> returns false
         assertFalse(archiveFirstCommand.equals(archiveSecondCommand));

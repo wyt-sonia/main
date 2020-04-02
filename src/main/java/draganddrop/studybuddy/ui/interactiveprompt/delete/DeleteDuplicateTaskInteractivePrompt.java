@@ -23,8 +23,8 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
  * pending.
  */
 public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
-    static final String END_OF_COMMAND_MSG = "Duplicated task deleted successfully!";
-    static final String QUIT_COMMAND_MSG = "Successfully quited from delete duplication command.";
+    public static final String QUIT_COMMAND_MSG = "Successfully quited from delete duplication command.";
+    private static final String END_OF_COMMAND_MSG = "Duplicated task deleted successfully!";
 
     public DeleteDuplicateTaskInteractivePrompt() {
         super();
@@ -33,7 +33,7 @@ public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
 
     @Override
     public String interact(String userInput) {
-        if (userInput.equals("quit")) {
+        if ("quit".equals(userInput)) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
         }
@@ -72,13 +72,4 @@ public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
         super.setEndOfCommand(true);
     }
 
-    /**
-     * pending.
-     */
-    private String dateTime() {
-        String result = "";
-
-
-        return result;
-    }
 }

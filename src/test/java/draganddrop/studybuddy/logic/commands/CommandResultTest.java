@@ -20,7 +20,7 @@ public class CommandResultTest {
         assertTrue(commandResult.equals(commandResult));
 
         // null -> returns false
-        assertFalse(commandResult.equals(null));
+        assertFalse(commandResult == null);
 
         // different types -> returns false
         assertFalse(commandResult.equals(0.5f));

@@ -13,9 +13,7 @@ import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskStatus;
 import draganddrop.studybuddy.model.task.TaskType;
-
 import draganddrop.studybuddy.ui.UiPart;
-
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -72,9 +70,11 @@ public class TaskSummaryPanel extends UiPart<Region> {
         selectedTaskListPanelPlaceholder.setBackground(
             new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        setUpAreaChart();
-        setUpPieChart();
-        setUpBarChart();
+        if (tempTasks != null && tempTasks.size() > 0) {
+            setUpAreaChart();
+            setUpPieChart();
+            setUpBarChart();
+        }
 
         observableCurrentTasks.addListener(new ListChangeListener<Task>() {
             @Override
@@ -145,6 +145,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
     private void setUpAreaChart() {
         taskSummaryAreaChart.setTitle("Summary of Module Related Tasks' Deadline/Start Date");
         taskSummaryAreaChart.getYAxis().setLabel("No of Tasks");
+        taskSummaryAreaChart.getYAxis().setAutoRanging(true);
         taskSummaryAreaChart.getXAxis().setLabel("Deadline/Start Date");
 
         if (!taskSummaryAreaChart.getData().isEmpty()) {
@@ -224,6 +225,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
 
         taskSummaryStackedBarChart.setTitle("Summary of Module Related Tasks' Weight");
         taskSummaryStackedBarChart.getYAxis().setLabel("Weight %");
+        taskSummaryStackedBarChart.getYAxis().setAutoRanging(false);
         taskSummaryStackedBarChart.getXAxis().setLabel("Modules");
 
         if (!taskSummaryStackedBarChart.getData().isEmpty()) {
@@ -234,13 +236,15 @@ public class TaskSummaryPanel extends UiPart<Region> {
             XYChart.Series weightDataSeries = new XYChart.Series();
             weightDataSeries.setName(taskType.toString());
             modules.forEach(m -> {
-                ObservableList<Task> filteredTasks = tempTasks
-                    .filtered(t -> t.getModule().equals(m) && t.getTaskType().equals(taskType));
-                XYChart.Data tempData = new XYChart.Data(m.getModuleCode().toString(),
-                    filteredTasks.stream().mapToDouble(Task::getWeight).sum());
-                tempData.setExtraValue(m.getModuleCode().toString() + "//" + taskType.toString());
-                weightDataSeries.getData().add(tempData);
-                datas.add(tempData);
+                if (!m.equals(new EmptyModule())) {
+                    ObservableList<Task> filteredTasks = tempTasks
+                        .filtered(t -> t.getModule().equals(m) && t.getTaskType().equals(taskType));
+                    XYChart.Data tempData = new XYChart.Data(m.getModuleCode().toString(),
+                        filteredTasks.stream().mapToDouble(Task::getWeight).sum());
+                    tempData.setExtraValue(m.getModuleCode().toString() + "//" + taskType.toString());
+                    weightDataSeries.getData().add(tempData);
+                    datas.add(tempData);
+                }
             });
             dataSeries.add(weightDataSeries);
         }
@@ -253,7 +257,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
             d.getNode().setOnMouseClicked(e -> {
                 selectedTasks = tempTasks
                     .filtered(task -> task.getModule().getModuleCode().toString().equals(moduleCode)
-                    && task.getTaskType().toString().equals(taskType));
+                        && task.getTaskType().toString().equals(taskType));
                 TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
                 selectedTaskListPanelTitle.setText(taskType + " under " + moduleCode);
                 selectedTaskListPanelPlaceholder.getChildren().clear();

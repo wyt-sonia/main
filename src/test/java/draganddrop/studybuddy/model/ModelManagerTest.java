@@ -94,7 +94,6 @@ public class ModelManagerTest {
     public void equals() {
         StudyBuddy studyBuddy = new StudyBuddyBuilder().withTask(TypicalTasks.getSampleTasks()[0])
                 .withTask(TypicalTasks.getSampleTasks()[1]).build();
-        StudyBuddy differentStudyBuddy = new StudyBuddy();
         UserPrefs userPrefs = new UserPrefs();
 
         // same values -> returns true
@@ -106,7 +105,7 @@ public class ModelManagerTest {
         assertTrue(modelManager.equals(modelManager));
 
         // null -> returns false
-        assertFalse(modelManager.equals(null));
+        assertFalse(modelManager == null);
 
         // different types -> returns false
         assertFalse(modelManager.equals(5));

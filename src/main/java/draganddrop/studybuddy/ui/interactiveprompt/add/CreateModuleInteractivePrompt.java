@@ -19,6 +19,7 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
             + "then a postfix (Optional).\n"
             + "E.g. BA1001\n        CS2030J     \n        LSM2040C";
     static final String QUIT_COMMAND_MSG = "Successfully quited from create mod command.";
+
     private Module module;
 
     public CreateModuleInteractivePrompt() {
@@ -29,7 +30,7 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
 
     @Override
     public String interact(String userInput) {
-        if (userInput.equals("quit")) {
+        if ("quit".equals(userInput)) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
         }
