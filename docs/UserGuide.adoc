@@ -379,7 +379,7 @@ image::archive_3.png[width="790", title="View archived tasks"]
 .. Task Name
 .. Creation Date & Time
 
-image::beforeSort.png[width="790", title="All Task Panel"]
+image::beforeSort.png[width="790", title="All tasks panel"]
 
 *Format*
 
