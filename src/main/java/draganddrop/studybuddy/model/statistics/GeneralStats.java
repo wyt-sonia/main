@@ -5,14 +5,11 @@ package draganddrop.studybuddy.model.statistics;
  */
 public class GeneralStats {
     private int goal;
-
-    private GeneralStats(int goal) {
-        super();
-        this.goal = goal;
-    }
+    private int streak;
 
     public GeneralStats() {
         super();
+        this.goal = 5;
     }
 
     /**
@@ -20,6 +17,7 @@ public class GeneralStats {
      */
     public void copy(GeneralStats generalStats) {
         this.goal = generalStats.getGoal();
+        this.streak = generalStats.getStreak();
     }
 
     public void setGoal(int goal) {
@@ -29,4 +27,13 @@ public class GeneralStats {
     public int getGoal() {
         return goal;
     }
+
+    public int getStreak() {
+        return streak;
+    }
+
+    public void incrementStreak() {
+        streak += 1;
+    }
+
 }

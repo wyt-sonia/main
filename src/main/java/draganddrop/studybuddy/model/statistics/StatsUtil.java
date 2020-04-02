@@ -2,8 +2,12 @@ package draganddrop.studybuddy.model.statistics;
 
 import static java.time.temporal.TemporalAdjusters.firstDayOfYear;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Contains utility methods for handling statistics
@@ -40,5 +44,19 @@ public class StatsUtil {
     public static boolean isLate(LocalDateTime dueDate) {
         LocalDateTime now = LocalDateTime.now();
         return ChronoUnit.DAYS.between(now, dueDate) < 0;
+    }
+
+    public static int sumIntegerList(List<Integer> integerList) {
+        return integerList.stream()
+            .mapToInt(x -> x)
+            .sum();
+    }
+
+    public static List<String> getDayList() {
+        List<String> initialList = new ArrayList<>(
+            List.of("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"));
+        DayOfWeek dayOfWeek = DayOfWeek.from(LocalDateTime.now());
+        int dayOfWeekValue = dayOfWeek.getValue();
+        return initialList.subList(dayOfWeekValue, dayOfWeekValue + 7);
     }
 }

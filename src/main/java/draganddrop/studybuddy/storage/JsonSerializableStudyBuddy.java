@@ -15,6 +15,8 @@ import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.statistics.GeneralStats;
 import draganddrop.studybuddy.model.statistics.ScoreStats;
 import draganddrop.studybuddy.model.task.Task;
+import draganddrop.studybuddy.model.task.UniqueTaskList;
+import draganddrop.studybuddy.ui.ProductivityPage;
 
 /**
  * An Immutable StudyBuddy that is serializable to JSON format.
@@ -69,6 +71,7 @@ class JsonSerializableStudyBuddy {
      */
     public StudyBuddy toModelType() throws IllegalValueException {
         StudyBuddy studyBuddy = new StudyBuddy();
+
         for (JsonAdaptedTask jsonAdaptedTask : tasks) {
             Task task = jsonAdaptedTask.toModelType();
             if (task.isStatusExpired()) {
@@ -87,10 +90,12 @@ class JsonSerializableStudyBuddy {
             }
             studyBuddy.addModule(module);
         }
+
         studyBuddy.setCompleteList(this.completeCountList);
         studyBuddy.setOverdueList(this.overdueCountList);
         studyBuddy.getGeneralStats().copy(this.generalStats);
         studyBuddy.getScoreStats().copy(this.scoreStats);
+
 
         Task.updateCurrentTaskList(new ArrayList<>(studyBuddy.getTaskList()));
         Task.updateArchivedTaskList(new ArrayList<>(studyBuddy.getArchivedList()));

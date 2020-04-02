@@ -41,11 +41,7 @@ public class CompletionStats {
      */
     public void complete(int dayIndex) {
         int currentCount = completeCountList.get(dayIndex);
-        if (currentCount != 0) {
-            completeCountList.set(dayIndex, 1);
-        } else {
-            completeCountList.set(dayIndex, currentCount + 1);
-        }
+        completeCountList.set(dayIndex, currentCount + 1);
     }
 
     /**
@@ -63,7 +59,7 @@ public class CompletionStats {
      * @param dayIndex the day of interest
      * @return a list containing the number of tasks completed daily over the past 7 days
      */
-    public List<Integer> getWeeklyCompleteCount(int dayIndex) {
+    public List<Integer> getWeeklyCompleteCountList(int dayIndex) {
         return completeCountList.subList(dayIndex - 6, dayIndex + 1);
     }
 }

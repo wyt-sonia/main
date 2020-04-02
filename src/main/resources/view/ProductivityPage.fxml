@@ -1,34 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="400.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Daily">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="dailyStatsLabel" layoutX="86.0" layoutY="26.0" text="0 / 5 tasks ">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <Label fx:id="streakLabel" layoutX="26.0" layoutY="54.0" text="You have completed your goal 0 days in a row." />
+                        <Label fx:id="preDailyStatsLabel" layoutX="26.0" layoutY="26.0" text="Daily goal: " />
+                     </children></AnchorPane>
             </content>
           </Tab>
           <Tab text="Weekly">
-          </Tab>
-          <Tab text="Score">
+               <content>
+                  <VBox prefHeight="392.0" prefWidth="600.0">
+                     <children>
+                        <AnchorPane>
+                           <children>
+                              <Label fx:id="weeklyStatsLabel" layoutX="14.0" layoutY="13.0" prefHeight="42.0" prefWidth="568.0" text="You have completed 12 tasks this week" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="54.0" prefWidth="600.0">
+                           <children>
+                              <Label fx:id="preWeeklyProgression" layoutX="14.0" layoutY="16.0" prefHeight="30.0" prefWidth="155.0" text="Task completed in last 7 days" underline="true" />
+                           </children>
+                        </AnchorPane>
+                        <BarChart fx:id="weeklyBarChart" prefHeight="98.0" prefWidth="600.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children>
+                  </VBox>
+               </content></Tab>
+          <Tab text="Productivity Points">
               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="prePointsLabel" layoutX="34.0" layoutY="41.0" text="You have" />
+                        <Label fx:id="rankLabel" layoutX="89.0" layoutY="20.0" text="Beginner">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="preRankLabel" layoutX="34.0" layoutY="20.0" text="You are a" />
+                        <Label fx:id="ppLabel" layoutX="87.0" layoutY="41.0" text="0 PP" />
+                        <Label fx:id="preProgressionLabel" layoutX="35.0" layoutY="88.0" text="Productivity Points Progression" />
+                        <Label fx:id="nextRankLabel" layoutX="34.0" layoutY="57.0" text="20 PP more to become a Novice" />
+                     </children></AnchorPane>
               </content>
           </Tab>
         </tabs>
       </TabPane>
-      <AreaChart>
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </AreaChart>
    </children>
 </VBox>
