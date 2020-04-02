@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.statistics.GeneralStats;
+import draganddrop.studybuddy.model.statistics.ScoreStats;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.testutil.TypicalTasks;
 
@@ -78,6 +79,11 @@ public class StudyBuddyTest {
 
         @Override
         public List<Integer> getOverdueCountList() {
+            return null;
+        }
+
+        @Override
+        public ScoreStats getScoreStats() {
             return null;
         }
 
