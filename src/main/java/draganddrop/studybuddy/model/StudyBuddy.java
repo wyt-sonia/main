@@ -287,7 +287,10 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
      */
     public void addTask(Task t) {
         tasks.add(t);
-        updateAddDueSoon(t);
+        if (t.isDueSoon()) {
+            dueSoonTasks.add(t);
+            sortDueSoonTasks();
+        }
     }
 
     public void completeTask(Task target) {

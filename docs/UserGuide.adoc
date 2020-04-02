@@ -560,7 +560,7 @@ image::duesoon/duesoon2.png[width="790", align= "left", title="Due Soon List"]
 [NOTE]
 Time left is never displayed in days and minutes. Hence if the current time is 9:00 am on 01/04/2020 and the task deadline is 9:02 am on 02/04/2020, it will show time left as 1 day. (not 1 day and 2 minutes)
 
-[IMPORTANT]
+[NOTE]
 Due soon list will never display finished tasks. If you unarchive a completed task, it will not appear in the due soon list.
 
 === Modules
