@@ -449,6 +449,55 @@ image::archive_3.png[width="790", title="View archived tasks"]
 * Remember to use the index in the *Archived Task* instead of *All Tasks*
 ****
 
+
+==== Sort
+
+*Description*
+
+. This command is for you to reorder the task list in *All Tasks* panel.
+. Currently you can sort tasks by their
+.. Deadline / Task Start Date
+.. Task Name
+.. Creation Date & Time
+
+image::beforeSort.png[width="790", title="All Task Panel"]
+
+*Format*
+
+U- `sort`
+
+S- asks for sorting term and provides the list of available sorting terms
+
+U- `INDEX NUMBER OF SORTING TERM`
+
+S- asks for your confirmation
+
+U- `[enter]`
+
+S- Task sorted successfully!
+
+*Example*
+
+U- `sort`
+
+S- Please choose the sort keyword: +
+&#160;&#160;&#160;&#160;1. Deadline / Task Start Date +
+&#160;&#160;&#160;&#160;2. Task Name +
+&#160;&#160;&#160;&#160;3. Creation Date & Time
+
+U- `1`
+
+S- The task  will be sorted by Deadline / Task Start Date. +
+&#160;&#160;&#160;&#160;Please click enter again to check the sorted list.
+
+U- `[enter]`
+
+S- Task sorted successfully!
+
+[TIP]
+The `All Tasks Panel` will update automatically after successfully sort the tasks.
+
+
 ==== Find
 
 Finds tasks whose names contain any of the given keywords. +
