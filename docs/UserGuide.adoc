@@ -113,6 +113,8 @@ S- &#160;Here is the list of available commands: +
 
 *Format:*
 
+****
+
 U- `add`
 
 S-  asks for module information and provides the list of available modules
@@ -149,6 +151,7 @@ U- press kbd:[enter]
 
 S- Task added successfully!
 
+****
 
 *Input format requirement:*
 [cols="1,2,1", options="header"]
@@ -219,6 +222,8 @@ The application allows for addition of duplicate tasks. It will however confirm 
 
 *Example:*
 
+****
+
 U- `add`
 
 S- Please choose a Module for this task or press enter to skip. Index number and module code are both acceptable. +
@@ -287,15 +292,20 @@ U- `[enter]`
 
 S- Task added successfully!
 
+****
 
 ==== Edit
 
 *Description*
 
-This command is for you to edit an existing task.
+. This command is for you to edit an existing task.
+. To indicate the task you want to edit, you need to provide its index number.
 
+image::deleteResponse2.png[width="790", title="Index number"]
 
 *Format*
+
+****
 
 U- `edit`
 
@@ -313,10 +323,14 @@ U- `NEW VALID VALUE` + `[enter]`
 
 S- Task edited successfully
 
-[TIP]
+****
+
+[NOTE]
 Each new value and index number entered will be checked under the same constrain of add command. +
 
 *Example:*
+
+****
 
 U- `edit`
 
@@ -343,9 +357,10 @@ U- `New Task Name` + `[enter]`
 
 S- Task edited successfully
 
-[TIP]
-After successfully edit the task, the related task record entry will update automatically.
+****
 
+[NOTE]
+After successfully edit the task, the related task record entry will update automatically.
 
 ==== Clear
 This commands clears all data in the Study Buddy.
@@ -464,6 +479,8 @@ image::beforeSort.png[width="790", title="All Task Panel"]
 
 *Format*
 
+****
+
 U- `sort`
 
 S- asks for sorting term and provides the list of available sorting terms
@@ -476,7 +493,11 @@ U- `[enter]`
 
 S- Task sorted successfully!
 
+****
+
 *Example*
+
+****
 
 U- `sort`
 
@@ -494,9 +515,10 @@ U- `[enter]`
 
 S- Task sorted successfully!
 
+****
+
 [TIP]
 The `All Tasks Panel` will update automatically after successfully sort the tasks.
-
 
 ==== Find
 
@@ -645,15 +667,50 @@ Time left is never displayed in days and minutes. Hence if the current time is 9
 
 === Statistics
 
-On the Statistics page, your usage statistics are displayed.
-You can use it to see how you can improve your time management and productivity.
-These include:
+. Purpose
 
-. Number of tasks completed this week
-.. Number of deadlines met this week
-.. Number of deadlines missed this week
-. Time spent on work this week
-. Longest streak of deadlines met
+.. The Statistics page provides summary of tasks' different aspects, such as:
+
+- Task Status
+- Module related tasks' deadline/ start date
+- Module related tasks' weight
+
+
+.. It utilizes different charts to make the information more visualized and easy to understand.
+
+. Navigate to Statistics Page
+- You can press the Statistics button in the menu bar to navigate to Statistics Page
++
+image::entryOfStatistics.png[width="790", align= "left", title="Statistics entry"]
+
+.  UI introduction & Charts Provided
+.. After press Statistics button from menu bar, the Statistics page will display as its initial status.
++
+image::initStatisticsPage.png[width="790", align= "left", title="Statistics initial page"]
+.. The left panel displays different charts, and the right panel will display related tasks when you clicking on the chart.
++
+... *Task Status*
++
+image::pieChartClick.png[width="790", align= "left", title="right panel update when clicking on pie chart"]
++
+... *Module related tasks' deadline/ start date*
++
+image::areaChartClickOnArea.png[width="790", align= "left", title="right panel update when clicking on area chart's area"]
++
+image::areaChartClickDataPoint.png[width="790", align= "left", title="right panel update when clicking on area chart's data point"]
++
+... *Module related tasks' weight* +
++
+image::barChartClick.png[width="790", align= "left", title="right panel update when clicking on bar chart"]
+. Dynamic updating
++
+Each chart will update automatically when you perform `add` `edit` `delete` `sort`  `find` `archive` `done` `list` and `clear`
++
+The color theme will also change randomly, hope you enjoy :)
+
+
+
+
 
 === Timers
 
@@ -690,16 +747,6 @@ The profile page shows the detail information of the user, such as:
 * Goal CAP
 * Task history
 * etc
-
-=== Piechart
-
-The application provides a summary of the information below using different piechart.
-These include:
-
-* The breakdown grades for each assessment in the same module.
-* The number of different types of assessment in the same module.
-* The number of different tasks in different modules.
-* The time cost for each module, thus the user can better manage their time.
 
 == FAQ
 

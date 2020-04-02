@@ -6,6 +6,7 @@ import draganddrop.studybuddy.logic.commands.add.CreateModCommand;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.AddTaskCommandParser;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
+import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.InteractiveCommandException;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
@@ -45,7 +46,7 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
                     + "Now key in your module code";
                 module.setModuleName(userInput);
                 currentTerm = InteractivePromptTerms.MODULE_CODE;
-            } catch (AddTaskCommandException ex) {
+            } catch (InteractiveCommandException ex) {
                 reply = "Please write something as the name of your module.";
             }
             break;
