@@ -117,7 +117,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 TaskType taskType = AddTaskCommandParser.parseType(userInput, TaskType.getTaskTypes().length);
                 task.setTaskType(taskType);
 
-                this.reply = "The type of task has been set to: " + taskType.toString() + ".\n"
+                this.reply = "The type of task has been set to: " + taskType.toString() + ".\n\n"
                     + REQUIRED_DATE_TIME_MSG;
                 if (taskType.equals(TaskType.Assignment)) {
                     this.reply += "HH:mm dd/MM/yyyy";
@@ -287,12 +287,5 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         } else {
             return "This task is not assigned to any modules.";
         }
-    }
-
-    /**
-     * pending.
-     */
-    private String dateTime() {
-        return "";
     }
 }
