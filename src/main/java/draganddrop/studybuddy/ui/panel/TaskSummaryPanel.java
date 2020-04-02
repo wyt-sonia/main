@@ -207,8 +207,8 @@ public class TaskSummaryPanel extends UiPart<Region> {
                     long numOfTasksDue = tempTasks.stream()
                         .filter(t ->
                             t.getDateTimes()[0].toLocalDate().equals(finalD) && t.getModule().equals(m)).count();
-                    XYChart.Data<String, Number> tempData
-                        = new XYChart.Data<>(TimeParser.getDateString(d), numOfTasksDue);
+                    XYChart.Data<String, Number> tempData =
+                        new XYChart.Data<>(TimeParser.getDateString(d), numOfTasksDue);
                     tempData.setExtraValue(m.getModuleCode());
                     dueDateDataSeries.getData().add(tempData);
                     datas.add(tempData);
