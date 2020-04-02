@@ -111,6 +111,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
         tempTasks.addAll(observableArchivedTasks);
 
         setUpPieChart();
+
         setUpAreaChart();
         setUpBarChart();
 
@@ -185,8 +186,8 @@ public class TaskSummaryPanel extends UiPart<Region> {
         if (!taskSummaryAreaChart.getData().isEmpty()) {
             taskSummaryAreaChart.getData().clear();
         }
-        ArrayList<XYChart.Data> datas = new ArrayList<>();
-        ArrayList<XYChart.Series> dataSeries = new ArrayList<>();
+        ArrayList<XYChart.Data<String, Number>> datas = new ArrayList<>();
+        ArrayList<XYChart.Series<String, Number>> dataSeries = new ArrayList<>();
 
         ObservableList<Task> sortedTasks = tempTasks.sorted(Comparator.comparing(t -> t.getDateTimes()[0]));
         if (!sortedTasks.isEmpty()) {
@@ -194,7 +195,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
             LocalDate endDate = sortedTasks.get(sortedTasks.size() - 1).getDateTimes()[0].toLocalDate();
 
             modules.forEach(m -> {
-                XYChart.Series dueDateDataSeries = new XYChart.Series();
+                XYChart.Series<String, Number> dueDateDataSeries = new XYChart.Series<>();
                 if (m.getModuleCode().equals(new EmptyModule().getModuleCode())) {
                     dueDateDataSeries.setName("Not Module Related");
                 } else {
@@ -206,7 +207,8 @@ public class TaskSummaryPanel extends UiPart<Region> {
                     long numOfTasksDue = tempTasks.stream()
                         .filter(t ->
                             t.getDateTimes()[0].toLocalDate().equals(finalD) && t.getModule().equals(m)).count();
-                    XYChart.Data tempData = new XYChart.Data(TimeParser.getDateString(d), numOfTasksDue);
+                    XYChart.Data<String, Number> tempData =
+                        new XYChart.Data<>(TimeParser.getDateString(d), numOfTasksDue);
                     tempData.setExtraValue(m.getModuleCode());
                     dueDateDataSeries.getData().add(tempData);
                     datas.add(tempData);
@@ -256,21 +258,21 @@ public class TaskSummaryPanel extends UiPart<Region> {
      */
     private void setUpBarChart() {
 
-        ArrayList<XYChart.Data> datas = new ArrayList<>();
-        ArrayList<XYChart.Series> dataSeries = new ArrayList<>();
+        ArrayList<XYChart.Data<String, Number>> datas = new ArrayList<>();
+        ArrayList<XYChart.Series<String, Number>> dataSeries = new ArrayList<>();
 
         if (!taskSummaryStackedBarChart.getData().isEmpty()) {
             taskSummaryStackedBarChart.getData().clear();
         }
 
         for (TaskType taskType : Arrays.asList(TaskType.getTaskTypes())) {
-            XYChart.Series weightDataSeries = new XYChart.Series();
+            XYChart.Series<String, Number> weightDataSeries = new XYChart.Series<>();
             weightDataSeries.setName(taskType.toString());
             modules.forEach(m -> {
                 if (!m.equals(new EmptyModule())) {
                     ObservableList<Task> filteredTasks = tempTasks
                         .filtered(t -> t.getModule().equals(m) && t.getTaskType().equals(taskType));
-                    XYChart.Data tempData = new XYChart.Data(m.getModuleCode().toString(),
+                    XYChart.Data<String, Number> tempData = new XYChart.Data<>(m.getModuleCode().toString(),
                         filteredTasks.stream().mapToDouble(Task::getWeight).sum());
                     tempData.setExtraValue(m.getModuleCode().toString() + "//" + taskType.toString());
                     weightDataSeries.getData().add(tempData);
