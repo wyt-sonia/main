@@ -174,9 +174,8 @@ public class MainWindow extends UiPart<Stage> {
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
 
-        taskSummaryPanel = new TaskSummaryPanel(logic.getFilteredTaskList(),
-            logic.getFilteredArchivedTaskList(), logic.getFilteredModuleList(),
-            dueSoonListPanelPlaceholder, dueListPanelTitle);
+        taskSummaryPanel = new TaskSummaryPanel(logic.getFilteredTaskList(), logic.getFilteredArchivedTaskList()
+            , logic.getFilteredModuleList(), dueSoonListPanelPlaceholder, dueListPanelTitle);
         taskSummaryHolder.getChildren().add(taskSummaryPanel.getRoot());
         taskSummaryHolder.setVisible(false);
         taskSummaryHolder.setManaged(false);
