@@ -153,7 +153,7 @@ public class ModelManager implements Model {
 
     @Override
     public void deleteDueSoonTask(Task target) {
-        studyBuddy.removeDueSoonTask(target);
+        studyBuddy.updateDeleteDueSoon(target);
     }
 
     @Override
@@ -180,7 +180,7 @@ public class ModelManager implements Model {
 
     @Override
     public void addDueSoonTask(Task task) {
-        studyBuddy.addDueSoonTask(task);
+        studyBuddy.updateAddDueSoon(task);
         updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
     }
 

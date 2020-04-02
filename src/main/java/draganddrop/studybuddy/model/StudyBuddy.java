@@ -138,20 +138,24 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
      */
     public void removeTask(Task key) {
         tasks.remove(key);
-        if (this.getDueSoonList().contains(key)) {
-            removeDueSoonTask(key);
+        updateDeleteDueSoon(key);
+    }
+
+    /**
+     * Checks if task belongs in due soon list and deletes it
+     * @param p
+     */
+    public void updateDeleteDueSoon(Task p) {
+        if (this.getDueSoonList().contains(p)) {
+            dueSoonTasks.remove(p);
+            sortDueSoonTasks();
         }
-        sortDueSoonTasks();
     }
 
     /**
      * Removes {@code key} from this {@code StudyBuddy}.
      * {@code key} must exist in the task list.
      */
-    public void removeDueSoonTask(Task key) {
-        dueSoonTasks.remove(key);
-    }
-
     public void setArchivedTasks(List<Task> aTasks) {
         this.archivedTasks.setTasks(aTasks);
     }
@@ -188,10 +192,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
      */
     public void archiveTask(Task p) {
         tasks.remove(p);
-        if (this.getDueSoonList().contains(p)) {
-            removeDueSoonTask(p);
-            sortDueSoonTasks();
-        }
+        updateDeleteDueSoon(p);
         archivedTasks.add(p);
     }
 
@@ -209,22 +210,8 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
      */
     public void unarchiveTask(Task p) {
         archivedTasks.remove(p);
-        if (p.isDueSoon()) {
-            addDueSoonTask(p);
-        }
+        updateAddDueSoon(p);
         tasks.add(p);
-    }
-
-    /**
-     * Adds a due soon task to the dueSoonTasks list.
-     *
-     * @param p must not already exist in the study buddy.
-     */
-    public void addDueSoonTask(Task p) {
-        if (p.isDueSoon()) {
-            dueSoonTasks.add(p);
-            sortDueSoonTasks();
-        }
     }
 
     /**
@@ -300,9 +287,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
      */
     public void addTask(Task t) {
         tasks.add(t);
-        if (t.isDueSoon()) {
-            addDueSoonTask(t);
-        }
+        updateAddDueSoon(t);
     }
 
     public void completeTask(Task target) {
@@ -332,6 +317,19 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
 
     public void setTaskDateTime(Task target, LocalDateTime[] newDateTimes) {
         tasks.setTaskDateTime(target, newDateTimes);
+    }
+
+    /**
+     * Adds task to due soon list if it is due soon.
+     * @param target
+     */
+    public void updateAddDueSoon(Task target) {
+        if (!dueSoonTasks.contains(target)) {
+            if (target.isDueSoon()) {
+                dueSoonTasks.add(target);
+                sortDueSoonTasks();
+            }
+        }
     }
 
     public void setModuleInTask(Task target, Module module) throws ModuleCodeException {

@@ -33,7 +33,7 @@ If you can type fast, Study Buddy can get your module management done faster tha
 
 Currently, Study Buddy support both Windows and Mac systems. If you are interested, please jump to the <<Quick Start>> to get started.
 
-Hope you enjoy : )
+Hope you enjoy!
 
 == Quick Start
 
@@ -58,8 +58,7 @@ image::Ui.png[width="790", title="Study Buddy Dashboard"]
 
 
 [TIP]
-Study Buddy will analyze your input and reply accordingly. +
-Hope you enjoy!
+Study Buddy will analyze your input and reply accordingly.
 
 [[Features]]
 == Features
@@ -418,6 +417,10 @@ image::deleteResponse1.png[width="790", title="Updated list (without deleted tas
 ==== Delete duplicates
 This commands deletes all duplicated tasks in the list.
 
+[NOTE]
+A task is considered duplicate when the name, type, module, description, weightage, estimated time cost and deadline are the same. (Status is not checked)
+
+
 *Example:*
 
 After having added a duplicated task, you realise that there is no more need for this duplicate task. Yet you do not want to scroll through the entire list to delete it.
@@ -660,6 +663,9 @@ image::duesoon2.png[width="790", align= "left", title="Due Soon List"]
 
 [NOTE]
 Time left is never displayed in days and minutes. Hence if the current time is 9:00 am on 01/04/2020 and the task deadline is 9:02 am on 02/04/2020, it will show time left as 1 day. (not 1 day and 2 minutes)
+
+[NOTE]
+Due soon list will never display finished tasks. If you unarchive a completed task, it will not appear in the due soon list.
 
 === Status Tags
 
