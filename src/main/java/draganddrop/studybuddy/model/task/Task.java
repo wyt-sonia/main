@@ -296,16 +296,20 @@ public class Task implements Comparable<Task> {
      * @return true if it is due soon, else false
      */
     public boolean isDueSoon() {
-        df = new SimpleDateFormat("HH:mm dd/MM/yyyy");
-        dateObj = new Date();
-        long difference = 0;
-        try {
-            difference = df.parse(this.getTimeString()).getTime() - dateObj.getTime();
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if (getTaskStatus() != TaskStatus.FINISHED) {
+            df = new SimpleDateFormat("HH:mm dd/MM/yyyy");
+            dateObj = new Date();
+            long difference = 0;
+            try {
+                difference = df.parse(this.getTimeString()).getTime() - dateObj.getTime();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            float minsBetween = (difference / MINUTES_DIVISOR);
+            return minsBetween <= MINUTES_IN_WEEK && minsBetween >= 0;
+        } else {
+            return false;
         }
-        float minsBetween = (difference / MINUTES_DIVISOR);
-        return minsBetween <= MINUTES_IN_WEEK && minsBetween >= 0;
     }
 
     @Override
@@ -334,8 +338,7 @@ public class Task implements Comparable<Task> {
             && otherTask.getModule().equals(getModule())
             && otherTask.getTimeString().equals(getTimeString())
             && otherTask.getTaskType().equals(getTaskType())
-            && otherTask.getTaskDescription().equals(getTaskDescription())
-            && otherTask.getTaskStatus().equals(getTaskStatus());
+            && otherTask.getTaskDescription().equals(getTaskDescription());
     }
 
     @Override
@@ -365,6 +368,8 @@ public class Task implements Comparable<Task> {
             && otherTask.getTaskName().equals(getTaskName())
             && otherTask.getModule().equals(getModule())
             && otherTask.getTimeString().equals(getTimeString())
+            && otherTask.getWeight() == (getWeight())
+            && otherTask.getEstimatedTimeCost() == (getEstimatedTimeCost())
             && otherTask.getTaskType().equals(getTaskType())
             && otherTask.getTaskDescription().equals(getTaskDescription());
     }
