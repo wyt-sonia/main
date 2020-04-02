@@ -169,6 +169,7 @@ It must be a time in the future.
 ... For duration, the two dates should follow the order of `start date`-`end date`, the `end date` should
 be later than `start date`.
 ... The total weight of tasks under the same module is caped to 100.0.
+.... Both `archived` and `not archived tasks` will be taken into consideration.
 ... All `index numbers` should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).
 
 [NOTE]

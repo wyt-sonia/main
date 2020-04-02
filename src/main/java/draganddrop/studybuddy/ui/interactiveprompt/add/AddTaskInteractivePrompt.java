@@ -175,7 +175,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                     double weight = AddTaskCommandParser.parseWeight(userInput);
                     double moduleWeightSum = logic.getStudyBuddy().getTaskList()
                         .stream()
-                        .filter(t -> t.getModule().equals(task.getModule()))
+                        .filter(t -> (t.getModule().equals(task.getModule())))
                         .mapToDouble(Task::getWeight).sum();
                     double moduleWeightSumArchived = logic.getStudyBuddy().getArchivedList()
                         .stream()
