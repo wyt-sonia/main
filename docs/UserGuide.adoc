@@ -431,24 +431,35 @@ The `All Tasks Panel` will update automatically after successfully sort the task
 
 ==== Find
 
-Finds tasks whose names contain any of the given keywords. +
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Finds tasks whose names contain any of the given keywords.
+
+To `find` a task:
+
+. Initiate the command with `find`.
+
+. Enter the keyword that you want to search for.
+
+. You have found a list of tasks that contain your keyword!
+
 
 ****
-* The search is case insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+* The search is case insensitive. e.g `homework` will match `Homework`
+* The order of the keywords does not matter. e.g. `CS Homework` will match `Homework CS`
 * Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Tasks matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* Substrings will be matched e.g. `work` will match `Homework`
+* Tasks matching at least one keyword will be returned (i.e. `OR` search). e.g. `CS Homework` can return `CS Quiz`,
+`Reflection Homework`.
 ****
 
-Examples:
+*Examples*
 
-* `find John` +
-Returns `john` and `John Doe`
-* `find Betsy Tim John` +
-Returns any task having names `Betsy`, `Tim`, or `John`
+U - `find` +
 
+S - Please type in a keyword that you want to search for.
+
+U - `quiz`
+
+S - Returns `Weekly Quiz` and `Quiz 3`
 [NOTE]
 To navigate back to the always on display list of tasks, you can use the <<List>> function.
 
@@ -754,30 +765,43 @@ image::calendar/calender_init.png[width="790", align= "left", title="calendar in
 
 image::calendar/calendar_after_choose_date.png[width="790"", align="left", title="calendar after clicking on a date"]
 
-=== Profile
+=== Productivity
 
-The profile page shows the detail information of the user, such as:
+The productivity page shows insights related to your productivity over the past day, week and more.
+By keeping tabs on your past productivity, you can improve your future productivity.
+The productivity feature also gamifies your task management experience. Doing work has never been more fun!
 
-* Personal information, such as name, gender, year of study
-* Goal CAP
-* Task history
-* etc
+
+.1. Daily Productivity Tab
+
+The daily productivity tab records your the number of tasks you completed today.
+You can set a daily goal for the number of tasks you want to complete.
+Completing your goal each day adds to your streak.
+
+.2. Weekly Productivity Tab
+
+On the weekly productivity tab, you can look back on your progress over the past week.
+This tab displays information about your past productivity.
+
+
+.3. Productivity Points Tab
+
+The Productivity Points tab displays your current Productivity Points (PP) and your progression.
+You gain Productivity Points upon adding tasks, completing tasks, and using advanced features in StudyBuddy.
+On the other hand, you lose Productivity Points when your tasks go overdue.
+Here are some examples of how to obtain Productivity Points in StudyBuddy:
+
+.. Adding a task: +1
+
+.. Completing a task: +10
+
+.. Using advanced features; +? (Explore StudyBuddy to find out!)
+
+.. Letting a task go overdue: -1
+
+
 
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
 *A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Study Buddy folder (should be under data -> taskList.json).
-
-== Command Summary
-
-* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
-e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-* *Clear* : `clear`
-* *Delete* : `delete INDEX` +
-e.g. `delete 3`
-* *Edit* : `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
-e.g. `edit 2 n/James Lee e/jameslee@example.com`
-* *Find* : `find KEYWORD [MORE_KEYWORDS]` +
-e.g. `find James Jake`
-* *List* : `list`
-* *Help* : `help`

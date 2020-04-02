@@ -32,7 +32,7 @@ public class GeneralStats {
         return streak;
     }
 
-    public void incrementStreak() {
+    public void addStreak() {
         streak += 1;
     }
 

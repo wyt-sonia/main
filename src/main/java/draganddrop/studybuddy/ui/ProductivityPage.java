@@ -16,6 +16,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.Region;
+import javafx.scene.shape.Circle;
 
 /**
  * Productivity page that contains usage statistics
@@ -34,6 +35,8 @@ public class ProductivityPage extends UiPart<Region> {
     private Label streakLabel;
     @FXML
     private ProgressIndicator progressIndicator;
+    @FXML
+    private Circle progressCentre;
 
     //weekly
     @FXML
@@ -82,8 +85,8 @@ public class ProductivityPage extends UiPart<Region> {
      */
     public void renderDailyTab() {
         renderDailyStats();
-        renderStreak();
         renderProgressIndicator();
+        renderStreak();
     }
 
     /**
@@ -114,6 +117,9 @@ public class ProductivityPage extends UiPart<Region> {
         int taskCompletedCount = statistics.getCompleteCountToday();
         int goal = statistics.getGoal();
         double progress = (double) taskCompletedCount / (double) goal;
+        if (taskCompletedCount >= goal) {
+            progressCentre.setVisible(false);
+        }
         progressIndicator.setProgress(progress);
     }
 

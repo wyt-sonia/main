@@ -122,6 +122,10 @@ public class Statistics {
         return generalStats.getStreak();
     }
 
+    public void addStreak() {
+        generalStats.addStreak();
+    }
+
     /**
      * return user's rank
      * @return user's rank
