@@ -115,6 +115,18 @@ public class EditTaskCommand extends Command {
         default:
             throw new IllegalStateException("Unexpected value: " + taskField);
         }
+        updateDueSoon(taskToEdit, model);
         return new CommandResult(EDIT_TASK_SUCCESS);
+    }
+
+    /**
+     * Updates due soon list as well
+     * @param taskToEdit
+     * @param model
+     */
+    public void updateDueSoon(Task taskToEdit, Model model) {
+        model.deleteDueSoonTask(taskToEdit);
+        List<Task> lastShownList = model.getFilteredTaskList();
+        model.addDueSoonTask(lastShownList.get(targetIndex.getZeroBased()));
     }
 }

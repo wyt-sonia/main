@@ -26,30 +26,30 @@ public class RefreshCommand extends Command {
         logger.info("Attempting to refresh due soon list and tags");
         for (int i = 0; i < lastShownList.size(); i++) {
             Task task = lastShownList.get(i);
-            boolean isStatusExpired = task.isStatusExpired();
-            if (isStatusExpired) {
-                Task temp = task;
-                model.deleteTask(task);
-                temp.freshStatus();
-                model.addTask(temp);
-                model.sortTasks("Creation DateTime");
-            }
+            refreshStatus(task, model);
             if (task.isDueSoon()) {
-                if (model.getFilteredDueSoonTaskList().contains(task)) {
-                    continue;
-                } else {
-                    model.addDueSoonTask(task);
-                }
+                model.addDueSoonTask(task);
             } else {
-                if (model.getFilteredDueSoonTaskList().contains(task)) {
-                    model.deleteDueSoonTask(task);
-                } else {
-                    continue;
-                }
+                model.deleteDueSoonTask(task);
             }
         }
-        model.sortDueSoonTasks();
         return new CommandResult(String.format(Messages.MESSAGE_DUE_SOON_TASK_SUCCESS));
+    }
+
+    /**
+     * This function refreshes the status tags.
+     * @param task
+     * @param model
+     */
+    private void refreshStatus(Task task, Model model) {
+        boolean isStatusExpired = task.isStatusExpired();
+        if (isStatusExpired) {
+            Task temp = task;
+            model.deleteTask(task);
+            temp.freshStatus();
+            model.addTask(temp);
+            model.sortTasks("Creation DateTime");
+        }
     }
 
     @Override
