@@ -28,9 +28,20 @@ public class ModuleList {
      */
     public boolean contains(Module module) {
         final Module moduleForPredicate = module;
-        FilteredList<Module> filteredList = internalList.filtered((x) -> x.equals(moduleForPredicate));
-        return !filteredList.isEmpty();
+        return internalList.contains(moduleForPredicate);
 
+    }
+
+    /**
+     * To be executed every time whenever a module is added.
+     *
+     * @param string moduleName
+     * @return if there is a duplicate name.
+     */
+    public boolean containsDuplicateName(String string) {
+        FilteredList<Module> filteredList = internalList.filtered((x) -> x.getModuleName()
+                .toLowerCase().equals(string.toLowerCase()));
+        return !filteredList.isEmpty();
     }
 
     public ObservableList<Module> getInternalList() {
@@ -38,13 +49,15 @@ public class ModuleList {
     }
 
     /**
-     * checks for duplicate modules first, then add into the moduleList.
+     * checks for duplicate modules/names first, then add into the moduleList.
      * Moves Empty module to the back of the internalList.
      * @param module to be added to the ModuleList
      */
     public void add(Module module) throws ModuleCodeException {
         if (this.contains(module)) {
             throw new ModuleCodeException("Duplicate modules");
+        } else if (this.containsDuplicateName(module.getModuleName())) {
+            throw new ModuleCodeException("Duplicate module name");
         } else {
             internalList.add(module);
             shiftEmptyModBack();
@@ -93,6 +106,50 @@ public class ModuleList {
     }
 
     /**
+     * Changes moduleName of a certain mod. Checks for existence of origin mod & duplicity of new name.
+     * @param oldModule
+     * @param newModule
+     * @throws ModuleCodeException
+     */
+    public void changeModuleName(Module oldModule, Module newModule) throws ModuleCodeException {
+        if (this.contains(oldModule) && !this.containsDuplicateName(newModule.getModuleName())) {
+            int oldIndex = internalList.indexOf(oldModule);
+            internalList.set(oldIndex, newModule);
+        } else {
+            if (!this.contains(oldModule)) {
+                throw new ModuleCodeException("Module does not exist");
+            }
+            if (this.containsDuplicateName(newModule.getModuleName())) {
+                throw new ModuleCodeException("A duplicate module name already exist.");
+            }
+        }
+    }
+
+    /**
+     * Changes moduleCode of a certain mod. Checks for existence of origin mod & duplicity of new code.
+     * @param oldModule
+     * @param newModule
+     * @throws ModuleCodeException
+     */
+    public void changeModuleCode(Module oldModule, Module newModule) throws ModuleCodeException {
+        if (this.contains(newModule)) {
+            throw new ModuleCodeException("new module code is a duplicate!");
+        } else if (this.contains(oldModule)) {
+            if (!newModule.equals(new EmptyModule())) {
+                newModule.setInternalTaskList(oldModule.getInternalTaskList());
+            } else {
+                newModule.setInternalTaskList(getEmptyModule().getInternalTaskList());
+                newModule.addAll(oldModule.getInternalTaskList());
+            }
+
+            int index = this.indexOf(oldModule);
+            internalList.set(index, newModule);
+        } else {
+            throw new ModuleCodeException("module does not exist");
+        }
+    }
+
+    /**
      * Retrieves a module with the original module name inside the moduleList.
      *
      * @param moduleCode
@@ -112,6 +169,10 @@ public class ModuleList {
 
     public Module get(int index) {
         return this.internalList.get(index);
+    }
+
+    public Module getEmptyModule() {
+        return this.internalList.get(internalList.size() - 1);
     }
 
     public void setModuleList(List<Module> replacement) {

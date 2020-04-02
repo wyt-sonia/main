@@ -21,6 +21,7 @@ import draganddrop.studybuddy.model.ReadOnlyStudyBuddy;
 import draganddrop.studybuddy.model.ReadOnlyUserPrefs;
 import draganddrop.studybuddy.model.StudyBuddy;
 import draganddrop.studybuddy.model.module.Module;
+import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskType;
 import draganddrop.studybuddy.testutil.TaskBuilder;
@@ -176,6 +177,21 @@ class AddTaskCommandTest {
         @Override
         public void addMod(Module mod) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void changeModName(Module oldMod, Module newMod) throws ModuleCodeException {
+
+        }
+
+        @Override
+        public void changeModCode(Module oldMod, Module newMod) throws ModuleCodeException {
+
+        }
+
+        @Override
+        public void deleteMod(Module mod) throws ModuleCodeException {
+
         }
 
         @Override
