@@ -16,6 +16,15 @@ endif::[]
 
 By: `Team Drag&Drop`      Since: `Jan 2020`     
 
+== Introduction
+Study Buddy is a task-management tool made for students who want to be able to track and manage their tasks in one place.
+
+Study Buddy uses various visualization tools such as pie charts and calendars, provides useful functionality such as archive, due soon task list etc to make task management simple and convenient.
+
+In particular, Study Buddy is a Command Line Interface (CLI) application that also provides some Graphical User Interface (GUI). This means that users are expected to interact with the Study Buddy mainly through the command line, but each command executed will evoke a visual response as well.
+
+The purpose of this guide is to help potential developers get up to speed on the Study Buddy code base and functionality. We hope that this document will ease the process of further enhancing and developing Study Buddy.
+
 == Setting up
 
 Refer to the guide <<SettingUp#, here>>.
@@ -180,7 +189,9 @@ This section describes some noteworthy details on how certain features are imple
 
 The Due Soon Tasks feature allows users to view the tasks that have deadlines within the next week.
 
-This feature is implemented using a panel on the main window with a list of tasks due soon that is updated with every "add", "delete" or "refresh".
+This feature is implemented using a panel on the main window with a list of tasks due soon that is updated with every command that may affect due soon task list (such as add, delete or archive).
+
+Some commands that trigger due soon feature are:
 
 1. Add --
 
@@ -198,41 +209,38 @@ When a task that is deleted from the main list occurs in the due soon list as we
 
    Command: refresh
 
-Refreshes the list of due soon tasks. This command is useful for a situation where due soon list is not up to date due to a drastic change in time.
+Refreshes the list of due soon tasks and status tags. This command is useful for a situation where due soon list is not up to date due to a drastic change in time.
 
 ==== Example Usage Scenario
 Given below is an example usage scenario and how the due soon list mechanism behaves at each step.
 
 Step 1. The user launches the application for the first time.
+
 The list of tasks due soon will be initialized and displayed with the initial study buddy state. Initialization is done by filtering tasks that are due soon from the general list of tasks.
-
-Activity diagram:
-
-image::AddDueSoonActivityDiagram.png[width = "200", length = "300"]
 
 Step 2. The user executes `add` command to add a task.
 The `add` command execution checks if this task belongs in the due soon tasks list (i.e it is due in 7 days). If it does, the task is added to both lists, else it is only added to the main list.
 
+
+image::AddDueSoonActivityDiagram.png[width = "200", length = "300", title = "Activity Diagram for Add to Due Soon list"]
+
 Step 3. The user executes `delete` command to delete a task.
 The `delete` command execution also checks if this task exists in the due soon task list. If it does, task is deleted from both lists, else it is only deleted from the main list.
 
-Step 4. The user executes `due soon` command to refresh the due soon task list.
-The `due soon` command execution will traverse the main list and check if there are any inconsistencies. For example, if there has been a change in time and a task is missing from the due soon task list, it will be added.
+Step 4. The user executes `refresh` command to refresh the due soon task list.
+The `refresh` command execution will traverse the main list and check if there are any inconsistencies. For example, if there has been a change in time and a task is missing from the due soon task list, it will be added.
 
 [NOTE]
-If there are no such inconsistencies, the due soon command will not make any changes.
+If there are no such inconsistencies, the refresh command will not make any changes to the due soon task list.
 
-Activity diagram:
+image::DueSoonActivityDiagram.png[width = "400", length = "600", title = "Activity diagram for refresh"]
 
-image::DueSoonActivityDiagram.png[width = "400", length = "600"]
 
-Sequence diagram:
-
-image::DueSoonSequenceDiagram.png[width = "600", length = "500"]
+image::DueSoonSequenceDiagram.png[width = "600", length = "500", title = "Sequence diagram for refresh"]
 
 ==== Design Considerations
 
-===== Aspect: How `due soon` command works
+===== Aspect: How `refresh` command works
 
 * **Alternative 1 (current choice):** Does not clear and reload the due soon task list.
 ** Pros: Fewer operations need to be performed.
@@ -456,7 +464,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |view a list of my tasks | know what I have pending
 
-|`* * *` |user |add a new task |
+|`* * *` |user |add a new task | view all my pending tasks in one place
 
 |`* * *` |user |delete a task |remove entries that I no longer need
 
@@ -472,6 +480,13 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |user who likes organization |view all my tasks that are due soon|know what to focus on in the next week
 
+|`* *` |user who makes typos |be able to edit a task I have added|correct any typos I have made
+
+|`* *` |user who is forgetful |have an interactive command prompt|not have to remember long commands
+
+|`* *` |user who is starting a new semester |clear all my tasks|start adding on to an empty list
+
+|`* *` |user who takes many modules |add my modules |view my modules
 |=======================================================================
 
 [appendix]
@@ -510,6 +525,57 @@ The given index is invalid.
 +
 Use case resumes at step 2.
 
+[discrete]
+=== Use case: Delete duplicates
+
+*MSS*
+
+
+1. User requests to list tasks
+2. Study Buddy shows a list of tasks
+3. User requests to delete all duplicates in the list
+4. Study Buddy deletes all but one occurrence of each task
+
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a.
+The list is empty.
++
+Use case ends.
+
+* 3a.
+There are no duplicate tasks
++
+Use case ends.
+
+[discrete]
+=== Use case: Refresh
+
+*MSS*
+
+
+1. User notices due soon list needs to be updates
+3. User requests to refresh
+4. Study Buddy refreshes the due soon list and status tags
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a.
+The list is empty.
++
+Use case ends.
+
+* 3a.
+There is nothing to refresh
++
+Use case ends.
 
 [appendix]
 == Non Functional Requirements
@@ -572,26 +638,21 @@ Close the window.
 .. Re-launch the app by double-clicking the jar file. +
    Expected: The most recent window size and location is retained.
 
-_{ more test cases ... }_
 
-=== Deleting a person
+=== Deleting a task
 
-. Deleting a person while all persons are listed
+. Deleting a task while all tasks are listed
 
 .. Prerequisites: List all persons using the `list` command.
-Multiple persons in the list.
+Multiple tasks in the list.
 .. Test case: `delete 1` +
    Expected: First contact is deleted from the list.
-Details of the deleted contact shown in the status message.
-Timestamp in the status bar is updated.
+Successful deletion indication in the status message.
 .. Test case: `delete 0` +
    Expected: No person is deleted.
 Error details shown in the status message.
-Status bar remains the same.
-.. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size) _{give more}_ +
+.. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size), `delete x` (where x is a negative number)+
    Expected: Similar to previous.
-
-_{ more test cases ... }_
 
 === Saving data
 

@@ -188,6 +188,10 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
      */
     public void archiveTask(Task p) {
         tasks.remove(p);
+        if (this.getDueSoonList().contains(p)) {
+            removeDueSoonTask(p);
+            sortDueSoonTasks();
+        }
         archivedTasks.add(p);
     }
 
@@ -205,6 +209,9 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
      */
     public void unarchiveTask(Task p) {
         archivedTasks.remove(p);
+        if (p.isDueSoon()) {
+            addDueSoonTask(p);
+        }
         tasks.add(p);
     }
 

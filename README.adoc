@@ -6,7 +6,7 @@
 ifdef::env-github,env-browser[:relfileprefix: docs/]
 
 https://travis-ci.org/AY1920S2-CS2103T-W16-3/main[image:https://travis-ci.org/AY1920S2-CS2103T-W16-3/main.svg?branch=master[Build Status]]
-https://coveralls.io/github/AY1920S2-CS2103T-W16-3/main?branch=master[image:https://coveralls.io/repos/github/AY1920S2-CS2103T-W16-3/main/badge.svg?branch=master[Coverage Status]]
+https://coveralls.io/github/AY1920S2-CS2103T-W16-3/main?branch=master[image:https://coveralls.io/repos/github/AY1920S2-CS2103T-W16-3/main/badge.svg?branch=master&service=github[Coverage Status]]
 https://ci.appveyor.com/project/teikjun/main-obe5y/branch/master[image:https://ci.appveyor.com/api/projects/status/01kv1ged83vovfi3/branch/master?svg=true[Build status]]
 https://www.codacy.com/gh/AY1920S2-CS2103T-W16-3/main?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AY1920S2-CS2103T-W16-3/main&amp;utm_campaign=Badge_Grade[image:https://api.codacy.com/project/badge/Grade/8ff09067ff534489afad2264bade805a[Codacy Badge]]
 
