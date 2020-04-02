@@ -33,12 +33,12 @@ public class ModuleListTest {
     public void lastModOnListIsEmptyModule() throws ModuleCodeException {
         ModuleList moduleList = new ModuleList();
         moduleList.add(new EmptyModule());
-        moduleList.add(new Module("A","CS2000"));
-        moduleList.add(new Module("B","CS2001"));
+        moduleList.add(new Module("A", "CS2000"));
+        moduleList.add(new Module("B", "CS2001"));
         assertEquals(new EmptyModule(), moduleList.get(moduleList.getSize() - 1));
         moduleList.setModuleList(List.of());
         moduleList.add(new Module("B", "CS2001"));
-        moduleList.add(new Module("A","CS2000"));
+        moduleList.add(new Module("A", "CS2000"));
         moduleList.add(new EmptyModule());
         assertEquals(new EmptyModule(), moduleList.get(moduleList.getSize() - 1));
     }
