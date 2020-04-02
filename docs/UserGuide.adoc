@@ -725,10 +725,9 @@ Each chart will update automatically when you perform `add` `edit` `delete` `sor
 The color theme will also change randomly, hope you enjoy :)
 
 [NOTE]
-As the data of charts is filled dynamically, thus it is possible that their labels can overlap together. +
-This is due to javafx chart off-sync and it was raised link:{https://bugs.openjdk.java.net/browse/JDK-8198830}[here]. +
-When this issue append, you can use any command that can trigger chart updating to refresh the chart.
-
+As the data of charts are filled dynamically, thus it is possible that their labels can overlap together. +
+This is due to JavaFX chart off-sync and it was raised link:{https://bugs.openjdk.java.net/browse/JDK-8198830}[here]. +
+When this issue happens, you can use any command that can trigger chart updating to refresh the chart.
 
 === Calendar
 The calendar feature allows you to visualise your schedule by displaying the number of task you have for the month. This allows students to plan their time efficiently.
