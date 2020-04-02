@@ -566,7 +566,7 @@ Due soon list will never display finished tasks. If you unarchive a completed ta
 === Modules
 The Modules tab is an easy way for students to organise their task, homework and deadlines into various modules.
 
-image::module/Module-bar.png[title = "`Modules` in the menu bar"]
+image::module/module_1.png[title = "`Modules` in the menu bar"]
 
 By default, the Modules tab shows the following:
 
@@ -579,23 +579,24 @@ all tasks will show up here if you have not allocated any tasks to the modules.
 
 To navigate to the modules page, click on `Modules` in the menu bar.
 
-image::module/Module-bar-2.png[]
+image::module/module_2.png[]
 
 
 Then click on `Show Modules`. The module page should show up.
 
-image::module/Modules-page.png[]
+image::module/module_3.png[]
 
 The leftmost tab shows the *overview* of all your modules. it displays the module's name and their code.
 
-image::[]
+image::module/module_4.png[]
 
 The rightmost tab shows the list of task that has not been allocated to any modules.
 
-image::[]
+image::module/module_5.png[]
 
 The tabs in the middle are modules that you have added to the modules page.
 
+image::module/module_6.png[]
 
 ==== Functions
 ==== Create Modules
