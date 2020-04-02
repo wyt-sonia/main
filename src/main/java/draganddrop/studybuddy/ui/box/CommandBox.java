@@ -15,6 +15,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.delete.DeleteDuplicateTaskInt
 import draganddrop.studybuddy.ui.interactiveprompt.delete.DeleteTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.ArchiveTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.CompleteTaskInteractivePrompt;
+import draganddrop.studybuddy.ui.interactiveprompt.edit.EditModInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.EditTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.UnarchiveTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.sort.SortTaskInteractivePrompt;
@@ -55,7 +56,7 @@ public class CommandBox extends UiPart<Region> {
      * Handles the Enter button pressed event.
      */
     @FXML
-    private void handleCommandEntered() {
+    public void handleCommandEntered() {
         try {
             // allow InteractivePrompt type with different case and space in front or behind
             String userInput = commandTextField.getText().toLowerCase().trim();
@@ -85,9 +86,6 @@ public class CommandBox extends UiPart<Region> {
                 case "help":
                     currentInteractivePrompt = new HelpInteractivePrompt();
                     break;
-                case "create mods":
-                    currentInteractivePrompt = new CreateModuleInteractivePrompt();
-                    break;
                 case "bye":
                     currentInteractivePrompt = new ExitTaskInteractivePrompt();
                     break;
@@ -106,6 +104,16 @@ public class CommandBox extends UiPart<Region> {
                 case "unarchive":
                     currentInteractivePrompt = new UnarchiveTaskInteractivePrompt();
                     break;
+
+                //mod related functions will not be shown on UI but available as shortcut
+                case "create mods":
+                    currentInteractivePrompt = new CreateModuleInteractivePrompt();
+                    break;
+                case "edit mods":
+                    currentInteractivePrompt = new EditModInteractivePrompt();
+                    break;
+                //mod related functions will not be shown on UI but available as shortcut
+
                 default:
                     currentInteractivePrompt = new InvalidInputInteractivePrompt();
                     break;
@@ -157,5 +165,9 @@ public class CommandBox extends UiPart<Region> {
          */
         CommandResult execute(InteractivePrompt currentInteractivePrompt, String commandText)
             throws CommandException, ParseException;
+    }
+
+    public void run (InteractivePrompt interactivePrompt) {
+        currentInteractivePrompt = interactivePrompt;
     }
 }

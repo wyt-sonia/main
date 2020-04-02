@@ -53,7 +53,6 @@ public interface Logic {
      */
     ObservableList<Task> getFilteredArchivedTaskList();
 
-
     ObservableList<Module> getFilteredModuleList();
 
     /**

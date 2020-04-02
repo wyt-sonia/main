@@ -240,6 +240,59 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         }
     }
 
+    /**
+     * Change Module Name.
+     * @param oldModule
+     * @param newModule
+     * @throws ModuleCodeException
+     */
+    public void changeModuleName(Module oldModule, Module newModule) throws ModuleCodeException {
+        refreshAllModuleTaskList(oldModule, newModule);
+        moduleList.changeModuleName(oldModule, newModule);
+    }
+
+    /**
+     * Change Module Code.
+     * @param oldModule
+     * @param newModule
+     * @throws ModuleCodeException
+     */
+    public void changeModuleCode(Module oldModule, Module newModule) throws ModuleCodeException {
+        refreshAllModuleTaskList(oldModule, newModule);
+        moduleList.changeModuleCode(oldModule, newModule);
+    }
+
+    /**
+     * Delete a existing mod. Transfers all task with the existing mod to emptyMod.
+     * @param module
+     * @throws ModuleCodeException
+     */
+    public void deleteMod(Module module) throws ModuleCodeException {
+        refreshAllModuleTaskList(module, new EmptyModule());
+        moduleList.remove(module);
+    }
+
+
+    private void refreshAllModuleTaskList(Module oldModule, Module newModule) {
+        refreshModuleCodeTaskList(tasks, oldModule, newModule);
+        refreshModuleCodeTaskList(archivedTasks, oldModule, newModule);
+        refreshModuleCodeTaskList(dueSoonTasks, oldModule, newModule);
+    }
+
+    /**
+     * performs setModule(newMod) for all task with oldMod within the taskList.
+     * @param taskList
+     * @param oldModule
+     * @param newModule
+     */
+    private void refreshModuleCodeTaskList(UniqueTaskList taskList, Module oldModule, Module newModule) {
+        taskList.forEach(x -> {
+            if (x.getModule().equals(oldModule)) {
+                x.setModule(newModule);
+            }
+        });
+    }
+
 
     /**
      * Adds a task to the task list.

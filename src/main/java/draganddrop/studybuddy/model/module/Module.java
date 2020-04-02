@@ -80,6 +80,20 @@ public class Module {
     }
 
     /**
+     * Designed to add task from another taskList to this.
+     * @param toAdd
+     * @throws DuplicateTaskException
+     */
+    public void addAll(ObservableList<Task> toAdd) throws DuplicateTaskException {
+        requireNonNull(toAdd);
+        if (!toAdd.filtered(x -> contains(x)).isEmpty()) {
+            throw new DuplicateTaskException();
+        } else {
+            internalTaskList.addAll(toAdd);
+        }
+    }
+
+    /**
      * Removes a task from the module list.
      *
      * @param toRemove
