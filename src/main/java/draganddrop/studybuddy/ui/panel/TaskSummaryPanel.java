@@ -125,6 +125,9 @@ public class TaskSummaryPanel extends UiPart<Region> {
         selectedTaskListPanelPlaceholder.getChildren().clear();
     }
 
+    /**
+     * Renders the charts.
+     */
     private void renderCharts() {
         // Pie chart
         taskSummaryPieChart.setTitle("Summary of Tasks' Status");
@@ -201,7 +204,8 @@ public class TaskSummaryPanel extends UiPart<Region> {
                 for (LocalDate d = startDate; d.isBefore(endDate.plusDays(1)); d = d.plusDays(1)) {
                     LocalDate finalD = d;
                     long numOfTasksDue = tempTasks.stream()
-                        .filter(t -> t.getDateTimes()[0].toLocalDate().equals(finalD) && t.getModule().equals(m)).count();
+                        .filter(t ->
+                            t.getDateTimes()[0].toLocalDate().equals(finalD) && t.getModule().equals(m)).count();
                     XYChart.Data tempData = new XYChart.Data(TimeParser.getDateString(d), numOfTasksDue);
                     tempData.setExtraValue(m.getModuleCode());
                     dueDateDataSeries.getData().add(tempData);

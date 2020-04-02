@@ -163,8 +163,8 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                 } else {
                     Module newModule = EditTaskCommandParser.parseModule(userInput, modules);
                     double taskWeight = logic.getFilteredTaskList().get(taskIndex.getZeroBased()).getWeight();
-                    boolean isWeightSizeValid = isWeightSizeValid(taskWeight, newModule
-                        , logic.getStudyBuddy().getTaskList().get(taskNumber - 1));
+                    boolean isWeightSizeValid = isWeightSizeValid(taskWeight, newModule,
+                        logic.getStudyBuddy().getTaskList().get(taskNumber - 1));
                     if (!isWeightSizeValid) {
                         throw new EditTaskCommandException("moduleWeightOverloadError");
                     }
@@ -187,13 +187,11 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                 } else {
                     editTaskCommand.provideNewTaskTimeCost(0);
                 }
-            }
-            catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 parseSuccess = false;
                 this.reply = new EditTaskCommandException("wrongEstimatedTimeFormatError").getErrorMessage()
                     + "\n\n" + REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
-            }
-            catch (EditTaskCommandException e) {
+            } catch (EditTaskCommandException e) {
                 parseSuccess = false;
                 this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
             }
@@ -207,7 +205,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                     newWeight = EditTaskCommandParser.parseWeight(userInput);
                     if (newWeight > 0) {
                         isWeightSizeValid = isWeightSizeValid(newWeight, logic.getFilteredTaskList()
-                            .get(taskIndex.getZeroBased()).getModule(),
+                                .get(taskIndex.getZeroBased()).getModule(),
                             logic.getStudyBuddy().getTaskList().get(taskNumber - 1));
                     }
                     if (!isWeightSizeValid) {
@@ -257,7 +255,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         boolean isValid = true;
         double moduleWeightSum = logic.getStudyBuddy().getTaskList()
             .stream()
-            .filter(t -> (t.getModule().equals(targetModule)&&!t.equals(task)))
+            .filter(t -> (t.getModule().equals(targetModule) && !t.equals(task)))
             .mapToDouble(Task::getWeight).sum();
         double moduleWeightSumArchived = logic.getStudyBuddy().getArchivedList()
             .stream()
