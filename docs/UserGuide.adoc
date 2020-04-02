@@ -283,7 +283,7 @@ To `clear`:
 . Initiate the command using keyword `clear`
 . Study Buddy should respond with:
 +
-image::clear/clear1.png[width="790", title="Response to 'clear'"]
+image::basic/clear/clear1.png[width="790", title="Response to 'clear'"]
 +
 [NOTE]
 You can enter `quit` if you wish to go back!
@@ -291,7 +291,7 @@ You can enter `quit` if you wish to go back!
 . Press `enter` again to confirm
 . Study Buddy has been cleared completely!
 +
-image::clear/clear2.png[width="790", title="View empty Study Buddy"]
+image::basic/clear/clear2.png[width="790", title="View empty Study Buddy"]
 
 
 ==== Delete
