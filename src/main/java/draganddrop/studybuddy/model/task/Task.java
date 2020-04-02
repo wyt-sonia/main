@@ -334,8 +334,7 @@ public class Task implements Comparable<Task> {
             && otherTask.getModule().equals(getModule())
             && otherTask.getTimeString().equals(getTimeString())
             && otherTask.getTaskType().equals(getTaskType())
-            && otherTask.getTaskDescription().equals(getTaskDescription())
-            && otherTask.getTaskStatus().equals(getTaskStatus());
+            && otherTask.getTaskDescription().equals(getTaskDescription());
     }
 
     @Override
@@ -365,6 +364,8 @@ public class Task implements Comparable<Task> {
             && otherTask.getTaskName().equals(getTaskName())
             && otherTask.getModule().equals(getModule())
             && otherTask.getTimeString().equals(getTimeString())
+            && otherTask.getWeight() == (getWeight())
+            && otherTask.getEstimatedTimeCost() == (getEstimatedTimeCost())
             && otherTask.getTaskType().equals(getTaskType())
             && otherTask.getTaskDescription().equals(getTaskDescription());
     }

@@ -203,6 +203,10 @@ image::deleteResponse1.png[width="790", title="Updated list (without deleted tas
 ==== Delete duplicates
 This commands deletes all duplicated tasks in the list.
 
+[NOTE]
+A task is considered duplicate when the name, type, module, description, weightage, estimated time cost and deadline are the same. (Status is not checked)
+
+
 *Example:*
 
 After having added a duplicated task, you realise that there is no more need for this duplicate task. Yet you do not want to scroll through the entire list to delete it.
