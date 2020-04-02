@@ -93,6 +93,7 @@ class JsonSerializableStudyBuddy {
         studyBuddy.getScoreStats().copy(this.scoreStats);
 
         Task.updateCurrentTaskList(new ArrayList<>(studyBuddy.getTaskList()));
+        Task.updateArchivedTaskList(new ArrayList<>(studyBuddy.getArchivedList()));
         return studyBuddy;
     }
 

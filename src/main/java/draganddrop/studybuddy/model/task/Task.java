@@ -28,6 +28,7 @@ public class Task implements Comparable<Task> {
     private static final int MINUTES_IN_WEEK = (7 * 24 * 60);
     private static Statistics statistics;
     private static ArrayList<Task> currentTasks = new ArrayList<>();
+    private static ArrayList<Task> archivedTasks = new ArrayList<>();
 
     private Module module;
     private TaskType taskType;
@@ -72,6 +73,14 @@ public class Task implements Comparable<Task> {
 
     public static ArrayList<Task> getCurrentTasks() {
         return currentTasks;
+    }
+
+    public static void updateArchivedTaskList(List<Task> tasks) {
+        archivedTasks = (ArrayList<Task>) tasks;
+    }
+
+    public static ArrayList<Task> getArchivedTasks() {
+        return archivedTasks;
     }
 
     public Module getModule() {
