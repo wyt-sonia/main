@@ -10,6 +10,7 @@ import draganddrop.studybuddy.model.task.Task;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
@@ -44,6 +45,9 @@ public class ProductivityPage extends UiPart<Region> {
     private Label rankLabel;
     @FXML
     private Label nextRankLabel;
+
+    @FXML
+    private AreaChart<String, Integer> ppAreaChart;
 
     public ProductivityPage(ObservableList<Task> taskList) {
         super(FXML);
@@ -94,6 +98,7 @@ public class ProductivityPage extends UiPart<Region> {
         renderScore();
         renderRank();
         renderNextRank();
+        renderAreaChart();
     }
 
     // daily
@@ -136,6 +141,7 @@ public class ProductivityPage extends UiPart<Region> {
      * renders the weekly bar chart
      */
     public void renderWeeklyBarChart() {
+        weeklyBarChart.setTitle("Task completed in last 7 days");
         List<String> dayList = StatsUtil.getDayList();
         List<Integer> weeklyCompleteCountList = statistics.getWeeklyCompleteCountList();
         if (!weeklyBarChart.getData().isEmpty()) {
@@ -151,6 +157,25 @@ public class ProductivityPage extends UiPart<Region> {
     }
 
     // score
+
+    /**
+     * renders the productivity points area chart
+     */
+    public void renderAreaChart() {
+        ppAreaChart.setTitle("Productivity Points Progression");
+        List<String> dayList = StatsUtil.getDayList();
+        List<Integer> weeklyScores = statistics.getWeeklyScores();
+        if (!ppAreaChart.getData().isEmpty()) {
+            ppAreaChart.getData().clear();
+        }
+
+        XYChart.Series<String, Integer> series = new XYChart.Series<>();
+        for (int i = 0; i < 7; i++) {
+            XYChart.Data<String, Integer> data = new XYChart.Data<>(dayList.get(i), weeklyScores.get(i));
+            series.getData().add(data);
+        }
+        ppAreaChart.getData().add(series);
+    }
 
     /**
      * renders score

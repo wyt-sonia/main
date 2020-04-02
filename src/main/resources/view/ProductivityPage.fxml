@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -36,19 +37,18 @@
                               <Label fx:id="weeklyStatsLabel" layoutX="14.0" layoutY="13.0" prefHeight="42.0" prefWidth="568.0" text="You have completed 12 tasks this week" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="54.0" prefWidth="600.0">
+                        <AnchorPane prefHeight="255.0" prefWidth="558.0">
                            <children>
-                              <Label fx:id="preWeeklyProgression" layoutX="14.0" layoutY="16.0" prefHeight="30.0" prefWidth="155.0" text="Task completed in last 7 days" underline="true" />
+                              <BarChart fx:id="weeklyBarChart" layoutX="33.0" layoutY="28.0" prefHeight="260.0" prefWidth="520.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                              </BarChart>
                            </children>
                         </AnchorPane>
-                        <BarChart fx:id="weeklyBarChart" prefHeight="98.0" prefWidth="600.0">
-                          <xAxis>
-                            <CategoryAxis side="BOTTOM" />
-                          </xAxis>
-                          <yAxis>
-                            <NumberAxis side="LEFT" />
-                          </yAxis>
-                        </BarChart>
                      </children>
                   </VBox>
                </content></Tab>
@@ -64,8 +64,15 @@
                         </Label>
                         <Label fx:id="preRankLabel" layoutX="34.0" layoutY="20.0" text="You are a" />
                         <Label fx:id="ppLabel" layoutX="87.0" layoutY="41.0" text="0 PP" />
-                        <Label fx:id="preProgressionLabel" layoutX="35.0" layoutY="88.0" text="Productivity Points Progression" />
                         <Label fx:id="nextRankLabel" layoutX="34.0" layoutY="57.0" text="20 PP more to become a Novice" />
+                        <AreaChart fx:id="ppAreaChart" layoutX="33.0" layoutY="84.0" prefHeight="260.0" prefWidth="520.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </AreaChart>
                      </children></AnchorPane>
               </content>
           </Tab>

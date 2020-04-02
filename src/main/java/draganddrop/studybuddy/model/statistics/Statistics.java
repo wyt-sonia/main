@@ -94,6 +94,10 @@ public class Statistics {
         return scoreStats.getDailyScore(StatsUtil.getDayIndex());
     }
 
+    public List<Integer> getWeeklyScores() {
+        return scoreStats.getWeeklyScores(StatsUtil.getDayIndex());
+    }
+
     /**
      * adds to the current score
      * @param scoreToAdd score to be added

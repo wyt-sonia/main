@@ -53,6 +53,9 @@ public class ScoreStats {
     public void copy(ScoreStats scoreStats) {
         this.currentScore = scoreStats.getCurrentScore();
         this.scoreList = scoreStats.getScoreList();
+        if (scoreList.get(StatsUtil.getDayIndex()) == 0) {
+            scoreList.set(StatsUtil.getDayIndex(), currentScore);
+        }
     }
 
     public int getCurrentScore() {
@@ -84,7 +87,7 @@ public class ScoreStats {
      * @param dayIndex the day of interest
      * @return a list containing the user's daily scores over the past 7 days
      */
-    public List<Integer> getWeeklyScoreCount(int dayIndex) {
+    public List<Integer> getWeeklyScores(int dayIndex) {
         return scoreList.subList(dayIndex - 6, dayIndex + 1);
     }
 
