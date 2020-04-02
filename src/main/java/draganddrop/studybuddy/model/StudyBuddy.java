@@ -264,7 +264,6 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
 
     public void setTaskDateTime(Task target, LocalDateTime[] newDateTimes) {
         tasks.setTaskDateTime(target, newDateTimes);
-        updateAddDueSoon(target);
     }
 
     /**
