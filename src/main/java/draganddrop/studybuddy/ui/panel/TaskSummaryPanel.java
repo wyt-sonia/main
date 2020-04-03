@@ -123,7 +123,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
      */
     public void renderSelectedListPanel() {
         selectedTaskListPanelTitle.getStyleClass().add("summary_sub_header");
-        selectedTaskListPanelTitle.setText("Click on Chart to View Related Tasks");
+        //selectedTaskListPanelTitle.setText("Click on Chart to View Related Tasks");
         selectedTaskListPanelPlaceholder.getChildren().clear();
     }
 

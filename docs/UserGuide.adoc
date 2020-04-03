@@ -50,6 +50,9 @@ you may refer to the guide below.
 . To better manage your tasks, you may copy the file to the folder you want to use as the home folder for the Study Buddy.
 . Last, double-click the file to start the app and the dashboard should appear in a few seconds.
 +
+[TIP]
+You mey need to adjust the size of the Study Buddy window when you launch it.
++
 image::Ui.png[width="790", title="Study Buddy Dashboard"]
 +
 . The box with the words `Enter your command here...` is where you can key in your desired command and click kbd:[Enter] to execute.
