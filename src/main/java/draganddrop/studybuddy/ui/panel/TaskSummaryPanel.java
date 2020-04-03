@@ -24,6 +24,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -45,6 +46,9 @@ public class TaskSummaryPanel extends UiPart<Region> {
     private Label selectedTaskListPanelTitle;
 
     @javafx.fxml.FXML
+    private TabPane chartsTabPane;
+
+    @javafx.fxml.FXML
     private PieChart taskSummaryPieChart;
 
     @javafx.fxml.FXML
@@ -64,11 +68,11 @@ public class TaskSummaryPanel extends UiPart<Region> {
         this.selectedTaskListPanelTitle = selectedTaskListPanelTitle;
         selectedTaskListPanelPlaceholder.setBackground(
             new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        renderSelectedListPanel();
 
         observableCurrentTasks.addListener(new ListChangeListener<Task>() {
             @Override
             public void onChanged(Change<? extends Task> t) {
-                renderSelectedListPanel();
                 renderCharts();
                 bindCharts(observableCurrentTasks, observableArchivedTasks, observableModules);
             }
@@ -77,7 +81,6 @@ public class TaskSummaryPanel extends UiPart<Region> {
         observableArchivedTasks.addListener(new ListChangeListener<Task>() {
             @Override
             public void onChanged(Change<? extends Task> c) {
-                renderSelectedListPanel();
                 renderCharts();
                 bindCharts(observableCurrentTasks, observableArchivedTasks, observableModules);
             }
@@ -86,7 +89,6 @@ public class TaskSummaryPanel extends UiPart<Region> {
         observableModules.addListener(new ListChangeListener<Module>() {
             @Override
             public void onChanged(Change<? extends Module> c) {
-                renderSelectedListPanel();
                 renderCharts();
                 bindCharts(observableCurrentTasks, observableArchivedTasks, observableModules);
             }
@@ -111,7 +113,6 @@ public class TaskSummaryPanel extends UiPart<Region> {
         tempTasks.addAll(observableArchivedTasks);
 
         setUpPieChart();
-
         setUpAreaChart();
         setUpBarChart();
 
