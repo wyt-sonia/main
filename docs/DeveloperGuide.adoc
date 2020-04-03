@@ -176,7 +176,7 @@ The `Storage` component,
 [[Design-Commons]]
 === Common classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+Classes used by multiple components are in the `seedu.studybuddy.commons` package.
 
 == Implementation
 
@@ -337,7 +337,7 @@ Activity diagram:
 image::CalendarActivityDiagram.png[width = "400", length = "600"]
 
 ==== Design considerations
-* It is more efficient to cache the calendar rather than to generate a new one, however, we do not expect the user to have too many tasks (n>1000000) and therefore it should not slow down the application.
+* It is more efficient to cache the calendar rather than to generate a new one, however, we do not expect the user to have too many tasks and therefore it should not slow down the application.
 
 === Archive feature
 Archive stores selected task away into a separate task list, this command is used when the user has completed a task but still wants to keep track of it.
@@ -627,7 +627,7 @@ These instructions only provide a starting point for testers to work on; testers
 
 .. Download the jar file and copy into an empty folder
 .. Double-click the jar file +
-   Expected: Shows the GUI with a set of sample contacts.
+   Expected: Shows the GUI with a set of sample tasks.
 The window size may not be optimum.
 
 . Saving window preferences
@@ -643,16 +643,15 @@ Close the window.
 
 . Deleting a task while all tasks are listed
 
-.. Prerequisites: List all persons using the `list` command.
+.. Prerequisites: List all tasks using the `list` command.
 Multiple tasks in the list.
-.. Test case: `delete 1` +
-   Expected: First contact is deleted from the list.
+.. Test case: `delete [Enter]` + `1` +
+   Expected: First task is deleted from the list.
 Successful deletion indication in the status message.
-.. Test case: `delete 0` +
-   Expected: No person is deleted.
+.. Test case: `delete [Enter]` + `0` +
+   Expected: No task is deleted.
 Error details shown in the status message.
-.. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size), `delete x` (where x is a negative number)+
-   Expected: Similar to previous.
+.. Other incorrect delete commands to try: `delete x`(where x is anything)
 
 === Saving data
 
