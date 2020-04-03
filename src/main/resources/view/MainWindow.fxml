@@ -24,6 +24,7 @@
             <stylesheets>
                 <URL value="@StudyBuddyTheme.css" />
                 <URL value="@Extensions.css" />
+                <URL value="@ProgressIndicator.css" />
             </stylesheets>
             <VBox id="mainContainer" maxWidth="1.7976931348623157E308">
                 <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
