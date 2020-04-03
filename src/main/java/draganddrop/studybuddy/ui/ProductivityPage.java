@@ -15,6 +15,8 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Circle;
 
@@ -37,6 +39,14 @@ public class ProductivityPage extends UiPart<Region> {
     private ProgressIndicator progressIndicator;
     @FXML
     private Circle progressCentre;
+    @FXML
+    private Image grayStarImage;
+    @FXML
+    private Image goldStarImage;
+    @FXML
+    private ImageView grayStarImageView;
+    @FXML
+    private ImageView goldStarImageView;
 
     //weekly
     @FXML
@@ -51,9 +61,24 @@ public class ProductivityPage extends UiPart<Region> {
     private Label rankLabel;
     @FXML
     private Label nextRankLabel;
-
+    @FXML
+    private ImageView rankZeroImageView;
+    @FXML
+    private ImageView rankOneImageView;
+    @FXML
+    private ImageView rankTwoImageView;
+    @FXML
+    private ImageView rankThreeImageView;
+    @FXML
+    private ImageView rankFourImageView;
+    @FXML
+    private ImageView rankFiveImageView;
+    @FXML
+    private ImageView rankSixImageView;
     @FXML
     private AreaChart<String, Integer> ppAreaChart;
+    @FXML
+    private ProgressIndicator rankProgressIndicator;
 
     public ProductivityPage(ObservableList<Task> taskList) {
         super(FXML);
@@ -105,6 +130,7 @@ public class ProductivityPage extends UiPart<Region> {
         renderScore();
         renderRank();
         renderNextRank();
+        renderRankIcon();
         renderAreaChart();
     }
 
@@ -116,9 +142,11 @@ public class ProductivityPage extends UiPart<Region> {
     public void renderProgressIndicator() {
         int taskCompletedCount = statistics.getCompleteCountToday();
         int goal = statistics.getGoal();
+
         double progress = (double) taskCompletedCount / (double) goal;
         if (taskCompletedCount >= goal) {
-            progressCentre.setVisible(false);
+            goldStarImageView.setVisible(true);
+            grayStarImageView.setVisible(false);
         }
         progressIndicator.setProgress(progress);
     }
@@ -211,6 +239,42 @@ public class ProductivityPage extends UiPart<Region> {
      */
     public void renderRank() {
         rankLabel.setText(statistics.getRank());
+
+    }
+
+    /**
+     * renders the rank icon
+     */
+    public void renderRankIcon() {
+        toggleRankImageView(getRankNumberFromRank(statistics.getRank()));
+        int scoreToday = statistics.getScoreToday();
+        int scoreToNextRank = statistics.getScoreToNextRank();
+        double rankProgress = (double) scoreToday / (double) (scoreToday + scoreToNextRank);
+        rankProgressIndicator.setProgress(rankProgress);
+    }
+
+    /**
+     * returns a number corresponding to the rank
+     * @param rank user's rank
+     * @return a number corresponding to the rank
+     */
+    public int getRankNumberFromRank(String rank) {
+        switch (rank) {
+        case "Beginner":
+            return 0;
+        case "Novice":
+            return 1;
+        case "Apprentice":
+            return 2;
+        case "Duke":
+            return 3;
+        case "Expert":
+            return 4;
+        case "Master":
+            return 5;
+        default:
+            return 6;
+        }
     }
 
     /**
@@ -218,5 +282,51 @@ public class ProductivityPage extends UiPart<Region> {
      */
     public void renderNextRank() {
         nextRankLabel.setText(statistics.getNextRank());
+    }
+
+    /**
+     * sets all rank ImageView to invisible except for one corresponding to rankNumber
+     * @param rankNumber the rankNumber that should be set as visible
+     */
+    public void toggleRankImageView(int rankNumber) {
+        hideAllRankImageView();
+        switch (rankNumber) {
+        case 0:
+            rankZeroImageView.setVisible(true);
+            break;
+        case 1:
+            rankOneImageView.setVisible(true);
+            break;
+        case 2:
+            rankTwoImageView.setVisible(true);
+            break;
+        case 3:
+            rankThreeImageView.setVisible(true);
+            break;
+        case 4:
+            rankFourImageView.setVisible(true);
+            break;
+        case 5:
+            rankFiveImageView.setVisible(true);
+            break;
+        case 6:
+            rankSixImageView.setVisible(true);
+            break;
+        default:
+            break;
+        }
+    }
+
+    /**
+     * hides all rank ImageViews
+     */
+    public void hideAllRankImageView() {
+        rankZeroImageView.setVisible(false);
+        rankOneImageView.setVisible(false);
+        rankTwoImageView.setVisible(false);
+        rankThreeImageView.setVisible(false);
+        rankFourImageView.setVisible(false);
+        rankFiveImageView.setVisible(false);
+        rankSixImageView.setVisible(false);
     }
 }

@@ -1,33 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
       <TabPane prefHeight="400.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Daily">
             <content>
               <AnchorPane fx:id="progressBar" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="dailyStatsLabel" layoutX="293.0" layoutY="195.0" text="0 / 5 tasks ">
+                        <Label fx:id="dailyStatsLabel" layoutX="250.0" layoutY="193.0" text="0 / 5 tasks ">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font></Label>
-                        <Label fx:id="streakLabel" layoutX="43.0" layoutY="273.0" text="You have completed your goal 0 days in a row.">
+                        <Label fx:id="preDailyStatsLabel" layoutX="179.0" layoutY="193.0" text="Daily goal: ">
                            <font>
                               <Font size="14.0" />
                            </font></Label>
-                        <Label fx:id="preDailyStatsLabel" layoutX="222.0" layoutY="195.0" text="Daily goal: ">
+                        <ProgressIndicator fx:id="progressIndicator" layoutX="183.0" layoutY="36.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="146.0" prefWidth="134.0" progress="0.0" styleClass="u-gold-progress" />
+                        <Circle fx:id="progressCentre" fill="WHITE" layoutX="250.0" layoutY="100.0" radius="59.0" stroke="#c9c3b6" strokeType="INSIDE" />
+                         <ImageView fx:id="goldStarImageView" fitHeight="50.0" fitWidth="50.0" layoutX="226.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                             <image>
+                                 <Image fx:id="goldStarImage" url="@../images/rank/gold_star.png" />
+                             </image>
+                         </ImageView>
+                        <ImageView fx:id="grayStarImageView" fitHeight="50.0" fitWidth="50.0" layoutX="226.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image fx:id="grayStarImage" url="@../images/rank/gray_star.png" />
+                            </image>
+                        </ImageView>
+                        <Label fx:id="streakLabel" layoutX="106.0" layoutY="285.0" text="You have completed your goal 0 days in a row.">
                            <font>
                               <Font size="14.0" />
-                           </font></Label>
-                        <ProgressIndicator fx:id="progressIndicator" layoutX="226.0" layoutY="38.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="146.0" prefWidth="134.0" progress="0.0" styleClass="u-red-progress" />
-                        <Circle fx:id="progressCentre" fill="WHITE" layoutX="293.0" layoutY="102.0" radius="48.0" stroke="#bc002a" strokeType="INSIDE" />
+                           </font>
+                        </Label>
+                        <Label fx:id="streakLabel1" layoutX="211.0" layoutY="265.0" text="Daily Streak">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -37,7 +62,7 @@
                      <children>
                         <AnchorPane>
                            <children>
-                              <Label fx:id="weeklyStatsLabel" layoutX="35.0" layoutY="18.0" prefHeight="42.0" prefWidth="568.0" text="You have completed 12 tasks this week">
+                              <Label fx:id="weeklyStatsLabel" layoutX="35.0" layoutY="35.0" prefHeight="42.0" prefWidth="568.0" text="You have completed 12 tasks this week">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -46,7 +71,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="255.0" prefWidth="558.0">
                            <children>
-                              <BarChart fx:id="weeklyBarChart" layoutX="33.0" layoutY="28.0" prefHeight="260.0" prefWidth="520.0">
+                              <BarChart fx:id="weeklyBarChart" layoutX="10.0" layoutY="73.0" prefHeight="190.0" prefWidth="420.0">
                                 <xAxis>
                                   <CategoryAxis side="BOTTOM" />
                                 </xAxis>
@@ -63,28 +88,28 @@
               <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="prePointsLabel" layoutX="34.0" layoutY="41.0" text="You have">
+                        <Label fx:id="prePointsLabel" layoutX="34.0" layoutY="59.0" text="You have">
                            <font>
                               <Font size="14.0" />
                            </font></Label>
-                        <Label fx:id="rankLabel" layoutX="97.0" layoutY="20.0" text="Beginner">
+                        <Label fx:id="rankLabel" layoutX="97.0" layoutY="38.0" text="Beginner">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="preRankLabel" layoutX="34.0" layoutY="20.0" text="You are a">
+                        <Label fx:id="preRankLabel" layoutX="34.0" layoutY="38.0" text="You are a">
                            <font>
                               <Font size="14.0" />
                            </font></Label>
-                        <Label fx:id="ppLabel" layoutX="95.0" layoutY="41.0" text="0 PP">
+                        <Label fx:id="ppLabel" layoutX="95.0" layoutY="59.0" text="0 PP">
                            <font>
                               <Font size="14.0" />
                            </font></Label>
-                        <Label fx:id="nextRankLabel" layoutX="34.0" layoutY="62.0" text="20 PP more to become a Novice">
+                        <Label fx:id="nextRankLabel" layoutX="34.0" layoutY="80.0" text="20 PP more to become a Novice">
                            <font>
                               <Font size="14.0" />
                            </font></Label>
-                        <AreaChart fx:id="ppAreaChart" layoutX="33.0" layoutY="84.0" prefHeight="260.0" prefWidth="520.0">
+                        <AreaChart fx:id="ppAreaChart" layoutX="9.0" layoutY="151.0" prefHeight="190.0" prefWidth="420.0">
                           <xAxis>
                             <CategoryAxis side="BOTTOM" />
                           </xAxis>
@@ -92,6 +117,43 @@
                             <NumberAxis side="LEFT" />
                           </yAxis>
                         </AreaChart>
+                        <Circle fx:id="progressCentre1" fill="#ffffff00" layoutX="300.0" layoutY="61.0" radius="42.0" stroke="#9c3d01" strokeType="INSIDE" strokeWidth="2.0" />
+                        <ProgressIndicator fx:id="rankProgressIndicator" layoutX="250.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" progress="0.0" styleClass="u-red-progress" />
+                         <ImageView fx:id="rankZeroImageView" fitHeight="74.0" fitWidth="74.0" layoutX="263.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                             <image>
+                                 <Image fx:id="rankZeroImage" url="@../images/rank/rank0.png" />
+                             </image>
+                         </ImageView>
+                         <ImageView fx:id="rankOneImageView" fitHeight="74.0" fitWidth="74.0" layoutX="263.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                             <image>
+                                 <Image fx:id="rankOneImage" url="@../images/rank/rank1.png" />
+                             </image>
+                         </ImageView>
+                         <ImageView fx:id="rankTwoImageView" fitHeight="74.0" fitWidth="74.0" layoutX="263.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                             <image>
+                                 <Image fx:id="rankTwoImage" url="@../images/rank/rank2.png" />
+                             </image>
+                         </ImageView>
+                         <ImageView fx:id="rankThreeImageView" fitHeight="74.0" fitWidth="74.0" layoutX="263.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                         <image>
+                             <Image fx:id="rankThreeImage" url="@../images/rank/rank3.png" />
+                         </image>
+                     </ImageView>
+                         <ImageView fx:id="rankFourImageView" fitHeight="74.0" fitWidth="74.0" layoutX="263.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                             <image>
+                                 <Image fx:id="rankFourImage" url="@../images/rank/rank4.png" />
+                             </image>
+                         </ImageView>
+                         <ImageView fx:id="rankFiveImageView" fitHeight="74.0" fitWidth="74.0" layoutX="263.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                             <image>
+                                 <Image fx:id="rankFiveImage" url="@../images/rank/rank5.png" />
+                             </image>
+                         </ImageView>
+                         <ImageView fx:id="rankSixImageView" fitHeight="74.0" fitWidth="74.0" layoutX="263.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                             <image>
+                                 <Image fx:id="rankSixImage" url="@../images/rank/rank6.png" />
+                             </image>
+                         </ImageView>
                      </children></AnchorPane>
               </content>
           </Tab>
