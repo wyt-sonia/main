@@ -8,6 +8,7 @@ public enum InteractivePromptType {
     EDIT_TASK,
     EXIT_TASK,
     DELETE_TASK,
+    FILTER_TASK,
     ARCHIVE_TASK,
     UNARCHIVE_TASK,
     DELETE_DUPLICATE_TASK,
