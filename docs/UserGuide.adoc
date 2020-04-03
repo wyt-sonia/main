@@ -338,7 +338,7 @@ To `delete duplicates`:
 . Initiate the command using keyword `delete duplicates`
 . Study Buddy should respond with:
 +
-image::basic/deleteduplicate/deleteDuplicates1.png[width="790", title="Respons to 'delete duplicates'"]
+image::basic/deleteduplicate/deleteDuplicates1.png[width="790", title="Response to 'delete duplicates'"]
 
 . Press `enter` again to confirm
 . Duplicate tasks have been deleted! You will notice that only one copy (most recent) of each task will be left in the list.
@@ -359,10 +359,10 @@ To `archive`:
 . Initiate the command using keyword `archive`
 . Study Buddy should respond with:
 +
-image::basic/archive/archive_1.png[width="790", title="Study Buddy's respons to 'archive'"]
+image::basic/archive/archive_1.png[width="790", title="Response to 'archive'"]
 . Type the index of the task you want to archive.
 +
-image::basic/archive/archive_2.png[width="790", title="Study Buddy's respons to task index"]
+image::basic/archive/archive_2.png[width="790", title="Response to task index"]
 . Press `enter` again to confirm
 . Task has been archived! You can view all archived task under the `StudyBuddy` -> `Archived Tasks` tab.
 +
@@ -506,7 +506,7 @@ Suppose you notice that the task "Submit UG" is not due "now" anymore because so
 . Initiate the refresh command using keyword `refresh`
 . Study Buddy should respond with:
 +
-image::basic/refresh/refresh2.png[width="790", title="Respons to 'refresh'"]
+image::basic/refresh/refresh2.png[width="790", title="Response to 'refresh'"]
 
 . Press `enter` again to confirm
 . Tasks have been refreshed!
@@ -532,10 +532,10 @@ To `exit`:
 . Initiate the command using keyword `bye`
 . Study Buddy should respond with:
 +
-image::basic/exit/exit1.png[width="790", title="Respons to 'bye'"]
+image::basic/exit/exit1.png[width="790", title="Response to 'bye'"]
 . Type 'yes' if you want to exit and anything else if you do not wish to exit.
 +
-image::basic/exit/exit2.png[width="790", title="Respons to any command other than 'yes'"]
+image::basic/exit/exit2.png[width="790", title="Response to any command other than 'yes'"]
 +
 In response to yes, the application should simply close.
 

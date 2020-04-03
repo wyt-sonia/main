@@ -25,6 +25,7 @@ public enum InteractivePromptTerms {
     TASK_FIELD,
     NEW_VALUE,
     CHOICE,
+    STATUS_TYPE,
     //for edit mod
     PICK,
     CHANGE_MOD_NAME,

@@ -19,6 +19,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.edit.EditModInteractivePrompt
 import draganddrop.studybuddy.ui.interactiveprompt.edit.EditTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.UnarchiveTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.sort.SortTaskInteractivePrompt;
+import draganddrop.studybuddy.ui.interactiveprompt.view.FilterTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.view.FindTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.view.HelpInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.view.ListTaskInteractivePrompt;
@@ -38,7 +39,8 @@ public class CommandBox extends UiPart<Region> {
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes =
         {"add", "edit", "delete", "archive", "done", "delete duplicates",
-            "clear", "bye", "sort", "refresh", "help", "create mods", "find", "list", "unarchive"};
+        "clear", "bye", "sort", "refresh", "help",
+        "filter", "create mods", "find", "list", "unarchive"};
     private final CommandExecutor commandExecutor;
     private InteractivePrompt currentInteractivePrompt;
     @FXML
@@ -103,6 +105,9 @@ public class CommandBox extends UiPart<Region> {
                     break;
                 case "unarchive":
                     currentInteractivePrompt = new UnarchiveTaskInteractivePrompt();
+                    break;
+                case "filter":
+                    currentInteractivePrompt = new FilterTaskInteractivePrompt();
                     break;
 
                 //mod related functions will not be shown on UI but available as shortcut

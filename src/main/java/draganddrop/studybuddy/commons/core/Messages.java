@@ -13,4 +13,5 @@ public class Messages {
     public static final String MESSAGE_CLEAR_SUCCESS = "Study Buddy has been cleared!";
     public static final String MESSAGE_DUE_SOON_TASK_SUCCESS = "Tasks' status and due soon list is updated";
     public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
+    public static final String MESSAGE_FILTER_TASK_SUCCESS = "Filtered tasks";
 }
