@@ -540,7 +540,7 @@ image::basic/exit/exit2.png[width="790", title="Respons to any command other tha
 In response to yes, the application should simply close.
 
 [NOTE]
-Any command other than `yes` (including `enter`) will be considered as a quit from the exit. 
+Any command other than `yes` (including `enter`) will be considered as a quit from the exit.
 
 === Saving Data
 
