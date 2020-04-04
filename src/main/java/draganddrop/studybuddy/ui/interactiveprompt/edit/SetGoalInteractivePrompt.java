@@ -11,18 +11,17 @@ import draganddrop.studybuddy.model.statistics.Statistics;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 
+/**
+ * handles the interaction for goal setting
+ */
 public class SetGoalInteractivePrompt extends InteractivePrompt {
     public static final String QUIT_COMMAND_MSG = "Successfully quit from the set goal command";
-    private static final String END_OF_COMMAND_MSG = "Great! Your goal has been set successfully";
+    private static final String END_OF_COMMAND_MSG = "Great! Your goal has been set successfully!";
     private static Statistics statistics;
 
     public SetGoalInteractivePrompt() {
         super();
         this.interactivePromptType = SET_GOAL;
-    }
-
-    public static void setStatistics(Statistics statistics) {
-        SetGoalInteractivePrompt.statistics = statistics;
     }
 
     @Override
@@ -35,6 +34,14 @@ public class SetGoalInteractivePrompt extends InteractivePrompt {
         return this.reply;
     }
 
+    public String getEndOfCommandMsg() {
+        return END_OF_COMMAND_MSG;
+    }
+
+    public static void setStatistics(Statistics statistics) {
+        SetGoalInteractivePrompt.statistics = statistics;
+    }
+
     /**
      * handles goal setting for user
      * @param userInput user's input
@@ -43,7 +50,7 @@ public class SetGoalInteractivePrompt extends InteractivePrompt {
     public String handleSetGoal(String userInput) {
         switch (currentTerm) {
         case INIT:
-            reply = "How many tasks do you want to complete today? Give me a number between 1 to 100";
+            reply = "How many tasks do you want to complete today? Please give me a number between 1 to 100";
             currentTerm = InteractivePromptTerms.GOAL;
             break;
         case GOAL:
@@ -84,6 +91,7 @@ public class SetGoalInteractivePrompt extends InteractivePrompt {
         } catch (CommandException | ParseException e) {
             e.printStackTrace();
         }
+        endInteract(END_OF_COMMAND_MSG);
         return END_OF_COMMAND_MSG;
     }
 
