@@ -125,19 +125,47 @@ public class ScoreStats {
         } else if (currentScore < dukeScore) {
             return (dukeScore - currentScore) + " PP more to become a Duke";
         } else if (currentScore < expertScore) {
-            return (expertScore - currentScore) + " PP more to become a Master";
+            return (expertScore - currentScore) + " PP more to become a Expert";
         } else if (currentScore < masterScore) {
-            return (expertScore - currentScore) + " PP more to become a Grandmaster";
+            return (expertScore - currentScore) + " PP more to become a Master";
         } else if (currentScore < grandmasterScore) {
             return (grandmasterScore - currentScore) + " PP more to become a Grandmaster";
         } else if (currentScore < legendScore) {
             return (legendScore - currentScore) + " PP more to become a Legend";
         } else if (currentScore < sageScore) {
-            return (sageScore - currentScore) + " PP more to become a Grandmaster";
+            return (sageScore - currentScore) + " PP more to become Sage";
         } else if (currentScore < enlightenedScore) {
-            return (enlightenedScore - currentScore) + " PP more to become a Grandmaster";
+            return (enlightenedScore - currentScore) + " PP more to become Enlightened";
         } else {
-            return "You have mastered the productivity secrets of the universe.";
+            return "You have mastered the productivity secrets of this world and achieved enlightenment.";
+        }
+    }
+
+    /**
+     * returns the score required to achieve the next rank
+     * @return score required
+     */
+    public int getScoreToNextRank() {
+        if (currentScore < noviceScore) {
+            return (noviceScore - currentScore);
+        } else if (currentScore < apprenticeScore) {
+            return (apprenticeScore - currentScore);
+        } else if (currentScore < dukeScore) {
+            return (dukeScore - currentScore);
+        } else if (currentScore < expertScore) {
+            return (expertScore - currentScore);
+        } else if (currentScore < masterScore) {
+            return (expertScore - currentScore);
+        } else if (currentScore < grandmasterScore) {
+            return (grandmasterScore - currentScore);
+        } else if (currentScore < legendScore) {
+            return (legendScore - currentScore);
+        } else if (currentScore < sageScore) {
+            return (sageScore - currentScore);
+        } else if (currentScore < enlightenedScore) {
+            return (enlightenedScore - currentScore);
+        } else {
+            return 0;
         }
     }
 
