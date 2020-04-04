@@ -15,8 +15,8 @@ public class HelpInteractivePrompt extends InteractivePrompt {
             + System.lineSeparator() + System.lineSeparator()
             + "User Guide: https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html";
 
-    private static final String END_OF_COMMAND_MSG = "1. add  2. edit  3. done  4. clear  5. delete  6. delete duplicates"
-            + "  7. archive  8. unarchive  9. sort  10. find  11. list  12. refresh  13.exit"
+    private static final String END_OF_COMMAND_MSG = "1. add  2. edit  3. done  4. clear  5. delete"
+            + "  6. delete duplicates  7. archive  8. unarchive  9. sort  10. find  11. list  12. refresh  13.exit"
             + System.lineSeparator() + System.lineSeparator()
             + "For other commands, please visit my "
             + "User Guide: https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html";

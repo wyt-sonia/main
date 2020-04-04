@@ -128,7 +128,8 @@ public class EditTaskCommandParser {
         try {
             if (ModuleCode.isModuleCode(userInput)) {
                 List<Module> tempModules = modules.stream()
-                    .filter(m -> m.getModuleCode().toString().equals(userInput.toUpperCase())).collect(Collectors.toList());
+                    .filter(m -> m.getModuleCode().toString().equals(userInput.toUpperCase()))
+                        .collect(Collectors.toList());
                 if (!tempModules.isEmpty()) {
                     result = tempModules.get(0);
                 } else {
