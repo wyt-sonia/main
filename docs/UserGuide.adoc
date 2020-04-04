@@ -18,6 +18,7 @@ endif::[]
 :javaVersionURL_mac: https://www.wikihow.com/Check-Java-Version-on-a-Mac
 :javaInstallURL_win: https://docs.oracle.com/en/java/javase/11/install/installation-jdk-microsoft-windows-platforms.html#GUID-C11500A9-252C-46FE-BB17-FC5A9528EAEB
 :javaInstallURL_mac: https://docs.oracle.com/en/java/javase/11/install/installation-jdk-macos.html#GUID-2FE451B0-9572-4E38-A1A5-568B77B146DE
+:jdk_bug_report: https://bugs.openjdk.java.net/browse/JDK-8198830
 
 By: `Team Drag&Drop`      Since: `Jan 2020`
 
@@ -755,7 +756,7 @@ The color theme will also change randomly, hope you enjoy :)
 
 [NOTE]
 As the data of charts are filled dynamically, thus it is possible that their labels can overlap together. +
-This is due to JavaFX chart off-sync and it was raised link:{https://bugs.openjdk.java.net/browse/JDK-8198830}[here]. +
+This is due to JavaFX chart off-sync and it was raised link:{jdk_bug_report}[here]. +
 When this issue happens, you can use any command that can trigger chart updating to refresh the chart.
 
 === Calendar
