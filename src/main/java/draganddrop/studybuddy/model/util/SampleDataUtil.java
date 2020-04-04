@@ -7,6 +7,7 @@ import draganddrop.studybuddy.model.ReadOnlyStudyBuddy;
 import draganddrop.studybuddy.model.StudyBuddy;
 import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.module.Module;
+import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskStatus;
 import draganddrop.studybuddy.model.task.TaskType;
