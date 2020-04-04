@@ -60,8 +60,7 @@ image::Ui.png[width="790", title="Study Buddy Dashboard"]
 . To view a list of available command, you can key in *`help`* and click kbd:[Enter]. A more detailed description of our features is available in
 <<Features>> of this document.
 
-====
-*Commonly Used Symbols*
+==== *Commonly Used Symbols*
 
 [NOTE]
 This symbol indicates something you should take note of.
@@ -71,10 +70,8 @@ This symbol indicates a tip that you could use.
 
 [CAUTION]
 This symbol indicates an aspect that should be used with caution.
-====
 
-====
-*Useful tips*
+==== *Useful tips*
 
 * The scroll bar on the right of the response box can be used to view the entire reply.
 * At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
@@ -82,8 +79,9 @@ This symbol indicates an aspect that should be used with caution.
 It utilizes an "interactive command prompt". (explained in each command's description under <<Features>>)
 * *[enter]* indicates *hitting the enter key on your keyboard*.
 * *|* indicates an *alternative option* (i.e. A | B implies A or B).
-====
-*Navigation through Tabs*
+
+==== *Navigation through Tabs*
+
 
 . *Study Buddy*
 +
