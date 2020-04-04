@@ -267,6 +267,20 @@ public class MainWindow extends UiPart<Stage> {
         toggleAllTitle(true);
         toggleMainTitleView(true);
         setMainTitleText(PRODUCTIVITY_PAGE);
+        taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
+        taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+    }
+
+    @FXML
+    private void handleShowProductivityPoints() {
+        productivityPage.selectTab(2);
+        handleShowProductivity();
+    }
+
+    @FXML
+    private void handleShowProductivityDaily() {
+        productivityPage.selectTab(0);
+        handleShowProductivity();
     }
 
     /**

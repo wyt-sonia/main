@@ -137,7 +137,7 @@ public class ScoreStats {
         } else if (currentScore < enlightenedScore) {
             return (enlightenedScore - currentScore) + " PP more to be Enlightened";
         } else {
-            return "You have mastered the productivity secrets of this world and achieved enlightenment.";
+            return "You have mastered the productivity and achieved enlightenment.";
         }
     }
 

@@ -86,6 +86,7 @@ public class ProductivityPage extends UiPart<Region> {
     @FXML
     private ProgressIndicator rankProgressIndicator;
 
+
     public ProductivityPage(ObservableList<Task> taskList, Label menuPointsLabel) {
         super(FXML);
         this.taskList = taskList;
@@ -118,6 +119,9 @@ public class ProductivityPage extends UiPart<Region> {
         renderScoreTab();
     }
 
+    public void selectTab(int tabNumber) {
+        productivityTabPane.getSelectionModel().select(tabNumber);
+    }
 
     /**
      * renders the daily tab
@@ -248,6 +252,7 @@ public class ProductivityPage extends UiPart<Region> {
         int score = statistics.getScoreToday();
         String scoreString = score + " PP";
         ppLabel.setText(scoreString);
+        // set points on the menu label
         menuPointsLabel.setText(scoreString);
     }
 

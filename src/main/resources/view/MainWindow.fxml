@@ -53,16 +53,16 @@
                           </Menu>
                           <Menu mnemonicParsing="false">
                               <graphic>
-                                        <Label fx:id="ProductivityMenuLabel" onMouseClicked="#handleShowProductivity" text="Productivity" />
+                                        <Label fx:id="ProductivityMenuLabel" onMouseClicked="#handleShowProductivityDaily" text="Productivity" />
                               </graphic>
                           </Menu>
                       </MenuBar>
-                  <Region fx:id="menuSpacer" styleClass="menu-bar" prefHeight="0.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <Region fx:id="menuSpacer" prefHeight="0.0" prefWidth="200.0" styleClass="menu-bar" HBox.hgrow="ALWAYS" />
                   <MenuBar fx:id="menuBar1">
                      <menus>
                         <Menu mnemonicParsing="false">
                            <graphic>
-                              <Label fx:id="menuPointsLabel" onMouseClicked="#handleShowProductivity" text="PP" />
+                              <Label fx:id="menuPointsLabel" onMouseClicked="#handleShowProductivityPoints" text="Productivity: 10 PP" />
                            </graphic>
                         </Menu>
                      </menus>
