@@ -295,6 +295,23 @@ image::basic/edit/edit_response_task_name.png[width="600", title="Asks for new t
 +
 image::basic/edit/edit_result.png[width="600", title="Task edited"]
 
+==== Done
+This command completes a task. Key in `done` & you should get this prompt:
+
+image::basic/done/done_1.png[title = "Presentation to be marked as finished"]
+
+Now key in the index of the task you wish to complete.
+
+image::basic/done/done_2.png[title = "Press `Enter` to confirm changes"]
+
+Press `Enter` again to confirm your change.
+
+image::basic/done/done_3.png[title = "Presentation 1 is marked as finished"]
+
+Task set to `done` successfully! Note that the task in your task list has the tag `FINISHED`.
+You can choose to archive it using the `archive` command.
+
+
 ==== Clear
 This commands clears all data in the Study Buddy.
 
@@ -701,13 +718,13 @@ image::module/module_15.png[title = "Key in 1, 2 or 3 depending on which option 
 
 Now you have 3 options. You can choose to:
 
-. Change Module name.
-. Change Module code.
-. Delete Module.
+.. Change Module name.
+.. Change Module code.
+.. Delete Module.
 
 Key in the index of your option.
 
-===== 1. Change Module Name
+===== a) Change Module Name
 
 image::module/module_16.png[]
 
@@ -718,7 +735,7 @@ image::module/module_17.png[title = "Module BA1001's name has changed from 'CS' 
 
 Module name changed!
 
-===== 2. Change Module Code
+===== b) Change Module Code
 
 image::module/module_18.png[]
 
@@ -729,7 +746,7 @@ image::module/module_19.png[title = "Module code BA1001 has changed to CS3230"]
 
 Module code changed!
 
-===== 3. Delete Module
+===== c) Delete Module
 
 image::module/module_20.png[]
 
