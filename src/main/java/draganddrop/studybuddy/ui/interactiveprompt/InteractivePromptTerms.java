@@ -5,6 +5,7 @@ package draganddrop.studybuddy.ui.interactiveprompt;
  */
 public enum InteractivePromptTerms {
     INIT,
+    OPTION_TYPE,
     TASK_NAME,
     TASK_INDEX,
     TASK_TYPE,
@@ -26,6 +27,7 @@ public enum InteractivePromptTerms {
     NEW_VALUE,
     CHOICE,
     STATUS_TYPE,
+    TASKS_TYPE,
     //for edit mod
     PICK,
     CHANGE_MOD_NAME,

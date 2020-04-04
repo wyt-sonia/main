@@ -52,7 +52,7 @@ you may refer to the guide below.
 . Last, double-click the file to start the app and the dashboard should appear in a few seconds.
 +
 [TIP]
-You mey need to adjust the size of the Study Buddy window when you launch it.
+You may need to adjust the size of the Study Buddy window when you launch it.
 +
 image::Ui.png[width="790", title="Study Buddy Dashboard"]
 +
@@ -60,10 +60,16 @@ image::Ui.png[width="790", title="Study Buddy Dashboard"]
 . To view a list of available command, you can key in *`help`* and click kbd:[Enter]. A more detailed description of our features is available in
 <<Features>> of this document.
 
+==== Commonly Used Symbols
+
+[NOTE]
+This symbol indicates something you should take note of.
 
 [TIP]
-Study Buddy will analyze your input and reply accordingly.
+This symbol indicates a tip that you could use.
 
+[CAUTION]
+This symbol indicates an aspect that should be used with caution.
 
 [[DashBoard]]
 == Dashboard
@@ -87,31 +93,27 @@ you!
 
 image::dashboard/dashboard_1 4.png[width="600", title = "Chat with Studdy Buddy here!"]
 
+*Command Format*
+
+=======
+==== Useful tips
+
+* The scroll bar on the right of the response box can be used to view the entire reply.
+* At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
+* Study Buddy will analyze your input and reply accordingly.
+It utilizes an "interactive command prompt". (explained in each command's description under <<Features>>)
+* *[enter]* indicates *hitting the enter key on your keyboard*.
+* *|* indicates an *alternative option* (i.e. A | B implies A or B).
+=======
+
 
 [[Features]]
 == Features
 === Basic features
-====
-*Command Format*
-
-* Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-* *SB* and *You* refers to *Study Buddy* and the *User* respectively.
-* When a line is preceded by *SB*, it implies that it is a *reply displayed by Study Buddy*.
-* When a line is preceded by *You*, it implies that it is a value that must be *entered by the user*.
-* *[enter]* indicates *hitting the enter key on your keyboard*.
-* *[exits]* indicates that *application has closed*.
-* *|* connects *alternative option* (i.e. A | B -> A or B).
-====
-
-[NOTE]
-These features utilize interactive command prompt. (described in section <<Interactive Command Prompt>> )
 
 ==== Help :
-
-*Description:*
-
-. This function displays a list of interactive commands that you can use.
-. It also provides a link to this document, (our user guide) for your convenience.
+This function displays a list of interactive commands that you can use.
+It also provides a link to this document, (our user guide).
 
 *Format:*
 ****
@@ -129,6 +131,25 @@ These features utilize interactive command prompt. (described in section <<Inter
 
 &#160;&#160;&#160;&#160;&#160;&#160;User Guide: https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html
 ****
+[TIP]
+This is the command you should use if you are unsure of how a command works.
+
+*Example:*
+
+Say you have forgotten the format of a command and need some help.
+
+Study Buddy provides a help command for your convenience!
+
+To `help`:
+
+. Initiate the command using keyword `help`
+. Study Buddy should respond with:
++
+image::helpCommand.png[width="790", title="Response to 'help'"]
+
+[TIP]
+Remember to scroll down to see the entire reply.
+
 ==== Add
 This command is for you to record a new task into Study Buddy.
 
@@ -196,12 +217,12 @@ Meeting: +
 It must be a time in the future.
 ... For duration, the two dates should follow the order of `start date`-`end date`, the `end date` should
 be later than `start date`.
-... The total weight of tasks under the same module is caped to 100.0.
+... The total weight of tasks under the same module is capped to 100.0.
 .... Both `archived` and `not archived tasks` will be taken into consideration.
-... All `index numbers` should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).
+... All `index numbers` entered should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).
 
 [NOTE]
-The application allows for addition of duplicate tasks. It will however confirm with you if you are sure you want to add a duplicate.
+The application allows for addition of duplicate tasks. It will however confirm with you if you are sure you want to add a duplicate. In case you change your mind, <<Delete duplicates>> could be helpful.
 
 
 To `add`:
@@ -255,15 +276,12 @@ image::basic/add/add_task_info_2.png[width="600", title="Task details collected"
 image::basic/add/add_result.png[width="600", title="New task added"]
 
 [TIP]
-You can use `quit` command to quit from each step.
-
+Remember, you can use `quit` command to quit at any step.
 
 ==== Edit
 
 This command is for you to edit an existing task.
 To indicate the task you want to edit, you need to provide its index number.
-
-//image::basic/edit/.png[width="600", title="Index number"]
 
 *Example:*
 
@@ -315,7 +333,7 @@ You can choose to archive it using the `archive` command.
 ==== Clear
 This commands clears all data in the Study Buddy.
 
-[WARNING]
+[CAUTION]
 Be careful with this command! It will remove any data you may have entered into the Study Buddy and you cannot retrieve it.
 
 *Example:*
@@ -332,7 +350,7 @@ To `clear`:
 image::basic/clear/clear1.png[width="590", title="Response to 'clear'"]
 +
 [NOTE]
-You can enter `quit` if you wish to go back!
+Remember that you can enter `quit` if you wish to go back!
 +
 . Press `enter` again to confirm
 . Study Buddy has been cleared completely!
@@ -342,6 +360,9 @@ image::basic/clear/clear2.png[width="700", title="View empty Study Buddy"]
 
 ==== Delete
 This commands deletes a task from the existing list, using the index provided by you.
+
+[CAUTION]
+Once a task is deleted, it cannot be retrieved. Use this command with caution!
 
 *Example:*
 
@@ -370,7 +391,6 @@ This commands deletes all duplicated tasks in the list.
 
 [NOTE]
 A task is considered duplicate when the name, type, module, description, weightage, estimated time cost and deadline are the same. (Status is not checked)
-
 
 *Example:*
 
@@ -418,10 +438,7 @@ image::basic/archive/archive_3.png[width="790", title="View archived tasks"]
 * Remember to use the index in the *Archived Task* instead of *All Tasks*
 ****
 
-
 ==== Sort
-
-*Description*
 
 . This command is for you to reorder the task list in *All Tasks* panel.
 . Currently you can sort tasks by their
@@ -484,7 +501,7 @@ To `find` a task:
 
 . Study Buddy should respond with:
 +
-image::find/find1.png[width="400" title="Find"]
+image::find/find1.png[width="400" title="Find reponse"]
 
 
 . Enter the keyword that you want to search for. e.g. quiz
@@ -492,7 +509,7 @@ image::find/find1.png[width="400" title="Find"]
 
 . You have found a list of tasks that contain your keyword!
 +
-image::find/find2.png[width="400" title="Found"]
+image::find/find2.png[width="400" title="Found response"]
 
 ****
 * The search is case insensitive. e.g `homework` will match `Homework`
@@ -518,6 +535,44 @@ To use the `list` command:
 . Done! All your tasks are listed once again!
 +
 image::list/file.png[width="400" title="List Success"]
+
+==== Filter
+This commands helps you filter your tasks by category. The two categories available are status and type.
+
+*Example:*
+
+Say you want to view a list of all your pending tasks.
+
+Study Buddy provides an option to filter your list!
+
+To `filter`:
+
+. Initiate the command using keyword `filter`
+. Study Buddy should respond with:
++
+image::filter1.png[width="790", title="Response to 'filter'"]
+
+. Enter your choice. If you enter 1, you have chosen to filter by status.
++
+image::filter2.png[width="790", title="Response to filter by 'status'"]
+
+. Suppose this is what your task list looks like before you filter.
++
+image::beforeFilter.png[width="790", title="Before filter"]
+
+. You can then proceed to choose what status type you would like to filter by. Here we have filtered by "pending" as an example.
++
+image::filter3.png[width="790", title="Response to filter by status tag 'Pending'"]
+
+. At point 3 above, if you enter 2 instead, you have chosen to filter by task types.
++
+image::filter4.png[width="790", title="Response to filter by task 'type'"]
+
+. Once again, imagine your study buddy currently looks like Figure 30 above. (at point 4)
+
+. You can then proceed to choose what task type you would like to filter by. Here we have filtered by "assignment" as an example.
++
+image::filter5.png[width="790", title="Response to filter by task type 'assignment'"]
 
 ==== Refresh
 This commands refreshes the list of tasks due soon as well as status tags.
@@ -558,7 +613,7 @@ You will notice that the overdue task has now moved out of the due soon list and
 This command exits from Study Buddy.
 
 [NOTE]
-All your data will be saved and reloaded when you open the application later! You can find details about this in <<Saving the data>>
+All your data will be saved and reloaded when you open the application later! You can find details about this in <<Saving Data>>
 
 *Example:*
 
@@ -584,7 +639,8 @@ Any command other than `yes` (including `enter`) will be considered as a quit fr
 === Saving Data
 
 Study Buddy data is automatically saved in the hard disk after any command that changes the data.
-+ There is no need to save manually.
+
+There is no need to save manually.
 
 When the application is closed and re-opened, you should be able to see all the data you have added previously!
 
