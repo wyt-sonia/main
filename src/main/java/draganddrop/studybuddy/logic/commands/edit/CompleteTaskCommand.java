@@ -40,7 +40,6 @@ public class CompleteTaskCommand extends Command {
 
         Task taskToComplete = lastShownList.get(targetIndex.getZeroBased());
         model.completeTask(taskToComplete);
-        model.archiveTask(taskToComplete);
 
         return new CommandResult(String.format(Messages.MESSAGE_COMPLETE_TASK_SUCCESS,
                 taskToComplete.getTaskName()));
