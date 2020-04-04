@@ -271,12 +271,18 @@ public class MainWindow extends UiPart<Stage> {
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
     }
 
+    /**
+     * shows the productivity page and selects the Productivity Points tab
+     */
     @FXML
     private void handleShowProductivityPoints() {
         productivityPage.selectTab(2);
         handleShowProductivity();
     }
 
+    /**
+     * shows the productivity page and selects the Daily tab
+     */
     @FXML
     private void handleShowProductivityDaily() {
         productivityPage.selectTab(0);
