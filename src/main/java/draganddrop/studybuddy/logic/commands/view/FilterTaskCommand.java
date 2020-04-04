@@ -2,6 +2,7 @@ package draganddrop.studybuddy.logic.commands.view;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 import draganddrop.studybuddy.commons.core.LogsCenter;
@@ -9,8 +10,7 @@ import draganddrop.studybuddy.commons.core.Messages;
 import draganddrop.studybuddy.logic.commands.Command;
 import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.model.Model;
-import draganddrop.studybuddy.model.task.TaskStatus;
-import draganddrop.studybuddy.model.task.TaskStatusEqualPredicate;
+import draganddrop.studybuddy.model.task.Task;
 
 /**
  * Refreshes the due soon list as well as status tags.
@@ -18,13 +18,12 @@ import draganddrop.studybuddy.model.task.TaskStatusEqualPredicate;
 public class FilterTaskCommand extends Command {
 
     private final Logger logger = LogsCenter.getLogger(FilterTaskCommand.class);
-    private TaskStatus status = null;
-    private final TaskStatusEqualPredicate predicate;
+    private final Predicate<Task> predicate;
 
     /**
      * Creates an AddTaskCommand to add the specified {@code Task}
      */
-    public FilterTaskCommand(TaskStatusEqualPredicate predicate) {
+    public FilterTaskCommand(Predicate<Task> predicate) {
         this.predicate = predicate;
     }
 
