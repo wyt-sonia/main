@@ -64,6 +64,30 @@ image::Ui.png[width="790", title="Study Buddy Dashboard"]
 [TIP]
 Study Buddy will analyze your input and reply accordingly.
 
+
+[[DashBoard]]
+== Dashboard
+
+=== Understanding the dashboard
+The top of the DashBoard is the *menu bar*. You can access other data such as
+modules & archives.
+
+image::dashboard/dashboard_1 5.png[title = "Access your other things here!"]
+
+The left side features your entire list of tasks to complete.
+
+image::dashboard/dashboard_1 2.png[title = "All task to complete"]
+
+The right side displays your tasks that are to be due soon
+
+image::dashboard/dashboard_1 3.png[title = "Task due soon"]
+
+The bottom is your input line. You can type your commands to tell Study Buddy what to do and he will reply
+you!
+
+image::dashboard/dashboard_1 4.png[title = "Chat with Studdy Buddy here!"]
+
+
 [[Features]]
 == Features
 === Basic features
