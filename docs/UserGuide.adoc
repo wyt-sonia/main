@@ -60,7 +60,7 @@ image::Ui.png[width="790", title="Study Buddy Dashboard"]
 . To view a list of available command, you can key in *`help`* and click kbd:[Enter]. A more detailed description of our features is available in
 <<Features>> of this document.
 
-==== *Commonly Used Symbols*
+==== Commonly Used Symbols
 
 [NOTE]
 This symbol indicates something you should take note of.
@@ -71,7 +71,7 @@ This symbol indicates a tip that you could use.
 [CAUTION]
 This symbol indicates an aspect that should be used with caution.
 
-==== *Useful tips*
+==== Useful tips
 
 * The scroll bar on the right of the response box can be used to view the entire reply.
 * At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
@@ -80,7 +80,7 @@ It utilizes an "interactive command prompt". (explained in each command's descri
 * *[enter]* indicates *hitting the enter key on your keyboard*.
 * *|* indicates an *alternative option* (i.e. A | B implies A or B).
 
-==== *Navigation through Tabs*
+==== Navigation through Tabs
 
 
 . *Study Buddy*
@@ -515,6 +515,44 @@ U - `quiz`
 S - Returns `Weekly Quiz` and `Quiz 3`
 [NOTE]
 To navigate back to the always on display list of tasks, you can use the <<List>> function.
+
+==== Filter
+This commands helps you filter your tasks by category. The two categories available are status and type.
+
+*Example:*
+
+Say you want to view a list of all your pending tasks.
+
+Study Buddy provides an option to filter your list!
+
+To `filter`:
+
+. Initiate the command using keyword `filter`
+. Study Buddy should respond with:
++
+image::filter1.png[width="790", title="Response to 'filter'"]
+
+. Enter your choice. If you enter 1, you have chosen to filter by status.
++
+image::filter2.png[width="790", title="Response to filter by 'status'"]
+
+. Suppose this is what your task list looks like before you filter.
++
+image::beforeFilter.png[width="790", title="Before filter"]
+
+. You can then proceed to choose what status type you would like to filter by. Here we have filtered by "pending" as an example.
++
+image::filter3.png[width="790", title="Response to filter by status tag 'Pending'"]
+
+. At point 3 above, if you enter 2 instead, you have chosen to filter by task types.
++
+image::filter4.png[width="790", title="Response to filter by task 'type'"]
+
+. Once again, imagine your study buddy currently looks like Figure 30 above. (at point 4)
+
+. You can then proceed to choose what task type you would like to filter by. Here we have filtered by "assignment" as an example.
++
+image::filter5.png[width="790", title="Response to filter by task type 'assignment'"]
 
 ==== List
 *Format:*
