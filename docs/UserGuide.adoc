@@ -71,6 +71,15 @@ This symbol indicates a tip that you could use.
 [CAUTION]
 This symbol indicates an aspect that should be used with caution.
 
+==== Useful tips
+
+* The scroll bar on the right of the response box can be used to view the entire reply.
+* At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
+* Study Buddy will analyze your input and reply accordingly.
+It utilizes an "interactive command prompt". (explained in each command's description under <<Features>>)
+* *[enter]* indicates *hitting the enter key on your keyboard*.
+* *|* indicates an *alternative option* (i.e. A | B implies A or B).
+
 [[DashBoard]]
 == Dashboard
 
@@ -92,18 +101,6 @@ The bottom is your input line. You can type your commands to tell Study Buddy wh
 you!
 
 image::dashboard/dashboard_1 4.png[width="600", title = "Chat with Studdy Buddy here!"]
-
-*Command Format*
->>>>>>> 2868b04d6a0b1cdc7f0258b50b06528d9635514e
-
-==== Useful tips
-
-* The scroll bar on the right of the response box can be used to view the entire reply.
-* At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
-* Study Buddy will analyze your input and reply accordingly.
-It utilizes an "interactive command prompt". (explained in each command's description under <<Features>>)
-* *[enter]* indicates *hitting the enter key on your keyboard*.
-* *|* indicates an *alternative option* (i.e. A | B implies A or B).
 
 
 [[Features]]
