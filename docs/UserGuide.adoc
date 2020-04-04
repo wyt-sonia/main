@@ -621,7 +621,9 @@ image::module/module_6.png[]
 
 To create a module, click on `Modules` in the menu bar.
 
-image::module/module_7.png[]
+Alternatively, you can key in `create mods` into the input line.
+
+image::module/module_7.png[title = "click on `Create`"]
 
 Click on `Create`. A prompt will show up at the bottom of the screen.
 Key in the name of your module. The name of this module cannot be the same as your existing modules.
@@ -659,6 +661,8 @@ Congratulations, you have added a module to your modules page!
 ==== Edit Modules
 
 To create a module, click on `Modules` in the menu bar.
+
+Alternatively, you can key in `edit mods` into the input line.
 
 image::module/module_12.png[]
 
