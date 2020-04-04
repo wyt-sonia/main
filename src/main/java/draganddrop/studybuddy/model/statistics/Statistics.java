@@ -141,4 +141,13 @@ public class Statistics {
     public String getNextRank() {
         return scoreStats.getNextRank();
     }
+
+    /**
+     * returns the score required to achieve the next rank
+     * @return score required
+     */
+    public int getScoreToNextRank() {
+        return scoreStats.getScoreToNextRank();
+    }
+
 }

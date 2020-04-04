@@ -1,3 +1,7 @@
+.u-gold-progress {
+    -fx-progress-color: #F7B519;
+}
+
 .u-red-progress {
-    -fx-progress-color: #bc002a;
+    -fx-progress-color: #9C3D01;
 }
