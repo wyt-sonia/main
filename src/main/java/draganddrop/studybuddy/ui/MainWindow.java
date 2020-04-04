@@ -438,6 +438,11 @@ public class MainWindow extends UiPart<Stage> {
         customToggleHolders(false, false, false, false);
     }
 
+    /**
+     * Toggles the title of the dueListPanelTitle.
+     *
+     * @param val
+     */
     private void toggleTaskSummaryHolderView(boolean val) {
         taskSummaryHolder.setVisible(val);
         taskSummaryHolder.setManaged(val);
