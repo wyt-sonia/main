@@ -83,9 +83,9 @@ It utilizes an "interactive command prompt". (explained in each command's descri
 * *[enter]* indicates *hitting the enter key on your keyboard*.
 * *|* indicates an *alternative option* (i.e. A | B implies A or B).
 ====
-*Navigation*
+*Navigation through Tabs*
 
-. Study Buddy
+. *Study Buddy*
 +
 .. All tasks
 +
@@ -99,7 +99,7 @@ Contains a list of all your archived tasks on the left panel and due soon tasks 
 +
 Short-cut exit the application.
 +
-. Modules
+. *Modules*
 +
 .. Show
 Contains all your modules in separate tabs and their respective tasks.
@@ -110,7 +110,7 @@ Short-cut to create modules.
 .. Edit
 Short-cut to edit modules.
 +
-. Statistics
+. *Statistics*
 +
 .. Task Status
 Contains a summary of tasks' status.
@@ -121,17 +121,16 @@ Contains a summary of module related tasks' deadline and start date.
 .. Module related Task Weight
 Contains a summary of module related task weights.
 +
-. Calendar
+. *Calendar*
 Contains a calender view and a panel to display tasks on the day you choose.
 +
-. Productivity
+. *Productivity*
 +
 .. Daily
 +
 .. Weekly
 +
 .. Productivity Points
-
 
 
 [[Features]]
