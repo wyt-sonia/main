@@ -1,0 +1,2302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>Study Buddy - User Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment @import statement to use as custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite::before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+:not(pre)>code.nobreak{word-wrap:normal}
+:not(pre)>code.nowrap{white-space:nowrap}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:100%;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details>summary:first-of-type{cursor:pointer;display:list-item;outline:none;margin-bottom:.75em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class="highlight"],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos{border-right:1px solid currentColor;opacity:.35;padding-right:.5em}
+pre.pygments .lineno{border-right:1px solid currentColor;opacity:.35;display:inline-block;margin-right:.75em}
+pre.pygments .lineno::before{content:"";margin-right:-.125em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+table.tableblock{max-width:100%;border-collapse:separate}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+td.tableblock>.content>:last-child.sidebarblock{margin-bottom:0}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.frame-all{border-width:1px}
+table.frame-sides{border-width:0 1px}
+table.frame-topbot,table.frame-ends{border-width:1px 0}
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd),table.stripes-even tr:nth-of-type(even),table.stripes-hover tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media print,amzn-kf8{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+</head>
+<body class="article">
+<div id="header">
+<h1>Study Buddy - User Guide</h1>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>By: <code>Team Drag&amp;Drop</code>      Since: <code>Jan 2020</code></p>
+</div>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle"></div>
+<ul class="sectlevel1">
+<li><a href="#_introduction">1. Introduction</a></li>
+<li><a href="#_quick_start">2. Quick Start</a></li>
+<li><a href="#DashBoard">3. Dashboard</a>
+<ul class="sectlevel2">
+<li><a href="#_understanding_the_dashboard">3.1. Understanding the dashboard</a></li>
+</ul>
+</li>
+<li><a href="#Features">4. Features</a>
+<ul class="sectlevel2">
+<li><a href="#_basic_features">4.1. Basic features</a>
+<ul class="sectlevel3">
+<li><a href="#_help">4.1.1. Help :</a></li>
+<li><a href="#_add">4.1.2. Add</a></li>
+<li><a href="#_edit">4.1.3. Edit</a></li>
+<li><a href="#_done">4.1.4. Done</a></li>
+<li><a href="#_clear">4.1.5. Clear</a></li>
+<li><a href="#_delete">4.1.6. Delete</a></li>
+<li><a href="#_delete_duplicates">4.1.7. Delete duplicates</a></li>
+<li><a href="#_archive_unarchive">4.1.8. Archive/ Unarchive</a></li>
+<li><a href="#_sort">4.1.9. Sort</a></li>
+<li><a href="#_find">4.1.10. Find</a></li>
+<li><a href="#_list">4.1.11. List</a></li>
+<li><a href="#_refresh">4.1.12. Refresh</a></li>
+<li><a href="#_exit">4.1.13. Exit</a></li>
+</ul>
+</li>
+<li><a href="#_saving_data">4.2. Saving Data</a></li>
+<li><a href="#_due_soon_tasks">4.3. Due Soon Tasks</a></li>
+<li><a href="#_modules">4.4. Modules</a>
+<ul class="sectlevel3">
+<li><a href="#_navigation">4.4.1. Navigation</a></li>
+<li><a href="#_functions">4.4.2. Functions</a></li>
+<li><a href="#_create_modules">4.4.3. Create Modules</a></li>
+<li><a href="#_edit_modules">4.4.4. Edit Modules</a>
+<ul class="sectlevel4">
+<li><a href="#_a_change_module_name">a) Change Module Name</a></li>
+<li><a href="#_b_change_module_code">b) Change Module Code</a></li>
+<li><a href="#_c_delete_module">c) Delete Module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_statistics">4.5. Statistics</a></li>
+<li><a href="#_calendar">4.6. Calendar</a></li>
+<li><a href="#_productivity">4.7. Productivity</a></li>
+</ul>
+</li>
+<li><a href="#_faq">5. FAQ</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction">1. Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Study Buddy is a desktop application which is designed for students who <strong>wish to manege their module related tasks</strong>.
+More importantly, Study Buddy is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI).</p>
+</div>
+<div class="paragraph">
+<p>You will never have to remember long, wordy commands to use your command line interface, since
+Study Buddy <strong>provides an interactive way of communication</strong>, which not only helps to prevent typos, but also makes the application much easier to use!</p>
+</div>
+<div class="paragraph">
+<p>If you can type fast, Study Buddy can get your module management done faster than traditional GUI apps.</p>
+</div>
+<div class="paragraph">
+<p>Currently, Study Buddy support both Windows and Mac systems. If you are interested, please jump to the <a href="#_quick_start">Section 2, &#8220;Quick Start&#8221;</a> to get started.</p>
+</div>
+<div class="paragraph">
+<p>Hope you enjoy!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_quick_start">2. Quick Start</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Study Buddy relies on a particular computer environment to operate correctly,
+thus to enjoy it, you need to have <code>Java 11</code> or above installed in your computer.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Here is the guideline for checking java version of your computer.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.wikihow.com/Check-Your-Java-Version-in-the-Windows-Command-Line">windows</a></p>
+</li>
+<li>
+<p><a href="https://www.wikihow.com/Check-Java-Version-on-a-Mac">mac</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If your computer does not have java or its version is below <code>Java 11</code>,
+you may refer to the guide below.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.oracle.com/en/java/javase/11/install/installation-jdk-microsoft-windows-platforms.html#GUID-C11500A9-252C-46FE-BB17-FC5A9528EAEB">windows</a></p>
+</li>
+<li>
+<p><a href="https://docs.oracle.com/en/java/javase/11/install/installation-jdk-macos.html#GUID-2FE451B0-9572-4E38-A1A5-568B77B146DE">mac</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>When your computer is ready, you can download the latest <a href="https://github.com/AY1920S2-CS2103T-W16-3/main/releases"><code>studybuddy.jar</code></a> to get your Study Buddy.</p>
+</li>
+<li>
+<p>To better manage your tasks, you may copy the file to the folder you want to use as the home folder for the Study Buddy.</p>
+</li>
+<li>
+<p>Last, double-click the file to start the app and the dashboard should appear in a few seconds.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+You mey need to adjust the size of the Study Buddy window when you launch it.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Ui.png" alt="Ui" width="790">
+</div>
+<div class="title">Figure 1. Study Buddy Dashboard</div>
+</div>
+</li>
+<li>
+<p>The box with the words <code>Enter your command here&#8230;&#8203;</code> is where you can key in your desired command and click <kbd>Enter</kbd> to execute.</p>
+</li>
+<li>
+<p>To view a list of available command, you can key in <strong><code>help</code></strong> and click <kbd>Enter</kbd>. A more detailed description of our features is available in
+<a href="#Features">Section 4, &#8220;Features&#8221;</a> of this document.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Study Buddy will analyze your input and reply accordingly.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="DashBoard">3. Dashboard</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_understanding_the_dashboard">3.1. Understanding the dashboard</h3>
+<div class="paragraph">
+<p>The top of the DashBoard is the <strong>menu bar</strong>. You can access other data such as
+modules &amp; archives.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/dashboard/dashboard_1%205.png" alt="dashboard 1 5" width="600">
+</div>
+<div class="title">Figure 2. Access other features here!</div>
+</div>
+<div class="paragraph">
+<p>The left side features your entire list of tasks to complete.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/dashboard/dashboard_1%202.png" alt="dashboard 1 2" width="600">
+</div>
+<div class="title">Figure 3. All task to complete</div>
+</div>
+<div class="paragraph">
+<p>The right side displays your tasks that are to be due soon</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/dashboard/dashboard_1%203.png" alt="dashboard 1 3" width="600">
+</div>
+<div class="title">Figure 4. Task due soon</div>
+</div>
+<div class="paragraph">
+<p>The bottom is your input line. You can type your commands to tell Study Buddy what to do and he will reply
+you!</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/dashboard/dashboard_1%204.png" alt="dashboard 1 4" width="600">
+</div>
+<div class="title">Figure 5. Chat with Studdy Buddy here!</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Features">4. Features</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_basic_features">4.1. Basic features</h3>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Command Format</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+</li>
+<li>
+<p><strong>SB</strong> and <strong>You</strong> refers to <strong>Study Buddy</strong> and the <strong>User</strong> respectively.</p>
+</li>
+<li>
+<p>When a line is preceded by <strong>SB</strong>, it implies that it is a <strong>reply displayed by Study Buddy</strong>.</p>
+</li>
+<li>
+<p>When a line is preceded by <strong>You</strong>, it implies that it is a value that must be <strong>entered by the user</strong>.</p>
+</li>
+<li>
+<p><strong>[enter]</strong> indicates <strong>hitting the enter key on your keyboard</strong>.</p>
+</li>
+<li>
+<p><strong>[exits]</strong> indicates that <strong>application has closed</strong>.</p>
+</li>
+<li>
+<p><strong>|</strong> connects <strong>alternative option</strong> (i.e. A | B &#8594; A or B).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+These features utilize interactive command prompt. (described in section <a href="#Interactive Command Prompt">[Interactive Command Prompt]</a> )
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_help">4.1.1. Help :</h4>
+<div class="paragraph">
+<p><strong>Description:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>This function displays a list of interactive commands that you can use.</p>
+</li>
+<li>
+<p>It also provides a link to this document, (our user guide) for your convenience.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong></p>
+</div>
+<div class="paragraph">
+<p><mark>You-</mark> <code>help</code></p>
+</div>
+<div class="paragraph">
+<p><strong>SB -</strong> list of interactive commands</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>You-</strong> <code>help</code></p>
+</div>
+<div class="paragraph">
+<p><strong>SB -</strong> &#160;Here is the list of available commands:<br>
+&#160;&#160;&#160;&#160;&#160;1. add  2. delete  3. edit  4. bye  5. sort  6. find  7. done  8. delete duplicates  9. sort  10. archive  11. help<br>
+&#160;&#160;&#160;&#160;&#160;12. list  13. clear 14. create mods</p>
+</div>
+<div class="paragraph">
+<p>&#160;&#160;&#160;&#160;&#160;&#160;User Guide: <a href="https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html" class="bare">https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_add">4.1.2. Add</h4>
+<div class="paragraph">
+<p>This command is for you to record a new task into Study Buddy.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Through the interaction, task&#8217;s details will be collected.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Required information: task name, task type, task deadline or duration</p>
+</li>
+<li>
+<p>Optional information: module, task description, task weight, estimated number of hours needed</p>
+</li>
+<li>
+<p>Input format requirement:</p>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 50%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Information Type</th>
+<th class="tableblock halign-left valign-top">Format Requirement</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>MODULE CODE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 or 3 letters + 4 digits + 1 letter (optional)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CS2101, CS2103T,<br>
+ LSM1101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>INDEX NUMBER OF<br>
+MODULE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Integer number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TASK NAME</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No more than 20 characters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Demo presentation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>INDEX NUMBER OF<br>
+TASK TYPE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Integer number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TASK DEADLINE<br>
+OR DURATION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Different task types apply different date and time format</p>
+<p class="tableblock">Deadline (for Assignment):<br>
+<code>HH:mm dd/MM/yyyy</code></p>
+<p class="tableblock">Duration (for other task types):<br>
+ <code>HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy</code><br></p>
+<p class="tableblock"><code>HH &#8594; hour, mm &#8594; minutes, dd &#8594; date, mm &#8594; month,
+yyyy &#8594; year</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assignment:<br>
+23:59 01/05/2020</p>
+<p class="tableblock">Meeting:<br>
+14:0 15/04/2020-16:0 15/04/2020</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TASK DESCRIPTION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No more than 300 characters</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">this is a valid description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>TASK WEIGHT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Positive integer or float number from 0.0 to 100.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ESTIMATED NUMBER OF HOURS NEEDED</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Positive integer or float number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10.0</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Other constraints::</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>The application does not allow you to assign date time that has already passed to a task.
+It must be a time in the future.</p>
+</li>
+<li>
+<p>For duration, the two dates should follow the order of <code>start date</code>-<code>end date</code>, the <code>end date</code> should
+be later than <code>start date</code>.</p>
+</li>
+<li>
+<p>The total weight of tasks under the same module is caped to 100.0.</p>
+<div class="olist upperalpha">
+<ol class="upperalpha" type="A">
+<li>
+<p>Both <code>archived</code> and <code>not archived tasks</code> will be taken into consideration.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>All <code>index numbers</code> should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The application allows for addition of duplicate tasks. It will however confirm with you if you are sure you want to add a duplicate.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To <code>add</code>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initiate the command using keyword <code>add</code></p>
+</li>
+<li>
+<p>Study Buddy should respond with <code>a list of available modules</code> as:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/add/add_module.png" alt="add module" width="600">
+</div>
+<div class="title">Figure 6. Reponse to 'add'</div>
+</div>
+</li>
+<li>
+<p>You can link this task with a module by entering its <code>MODULE CODE</code> | <code>INDEX NUMBER OF MODULE</code> here
+, or you can press <kbd>enter</kbd> to skip. Here we use <code>1</code> (CS2101) as an example.</p>
+</li>
+<li>
+<p>Study Buddy should respond with the module selected and the request of task name as:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/add/add_task_name.png" alt="add task name" width="600">
+</div>
+<div class="title">Figure 7. Asks for task&#8217;s name</div>
+</div>
+</li>
+<li>
+<p>Here we use <code>new task</code> as an example.</p>
+</li>
+<li>
+<p>Study Buddy should respond with the task name defined and the request of task type as:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/add/add_task_type.png" alt="add task type" width="600">
+</div>
+<div class="title">Figure 8. Asks for task&#8217;s type</div>
+</div>
+</li>
+<li>
+<p>Here we use <code>1</code> (Assignment) as an example.</p>
+</li>
+<li>
+<p>Study Buddy should respond with the task type defined and the request of task&#8217;s date time information as:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/add/add_date_time.png" alt="add date time" width="600">
+</div>
+<div class="title">Figure 9. Asks for task&#8217;s date time</div>
+</div>
+</li>
+<li>
+<p>Here we use <code>14:00 04/05/2020</code> as an example.</p>
+</li>
+<li>
+<p>Study Buddy should respond with the date time defined and the request of task&#8217;s description as:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/add/add_desc.png" alt="add desc" width="600">
+</div>
+<div class="title">Figure 10. Asks for task&#8217;s description</div>
+</div>
+</li>
+<li>
+<p>Here we use <code>new task description</code> as an example.</p>
+</li>
+<li>
+<p>Study Buddy should respond with the description defined and the request of task&#8217;s weight as:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/add/add_weight.png" alt="add weight" width="600">
+</div>
+<div class="title">Figure 11. Asks for task&#8217;s weight</div>
+</div>
+</li>
+<li>
+<p>Here we use <code>10</code> as an example.</p>
+</li>
+<li>
+<p>Study Buddy should respond with the weight defined and the request of the estimated number of hours needed as:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/add/add_time_cost.png" alt="add time cost" width="600">
+</div>
+<div class="title">Figure 12. Asks for estimated number of hours needed</div>
+</div>
+</li>
+<li>
+<p>Here we use <code>10</code> as an example.</p>
+</li>
+<li>
+<p>Study Buddy should respond with the task details collected and the request of your confirmation to perform the command as:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/add/add_task_info_1.png" alt="add task info 1" width="600">
+</div>
+<div class="title">Figure 13. Asks for user conformation to add a new task</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/add/add_task_info_2.png" alt="add task info 2" width="600">
+</div>
+<div class="title">Figure 14. Task details collected</div>
+</div>
+</li>
+<li>
+<p>Now, by pressing <kbd>enter</kbd> the new task will be added into your Study Buddy.</p>
+</li>
+<li>
+<p>Study Buddy should respond as:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/add/add_result.png" alt="add result" width="600">
+</div>
+<div class="title">Figure 15. New task added</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+You can use <code>quit</code> command to quit from each step.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_edit">4.1.3. Edit</h4>
+<div class="paragraph">
+<p>This command is for you to edit an existing task.
+To indicate the task you want to edit, you need to provide its index number.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="paragraph">
+<p>When you want to update some details of a task or there are some typo in an existing
+task. You can use this command to edit as you wish.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Each new value and index number entered will be checked under the same constrain of add command.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To <code>edit</code>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initiate the command using keyword <code>edit</code></p>
+</li>
+<li>
+<p>Study Buddy should respond with:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/edit/edit_index.png" alt="edit index" width="600">
+</div>
+<div class="title">Figure 16. Reponse to 'edit'</div>
+</div>
+</li>
+<li>
+<p>Type the index of the task you want to edit. here use <code>1</code> (Quiz 1) as an example.</p>
+</li>
+<li>
+<p>The Study Buddy should respond with:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/edit/edit_response_index.png" alt="edit response index" width="600">
+</div>
+<div class="title">Figure 17. List of editable fields</div>
+</div>
+</li>
+<li>
+<p>Type the index of the field you want to edit, here use <code>2</code> (task name) as an example.</p>
+</li>
+<li>
+<p>The Study Buddy should respond with:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/edit/edit_response_task_name.png" alt="edit response task name" width="600">
+</div>
+<div class="title">Figure 18. Asks for new task name</div>
+</div>
+</li>
+<li>
+<p>Enter new task name, here use <code>new task</code> as an example.</p>
+</li>
+<li>
+<p>The Study Buddy should respond as below with updated field.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/edit/edit_result.png" alt="edit result" width="600">
+</div>
+<div class="title">Figure 19. Task edited</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_done">4.1.4. Done</h4>
+<div class="paragraph">
+<p>This command completes a task. Key in <code>done</code> &amp; you should get this prompt:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/done/done_1.png" alt="done 1" width="700">
+</div>
+<div class="title">Figure 20. Presentation to be marked as finished</div>
+</div>
+<div class="paragraph">
+<p>Now key in the index of the task you wish to complete.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/done/done_2.png" alt="done 2" width="700">
+</div>
+<div class="title">Figure 21. Press <code>Enter</code> to confirm changes</div>
+</div>
+<div class="paragraph">
+<p>Press <code>Enter</code> again to confirm your change.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/done/done_3.png" alt="done 3" width="700">
+</div>
+<div class="title">Figure 22. Presentation 1 is marked as finished</div>
+</div>
+<div class="paragraph">
+<p>Task set to <code>done</code> successfully! Note that the task in your task list has the tag <code>FINISHED</code>.
+You can choose to archive it using the <code>archive</code> command.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_clear">4.1.5. Clear</h4>
+<div class="paragraph">
+<p>This commands clears all data in the Study Buddy.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+Be careful with this command! It will remove any data you may have entered into the Study Buddy and you cannot retrieve it.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="paragraph">
+<p>Say you have finished a semester and would like to clear everything in your Study Buddy and start over.</p>
+</div>
+<div class="paragraph">
+<p>You can always clear everything!</p>
+</div>
+<div class="paragraph">
+<p>To <code>clear</code>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initiate the command using keyword <code>clear</code></p>
+</li>
+<li>
+<p>Study Buddy should respond with:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/clear/clear1.png" alt="clear1" width="590">
+</div>
+<div class="title">Figure 23. Response to 'clear'</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+You can enter <code>quit</code> if you wish to go back!
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Press <code>enter</code> again to confirm</p>
+</li>
+<li>
+<p>Study Buddy has been cleared completely!</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/clear/clear2.png" alt="clear2" width="700">
+</div>
+<div class="title">Figure 24. View empty Study Buddy</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_delete">4.1.6. Delete</h4>
+<div class="paragraph">
+<p>This commands deletes a task from the existing list, using the index provided by you.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="paragraph">
+<p>After having added a task, you realise that there has been a change and you do not need to do that task anymore.</p>
+</div>
+<div class="paragraph">
+<p>Study Buddy provides you an option to delete that task from the list!</p>
+</div>
+<div class="paragraph">
+<p>To <code>delete</code>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initiate the command using keyword <code>delete</code></p>
+</li>
+<li>
+<p>Study Buddy should respond with:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/delete/deleteResponse2.png" alt="deleteResponse2" width="790">
+</div>
+<div class="title">Figure 25. Response to 'delete'</div>
+</div>
+</li>
+<li>
+<p>Type the index of the task you want to delete.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/delete/deleteResponse3.png" alt="deleteResponse3" width="500">
+</div>
+<div class="title">Figure 26. Response to delete index 1</div>
+</div>
+</li>
+<li>
+<p>Press <code>enter</code> again to confirm</p>
+</li>
+<li>
+<p>Task has been deleted! You will notice that the task at the index you selected has disappeared from the list of tasks.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/delete/deleteResponse1.png" alt="deleteResponse1" width="790">
+</div>
+<div class="title">Figure 27. Updated list (without deleted task)</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_delete_duplicates">4.1.7. Delete duplicates</h4>
+<div class="paragraph">
+<p>This commands deletes all duplicated tasks in the list.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+A task is considered duplicate when the name, type, module, description, weightage, estimated time cost and deadline are the same. (Status is not checked)
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="paragraph">
+<p>After having added a duplicated task, you realise that there is no more need for this duplicate task. Yet you do not want to scroll through the entire list to delete it.</p>
+</div>
+<div class="paragraph">
+<p>Study Buddy provides you an option to delete all your duplicate tasks from the list!</p>
+</div>
+<div class="paragraph">
+<p>To <code>delete duplicates</code>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initiate the command using keyword <code>delete duplicates</code></p>
+</li>
+<li>
+<p>Study Buddy should respond with:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/deleteduplicate/deleteDuplicates1.png" alt="deleteDuplicates1" width="790">
+</div>
+<div class="title">Figure 28. Response to 'delete duplicates'</div>
+</div>
+</li>
+<li>
+<p>Press <code>enter</code> again to confirm</p>
+</li>
+<li>
+<p>Duplicate tasks have been deleted! You will notice that only one copy (most recent) of each task will be left in the list.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/deleteduplicate/deleteDuplicates2.png" alt="deleteDuplicates2" width="790">
+</div>
+<div class="title">Figure 29. Updated list (without duplicate tasks)</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_archive_unarchive">4.1.8. Archive/ Unarchive</h4>
+<div class="paragraph">
+<p>This commands stores the specified task into a separate list.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="paragraph">
+<p>After a hard days work, you completed some tasks. You don&#8217;t want them in your to-do list anymore, but you don&#8217;t want to delete them; some of the information in the task card could still be useful.</p>
+</div>
+<div class="paragraph">
+<p>You can always store them in an archive!</p>
+</div>
+<div class="paragraph">
+<p>To <code>archive</code>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initiate the command using keyword <code>archive</code></p>
+</li>
+<li>
+<p>Study Buddy should respond with:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/archive/archive_1.png" alt="archive 1" width="790">
+</div>
+<div class="title">Figure 30. Response to 'archive'</div>
+</div>
+</li>
+<li>
+<p>Type the index of the task you want to archive.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/archive/archive_2.png" alt="archive 2" width="790">
+</div>
+<div class="title">Figure 31. Response to task index</div>
+</div>
+</li>
+<li>
+<p>Press <code>enter</code> again to confirm</p>
+</li>
+<li>
+<p>Task has been archived! You can view all archived task under the <code>StudyBuddy</code> &#8594; <code>Archived Tasks</code> tab.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/archive/archive_3.png" alt="archive 3" width="790">
+</div>
+<div class="title">Figure 32. View archived tasks</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>To <code>unarchive</code> a task, and add it back to the main list, simply follow the same set of commands, but replace the <code>archive</code> keyword with <code>unarchive</code></p>
+</li>
+<li>
+<p>Remember to use the index in the <strong>Archived Task</strong> instead of <strong>All Tasks</strong></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sort">4.1.9. Sort</h4>
+<div class="paragraph">
+<p><strong>Description</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>This command is for you to reorder the task list in <strong>All Tasks</strong> panel.</p>
+</li>
+<li>
+<p>Currently you can sort tasks by their</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Deadline / Task Start Date</p>
+</li>
+<li>
+<p>Task Name</p>
+</li>
+<li>
+<p>Creation Date &amp; Time</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/sort/beforeSort.png" alt="beforeSort" width="790">
+</div>
+<div class="title">Figure 33. All Task Panel</div>
+</div>
+<div class="paragraph">
+<p><strong>Format</strong></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>You-</strong> <code>sort</code></p>
+</div>
+<div class="paragraph">
+<p><strong>SB -</strong> asks for sorting term and provides the list of available sorting terms</p>
+</div>
+<div class="paragraph">
+<p><strong>You-</strong> <code>INDEX NUMBER OF SORTING TERM</code></p>
+</div>
+<div class="paragraph">
+<p><strong>SB -</strong> asks for your confirmation</p>
+</div>
+<div class="paragraph">
+<p><strong>You-</strong> <code>[enter]</code></p>
+</div>
+<div class="paragraph">
+<p><strong>SB -</strong> Task sorted successfully!</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example</strong></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>You-</strong> <code>sort</code></p>
+</div>
+<div class="paragraph">
+<p><strong>SB -</strong> Please choose the sort keyword:<br>
+&#160;&#160;&#160;&#160;1. Deadline / Task Start Date<br>
+&#160;&#160;&#160;&#160;2. Task Name<br>
+&#160;&#160;&#160;&#160;3. Creation Date &amp; Time</p>
+</div>
+<div class="paragraph">
+<p><strong>You-</strong> <code>1</code></p>
+</div>
+<div class="paragraph">
+<p><strong>SB -</strong> The task  will be sorted by Deadline / Task Start Date.<br>
+&#160;&#160;&#160;&#160;Please click enter again to check the sorted list.</p>
+</div>
+<div class="paragraph">
+<p><strong>You-</strong> <code>[enter]</code></p>
+</div>
+<div class="paragraph">
+<p><strong>SB -</strong> Task sorted successfully!</p>
+</div>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+The <code>All Tasks Panel</code> will update automatically after successfully sort the tasks.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_find">4.1.10. Find</h4>
+<div class="paragraph">
+<p>Finds tasks whose names contain any of the given keywords.</p>
+</div>
+<div class="paragraph">
+<p>To <code>find</code> a task:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initiate the command with <code>find</code>.</p>
+</li>
+<li>
+<p>Enter the keyword that you want to search for.</p>
+</li>
+<li>
+<p>You have found a list of tasks that contain your keyword!</p>
+</li>
+</ol>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is case insensitive. e.g <code>homework</code> will match <code>Homework</code></p>
+</li>
+<li>
+<p>The order of the keywords does not matter. e.g. <code>CS Homework</code> will match <code>Homework CS</code></p>
+</li>
+<li>
+<p>Only the name is searched.</p>
+</li>
+<li>
+<p>Substrings will be matched e.g. <code>work</code> will match <code>Homework</code></p>
+</li>
+<li>
+<p>Tasks matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>CS Homework</code> can return <code>CS Quiz</code>,
+<code>Reflection Homework</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>You-</strong> <code>find</code><br></p>
+</div>
+<div class="paragraph">
+<p>S - Please type in a keyword that you want to search for.</p>
+</div>
+<div class="paragraph">
+<p><strong>You-</strong> <code>quiz</code></p>
+</div>
+<div class="paragraph">
+<p>S - Returns <code>Weekly Quiz</code> and <code>Quiz 3</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+To navigate back to the always on display list of tasks, you can use the <a href="#_list">Section 4.1.11, &#8220;List&#8221;</a> function.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_list">4.1.11. List</h4>
+<div class="paragraph">
+<p><strong>Format:</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>You-</strong> <code>list</code></p>
+</div>
+<div class="paragraph">
+<p><strong>SB -</strong> done!</p>
+</div>
+<div class="paragraph">
+<p><strong>Description</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>This function allows you to view a list of all your tasks.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>You-</strong> <code>list</code></p>
+</div>
+<div class="paragraph">
+<p><strong>SB -</strong> Here is the complete list of tasks:</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_refresh">4.1.12. Refresh</h4>
+<div class="paragraph">
+<p>This commands refreshes the list of tasks due soon as well as status tags.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Due soon list shows tasks due within the next week. Details are in <a href="#_due_soon_tasks">Section 4.3, &#8220;Due Soon Tasks&#8221;</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Status tags include information on the tasks' status. Details are in <a href="#Status Tags">[Status Tags]</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="paragraph">
+<p>Say you left Study Buddy open overnight because you fell asleep studying. When you wake up, you notice that the time left for the deadline on the due soon tasks is not accurate.</p>
+</div>
+<div class="paragraph">
+<p>You can refresh them!</p>
+</div>
+<div class="paragraph">
+<p>To <code>refresh</code>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Say this is what Study Buddy looks like.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/refresh/refresh1.png" alt="refresh1" width="790">
+</div>
+<div class="title">Figure 34. Current state (needs to be refreshed)</div>
+</div>
+<div class="paragraph">
+<p>Suppose you notice that the task "Submit UG" is not due "now" anymore because some time has past since the deadline.</p>
+</div>
+</li>
+<li>
+<p>Initiate the refresh command using keyword <code>refresh</code></p>
+</li>
+<li>
+<p>Study Buddy should respond with:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/refresh/refresh2.png" alt="refresh2" width="790">
+</div>
+<div class="title">Figure 35. Response to 'refresh'</div>
+</div>
+</li>
+<li>
+<p>Press <code>enter</code> again to confirm</p>
+</li>
+<li>
+<p>Tasks have been refreshed!</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/refresh/refresh3.png" alt="refresh3" width="790">
+</div>
+<div class="title">Figure 36. View refreshed Study Buddy</div>
+</div>
+<div class="paragraph">
+<p>You will notice that the overdue task has now moved out of the due soon list and has the updated status tag "overdue".</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_exit">4.1.13. Exit</h4>
+<div class="paragraph">
+<p>This command exits from Study Buddy.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+All your data will be saved and reloaded when you open the application later! You can find details about this in <a href="#Saving the data">[Saving the data]</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="paragraph">
+<p>After working all day, you would like to close the application and have a good night&#8217;s sleep.</p>
+</div>
+<div class="paragraph">
+<p>You can always exit the application!</p>
+</div>
+<div class="paragraph">
+<p>To <code>exit</code>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initiate the command using keyword <code>bye</code></p>
+</li>
+<li>
+<p>Study Buddy should respond with:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/exit/exit1.png" alt="exit1" width="790">
+</div>
+<div class="title">Figure 37. Response to 'bye'</div>
+</div>
+</li>
+<li>
+<p>Type 'yes' if you want to exit and anything else if you do not wish to exit.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/basic/exit/exit2.png" alt="exit2" width="790">
+</div>
+<div class="title">Figure 38. Response to any command other than 'yes'</div>
+</div>
+<div class="paragraph">
+<p>In response to yes, the application should simply close.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Any command other than <code>yes</code> (including <code>enter</code>) will be considered as a quit from the exit.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_saving_data">4.2. Saving Data</h3>
+<div class="paragraph">
+<p>Study Buddy data is automatically saved in the hard disk after any command that changes the data.
++ There is no need to save manually.</p>
+</div>
+<div class="paragraph">
+<p>When the application is closed and re-opened, you should be able to see all the data you have added previously!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_due_soon_tasks">4.3. Due Soon Tasks</h3>
+<div class="paragraph">
+<p>The due soon task list is always on display in your application under <code>Study Buddy</code> &#8594; <code>All tasks</code></p>
+</div>
+<div class="paragraph">
+<p>It provides the following functionality:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>It displays your tasks that are due within the next week. (uses deadline you have provided)</p>
+<div class="imageblock text-left">
+<div class="content">
+<img src="images/duesoon/duesoon1.png" alt="duesoon1" width="790">
+</div>
+<div class="title">Figure 39. Due Soon List</div>
+</div>
+</li>
+<li>
+<p>It automatically sorts these tasks in an ascending order of deadlines.</p>
+<div class="imageblock text-left">
+<div class="content">
+<img src="images/duesoon/duesoon3.png" alt="duesoon3" width="790">
+</div>
+<div class="title">Figure 40. Due Soon List</div>
+</div>
+</li>
+<li>
+<p>It automatically adds applicable tasks when you make changes to your main list, such as add (<a href="#_add">Section 4.1.2, &#8220;Add&#8221;</a>) or delete (<a href="#_delete">Section 4.1.6, &#8220;Delete&#8221;</a>).</p>
+</li>
+<li>
+<p>It displays a tag with the time left to the deadline.</p>
+<div class="imageblock text-left">
+<div class="content">
+<img src="images/duesoon/duesoon2.png" alt="duesoon2" width="790">
+</div>
+<div class="title">Figure 41. Due Soon List</div>
+</div>
+</li>
+<li>
+<p>It provides a <a href="#_refresh">Section 4.1.12, &#8220;Refresh&#8221;</a> function that allows you to refresh time/state of this list if needed.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Time left is never displayed in days and minutes. Hence if the current time is 9:00 am on 01/04/2020 and the task deadline is 9:02 am on 02/04/2020, it will show time left as 1 day. (not 1 day and 2 minutes)
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Due soon list will never display finished tasks. If you unarchive a completed task, it will not appear in the due soon list.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_modules">4.4. Modules</h3>
+<div class="paragraph">
+<p>The Modules tab is an easy way for students to organise their task, homework and deadlines into various modules.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_1.png" alt="module 1" width="790">
+</div>
+<div class="title">Figure 42. <code>Modules</code> in the menu bar</div>
+</div>
+<div class="paragraph">
+<p>By default, the Modules tab shows the following:</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><strong>Overview</strong>. This tab shows all the modules you will be taking for this semester.</p>
+</li>
+<li>
+<p><strong>No Module Allocated</strong>. This tab shows the list of tasks that has not yet been allocated to any module. By default,
+all tasks will show up here if you have not allocated any tasks to the modules.</p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_navigation">4.4.1. Navigation</h4>
+<div class="paragraph">
+<p>To navigate to the modules page, click on <code>Modules</code> in the menu bar.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_2.png" alt="module 2" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Then click on <code>Show Modules</code>. The module page should show up.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_3.png" alt="module 3" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>The clicking on the leftmost tab shows the <code><strong>Overview</strong></code> of all your modules. it displays the module&#8217;s name and their code.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_4.png" alt="module 4" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>The rightmost tab shows the list of task that has not been allocated to any modules.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_5.png" alt="module 5" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>The tabs in the middle are modules that you have added to the modules page.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_6.png" alt="module 6" width="790">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_functions">4.4.2. Functions</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_create_modules">4.4.3. Create Modules</h4>
+<div class="paragraph">
+<p>To create a module, click on <code>Modules</code> in the menu bar.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can key in <code>create mods</code> into the input line.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_7.png" alt="module 7" width="500">
+</div>
+<div class="title">Figure 43. click on <code>Create</code></div>
+</div>
+<div class="paragraph">
+<p>Click on <code>Create</code>. A prompt will show up at the bottom of the screen.
+Key in the name of your module. The name of this module cannot be the same as your existing modules.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_8.png" alt="module 8" width="790">
+</div>
+<div class="title">Figure 44. setting module name as 'New Module'</div>
+</div>
+<div class="paragraph">
+<p>Now key in your Module code. Your Module code should have a 2-3 letter prefix, a 4-digit number, followed
+by a single postfix.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Correct Module Codes:
+LSM1303
+CS2040C
+IS1103
+MA1521
+
+Incorrect Module Codes:
+CSSS1234    - Prefix is too long
+C0001       - Prefix is too short
+ZZ12345     - number is more than 4 digits
+A1111XX     - Postfix is too long</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_9.png" alt="module 9" width="790">
+</div>
+<div class="title">Figure 45. Keyed in CSS1234 as module code</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_10.png" alt="module 10" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Press <code>Enter</code> one more time to confirm.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_11.png" alt="module 11" width="790">
+</div>
+<div class="title">Figure 46. New Module with code CSS1234 created.</div>
+</div>
+<div class="paragraph">
+<p>Congratulations, you have added a module to your modules page!</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_edit_modules">4.4.4. Edit Modules</h4>
+<div class="paragraph">
+<p>To create a module, click on <code>Modules</code> in the menu bar.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can key in <code>edit mods</code> into the input line.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_12.png" alt="module 12" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>Click on <code>Edit</code>. A prompt will show up at the bottom of the screen.
+Key in the code of the module that you want to edit.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_13.png" alt="module 13" width="790" height=""">
+</div>
+<div class="title">Figure 47. Changing module with code  BA1001</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_14.png" alt="module 14" width="790">
+</div>
+<div class="title">Figure 48. Keyed in BA1001</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_15.png" alt="module 15" width="790">
+</div>
+<div class="title">Figure 49. Key in 1, 2 or 3 depending on which option you prefer</div>
+</div>
+<div class="paragraph">
+<p>Now you have 3 options. You can choose to:</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Change Module name.</p>
+</li>
+<li>
+<p>Change Module code.</p>
+</li>
+<li>
+<p>Delete Module.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Key in the index of your option.</p>
+</div>
+<div class="sect4">
+<h5 id="_a_change_module_name">a) Change Module Name</h5>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_16.png" alt="module 16" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Now key in your new module name.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_17.png" alt="module 17" width="790">
+</div>
+<div class="title">Figure 50. Module BA1001&#8217;s name has changed from 'CS' to 'New Module Name'</div>
+</div>
+<div class="paragraph">
+<p>Module name changed!</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_b_change_module_code">b) Change Module Code</h5>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_18.png" alt="module 18" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Now key in your new module code. Make sure it follows the correct format
+as written in 3.7.3.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_19.png" alt="module 19" width="790">
+</div>
+<div class="title">Figure 51. Module code BA1001 has changed to CS3230</div>
+</div>
+<div class="paragraph">
+<p>Module code changed!</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_c_delete_module">c) Delete Module</h5>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_20.png" alt="module 20" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Press <code>Enter</code> again to confirmed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/module/module_21.png" alt="module 21" width="790">
+</div>
+<div class="title">Figure 52. deleted BA1001</div>
+</div>
+<div class="paragraph">
+<p>Module deleted! All existing task in this module will be moved to <code>No Module Allocated</code> tab.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_statistics">4.5. Statistics</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Purpose</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>The Statistics page provides summary of tasks' different aspects, such as:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Task Status</p>
+</li>
+<li>
+<p>Module related tasks' deadline/ start date</p>
+</li>
+<li>
+<p>Module related tasks' weight</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>It utilizes different charts to make the information more visualized and easy to understand.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Navigate to Statistics Page</p>
+<div class="ulist">
+<ul>
+<li>
+<p>You can press the Statistics button in the menu bar to navigate to Statistics Page</p>
+<div class="imageblock text-left">
+<div class="content">
+<img src="images/stats/entryOfStatistics.png" alt="entryOfStatistics" width="790">
+</div>
+<div class="title">Figure 53. Statistics entry</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>UI introduction &amp; Charts Provided</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>After press Statistics button from menu bar, the Statistics page will display as its initial status.</p>
+<div class="imageblock text-left">
+<div class="content">
+<img src="images/stats/initStatisticsPage.png" alt="initStatisticsPage" width="790">
+</div>
+<div class="title">Figure 54. Statistics initial page</div>
+</div>
+</li>
+<li>
+<p>The left panel displays different charts, and the right panel will display related tasks when you clicking on the chart.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><strong>Task Status</strong></p>
+<div class="imageblock text-left">
+<div class="content">
+<img src="images/stats/pieChartClick.png" alt="pieChartClick" width="790">
+</div>
+<div class="title">Figure 55. right panel update when clicking on pie chart</div>
+</div>
+</li>
+<li>
+<p><strong>Module related tasks' deadline/ start date</strong></p>
+<div class="imageblock text-left">
+<div class="content">
+<img src="images/stats/areaChartClickOnArea.png" alt="areaChartClickOnArea" width="790">
+</div>
+<div class="title">Figure 56. right panel update when clicking on area chart&#8217;s area</div>
+</div>
+<div class="imageblock text-left">
+<div class="content">
+<img src="images/stats/areaChartClickDataPoint.png" alt="areaChartClickDataPoint" width="790">
+</div>
+<div class="title">Figure 57. right panel update when clicking on area chart&#8217;s data point</div>
+</div>
+</li>
+<li>
+<p><strong>Module related tasks' weight</strong><br></p>
+<div class="imageblock text-left">
+<div class="content">
+<img src="images/stats/barChartClick.png" alt="barChartClick" width="790">
+</div>
+<div class="title">Figure 58. right panel update when clicking on bar chart</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Dynamic updating</p>
+<div class="paragraph">
+<p>Each chart will update automatically when you perform <code>add</code> <code>edit</code> <code>delete</code> <code>sort</code>  <code>find</code> <code>archive</code> <code>done</code> <code>list</code> and <code>clear</code></p>
+</div>
+<div class="paragraph">
+<p>The color theme will also change randomly, hope you enjoy :)</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+As the data of charts are filled dynamically, thus it is possible that their labels can overlap together.<br>
+This is due to JavaFX chart off-sync and it was raised <a href="https://bugs.openjdk.java.net/browse/JDK-8198830">here</a>.<br>
+When this issue happens, you can use any command that can trigger chart updating to refresh the chart.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_calendar">4.6. Calendar</h3>
+<div class="paragraph">
+<p>The calendar feature allows you to visualise your schedule by displaying the number of task you have for the month. This allows students to plan their time efficiently.</p>
+</div>
+<div class="paragraph">
+<p>The calendar feature can be toggled by clicking <code>Calendar</code> &#8594; <code>Display</code></p>
+</div>
+<div class="imageblock text-left">
+<div class="content">
+<img src="images/calendar/calender_init.png" alt="calender init" width="790">
+</div>
+<div class="title">Figure 59. calendar interface</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Previous</code> and <code>Next</code> buttons can be used to navigate through previous and next months respectively. <code>Current month</code> button brings you to the current date, which is in a blue border.</p>
+</li>
+<li>
+<p>Clicking on any date will show you all tasks for that day. Keep in mind that the <strong>Index</strong> shown in this panel cannot be used for other commands.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/calendar/calendar_after_choose_date.png" alt="calendar after choose date" width=", align=" height="left"">
+</div>
+<div class="title">Figure 60. calendar after clicking on a date</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_productivity">4.7. Productivity</h3>
+<div class="paragraph">
+<p>The productivity page shows insights related to your productivity over the past day, week and more.
+By keeping tabs on your past productivity, you can improve your future productivity.
+The productivity feature also gamifies your task management experience. Doing work has never been more fun!</p>
+</div>
+<div class="paragraph">
+<div class="title">1. Daily Productivity Tab</div>
+<p>The daily productivity tab records your the number of tasks you completed today.
+You can set a daily goal for the number of tasks you want to complete.
+Completing your goal each day adds to your streak.</p>
+</div>
+<div class="paragraph">
+<div class="title">2. Weekly Productivity Tab</div>
+<p>On the weekly productivity tab, you can look back on your progress over the past week.
+This tab displays information about your past productivity.</p>
+</div>
+<div class="paragraph">
+<div class="title">3. Productivity Points Tab</div>
+<p>The Productivity Points tab displays your current Productivity Points (PP) and your progression.
+You gain Productivity Points upon adding tasks, completing tasks, and using advanced features in StudyBuddy.
+On the other hand, you lose Productivity Points when your tasks go overdue.
+Here are some examples of how to obtain Productivity Points in StudyBuddy:</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Adding a task: +1</p>
+</li>
+<li>
+<p>Completing a task: +10</p>
+</li>
+<li>
+<p>Using advanced features; +? (Explore StudyBuddy to find out!)</p>
+</li>
+<li>
+<p>Letting a task go overdue: -1</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_faq">5. FAQ</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Study Buddy folder (should be under data &#8594; taskList.json).</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2020-04-04 22:44:59 +0800
+</div>
+</div>
+</body>
+</html>

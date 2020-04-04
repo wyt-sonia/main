@@ -95,9 +95,9 @@ image::dashboard/dashboard_1 4.png[width="600", title = "Chat with Studdy Buddy 
 *Command Format*
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-* *S* and *U* stand for *Study Buddy* and *User* respectively.
-* When a line is preceded by *S*, it implies that it is a *reply displayed by Study Buddy*.
-* When a line is preceded by *U*, it implies that it is a value that must be *entered by the user*.
+* *SB* and *You* refers to *Study Buddy* and the *User* respectively.
+* When a line is preceded by *SB*, it implies that it is a *reply displayed by Study Buddy*.
+* When a line is preceded by *You*, it implies that it is a value that must be *entered by the user*.
 * *[enter]* indicates *hitting the enter key on your keyboard*.
 * *[exits]* indicates that *application has closed*.
 * *|* connects *alternative option* (i.e. A | B -> A or B).
@@ -114,21 +114,21 @@ These features utilize interactive command prompt. (described in section <<Inter
 . It also provides a link to this document, (our user guide) for your convenience.
 
 *Format:*
+****
+*You-* `help`
 
-U- `help`
-
-S- list of interactive commands
-
+*SB -* list of interactive commands
+****
 *Example:*
+****
+*You-* `help`
 
-U- `help`
-
-S- &#160;Here is the list of available commands: +
+*SB -* &#160;Here is the list of available commands: +
 &#160;&#160;&#160;&#160;&#160;1. add  2. delete  3. edit  4. bye  5. sort  6. find  7. done  8. delete duplicates  9. sort  10. archive  11. help +
 &#160;&#160;&#160;&#160;&#160;12. list  13. clear 14. create mods
 
 &#160;&#160;&#160;&#160;&#160;&#160;User Guide: https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html
-
+****
 ==== Add
 This command is for you to record a new task into Study Buddy.
 
@@ -435,17 +435,17 @@ image::basic/sort/beforeSort.png[width="790", title="All Task Panel"]
 
 ****
 
-U- `sort`
+*You-* `sort`
 
-S- asks for sorting term and provides the list of available sorting terms
+*SB -* asks for sorting term and provides the list of available sorting terms
 
-U- `INDEX NUMBER OF SORTING TERM`
+*You-* `INDEX NUMBER OF SORTING TERM`
 
-S- asks for your confirmation
+*SB -* asks for your confirmation
 
-U- `[enter]`
+*You-* `[enter]`
 
-S- Task sorted successfully!
+*SB -* Task sorted successfully!
 
 ****
 
@@ -453,21 +453,21 @@ S- Task sorted successfully!
 
 ****
 
-U- `sort`
+*You-* `sort`
 
-S- Please choose the sort keyword: +
+*SB -* Please choose the sort keyword: +
 &#160;&#160;&#160;&#160;1. Deadline / Task Start Date +
 &#160;&#160;&#160;&#160;2. Task Name +
 &#160;&#160;&#160;&#160;3. Creation Date & Time
 
-U- `1`
+*You-* `1`
 
-S- The task  will be sorted by Deadline / Task Start Date. +
+*SB -* The task  will be sorted by Deadline / Task Start Date. +
 &#160;&#160;&#160;&#160;Please click enter again to check the sorted list.
 
-U- `[enter]`
+*You-* `[enter]`
 
-S- Task sorted successfully!
+*SB -* Task sorted successfully!
 
 ****
 
@@ -497,34 +497,35 @@ To `find` a task:
 ****
 
 *Examples*
+****
+*You-* `find` +
 
-U - `find` +
+*SB -* Please type in a keyword that you want to search for.
 
-S - Please type in a keyword that you want to search for.
+*You-* `quiz`
 
-U - `quiz`
-
-S - Returns `Weekly Quiz` and `Quiz 3`
+*SB -* Returns `Weekly Quiz` and `Quiz 3`
+****
 [NOTE]
 To navigate back to the always on display list of tasks, you can use the <<List>> function.
 
 ==== List
 *Format:*
+****
+*You-* `list`
 
-U- `list`
-
-S- done!
-
+*SB -* done!
+****
 *Description*
 
 . This function allows you to view a list of all your tasks.
 
 *Example:*
+****
+*You-* `list`
 
-U- `list`
-
-S- Here is the complete list of tasks:
-
+*SB -* Here is the complete list of tasks:
+****
 ==== Refresh
 This commands refreshes the list of tasks due soon as well as status tags.
 
@@ -826,6 +827,7 @@ The productivity feature also gamifies your task management experience. Doing wo
 
 .1. Daily Productivity Tab
 
+To get started, click on the Productivity menu button.
 The daily productivity tab records your the number of tasks you completed today.
 You can set a daily goal for the number of tasks you want to complete.
 Completing your goal each day adds to your streak.
@@ -838,18 +840,19 @@ This tab displays information about your past productivity.
 
 .3. Productivity Points Tab
 
+You can go to this tab directly by clicking your Productivity Point count on the top right of the menu.
 The Productivity Points tab displays your current Productivity Points (PP) and your progression.
 You gain Productivity Points upon adding tasks, completing tasks, and using advanced features in StudyBuddy.
 On the other hand, you lose Productivity Points when your tasks go overdue.
 Here are some examples of how to obtain Productivity Points in StudyBuddy:
 
-.. Adding a task: +1
+.. Adding a task: _+1_
 
-.. Completing a task: +10
+.. Completing a task: _+10_
 
-.. Using advanced features; +? (Explore StudyBuddy to find out!)
+.. Using advanced features; _+?_ (Explore StudyBuddy to find out!)
 
-.. Letting a task go overdue: -1
+.. Letting a task go overdue: _-1_
 
 
 
