@@ -15,6 +15,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
@@ -30,6 +31,11 @@ public class ProductivityPage extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(ProductivityPage.class);
     private ObservableList<Task> taskList;
 
+    @FXML
+    private Label menuPointsLabel;
+
+    @FXML
+    private TabPane productivityTabPane;
     //daily
     @FXML
     private Label dailyStatsLabel;
@@ -80,10 +86,18 @@ public class ProductivityPage extends UiPart<Region> {
     @FXML
     private ProgressIndicator rankProgressIndicator;
 
-    public ProductivityPage(ObservableList<Task> taskList) {
+
+    public ProductivityPage(ObservableList<Task> taskList, Label menuPointsLabel) {
         super(FXML);
         this.taskList = taskList;
+        this.menuPointsLabel = menuPointsLabel;
         generateProductivityPage();
+
+        productivityTabPane.widthProperty().addListener((observable, oldValue, newValue) -> {
+            productivityTabPane.setTabMinWidth(productivityTabPane.getWidth() / 3 - 40);
+            productivityTabPane.setTabMaxWidth(productivityTabPane.getWidth() / 3 - 40);
+        });
+
         taskList.addListener(new ListChangeListener<Task>() {
             @Override
             public void onChanged(Change<? extends Task> t) {
@@ -103,6 +117,10 @@ public class ProductivityPage extends UiPart<Region> {
         renderDailyTab();
         renderWeeklyTab();
         renderScoreTab();
+    }
+
+    public void selectTab(int tabNumber) {
+        productivityTabPane.getSelectionModel().select(tabNumber);
     }
 
     /**
@@ -202,6 +220,7 @@ public class ProductivityPage extends UiPart<Region> {
             series.getData().add(data);
         }
         weeklyBarChart.getData().add(series);
+        weeklyBarChart.setLegendVisible(false);
     }
 
     // score
@@ -223,6 +242,7 @@ public class ProductivityPage extends UiPart<Region> {
             series.getData().add(data);
         }
         ppAreaChart.getData().add(series);
+        ppAreaChart.setLegendVisible(false);
     }
 
     /**
@@ -232,6 +252,8 @@ public class ProductivityPage extends UiPart<Region> {
         int score = statistics.getScoreToday();
         String scoreString = score + " PP";
         ppLabel.setText(scoreString);
+        // set points on the menu label
+        menuPointsLabel.setText(scoreString);
     }
 
     /**
