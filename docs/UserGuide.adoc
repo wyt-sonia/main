@@ -72,20 +72,20 @@ Study Buddy will analyze your input and reply accordingly.
 The top of the DashBoard is the *menu bar*. You can access other data such as
 modules & archives.
 
-image::dashboard/dashboard_1 5.png[title = "Access your other things here!"]
+image::dashboard/dashboard_1 5.png[width="600", title = "Access other features here!"]
 
 The left side features your entire list of tasks to complete.
 
-image::dashboard/dashboard_1 2.png[title = "All task to complete"]
+image::dashboard/dashboard_1 2.png[width="600", title = "All task to complete"]
 
 The right side displays your tasks that are to be due soon
 
-image::dashboard/dashboard_1 3.png[title = "Task due soon"]
+image::dashboard/dashboard_1 3.png[width="600", title = "Task due soon"]
 
 The bottom is your input line. You can type your commands to tell Study Buddy what to do and he will reply
 you!
 
-image::dashboard/dashboard_1 4.png[title = "Chat with Studdy Buddy here!"]
+image::dashboard/dashboard_1 4.png[width="600", title = "Chat with Studdy Buddy here!"]
 
 
 [[Features]]
@@ -298,15 +298,15 @@ image::basic/edit/edit_result.png[width="600", title="Task edited"]
 ==== Done
 This command completes a task. Key in `done` & you should get this prompt:
 
-image::basic/done/done_1.png[title = "Presentation to be marked as finished"]
+image::basic/done/done_1.png[width="700", title = "Presentation to be marked as finished"]
 
 Now key in the index of the task you wish to complete.
 
-image::basic/done/done_2.png[title = "Press `Enter` to confirm changes"]
+image::basic/done/done_2.png[width="700", title = "Press `Enter` to confirm changes"]
 
 Press `Enter` again to confirm your change.
 
-image::basic/done/done_3.png[title = "Presentation 1 is marked as finished"]
+image::basic/done/done_3.png[width="700", title = "Presentation 1 is marked as finished"]
 
 Task set to `done` successfully! Note that the task in your task list has the tag `FINISHED`.
 You can choose to archive it using the `archive` command.
@@ -329,7 +329,7 @@ To `clear`:
 . Initiate the command using keyword `clear`
 . Study Buddy should respond with:
 +
-image::basic/clear/clear1.png[width="790", title="Response to 'clear'"]
+image::basic/clear/clear1.png[width="590", title="Response to 'clear'"]
 +
 [NOTE]
 You can enter `quit` if you wish to go back!
@@ -337,7 +337,7 @@ You can enter `quit` if you wish to go back!
 . Press `enter` again to confirm
 . Study Buddy has been cleared completely!
 +
-image::basic/clear/clear2.png[width="790", title="View empty Study Buddy"]
+image::basic/clear/clear2.png[width="700", title="View empty Study Buddy"]
 
 
 ==== Delete
@@ -358,7 +358,7 @@ image::basic/delete/deleteResponse2.png[width="790", title="Response to 'delete'
 
 . Type the index of the task you want to delete.
 +
-image::basic/delete/deleteResponse3.png[width="790", title="Response to delete index 1"]
+image::basic/delete/deleteResponse3.png[width="500", title="Response to delete index 1"]
 . Press `enter` again to confirm
 . Task has been deleted! You will notice that the task at the index you selected has disappeared from the list of tasks.
 +
@@ -625,7 +625,7 @@ Due soon list will never display finished tasks. If you unarchive a completed ta
 === Modules
 The Modules tab is an easy way for students to organise their task, homework and deadlines into various modules.
 
-image::module/module_1.png[title = "`Modules` in the menu bar"]
+image::module/module_1.png[width = "790", title = "`Modules` in the menu bar"]
 
 By default, the Modules tab shows the following:
 
@@ -638,24 +638,24 @@ all tasks will show up here if you have not allocated any tasks to the modules.
 
 To navigate to the modules page, click on `Modules` in the menu bar.
 
-image::module/module_2.png[]
+image::module/module_2.png[width = "790"]
 
 
 Then click on `Show Modules`. The module page should show up.
 
-image::module/module_3.png[]
+image::module/module_3.png[width = "790"]
 
 The clicking on the leftmost tab shows the `*Overview*` of all your modules. it displays the module's name and their code.
 
-image::module/module_4.png[]
+image::module/module_4.png[width = "790"]
 
 The rightmost tab shows the list of task that has not been allocated to any modules.
 
-image::module/module_5.png[]
+image::module/module_5.png[width = "790"]
 
 The tabs in the middle are modules that you have added to the modules page.
 
-image::module/module_6.png[]
+image::module/module_6.png[width = "790"]
 
 ==== Functions
 ==== Create Modules
@@ -664,12 +664,12 @@ To create a module, click on `Modules` in the menu bar.
 
 Alternatively, you can key in `create mods` into the input line.
 
-image::module/module_7.png[title = "click on `Create`"]
+image::module/module_7.png[width = "500", title = "click on `Create`"]
 
 Click on `Create`. A prompt will show up at the bottom of the screen.
 Key in the name of your module. The name of this module cannot be the same as your existing modules.
 
-image::module/module_8.png[title = "setting module name as 'New Module'"]
+image::module/module_8.png[width = "790", title = "setting module name as 'New Module'"]
 
 Now key in your Module code. Your Module code should have a 2-3 letter prefix, a 4-digit number, followed
 by a single postfix.
@@ -688,13 +688,13 @@ A1111XX     - Postfix is too long
 
 ```
 
-image::module/module_9.png[title = "Keyed in CSS1234 as module code"]
+image::module/module_9.png[width = "790", title = "Keyed in CSS1234 as module code"]
 
-image::module/module_10.png[]
+image::module/module_10.png[width = "790"]
 
 Press `Enter` one more time to confirm.
 
-image::module/module_11.png[title= "New Module with code CSS1234 created."]
+image::module/module_11.png[width = "790", title= "New Module with code CSS1234 created."]
 
 Congratulations, you have added a module to your modules page!
 
@@ -705,16 +705,16 @@ To create a module, click on `Modules` in the menu bar.
 
 Alternatively, you can key in `edit mods` into the input line.
 
-image::module/module_12.png[]
+image::module/module_12.png[width = "500"]
 
 Click on `Edit`. A prompt will show up at the bottom of the screen.
 Key in the code of the module that you want to edit.
 
-image::module/module_13.png[title = "Changing module with code  BA1001""]
+image::module/module_13.png[width = "790", title = "Changing module with code  BA1001""]
 
-image::module/module_14.png[title = "Keyed in BA1001"]
+image::module/module_14.png[width = "790", title = "Keyed in BA1001"]
 
-image::module/module_15.png[title = "Key in 1, 2 or 3 depending on which option you prefer"]
+image::module/module_15.png[width = "790", title = "Key in 1, 2 or 3 depending on which option you prefer"]
 
 Now you have 3 options. You can choose to:
 
@@ -726,33 +726,33 @@ Key in the index of your option.
 
 ===== a) Change Module Name
 
-image::module/module_16.png[]
+image::module/module_16.png[width = "790"]
 
 Now key in your new module name.
 
-image::module/module_17.png[title = "Module BA1001's name has changed from 'CS' to 'New Module Name'"]
+image::module/module_17.png[width = "790", title = "Module BA1001's name has changed from 'CS' to 'New Module Name'"]
 
 
 Module name changed!
 
 ===== b) Change Module Code
 
-image::module/module_18.png[]
+image::module/module_18.png[width = "790"]
 
 Now key in your new module code. Make sure it follows the correct format
 as written in 3.7.3.
 
-image::module/module_19.png[title = "Module code BA1001 has changed to CS3230"]
+image::module/module_19.png[width = "790", title = "Module code BA1001 has changed to CS3230"]
 
 Module code changed!
 
 ===== c) Delete Module
 
-image::module/module_20.png[]
+image::module/module_20.png[width = "790"]
 
 Press `Enter` again to confirmed.
 
-image::module/module_21.png[title = 'deleted BA1001']
+image::module/module_21.png[width = "790", title = 'deleted BA1001']
 
 Module deleted! All existing task in this module will be moved to `No Module Allocated` tab.
 
