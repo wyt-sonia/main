@@ -8,11 +8,13 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
  * The interactive prompt for the help command. Returns the help message immediately
  */
 public class HelpInteractivePrompt extends InteractivePrompt {
-    private static final String END_OF_COMMAND_MSG = "1. add  2. edit  3. done  4. clear  5. delete"
-            + "  6. delete duplicates  7. archive  8. unarchive  9. sort  10. find  11. list  12. refresh  13.exit"
-            + System.lineSeparator() + System.lineSeparator()
-            + "For other commands, please visit my "
-            + "User Guide: https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html";
+
+    private static final String END_OF_COMMAND_MSG =
+        "Here is the list of available commands:\n"
+                + "1. add\n2. archive\n3. bye\n4. clear\n5. create mods\n6. delete\n"
+                + "7. delete duplicates\n8. done\n9. edit\n10. filter\n11. find\n"
+                + "12. help\n13. list\n14. help\n15. list\n16. sort\n17. refresh\n\n"
+                + "User Guide: https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html";
 
     public HelpInteractivePrompt() {
         super();
