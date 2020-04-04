@@ -766,7 +766,7 @@ The calendar feature can be toggled by clicking `Calendar` -> `Display`
 
 image::calendar/calender_init.png[width="790", align= "left", title="calendar interface"]
 
-* `Previous` and `Next` buttons can be used to navigate through previous and next months respectively. `Home` button brings you to the current date, which is in a blue border.
+* `Previous` and `Next` buttons can be used to navigate through previous and next months respectively. `Current month` button brings you to the current date, which is in a blue border.
 
 * Clicking on any date will show you all tasks for that day. Keep in mind that the *Index* shown in this panel cannot be used for other commands.
 
