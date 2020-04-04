@@ -62,6 +62,9 @@ public class MainWindow extends UiPart<Stage> {
     private ProductivityPage productivityPage;
 
     @FXML
+    private Label menuPointsLabel;
+
+    @FXML
     private StackPane commandBoxPlaceholder;
 
     @FXML
@@ -111,6 +114,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private Pane mainTitleHolder;
+
+    @FXML
+    private Label productivityTitle;
 
 
     public MainWindow(Stage primaryStage, Logic logic) {
@@ -181,7 +187,7 @@ public class MainWindow extends UiPart<Stage> {
         taskSummaryHolder.setManaged(false);
 
         //Productivity page
-        productivityPage = new ProductivityPage(logic.getFilteredTaskList());
+        productivityPage = new ProductivityPage(logic.getFilteredTaskList(), menuPointsLabel);
         productivityPageHolder.getChildren().add(productivityPage.getRoot());
         productivityPageHolder.setVisible(false);
         productivityPageHolder.setManaged(false);
@@ -256,8 +262,9 @@ public class MainWindow extends UiPart<Stage> {
     private void handleShowProductivity() {
         toggleAllHoldersInvisible();
         toggleProductivityHolderView(true);
+        toggleTaskListHolderView(true, false);
 
-        toggleAllTitle(false);
+        toggleAllTitle(true);
         toggleMainTitleView(true);
         setMainTitleText(PRODUCTIVITY_PAGE);
     }
