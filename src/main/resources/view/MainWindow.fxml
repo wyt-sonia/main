@@ -53,7 +53,6 @@
                           </Menu>
                           <Menu mnemonicParsing="false">
                               <graphic>
-      
                                         <Label fx:id="ProductivityMenuLabel" onMouseClicked="#handleShowProductivity" text="Productivity" />
                               </graphic>
                           </Menu>
@@ -122,7 +121,6 @@
                             </padding>
                         </Pane>
                         <StackPane fx:id="dueSoonListPanelPlaceholder" prefWidth="${mainTitle.parent.width}" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" />
-      
                       <StackPane fx:id="productivityPageHolder" prefHeight="276.0" prefWidth="582.0" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets />
