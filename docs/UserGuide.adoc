@@ -482,10 +482,17 @@ To `find` a task:
 
 . Initiate the command with `find`.
 
-. Enter the keyword that you want to search for.
+. Study Buddy should respond with:
++
+image::find/find1.png[width="400" title="Find"]
+
+
+. Enter the keyword that you want to search for. e.g. quiz
+
 
 . You have found a list of tasks that contain your keyword!
-
++
+image::find/find2.png[width="400" title="Found"]
 
 ****
 * The search is case insensitive. e.g `homework` will match `Homework`
@@ -496,36 +503,22 @@ To `find` a task:
 `Reflection Homework`.
 ****
 
-*Examples*
-****
-*You-* `find` +
-
-*SB -* Please type in a keyword that you want to search for.
-
-*You-* `quiz`
-
-*SB -* Returns `Weekly Quiz` and `Quiz 3`
-****
 [NOTE]
 To navigate back to the always on display list of tasks, you can use the <<List>> function.
 
 ==== List
-*Format:*
-****
-*You-* `list`
 
-*SB -* done!
-****
-*Description*
+Oh no! How do I get the original list back after using `find`? Calm down and use the `list` command!
+The `list` command lists all the tasks that have been created in StudyBuddy.
 
-. This function allows you to view a list of all your tasks.
+To use the `list` command:
 
-*Example:*
-****
-*You-* `list`
+. Initiate the command with `list`.
 
-*SB -* Here is the complete list of tasks:
-****
+. Done! All your tasks are listed once again!
++
+image::list/file.png[width="400" title="List Success"]
+
 ==== Refresh
 This commands refreshes the list of tasks due soon as well as status tags.
 
@@ -829,7 +822,7 @@ The productivity feature also gamifies your task management experience. Doing wo
 
 To get started, click on the Productivity menu button.
 The daily productivity tab records your the number of tasks you completed today.
-You can set a daily goal for the number of tasks you want to complete.
+You can set a daily goal for the number of tasks you want to complete using the command `goal`.
 Completing your goal each day adds to your streak.
 
 .2. Weekly Productivity Tab
