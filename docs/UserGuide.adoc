@@ -60,11 +60,6 @@ image::Ui.png[width="790", title="Study Buddy Dashboard"]
 . To view a list of available command, you can key in *`help`* and click kbd:[Enter]. A more detailed description of our features is available in
 <<Features>> of this document.
 
-
-[[Features]]
-== Features
-=== Basic features
-
 ====
 *Commonly Used Symbols*
 
@@ -84,10 +79,64 @@ This symbol indicates an aspect that should be used with caution.
 * The scroll bar on the right of the response box can be used to view the entire reply.
 * At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
 * Study Buddy will analyze your input and reply accordingly.
-It utilizes an "interactive command prompt". (described in section <<Interactive Command Prompt>> )
+It utilizes an "interactive command prompt". (explained in each command's description under <<Features>>)
 * *[enter]* indicates *hitting the enter key on your keyboard*.
 * *|* indicates an *alternative option* (i.e. A | B implies A or B).
 ====
+*Navigation*
+
+. Study Buddy
++
+.. All tasks
++
+Contains a list of all your unarchived tasks on the left panel and a list of your tasks that are due soon on the right panel.
++
+.. Archived tasks
++
+Contains a list of all your archived tasks on the left panel and due soon tasks on the right panel.
++
+.. Exit
++
+Short-cut exit the application.
++
+. Modules
++
+.. Show
+Contains all your modules in separate tabs and their respective tasks.
++
+.. Create
+Short-cut to create modules.
++
+.. Edit
+Short-cut to edit modules.
++
+. Statistics
++
+.. Task Status
+Contains a summary of tasks' status.
++
+.. Module related Tasks' Deadline/Start Date
+Contains a summary of module related tasks' deadline and start date.
++
+.. Module related Task Weight
+Contains a summary of module related task weights.
++
+. Calendar
+Contains a calender view and a panel to display tasks on the day you choose.
++
+. Productivity
++
+.. Daily
++
+.. Weekly
++
+.. Productivity Points
+
+
+
+[[Features]]
+== Features
+=== Basic features
 
 ==== Help :
 This function displays a list of interactive commands that you can use.
@@ -107,8 +156,10 @@ To `help`:
 . Initiate the command using keyword `help`
 . Study Buddy should respond with:
 +
-image::helpcommand.png[width="790", title="Response to 'help'"]
+image::helpCommand.png[width="790", title="Response to 'help'"]
 
+[TIP]
+Remember to scroll down to see the entire reply.
 
 ==== Add
 This command is for you to record a new task into Study Buddy.
@@ -524,7 +575,7 @@ You will notice that the overdue task has now moved out of the due soon list and
 This command exits from Study Buddy.
 
 [NOTE]
-All your data will be saved and reloaded when you open the application later! You can find details about this in <<Saving the data>>
+All your data will be saved and reloaded when you open the application later! You can find details about this in <<Saving Data>>
 
 *Example:*
 
@@ -550,7 +601,8 @@ Any command other than `yes` (including `enter`) will be considered as a quit fr
 === Saving Data
 
 Study Buddy data is automatically saved in the hard disk after any command that changes the data.
-+ There is no need to save manually.
+
+There is no need to save manually.
 
 When the application is closed and re-opened, you should be able to see all the data you have added previously!
 
