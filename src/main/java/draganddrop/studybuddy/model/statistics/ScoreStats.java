@@ -125,17 +125,17 @@ public class ScoreStats {
         } else if (currentScore < dukeScore) {
             return (dukeScore - currentScore) + " PP more to become a Duke";
         } else if (currentScore < expertScore) {
-            return (expertScore - currentScore) + " PP more to become a Expert";
+            return (expertScore - currentScore) + " PP more to become an Expert";
         } else if (currentScore < masterScore) {
             return (expertScore - currentScore) + " PP more to become a Master";
         } else if (currentScore < grandmasterScore) {
-            return (grandmasterScore - currentScore) + " PP more to become a Grandmaster";
+            return (grandmasterScore - currentScore) + " PP more to get to Grandmaster";
         } else if (currentScore < legendScore) {
-            return (legendScore - currentScore) + " PP more to become a Legend";
+            return (legendScore - currentScore) + " PP more to get to Legend";
         } else if (currentScore < sageScore) {
-            return (sageScore - currentScore) + " PP more to become Sage";
+            return (sageScore - currentScore) + " PP more to get to Sage";
         } else if (currentScore < enlightenedScore) {
-            return (enlightenedScore - currentScore) + " PP more to become Enlightened";
+            return (enlightenedScore - currentScore) + " PP more to be Enlightened";
         } else {
             return "You have mastered the productivity secrets of this world and achieved enlightenment.";
         }
