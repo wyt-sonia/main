@@ -18,6 +18,7 @@ endif::[]
 :javaVersionURL_mac: https://www.wikihow.com/Check-Java-Version-on-a-Mac
 :javaInstallURL_win: https://docs.oracle.com/en/java/javase/11/install/installation-jdk-microsoft-windows-platforms.html#GUID-C11500A9-252C-46FE-BB17-FC5A9528EAEB
 :javaInstallURL_mac: https://docs.oracle.com/en/java/javase/11/install/installation-jdk-macos.html#GUID-2FE451B0-9572-4E38-A1A5-568B77B146DE
+:jdk_bug_report: https://bugs.openjdk.java.net/browse/JDK-8198830
 
 By: `Team Drag&Drop`      Since: `Jan 2020`
 
@@ -49,6 +50,9 @@ you may refer to the guide below.
 . When your computer is ready, you can download the latest link:{repoURL}/releases[`studybuddy.jar`] to get your Study Buddy.
 . To better manage your tasks, you may copy the file to the folder you want to use as the home folder for the Study Buddy.
 . Last, double-click the file to start the app and the dashboard should appear in a few seconds.
++
+[TIP]
+You mey need to adjust the size of the Study Buddy window when you launch it.
 +
 image::Ui.png[width="790", title="Study Buddy Dashboard"]
 +
@@ -155,7 +159,7 @@ Meeting: +
 |this is a valid description
 
 |`TASK WEIGHT`
-|Positive integer or float number form 0.0 to 100.0
+|Positive integer or float number from 0.0 to 100.0
 |12.0
 
 |`ESTIMATED NUMBER OF HOURS NEEDED`
@@ -752,7 +756,7 @@ The color theme will also change randomly, hope you enjoy :)
 
 [NOTE]
 As the data of charts are filled dynamically, thus it is possible that their labels can overlap together. +
-This is due to JavaFX chart off-sync and it was raised link:{https://bugs.openjdk.java.net/browse/JDK-8198830}[here]. +
+This is due to JavaFX chart off-sync and it was raised link:{jdk_bug_report}[here]. +
 When this issue happens, you can use any command that can trigger chart updating to refresh the chart.
 
 === Calendar

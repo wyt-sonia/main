@@ -438,9 +438,17 @@ public class MainWindow extends UiPart<Stage> {
         customToggleHolders(false, false, false, false);
     }
 
+    /**
+     * Toggles the title of the dueListPanelTitle.
+     *
+     * @param val
+     */
     private void toggleTaskSummaryHolderView(boolean val) {
         taskSummaryHolder.setVisible(val);
         taskSummaryHolder.setManaged(val);
+        if (val) {
+            dueListPanelTitle.setText("Click on Chart to View Related Tasks");
+        }
         setPaneView(taskSummaryHolder, val);
     }
 

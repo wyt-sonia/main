@@ -269,7 +269,7 @@ public class Task implements Comparable<Task> {
         if (dateTimes.length == 1) {
             timeString = TimeParser.getDateTimeString(dateTimes[0]);
         } else if (dateTimes.length == 2) {
-            timeString = TimeParser.getDateTimeString(dateTimes[0]) + "-" + TimeParser.getDateTimeString(dateTimes[0]);
+            timeString = TimeParser.getDateTimeString(dateTimes[0]) + "-" + TimeParser.getDateTimeString(dateTimes[1]);
         }
         return timeString;
     }
