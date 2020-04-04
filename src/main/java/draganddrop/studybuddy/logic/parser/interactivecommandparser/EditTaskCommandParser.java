@@ -136,7 +136,7 @@ public class EditTaskCommandParser {
                 }
             } else {
                 int index = Integer.parseInt(userInput) - 1;
-                if (index < 0 || index >= (modules.size() - 1)) { 
+                if (index < 0 || index >= (modules.size() - 1)) {
                     throw new EditTaskCommandException("invalidIndexRangeError");
                 }
                 result = modules.get(index);
