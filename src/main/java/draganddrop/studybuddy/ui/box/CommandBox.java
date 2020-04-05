@@ -17,6 +17,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.edit.ArchiveTaskInteractivePr
 import draganddrop.studybuddy.ui.interactiveprompt.edit.CompleteTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.EditModInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.EditTaskInteractivePrompt;
+import draganddrop.studybuddy.ui.interactiveprompt.edit.SetGoalInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.UnarchiveTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.sort.SortTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.view.FilterTaskInteractivePrompt;
@@ -24,7 +25,6 @@ import draganddrop.studybuddy.ui.interactiveprompt.view.FindTaskInteractivePromp
 import draganddrop.studybuddy.ui.interactiveprompt.view.HelpInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.view.ListTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.view.RefreshTaskInteractivePrompt;
-
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -40,7 +40,7 @@ public class CommandBox extends UiPart<Region> {
     private static final String[] interactiveCommandTypes =
         {"add", "edit", "delete", "archive", "done", "delete duplicates",
         "clear", "bye", "sort", "refresh", "help",
-        "filter", "create mods", "find", "list", "unarchive"};
+        "filter", "create mods", "find", "list", "unarchive", "goal"};
     private final CommandExecutor commandExecutor;
     private InteractivePrompt currentInteractivePrompt;
     @FXML
@@ -118,7 +118,9 @@ public class CommandBox extends UiPart<Region> {
                     currentInteractivePrompt = new EditModInteractivePrompt();
                     break;
                 //mod related functions will not be shown on UI but available as shortcut
-
+                case "goal":
+                    currentInteractivePrompt = new SetGoalInteractivePrompt();
+                    break;
                 default:
                     currentInteractivePrompt = new InvalidInputInteractivePrompt();
                     break;

@@ -32,5 +32,7 @@ public enum InteractivePromptTerms {
     PICK,
     CHANGE_MOD_NAME,
     CHANGE_MOD_CODE,
-    DELETE_MOD;
+    DELETE_MOD,
+    // for setting goals
+    GOAL;
 }
