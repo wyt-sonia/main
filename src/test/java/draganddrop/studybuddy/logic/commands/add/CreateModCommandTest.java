@@ -1,28 +1,24 @@
 package draganddrop.studybuddy.logic.commands.add;
 
-import draganddrop.studybuddy.logic.commands.Command;
-import draganddrop.studybuddy.logic.commands.CommandResult;
-import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
-import draganddrop.studybuddy.model.Model;
-import draganddrop.studybuddy.model.ModelManager;
-import draganddrop.studybuddy.model.UserPrefs;
+import static draganddrop.studybuddy.testutil.TypicalTasks.getTypicalTaskList;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
+import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
+import draganddrop.studybuddy.model.Model;
+import draganddrop.studybuddy.model.ModelManager;
+import draganddrop.studybuddy.model.UserPrefs;
 import draganddrop.studybuddy.model.module.Module;
-import draganddrop.studybuddy.model.module.ModuleList;
 
-import static draganddrop.studybuddy.testutil.TypicalTasks.getTypicalTaskList;
 
 public class CreateModCommandTest {
-    Module moduleA = new Module("A", "CS1111");
-    Module moduleB = new Module("B", "CS2222");
+    private Module moduleA = new Module("A", "CS1111");
+    private Module moduleB = new Module("B", "CS2222");
     private Model model = new ModelManager(getTypicalTaskList(), new UserPrefs());
 
 

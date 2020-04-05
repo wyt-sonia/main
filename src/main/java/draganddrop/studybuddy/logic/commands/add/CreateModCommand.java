@@ -7,10 +7,10 @@ import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.module.Module;
-import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
 
 /**
- * A command to create modules.
+ * A command to create modules. Adds into study buddy. module is constructed outside createModCommand
+ * and it will throw an exception outside createModCommand.
  */
 public class CreateModCommand extends Command {
     public static final String COMMAND_WORD = "create mod";
