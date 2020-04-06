@@ -78,23 +78,20 @@ This symbol indicates an aspect that should be used with caution.
 The top of the DashBoard is the *menu bar*. You can access other data such as
 modules & archives.
 
-image::dashboard/dashboard_1 5.png[width="600", title = "Access other features here!"]
+image::dashboard/dashboard_1.png[width="600", title = "Access other features here!"]
 
 The left side features your entire list of tasks to complete.
 
-image::dashboard/dashboard_1 2.png[width="600", title = "All task to complete"]
+image::dashboard/dashboard_2.png[width="600", title = "All task to complete"]
 
 The right side displays your tasks that are to be due soon
 
-image::dashboard/dashboard_1 3.png[width="600", title = "Task due soon"]
+image::dashboard/dashboard_3.png[width="600", title = "Task due soon"]
 
 The bottom is your input line. You can type your commands to tell Study Buddy what to do and he will reply
 you!
 
-image::dashboard/dashboard_1 4.png[width="600", title = "Chat with Studdy Buddy here!"]
-
-*Command Format*
->>>>>>> 2868b04d6a0b1cdc7f0258b50b06528d9635514e
+image::dashboard/dashboard_4.png[width="600", title = "Chat with Studdy Buddy here!"]
 
 ==== Useful tips
 
