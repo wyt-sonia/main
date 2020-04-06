@@ -22,7 +22,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
- * pending.
+ * Represents an ArchiveTaskInteractivePrompt, which interacts with user to archive a task.
  */
 public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
     public static final String QUIT_COMMAND_MSG = "Successfully quited from archive command.";

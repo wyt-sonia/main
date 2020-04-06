@@ -16,7 +16,7 @@ import draganddrop.studybuddy.testutil.TestModules;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 /**
- * Pending
+ * Represents a ModuleListTest.
  */
 public class ModuleListTest {
     @Test

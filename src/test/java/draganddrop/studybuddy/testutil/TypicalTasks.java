@@ -10,7 +10,7 @@ import draganddrop.studybuddy.model.task.TaskStatus;
 import draganddrop.studybuddy.model.task.TaskType;
 
 /**
- * represents a typical tasklist.
+ * represents a typical task list.
  */
 public class TypicalTasks {
     public static Task[] getSampleTasks() {

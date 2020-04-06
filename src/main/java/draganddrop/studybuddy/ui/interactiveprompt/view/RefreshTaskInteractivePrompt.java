@@ -20,7 +20,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
- * pending.
+ * Represents a RefreshTaskInteractivePrompt, which interacts with user to refresh the tasks.
  */
 public class RefreshTaskInteractivePrompt extends InteractivePrompt {
 

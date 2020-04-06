@@ -14,7 +14,7 @@ import static draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType.
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.ExitTaskCommandException;
 
 /**
- * pending.
+ * Represents a ExitTaskInteractivePrompt, which allows user to quit from each interactive stage.
  */
 public class ExitTaskInteractivePrompt extends InteractivePrompt {
 

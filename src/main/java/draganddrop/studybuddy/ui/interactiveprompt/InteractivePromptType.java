@@ -1,7 +1,7 @@
 package draganddrop.studybuddy.ui.interactiveprompt;
 
 /**
- * pending.
+ * Represents the InteractivePromptType.
  */
 public enum InteractivePromptType {
     ADD_TASK,

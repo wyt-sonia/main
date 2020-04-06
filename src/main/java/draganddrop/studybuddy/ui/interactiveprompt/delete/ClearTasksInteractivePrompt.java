@@ -18,7 +18,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType;
 
 /**
- * pending.
+ * Represents a ClearTasksInteractivePrompt which interact with user to clear all tasks.
  */
 public class ClearTasksInteractivePrompt extends InteractivePrompt {
     public static final String QUIT_COMMAND_MSG = "Successfully cleared all tasks.";
