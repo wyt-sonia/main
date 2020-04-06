@@ -474,6 +474,7 @@ public class MainWindow extends UiPart<Stage> {
         taskSummaryHolder.setVisible(val);
         taskSummaryHolder.setManaged(val);
         if (val) {
+            dueListPanelTitle.getStyleClass().add("summary_sub_header");
             dueListPanelTitle.setText("Click on Chart to View Related Tasks");
         }
         setPaneView(taskSummaryHolder, val);
