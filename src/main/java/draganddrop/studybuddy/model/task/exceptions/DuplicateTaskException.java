@@ -1,7 +1,7 @@
 package draganddrop.studybuddy.model.task.exceptions;
 
 /**
- * pending.
+ * Represents a DuplicateTaskException.
  */
 public class DuplicateTaskException extends RuntimeException {
     public DuplicateTaskException() {

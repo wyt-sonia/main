@@ -1,7 +1,7 @@
 package draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions;
 
 /**
- * Pending.
+ * Represents an UnarchiveTaskCommandException.
  */
 public class UnarchiveTaskCommandException extends InteractiveCommandException {
 

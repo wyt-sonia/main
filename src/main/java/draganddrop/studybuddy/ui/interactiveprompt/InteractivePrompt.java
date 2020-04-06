@@ -3,7 +3,7 @@ package draganddrop.studybuddy.ui.interactiveprompt;
 import draganddrop.studybuddy.logic.Logic;
 
 /**
- * pending.
+ * Represents an InteractivePrompt.
  */
 public abstract class InteractivePrompt {
     protected Logic logic;

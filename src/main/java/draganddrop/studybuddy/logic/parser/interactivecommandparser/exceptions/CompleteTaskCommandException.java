@@ -1,7 +1,7 @@
 package draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions;
 
 /**
- * pending.
+ * Represents a CompleteTaskCommandException.
  */
 public class CompleteTaskCommandException extends InteractiveCommandException {
 

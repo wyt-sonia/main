@@ -3,7 +3,7 @@ package draganddrop.studybuddy.logic.parser;
 import draganddrop.studybuddy.logic.commands.Command;
 
 /**
- * pending.
+ * Represents a StudyBuddyParser.
  */
 public class StudyBuddyParser {
 
