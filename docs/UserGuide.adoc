@@ -544,6 +544,12 @@ image::list/file.png[width="400" title="List Success"]
 ==== Filter
 This commands helps you filter your tasks by category. The two categories available are status and type.
 
+[NOTE]
+Note that due soon tasks are already filtered for you. Refer to <<Due Soon Tasks>>
+
+[TIP]
+To navigate back to your main list, check out <<List>>
+
 *Example:*
 
 Say you want to view a list of all your pending tasks.

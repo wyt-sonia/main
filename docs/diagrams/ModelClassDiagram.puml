@@ -9,11 +9,11 @@ skinparam arrowColor #black
 
 
 Package Model <<Rectangle>>{
-Interface ReadOnlyAddressBook <<Interface>>
+Interface ReadOnlyStudyBuddy <<Interface>>
 Interface Model <<Interface>>
 Interface ObservableList <<Interface>>
-Class AddressBook
-Class ReadOnlyAddressBook
+Class StudyBuddy
+Class ReadOnlyStudyBuddy
 Class Model
 Class ModelManager
 Class UserPrefs
@@ -34,15 +34,15 @@ Class Tag
 Class HiddenOutside #FFFFFF
 HiddenOutside ..> Model
 
-AddressBook .up.|> ReadOnlyAddressBook
+StudyBuddy .up.|> ReadOnlyStudyBuddy
 
 ModelManager .up.|> Model
 Model .right.> ObservableList
-ModelManager o--> "1" AddressBook
+ModelManager o--> "1" StudyBuddy
 ModelManager o-left-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 
-AddressBook *--> "1" UniqueTaskList
+StudyBuddy *--> "1" UniqueTaskList
 
 UniqueTaskList o-> "*" Task
 Task *--> TaskStatus

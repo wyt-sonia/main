@@ -1,4 +1,4 @@
-= AddressBook Level 3 - Documentation
+= Study Buddy - Documentation
 :site-section: DeveloperGuide
 :toc:
 :toc-title:
@@ -12,7 +12,7 @@ ifdef::env-github[]
 :note-caption: :information_source:
 :warning-caption: :warning:
 endif::[]
-:repoURL: https://github.com/se-edu/addressbook-level3/tree/master
+:repoURL: https://github.com/AY1920S2-CS2103T-W16-3/main
 
 == Introduction
 
@@ -72,9 +72,9 @@ If set, the name will be displayed near the top of the page.
 Setting this will add a "View on GitHub" link in the navigation bar.
 |_not set_
 
-|`site-seedu`
-|Define this attribute if the project is an official SE-EDU project.
-This will render the SE-EDU navigation bar at the top of the page, and add some SE-EDU-specific navigation items.
+|`site-draganddrop`
+|Define this attribute if the project is an official draganddrop project.
+This will render the draganddrop navigation bar at the top of the page, and add some draganddrop-specific navigation items.
 |_not set_
 
 |===
