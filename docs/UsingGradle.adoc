@@ -48,7 +48,7 @@ Once the build files have been `clean` ed, Gradle has no way to determine if the
 == Creating the JAR file
 
 * *`shadowJar`* +
-Creates the `addressbook.jar` file in the `build/jar` folder, _if the current file is outdated_. +
+Creates the `studybuddy.jar` file in the `build/jar` folder, _if the current file is outdated_. +
 e.g. `./gradlew shadowJar`
 
 ****

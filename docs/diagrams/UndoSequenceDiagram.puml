@@ -7,13 +7,13 @@ end box
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
-participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":StudyBuddyParser" as StudyBuddyParser LOGIC_COLOR
 participant "u:UndoCommand" as UndoCommand LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
-participant ":VersionedAddressBook" as VersionedAddressBook MODEL_COLOR
+participant ":VersionedStudyBuddy" as VersionedStudyBuddy MODEL_COLOR
 end box
 
 [-> DueSoonTaskInteractivePrompt : execute(due soon)
@@ -21,31 +21,31 @@ activate DueSoonTaskInteractivePrompt
 
 DueSoonTaskInteractivePrompt -> LogicManager : execute()
 
-LogicManager -> AddressBookParser : parseCommand(undo)
-activate AddressBookParser
+LogicManager -> StudyBuddyParser : parseCommand(undo)
+activate StudyBuddyParser
 
 create UndoCommand
-AddressBookParser -> UndoCommand
+StudyBuddyParser -> UndoCommand
 activate UndoCommand
 
-UndoCommand --> AddressBookParser
+UndoCommand --> StudyBuddyParser
 deactivate UndoCommand
 
-AddressBookParser --> LogicManager : u
-deactivate AddressBookParser
+StudyBuddyParser --> LogicManager : u
+deactivate StudyBuddyParser
 
 LogicManager -> UndoCommand : execute()
 activate UndoCommand
 
-UndoCommand -> Model : undoAddressBook()
+UndoCommand -> Model : undoStudyBuddy()
 activate Model
 
-Model -> VersionedAddressBook : undo()
-activate VersionedAddressBook
+Model -> VersionedStudyBuddy : undo()
+activate VersionedStudyBuddy
 
-VersionedAddressBook -> VersionedAddressBook :resetData(ReadOnlyAddressBook)
-VersionedAddressBook --> Model :
-deactivate VersionedAddressBook
+VersionedStudyBuddy -> VersionedStudyBuddy :resetData(ReadOnlyStudyBuddy)
+VersionedStudyBuddy --> Model :
+deactivate VersionedStudyBuddy
 
 Model --> UndoCommand
 deactivate Model
