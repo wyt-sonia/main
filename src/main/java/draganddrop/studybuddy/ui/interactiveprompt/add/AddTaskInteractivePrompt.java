@@ -260,7 +260,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     }
 
     /**
-     * hides empty module from the moduleList.
+     * Hides empty module from the moduleList.
      *
      * @param moduleList
      */
@@ -275,7 +275,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     }
 
     /**
-     * modify reply if module is empty.
+     * Modify reply if module is empty.
      *
      * @param module
      * @return

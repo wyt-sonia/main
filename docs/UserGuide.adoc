@@ -56,7 +56,7 @@ You may need to adjust the size of the Study Buddy window when you launch it.
 +
 image::Ui.png[width="790", title="Study Buddy Dashboard"]
 +
-. The box with the words `Enter your command here...` is where you can key in your desired command and click kbd:[Enter] to execute.
+. The box with the words `Please enter your command here...` is where you can key in your desired command and click kbd:[Enter] to execute.
 . To view a list of available command, you can key in *`help`* and click kbd:[Enter]. A more detailed description of our features is available in
 <<Features>> of this document.
 
@@ -84,38 +84,40 @@ It utilizes an "interactive command prompt". (explained in each command's descri
 == Dashboard
 
 === Understanding the dashboard
-The top of the DashBoard is the *menu bar*. You can access other data such as
+The top of the DashBoard is the *menu bar*. You can use it to access to other data such as
 modules & archives.
 
 image::dashboard/dashboard_1 5.png[width="600", title = "Access other features here!"]
 
-The left side features your entire list of tasks to complete.
+The left side features the detail information of the entire unarchived tasks.
 
-image::dashboard/dashboard_1 2.png[width="600", title = "All task to complete"]
+image::dashboard/dashboard_1 2.png[width="600", title = "All unarchived tasks"]
 
-The right side displays your tasks that are to be due soon
+The panel on the right will remind you of tasks which will due in next week,
+and the list of tasks are automatically sorted by date and time.
 
-image::dashboard/dashboard_1 3.png[width="600", title = "Task due soon"]
+image::dashboard/dashboard_1 3.png[width="600", title = "Task due soon panel"]
 
-The bottom is your input line. You can type your commands to tell Study Buddy what to do and he will reply
-you!
+You can enter commands at the box with the words `Please enter your command here...` and press kbd:[enter]
+to interact with Study Buddy.
+He will reply accordingly via the box above.
 
 image::dashboard/dashboard_1 4.png[width="600", title = "Chat with Studdy Buddy here!"]
 
 ==== Useful tips
-
 * The scroll bar on the right of the response box can be used to view the entire reply.
 * At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
 * Study Buddy will analyze your input and reply accordingly.
 It utilizes an "interactive command prompt". (explained in each command's description under <<Features>>)
 * *[enter]* indicates *hitting the enter key on your keyboard*.
 * *|* indicates an *alternative option* (i.e. A | B implies A or B).
-=======
+* When mention about task's *index number*, it refers to the index number displayed in *All Tasks panel*. Noted that the
+index of the same task could be different after `filter`, `find` and `sort` commands.
 
 [[Features]]
+
 == Features
 === Basic features
-
 ==== Help :
 This function displays a list of interactive commands that you can use.
 It also provides a link to this document, (our user guide).
@@ -137,7 +139,7 @@ It also provides a link to this document, (our user guide).
 &#160;&#160;&#160;&#160;&#160;&#160;User Guide: https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html
 ****
 [TIP]
-This is the command you should use if you are unsure of how a command works.
+This is the command you should use if you are unsure of what to type for a certain command,
 
 *Example:*
 
@@ -150,7 +152,7 @@ To `help`:
 . Initiate the command using keyword `help`
 . Study Buddy should respond with:
 +
-image::helpCommand.png[width="790", title="Response to 'help'"]
+image::helpCommand.png[width="400", title="Response to 'help'"]
 
 [TIP]
 Remember to scroll down to see the entire reply.
@@ -223,7 +225,7 @@ It must be a time in the future.
 ... For duration, the two dates should follow the order of `start date`-`end date`, the `end date` should
 be later than `start date`.
 ... The total weight of tasks under the same module is capped to 100.0.
-.... Both `archived` and `not archived tasks` will be taken into consideration.
+* Both `archived` and `not archived tasks` will be taken into consideration.
 ... All `index numbers` entered should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).
 
 [NOTE]
@@ -235,33 +237,33 @@ To `add`:
 . Initiate the command using keyword `add`
 . Study Buddy should respond with `a list of available modules` as:
 +
-image::basic/add/add_module.png[width="600", title="Reponse to 'add'"]
+image::basic/add/add_module.png[width="500", title="Reponse to 'add'"]
 +
 . You can link this task with a module by entering its `MODULE CODE` | `INDEX NUMBER OF MODULE` here
 , or you can press kbd:[enter] to skip. Here we use `1` (CS2101) as an example.
 . Study Buddy should respond with the module selected and the request of task name as:
 +
-image::basic/add/add_task_name.png[width="600", title="Asks for task's name"]
+image::basic/add/add_task_name.png[width="500", title="Asks for task's name"]
 +
 . Here we use `new task` as an example.
 . Study Buddy should respond with the task name defined and the request of task type as:
 +
-image::basic/add/add_task_type.png[width="600", title="Asks for task's type"]
+image::basic/add/add_task_type.png[width="400", title="Asks for task's type"]
 +
 . Here we use `1` (Assignment) as an example.
 . Study Buddy should respond with the task type defined and the request of task's date time information as:
 +
-image::basic/add/add_date_time.png[width="600", title="Asks for task's date time"]
+image::basic/add/add_date_time.png[width="500", title="Asks for task's date time"]
 +
 . Here we use `14:00 04/05/2020` as an example.
 . Study Buddy should respond with the date time defined and the request of task's description as:
 +
-image::basic/add/add_desc.png[width="600", title="Asks for task's description"]
+image::basic/add/add_desc.png[width="400", title="Asks for task's description"]
 +
 . Here we use `new task description` as an example.
 . Study Buddy should respond with the description defined and the request of task's weight as:
 +
-image::basic/add/add_weight.png[width="600", title="Asks for task's weight"]
+image::basic/add/add_weight.png[width="400", title="Asks for task's weight"]
 +
 . Here we use `10` as an example.
 . Study Buddy should respond with the weight defined and the request of the estimated number of hours needed as:
@@ -271,9 +273,9 @@ image::basic/add/add_time_cost.png[width="600", title="Asks for estimated number
 . Here we use `10` as an example.
 . Study Buddy should respond with the task details collected and the request of your confirmation to perform the command as:
 +
-image::basic/add/add_task_info_1.png[width="600", title="Asks for user conformation to add a new task"]
+image::basic/add/add_task_info_1.png[width="500", title="Asks for user conformation to add a new task"]
 +
-image::basic/add/add_task_info_2.png[width="600", title="Task details collected"]
+image::basic/add/add_task_info_2.png[width="500", title="Task details collected"]
 +
 . Now, by pressing kbd:[enter] the new task will be added into your Study Buddy.
 . Study Buddy should respond as:
