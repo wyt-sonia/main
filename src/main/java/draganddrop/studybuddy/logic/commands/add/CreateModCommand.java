@@ -9,14 +9,11 @@ import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.module.Module;
 
 /**
- * A command to create modules.
+ * A command to create modules. Adds into study buddy. module is constructed outside createModCommand
+ * and it will throw an exception outside createModCommand.
  */
 public class CreateModCommand extends Command {
     public static final String COMMAND_WORD = "create mod";
-
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a new mod. "
-        + "Parameters: Name & Code";
-
     public static final String MESSAGE_SUCCESS = "New Mod added: %1$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This module already exists in the study buddy";
 
@@ -35,6 +32,7 @@ public class CreateModCommand extends Command {
         if (model.hasMod(mod)) {
             throw new CommandException(MESSAGE_DUPLICATE_TASK);
         }
+
         model.addMod(mod);
         return new CommandResult(String.format(MESSAGE_SUCCESS, mod));
     }

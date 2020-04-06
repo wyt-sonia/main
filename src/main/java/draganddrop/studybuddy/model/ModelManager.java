@@ -204,9 +204,7 @@ public class ModelManager implements Model {
      */
     @Override
     public void addMod(Module mod) {
-        System.out.println("ModelManager add mod");
         studyBuddy.addModule(mod);
-        System.out.println("ModelManager add mod success");
 
     }
 

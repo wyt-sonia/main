@@ -21,5 +21,6 @@ public enum InteractivePromptType {
     FIND_TASK,
     LIST_TASK,
     CLEAR_TASK,
+    SET_GOAL,
     EDIT_MODULE;
 }

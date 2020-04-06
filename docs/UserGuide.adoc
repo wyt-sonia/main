@@ -52,7 +52,7 @@ you may refer to the guide below.
 . Last, double-click the file to start the app and the dashboard should appear in a few seconds.
 +
 [TIP]
-You mey need to adjust the size of the Study Buddy window when you launch it.
+You may need to adjust the size of the Study Buddy window when you launch it.
 +
 image::Ui.png[width="790", title="Study Buddy Dashboard"]
 +
@@ -60,50 +60,100 @@ image::Ui.png[width="790", title="Study Buddy Dashboard"]
 . To view a list of available command, you can key in *`help`* and click kbd:[Enter]. A more detailed description of our features is available in
 <<Features>> of this document.
 
+==== Commonly Used Symbols
+
+[NOTE]
+This symbol indicates something you should take note of.
 
 [TIP]
-Study Buddy will analyze your input and reply accordingly.
+This symbol indicates a tip that you could use.
+
+[CAUTION]
+This symbol indicates an aspect that should be used with caution.
+
+==== Useful tips
+
+* The scroll bar on the right of the response box can be used to view the entire reply.
+* At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
+* Study Buddy will analyze your input and reply accordingly.
+It utilizes an "interactive command prompt". (explained in each command's description under <<Features>>)
+* *[enter]* indicates *hitting the enter key on your keyboard*.
+* *|* indicates an *alternative option* (i.e. A | B implies A or B).
+
+[[DashBoard]]
+== Dashboard
+
+=== Understanding the dashboard
+The top of the DashBoard is the *menu bar*. You can access other data such as
+modules & archives.
+
+image::dashboard/dashboard_1 5.png[width="600", title = "Access other features here!"]
+
+The left side features your entire list of tasks to complete.
+
+image::dashboard/dashboard_1 2.png[width="600", title = "All task to complete"]
+
+The right side displays your tasks that are to be due soon
+
+image::dashboard/dashboard_1 3.png[width="600", title = "Task due soon"]
+
+The bottom is your input line. You can type your commands to tell Study Buddy what to do and he will reply
+you!
+
+image::dashboard/dashboard_1 4.png[width="600", title = "Chat with Studdy Buddy here!"]
+
+==== Useful tips
+
+* The scroll bar on the right of the response box can be used to view the entire reply.
+* At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
+* Study Buddy will analyze your input and reply accordingly.
+It utilizes an "interactive command prompt". (explained in each command's description under <<Features>>)
+* *[enter]* indicates *hitting the enter key on your keyboard*.
+* *|* indicates an *alternative option* (i.e. A | B implies A or B).
+=======
 
 [[Features]]
 == Features
 === Basic features
-====
-*Command Format*
-
-* Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
-* *S* and *U* stand for *Study Buddy* and *User* respectively.
-* When a line is preceded by *S*, it implies that it is a *reply displayed by Study Buddy*.
-* When a line is preceded by *U*, it implies that it is a value that must be *entered by the user*.
-* *[enter]* indicates *hitting the enter key on your keyboard*.
-* *[exits]* indicates that *application has closed*.
-* *|* connects *alternative option* (i.e. A | B -> A or B).
-====
-
-[NOTE]
-These features utilize interactive command prompt. (described in section <<Interactive Command Prompt>> )
 
 ==== Help :
-
-*Description:*
-
-. This function displays a list of interactive commands that you can use.
-. It also provides a link to this document, (our user guide) for your convenience.
+This function displays a list of interactive commands that you can use.
+It also provides a link to this document, (our user guide).
 
 *Format:*
+****
+*You-* `help`
 
-U- `help`
-
-S- list of interactive commands
-
+*SB -* list of interactive commands
+****
 *Example:*
+****
+*You-* `help`
 
-U- `help`
-
-S- &#160;Here is the list of available commands: +
+*SB -* &#160;Here is the list of available commands: +
 &#160;&#160;&#160;&#160;&#160;1. add  2. delete  3. edit  4. bye  5. sort  6. find  7. done  8. delete duplicates  9. sort  10. archive  11. help +
 &#160;&#160;&#160;&#160;&#160;12. list  13. clear 14. create mods
 
 &#160;&#160;&#160;&#160;&#160;&#160;User Guide: https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html
+****
+[TIP]
+This is the command you should use if you are unsure of how a command works.
+
+*Example:*
+
+Say you have forgotten the format of a command and need some help.
+
+Study Buddy provides a help command for your convenience!
+
+To `help`:
+
+. Initiate the command using keyword `help`
+. Study Buddy should respond with:
++
+image::helpCommand.png[width="790", title="Response to 'help'"]
+
+[TIP]
+Remember to scroll down to see the entire reply.
 
 ==== Add
 This command is for you to record a new task into Study Buddy.
@@ -172,12 +222,12 @@ Meeting: +
 It must be a time in the future.
 ... For duration, the two dates should follow the order of `start date`-`end date`, the `end date` should
 be later than `start date`.
-... The total weight of tasks under the same module is caped to 100.0.
+... The total weight of tasks under the same module is capped to 100.0.
 .... Both `archived` and `not archived tasks` will be taken into consideration.
-... All `index numbers` should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).
+... All `index numbers` entered should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).
 
 [NOTE]
-The application allows for addition of duplicate tasks. It will however confirm with you if you are sure you want to add a duplicate.
+The application allows for addition of duplicate tasks. It will however confirm with you if you are sure you want to add a duplicate. In case you change your mind, <<Delete duplicates>> could be helpful.
 
 
 To `add`:
@@ -231,15 +281,12 @@ image::basic/add/add_task_info_2.png[width="600", title="Task details collected"
 image::basic/add/add_result.png[width="600", title="New task added"]
 
 [TIP]
-You can use `quit` command to quit from each step.
-
+Remember, you can use `quit` command to quit at any step.
 
 ==== Edit
 
 This command is for you to edit an existing task.
 To indicate the task you want to edit, you need to provide its index number.
-
-//image::basic/edit/.png[width="600", title="Index number"]
 
 *Example:*
 
@@ -271,10 +318,27 @@ image::basic/edit/edit_response_task_name.png[width="600", title="Asks for new t
 +
 image::basic/edit/edit_result.png[width="600", title="Task edited"]
 
+==== Done
+This command completes a task. Key in `done` & you should get this prompt:
+
+image::basic/done/done_1.png[width="700", title = "Presentation to be marked as finished"]
+
+Now key in the index of the task you wish to complete.
+
+image::basic/done/done_2.png[width="700", title = "Press `Enter` to confirm changes"]
+
+Press `Enter` again to confirm your change.
+
+image::basic/done/done_3.png[width="700", title = "Presentation 1 is marked as finished"]
+
+Task set to `done` successfully! Note that the task in your task list has the tag `FINISHED`.
+You can choose to archive it using the `archive` command.
+
+
 ==== Clear
 This commands clears all data in the Study Buddy.
 
-[WARNING]
+[CAUTION]
 Be careful with this command! It will remove any data you may have entered into the Study Buddy and you cannot retrieve it.
 
 *Example:*
@@ -288,19 +352,22 @@ To `clear`:
 . Initiate the command using keyword `clear`
 . Study Buddy should respond with:
 +
-image::basic/clear/clear1.png[width="790", title="Response to 'clear'"]
+image::basic/clear/clear1.png[width="590", title="Response to 'clear'"]
 +
 [NOTE]
-You can enter `quit` if you wish to go back!
+Remember that you can enter `quit` if you wish to go back!
 +
 . Press `enter` again to confirm
 . Study Buddy has been cleared completely!
 +
-image::basic/clear/clear2.png[width="790", title="View empty Study Buddy"]
+image::basic/clear/clear2.png[width="700", title="View empty Study Buddy"]
 
 
 ==== Delete
 This commands deletes a task from the existing list, using the index provided by you.
+
+[CAUTION]
+Once a task is deleted, it cannot be retrieved. Use this command with caution!
 
 *Example:*
 
@@ -317,7 +384,7 @@ image::basic/delete/deleteResponse2.png[width="790", title="Response to 'delete'
 
 . Type the index of the task you want to delete.
 +
-image::basic/delete/deleteResponse3.png[width="790", title="Response to delete index 1"]
+image::basic/delete/deleteResponse3.png[width="500", title="Response to delete index 1"]
 . Press `enter` again to confirm
 . Task has been deleted! You will notice that the task at the index you selected has disappeared from the list of tasks.
 +
@@ -329,7 +396,6 @@ This commands deletes all duplicated tasks in the list.
 
 [NOTE]
 A task is considered duplicate when the name, type, module, description, weightage, estimated time cost and deadline are the same. (Status is not checked)
-
 
 *Example:*
 
@@ -377,10 +443,7 @@ image::basic/archive/archive_3.png[width="790", title="View archived tasks"]
 * Remember to use the index in the *Archived Task* instead of *All Tasks*
 ****
 
-
 ==== Sort
-
-*Description*
 
 . This command is for you to reorder the task list in *All Tasks* panel.
 . Currently you can sort tasks by their
@@ -394,17 +457,17 @@ image::basic/sort/beforeSort.png[width="790", title="All Task Panel"]
 
 ****
 
-U- `sort`
+*You-* `sort`
 
-S- asks for sorting term and provides the list of available sorting terms
+*SB -* asks for sorting term and provides the list of available sorting terms
 
-U- `INDEX NUMBER OF SORTING TERM`
+*You-* `INDEX NUMBER OF SORTING TERM`
 
-S- asks for your confirmation
+*SB -* asks for your confirmation
 
-U- `[enter]`
+*You-* `[enter]`
 
-S- Task sorted successfully!
+*SB -* Task sorted successfully!
 
 ****
 
@@ -412,21 +475,21 @@ S- Task sorted successfully!
 
 ****
 
-U- `sort`
+*You-* `sort`
 
-S- Please choose the sort keyword: +
+*SB -* Please choose the sort keyword: +
 &#160;&#160;&#160;&#160;1. Deadline / Task Start Date +
 &#160;&#160;&#160;&#160;2. Task Name +
 &#160;&#160;&#160;&#160;3. Creation Date & Time
 
-U- `1`
+*You-* `1`
 
-S- The task  will be sorted by Deadline / Task Start Date. +
+*SB -* The task  will be sorted by Deadline / Task Start Date. +
 &#160;&#160;&#160;&#160;Please click enter again to check the sorted list.
 
-U- `[enter]`
+*You-* `[enter]`
 
-S- Task sorted successfully!
+*SB -* Task sorted successfully!
 
 ****
 
@@ -441,10 +504,17 @@ To `find` a task:
 
 . Initiate the command with `find`.
 
-. Enter the keyword that you want to search for.
+. Study Buddy should respond with:
++
+image::find/find1.png[width="400" title="Find reponse"]
+
+
+. Enter the keyword that you want to search for. e.g. quiz
+
 
 . You have found a list of tasks that contain your keyword!
-
++
+image::find/find2.png[width="400" title="Found response"]
 
 ****
 * The search is case insensitive. e.g `homework` will match `Homework`
@@ -455,34 +525,65 @@ To `find` a task:
 `Reflection Homework`.
 ****
 
-*Examples*
-
-U - `find` +
-
-S - Please type in a keyword that you want to search for.
-
-U - `quiz`
-
-S - Returns `Weekly Quiz` and `Quiz 3`
 [NOTE]
 To navigate back to the always on display list of tasks, you can use the <<List>> function.
 
 ==== List
-*Format:*
 
-U- `list`
+Oh no! How do I get the original list back after using `find`? Calm down and use the `list` command!
+The `list` command lists all the tasks that have been created in StudyBuddy.
 
-S- done!
+To use the `list` command:
 
-*Description*
+. Initiate the command with `list`.
 
-. This function allows you to view a list of all your tasks.
+. Done! All your tasks are listed once again!
++
+image::list/file.png[width="400" title="List Success"]
+
+==== Filter
+This commands helps you filter your tasks by category. The two categories available are status and type.
+
+[NOTE]
+Note that due soon tasks are already filtered for you. Refer to <<Due Soon Tasks>>
+
+[TIP]
+To navigate back to your main list, check out <<List>>
 
 *Example:*
 
-U- `list`
+Say you want to view a list of all your pending tasks.
 
-S- Here is the complete list of tasks:
+Study Buddy provides an option to filter your list!
+
+To `filter`:
+
+. Initiate the command using keyword `filter`
+. Study Buddy should respond with:
++
+image::filter1.png[width="790", title="Response to 'filter'"]
+
+. Enter your choice. If you enter 1, you have chosen to filter by status.
++
+image::filter2.png[width="790", title="Response to filter by 'status'"]
+
+. Suppose this is what your task list looks like before you filter.
++
+image::beforeFilter.png[width="790", title="Before filter"]
+
+. You can then proceed to choose what status type you would like to filter by. Here we have filtered by "pending" as an example.
++
+image::filter3.png[width="790", title="Response to filter by status tag 'Pending'"]
+
+. At point 3 above, if you enter 2 instead, you have chosen to filter by task types.
++
+image::filter4.png[width="790", title="Response to filter by task 'type'"]
+
+. Once again, imagine your study buddy currently looks like Figure 30 above. (at point 4)
+
+. You can then proceed to choose what task type you would like to filter by. Here we have filtered by "assignment" as an example.
++
+image::filter5.png[width="790", title="Response to filter by task type 'assignment'"]
 
 ==== Refresh
 This commands refreshes the list of tasks due soon as well as status tags.
@@ -523,7 +624,7 @@ You will notice that the overdue task has now moved out of the due soon list and
 This command exits from Study Buddy.
 
 [NOTE]
-All your data will be saved and reloaded when you open the application later! You can find details about this in <<Saving the data>>
+All your data will be saved and reloaded when you open the application later! You can find details about this in <<Saving Data>>
 
 *Example:*
 
@@ -549,7 +650,8 @@ Any command other than `yes` (including `enter`) will be considered as a quit fr
 === Saving Data
 
 Study Buddy data is automatically saved in the hard disk after any command that changes the data.
-+ There is no need to save manually.
+
+There is no need to save manually.
 
 When the application is closed and re-opened, you should be able to see all the data you have added previously!
 
@@ -584,7 +686,7 @@ Due soon list will never display finished tasks. If you unarchive a completed ta
 === Modules
 The Modules tab is an easy way for students to organise their task, homework and deadlines into various modules.
 
-image::module/module_1.png[title = "`Modules` in the menu bar"]
+image::module/module_1.png[width = "790", title = "`Modules` in the menu bar"]
 
 By default, the Modules tab shows the following:
 
@@ -597,36 +699,38 @@ all tasks will show up here if you have not allocated any tasks to the modules.
 
 To navigate to the modules page, click on `Modules` in the menu bar.
 
-image::module/module_2.png[]
+image::module/module_2.png[width = "790"]
 
 
 Then click on `Show Modules`. The module page should show up.
 
-image::module/module_3.png[]
+image::module/module_3.png[width = "790"]
 
 The clicking on the leftmost tab shows the `*Overview*` of all your modules. it displays the module's name and their code.
 
-image::module/module_4.png[]
+image::module/module_4.png[width = "790"]
 
 The rightmost tab shows the list of task that has not been allocated to any modules.
 
-image::module/module_5.png[]
+image::module/module_5.png[width = "790"]
 
 The tabs in the middle are modules that you have added to the modules page.
 
-image::module/module_6.png[]
+image::module/module_6.png[width = "790"]
 
 ==== Functions
 ==== Create Modules
 
 To create a module, click on `Modules` in the menu bar.
 
-image::module/module_7.png[]
+Alternatively, you can key in `create mods` into the input line.
+
+image::module/module_7.png[width = "500", title = "click on `Create`"]
 
 Click on `Create`. A prompt will show up at the bottom of the screen.
 Key in the name of your module. The name of this module cannot be the same as your existing modules.
 
-image::module/module_8.png[title = "setting module name as 'New Module'"]
+image::module/module_8.png[width = "790", title = "setting module name as 'New Module'"]
 
 Now key in your Module code. Your Module code should have a 2-3 letter prefix, a 4-digit number, followed
 by a single postfix.
@@ -645,13 +749,13 @@ A1111XX     - Postfix is too long
 
 ```
 
-image::module/module_9.png[title = "Keyed in CSS1234 as module code"]
+image::module/module_9.png[width = "790", title = "Keyed in CSS1234 as module code"]
 
-image::module/module_10.png[]
+image::module/module_10.png[width = "790"]
 
 Press `Enter` one more time to confirm.
 
-image::module/module_11.png[title= "New Module with code CSS1234 created."]
+image::module/module_11.png[width = "790", title= "New Module with code CSS1234 created."]
 
 Congratulations, you have added a module to your modules page!
 
@@ -660,54 +764,56 @@ Congratulations, you have added a module to your modules page!
 
 To create a module, click on `Modules` in the menu bar.
 
-image::module/module_12.png[]
+Alternatively, you can key in `edit mods` into the input line.
+
+image::module/module_12.png[width = "500"]
 
 Click on `Edit`. A prompt will show up at the bottom of the screen.
 Key in the code of the module that you want to edit.
 
-image::module/module_13.png[title = "Changing module with code  BA1001""]
+image::module/module_13.png[width = "790", title = "Changing module with code  BA1001""]
 
-image::module/module_14.png[title = "Keyed in BA1001"]
+image::module/module_14.png[width = "790", title = "Keyed in BA1001"]
 
-image::module/module_15.png[title = "Key in 1, 2 or 3 depending on which option you prefer"]
+image::module/module_15.png[width = "790", title = "Key in 1, 2 or 3 depending on which option you prefer"]
 
 Now you have 3 options. You can choose to:
 
-. Change Module name.
-. Change Module code.
-. Delete Module.
+.. Change Module name.
+.. Change Module code.
+.. Delete Module.
 
 Key in the index of your option.
 
-===== 1. Change Module Name
+===== a) Change Module Name
 
-image::module/module_16.png[]
+image::module/module_16.png[width = "790"]
 
 Now key in your new module name.
 
-image::module/module_17.png[title = "Module BA1001's name has changed from 'CS' to 'New Module Name'"]
+image::module/module_17.png[width = "790", title = "Module BA1001's name has changed from 'CS' to 'New Module Name'"]
 
 
 Module name changed!
 
-===== 2. Change Module Code
+===== b) Change Module Code
 
-image::module/module_18.png[]
+image::module/module_18.png[width = "790"]
 
 Now key in your new module code. Make sure it follows the correct format
 as written in 3.7.3.
 
-image::module/module_19.png[title = "Module code BA1001 has changed to CS3230"]
+image::module/module_19.png[width = "790", title = "Module code BA1001 has changed to CS3230"]
 
 Module code changed!
 
-===== 3. Delete Module
+===== c) Delete Module
 
-image::module/module_20.png[]
+image::module/module_20.png[width = "790"]
 
 Press `Enter` again to confirmed.
 
-image::module/module_21.png[title = 'deleted BA1001']
+image::module/module_21.png[width = "790", title = 'deleted BA1001']
 
 Module deleted! All existing task in this module will be moved to `No Module Allocated` tab.
 
@@ -781,8 +887,9 @@ The productivity feature also gamifies your task management experience. Doing wo
 
 .1. Daily Productivity Tab
 
+To get started, click on the Productivity menu button.
 The daily productivity tab records your the number of tasks you completed today.
-You can set a daily goal for the number of tasks you want to complete.
+You can set a daily goal for the number of tasks you want to complete using the command `goal`.
 Completing your goal each day adds to your streak.
 
 .2. Weekly Productivity Tab
@@ -793,18 +900,19 @@ This tab displays information about your past productivity.
 
 .3. Productivity Points Tab
 
+You can go to this tab directly by clicking your Productivity Point count on the top right of the menu.
 The Productivity Points tab displays your current Productivity Points (PP) and your progression.
 You gain Productivity Points upon adding tasks, completing tasks, and using advanced features in StudyBuddy.
 On the other hand, you lose Productivity Points when your tasks go overdue.
 Here are some examples of how to obtain Productivity Points in StudyBuddy:
 
-.. Adding a task: +1
+.. Adding a task: _+1_
 
-.. Completing a task: +10
+.. Completing a task: _+10_
 
-.. Using advanced features; +? (Explore StudyBuddy to find out!)
+.. Using advanced features; _+?_ (Explore StudyBuddy to find out!)
 
-.. Letting a task go overdue: -1
+.. Letting a task go overdue: _-1_
 
 
 
@@ -812,3 +920,4 @@ Here are some examples of how to obtain Productivity Points in StudyBuddy:
 
 *Q*: How do I transfer my data to another Computer? +
 *A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Study Buddy folder (should be under data -> taskList.json).
+

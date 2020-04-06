@@ -69,11 +69,6 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
      * @return reply to user
      */
     public String handleEdit(String userInput) {
-        if ("quit".equals(userInput)) {
-            endInteract(QUIT_COMMAND_MSG);
-            return reply;
-        }
-
         switch (currentTerm) {
         case INIT:
             this.reply = "Please enter the index of the task that you wish to edit.";
@@ -108,7 +103,6 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         String successMessage = END_OF_COMMAND_MSG;
 
         switch (taskField) {
-
         case TASK_NAME:
             try {
                 String newName = EditTaskCommandParser.parseName(userInput);
@@ -228,7 +222,6 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                 this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_DESCRIPTION_MSG;
             }
             break;
-
         default:
             throw new IllegalStateException("Unexpected value: " + taskField);
         }
