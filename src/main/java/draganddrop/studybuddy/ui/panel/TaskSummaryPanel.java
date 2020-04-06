@@ -219,7 +219,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
         if (!sortedTasks.isEmpty()) {
 
             // to restrict the source of data to the next 2 months
-            LocalDate startDate = sortedTasks.get(0).getDateTimes()[0].toLocalDate();
+            LocalDate startDate = LocalDate.now();
             ObservableList<Task> filteredTasks = sortedTasks
                 .filtered(task -> task.getDateTimes()[0].isBefore(startDate.plusDays(2 * 30).atStartOfDay()));
             LocalDate endDate = filteredTasks.get(filteredTasks.size() - 1).getDateTimes()[0].toLocalDate();

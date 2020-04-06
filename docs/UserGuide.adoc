@@ -805,46 +805,86 @@ Module deleted! All existing task in this module will be moved to `No Module All
 
 === Statistics
 
-. Purpose
+With all the tasks and modules' information you entered, Study Buddy can provide you a real-time visualized
+statistics about:
 
-.. The Statistics page provides summary of tasks' different aspects, such as:
-
-- Task Status
+- Task status
 - Module related tasks' deadline/ start date
 - Module related tasks' weight
 
+It utilizes different charts to make the information easier to understand, and the charts will update automatically after executing of
+`add` `edit` `delete` `sort`  `find` `archive` `done` `list` and `clear` commands.
 
-.. It utilizes different charts to make the information more visualized and easy to understand.
-
-. Navigate to Statistics Page
-- You can press the Statistics button in the menu bar to navigate to Statistics Page
-+
-image::stats/entryOfStatistics.png[width="790", align= "left", title="Statistics entry"]
-
-.  UI introduction & Charts Provided
-.. After press Statistics button from menu bar, the Statistics page will display as its initial status.
-+
-image::stats/initStatisticsPage.png[width="790", align= "left", title="Statistics initial page"]
-.. The left panel displays different charts, and the right panel will display related tasks when you clicking on the chart.
-+
-... *Task Status*
-+
-image::stats/pieChartClick.png[width="790", align= "left", title="right panel update when clicking on pie chart"]
-+
-... *Module related tasks' deadline/ start date*
-+
-image::stats/areaChartClickOnArea.png[width="790", align= "left", title="right panel update when clicking on area chart's area"]
-+
-image::stats/areaChartClickDataPoint.png[width="790", align= "left", title="right panel update when clicking on area chart's data point"]
-+
-... *Module related tasks' weight* +
-+
-image::stats/barChartClick.png[width="790", align= "left", title="right panel update when clicking on bar chart"]
-. Dynamic updating
-+
-Each chart will update automatically when you perform `add` `edit` `delete` `sort`  `find` `archive` `done` `list` and `clear`
-+
+[TIP]
 The color theme will also change randomly, hope you enjoy :)
+
+==== Navigate to Statics Page
+You can navigate to Statistics page by clicking the *Statistics* item from menu list.
+
+image::stats/stats_nav.png[width = "790", title = "Task Status Chart"]
+
+
+
+==== Statistics User Interface and Interaction
+The tap panel on the left contains different charts to present different statistics, the panel on the
+right will be updated accordingly when you clicking on charts.
+
+===== Task Status Chart
+
+Summary of task statuses is represented using a pie chart, which provides the comparison of the
+number of tasks in different statuses.
+
+image::stats/stats_pie.png[width = "790", title = "Task Status Chart"]
+
+When you clicking on the chart, the related task records will display on the
+right panel automatically.
+
+image::stats/stats_pie_click.png[width = "790", title = "Clicking on Task Status Chart"]
+
+===== Module related tasks' deadline/ start date
+Summary of different modules' tasks deadline or start date is represented in this clickable area
+chart.
+
+image::stats/stats_area.png[width = "790", title = "Module Related Tasks' Deadline/Start Date Chart"]
+
+====
+Chart Details::
+. The X-axis represents the actual date of each task's due or start date.
+. The Y-axis represents the number of tasks due or start on each date.
+. Tasks under different Module have different background color.
+. Only the tasks due or start within next 2 months will be displayed here.
+. Since the color of each module is translucent, "extra" colors may appear in the chart as a result of multiple
+overlapping layers of data in the same area.
+. When there is an overlapping, only one layer's related records will be displayed by clicking.
+====
+
+When you clicking on the chart, the related task records will display on the right panel automatically.
+
+. Click on data area:
+
+image::stats/stats_area_click_area.png[width = "790", title = "Clicking on data area."]
+
+. Click on data point:
+
+image::stats/stats_area_click_point.png[width = "790", title = "Clicking on data point"]
+
+
+===== Module related tasks' weight
+
+Summary of different types of tasks' weight under each module is represented using stacked bar chart.
+
+image::stats/stats_bar.png[width="790", align= "left", title="Module Related Tasks' Weight"]
+
+====
+Chart Details::
+. The X-axis represents different modules.
+. The Y-axis represents the sum of weight under the same module.
+. Different types' of tasks have different background color.
+====
+
+When you clicking on the chart, the related task records will display on the right panel automatically.
+
+image::stats/stats_bar_click.png[width="790", align= "left", title="Clicking on stacked bar chart"]
 
 [NOTE]
 As the data of charts are filled dynamically, thus it is possible that their labels can overlap together. +
