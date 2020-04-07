@@ -25,7 +25,7 @@ By: `Team Drag&Drop`      Since: `Jan 2020`
 
 == Introduction
 
-Study Buddy is a desktop application which is designed for students who *wish to manege their module related tasks*.
+Study Buddy is a desktop application which is designed for students who *wish to manage their module related tasks*.
 More importantly, Study Buddy is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
 
 You will never have to remember long, wordy commands to use your command line interface, since
@@ -52,9 +52,6 @@ you may refer to the guide below.
 . To better manage your tasks, you may copy the file to the folder you want to use as the home folder for the Study Buddy.
 . Last, double-click the file to start the app and the dashboard should appear in a few seconds.
 +
-[TIP]
-You may need to adjust the size of the Study Buddy window when you launch it.
-+
 image::Ui.png[width="790", title="Study Buddy Dashboard"]
 +
 . The box with the words `Enter your command here...` is where you can key in your desired command and click kbd:[Enter] to execute.
@@ -74,12 +71,13 @@ This symbol indicates an aspect that should be used with caution.
 
 ==== Useful tips
 
+* You may need to adjust the size of the Study Buddy window when you launch it.
 * The scroll bar on the right of the response box can be used to view the entire reply.
 * At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
 * Study Buddy will analyze your input and reply accordingly.
 It utilizes an "interactive command prompt". (explained in each command's description under <<Features>>)
-* *[enter]* indicates *hitting the enter key on your keyboard*.
-* *|* indicates an *alternative option* (i.e. A | B implies A or B).
+* In this document, *[enter]* indicates *hitting the enter key on your keyboard*.
+* In this document, *|* indicates an *alternative option* (i.e. A | B implies A or B).
 
 [[DashBoard]]
 == Dashboard
@@ -300,21 +298,22 @@ image::basic/edit/edit_response_task_name.png[width="600", title="Asks for new t
 image::basic/edit/edit_result.png[width="600", title="Task edited"]
 
 ==== Done
-This command completes a task. Key in `done` & you should get this prompt:
-
+. This command completes a task. Key in `done` & you should get this prompt:
++
 image::basic/done/done_1.png[width="700", title = "Presentation to be marked as finished"]
 
-Now key in the index of the task you wish to complete.
-
+. Now key in the index of the task you wish to complete.
++
 image::basic/done/done_2.png[width="700", title = "Press `Enter` to confirm changes"]
 
-Press `Enter` again to confirm your change.
-
+. Press `Enter` again to confirm your change.
++
 image::basic/done/done_3.png[width="700", title = "Presentation 1 is marked as finished"]
 
-Task set to `done` successfully! Note that the task in your task list has the tag `FINISHED`.
-You can choose to archive it using the `archive` command.
+. Task set to `done` successfully! Note that the task in your task list has the tag `FINISHED`.
 
+[NOTE]
+You can choose to archive your completed task using the `archive` command.
 
 ==== Clear
 This commands clears all data in the Study Buddy.
