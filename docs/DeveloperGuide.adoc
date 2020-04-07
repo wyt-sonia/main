@@ -127,7 +127,7 @@ The command execution will only terminate in two scenarios: +
 
 [[fig-LogicClassDiagram]]
 .Structure of the Logic Component
-image::LogicClassDiagram.png[width = "600" length = "400"]
+image::LogicClassDiagram.png[width = "600" length = "500"]
 
 *API* :
 link:{repoURL}/blob/master/src/main/java/draganddrop/studybuddy/logic/Logic.java[`Logic.java`]
@@ -222,7 +222,7 @@ Step 1. The user launches the application for the first time.
 The list of tasks due soon will be initialized and displayed with the initial study buddy state. Initialization is done by filtering tasks that are due soon from the general list of tasks.
 
 Step 2. The user executes `add` command to add a task.
-The `add` command execution checks if this task belongs in the due soon tasks list (i.e it is due in 7 days). If it does, the task is added to both lists, else it is only added to the main list.
+The `add` command execution checks if this task belongs in the due soon tasks list (i.e it is due in 7 days). If it does, the task is added to both lists, else it is only added to the main list. +
 
 image::AddDueSoonActivityDiagram.png[width = "200", length = "300", title = "Activity Diagram for Add to Due Soon list"]
 
@@ -235,9 +235,9 @@ The `refresh` command execution will traverse the main list and check if there a
 [NOTE]
 If there are no such inconsistencies, the refresh command will not make any changes to the due soon task list.
 
-image::DueSoonActivityDiagram.png[width = "400", length = "600", title = "Activity diagram for refresh"]
+image::DueSoonActivityDiagram.png[width = "500", length = "600", title = "Activity diagram for refresh"]
 
-image::DueSoonSequenceDiagram.png[width = "600", length = "500", title = "Sequence diagram for refresh"]
+image::DueSoonSequenceDiagram.png[width = "800", length = "600", title = "Sequence diagram for refresh"]
 
 ==== Design Considerations
 
@@ -335,7 +335,7 @@ Clicking on the show calendar menu item under the calendar menu will enable this
 
 Activity diagram:
 
-image::CalendarActivityDiagram.png[width = "400", length = "600"]
+image::CalendarActivityDiagram.png[width = "400", length = "600" title = "Calendar Activity Diagram"]
 
 ==== Design considerations
 * It is more efficient to cache the calendar rather than to generate a new one, however, we do not expect the user to have too many tasks and therefore it should not slow down the application.
@@ -348,7 +348,7 @@ Archive uses both the old delete and a new archive command. Upon executing the a
 
 Sequence diagram:
 
-image::ArchiveSequenceDiagram.png[width = "600", length = "500"]
+image::ArchiveSequenceDiagram.png[width = "600", length = "500" title = "Archive Sequence Diagram"]
 
 === Achievement feature
 The achievement feature keeps track of usage statistics and displays the user's achievements
@@ -402,7 +402,7 @@ CAT
 ==== Sequence diagram for creating modules
 This is a sequence of how a module is created using the `create mods` feature. Take note that all interactions go through the `CommandBox` first in the UI, but it will be omitted from this diagram for simplicity.
 
-image::UMLmodule.jpeg[width = "1000", length = "800"]
+image::UMLmodule.jpeg[width = "1000", length = "800", title= "Sequence diagram for modules"]
 
 
 === Logging
