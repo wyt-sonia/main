@@ -1,6 +1,7 @@
 = Study Buddy - Developer Guide
 :site-section: DeveloperGuide
 :toc:
+:bl: pass:[ +]
 :toc-title:
 :toc-placement: preamble
 :sectnums:
@@ -226,6 +227,7 @@ The `add` command execution checks if this task belongs in the due soon tasks li
 
 .Activity Diagram for Add to Due Soon list
 image::AddDueSoonActivityDiagram.png[width = "200", length = "300"]
+{bl}
 
 Step 3. The user executes `delete` command to delete a task.
 The `delete` command execution also checks if this task exists in the due soon task list. If it does, task is deleted from both lists, else it is only deleted from the main list.
@@ -238,6 +240,7 @@ If there are no such inconsistencies, the refresh command will not make any chan
 
 .Activity diagram for refresh
 image::DueSoonActivityDiagram.png[width = "500", length = "600"]
+{bl}
 
 .Sequence diagram for refresh
 image::DueSoonSequenceDiagram.png[width = "800", length = "600"]
