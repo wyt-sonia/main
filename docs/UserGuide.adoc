@@ -87,22 +87,22 @@ It utilizes an "interactive command prompt". (explained in each command's descri
 The top of the DashBoard is the *menu bar*. You can use it to access to other data such as
 modules & archives.
 
-image::dashboard/dashboard_1 5.png[width="600", title = "Access other features here!"]
+image::dashboard/dashboard_1.png[width="600", title = "Access other features here!"]
 
 The left side features the detail information of the entire unarchived tasks.
 
-image::dashboard/dashboard_1 2.png[width="600", title = "All unarchived tasks"]
+image::dashboard/dashboard_2.png[width="600", title = "All task to complete"]
 
 The panel on the right will remind you of tasks which will due in next week,
 and the list of tasks are automatically sorted by date and time.
 
-image::dashboard/dashboard_1 3.png[width="600", title = "Task due soon panel"]
+image::dashboard/dashboard_3.png[width="600", title = "Task due soon"]
 
 You can enter commands at the box with the words `Please enter your command here...` and press kbd:[enter]
 to interact with Study Buddy.
 He will reply accordingly via the box above.
 
-image::dashboard/dashboard_1 4.png[width="600", title = "Chat with Studdy Buddy here!"]
+image::dashboard/dashboard_4.png[width="600", title = "Chat with Studdy Buddy here!"]
 
 ==== Useful tips
 * The scroll bar on the right of the response box can be used to view the entire reply.
@@ -415,12 +415,12 @@ To `delete duplicates`:
 . Initiate the command using keyword `delete duplicates`
 . Study Buddy should respond with:
 +
-image::basic/deleteduplicate/deleteDuplicates1.png[width="790", title="Response to 'delete duplicates'"]
+image::basic/deleteduplicate/deleteDuplicates1.png[width="500", title="Response to 'delete duplicates'"]
 
 . Press kbd:[enter] again to confirm
 . Duplicate tasks have been deleted! You will notice that only one copy (most recent) of each task will be left in the list.
 +
-image::basic/deleteduplicate/deleteDuplicates2.png[width="790", title="Updated list (without duplicate tasks)"]
+image::basic/deleteduplicate/deleteDuplicates2.png[width="500", title="Updated list (without duplicate tasks)"]
 
 ==== Archive/ Unarchive
 This commands stores the specified task into a separate list.
@@ -436,10 +436,10 @@ To `archive`:
 . Initiate the command using keyword `archive`
 . Study Buddy should respond with:
 +
-image::basic/archive/archive_1.png[width="790", title="Response to 'archive'"]
+image::basic/archive/archive_1.png[width="400", title="Response to 'archive'"]
 . Type the index of the task you want to archive.
 +
-image::basic/archive/archive_2.png[width="790", title="Response to task index"]
+image::basic/archive/archive_2.png[width="600", title="Response to task index"]
 . Press kbd:[enter] again to confirm
 . Task has been archived! You can view all archived task under the `StudyBuddy` -> `Archived Tasks` tab.
 +
@@ -547,29 +547,29 @@ To `filter`:
 . Initiate the command using keyword `filter`
 . Study Buddy should respond with:
 +
-image::filter1.png[width="790", title="Response to 'filter'"]
+image::basic/filter/filter1.png[width="590", title="Response to 'filter'"]
 
 . Enter your choice. If you enter 1, you have chosen to filter by status.
 +
-image::filter2.png[width="790", title="Response to filter by 'status'"]
+image::basic/filter/filter2.png[width="590", title="Response to filter by 'status'"]
 
 . Suppose this is what your task list looks like before you filter.
 +
-image::beforeFilter.png[width="790", title="Before filter"]
+image::basic/filter/beforeFilter.png[width="790", title="Before filter"]
 
 . You can then proceed to choose what status type you would like to filter by. Here we have filtered by "pending" as an example.
 +
-image::filter3.png[width="790", title="Response to filter by status tag 'Pending'"]
+image::basic/filter/filter3.png[width="790", title="Response to filter by status tag 'Pending'"]
 
 . At point 3 above, if you enter 2 instead, you have chosen to filter by task types.
 +
-image::filter4.png[width="790", title="Response to filter by task 'type'"]
+image::basic/filter/filter4.png[width="590", title="Response to filter by task 'type'"]
 
 . Once again, imagine your study buddy currently looks like Figure 30 above. (at point 4)
 
 . You can then proceed to choose what task type you would like to filter by. Here we have filtered by "assignment" as an example.
 +
-image::filter5.png[width="790", title="Response to filter by task type 'assignment'"]
+image::basic/filter/filter5.png[width="790", title="Response to filter by task type 'assignment'"]
 
 ==== Refresh
 This commands refreshes the list of tasks due soon as well as status tags.
