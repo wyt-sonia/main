@@ -20,15 +20,17 @@ class CreateModuleInteractivePromptTest {
         assertEquals(CreateModuleInteractivePrompt.QUIT_COMMAND_MSG, prompt.interact("quit"));
     }
 
-    /*
-    @Test
+
+   /* @Test
     public void interact_secondInput_returnKeywordPrompt() {
         CreateModuleInteractivePrompt prompt = new CreateModuleInteractivePrompt();
+
         prompt.interact("");
+        prompt.interact("modafas");
         assertEquals("The name of module is set to: " + "Software engineering" + ".\n"
                 + "Now key in your module code", prompt.interact("Software engineering"));
-    }
-
+    }*/
+/*
     @Test
     public void interact_thirdInput_returnKeywordPrompt() {
         CreateModuleInteractivePrompt prompt = new CreateModuleInteractivePrompt();
