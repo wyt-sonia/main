@@ -13,6 +13,8 @@
 ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
+:caution-caption: :fire:
+:important-caption: :heavy_exclamation_mark:
 endif::[]
 :repoURL: https://github.com/AY1920S2-CS2103T-W16-3/main
 :javaVersionURL_win: https://www.wikihow.com/Check-Your-Java-Version-in-the-Windows-Command-Line
@@ -68,6 +70,9 @@ This symbol indicates a tip that you could use.
 
 [CAUTION]
 This symbol indicates an aspect that should be used with caution.
+
+[IMPORTANT]
+This symbol indicates something to which we want to draw your attention.
 
 ==== Useful tips
 
@@ -216,7 +221,7 @@ be later than `start date`.
 * Both `archived` and `not archived tasks` will be taken into consideration.
 ... All `index numbers` entered should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).
 
-[NOTE]
+[IMPORTANT]
 The application allows for addition of duplicate tasks. It will however confirm with you if you are sure you want to add a duplicate. In case you change your mind, <<Delete duplicates>> could be helpful.
 
 
@@ -350,7 +355,7 @@ To `clear`:
 +
 image::basic/clear/clear1.png[width="590", title="Response to 'clear'"]
 +
-[NOTE]
+[IMPORTANT]
 Remember that you can enter `quit` if you wish to go back!
 +
 . Press kbd:[enter] again to confirm
@@ -502,7 +507,7 @@ image::find/find2.png[width="400" title="Found response"]
 `Reflection Homework`.
 ****
 
-[NOTE]
+[IMPORTANT]
 To navigate back to the always on display list of tasks, you can use the <<List>> function.
 
 ==== List
@@ -565,7 +570,7 @@ image::basic/filter/filter5.png[width="790", title="Response to filter by task t
 ==== Refresh
 This commands refreshes the list of tasks due soon as well as status tags.
 
-[NOTE]
+[IMPORTANT]
 Due soon list shows tasks due within the next week. Details are in <<Due Soon Tasks>>
 [NOTE]
 Status tags include information on the tasks' status. Details are in <<Status Tags>>
