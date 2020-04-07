@@ -2,6 +2,7 @@
 :site-section: UserGuide
 :toc:
 :toclevels: 4
+:bl: pass:[ +]
 :toc-title:
 :toc-placement: preamble
 :sectnums:
@@ -84,20 +85,23 @@ It utilizes an "interactive command prompt". (explained in each command's descri
 == Dashboard
 
 === Understanding the dashboard
-The top of the DashBoard is the *menu bar*. You can access other data such as
+. The top of the DashBoard is the *menu bar*. You can access other data such as
 modules & archives.
 
 image::dashboard/dashboard_1 5.png[width="600", title = "Access other features here!"]
+{bl}
 
-The left side features your entire list of tasks to complete.
+. The left side features your entire list of unarchived tasks.
 
 image::dashboard/dashboard_1 2.png[width="600", title = "All task to complete"]
+{bl}
 
-The right side displays your tasks that are to be due soon
+. The right side displays your tasks that are due soon.
 
 image::dashboard/dashboard_1 3.png[width="600", title = "Task due soon"]
+{bl}
 
-The bottom is your input line. You can type your commands to tell Study Buddy what to do and he will reply
+. The bottom is your input line. You can type your commands to tell Study Buddy what to do and he will reply
 you!
 
 image::dashboard/dashboard_1 4.png[width="600", title = "Chat with Studdy Buddy here!"]
