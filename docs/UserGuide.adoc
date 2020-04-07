@@ -461,12 +461,12 @@ To `delete duplicates`:
 . Initiate the command using keyword `delete duplicates`
 . Study Buddy should respond with:
 +
-image::basic/deleteduplicate/deleteDuplicates1.png[width="500", title="Response to 'delete duplicates'"]
+image::basic/deleteduplicate/delete_dup_confirm.png[width="600", title="Response to 'delete duplicates'"]
 
 . Press kbd:[enter] again to confirm
 . Duplicate tasks have been deleted! You will notice that only one copy (most recent) of each task will be left in the list.
 +
-image::basic/deleteduplicate/deleteDuplicates2.png[width="500", title="Updated list (without duplicate tasks)"]
+image::basic/deleteduplicate/delete_dup_result.png[width="600", title="Updated list (without duplicate tasks)"]
 
 ==== Archive/ Unarchive
 This commands stores the specified task into a separate list.

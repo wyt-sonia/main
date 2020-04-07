@@ -63,7 +63,7 @@ public class SampleDataUtil {
                 3.0, pastDateTime1),
 
             new Task(cs2101, TaskType.Quiz, "CS2101 Quiz 1", SHORT_DESC,
-                15.0, TaskStatus.PENDING, pendingDateTime2, 2.0, pastDateTime1),
+                15.0, TaskStatus.PENDING, pendingDuration1, 2.0, pastDateTime1),
 
             new Task(cs2101, TaskType.Meeting, "Group Meeting 1", LONG_DESC_WITH_300_CHAR, 15.0,
                 TaskStatus.FINISHED, dueSoonDuration1, 5.0, pastDateTime2),
