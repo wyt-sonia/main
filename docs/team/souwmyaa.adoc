@@ -86,16 +86,25 @@ This feature was not easy to implement, because Address Book had a lot of checks
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-. Introduction include::../UserGuide.adoc[tag=introduction]
-. Useful tips include::../UserGuide.adoc[tag=usefulTips]
-. Commonly Used Symbols include::../UserGuide.adoc[tag=symbols]
+. Introduction +
+include::../UserGuide.adoc[tag=introduction]
+. Useful tips +
+include::../UserGuide.adoc[tag=usefulTips]
+. Commonly Used Symbols +
+include::../UserGuide.adoc[tag=symbols]
 . Features:
-.. Delete include::../UserGuide.adoc[tag=delete]
-.. Delete duplicates include::../UserGuide.adoc[tag=deleteDuplicates]
-.. Filter include::../UserGuide.adoc[tag=filter]
-.. Refresh include::../UserGuide.adoc[tag=refresh]
-.. Clear include::../UserGuide.adoc[tag=clear]
-.. Exit include::../UserGuide.adoc[tag=exit]
+.. Delete +
+include::../UserGuide.adoc[tag=delete]
+.. Delete duplicates +
+include::../UserGuide.adoc[tag=deleteDuplicates]
+.. Filter +
+include::../UserGuide.adoc[tag=filter]
+.. Refresh +
+include::../UserGuide.adoc[tag=refresh]
+.. Clear +
+include::../UserGuide.adoc[tag=clear]
+.. Exit +
+include::../UserGuide.adoc[tag=exit]
 
 === Developer Guide
 
