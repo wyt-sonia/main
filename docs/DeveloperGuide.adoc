@@ -682,7 +682,7 @@ Error details shown in the status message.
 .. Test case: Launch the application +
    Expected: The application indicates that the data file needed is missing and creates one.
 Application launches successfully but has no data.
-
+c
 .. Prerequisites: Modify the "tasklist.json" file to show some incorrect data.
 
 .. Test case: Launch the application +

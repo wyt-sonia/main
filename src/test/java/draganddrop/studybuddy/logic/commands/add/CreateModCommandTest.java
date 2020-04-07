@@ -45,9 +45,9 @@ public class CreateModCommandTest {
 
     @Test
     public void addModule_success() throws CommandException {
-        String expected_message = String.format(CreateModCommand.MESSAGE_SUCCESS, moduleB);
+        String expectedMessage = String.format(CreateModCommand.MESSAGE_SUCCESS, moduleB);
         CreateModCommand createModCommand = new CreateModCommand(moduleB);
-        assertEquals(createModCommand.execute(model).getFeedbackToUser(), expected_message);
+        assertEquals(createModCommand.execute(model).getFeedbackToUser(), expectedMessage);
     }
 
     @Test
