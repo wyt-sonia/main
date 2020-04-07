@@ -697,17 +697,17 @@ image::module/module_6.png[width = "790"]
 ==== Functions
 ==== Create Modules
 
-. To create a module, click on `Modules` in the menu bar.
+To create a module, click on `Modules` in the menu bar.
 Alternatively, you can key in `create mods` into the input line.
-+
+
 image::module/module_7.png[width = "500", title = "click on `Create`"]
 
-. Click on `Create`. A prompt will show up at the bottom of the screen.
+Click on `Create`. A prompt will show up at the bottom of the screen.
 Key in the name of your module. The name of this module cannot be the same as your existing modules.
-+
+
 image::module/module_8.png[width = "790", title = "setting module name as 'New Module'"]
 
-. Now key in your Module code. Your Module code should have a 2-3 letter prefix, a 4-digit number, followed
+Now key in your Module code. Your Module code should have a 2-3 letter prefix, a 4-digit number, followed
 by a single postfix.
 ```
 Correct Module Codes:
@@ -723,16 +723,16 @@ ZZ12345     - number is more than 4 digits
 A1111XX     - Postfix is too long
 
 ```
-+
+
 image::module/module_9.png[width = "790", title = "Keyed in CSS1234 as module code"]
-+
+
 image::module/module_10.png[width = "790"]
 
-. Press kbd:[enter] one more time to confirm.
-+
+Press kbd:[enter] one more time to confirm.
+
 image::module/module_11.png[width = "790", title= "New Module with code CSS1234 created."]
 
-. Congratulations, you have added a module to your modules page!
+Congratulations, you have added a module to your modules page!
 
 
 ==== Edit Modules
