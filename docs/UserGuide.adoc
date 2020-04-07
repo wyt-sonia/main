@@ -2,6 +2,7 @@
 :site-section: UserGuide
 :toc:
 :toclevels: 4
+:bl: pass:[ +]
 :toc-title:
 :toc-placement: preamble
 :sectnums:
@@ -12,6 +13,8 @@
 ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
+:caution-caption: :fire:
+:important-caption: :heavy_exclamation_mark:
 endif::[]
 :repoURL: https://github.com/AY1920S2-CS2103T-W16-3/main
 :javaVersionURL_win: https://www.wikihow.com/Check-Your-Java-Version-in-the-Windows-Command-Line
@@ -24,7 +27,7 @@ By: `Team Drag&Drop`      Since: `Jan 2020`
 
 == Introduction
 
-Study Buddy is a desktop application which is designed for students who *wish to manege their module related tasks*.
+Study Buddy is a desktop application which is designed for students who *wish to manage their module related tasks*.
 More importantly, Study Buddy is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
 
 You will never have to remember long, wordy commands to use your command line interface, since
@@ -51,9 +54,6 @@ you may refer to the guide below.
 . To better manage your tasks, you may copy the file to the folder you want to use as the home folder for the Study Buddy.
 . Last, double-click the file to start the app and the dashboard should appear in a few seconds.
 +
-[TIP]
-You may need to adjust the size of the Study Buddy window when you launch it.
-+
 image::Ui.png[width="790", title="Study Buddy Dashboard"]
 +
 . The box with the words `Please enter your command here...` is where you can key in your desired command and click kbd:[Enter] to execute.
@@ -71,38 +71,46 @@ This symbol indicates a tip that you could use.
 [CAUTION]
 This symbol indicates an aspect that should be used with caution.
 
+[IMPORTANT]
+This symbol indicates something to which we want to draw your attention.
+
 ==== Useful tips
 
+* You may need to adjust the size of the Study Buddy window when you launch it.
 * The scroll bar on the right of the response box can be used to view the entire reply.
 * At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
 * Study Buddy will analyze your input and reply accordingly.
 It utilizes an "interactive command prompt". (explained in each command's description under <<Features>>)
-* *[enter]* indicates *hitting the enter key on your keyboard*.
-* *|* indicates an *alternative option* (i.e. A | B implies A or B).
+* In this document, *[enter]* indicates *hitting the enter key on your keyboard*.
+* In this document, *|* indicates an *alternative option* (i.e. A | B implies A or B).
 
 [[DashBoard]]
 == Dashboard
 
 === Understanding the dashboard
-The top of the DashBoard is the *menu bar*. You can use it to access to other data such as
-modules & archives.
 
-image::dashboard/dashboard_1 5.png[width="600", title = "Access other features here!"]
+. The top of the DashBoard is the *menu bar*. You can access other features such as
+modules, archived list, calendar, statistics and productivity tracker. Simply click on the icon to navigate to it.
++
+image::dashboard/dashboard_1.png[width="600", title = "Access other features here!"]
+{bl}
 
-The left side features the detail information of the entire unarchived tasks.
+. The left side features your entire list of unarchived tasks.
++
+image::dashboard/dashboard_2.png[width="600", title = "All task to complete"]
+{bl}
 
-image::dashboard/dashboard_1 2.png[width="600", title = "All unarchived tasks"]
+. The right side displays your tasks that are due soon.
++
+image::dashboard/dashboard_3.png[width="600", title = "Task due soon"]
+{bl}
 
-The panel on the right will remind you of tasks which will due in next week,
-and the list of tasks are automatically sorted by date and time.
+. The bottom is your input line. You can type your commands to tell Study Buddy what to do and he will reply accordingly!
++
+image::dashboard/dashboard_4.png[width="600", title = "Chat with Studdy Buddy here!"]
 
-image::dashboard/dashboard_1 3.png[width="600", title = "Task due soon panel"]
-
-You can enter commands at the box with the words `Please enter your command here...` and press kbd:[enter]
-to interact with Study Buddy.
-He will reply accordingly via the box above.
-
-image::dashboard/dashboard_1 4.png[width="600", title = "Chat with Studdy Buddy here!"]
+[NOTE]
+A more detailed explanation of each of the usage of these components is given in <<Features>>
 
 ==== Useful tips
 * The scroll bar on the right of the response box can be used to view the entire reply.
@@ -113,6 +121,7 @@ It utilizes an "interactive command prompt". (explained in each command's descri
 * *|* indicates an *alternative option* (i.e. A | B implies A or B).
 * When mention about task's *index number*, it refers to the index number displayed in *All Tasks panel*. Noted that the
 index of the same task could be different after `filter`, `find` and `sort` commands.
+>>>>>>> 441170cf5d2c312d6a420efef1bf2b7a0384684b
 
 [[Features]]
 
@@ -122,22 +131,6 @@ index of the same task could be different after `filter`, `find` and `sort` comm
 This function displays a list of interactive commands that you can use.
 It also provides a link to this document, (our user guide).
 
-*Format:*
-****
-*You-* `help`
-
-*SB -* list of interactive commands
-****
-*Example:*
-****
-*You-* `help`
-
-*SB -* &#160;Here is the list of available commands: +
-&#160;&#160;&#160;&#160;&#160;1. add  2. delete  3. edit  4. bye  5. sort  6. find  7. done  8. delete duplicates  9. sort  10. archive  11. help +
-&#160;&#160;&#160;&#160;&#160;12. list  13. clear 14. create mods
-
-&#160;&#160;&#160;&#160;&#160;&#160;User Guide: https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html
-****
 [TIP]
 This is the command you should use if you are unsure of what to type for a certain command,
 
@@ -228,7 +221,7 @@ be later than `start date`.
 * Both `archived` and `not archived tasks` will be taken into consideration.
 ... All `index numbers` entered should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).
 
-[NOTE]
+[IMPORTANT]
 The application allows for addition of duplicate tasks. It will however confirm with you if you are sure you want to add a duplicate. In case you change your mind, <<Delete duplicates>> could be helpful.
 
 
@@ -326,21 +319,22 @@ image::basic/edit/edit_response_task_name.png[width="600", title="Asks for new t
 image::basic/edit/edit_result.png[width="600", title="Task edited"]
 
 ==== Done
-This command completes a task. Key in `done` & you should get this prompt:
-
+. This command completes a task. Key in `done` & you should get this prompt:
++
 image::basic/done/done_1.png[width="700", title = "Presentation to be marked as finished"]
 
-Now key in the index of the task you wish to complete.
+. Now key in the index of the task you wish to complete.
 
+. Press kbd:[enter] again to confirm your change.
++
 image::basic/done/done_2.png[width="700", title = "Press kbd:[enter] to confirm changes"]
 
-Press kbd:[enter] again to confirm your change.
-
+. Task set to `finished` successfully! Note that the task in your task list has the tag `FINISHED`.
++
 image::basic/done/done_3.png[width="700", title = "Presentation 1 is marked as finished"]
 
-Task set to `done` successfully! Note that the task in your task list has the tag `FINISHED`.
-You can choose to archive it using the `archive` command.
-
+[NOTE]
+You can choose to archive your completed task using the `archive` command.
 
 ==== Clear
 This commands clears all data in the Study Buddy.
@@ -361,14 +355,13 @@ To `clear`:
 +
 image::basic/clear/clear1.png[width="590", title="Response to 'clear'"]
 +
-[NOTE]
+[IMPORTANT]
 Remember that you can enter `quit` if you wish to go back!
 +
 . Press kbd:[enter] again to confirm
 . Study Buddy has been cleared completely!
 +
 image::basic/clear/clear2.png[width="700", title="View empty Study Buddy"]
-
 
 ==== Delete
 This commands deletes a task from the existing list, using the index provided by you.
@@ -404,6 +397,9 @@ This commands deletes all duplicated tasks in the list.
 [NOTE]
 A task is considered duplicate when the name, type, module, description, weightage, estimated time cost and deadline are the same. (Status is not checked)
 
+[CAUTION]
+This feature is case sensitive. This means that if one task is named "Task", it will be considered different from "task".
+
 *Example:*
 
 After having added a duplicated task, you realise that there is no more need for this duplicate task. Yet you do not want to scroll through the entire list to delete it.
@@ -415,12 +411,12 @@ To `delete duplicates`:
 . Initiate the command using keyword `delete duplicates`
 . Study Buddy should respond with:
 +
-image::basic/deleteduplicate/deleteDuplicates1.png[width="790", title="Response to 'delete duplicates'"]
+image::basic/deleteduplicate/deleteDuplicates1.png[width="500", title="Response to 'delete duplicates'"]
 
 . Press kbd:[enter] again to confirm
 . Duplicate tasks have been deleted! You will notice that only one copy (most recent) of each task will be left in the list.
 +
-image::basic/deleteduplicate/deleteDuplicates2.png[width="790", title="Updated list (without duplicate tasks)"]
+image::basic/deleteduplicate/deleteDuplicates2.png[width="500", title="Updated list (without duplicate tasks)"]
 
 ==== Archive/ Unarchive
 This commands stores the specified task into a separate list.
@@ -436,10 +432,10 @@ To `archive`:
 . Initiate the command using keyword `archive`
 . Study Buddy should respond with:
 +
-image::basic/archive/archive_1.png[width="790", title="Response to 'archive'"]
+image::basic/archive/archive_1.png[width="400", title="Response to 'archive'"]
 . Type the index of the task you want to archive.
 +
-image::basic/archive/archive_2.png[width="790", title="Response to task index"]
+image::basic/archive/archive_2.png[width="600", title="Response to task index"]
 . Press kbd:[enter] again to confirm
 . Task has been archived! You can view all archived task under the `StudyBuddy` -> `Archived Tasks` tab.
 +
@@ -511,7 +507,7 @@ image::find/find2.png[width="400" title="Found response"]
 `Reflection Homework`.
 ****
 
-[NOTE]
+[IMPORTANT]
 To navigate back to the always on display list of tasks, you can use the <<List>> function.
 
 ==== List
@@ -547,34 +543,34 @@ To `filter`:
 . Initiate the command using keyword `filter`
 . Study Buddy should respond with:
 +
-image::filter1.png[width="790", title="Response to 'filter'"]
+image::basic/filter/filter1.png[width="590", title="Response to 'filter'"]
 
 . Enter your choice. If you enter 1, you have chosen to filter by status.
 +
-image::filter2.png[width="790", title="Response to filter by 'status'"]
+image::basic/filter/filter2.png[width="590", title="Response to filter by 'status'"]
 
 . Suppose this is what your task list looks like before you filter.
 +
-image::beforeFilter.png[width="790", title="Before filter"]
+image::basic/filter/beforeFilter.png[width="790", title="Before filter"]
 
 . You can then proceed to choose what status type you would like to filter by. Here we have filtered by "pending" as an example.
 +
-image::filter3.png[width="790", title="Response to filter by status tag 'Pending'"]
+image::basic/filter/filter3.png[width="790", title="Response to filter by status tag 'Pending'"]
 
 . At point 3 above, if you enter 2 instead, you have chosen to filter by task types.
 +
-image::filter4.png[width="790", title="Response to filter by task 'type'"]
+image::basic/filter/filter4.png[width="590", title="Response to filter by task 'type'"]
 
 . Once again, imagine your study buddy currently looks like Figure 30 above. (at point 4)
 
 . You can then proceed to choose what task type you would like to filter by. Here we have filtered by "assignment" as an example.
 +
-image::filter5.png[width="790", title="Response to filter by task type 'assignment'"]
+image::basic/filter/filter5.png[width="790", title="Response to filter by task type 'assignment'"]
 
 ==== Refresh
 This commands refreshes the list of tasks due soon as well as status tags.
 
-[NOTE]
+[IMPORTANT]
 Due soon list shows tasks due within the next week. Details are in <<Due Soon Tasks>>
 [NOTE]
 Status tags include information on the tasks' status. Details are in <<Status Tags>>
@@ -683,32 +679,30 @@ all tasks will show up here if you have not allocated any tasks to the modules.
 
 ==== Navigation
 
-To navigate to the modules page, click on `Modules` in the menu bar.
-
+. To navigate to the modules page, click on `Modules` in the menu bar.
++
 image::module/module_2.png[width = "790"]
 
-
-Then click on `Show Modules`. The module page should show up.
-
+. Then click on `Show Modules`. The module page should show up.
++
 image::module/module_3.png[width = "790"]
 
-The clicking on the leftmost tab shows the `*Overview*` of all your modules. it displays the module's name and their code.
-
+. The clicking on the leftmost tab shows the `*Overview*` of all your modules. it displays the module's name and their code.
++
 image::module/module_4.png[width = "790"]
 
-The rightmost tab shows the list of task that has not been allocated to any modules.
-
+. The rightmost tab shows the list of task that has not been allocated to any modules.
++
 image::module/module_5.png[width = "790"]
 
-The tabs in the middle are modules that you have added to the modules page.
-
+. The tabs in the middle are modules that you have added to the modules page.
++
 image::module/module_6.png[width = "790"]
 
 ==== Functions
 ==== Create Modules
 
 To create a module, click on `Modules` in the menu bar.
-
 Alternatively, you can key in `create mods` into the input line.
 
 image::module/module_7.png[width = "500", title = "click on `Create`"]
@@ -748,60 +742,59 @@ Congratulations, you have added a module to your modules page!
 
 ==== Edit Modules
 
-To create a module, click on `Modules` in the menu bar.
-
+. To create a module, click on `Modules` in the menu bar.
 Alternatively, you can key in `edit mods` into the input line.
-
++
 image::module/module_12.png[width = "500"]
 
-Click on `Edit`. A prompt will show up at the bottom of the screen.
-Key in the code of the module that you want to edit.
+. Click on `Edit`. A prompt will show up at the bottom of the screen.
 
+. Key in the code of the module that you want to edit.
++
 image::module/module_13.png[width = "790", title = "Changing module with code  BA1001""]
-
++
 image::module/module_14.png[width = "790", title = "Keyed in BA1001"]
-
++
 image::module/module_15.png[width = "790", title = "Key in 1, 2 or 3 depending on which option you prefer"]
 
-Now you have 3 options. You can choose to:
+. Now you have 3 options. You can choose to:
 
 .. Change Module name.
 .. Change Module code.
 .. Delete Module.
 
-Key in the index of your option.
+. Key in the index of your option.
 
 ===== a) Change Module Name
 
 image::module/module_16.png[width = "790"]
 
-Now key in your new module name.
-
+. Now key in your new module name.
++
 image::module/module_17.png[width = "790", title = "Module BA1001's name has changed from 'CS' to 'New Module Name'"]
 
-
-Module name changed!
+. Module name changed!
 
 ===== b) Change Module Code
 
 image::module/module_18.png[width = "790"]
 
-Now key in your new module code. Make sure it follows the correct format
+. Now key in your new module code. Make sure it follows the correct format
 as written in 3.7.3.
-
++
 image::module/module_19.png[width = "790", title = "Module code BA1001 has changed to CS3230"]
 
-Module code changed!
+. Module code changed!
 
 ===== c) Delete Module
 
 image::module/module_20.png[width = "790"]
 
-Press kbd:[enter] again to confirmed.
-
+. Press kbd:[enter] again to confirmed.
++
 image::module/module_21.png[width = "790", title = 'deleted BA1001']
 
-Module deleted! All existing task in this module will be moved to `No Module Allocated` tab.
+. Module deleted! All existing task in this module will be moved to `No Module Allocated` tab.
 
 === Statistics
 
