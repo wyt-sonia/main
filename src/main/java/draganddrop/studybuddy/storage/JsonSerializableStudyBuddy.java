@@ -32,7 +32,7 @@ class JsonSerializableStudyBuddy {
     private final List<JsonAdaptedTask> dueSoonTasks = new ArrayList<>();
     private final List<JsonAdaptedModule> modules = new ArrayList<>();
     private final List<Integer> completeCountList = new ArrayList<>();
-    private final List<Integer> OverdueCountList = new ArrayList<>();
+    private final List<Integer> overdueCountList = new ArrayList<>();
     private final GeneralStats generalStats = new GeneralStats();
     private final ScoreStats scoreStats = new ScoreStats();
 
@@ -57,7 +57,7 @@ class JsonSerializableStudyBuddy {
                 .map(JsonAdaptedTask::new).collect(Collectors.toList()));
         modules.addAll(source.getModuleList().stream().map(JsonAdaptedModule::new).collect(Collectors.toList()));
         completeCountList.addAll(source.getCompleteCountList());
-        OverdueCountList.addAll(source.getOverdueCountList());
+        overdueCountList.addAll(source.getOverdueCountList());
         generalStats.copy(source.getGeneralStats());
         scoreStats.copy(source.getScoreStats());
     }
@@ -90,7 +90,7 @@ class JsonSerializableStudyBuddy {
         }
 
         studyBuddy.setCompleteList(this.completeCountList);
-        studyBuddy.setOverdueList(this.OverdueCountList);
+        studyBuddy.setOverdueList(this.overdueCountList);
         studyBuddy.getGeneralStats().copy(this.generalStats);
         studyBuddy.getScoreStats().copy(this.scoreStats);
 

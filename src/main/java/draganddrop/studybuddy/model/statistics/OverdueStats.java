@@ -10,27 +10,27 @@ public class OverdueStats {
     /**
      * A list containing daily number of Overdue tasks
      */
-    private List<Integer> OverdueCountList;
+    private List<Integer> overdueCountList;
 
     public OverdueStats() {
         this.initList();
     }
 
     public List<Integer> getOverdueCountList() {
-        return OverdueCountList;
+        return overdueCountList;
     }
 
-    public void setOverdueCountList(List<Integer> OverdueCountList) {
-        this.OverdueCountList = OverdueCountList;
+    public void setOverdueCountList(List<Integer> overdueCountList) {
+        this.overdueCountList = overdueCountList;
     }
 
     /**
      * initializes an empty OverdueCountList
      */
     public void initList() {
-        OverdueCountList = new ArrayList<>();
+        overdueCountList = new ArrayList<>();
         for (int i = 0; i < 366; i++) {
-            OverdueCountList.add(0);
+            overdueCountList.add(0);
         }
     }
 
@@ -40,8 +40,8 @@ public class OverdueStats {
      * @param dayIndex the day in which the task is completed
      */
     public void addOverdue(int dayIndex) {
-        int currentOverdueCount = OverdueCountList.get(dayIndex);
-        OverdueCountList.set(dayIndex, currentOverdueCount + 1);
+        int currentOverdueCount = overdueCountList.get(dayIndex);
+        overdueCountList.set(dayIndex, currentOverdueCount + 1);
     }
 
     /**
@@ -51,11 +51,11 @@ public class OverdueStats {
      * @return number of tasks completed late on the given day
      */
     public int getDailyOverdueCount(int dayIndex) {
-        return OverdueCountList.get(dayIndex);
+        return overdueCountList.get(dayIndex);
     }
 
 
     public List<Integer> getWeeklyOverdueCountList(int dayIndex) {
-        return OverdueCountList.subList(dayIndex - 6, dayIndex + 1);
+        return overdueCountList.subList(dayIndex - 6, dayIndex + 1);
     }
 }

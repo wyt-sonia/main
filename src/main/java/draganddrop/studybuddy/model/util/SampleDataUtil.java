@@ -40,9 +40,9 @@ public class SampleDataUtil {
             LocalDateTime.now().plusDays(17)};
         LocalDateTime[] pendingDuration2 = {LocalDateTime.now().plusDays(8),
             LocalDateTime.now().plusDays(12)};
-        LocalDateTime[] OverdueDuration1 = {LocalDateTime.now().minusDays(5),
+        LocalDateTime[] overdueDuration1 = {LocalDateTime.now().minusDays(5),
             LocalDateTime.now().minusDays(3)};
-        LocalDateTime[] OverdueDuration2 = {LocalDateTime.now().minusDays(3),
+        LocalDateTime[] overdueDuration2 = {LocalDateTime.now().minusDays(3),
             LocalDateTime.now().minusDays(1)};
 
         LocalDateTime[] dueSoonDateTime1 = {LocalDateTime.now().plusDays(3)};
@@ -79,7 +79,7 @@ public class SampleDataUtil {
                 20.0, TaskStatus.PENDING, pendingDateTime1, 5.0, pastDateTime1),
 
             new Task(cs2103T, TaskType.Meeting, "Group Meeting", LONG_DESC_WITH_300_CHAR, 0.0,
-                TaskStatus.OVERDUE, OverdueDuration1, 15.0, pastDateTime2),
+                TaskStatus.OVERDUE, overdueDuration1, 15.0, pastDateTime2),
 
             new Task(cs2103T, TaskType.Quiz, "CS2103T Quiz 1", SHORT_DESC, 2.0,
                 TaskStatus.PENDING, pendingDuration2, 2.0, pastDateTime1),
@@ -92,25 +92,25 @@ public class SampleDataUtil {
                 2.0, TaskStatus.PENDING, pendingDateTime2, 5.0, pastDateTime2),
 
             new Task(cs2105, TaskType.Others, "Lab 2", SHORT_DESC, 20.0,
-                TaskStatus.FINISHED, OverdueDuration2, 15.0, pastDateTime1),
+                TaskStatus.FINISHED, overdueDuration2, 15.0, pastDateTime1),
 
             new Task(cs2105, TaskType.Assignment, "Quiz 1", SHORT_DESC,
                 2.0, TaskStatus.DUE_SOON, dueSoonDateTime2, 1.0, pastDateTime1),
 
             new Task(cs2105, TaskType.Meeting, "Meeting 1", LONG_DESC_WITH_300_CHAR, 20.0,
-                TaskStatus.FINISHED, OverdueDuration2, 15.0, pastDateTime2),
+                TaskStatus.FINISHED, overdueDuration2, 15.0, pastDateTime2),
 
             new Task(cs2106, TaskType.Assignment, "Quiz 1", SHORT_DESC,
                 2.0, TaskStatus.DUE_SOON, dueSoonDateTime1, 1.0, pastDateTime1),
 
             new Task(cs2106, TaskType.Meeting, "Meeting 1", LONG_DESC_WITH_300_CHAR, 20.0,
-                TaskStatus.OVERDUE, OverdueDuration2, 15.0, pastDateTime2),
+                TaskStatus.OVERDUE, overdueDuration2, 15.0, pastDateTime2),
 
             new Task(cs2106, TaskType.Quiz, "CS2106 Quiz 1", SHORT_DESC,
                 2.0, TaskStatus.PENDING, pendingDateTime1, 4.0, pastDateTime2),
 
             new Task(cs2106, TaskType.Others, "Lab 4", LONG_DESC_WITH_300_CHAR, 8.0,
-                TaskStatus.FINISHED, OverdueDuration1, 25.0, pastDateTime2)
+                TaskStatus.FINISHED, overdueDuration1, 25.0, pastDateTime2)
         };
     }
 

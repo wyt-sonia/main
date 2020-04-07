@@ -33,7 +33,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     private final UniqueTaskList tasks;
     private final ModuleList moduleList;
     private final CompletionStats completionStats;
-    private final OverdueStats OverdueStats;
+    private final OverdueStats overdueStats;
     private final GeneralStats generalStats;
     private final Statistics statistics;
     private final ScoreStats scoreStats;
@@ -51,11 +51,11 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         dueSoonTasks = new UniqueTaskList();
         moduleList = new ModuleList();
         completionStats = new CompletionStats();
-        OverdueStats = new OverdueStats();
+        overdueStats = new OverdueStats();
         generalStats = new GeneralStats();
         scoreStats = new ScoreStats();
         // the singleton instance of statistics is created here
-        statistics = new Statistics(generalStats, completionStats, OverdueStats, scoreStats);
+        statistics = new Statistics(generalStats, completionStats, overdueStats, scoreStats);
         UniqueTaskList.setStatistics(statistics);
         Task.setStatistics(statistics);
         ProductivityPage.setStatistics(statistics);
@@ -85,7 +85,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
 
     @Override
     public List<Integer> getOverdueCountList() {
-        return OverdueStats.getOverdueCountList();
+        return overdueStats.getOverdueCountList();
     }
 
     @Override
@@ -177,8 +177,8 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         this.completionStats.setCompleteCountList(completeList);
     }
 
-    public void setOverdueList(List<Integer> OverdueList) {
-        this.OverdueStats.setOverdueCountList(OverdueList);
+    public void setOverdueList(List<Integer> overdueList) {
+        this.overdueStats.setOverdueCountList(overdueList);
     }
 
     /**

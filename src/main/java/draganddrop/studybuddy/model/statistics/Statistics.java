@@ -10,14 +10,14 @@ import draganddrop.studybuddy.model.task.Task;
 public class Statistics {
     private GeneralStats generalStats;
     private CompletionStats completionStats;
-    private OverdueStats OverdueStats;
+    private OverdueStats overdueStats;
     private ScoreStats scoreStats;
 
     public Statistics(GeneralStats generalStats, CompletionStats completionStats,
-          OverdueStats OverdueStats, ScoreStats scoreStats) {
+          OverdueStats overdueStats, ScoreStats scoreStats) {
         this.generalStats = generalStats;
         this.completionStats = completionStats;
-        this.OverdueStats = OverdueStats;
+        this.overdueStats = overdueStats;
         this.scoreStats = scoreStats;
     }
 
@@ -60,7 +60,7 @@ public class Statistics {
     }
 
     public int getOverdueCountThisWeek() {
-        List<Integer> weeklyOverdueCountList = OverdueStats.getWeeklyOverdueCountList(StatsUtil.getDayIndex());
+        List<Integer> weeklyOverdueCountList = overdueStats.getWeeklyOverdueCountList(StatsUtil.getDayIndex());
         return StatsUtil.sumIntegerList(weeklyOverdueCountList);
     }
 
@@ -68,11 +68,11 @@ public class Statistics {
     /**
      * Records an Overdue task
      *
-     * @param OverdueTask task that has gone Overdue
+     * @param overdueTask task that has gone Overdue
      */
-    public void recordOverdueTask(Task OverdueTask) {
+    public void recordOverdueTask(Task overdueTask) {
         int dayIndex = StatsUtil.getDayIndex();
-        OverdueStats.addOverdue(dayIndex);
+        overdueStats.addOverdue(dayIndex);
         addScore(-1);
     }
 
@@ -82,7 +82,7 @@ public class Statistics {
      * @return returns the number of tasks completed late today
      */
     public int getLateCountToday() {
-        return OverdueStats.getDailyOverdueCount(StatsUtil.getDayIndex());
+        return overdueStats.getDailyOverdueCount(StatsUtil.getDayIndex());
     }
 
     // Score stats
