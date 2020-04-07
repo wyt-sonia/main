@@ -113,12 +113,18 @@ include::../UserGuide.adoc[tag=exit]
 |===
 
 . Sections:
-.. Introduction include::../DeveloperGuide.adoc[tag=introduction]
-.. Model Component include::../DeveloperGuide.adoc[tag=modelComponent]
-.. Due Soon Tasks Feature include::../DeveloperGuide.adoc[tag=dueSoon]
-.. Use cases pertaining to my features include::../DeveloperGuide.adoc[tag=useCasesSouwmyaa]
-.. User stories include::../DeveloperGuide.adoc[tag=userStories]
-.. Instructions for Manual Testing- Saving Data include::../DeveloperGuide.adoc[tag=savingData]
+.. Introduction +
+include::../DeveloperGuide.adoc[tag=introduction]
+.. Model Component +
+include::../DeveloperGuide.adoc[tag=modelComponent]
+.. Due Soon Tasks Feature +
+include::../DeveloperGuide.adoc[tag=dueSoon]
+.. Use cases pertaining to my features +
+include::../DeveloperGuide.adoc[tag=useCasesSouwmyaa]
+.. User stories +
+include::../DeveloperGuide.adoc[tag=userStories]
+.. Instructions for Manual Testing- Saving Data +
+include::../DeveloperGuide.adoc[tag=savingData]
 . Diagrams:
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/ModelClassDiagram.puml+[Model class diagram]
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DueSoonActivityDiagram.puml+[Due soon activity diagram]
