@@ -83,50 +83,29 @@ It utilizes an "interactive command prompt". (explained in each command's descri
 == Dashboard
 
 === Understanding the dashboard
-<<<<<<< HEAD
+
 . The top of the DashBoard is the *menu bar*. You can access other features such as
 modules, archived list, calendar, statistics and productivity tracker. Simply click on the icon to navigate to it.
 +
-image::dashboard/dashboard_1 5.png[width="600", title = "Access other features here!"]
+image::dashboard/dashboard_1.png[width="600", title = "Access other features here!"]
 {bl}
 
 . The left side features your entire list of unarchived tasks.
 +
-image::dashboard/dashboard_1 2.png[width="600", title = "All task to complete"]
+image::dashboard/dashboard_2.png[width="600", title = "All task to complete"]
 {bl}
 
 . The right side displays your tasks that are due soon.
 +
-image::dashboard/dashboard_1 3.png[width="600", title = "Task due soon"]
+image::dashboard/dashboard_3.png[width="600", title = "Task due soon"]
 {bl}
 
-. The bottom is your input line. You can type your commands to tell Study Buddy what to do and he will reply
-you!
+. The bottom is your input line. You can type your commands to tell Study Buddy what to do and he will reply accordingly!
 +
-image::dashboard/dashboard_1 4.png[width="600", title = "Chat with Studdy Buddy here!"]
+image::dashboard/dashboard_4.png[width="600", title = "Chat with Studdy Buddy here!"]
 
 [NOTE]
 A more detailed explanation of each of the usage of these components is given in <<Features>>
-=======
-The top of the DashBoard is the *menu bar*. You can use it to access to other data such as
-modules & archives.
-
-image::dashboard/dashboard_1.png[width="600", title = "Access other features here!"]
-
-The left side features the detail information of the entire unarchived tasks.
-
-image::dashboard/dashboard_2.png[width="600", title = "All task to complete"]
-
-The panel on the right will remind you of tasks which will due in next week,
-and the list of tasks are automatically sorted by date and time.
-
-image::dashboard/dashboard_3.png[width="600", title = "Task due soon"]
-
-You can enter commands at the box with the words `Please enter your command here...` and press kbd:[enter]
-to interact with Study Buddy.
-He will reply accordingly via the box above.
-
-image::dashboard/dashboard_4.png[width="600", title = "Chat with Studdy Buddy here!"]
 
 ==== Useful tips
 * The scroll bar on the right of the response box can be used to view the entire reply.
