@@ -37,114 +37,70 @@ public class EditModCommandTest {
     }
 
     @Test
-    public void execute_nonExistentMod_returnReply() {
+    public void execute_nonExistentMod_returnReply() throws CommandException {
         EditModCommand editModCommand = new EditModCommand(new Module("name", "CS2111"),
                 new Module("name", "CS1111"), null);
-        try {
-            assertEquals("Module does not exist in Study Buddy!",
-                    editModCommand.execute(model).getFeedbackToUser());
-        } catch (CommandException ex) {
-            System.out.println("Test failed");
-        }
+        assertEquals("Module does not exist in Study Buddy!",
+                editModCommand.execute(model).getFeedbackToUser());
     }
 
     @Test
-    public void execute_invalidTerm_returnReply() {
+    public void execute_invalidTerm_returnReply() throws CommandException {
         CreateModCommand createModCommand = new CreateModCommand(new Module("", "CS1231"));
-        try {
-            createModCommand.execute(model);
-        } catch (CommandException ex) {
-            System.out.println("Test failed");
-        }
+        createModCommand.execute(model);
         EditModCommand editModCommand = new EditModCommand(new Module("", "CS1231"),
                 new Module("new name", "CS1231"), INIT);
-        try {
-            assertEquals(new CommandResult("Did nothing! from EditModCommand."),
+        assertEquals(new CommandResult("Did nothing! from EditModCommand."),
                 editModCommand.execute(model));
-        } catch (CommandException ex) {
-            System.out.println("Test failed");
-        }
+
     }
 
     @Test
-    public void executionChangeModuleName_success() {
+    public void executionChangeModuleName_success() throws CommandException {
         CreateModCommand createModCommand = new CreateModCommand(new Module("name", "CS1231"));
-        try {
-            createModCommand.execute(model);
-        } catch (CommandException ex) {
-            System.out.println("Test failed");
-        }
+        createModCommand.execute(model);
 
         EditModCommand editModCommand = new EditModCommand(new Module("name", "CS1231"),
                 new Module("new name", "CS1231"), CHANGE_MOD_NAME);
-        try {
-            assertEquals(new CommandResult("Module name Change successful!"),
-                    editModCommand.execute(model));
-            assertEquals(1, model.getFilteredModuleList()
-                    .filtered(x -> x.getModuleName().equals("new name"))
-                        .size());
-        } catch (CommandException ex) {
-            System.out.println("Test failed");
-        }
+        assertEquals(new CommandResult("Module name Change successful!"), editModCommand.execute(model));
+        assertEquals(1, model.getFilteredModuleList()
+                .filtered(x -> x.getModuleName().equals("new name")).size());
     }
 
     @Test
-    public void executionChangeModuleCode_success() {
+    public void executionChangeModuleCode_success() throws CommandException {
         CreateModCommand createModCommand = new CreateModCommand(new Module("name", "CS1231"));
-        try {
-            createModCommand.execute(model);
-        } catch (CommandException ex) {
-            System.out.println("Test failed");
-        }
+        createModCommand.execute(model);
 
         EditModCommand editModCommand = new EditModCommand(new Module("name", "CS1231"),
                 new Module("name", "CS0000"), CHANGE_MOD_CODE);
-        try {
-            assertEquals(new CommandResult("Module code change successful!"),
-                    editModCommand.execute(model));
-            assertEquals(1, model.getFilteredModuleList()
-                    .filtered(x -> x.getModuleCode().equals("CS0000"))
-                    .size());
-        } catch (CommandException ex) {
-            System.out.println("Test failed");
-        }
+        assertEquals(new CommandResult("Module code change successful!"), editModCommand.execute(model));
+        assertEquals(1, model.getFilteredModuleList()
+                .filtered(x -> x.getModuleCode().equals("CS0000")).size());
     }
 
     @Test
-    public void executionDeleteMod_success() {
+    public void executionDeleteMod_success() throws CommandException {
         CreateModCommand createModCommand = new CreateModCommand(new Module("name", "CS1231"));
-        try {
-            createModCommand.execute(model);
-        } catch (CommandException ex) {
-            System.out.println("Test failed");
-        }
+        createModCommand.execute(model);
 
         EditModCommand editModCommand = new EditModCommand(new Module("name", "CS1231"),
                 new Module("name", "CS1231"), DELETE_MOD);
-        try {
-            assertEquals(new CommandResult("Module deleted!"),
+        assertEquals(new CommandResult("Module deleted!"),
                     editModCommand.execute(model));
-            assertEquals(0, model.getFilteredModuleList()
-                    .filtered(x -> x.getModuleCode().equals("CS1231"))
-                    .size());
-        } catch (CommandException ex) {
-            System.out.println("Test failed");
-        }
+        assertEquals(0, model.getFilteredModuleList()
+                .filtered(x -> x.getModuleCode().equals("CS1231")).size());
     }
 
     @Test
-    public void executeDuplicateMod_throwCommandException() {
+    public void executeDuplicateMod_throwCommandException() throws CommandException {
         CreateModCommand createModCommand1 = new CreateModCommand(
                 new Module("name1", "CS1231"));
         CreateModCommand createModCommand2 = new CreateModCommand(
                 new Module("name2", "CS2040"));
 
-        try {
-            createModCommand1.execute(model);
-            createModCommand2.execute(model);
-        } catch (CommandException ex) {
-            System.out.println("Test failed");
-        }
+        createModCommand1.execute(model);
+        createModCommand2.execute(model);
 
         EditModCommand editModCommand = new EditModCommand(new Module("name1", "CS1231"),
                 new Module("name2", "CS1231"), CHANGE_MOD_NAME);
@@ -153,18 +109,14 @@ public class EditModCommandTest {
     }
 
     @Test
-    public void executeDuplicateCode_throwCommandException() {
+    public void executeDuplicateCode_throwCommandException() throws CommandException {
         CreateModCommand createModCommand1 = new CreateModCommand(
                 new Module("name1", "CS1231"));
         CreateModCommand createModCommand2 = new CreateModCommand(
                 new Module("name2", "CS2040"));
 
-        try {
-            createModCommand1.execute(model);
-            createModCommand2.execute(model);
-        } catch (CommandException ex) {
-            System.out.println("Test failed");
-        }
+        createModCommand1.execute(model);
+        createModCommand2.execute(model);
 
         EditModCommand editModCommand = new EditModCommand(new Module("name1", "CS1231"),
                 new Module("name1", "CS2040"), CHANGE_MOD_CODE);

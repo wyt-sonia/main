@@ -1,6 +1,15 @@
 @startuml
 !include style.puml
 
+skinparam arrowColor #black
+skinparam SequenceBoxBorderColor #black
+skinparam SequenceParticipantBorderThickness 2
+skinparam SequenceReferenceBorderThickness 2
+skinparam DiagramBorderThickness 2
+skinparam SequenceArrowThickness 2
+skinparam SequenceLifeLineBorderColor #black
+skinparam ParticipantBorderColor #black
+
 box Logic LOGIC_COLOR_T1
 participant ":ArchiveTaskInteractive" as ArchiveTaskInteractive LOGIC_COLOR
 participant ":LogicManager" as LogicManager LOGIC_COLOR
