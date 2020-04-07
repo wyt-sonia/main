@@ -56,7 +56,7 @@ you may refer to the guide below.
 +
 image::Ui.png[width="790", title="Study Buddy Dashboard"]
 +
-. The box with the words `Please enter your command here...` is where you can key in your desired command and click kbd:[Enter] to execute.
+. Jump to <<Dashboard>> to get more information about dashboard.
 . To view a list of available command, you can key in *`help`* and click kbd:[Enter]. A more detailed description of our features is available in
 <<Features>> of this document.
 
@@ -76,52 +76,91 @@ This symbol indicates something to which we want to draw your attention.
 
 ==== Useful tips
 
-* You may need to adjust the size of the Study Buddy window when you launch it.
 * The scroll bar on the right of the response box can be used to view the entire reply.
 * At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
 * Study Buddy will analyze your input and reply accordingly.
 It utilizes an "interactive command prompt". (explained in each command's description under <<Features>>)
-* In this document, *[enter]* indicates *hitting the enter key on your keyboard*.
-* In this document, *|* indicates an *alternative option* (i.e. A | B implies A or B).
-
-[[DashBoard]]
-== Dashboard
-
-=== Understanding the dashboard
-
-. The top of the DashBoard is the *menu bar*. You can access other features such as
-modules, archived list, calendar, statistics and productivity tracker. Simply click on the icon to navigate to it.
-+
-image::dashboard/dashboard_1.png[width="600", title = "Access other features here!"]
-{bl}
-
-. The left side features your entire list of unarchived tasks.
-+
-image::dashboard/dashboard_2.png[width="600", title = "All task to complete"]
-{bl}
-
-. The right side displays your tasks that are due soon.
-+
-image::dashboard/dashboard_3.png[width="600", title = "Task due soon"]
-{bl}
-
-. The bottom is your input line. You can type your commands to tell Study Buddy what to do and he will reply accordingly!
-+
-image::dashboard/dashboard_4.png[width="600", title = "Chat with Studdy Buddy here!"]
-
-[NOTE]
-A more detailed explanation of each of the usage of these components is given in <<Features>>
-
-==== Useful tips
-* The scroll bar on the right of the response box can be used to view the entire reply.
-* At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
-* Study Buddy will analyze your input and reply accordingly.
-It utilizes an "interactive command prompt". (explained in each command's description under <<Features>>)
-* *[enter]* indicates *hitting the enter key on your keyboard*.
+* kbd:[enter] indicates *the enter key on your keyboard*.
 * *|* indicates an *alternative option* (i.e. A | B implies A or B).
 * When mention about task's *index number*, it refers to the index number displayed in *All Tasks panel*. Noted that the
 index of the same task could be different after `filter`, `find` and `sort` commands.
->>>>>>> 441170cf5d2c312d6a420efef1bf2b7a0384684b
+
+
+[[UI]]
+
+== User Interface Introduction
+The enjoyable user interface of Study Buddy provides you with better user experience.
+Especially its lovely colour themes and vivid animations can release the pressure you have accumulated from school.
+
+=== Dashboard
+The *dashboard* is the landing page each time the application is launched. +
+It consists of different components that can interact with you and provide you with meaningful information.
+
+==== Navigation Menu Bar
+The *menu bar* lays at the top of the dashboard and is primarily used for navigation.
+
+image::dashboard/dashboard_1.png[width="600", title = "Menu bar"]
+
+==== All Tasks Panel
+
+By default, the *All Tasks Panel* lists all unarchived tasks record with their detail information in their creation order.
+
+You can::
+* Reorder them using command <<Sort>>.
+* Filter them using command <<Filter>> or <<Find>>.
+
+image::dashboard/dashboard_2.png[width="600", title = "All tasks panel"]
+
+===== Task Badges
+To bold the important information of each tasks in *All Tasks Panel* , we use *Badges* to highlight `Module Code`,
+`Task Type` and  `Task Status` of each tasks.
+
+Module Badges::
+* All in light steelblue.
+* If the task is not related to any module, the Module Badges will be omitted.
+
+Task Type Badges::
+* Different Type Badges are in different colours.
+
+Task Status::
+* Different Task Statuses using different colours.
+* The task which is due in next week (i.e. 7 days) will be marked as `Due Soon` status, sometimes
+you may need to use <<Refresh>> command to refresh the status of all tasks.
+
+==== Tasks Due Soon Panel
+The tasks which will due in next week (i.e. 7 days) will be listed here.
+You can jump to <<Due Soon Tasks>> to get more details.
+
+image::dashboard/dashboard_3.png[width="600", title = "Task Due Soon"]
+
+===== Task Badges
+To bold the important information of each tasks in *Tasks Due Soon Panel* , we use *Badges* to highlight `Weight & Module Code`,
+`Deadline/ Starting Date Counting Down` and  `Task Type` of each tasks.
+
+Weight & Module Code::
+* All in steelblue.
+* It provides weight and the module code of the task.
+
+Deadline/ Starting Date Counting Down::
+* All in light orange.
+* It displays the counting down for the tasks' deadline or starting date.
+* More information please refer to <<Due Soon Tasks>>
+
+Task Type Badges::
+* Different Type Badges are in different colours.
+
+==== Interactive Prompt Box
+The *Interactive Prompt Box* lays at the bottom of the user interface.
+
+To interact with Study Buddy, you can enter the desired command in the box with the words `Please enter your command here...`
+and press kbd:[Enter] to execute.
+
+The reply from Study Buddy will be displayed in the box next to the cartoon boy.
+
+image::dashboard/dashboard_4.png[width="600", title = "Interactive Prompt Box"]
+
+[NOTE]
+To get more detailed information about different user interface components, please refer to <<Features>>.
 
 [[Features]]
 
@@ -321,7 +360,7 @@ image::basic/edit/edit_result.png[width="600", title="Task edited"]
 ==== Done
 . This command completes a task. Key in `done` & you should get this prompt:
 +
-image::basic/done/done_1.png[width="700", title = "Presentation to be marked as finished"]
+image::basic/done/done_1.png[width="700", title = "Presentation to be marked as Finished"]
 
 . Now key in the index of the task you wish to complete.
 
@@ -329,9 +368,9 @@ image::basic/done/done_1.png[width="700", title = "Presentation to be marked as 
 +
 image::basic/done/done_2.png[width="700", title = "Press kbd:[enter] to confirm changes"]
 
-. Task set to `finished` successfully! Note that the task in your task list has the tag `FINISHED`.
+. Task set to `Finished` successfully! Note that the task in your task list has the tag `FINISHED`.
 +
-image::basic/done/done_3.png[width="700", title = "Presentation 1 is marked as finished"]
+image::basic/done/done_3.png[width="700", title = "Presentation 1 is marked as Finished"]
 
 [NOTE]
 You can choose to archive your completed task using the `archive` command.
@@ -344,7 +383,7 @@ Be careful with this command! It will remove any data you may have entered into 
 
 *Example:*
 
-Say you have finished a semester and would like to clear everything in your Study Buddy and start over.
+Say you have Finished a semester and would like to clear everything in your Study Buddy and start over.
 
 You can always clear everything!
 
@@ -446,6 +485,7 @@ image::basic/archive/archive_3.png[width="790", title="View archived tasks"]
 * Remember to use the index in the *Archived Task* instead of *All Tasks*
 ****
 
+[[Sort]]
 ==== Sort
 
 This command is for you to reorder the task list in *All Tasks* panel. +
@@ -478,6 +518,7 @@ image::basic/sort/after_sort.png[width="790", title="Sorted tasks"]
 The tasks in *All Tasks* panel will not change back to the original order by itself. +
 You can use `sort` -> `Creation Date & Time` to do so.
 
+[[Find]]
 ==== Find
 
 Finds tasks whose names contain any of the given keywords.
@@ -523,18 +564,19 @@ To use the `list` command:
 +
 image::list/file.png[width="400" title="List Success"]
 
+[[Filter]]
 ==== Filter
 This commands helps you filter your tasks by category. The two categories available are status and type.
 
 [NOTE]
-Note that due soon tasks are already filtered for you. Refer to <<Due Soon Tasks>>
+Note that Due Soon tasks are already filtered for you. Refer to <<Due Soon Tasks>>
 
 [TIP]
 To navigate back to your main list, check out <<List>>
 
 *Example:*
 
-Say you want to view a list of all your pending tasks.
+Say you want to view a list of all your Pending tasks.
 
 Study Buddy provides an option to filter your list!
 
@@ -553,7 +595,7 @@ image::basic/filter/filter2.png[width="590", title="Response to filter by 'statu
 +
 image::basic/filter/beforeFilter.png[width="790", title="Before filter"]
 
-. You can then proceed to choose what status type you would like to filter by. Here we have filtered by "pending" as an example.
+. You can then proceed to choose what status type you would like to filter by. Here we have filtered by "Pending" as an example.
 +
 image::basic/filter/filter3.png[width="790", title="Response to filter by status tag 'Pending'"]
 
@@ -567,8 +609,9 @@ image::basic/filter/filter4.png[width="590", title="Response to filter by task '
 +
 image::basic/filter/filter5.png[width="790", title="Response to filter by task type 'assignment'"]
 
+[[Refresh]]
 ==== Refresh
-This commands refreshes the list of tasks due soon as well as status tags.
+This commands refreshes the list of tasks Due Soon as well as status tags.
 
 [IMPORTANT]
 Due soon list shows tasks due within the next week. Details are in <<Due Soon Tasks>>
@@ -577,7 +620,7 @@ Status tags include information on the tasks' status. Details are in <<Status Ta
 
 *Example:*
 
-Say you left Study Buddy open overnight because you fell asleep studying. When you wake up, you notice that the time left for the deadline on the due soon tasks is not accurate.
+Say you left Study Buddy open overnight because you fell asleep studying. When you wake up, you notice that the time left for the deadline on the Due Soon tasks is not accurate.
 
 You can refresh them!
 
@@ -600,7 +643,7 @@ image::basic/refresh/refresh2.png[width="790", title="Response to 'refresh'"]
 +
 image::basic/refresh/refresh3.png[width="790", title="View refreshed Study Buddy"]
 +
-You will notice that the overdue task has now moved out of the due soon list and has the updated status tag "overdue".
+You will notice that the Overdue task has now moved out of the Due Soon list and has the updated status tag "Overdue".
 
 ==== Exit
 This command exits from Study Buddy.
@@ -639,7 +682,7 @@ When the application is closed and re-opened, you should be able to see all the 
 
 === Due Soon Tasks
 
-The due soon task list is always on display in your application under `Study Buddy` -> `All tasks`
+The Due Soon task list is always on display in your application under `Study Buddy` -> `All tasks`
 
 It provides the following functionality:
 
@@ -663,7 +706,7 @@ image::duesoon/duesoon2.png[width="790", align= "left", title="Due Soon List"]
 Time left is never displayed in days and minutes. Hence if the current time is 9:00 am on 01/04/2020 and the task deadline is 9:02 am on 02/04/2020, it will show time left as 1 day. (not 1 day and 2 minutes)
 
 [NOTE]
-Due soon list will never display finished tasks. If you unarchive a completed task, it will not appear in the due soon list.
+Due soon list will never display Finished tasks. If you unarchive a completed task, it will not appear in the Due Soon list.
 
 === Modules
 The Modules tab is an easy way for students to organise their task, homework and deadlines into various modules.
@@ -922,7 +965,7 @@ This tab displays information about your past productivity.
 You can go to this tab directly by clicking your Productivity Point count on the top right of the menu.
 The Productivity Points tab displays your current Productivity Points (PP) and your progression.
 You gain Productivity Points upon adding tasks, completing tasks, and using advanced features in StudyBuddy.
-On the other hand, you lose Productivity Points when your tasks go overdue.
+On the other hand, you lose Productivity Points when your tasks go Overdue.
 Here are some examples of how to obtain Productivity Points in StudyBuddy:
 
 .. Adding a task: _+1_
@@ -931,7 +974,7 @@ Here are some examples of how to obtain Productivity Points in StudyBuddy:
 
 .. Using advanced features; _+?_ (Explore StudyBuddy to find out!)
 
-.. Letting a task go overdue: _-1_
+.. Letting a task go Overdue: _-1_
 
 
 

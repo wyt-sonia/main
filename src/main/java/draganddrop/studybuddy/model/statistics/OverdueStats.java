@@ -4,33 +4,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Stores statistics about number of overdue tasks
+ * Stores statistics about number of Overdue tasks
  */
 public class OverdueStats {
     /**
-     * A list containing daily number of overdue tasks
+     * A list containing daily number of Overdue tasks
      */
-    private List<Integer> overdueCountList;
+    private List<Integer> OverdueCountList;
 
     public OverdueStats() {
         this.initList();
     }
 
     public List<Integer> getOverdueCountList() {
-        return overdueCountList;
+        return OverdueCountList;
     }
 
-    public void setOverdueCountList(List<Integer> overdueCountList) {
-        this.overdueCountList = overdueCountList;
+    public void setOverdueCountList(List<Integer> OverdueCountList) {
+        this.OverdueCountList = OverdueCountList;
     }
 
     /**
-     * initializes an empty overdueCountList
+     * initializes an empty OverdueCountList
      */
     public void initList() {
-        overdueCountList = new ArrayList<>();
+        OverdueCountList = new ArrayList<>();
         for (int i = 0; i < 366; i++) {
-            overdueCountList.add(0);
+            OverdueCountList.add(0);
         }
     }
 
@@ -40,8 +40,8 @@ public class OverdueStats {
      * @param dayIndex the day in which the task is completed
      */
     public void addOverdue(int dayIndex) {
-        int currentOverdueCount = overdueCountList.get(dayIndex);
-        overdueCountList.set(dayIndex, currentOverdueCount + 1);
+        int currentOverdueCount = OverdueCountList.get(dayIndex);
+        OverdueCountList.set(dayIndex, currentOverdueCount + 1);
     }
 
     /**
@@ -51,11 +51,11 @@ public class OverdueStats {
      * @return number of tasks completed late on the given day
      */
     public int getDailyOverdueCount(int dayIndex) {
-        return overdueCountList.get(dayIndex);
+        return OverdueCountList.get(dayIndex);
     }
 
 
     public List<Integer> getWeeklyOverdueCountList(int dayIndex) {
-        return overdueCountList.subList(dayIndex - 6, dayIndex + 1);
+        return OverdueCountList.subList(dayIndex - 6, dayIndex + 1);
     }
 }

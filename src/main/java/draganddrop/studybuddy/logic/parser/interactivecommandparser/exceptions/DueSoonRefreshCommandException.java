@@ -6,7 +6,7 @@ package draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions;
 public class DueSoonRefreshCommandException extends InteractiveCommandException {
 
     /*
-     *pending
+     *Pending
      * */
     public DueSoonRefreshCommandException(String errorType) {
         super(errorType);

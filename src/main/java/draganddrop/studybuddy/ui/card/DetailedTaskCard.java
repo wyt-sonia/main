@@ -87,7 +87,7 @@ public class DetailedTaskCard extends UiPart<Region> {
             status.getStyleClass().add("due_soon_status");
             break;
         case OVERDUE:
-            status.getStyleClass().add("overdue_status");
+            status.getStyleClass().add("Overdue_status");
             break;
         default:
         }

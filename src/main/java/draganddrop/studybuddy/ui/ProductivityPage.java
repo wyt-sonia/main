@@ -199,7 +199,7 @@ public class ProductivityPage extends UiPart<Region> {
         int weeklyTaskCompleted = statistics.getCompleteCountThisWeek();
         int weeklyTaskOverdue = statistics.getOverdueCountThisWeek();
         String weeklyStatsString = "You have completed " + weeklyTaskCompleted + " tasks this week\n"
-            + weeklyTaskOverdue + " tasks were overdue";
+            + weeklyTaskOverdue + " tasks were Overdue";
         weeklyStatsLabel.setText(weeklyStatsString);
     }
 

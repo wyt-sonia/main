@@ -22,7 +22,7 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
     private static final String END_OF_COMMAND_MSG = "Task marked as completed successfully!\n"
             + "If you want to archive this completed task, key in 'archive'.";
     private static final String REQUEST_INDEX_MSG = "Please enter the index number "
-        + "of task you wish to mark as finished.";
+        + "of task you wish to mark as Finished.";
 
     private int index;
 
@@ -57,7 +57,7 @@ public class CompleteTaskInteractivePrompt extends InteractivePrompt {
                     throw new CompleteTaskCommandException("taskCompletedError");
                 }
                 reply = "The task " + Task.getCurrentTasks().get(index - 1).getTaskName()
-                    + " will be marked as finished. \n\n"
+                    + " will be marked as Finished. \n\n"
                     + "Please click enter again to make the desired action.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (NumberFormatException ex) {

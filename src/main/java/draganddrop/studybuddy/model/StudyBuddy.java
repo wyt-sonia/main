@@ -33,7 +33,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     private final UniqueTaskList tasks;
     private final ModuleList moduleList;
     private final CompletionStats completionStats;
-    private final OverdueStats overdueStats;
+    private final OverdueStats OverdueStats;
     private final GeneralStats generalStats;
     private final Statistics statistics;
     private final ScoreStats scoreStats;
@@ -51,11 +51,11 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         dueSoonTasks = new UniqueTaskList();
         moduleList = new ModuleList();
         completionStats = new CompletionStats();
-        overdueStats = new OverdueStats();
+        OverdueStats = new OverdueStats();
         generalStats = new GeneralStats();
         scoreStats = new ScoreStats();
         // the singleton instance of statistics is created here
-        statistics = new Statistics(generalStats, completionStats, overdueStats, scoreStats);
+        statistics = new Statistics(generalStats, completionStats, OverdueStats, scoreStats);
         UniqueTaskList.setStatistics(statistics);
         Task.setStatistics(statistics);
         ProductivityPage.setStatistics(statistics);
@@ -85,7 +85,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
 
     @Override
     public List<Integer> getOverdueCountList() {
-        return overdueStats.getOverdueCountList();
+        return OverdueStats.getOverdueCountList();
     }
 
     @Override
@@ -151,7 +151,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     }
 
     /**
-     * Checks if task belongs in due soon list and deletes it
+     * Checks if task belongs in Due Soon list and deletes it
      * @param p
      */
     public void updateDeleteDueSoon(Task p) {
@@ -177,8 +177,8 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         this.completionStats.setCompleteCountList(completeList);
     }
 
-    public void setOverdueList(List<Integer> overdueList) {
-        this.overdueStats.setOverdueCountList(overdueList);
+    public void setOverdueList(List<Integer> OverdueList) {
+        this.OverdueStats.setOverdueCountList(OverdueList);
     }
 
     /**
@@ -336,7 +336,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     }
 
     /**
-     * Adds task to due soon list if it is due soon.
+     * Adds task to Due Soon list if it is Due Soon.
      * @param target
      */
     public void updateAddDueSoon(Task target) {

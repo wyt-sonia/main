@@ -13,7 +13,7 @@ import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.task.Task;
 
 /**
- * Refreshes the due soon list as well as status tags.
+ * Refreshes the Due Soon list as well as status tags.
  */
 public class FilterTaskCommand extends Command {
 
