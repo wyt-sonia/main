@@ -15,7 +15,7 @@ import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.statistics.Statistics;
 
 /**
- * pending.
+ * Represents a Task.
  */
 public class Task implements Comparable<Task> {
     /**

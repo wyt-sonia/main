@@ -3,7 +3,7 @@ package draganddrop.studybuddy.model.task;
 import java.util.ArrayList;
 
 /**
- * pending.
+ * Represents the Task status.
  */
 public enum TaskStatus {
     PENDING,

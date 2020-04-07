@@ -20,7 +20,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
- * pending.
+ * Represents a DeleteDuplicateTaskInteractivePrompt, which interacts with user to delete duplicate tasks.
  */
 public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
     public static final String QUIT_COMMAND_MSG = "Successfully quited from delete duplication command.";

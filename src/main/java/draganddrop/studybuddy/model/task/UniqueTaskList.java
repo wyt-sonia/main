@@ -17,7 +17,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
- * pending.
+ * Represents a UniqueTaskList.
  */
 public class UniqueTaskList implements Iterable<Task> {
 

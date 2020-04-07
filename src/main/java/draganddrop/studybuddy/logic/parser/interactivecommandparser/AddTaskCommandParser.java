@@ -13,7 +13,7 @@ import draganddrop.studybuddy.model.task.TaskType;
 import javafx.collections.ObservableList;
 
 /**
- * pending.
+ * Represents a AddTaskCommandParser, which handles the add task event.
  */
 public class AddTaskCommandParser {
 

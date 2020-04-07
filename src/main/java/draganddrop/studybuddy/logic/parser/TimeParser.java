@@ -9,7 +9,7 @@ import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.I
 import draganddrop.studybuddy.model.task.Task;
 
 /**
- * pending.
+ * Represents a TimeParser, which can parse String to dateTime or parse dateTime to String.
  */
 public class TimeParser {
 
