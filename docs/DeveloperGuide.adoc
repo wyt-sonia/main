@@ -18,6 +18,8 @@ endif::[]
 
 By: `Team Drag&Drop`      Since: `Jan 2020`     
 
+//updated by Souwmyaa
+//tag::introduction[]
 == Introduction
 Study Buddy is a task-management tool made for students who want to be able to track and manage their tasks in one place.
 
@@ -26,6 +28,7 @@ Study Buddy uses various visualization tools such as pie charts and calendars, p
 In particular, Study Buddy is a Command Line Interface (CLI) application that also provides some Graphical User Interface (GUI). This means that users are expected to interact with the Study Buddy mainly through the command line, but each command executed will evoke a visual response as well.
 
 The purpose of this guide is to help potential developers get up to speed on the Study Buddy code base and functionality. We hope that this document will ease the process of further enhancing and developing Study Buddy.
+//end::introduction[]
 
 == Setting up
 
@@ -161,6 +164,8 @@ link:{repoURL}/blob/master/src/main/java/draganddrop/studybuddy/logic/Logic.java
 
 //NOTE: The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
+//updated by Souwmyaa
+//tag::modelComponent[]
 [[Design-Model]]
 === Model component
 
@@ -175,6 +180,7 @@ The `Model`,
 * stores the Study Buddy data.
 * exposes an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
+//end::modelComponent[]
 
 [[Design-Storage]]
 === Storage component
@@ -472,6 +478,8 @@ Refer to the guide <<DevOps#, here>>.
 
 *Value proposition*: manages tasks faster than a typical mouse/<<GUI,GUI>> driven app
 
+//updated by Souwmyaa
+//tag::userStories[]
 [appendix]
 == User Stories
 
@@ -510,12 +518,15 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |user who takes many modules |add my modules |view my modules
 |=======================================================================
+//end::userStories[]
 
 [appendix]
 == Use Cases
 
 (For all use cases below, the *System* is `Study Buddy` and the *Actor* is the `statistics`, unless specified otherwise)
 
+//updated by Souwmyaa
+//tag::useCasesSouwmyaa[]
 [discrete]
 === Use case: Delete task
 
@@ -634,6 +645,7 @@ Use case ends.
 There is nothing to refresh
 +
 Use case ends.
+//end::useCasesSouwmyaa[]
 
 [appendix]
 == Non Functional Requirements
@@ -694,6 +706,8 @@ Successful deletion indication in the status message.
 Error details shown in the status message.
 .. Other incorrect delete commands to try: `delete x`(where x is anything)
 
+//updated by Souwmyaa
+//tag::savingData[]
 === Saving data
 
 . Dealing with missing/corrupted data files
@@ -709,4 +723,4 @@ c
 .. Test case: Launch the application +
    Expected: The application indicates that the data file is corrupted.
 Application launches successfully but has no data.
-
+//end::savingData[]

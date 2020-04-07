@@ -86,16 +86,16 @@ This feature was not easy to implement, because Address Book had a lot of checks
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-. Introduction
-. Useful tips
-. Commonly Used Symbols
+. Introduction include::../UserGuide.adoc[tag=introduction]
+. Useful tips include::../UserGuide.adoc[tag=usefulTips]
+. Commonly Used Symbols include::../UserGuide.adoc[tag=symbols]
 . Features:
-.. Delete
-.. Delete duplicates
-.. Filter
-.. Refresh
-.. Clear
-.. Exit
+.. Delete include::../UserGuide.adoc[tag=delete]
+.. Delete duplicates include::../UserGuide.adoc[tag=deleteDuplicates]
+.. Filter include::../UserGuide.adoc[tag=filter]
+.. Refresh include::../UserGuide.adoc[tag=refresh]
+.. Clear include::../UserGuide.adoc[tag=clear]
+.. Exit include::../UserGuide.adoc[tag=exit]
 
 === Developer Guide
 
@@ -104,17 +104,17 @@ This feature was not easy to implement, because Address Book had a lot of checks
 |===
 
 . Sections:
-.. Introduction
-.. Model Component
-.. Due Soon Tasks Feature
-.. Use cases pertaining to my features
-.. User stories
-.. Instructions for Manual Testing- Saving Data
+.. Introduction include::../DeveloperGuide.adoc[tag=introduction]
+.. Model Component include::../DeveloperGuide.adoc[tag=modelComponent]
+.. Due Soon Tasks Feature include::../DeveloperGuide.adoc[tag=dueSoon]
+.. Use cases pertaining to my features include::../DeveloperGuide.adoc[tag=useCasesSouwmyaa]
+.. User stories include::../DeveloperGuide.adoc[tag=userStories]
+.. Instructions for Manual Testing- Saving Data include::../DeveloperGuide.adoc[tag=savingData]
 . Diagrams:
-.. Model class diagram
-.. Due soon activity diagram
-.. Due soon sequence diagram
-.. Add due soon task activity diagram
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/ModelClassDiagram.puml+[Model class diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DueSoonActivityDiagram.puml+[Due soon activity diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DueSoonSequenceDiagram.puml+[Due soon sequence diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/AddDueSoonActivityDiagram.puml+[Add due soon task activity diagram]
 
 === Team-based Tasks
 . Refactored all occurrences of Address Book to Study Buddy. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/135+[Refactor]

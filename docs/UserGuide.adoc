@@ -25,6 +25,8 @@ endif::[]
 
 By: `Team Drag&Drop`      Since: `Jan 2020`
 
+//updated by Souwmyaa
+//tag::introduction[]
 == Introduction
 
 Study Buddy is a desktop application which is designed for students who *wish to manage their module related tasks*.
@@ -38,6 +40,7 @@ If you can type fast, Study Buddy can get your module management done faster tha
 Currently, Study Buddy support both Windows and Mac systems. If you are interested, please jump to the <<Quick Start>> to get started.
 
 Hope you enjoy!
+//end::introduction[]
 
 == Quick Start
 
@@ -60,6 +63,8 @@ image::Ui.png[width="790", title="Study Buddy Dashboard"]
 . To view a list of available command, you can key in *`help`* and click kbd:[Enter]. A more detailed description of our features is available in
 <<Features>> of this document.
 
+//updated by Souwmyaa
+//tag::symbols[]
 ==== Commonly Used Symbols
 
 [NOTE]
@@ -73,7 +78,10 @@ This symbol indicates an aspect that should be used with caution.
 
 [IMPORTANT]
 This symbol indicates something to which we want to draw your attention.
+//end::symbols[]
 
+//updated by Souwmyaa
+//tag::usefulTips[]
 ==== Useful tips
 
 * You may need to adjust the size of the Study Buddy window when you launch it.
@@ -84,6 +92,7 @@ This symbol indicates something to which we want to draw your attention.
 It utilizes an "interactive command prompt". (explained in each command's description under <<Features>>)
 * In this document, *[enter]* indicates *hitting the enter key on your keyboard*.
 * In this document, *|* indicates an *alternative option* (i.e. A | B implies A or B).
+//end::usefulTips[]
 
 [[DashBoard]]
 == Dashboard
@@ -337,6 +346,8 @@ image::basic/done/done_3.png[width="700", title = "Presentation 1 is marked as f
 [NOTE]
 You can choose to archive your completed task using the `archive` command.
 
+//updated by Souwmyaa
+//tag::clear[]
 ==== Clear
 This commands clears all data in the Study Buddy.
 
@@ -363,7 +374,10 @@ Remember that you can enter `quit` if you wish to go back!
 . Study Buddy has been cleared completely!
 +
 image::basic/clear/clear2.png[width="700", title="View empty Study Buddy"]
+//end::clear[]
 
+//updated by Souwmyaa
+//tag::delete[]
 ==== Delete
 This commands deletes a task from the existing list, using the index provided by you.
 
@@ -390,8 +404,10 @@ image::basic/delete/deleteResponse3.png[width="500", title="Response to delete i
 . Task has been deleted! You will notice that the task at the index you selected has disappeared from the list of tasks.
 +
 image::basic/delete/deleteResponse1.png[width="790", title="Updated list (without deleted task)"]
+//end::delete[]
 
-
+//updated by Souwmyaa
+//tag::deleteDuplicates[]
 ==== Delete duplicates
 This commands deletes all duplicated tasks in the list.
 
@@ -418,6 +434,7 @@ image::basic/deleteduplicate/deleteDuplicates1.png[width="500", title="Response 
 . Duplicate tasks have been deleted! You will notice that only one copy (most recent) of each task will be left in the list.
 +
 image::basic/deleteduplicate/deleteDuplicates2.png[width="500", title="Updated list (without duplicate tasks)"]
+//end::deleteDuplicates[]
 
 ==== Archive/ Unarchive
 This commands stores the specified task into a separate list.
@@ -524,6 +541,8 @@ To use the `list` command:
 +
 image::list/file.png[width="400" title="List Success"]
 
+//updated by Souwmyaa
+//tag::filter[]
 ==== Filter
 This commands helps you filter your tasks by category. The two categories available are status and type.
 
@@ -567,7 +586,10 @@ image::basic/filter/filter4.png[width="590", title="Response to filter by task '
 . You can then proceed to choose what task type you would like to filter by. Here we have filtered by "assignment" as an example.
 +
 image::basic/filter/filter5.png[width="790", title="Response to filter by task type 'assignment'"]
+//end::filter[]
 
+//updated by Souwmyaa
+//tag::refresh[]
 ==== Refresh
 This commands refreshes the list of tasks due soon as well as status tags.
 
@@ -602,7 +624,10 @@ image::basic/refresh/refresh2.png[width="790", title="Response to 'refresh'"]
 image::basic/refresh/refresh3.png[width="790", title="View refreshed Study Buddy"]
 +
 You will notice that the overdue task has now moved out of the due soon list and has the updated status tag "overdue".
+//end::refresh[]
 
+//updated by Souwmyaa
+//tag::exit[]
 ==== Exit
 This command exits from Study Buddy.
 
@@ -629,6 +654,7 @@ In response to yes, the application should simply close.
 
 [NOTE]
 Any command other than `yes` (including kbd:[enter]) will be considered as a quit from the exit.
+//end::exit[]
 
 === Saving Data
 
