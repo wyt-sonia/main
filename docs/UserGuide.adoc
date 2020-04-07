@@ -318,24 +318,15 @@ image::basic/edit/edit_result.png[width="600", title="Task edited"]
 +
 image::basic/done/done_1.png[width="700", title = "Presentation to be marked as finished"]
 
-<<<<<<< HEAD
 . Now key in the index of the task you wish to complete.
-+
-image::basic/done/done_2.png[width="700", title = "Press `Enter` to confirm changes"]
 
-. Press `Enter` again to confirm your change.
+. Press kbd:[enter] again to confirm your change.
 +
-=======
-Now key in the index of the task you wish to complete.
-
 image::basic/done/done_2.png[width="700", title = "Press kbd:[enter] to confirm changes"]
 
-Press kbd:[enter] again to confirm your change.
-
->>>>>>> 441170cf5d2c312d6a420efef1bf2b7a0384684b
+. Task set to `finished` successfully! Note that the task in your task list has the tag `FINISHED`.
++
 image::basic/done/done_3.png[width="700", title = "Presentation 1 is marked as finished"]
-
-. Task set to `done` successfully! Note that the task in your task list has the tag `FINISHED`.
 
 [NOTE]
 You can choose to archive your completed task using the `archive` command.
@@ -366,7 +357,6 @@ Remember that you can enter `quit` if you wish to go back!
 . Study Buddy has been cleared completely!
 +
 image::basic/clear/clear2.png[width="700", title="View empty Study Buddy"]
-
 
 ==== Delete
 This commands deletes a task from the existing list, using the index provided by you.
