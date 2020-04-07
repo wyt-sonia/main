@@ -224,7 +224,8 @@ The list of tasks due soon will be initialized and displayed with the initial st
 Step 2. The user executes `add` command to add a task.
 The `add` command execution checks if this task belongs in the due soon tasks list (i.e it is due in 7 days). If it does, the task is added to both lists, else it is only added to the main list. +
 
-image::AddDueSoonActivityDiagram.png[width = "200", length = "300", title = "Activity Diagram for Add to Due Soon list"]
+.Activity Diagram for Add to Due Soon list
+image::AddDueSoonActivityDiagram.png[width = "200", length = "300"]
 
 Step 3. The user executes `delete` command to delete a task.
 The `delete` command execution also checks if this task exists in the due soon task list. If it does, task is deleted from both lists, else it is only deleted from the main list.
@@ -235,9 +236,11 @@ The `refresh` command execution will traverse the main list and check if there a
 [NOTE]
 If there are no such inconsistencies, the refresh command will not make any changes to the due soon task list.
 
-image::DueSoonActivityDiagram.png[width = "500", length = "600", title = "Activity diagram for refresh"]
+.Activity diagram for refresh
+image::DueSoonActivityDiagram.png[width = "500", length = "600"]
 
-image::DueSoonSequenceDiagram.png[width = "800", length = "600", title = "Sequence diagram for refresh"]
+.Sequence diagram for refresh
+image::DueSoonSequenceDiagram.png[width = "800", length = "600"]
 
 ==== Design Considerations
 
