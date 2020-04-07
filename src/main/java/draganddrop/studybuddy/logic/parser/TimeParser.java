@@ -44,7 +44,7 @@ public class TimeParser {
         try {
             inputDate = LocalDate.parse(userInput.trim(), DATE_FORMAT);
         } catch (DateTimeParseException e) {
-            throw new InteractiveCommandException("dataTimeFormatError");
+            throw new InteractiveCommandException("dataFormatError");
         }
         return inputDate;
     }
