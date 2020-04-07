@@ -403,7 +403,7 @@ To `clear`:
 . Initiate the command using keyword `clear`
 . Study Buddy should respond with:
 +
-image::basic/clear/clear1.png[width="590", title="Response to 'clear'"]
+image::basic/clear/clear_confirm.png[width="590", title="Response to 'clear'"]
 +
 [IMPORTANT]
 Remember that you can enter `quit` if you wish to go back!
@@ -411,7 +411,7 @@ Remember that you can enter `quit` if you wish to go back!
 . Press kbd:[enter] again to confirm
 . Study Buddy has been cleared completely!
 +
-image::basic/clear/clear2.png[width="700", title="View empty Study Buddy"]
+image::basic/clear/clear_result.png[width="700", title="View empty Study Buddy"]
 
 ==== Delete
 This commands deletes a task from the existing list, using the index provided by you.
@@ -430,15 +430,15 @@ To `delete`:
 . Initiate the command using keyword `delete`
 . Study Buddy should respond with:
 +
-image::basic/delete/deleteResponse2.png[width="790", title="Response to 'delete'"]
+image::basic/delete/delete_index.png[width="600", title="Response to 'delete'"]
 
 . Type the index of the task you want to delete.
 +
-image::basic/delete/deleteResponse3.png[width="500", title="Response to delete index 1"]
+image::basic/delete/delete_confirm.png[width="600", title="Asks for confirmation"]
 . Press kbd:[enter] again to confirm
 . Task has been deleted! You will notice that the task at the index you selected has disappeared from the list of tasks.
 +
-image::basic/delete/deleteResponse1.png[width="790", title="Updated list (without deleted task)"]
+image::basic/delete/delete_result.png[width="600", title="Updated All Tasks Panel"]
 
 
 ==== Delete duplicates
