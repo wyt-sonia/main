@@ -20,6 +20,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.edit.EditTaskInteractivePromp
 import draganddrop.studybuddy.ui.interactiveprompt.edit.SetGoalInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.UnarchiveTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.sort.SortTaskInteractivePrompt;
+import draganddrop.studybuddy.ui.interactiveprompt.view.CalendarViewInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.view.FilterTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.view.FindTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.view.HelpInteractivePrompt;
@@ -40,7 +41,7 @@ public class CommandBox extends UiPart<Region> {
     private static final String[] interactiveCommandTypes =
         {"add", "edit", "delete", "archive", "done", "delete duplicates",
         "clear", "bye", "sort", "refresh", "help",
-        "filter", "create mods", "find", "list", "unarchive", "goal"};
+        "filter", "create mods", "find", "list", "unarchive", "goal", "calendar"};
     private final CommandExecutor commandExecutor;
     private InteractivePrompt currentInteractivePrompt;
     @FXML
@@ -120,6 +121,9 @@ public class CommandBox extends UiPart<Region> {
                 //mod related functions will not be shown on UI but available as shortcut
                 case "goal":
                     currentInteractivePrompt = new SetGoalInteractivePrompt();
+                    break;
+                case "calendar":
+                    currentInteractivePrompt = new CalendarViewInteractivePrompt();
                     break;
                 default:
                     currentInteractivePrompt = new InvalidInputInteractivePrompt();
