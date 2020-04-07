@@ -80,17 +80,12 @@ This enhancement was a crucial command.
 ** Highlights:
 This feature was not easy to implement, because Address Book had a lot of checks to avoid duplication of tasks. These checks needed to be addressed for the feature to work.
 
-== Contributions to the User Guide
+=== User guide
 
 |===
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-include::../UserGuide.adoc[tag=delete]
-
-include::../UserGuide.adoc[tag=deleteduplicates]
-
-=== User guide
 . Introduction
 . Useful tips
 . Commonly Used Symbols
@@ -103,11 +98,15 @@ include::../UserGuide.adoc[tag=deleteduplicates]
 .. Exit
 
 === Developer Guide
+
+|===
+|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|===
+
 . Sections:
 .. Introduction
 .. Model Component
 .. Due Soon Tasks Feature
-include::../UserGuide.adoc[tag=dueSoon]
 .. Use cases pertaining to my features
 .. User stories
 .. Instructions for Manual Testing- Saving Data
@@ -118,15 +117,15 @@ include::../UserGuide.adoc[tag=dueSoon]
 .. Add due soon task activity diagram
 
 === Team-based Tasks
-. Refactored all occurrences of Address Book to Study Buddy.
-. Added the introduction, commonly used symbols and useful tips sections to user guide.
-. Added the introduction to developer guide.
-. Added the Study Buddy icon.
-. Added labels and milestones to the issue tracker.
-. Attempted to find bugs in all team members code to help them fix any issues. eg: Pointed out that editing status is causing errors
-. Helped maintained consistency in UG and DG by editing some other team member's parts and diagram colors.
-. Revised documentation and notified members if they had missed a certain feature/aspect that could cause confusion to users/testers.
-. Wrote test cases on error-prone classes, even if they were not mine.
+. Refactored all occurrences of Address Book to Study Buddy. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/135+[Refactor]
+. Added the introduction, commonly used symbols and useful tips sections to user guide. Links to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/245+[Useful tips and symbols] and https://github.com/AY1920S2-CS2103T-W16-3/main/pull/176+[Introduction]
+. Added the introduction to developer guide. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/185+[Introduction]
+. Added the Study Buddy icon. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/68+[Logo Update]
+. Added all https://github.com/AY1920S2-CS2103T-W16-3/main/labels+[labels] and https://github.com/AY1920S2-CS2103T-W16-3/main/milestones?state=closed+[milestones] to the issue tracker.
+. Attempted to find bugs in all team members code to help them fix any issues. Example PR https://github.com/AY1920S2-CS2103T-W16-3/main/issues/107+[Bug in Tags]
+. Helped maintained consistency in UG and DG by editing some other team member's parts and diagram colors. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/252+[Consistency in Documentation]
+. Revised documentation and notified members if they had missed a certain feature/aspect that could cause confusion to users/testers. Example issue https://github.com/AY1920S2-CS2103T-W16-3/main/issues/256+[Reminder to edit UG]
+. Wrote test cases for error-prone classes, even if they were not mine. The following links https://github.com/AY1920S2-CS2103T-W16-3/main/pull/166+[Parser Tests] and https://github.com/AY1920S2-CS2103T-W16-3/main/pull/139+[Interactive Prompt tests] display my team testing work.
 
 === Review/Mentoring
 . If a fellow team member's PR does not pass the tests required, I left a helpful comment in order to reduce their work load.
@@ -138,31 +137,4 @@ eg: done command could provide an option to user to delete/archive if necessary
 
 * *Code contributed*: https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#=undefined&search=souwmyaa
 
-* *Other contributions*:
-
-** Project management:
-*** Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
-** Enhancements to existing features:
-*** Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
-*** Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
-** Documentation:
-*** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
-** Community:
-*** PRs reviewed (with non-trivial review comments): https://github.com[#12], https://github.com[#32], https://github.com[#19], https://github.com[#42]
-*** Contributed to forum discussions (examples:  https://github.com[1], https://github.com[2], https://github.com[3], https://github.com[4])
-*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
-*** Some parts of the history feature I added was adopted by several other class mates (https://github.com[1], https://github.com[2])
-** Tools:
-*** Integrated a third party library (Natty) to the project (https://github.com[#42])
-*** Integrated a new Github plugin (CircleCI) to the team repo
-
-== Contributions to the Developer Guide
-
-|===
-|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
-|===
-
-include::../DeveloperGuide.adoc[tag=undoredo]
-
-include::../DeveloperGuide.adoc[tag=dataencryption]
 
