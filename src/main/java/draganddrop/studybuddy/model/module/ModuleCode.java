@@ -112,8 +112,14 @@ public class ModuleCode {
     public boolean equals(Object object) {
         if (object instanceof ModuleCode) {
             if (this.getPrefix().equals(((ModuleCode) object).prefix)
-                && (this.getNumber() == ((ModuleCode) object).number)
-                && this.getPostfix().equals(((ModuleCode) object).postfix)) {
+                    && (this.getNumber() == ((ModuleCode) object).number)
+                    && this.getPostfix().equals(((ModuleCode) object).postfix)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (object instanceof String) {
+            if (this.toString().equals(((String) object).toUpperCase())) {
                 return true;
             } else {
                 return false;

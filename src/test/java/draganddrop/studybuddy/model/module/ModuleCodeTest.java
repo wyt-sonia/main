@@ -32,6 +32,11 @@ public class ModuleCodeTest {
     }
 
     @Test
+    public void testEqualsFunctionOnString() throws ModuleCodeException {
+        assertEquals(sample1, new ModuleCode(sample1).toString());
+    }
+
+    @Test
     public void moduleCodePostfixTooLong_throwModuleCodeException() {
         Assert.assertThrows(ModuleCodeException.class, () -> new ModuleCode(longPostfix));
     }

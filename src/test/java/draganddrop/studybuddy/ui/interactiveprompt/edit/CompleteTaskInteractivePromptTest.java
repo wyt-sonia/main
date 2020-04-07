@@ -15,11 +15,11 @@ class CompleteTaskInteractivePromptTest {
         assertEquals(CompleteTaskInteractivePrompt.QUIT_COMMAND_MSG, prompt.interact("quit"));
     }
 
-    /*
+
     @Test
     public void interact_firstInput_returnKeywordPrompt() {
         CompleteTaskInteractivePrompt prompt = new CompleteTaskInteractivePrompt();
-        assertEquals("Please enter the index number of task you wish to mark as done.",
+        assertEquals("Please enter the index number of task you wish to mark as finished.",
                 prompt.interact(""));
-    }*/
+    }
 }
