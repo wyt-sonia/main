@@ -56,9 +56,7 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private ModuleListPanel moduleListPanel;
-
     private CommandBox commandBox;
-
     private ProductivityPage productivityPage;
 
     @FXML
@@ -122,6 +120,7 @@ public class MainWindow extends UiPart<Stage> {
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
 
+        logger.fine(FXML + " : Start to set up the Main Window.");
         // Set dependencies
         this.primaryStage = primaryStage;
         this.logic = logic;
@@ -130,8 +129,8 @@ public class MainWindow extends UiPart<Stage> {
         setWindowDefaultSize(logic.getGuiSettings());
 
         setAccelerators();
-
         helpWindow = new HelpWindow();
+        logger.fine(FXML + " : End of setting up the Main Window.");
     }
 
     public Stage getPrimaryStage() {
@@ -177,6 +176,7 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
+        logger.fine(FXML + " : Start to fill up all the placeholders of this window.");
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
 
@@ -208,6 +208,7 @@ public class MainWindow extends UiPart<Stage> {
 
         commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+        logger.fine(FXML + " : End of filling up all the placeholders of this window.");
     }
 
     /**
@@ -227,11 +228,13 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleHelp() {
+        logger.fine(FXML + " : Start to execute help handler.");
         if (!helpWindow.isShowing()) {
             helpWindow.show();
         } else {
             helpWindow.focus();
         }
+        logger.fine(FXML + " : End of executing help handler.");
     }
 
     /**
@@ -239,6 +242,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleShowTaskSummary() {
+        logger.fine(FXML + " : Start to execute show task summary.");
         toggleAllHoldersInvisible();
         toggleTaskSummaryHolderView(true);
         toggleTaskListHolderView(false, true);
@@ -248,6 +252,7 @@ public class MainWindow extends UiPart<Stage> {
         toggleDueSoonTaskListPanelTitleView(true);
         toggleMainTitleView(true);
         setMainTitleText(TASK_SUMMARY);
+        logger.fine(FXML + " : End od executing show task summary.");
     }
 
     void show() {
@@ -260,6 +265,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleShowProductivity() {
+        logger.fine(FXML + " : Start to execute show productivity.");
         toggleAllHoldersInvisible();
         toggleProductivityHolderView(true);
         toggleTaskListHolderView(true, false);
@@ -269,6 +275,7 @@ public class MainWindow extends UiPart<Stage> {
         setMainTitleText(PRODUCTIVITY_PAGE);
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+        logger.fine(FXML + " : End of executing show productivity.");
     }
 
     /**
@@ -276,8 +283,10 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleShowProductivityPoints() {
+        logger.fine(FXML + " : Start to show productivity points.");
         productivityPage.selectTab(2);
         handleShowProductivity();
+        logger.fine(FXML + " : End of executing show productivity points.");
     }
 
     /**
@@ -285,8 +294,10 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleShowProductivityDaily() {
+        logger.fine(FXML + " : Start to show productivity daily.");
         productivityPage.selectTab(0);
         handleShowProductivity();
+        logger.fine(FXML + " : End of showing productivity daily.");
     }
 
     /**
@@ -294,11 +305,13 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleExit() {
+        logger.fine(FXML + " : Start to handle exit.");
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
             (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
+        logger.fine(FXML + " : End of handling exit.");
     }
 
     /**
@@ -306,6 +319,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleShowAllTasks() {
+        logger.fine(FXML + " : Start to show all tasks.");
         toggleAllHoldersInvisible();
         toggleTaskListHolderView(true, true);
 
@@ -315,6 +329,7 @@ public class MainWindow extends UiPart<Stage> {
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
         handleDueSoonTasks();
+        logger.fine(FXML + " : End of showing all tasks..");
     }
 
     /**
@@ -322,6 +337,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleDueSoonTasks() {
+        logger.fine(FXML + " : Start to handles task to be shown in TaskListHolder.");
         toggleAllHoldersInvisible();
         toggleTaskListHolderView(true, true);
 
@@ -332,6 +348,7 @@ public class MainWindow extends UiPart<Stage> {
         dueListPanelTitle.getStyleClass().add("sub_header");
         dueSoonListPanel = new DueSoonListPanel(logic.getFilteredDueSoonTaskList());
         dueSoonListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
+        logger.fine(FXML + " : End of handling task to be shown in TaskListHolder.");
     }
 
     /**
@@ -339,6 +356,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleShowArchivedTasks() {
+        logger.fine(FXML + " : Start to handles archived task to be shown.");
         toggleAllHoldersInvisible();
         toggleTaskListHolderView(true, true);
 
@@ -348,6 +366,7 @@ public class MainWindow extends UiPart<Stage> {
         TaskListPanel archiveListPanel = new TaskListPanel(logic.getFilteredArchivedTaskList());
         taskListPanelPlaceholder.getChildren().add(archiveListPanel.getRoot());
         handleDueSoonTasks();
+        logger.fine(FXML + " : End of handling archived task to be shown.");
     }
 
     /**
@@ -355,6 +374,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleShowModules() {
+        logger.fine(FXML + " : Start to handle archived task to be shown.");
         toggleAllHoldersInvisible();
         toggleModTabView(true);
         toggleProductivityHolderView(false);
@@ -362,6 +382,7 @@ public class MainWindow extends UiPart<Stage> {
         toggleAllTitle(false);
         toggleMainTitleView(true);
         setMainTitleText(MODULE);
+        logger.fine(FXML + " : End of handling show modules.");
     }
 
     /**
@@ -369,9 +390,11 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleCreateMod() {
+        logger.fine(FXML + " : Start to handle create modules' button clicking.");
         handleShowModules();
         commandBox.run(new CreateModuleInteractivePrompt());
         commandBox.handleCommandEntered();
+        logger.fine(FXML + " : End of handle create modules' button clicking.");
 
     }
 
@@ -380,9 +403,11 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleEditMod() {
+        logger.fine(FXML + " : Start to handling edit Mod InteractivePrompt.");
         handleShowModules();
         commandBox.run(new EditModInteractivePrompt());
         commandBox.handleCommandEntered();
+        logger.fine(FXML + " : End of handling edit Mod InteractivePrompt.");
     }
 
 
@@ -391,6 +416,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     private void handleShowCalendar() {
+        logger.fine(FXML + " : Start to handle calendar to be shown.");
         toggleAllHoldersInvisible();
         toggleTaskListHolderView(true, true);
 
@@ -401,6 +427,7 @@ public class MainWindow extends UiPart<Stage> {
         CalendarBox calendar = new CalendarBox(logic.getFilteredTaskList(), dueSoonListPanelPlaceholder,
             dueListPanelTitle);
         taskListPanelPlaceholder.getChildren().add(calendar.getRoot());
+        logger.fine(FXML + " : End of handling calendar to be shown.");
     }
 
     public TaskListPanel getPersonListPanel() {
@@ -417,6 +444,7 @@ public class MainWindow extends UiPart<Stage> {
      * @see Logic#execute(String)
      */
     private CommandResult executeCommand(InteractivePrompt currentInteractivePrompt, String commandText) {
+        logger.fine(FXML + " : Start to handle command execution.");
         currentInteractivePrompt.setLogic(logic);
         String reply = currentInteractivePrompt.interact(commandText);
         resultDisplay.setFeedbackToUser(reply);
@@ -427,6 +455,7 @@ public class MainWindow extends UiPart<Stage> {
         if (currentInteractivePrompt.isEndOfCommand()) {
             return new CommandResult("Set current interactive to null", false, false);
         }
+        logger.fine(FXML + " : End of handling command execution.");
         return null;
     }
 
@@ -474,6 +503,7 @@ public class MainWindow extends UiPart<Stage> {
         taskSummaryHolder.setVisible(val);
         taskSummaryHolder.setManaged(val);
         if (val) {
+            dueListPanelTitle.getStyleClass().add("summary_sub_header");
             dueListPanelTitle.setText("Click on Chart to View Related Tasks");
         }
         setPaneView(taskSummaryHolder, val);

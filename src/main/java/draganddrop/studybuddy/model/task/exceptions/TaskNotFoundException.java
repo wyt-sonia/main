@@ -1,7 +1,7 @@
 package draganddrop.studybuddy.model.task.exceptions;
 
 /**
- * pending.
+ * Represents a TaskNotFoundException.
  */
 public class TaskNotFoundException extends RuntimeException {
 }

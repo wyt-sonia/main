@@ -1,7 +1,7 @@
 package draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions;
 
 /**
- * pending.
+ * Represents an ExitTaskCommandException.
  */
 public class ExitTaskCommandException extends InteractiveCommandException {
 

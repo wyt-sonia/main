@@ -23,7 +23,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
- * pending.
+ * Represents a DeleteTaskInteractivePrompt, which interacts with user to delete task.
  */
 public class DeleteTaskInteractivePrompt extends InteractivePrompt {
     public static final String QUIT_COMMAND_MSG = "Successfully quited from delete task command.";

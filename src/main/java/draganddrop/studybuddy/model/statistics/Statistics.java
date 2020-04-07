@@ -38,7 +38,7 @@ public class Statistics {
      * @param addedTask
      */
     public void recordAddedTask(Task addedTask) {
-        addScore(1);
+        addScore(2);
     }
 
     /**
@@ -112,6 +112,14 @@ public class Statistics {
      */
     public int getGoal() {
         return generalStats.getGoal();
+    }
+
+    /**
+     * set user's goal
+     * @param goal user's goal
+     */
+    public void setGoal(int goal) {
+        generalStats.setGoal(goal);
     }
 
     /**

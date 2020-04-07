@@ -113,11 +113,11 @@ public class ModuleListPanel extends UiPart<Region> {
     }
 
     /**
-     * Pending.
+     * Represents a ModuleListViewCell.
      */
     class ModuleListViewCell extends ListCell<Module> {
         /**
-         * pending.
+         * Updates item.
          *
          * @param module
          * @param empty

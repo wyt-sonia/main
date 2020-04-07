@@ -19,6 +19,7 @@ import draganddrop.studybuddy.model.task.TaskType;
 import draganddrop.studybuddy.model.task.UniqueTaskList;
 
 import draganddrop.studybuddy.ui.ProductivityPage;
+import draganddrop.studybuddy.ui.interactiveprompt.edit.SetGoalInteractivePrompt;
 import javafx.collections.ObservableList;
 
 /**
@@ -58,6 +59,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         UniqueTaskList.setStatistics(statistics);
         Task.setStatistics(statistics);
         ProductivityPage.setStatistics(statistics);
+        SetGoalInteractivePrompt.setStatistics(statistics);
     }
 
     public StudyBuddy() {

@@ -56,7 +56,7 @@ You may need to adjust the size of the Study Buddy window when you launch it.
 +
 image::Ui.png[width="790", title="Study Buddy Dashboard"]
 +
-. The box with the words `Enter your command here...` is where you can key in your desired command and click kbd:[Enter] to execute.
+. The box with the words `Please enter your command here...` is where you can key in your desired command and click kbd:[Enter] to execute.
 . To view a list of available command, you can key in *`help`* and click kbd:[Enter]. A more detailed description of our features is available in
 <<Features>> of this document.
 
@@ -71,28 +71,6 @@ This symbol indicates a tip that you could use.
 [CAUTION]
 This symbol indicates an aspect that should be used with caution.
 
-[[DashBoard]]
-== Dashboard
-
-=== Understanding the dashboard
-The top of the DashBoard is the *menu bar*. You can access other data such as
-modules & archives.
-
-image::dashboard/dashboard_1.png[width="600", title = "Access other features here!"]
-
-The left side features your entire list of tasks to complete.
-
-image::dashboard/dashboard_2.png[width="600", title = "All task to complete"]
-
-The right side displays your tasks that are to be due soon
-
-image::dashboard/dashboard_3.png[width="600", title = "Task due soon"]
-
-The bottom is your input line. You can type your commands to tell Study Buddy what to do and he will reply
-you!
-
-image::dashboard/dashboard_4.png[width="600", title = "Chat with Studdy Buddy here!"]
-
 ==== Useful tips
 
 * The scroll bar on the right of the response box can be used to view the entire reply.
@@ -102,17 +80,66 @@ It utilizes an "interactive command prompt". (explained in each command's descri
 * *[enter]* indicates *hitting the enter key on your keyboard*.
 * *|* indicates an *alternative option* (i.e. A | B implies A or B).
 
+[[DashBoard]]
+== Dashboard
+
+=== Understanding the dashboard
+The top of the DashBoard is the *menu bar*. You can use it to access to other data such as
+modules & archives.
+
+image::dashboard/dashboard_1.png[width="600", title = "Access other features here!"]
+
+The left side features the detail information of the entire unarchived tasks.
+
+image::dashboard/dashboard_2.png[width="600", title = "All task to complete"]
+
+The panel on the right will remind you of tasks which will due in next week,
+and the list of tasks are automatically sorted by date and time.
+
+image::dashboard/dashboard_3.png[width="600", title = "Task due soon"]
+
+You can enter commands at the box with the words `Please enter your command here...` and press kbd:[enter]
+to interact with Study Buddy.
+He will reply accordingly via the box above.
+
+image::dashboard/dashboard_4.png[width="600", title = "Chat with Studdy Buddy here!"]
+
+==== Useful tips
+* The scroll bar on the right of the response box can be used to view the entire reply.
+* At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
+* Study Buddy will analyze your input and reply accordingly.
+It utilizes an "interactive command prompt". (explained in each command's description under <<Features>>)
+* *[enter]* indicates *hitting the enter key on your keyboard*.
+* *|* indicates an *alternative option* (i.e. A | B implies A or B).
+* When mention about task's *index number*, it refers to the index number displayed in *All Tasks panel*. Noted that the
+index of the same task could be different after `filter`, `find` and `sort` commands.
 
 [[Features]]
+
 == Features
 === Basic features
-
 ==== Help :
 This function displays a list of interactive commands that you can use.
 It also provides a link to this document, (our user guide).
 
+*Format:*
+****
+*You-* `help`
+
+*SB -* list of interactive commands
+****
+*Example:*
+****
+*You-* `help`
+
+*SB -* &#160;Here is the list of available commands: +
+&#160;&#160;&#160;&#160;&#160;1. add  2. delete  3. edit  4. bye  5. sort  6. find  7. done  8. delete duplicates  9. sort  10. archive  11. help +
+&#160;&#160;&#160;&#160;&#160;12. list  13. clear 14. create mods
+
+&#160;&#160;&#160;&#160;&#160;&#160;User Guide: https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html
+****
 [TIP]
-This is the command you should use if you are unsure of how a command works.
+This is the command you should use if you are unsure of what to type for a certain command,
 
 *Example:*
 
@@ -125,7 +152,7 @@ To `help`:
 . Initiate the command using keyword `help`
 . Study Buddy should respond with:
 +
-image::helpCommand.png[width="790", title="Response to 'help'"]
+image::helpCommand.png[width="400", title="Response to 'help'"]
 
 [TIP]
 Remember to scroll down to see the entire reply.
@@ -198,7 +225,7 @@ It must be a time in the future.
 ... For duration, the two dates should follow the order of `start date`-`end date`, the `end date` should
 be later than `start date`.
 ... The total weight of tasks under the same module is capped to 100.0.
-.... Both `archived` and `not archived tasks` will be taken into consideration.
+* Both `archived` and `not archived tasks` will be taken into consideration.
 ... All `index numbers` entered should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).
 
 [NOTE]
@@ -210,33 +237,33 @@ To `add`:
 . Initiate the command using keyword `add`
 . Study Buddy should respond with `a list of available modules` as:
 +
-image::basic/add/add_module.png[width="600", title="Reponse to 'add'"]
+image::basic/add/add_module.png[width="500", title="Reponse to 'add'"]
 +
 . You can link this task with a module by entering its `MODULE CODE` | `INDEX NUMBER OF MODULE` here
 , or you can press kbd:[enter] to skip. Here we use `1` (CS2101) as an example.
 . Study Buddy should respond with the module selected and the request of task name as:
 +
-image::basic/add/add_task_name.png[width="600", title="Asks for task's name"]
+image::basic/add/add_task_name.png[width="500", title="Asks for task's name"]
 +
 . Here we use `new task` as an example.
 . Study Buddy should respond with the task name defined and the request of task type as:
 +
-image::basic/add/add_task_type.png[width="600", title="Asks for task's type"]
+image::basic/add/add_task_type.png[width="400", title="Asks for task's type"]
 +
 . Here we use `1` (Assignment) as an example.
 . Study Buddy should respond with the task type defined and the request of task's date time information as:
 +
-image::basic/add/add_date_time.png[width="600", title="Asks for task's date time"]
+image::basic/add/add_date_time.png[width="500", title="Asks for task's date time"]
 +
 . Here we use `14:00 04/05/2020` as an example.
 . Study Buddy should respond with the date time defined and the request of task's description as:
 +
-image::basic/add/add_desc.png[width="600", title="Asks for task's description"]
+image::basic/add/add_desc.png[width="400", title="Asks for task's description"]
 +
 . Here we use `new task description` as an example.
 . Study Buddy should respond with the description defined and the request of task's weight as:
 +
-image::basic/add/add_weight.png[width="600", title="Asks for task's weight"]
+image::basic/add/add_weight.png[width="400", title="Asks for task's weight"]
 +
 . Here we use `10` as an example.
 . Study Buddy should respond with the weight defined and the request of the estimated number of hours needed as:
@@ -246,9 +273,9 @@ image::basic/add/add_time_cost.png[width="600", title="Asks for estimated number
 . Here we use `10` as an example.
 . Study Buddy should respond with the task details collected and the request of your confirmation to perform the command as:
 +
-image::basic/add/add_task_info_1.png[width="600", title="Asks for user conformation to add a new task"]
+image::basic/add/add_task_info_1.png[width="500", title="Asks for user conformation to add a new task"]
 +
-image::basic/add/add_task_info_2.png[width="600", title="Task details collected"]
+image::basic/add/add_task_info_2.png[width="500", title="Task details collected"]
 +
 . Now, by pressing kbd:[enter] the new task will be added into your Study Buddy.
 . Study Buddy should respond as:
@@ -268,8 +295,13 @@ To indicate the task you want to edit, you need to provide its index number.
 When you want to update some details of a task or there are some typo in an existing
 task. You can use this command to edit as you wish.
 
-[NOTE]
-Each new value and index number entered will be checked under the same constrain of add command.
+====
+*Constrains*
+
+. Each new value and index number entered will be checked under the same constrain of add command.
+. When editing weight or module, the application will also make sure the total weight of related module's tasks will not overflow (i.e. exceed 100).
+====
+
 
 To `edit`:
 
@@ -300,9 +332,9 @@ image::basic/done/done_1.png[width="700", title = "Presentation to be marked as 
 
 Now key in the index of the task you wish to complete.
 
-image::basic/done/done_2.png[width="700", title = "Press `Enter` to confirm changes"]
+image::basic/done/done_2.png[width="700", title = "Press kbd:[enter] to confirm changes"]
 
-Press `Enter` again to confirm your change.
+Press kbd:[enter] again to confirm your change.
 
 image::basic/done/done_3.png[width="700", title = "Presentation 1 is marked as finished"]
 
@@ -332,7 +364,7 @@ image::basic/clear/clear1.png[width="590", title="Response to 'clear'"]
 [NOTE]
 Remember that you can enter `quit` if you wish to go back!
 +
-. Press `enter` again to confirm
+. Press kbd:[enter] again to confirm
 . Study Buddy has been cleared completely!
 +
 image::basic/clear/clear2.png[width="700", title="View empty Study Buddy"]
@@ -360,7 +392,7 @@ image::basic/delete/deleteResponse2.png[width="790", title="Response to 'delete'
 . Type the index of the task you want to delete.
 +
 image::basic/delete/deleteResponse3.png[width="500", title="Response to delete index 1"]
-. Press `enter` again to confirm
+. Press kbd:[enter] again to confirm
 . Task has been deleted! You will notice that the task at the index you selected has disappeared from the list of tasks.
 +
 image::basic/delete/deleteResponse1.png[width="790", title="Updated list (without deleted task)"]
@@ -383,12 +415,12 @@ To `delete duplicates`:
 . Initiate the command using keyword `delete duplicates`
 . Study Buddy should respond with:
 +
-image::basic/deleteduplicate/deleteDuplicates1.png[width="790", title="Response to 'delete duplicates'"]
+image::basic/deleteduplicate/deleteDuplicates1.png[width="500", title="Response to 'delete duplicates'"]
 
-. Press `enter` again to confirm
+. Press kbd:[enter] again to confirm
 . Duplicate tasks have been deleted! You will notice that only one copy (most recent) of each task will be left in the list.
 +
-image::basic/deleteduplicate/deleteDuplicates2.png[width="790", title="Updated list (without duplicate tasks)"]
+image::basic/deleteduplicate/deleteDuplicates2.png[width="500", title="Updated list (without duplicate tasks)"]
 
 ==== Archive/ Unarchive
 This commands stores the specified task into a separate list.
@@ -404,11 +436,11 @@ To `archive`:
 . Initiate the command using keyword `archive`
 . Study Buddy should respond with:
 +
-image::basic/archive/archive_1.png[width="790", title="Response to 'archive'"]
+image::basic/archive/archive_1.png[width="400", title="Response to 'archive'"]
 . Type the index of the task you want to archive.
 +
-image::basic/archive/archive_2.png[width="790", title="Response to task index"]
-. Press `enter` again to confirm
+image::basic/archive/archive_2.png[width="600", title="Response to task index"]
+. Press kbd:[enter] again to confirm
 . Task has been archived! You can view all archived task under the `StudyBuddy` -> `Archived Tasks` tab.
 +
 image::basic/archive/archive_3.png[width="790", title="View archived tasks"]
@@ -420,56 +452,35 @@ image::basic/archive/archive_3.png[width="790", title="View archived tasks"]
 
 ==== Sort
 
-. This command is for you to reorder the task list in *All Tasks* panel.
-. Currently you can sort tasks by their
-.. Deadline / Task Start Date
-.. Task Name
-.. Creation Date & Time
+This command is for you to reorder the task list in *All Tasks* panel. +
+Currently you can sort tasks by their:
 
-image::basic/sort/beforeSort.png[width="790", title="All Task Panel"]
-
-*Format*
-
-****
-
-U- `sort`
-
-S- asks for sorting term and provides the list of available sorting terms
-
-U- `INDEX NUMBER OF SORTING TERM`
-
-S- asks for your confirmation
-
-U- `[enter]`
-
-S- Task sorted successfully!
-
-****
+* Deadline / Task Start Date
+* Task Name
+* Creation Date & Time
 
 *Example*
 
-****
+When you want to sort all your unarchived tasks by their deadline or start date, you may
+utilize this command to achieve the desire order.
 
-U- `sort`
+To `sort`:
 
-S- Please choose the sort keyword: +
-&#160;&#160;&#160;&#160;1. Deadline / Task Start Date +
-&#160;&#160;&#160;&#160;2. Task Name +
-&#160;&#160;&#160;&#160;3. Creation Date & Time
-
-U- `1`
-
-S- The task  will be sorted by Deadline / Task Start Date. +
-&#160;&#160;&#160;&#160;Please click enter again to check the sorted list.
-
-U- `[enter]`
-
-S- Task sorted successfully!
-
-****
+. Initiate the command using keyword `sort`
+. Study Buddy should respond with:
++
+image::basic/sort/before_sort.png[width="790", title="Response to 'sort'"]
+. Type the index number of sort term and press kbd:[enter].
++
+image::basic/sort/sort_confirm.png[width="790", title="Asks for sort term"]
+. Press kbd:[enter] again to confirm
+. The tasks in *All Tasks* panel will be sorted accordingly.
++
+image::basic/sort/after_sort.png[width="790", title="Sorted tasks"]
 
 [TIP]
-The `All Tasks Panel` will update automatically after successfully sort the tasks.
+The tasks in *All Tasks* panel will not change back to the original order by itself. +
+You can use `sort` -> `Creation Date & Time` to do so.
 
 ==== Find
 
@@ -479,10 +490,17 @@ To `find` a task:
 
 . Initiate the command with `find`.
 
-. Enter the keyword that you want to search for.
+. Study Buddy should respond with:
++
+image::find/find1.png[width="400" title="Find reponse"]
+
+
+. Enter the keyword that you want to search for. e.g. quiz
+
 
 . You have found a list of tasks that contain your keyword!
-
++
+image::find/find2.png[width="400" title="Found response"]
 
 ****
 * The search is case insensitive. e.g `homework` will match `Homework`
@@ -493,20 +511,30 @@ To `find` a task:
 `Reflection Homework`.
 ****
 
-*Examples*
-
-U - `find` +
-
-S - Please type in a keyword that you want to search for.
-
-U - `quiz`
-
-S - Returns `Weekly Quiz` and `Quiz 3`
 [NOTE]
 To navigate back to the always on display list of tasks, you can use the <<List>> function.
 
+==== List
+
+Oh no! How do I get the original list back after using `find`? Calm down and use the `list` command!
+The `list` command lists all the tasks that have been created in StudyBuddy.
+
+To use the `list` command:
+
+. Initiate the command with `list`.
+
+. Done! All your tasks are listed once again!
++
+image::list/file.png[width="400" title="List Success"]
+
 ==== Filter
 This commands helps you filter your tasks by category. The two categories available are status and type.
+
+[NOTE]
+Note that due soon tasks are already filtered for you. Refer to <<Due Soon Tasks>>
+
+[TIP]
+To navigate back to your main list, check out <<List>>
 
 *Example:*
 
@@ -519,46 +547,29 @@ To `filter`:
 . Initiate the command using keyword `filter`
 . Study Buddy should respond with:
 +
-image::filter1.png[width="790", title="Response to 'filter'"]
+image::basic/filter/filter1.png[width="590", title="Response to 'filter'"]
 
 . Enter your choice. If you enter 1, you have chosen to filter by status.
 +
-image::filter2.png[width="790", title="Response to filter by 'status'"]
+image::basic/filter/filter2.png[width="590", title="Response to filter by 'status'"]
 
 . Suppose this is what your task list looks like before you filter.
 +
-image::beforeFilter.png[width="790", title="Before filter"]
+image::basic/filter/beforeFilter.png[width="790", title="Before filter"]
 
 . You can then proceed to choose what status type you would like to filter by. Here we have filtered by "pending" as an example.
 +
-image::filter3.png[width="790", title="Response to filter by status tag 'Pending'"]
+image::basic/filter/filter3.png[width="790", title="Response to filter by status tag 'Pending'"]
 
 . At point 3 above, if you enter 2 instead, you have chosen to filter by task types.
 +
-image::filter4.png[width="790", title="Response to filter by task 'type'"]
+image::basic/filter/filter4.png[width="590", title="Response to filter by task 'type'"]
 
 . Once again, imagine your study buddy currently looks like Figure 30 above. (at point 4)
 
 . You can then proceed to choose what task type you would like to filter by. Here we have filtered by "assignment" as an example.
 +
-image::filter5.png[width="790", title="Response to filter by task type 'assignment'"]
-
-==== List
-*Format:*
-
-U- `list`
-
-S- done!
-
-*Description*
-
-. This function allows you to view a list of all your tasks.
-
-*Example:*
-
-U- `list`
-
-S- Here is the complete list of tasks:
+image::basic/filter/filter5.png[width="790", title="Response to filter by task type 'assignment'"]
 
 ==== Refresh
 This commands refreshes the list of tasks due soon as well as status tags.
@@ -588,7 +599,7 @@ Suppose you notice that the task "Submit UG" is not due "now" anymore because so
 +
 image::basic/refresh/refresh2.png[width="790", title="Response to 'refresh'"]
 
-. Press `enter` again to confirm
+. Press kbd:[enter] again to confirm
 . Tasks have been refreshed!
 +
 image::basic/refresh/refresh3.png[width="790", title="View refreshed Study Buddy"]
@@ -620,7 +631,7 @@ image::basic/exit/exit2.png[width="790", title="Response to any command other th
 In response to yes, the application should simply close.
 
 [NOTE]
-Any command other than `yes` (including `enter`) will be considered as a quit from the exit.
+Any command other than `yes` (including kbd:[enter]) will be considered as a quit from the exit.
 
 === Saving Data
 
@@ -728,7 +739,7 @@ image::module/module_9.png[width = "790", title = "Keyed in CSS1234 as module co
 
 image::module/module_10.png[width = "790"]
 
-Press `Enter` one more time to confirm.
+Press kbd:[enter] one more time to confirm.
 
 image::module/module_11.png[width = "790", title= "New Module with code CSS1234 created."]
 
@@ -786,7 +797,7 @@ Module code changed!
 
 image::module/module_20.png[width = "790"]
 
-Press `Enter` again to confirmed.
+Press kbd:[enter] again to confirmed.
 
 image::module/module_21.png[width = "790", title = 'deleted BA1001']
 
@@ -794,46 +805,86 @@ Module deleted! All existing task in this module will be moved to `No Module All
 
 === Statistics
 
-. Purpose
+With all the tasks and modules' information you entered, Study Buddy can provide you a real-time visualized
+statistics about:
 
-.. The Statistics page provides summary of tasks' different aspects, such as:
-
-- Task Status
+- Task status
 - Module related tasks' deadline/ start date
 - Module related tasks' weight
 
+It utilizes different charts to make the information easier to understand, and the charts will update automatically after executing of
+`add` `edit` `delete` `sort`  `find` `archive` `done` `list` and `clear` commands.
 
-.. It utilizes different charts to make the information more visualized and easy to understand.
-
-. Navigate to Statistics Page
-- You can press the Statistics button in the menu bar to navigate to Statistics Page
-+
-image::stats/entryOfStatistics.png[width="790", align= "left", title="Statistics entry"]
-
-.  UI introduction & Charts Provided
-.. After press Statistics button from menu bar, the Statistics page will display as its initial status.
-+
-image::stats/initStatisticsPage.png[width="790", align= "left", title="Statistics initial page"]
-.. The left panel displays different charts, and the right panel will display related tasks when you clicking on the chart.
-+
-... *Task Status*
-+
-image::stats/pieChartClick.png[width="790", align= "left", title="right panel update when clicking on pie chart"]
-+
-... *Module related tasks' deadline/ start date*
-+
-image::stats/areaChartClickOnArea.png[width="790", align= "left", title="right panel update when clicking on area chart's area"]
-+
-image::stats/areaChartClickDataPoint.png[width="790", align= "left", title="right panel update when clicking on area chart's data point"]
-+
-... *Module related tasks' weight* +
-+
-image::stats/barChartClick.png[width="790", align= "left", title="right panel update when clicking on bar chart"]
-. Dynamic updating
-+
-Each chart will update automatically when you perform `add` `edit` `delete` `sort`  `find` `archive` `done` `list` and `clear`
-+
+[TIP]
 The color theme will also change randomly, hope you enjoy :)
+
+==== Navigate to Statics Page
+You can navigate to Statistics page by clicking the *Statistics* item from menu list.
+
+image::stats/stats_nav.png[width = "790", title = "Task Status Chart"]
+
+
+
+==== Statistics User Interface and Interaction
+The tap panel on the left contains different charts to present different statistics, the panel on the
+right will be updated accordingly when you clicking on charts.
+
+===== Task Status Chart
+
+Summary of task statuses is represented using a pie chart, which provides the comparison of the
+number of tasks in different statuses.
+
+image::stats/stats_pie.png[width = "790", title = "Task Status Chart"]
+
+When you clicking on the chart, the related task records will display on the
+right panel automatically.
+
+image::stats/stats_pie_click.png[width = "790", title = "Clicking on Task Status Chart"]
+
+===== Module related tasks' deadline/ start date
+Summary of different modules' tasks deadline or start date is represented in this clickable area
+chart.
+
+image::stats/stats_area.png[width = "790", title = "Module Related Tasks' Deadline/Start Date Chart"]
+
+====
+Chart Details::
+. The X-axis represents the actual date of each task's due or start date.
+. The Y-axis represents the number of tasks due or start on each date.
+. Tasks under different Module have different background color.
+. Only the tasks due or start within next 2 months will be displayed here.
+. Since the color of each module is translucent, "extra" colors may appear in the chart as a result of multiple
+overlapping layers of data in the same area.
+. When there is an overlapping, only one layer's related records will be displayed by clicking.
+====
+
+When you clicking on the chart, the related task records will display on the right panel automatically.
+
+. Click on data area:
+
+image::stats/stats_area_click_area.png[width = "790", title = "Clicking on data area."]
+
+. Click on data point:
+
+image::stats/stats_area_click_point.png[width = "790", title = "Clicking on data point"]
+
+
+===== Module related tasks' weight
+
+Summary of different types of tasks' weight under each module is represented using stacked bar chart.
+
+image::stats/stats_bar.png[width="790", align= "left", title="Module Related Tasks' Weight"]
+
+====
+Chart Details::
+. The X-axis represents different modules.
+. The Y-axis represents the sum of weight under the same module.
+. Different types' of tasks have different background color.
+====
+
+When you clicking on the chart, the related task records will display on the right panel automatically.
+
+image::stats/stats_bar_click.png[width="790", align= "left", title="Clicking on stacked bar chart"]
 
 [NOTE]
 As the data of charts are filled dynamically, thus it is possible that their labels can overlap together. +
@@ -862,8 +913,9 @@ The productivity feature also gamifies your task management experience. Doing wo
 
 .1. Daily Productivity Tab
 
+To get started, click on the Productivity menu button.
 The daily productivity tab records your the number of tasks you completed today.
-You can set a daily goal for the number of tasks you want to complete.
+You can set a daily goal for the number of tasks you want to complete using the command `goal`.
 Completing your goal each day adds to your streak.
 
 .2. Weekly Productivity Tab
@@ -874,18 +926,19 @@ This tab displays information about your past productivity.
 
 .3. Productivity Points Tab
 
+You can go to this tab directly by clicking your Productivity Point count on the top right of the menu.
 The Productivity Points tab displays your current Productivity Points (PP) and your progression.
 You gain Productivity Points upon adding tasks, completing tasks, and using advanced features in StudyBuddy.
 On the other hand, you lose Productivity Points when your tasks go overdue.
 Here are some examples of how to obtain Productivity Points in StudyBuddy:
 
-.. Adding a task: +1
+.. Adding a task: _+1_
 
-.. Completing a task: +10
+.. Completing a task: _+10_
 
-.. Using advanced features; +? (Explore StudyBuddy to find out!)
+.. Using advanced features; _+?_ (Explore StudyBuddy to find out!)
 
-.. Letting a task go overdue: -1
+.. Letting a task go overdue: _-1_
 
 
 
@@ -893,3 +946,4 @@ Here are some examples of how to obtain Productivity Points in StudyBuddy:
 
 *Q*: How do I transfer my data to another Computer? +
 *A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Study Buddy folder (should be under data -> taskList.json).
+
