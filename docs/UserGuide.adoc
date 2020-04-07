@@ -99,21 +99,21 @@ It consists of different components that can interact with you and provide you w
 ==== Navigation Menu Bar
 The *menu bar* lays at the top of the dashboard and is primarily used for navigation.
 
-image::dashboard/dashboard_1.png[width="600", title = "Menu bar"]
+image::dashboard/nav_bar.png[width="600", title = "Menu bar"]
 
 ==== All Tasks Panel
 
-By default, the *All Tasks Panel* lists all unarchived tasks record with their detail information in their creation order.
+By default, the *All Tasks Panel* lists all unarchived task records with their detail information in the order of creation date and time.
 
 You can::
 * Reorder them using command <<Sort>>.
 * Filter them using command <<Filter>> or <<Find>>.
 
-image::dashboard/dashboard_2.png[width="600", title = "All tasks panel"]
+image::dashboard/all_tasks.png[width="600", title = "All tasks panel"]
 
 ===== Task Badges
-To bold the important information of each tasks in *All Tasks Panel* , we use *Badges* to highlight `Module Code`,
-`Task Type` and  `Task Status` of each tasks.
+To bold the important information of each task in *All Tasks Panel* , we use *Badges* to highlight `Module Code`,
+`Task Type` and  `Task Status` of each task.
 
 Module Badges::
 * All in light steelblue.
@@ -131,7 +131,7 @@ you may need to use <<Refresh>> command to refresh the status of all tasks.
 The tasks which will due in next week (i.e. 7 days) will be listed here.
 You can jump to <<Due Soon Tasks>> to get more details.
 
-image::dashboard/dashboard_3.png[width="600", title = "Task Due Soon"]
+image::dashboard/due_soon.png[width="600", title = "Task Due Soon"]
 
 ===== Task Badges
 To bold the important information of each tasks in *Tasks Due Soon Panel* , we use *Badges* to highlight `Weight & Module Code`,
@@ -157,7 +157,7 @@ and press kbd:[Enter] to execute.
 
 The reply from Study Buddy will be displayed in the box next to the cartoon boy.
 
-image::dashboard/dashboard_4.png[width="600", title = "Interactive Prompt Box"]
+image::dashboard/prompt_box.png[width="600", title = "Interactive Prompt Box"]
 
 [NOTE]
 To get more detailed information about different user interface components, please refer to <<Features>>.
@@ -184,7 +184,7 @@ To `help`:
 . Initiate the command using keyword `help`
 . Study Buddy should respond with:
 +
-image::helpCommand.png[width="400", title="Response to 'help'"]
+image::basic/help/help_rep.png[width="600", title="Response to 'help'"]
 
 [TIP]
 Remember to scroll down to see the entire reply.
@@ -269,33 +269,33 @@ To `add`:
 . Initiate the command using keyword `add`
 . Study Buddy should respond with `a list of available modules` as:
 +
-image::basic/add/add_module.png[width="500", title="Reponse to 'add'"]
+image::basic/add/add_module.png[width="600", title="Reponse to 'add'"]
 +
 . You can link this task with a module by entering its `MODULE CODE` | `INDEX NUMBER OF MODULE` here
 , or you can press kbd:[enter] to skip. Here we use `1` (CS2101) as an example.
 . Study Buddy should respond with the module selected and the request of task name as:
 +
-image::basic/add/add_task_name.png[width="500", title="Asks for task's name"]
+image::basic/add/add_task_name.png[width="600", title="Asks for task's name"]
 +
 . Here we use `new task` as an example.
 . Study Buddy should respond with the task name defined and the request of task type as:
 +
-image::basic/add/add_task_type.png[width="400", title="Asks for task's type"]
+image::basic/add/add_task_type.png[width="600", title="Asks for task's type"]
 +
 . Here we use `1` (Assignment) as an example.
 . Study Buddy should respond with the task type defined and the request of task's date time information as:
 +
-image::basic/add/add_date_time.png[width="500", title="Asks for task's date time"]
+image::basic/add/add_date_time.png[width="600", title="Asks for task's date time"]
 +
 . Here we use `14:00 04/05/2020` as an example.
 . Study Buddy should respond with the date time defined and the request of task's description as:
 +
-image::basic/add/add_desc.png[width="400", title="Asks for task's description"]
+image::basic/add/add_desc.png[width="600", title="Asks for task's description"]
 +
 . Here we use `new task description` as an example.
 . Study Buddy should respond with the description defined and the request of task's weight as:
 +
-image::basic/add/add_weight.png[width="400", title="Asks for task's weight"]
+image::basic/add/add_weight.png[width="600", title="Asks for task's weight"]
 +
 . Here we use `10` as an example.
 . Study Buddy should respond with the weight defined and the request of the estimated number of hours needed as:
@@ -305,9 +305,9 @@ image::basic/add/add_time_cost.png[width="600", title="Asks for estimated number
 . Here we use `10` as an example.
 . Study Buddy should respond with the task details collected and the request of your confirmation to perform the command as:
 +
-image::basic/add/add_task_info_1.png[width="500", title="Asks for user conformation to add a new task"]
+image::basic/add/add_task_info_1.png[width="600", title="Asks for user conformation to add a new task"]
 +
-image::basic/add/add_task_info_2.png[width="500", title="Task details collected"]
+image::basic/add/add_task_info_2.png[width="600", title="Task details collected"]
 +
 . Now, by pressing kbd:[enter] the new task will be added into your Study Buddy.
 . Study Buddy should respond as:
@@ -342,7 +342,7 @@ To `edit`:
 +
 image::basic/edit/edit_index.png[width="600", title="Reponse to 'edit'"]
 +
-. Type the index of the task you want to edit. here use `1` (Quiz 1) as an example.
+. Type the index of the task you want to edit. here use `1` (Homework 1) as an example.
 . The Study Buddy should respond with:
 +
 image::basic/edit/edit_response_index.png[width="600", title="List of editable fields"]
@@ -352,28 +352,39 @@ image::basic/edit/edit_response_index.png[width="600", title="List of editable f
 +
 image::basic/edit/edit_response_task_name.png[width="600", title="Asks for new task name"]
 +
-. Enter new task name, here use `new task` as an example.
+. Enter new task name, here use `Updated Task` as an example.
 . The Study Buddy should respond as below with updated field.
 +
 image::basic/edit/edit_result.png[width="600", title="Task edited"]
 
 ==== Done
-. This command completes a task. Key in `done` & you should get this prompt:
-+
-image::basic/done/done_1.png[width="700", title = "Presentation to be marked as Finished"]
+This command is for you to mark a task as *Finished*.
+
+====
+*Constrains*
+
+. A *Finished* task cannot be marked as *Finished* again.
+====
+
+To `done`:
+
+. Key in `done` and press kbd:[enter], you should get this prompt:
+
+image::basic/done/done_index.png[width="600", title = "Asks foe task index."]
 
 . Now key in the index of the task you wish to complete.
 
 . Press kbd:[enter] again to confirm your change.
 +
-image::basic/done/done_2.png[width="700", title = "Press kbd:[enter] to confirm changes"]
+image::basic/done/done_confirm.png[width="600", title = "Asks for confirmation"]
 
 . Task set to `Finished` successfully! Note that the task in your task list has the tag `FINISHED`.
 +
-image::basic/done/done_3.png[width="700", title = "Presentation 1 is marked as Finished"]
+image::basic/done/done_result.png[width="600", title = "Done result"]
 
 [NOTE]
-You can choose to archive your completed task using the `archive` command.
+You can choose to archive your completed task using the `archive` command. Check more details
+from <<Archive/ Unarchive>>.
 
 ==== Clear
 This commands clears all data in the Study Buddy.

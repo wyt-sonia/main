@@ -39,7 +39,7 @@ public class ClearTasksInteractivePrompt extends InteractivePrompt {
         switch (currentTerm) {
         case INIT:
             this.reply = "Please press enter to clear all your tasks.\n"
-                + " Else enter quit to go back.";
+                + "Else enter quit to go back.";
             currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             break;
 
