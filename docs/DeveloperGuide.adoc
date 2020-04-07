@@ -127,7 +127,7 @@ The command execution will only terminate in two scenarios: +
 
 [[fig-LogicClassDiagram]]
 .Structure of the Logic Component
-image::LogicClassDiagram.png[width = "600" length = "500"]
+image::LogicClassDiagram.png[width = "600" length = "400"]
 
 *API* :
 link:{repoURL}/blob/master/src/main/java/draganddrop/studybuddy/logic/Logic.java[`Logic.java`]
