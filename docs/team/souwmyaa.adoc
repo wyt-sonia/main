@@ -126,21 +126,21 @@ include::../DeveloperGuide.adoc[tag=userStories]
 .. Instructions for Manual Testing- Saving Data +
 include::../DeveloperGuide.adoc[tag=savingData]
 . Diagrams:
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/ModelClassDiagram.puml+[Model class diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DueSoonActivityDiagram.puml+[Due soon activity diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DueSoonSequenceDiagram.puml+[Due soon sequence diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/AddDueSoonActivityDiagram.puml+[Add due soon task activity diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/ModelClassDiagram.puml[Model class diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DueSoonActivityDiagram.puml[Due soon activity diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DueSoonSequenceDiagram.puml[Due soon sequence diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/AddDueSoonActivityDiagram.puml[Add due soon task activity diagram]
 
 === Team-based Tasks
-. Refactored all occurrences of Address Book to Study Buddy. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/135+[Refactor]
-. Added the introduction, commonly used symbols and useful tips sections to user guide. Links to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/245+[Useful tips and symbols] and https://github.com/AY1920S2-CS2103T-W16-3/main/pull/176+[Introduction]
-. Added the introduction to developer guide. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/185+[Introduction]
-. Added the Study Buddy icon. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/68+[Logo Update]
-. Added all https://github.com/AY1920S2-CS2103T-W16-3/main/labels+[labels] and https://github.com/AY1920S2-CS2103T-W16-3/main/milestones?state=closed+[milestones] to the issue tracker.
-. Attempted to find bugs in all team members code to help them fix any issues. Example PR https://github.com/AY1920S2-CS2103T-W16-3/main/issues/107+[Bug in Tags]
-. Helped maintained consistency in UG and DG by editing some other team member's parts and diagram colors. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/252+[Consistency in Documentation]
-. Revised documentation and notified members if they had missed a certain feature/aspect that could cause confusion to users/testers. Example issue https://github.com/AY1920S2-CS2103T-W16-3/main/issues/256+[Reminder to edit UG]
-. Wrote test cases for error-prone classes, even if they were not mine. The following links https://github.com/AY1920S2-CS2103T-W16-3/main/pull/166+[Parser Tests] and https://github.com/AY1920S2-CS2103T-W16-3/main/pull/139+[Interactive Prompt tests] display my team testing work.
+. Refactored all occurrences of Address Book to Study Buddy. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/135[Refactor]
+. Added the introduction, commonly used symbols and useful tips sections to user guide. Links to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/245[Useful tips and symbols] and https://github.com/AY1920S2-CS2103T-W16-3/main/pull/176[Introduction]
+. Added the introduction to developer guide. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/185[Introduction]
+. Added the Study Buddy icon. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/68[Logo Update]
+. Added all https://github.com/AY1920S2-CS2103T-W16-3/main/labels[labels] and https://github.com/AY1920S2-CS2103T-W16-3/main/milestones?state=closed[milestones] to the issue tracker.
+. Attempted to find bugs in all team members code to help them fix any issues. Example PR https://github.com/AY1920S2-CS2103T-W16-3/main/issues/107[Bug in Tags]
+. Helped maintained consistency in UG and DG by editing some other team member's parts and diagram colors. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/252[Consistency in Documentation]
+. Revised documentation and notified members if they had missed a certain feature/aspect that could cause confusion to users/testers. Example issue https://github.com/AY1920S2-CS2103T-W16-3/main/issues/256[Reminder to edit UG]
+. Wrote test cases for error-prone classes, even if they were not mine. The following links https://github.com/AY1920S2-CS2103T-W16-3/main/pull/166[Parser Tests] and https://github.com/AY1920S2-CS2103T-W16-3/main/pull/139[Interactive Prompt tests] display my team testing work.
 
 === Review/Mentoring
 . If a fellow team member's PR does not pass the tests required, I left a helpful comment in order to reduce their work load.
