@@ -7,7 +7,7 @@ skinparam activityDiamondBorderColor #black
 skinparam activityDiamondBackgroundColor #tan
 skinparam arrowColor #black
 
-:User executes due soon command;
+:User executes refresh command;
 
 'Since the beta syntax does not support placing the condition outside the
 'diamond we place it as the true branch instead.
