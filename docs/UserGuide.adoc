@@ -77,6 +77,7 @@ This symbol indicates something to which we want to draw your attention.
 ==== Useful tips
 
 * You may need to adjust the size of the Study Buddy window when you launch it.
+* Make sure not to use any extra white spaces before or after commands. Study Buddy might consider it as an invalid command.
 * The scroll bar on the right of the response box can be used to view the entire reply.
 * At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
 * Study Buddy will analyze your input and reply accordingly.

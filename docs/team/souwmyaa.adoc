@@ -1,0 +1,168 @@
+= Soumwyaa Sabarinathann - Project Portfolio
+:site-section: AboutUs
+:imagesDir: ../images
+:stylesDir: ../stylesheets
+
+== PROJECT: Study Buddy
+
+---
+
+== Overview
+
+StudyBuddy is a desktop application which is designed for students who *wish to manage their module related tasks*.
+It is *optimized for those who prefer to work with a Command Line Interface* (CLI) but still contains some aspects of Graphical User Interface (GUI) which was written using JavaFX.
+The codebase is in Java and contains about 13kLoc.
+
+== Summary of contributions
+
+=== Enhancements
+
+* *Major enhancement*: added *the Due Soon List feature*
+** What it does:
+. Allows user to view a list of tasks due within the next week in one panel
+. Displays time left before the deadline for each due soon task
+. Automatically updates when changes are made to the data (additions, deletions, edits etc)
+** Justification: This feature is extremely helpful to the user because it helps to remind them of upcoming deadlines
+** Highlights:
+. This enhancement affects existing commands and commands to be added in future since any command that changes data will affect it.
+. The implementation was challenging because it required changes to be made to a lot of commands.
+. It involved working in the logic, storage and UI components of the code base.
+
+* *Major enhancement*: added *the Refresh Due Soon List command*
+** What it does:
+. Allows user to refresh due soon task list
+. This command will add any tasks that have recently become due soon
+. It will also update the time left for each deadline on the due soon tasks
+** Justification: This feature is extremely helpful to the user because if they have had the application open for a long time, the time left in due soon tasks and the due soon list itself may need refreshing.
+** Highlights:
+This enhancement formed the foundation code base for a lot of other features that needed to be refreshed. For example, the refreshing of status tags is also done using this refresh class.
+
+* *Major enhancement*: added *the Delete Task command*
+** What it does:
+. Allows user to delete an existing task in the list
+** Justification: This feature is extremely helpful to the user because it enables them to remove tasks from their list.
+** Highlights:
+This enhancement was a crucial command and is also used as a supporting command by a lot of other features.
+
+* *Major enhancement*: added *the Filter command*
+** What it does:
+. Allows user to filter by status (eg: finished, pending etc) or by type (eg: assignment, quiz etc)
+** Justification: This feature is extremely helpful to the user because it enables them to filter their list of all tasks by various categories.
+** Highlights:
+. This enhancement was a crucial command.
+. The implementation was tricky because as the number of choices user was given increased, the checks for exceptions etc became more complex.
+
+* *Minor enhancement*: added *the Exit command*
+** What it does:
+. Allows user to exit the application
+. In case user has entered this command by mistake, provides an option to go back.
+** Justification: This feature is extremely helpful to the user because it enables them to exit when needed.
+** Highlights:
+This enhancement was a crucial command.
+
+* *Minor enhancement*: added *the Clear command*
+** What it does:
+. Allows user to delete all data that has been entered
+** Justification: This feature is helpful to the user if they decide to start with a fresh Study Buddy.
+
+* *Minor enhancement*: added *the Delete Duplicate Tasks command*
+** What it does:
+. Allows user to delete any duplicate tasks in the list
+** Justification: This feature is helpful to the user if they decide to remove any duplicate tasks from their list.
+
+* *Minor enhancement*: added *add duplicate tasks option*
+** What it does:
+. Allows user to add duplicate tasks to their list
+. Rather than not allow duplicate tasks, prompts user asking if he/she is sure they want to add a duplicate task.
+** Justification:
+. This feature is helpful to the user because Study Buddy lets the user decide what they want to do.
+. Eventually if needed, user could use the edit/delete duplicates command to amend any mistakes.
+** Highlights:
+This feature was not easy to implement, because Address Book had a lot of checks to avoid duplication of tasks. These checks needed to be addressed for the feature to work.
+
+== Contributions to the User Guide
+
+|===
+|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+|===
+
+include::../UserGuide.adoc[tag=delete]
+
+include::../UserGuide.adoc[tag=deleteduplicates]
+
+=== User guide
+. Introduction
+. Useful tips
+. Commonly Used Symbols
+. Features:
+.. Delete
+.. Delete duplicates
+.. Filter
+.. Refresh
+.. Clear
+.. Exit
+
+=== Developer Guide
+. Sections:
+.. Introduction
+.. Model Component
+.. Due Soon Tasks Feature
+include::../UserGuide.adoc[tag=dueSoon]
+.. Use cases pertaining to my features
+.. User stories
+.. Instructions for Manual Testing- Saving Data
+. Diagrams:
+.. Model class diagram
+.. Due soon activity diagram
+.. Due soon sequence diagram
+.. Add due soon task activity diagram
+
+=== Team-based Tasks
+. Refactored all occurrences of Address Book to Study Buddy.
+. Added the introduction, commonly used symbols and useful tips sections to user guide.
+. Added the introduction to developer guide.
+. Added the Study Buddy icon.
+. Added labels and milestones to the issue tracker.
+. Attempted to find bugs in all team members code to help them fix any issues. eg: Pointed out that editing status is causing errors
+. Helped maintained consistency in UG and DG by editing some other team member's parts and diagram colors.
+. Revised documentation and notified members if they had missed a certain feature/aspect that could cause confusion to users/testers.
+. Wrote test cases on error-prone classes, even if they were not mine.
+
+=== Review/Mentoring
+. If a fellow team member's PR does not pass the tests required, I left a helpful comment in order to reduce their work load.
+eg: https://github.com/AY1920S2-CS2103T-W16-3/main/pull/59
+. Regularly approved and merged team member's PR's.
+. Suggested ways to improve their features.
+eg: done command could provide an option to user to delete/archive if necessary
+. Reviewed another team's DG and provided useful feedback.
+
+* *Code contributed*: https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#=undefined&search=souwmyaa
+
+* *Other contributions*:
+
+** Project management:
+*** Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
+** Enhancements to existing features:
+*** Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
+*** Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
+** Documentation:
+*** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
+** Community:
+*** PRs reviewed (with non-trivial review comments): https://github.com[#12], https://github.com[#32], https://github.com[#19], https://github.com[#42]
+*** Contributed to forum discussions (examples:  https://github.com[1], https://github.com[2], https://github.com[3], https://github.com[4])
+*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
+*** Some parts of the history feature I added was adopted by several other class mates (https://github.com[1], https://github.com[2])
+** Tools:
+*** Integrated a third party library (Natty) to the project (https://github.com[#42])
+*** Integrated a new Github plugin (CircleCI) to the team repo
+
+== Contributions to the Developer Guide
+
+|===
+|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|===
+
+include::../DeveloperGuide.adoc[tag=undoredo]
+
+include::../DeveloperGuide.adoc[tag=dataencryption]
+

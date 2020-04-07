@@ -272,7 +272,7 @@ image::DueSoonSequenceDiagram.png[width = "800", length = "600"]
 ** Cons: More operation intensive.
 // end::dueSoon[]
 
-// tag::taskSummary[]
+//tag::taskSummary[]
 === Task Summary Feature
 
 ==== Implementation
