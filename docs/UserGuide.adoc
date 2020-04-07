@@ -674,42 +674,40 @@ all tasks will show up here if you have not allocated any tasks to the modules.
 
 ==== Navigation
 
-To navigate to the modules page, click on `Modules` in the menu bar.
-
+. To navigate to the modules page, click on `Modules` in the menu bar.
++
 image::module/module_2.png[width = "790"]
 
-
-Then click on `Show Modules`. The module page should show up.
-
+. Then click on `Show Modules`. The module page should show up.
++
 image::module/module_3.png[width = "790"]
 
-The clicking on the leftmost tab shows the `*Overview*` of all your modules. it displays the module's name and their code.
-
+. The clicking on the leftmost tab shows the `*Overview*` of all your modules. it displays the module's name and their code.
++
 image::module/module_4.png[width = "790"]
 
-The rightmost tab shows the list of task that has not been allocated to any modules.
-
+. The rightmost tab shows the list of task that has not been allocated to any modules.
++
 image::module/module_5.png[width = "790"]
 
-The tabs in the middle are modules that you have added to the modules page.
-
+. The tabs in the middle are modules that you have added to the modules page.
++
 image::module/module_6.png[width = "790"]
 
 ==== Functions
 ==== Create Modules
 
-To create a module, click on `Modules` in the menu bar.
-
+. To create a module, click on `Modules` in the menu bar.
 Alternatively, you can key in `create mods` into the input line.
-
++
 image::module/module_7.png[width = "500", title = "click on `Create`"]
 
-Click on `Create`. A prompt will show up at the bottom of the screen.
+. Click on `Create`. A prompt will show up at the bottom of the screen.
 Key in the name of your module. The name of this module cannot be the same as your existing modules.
-
++
 image::module/module_8.png[width = "790", title = "setting module name as 'New Module'"]
 
-Now key in your Module code. Your Module code should have a 2-3 letter prefix, a 4-digit number, followed
+. Now key in your Module code. Your Module code should have a 2-3 letter prefix, a 4-digit number, followed
 by a single postfix.
 ```
 Correct Module Codes:
@@ -725,74 +723,73 @@ ZZ12345     - number is more than 4 digits
 A1111XX     - Postfix is too long
 
 ```
-
++
 image::module/module_9.png[width = "790", title = "Keyed in CSS1234 as module code"]
-
++
 image::module/module_10.png[width = "790"]
 
-Press kbd:[enter] one more time to confirm.
-
+. Press kbd:[enter] one more time to confirm.
++
 image::module/module_11.png[width = "790", title= "New Module with code CSS1234 created."]
 
-Congratulations, you have added a module to your modules page!
+. Congratulations, you have added a module to your modules page!
 
 
 ==== Edit Modules
 
-To create a module, click on `Modules` in the menu bar.
-
+. To create a module, click on `Modules` in the menu bar.
 Alternatively, you can key in `edit mods` into the input line.
-
++
 image::module/module_12.png[width = "500"]
 
-Click on `Edit`. A prompt will show up at the bottom of the screen.
-Key in the code of the module that you want to edit.
+. Click on `Edit`. A prompt will show up at the bottom of the screen.
 
+. Key in the code of the module that you want to edit.
++
 image::module/module_13.png[width = "790", title = "Changing module with code  BA1001""]
-
++
 image::module/module_14.png[width = "790", title = "Keyed in BA1001"]
-
++
 image::module/module_15.png[width = "790", title = "Key in 1, 2 or 3 depending on which option you prefer"]
 
-Now you have 3 options. You can choose to:
+. Now you have 3 options. You can choose to:
 
 .. Change Module name.
 .. Change Module code.
 .. Delete Module.
 
-Key in the index of your option.
+. Key in the index of your option.
 
 ===== a) Change Module Name
 
 image::module/module_16.png[width = "790"]
 
-Now key in your new module name.
-
+. Now key in your new module name.
++
 image::module/module_17.png[width = "790", title = "Module BA1001's name has changed from 'CS' to 'New Module Name'"]
 
-
-Module name changed!
+. Module name changed!
 
 ===== b) Change Module Code
 
 image::module/module_18.png[width = "790"]
 
-Now key in your new module code. Make sure it follows the correct format
+. Now key in your new module code. Make sure it follows the correct format
 as written in 3.7.3.
-
++
 image::module/module_19.png[width = "790", title = "Module code BA1001 has changed to CS3230"]
 
-Module code changed!
+. Module code changed!
 
 ===== c) Delete Module
 
 image::module/module_20.png[width = "790"]
 
-Press kbd:[enter] again to confirmed.
-
+. Press kbd:[enter] again to confirmed.
++
 image::module/module_21.png[width = "790", title = 'deleted BA1001']
 
-Module deleted! All existing task in this module will be moved to `No Module Allocated` tab.
+. Module deleted! All existing task in this module will be moved to `No Module Allocated` tab.
 
 === Statistics
 
