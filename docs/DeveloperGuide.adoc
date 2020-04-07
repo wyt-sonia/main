@@ -211,6 +211,9 @@ When a task that is deleted from the main list occurs in the due soon list as we
 
 Refreshes the list of due soon tasks and status tags. This command is useful for a situation where due soon list is not up to date due to a drastic change in time.
 
+[NOTE]
+Other command like edit, delete duplicates etc also trigger due soon feature in a similar manner.
+
 ==== Example Usage Scenario
 Given below is an example usage scenario and how the due soon list mechanism behaves at each step.
 
@@ -220,7 +223,6 @@ The list of tasks due soon will be initialized and displayed with the initial st
 
 Step 2. The user executes `add` command to add a task.
 The `add` command execution checks if this task belongs in the due soon tasks list (i.e it is due in 7 days). If it does, the task is added to both lists, else it is only added to the main list.
-
 
 image::AddDueSoonActivityDiagram.png[width = "200", length = "300", title = "Activity Diagram for Add to Due Soon list"]
 
@@ -234,7 +236,6 @@ The `refresh` command execution will traverse the main list and check if there a
 If there are no such inconsistencies, the refresh command will not make any changes to the due soon task list.
 
 image::DueSoonActivityDiagram.png[width = "400", length = "600", title = "Activity diagram for refresh"]
-
 
 image::DueSoonSequenceDiagram.png[width = "600", length = "500", title = "Sequence diagram for refresh"]
 
@@ -404,9 +405,6 @@ This is a sequence of how a module is created using the `create mods` feature. T
 image::UMLmodule.jpeg[width = "1000", length = "800"]
 
 
-
-=== [Proposed] Data Encryption
-
 === Logging
 
 We are using `java.util.logging` package for logging.
@@ -446,7 +444,8 @@ Refer to the guide <<DevOps#, here>>.
 *Target user profile*:
 
 * has a need to manage a significant number of tasks for various modules
-* prefers desktop apps over other types
+* appreciates visualization tools to aid in task management
+* prefers desktop apps over mobile apps
 * can type fast
 * prefers typing over mouse input
 
@@ -477,6 +476,8 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* *` |user |archive tasks |separate the tasks that are not applicable right now
 
 |`* *` |user |delete duplicate tasks | easily filter out any duplicate data in my list
+
+|`* *` |user |filter all pending tasks | view all my pending tasks in one place
 
 |`* *` |user who likes organization |view all my tasks that are due soon|know what to focus on in the next week
 
@@ -524,6 +525,42 @@ The given index is invalid.
 ** 3a1. Study Buddy shows an error message.
 +
 Use case resumes at step 2.
+
+[discrete]
+=== Use case: Filter tasks
+
+*MSS*
+
+
+1. User requests to filter tasks
+2. Study Buddy shows two options for filter
+3. User requests to filter by status
+4. Study Buddy provides options to filter by status
+5. User provides input
+6. Study Buddy shows filtered task list
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 3a.
+The given index is invalid.
++
+[none]
+** 3a1. Study Buddy shows an error message.
++
+Use case resumes at step 2.
+
+[none]
+* 3a.
+User chooses to filter by type instead.
++
+[none]
+** 4a. Study Buddy provides options to filter by type
++
+Use case resumes at step 5.
+
 
 [discrete]
 === Use case: Delete duplicates
@@ -597,23 +634,6 @@ Graphical User Interface i.e a user interface that allows users to interact usin
 
 
 [appendix]
-== Product Survey
-
-*Product Name*
-
-Author: ...
-
-Pros:
-
-* ...
-* ...
-
-Cons:
-
-* ...
-* ...
-
-[appendix]
 == Instructions for Manual Testing
 
 Given below are instructions to test the app manually.
@@ -657,5 +677,15 @@ Error details shown in the status message.
 
 . Dealing with missing/corrupted data files
 
-.. _{explain how to simulate a missing/corrupted file and the expected behavior}_
-_{ more test cases ... }_
+.. Prerequisites: Delete the "tasklist.json" file from data folder.
+
+.. Test case: Launch the application +
+   Expected: The application indicates that the data file needed is missing and creates one.
+Application launches successfully but has no data.
+
+.. Prerequisites: Modify the "tasklist.json" file to show some incorrect data.
+
+.. Test case: Launch the application +
+   Expected: The application indicates that the data file is corrupted.
+Application launches successfully but has no data.
+

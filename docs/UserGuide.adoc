@@ -104,6 +104,7 @@ image::dashboard/dashboard_1 4.png[width="600", title = "Chat with Studdy Buddy 
 
 ==== Useful tips
 
+* While entering commands, make sure not to include extra white spaces (blank characters). It might be considered an incorrect command.
 * The scroll bar on the right of the response box can be used to view the entire reply.
 * At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
 * Study Buddy will analyze your input and reply accordingly.
@@ -396,6 +397,9 @@ This commands deletes all duplicated tasks in the list.
 
 [NOTE]
 A task is considered duplicate when the name, type, module, description, weightage, estimated time cost and deadline are the same. (Status is not checked)
+
+[CAUTION]
+This feature is case sensitive. This means that if one task is named "Task", it will be considered different from "task".
 
 *Example:*
 
