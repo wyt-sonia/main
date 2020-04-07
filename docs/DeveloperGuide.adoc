@@ -11,6 +11,7 @@
 ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
+:caution-caption: Achtung
 :warning-caption: :warning:
 endif::[]
 :repoURL: https://github.com/AY1920S2-CS2103T-W16-3/main
@@ -29,6 +30,17 @@ The purpose of this guide is to help potential developers get up to speed on the
 == Setting up
 
 Refer to the guide <<SettingUp#, here>>.
+
+== Commonly Used Symbols
+
+[NOTE]
+This symbol indicates something you should take note of.
+
+[TIP]
+This symbol indicates a tip that you could use.
+
+[CAUTION]
+This symbol indicates an aspect that should be used with caution.
 
 == Design
 
