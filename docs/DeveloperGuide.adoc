@@ -12,7 +12,7 @@ ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
 :caution-caption: :fire:
-:warning-caption: :warning:
+:important-caption: :heavy_exclamation_mark:
 endif::[]
 :repoURL: https://github.com/AY1920S2-CS2103T-W16-3/main
 
@@ -41,6 +41,9 @@ This symbol indicates a tip that you could use.
 
 [CAUTION]
 This symbol indicates an aspect that should be used with caution.
+
+[IMPORTANT]
+This symbol indicates something we want to draw your attention to.
 
 == Design
 
