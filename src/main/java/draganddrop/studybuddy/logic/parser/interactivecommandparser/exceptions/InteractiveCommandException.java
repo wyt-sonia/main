@@ -83,8 +83,8 @@ public class InteractiveCommandException extends RuntimeException {
             break;
 
         case "dateFormatError":
-            errorMessage = "Invalid date format, please follow the format below:\n\n" +
-                    "dd/MM/yyyy";
+            errorMessage = "Invalid date format, please follow the format below:\n\n"
+                            + "dd/MM/yyyy";
             break;
 
         case "tooLongAway":
