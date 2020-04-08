@@ -4,6 +4,7 @@ import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.logic.commands.view.CalendarViewCommand;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.CalendarViewCommandParser;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.CalendarViewCommandException;
+import draganddrop.studybuddy.ui.MainWindow;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType;
@@ -18,10 +19,12 @@ public class CalendarViewInteractivePrompt extends InteractivePrompt {
     private static final String END_OF_COMMAND_MSG = "Now viewing: ";
 
     private LocalDate selectedDate;
+    private MainWindow mainWindow;
 
-    public CalendarViewInteractivePrompt() {
+    public CalendarViewInteractivePrompt(MainWindow mainWindow) {
         super();
         this.interactivePromptType = InteractivePromptType.CALENDAR_VIEW;
+        this.mainWindow = mainWindow;
     }
     @Override
     public String interact(String userInput) {
@@ -50,7 +53,7 @@ public class CalendarViewInteractivePrompt extends InteractivePrompt {
 
             case READY_TO_EXECUTE:
                 try {
-                    CalendarViewCommand cvCommand = new CalendarViewCommand(selectedDate);
+                    CalendarViewCommand cvCommand = new CalendarViewCommand(selectedDate, mainWindow);
                     logic.executeCommand(cvCommand);
                     endInteract(END_OF_COMMAND_MSG + selectedDate.toString());
                 } catch (CommandException | ParseException e) {

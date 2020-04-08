@@ -9,10 +9,11 @@ import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.logic.commands.Command;
 import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.model.Model;
+import draganddrop.studybuddy.ui.MainWindow;
 
 /**
  * brings up calendar immediately with task from input date shown.
- * Might not need to hae this class since model isnt changed.
+ * Might not need to have this class since model is not changed.
  */
 public class CalendarViewCommand extends Command {
 
@@ -23,7 +24,10 @@ public class CalendarViewCommand extends Command {
     /**
      *
      */
-    public CalendarViewCommand(LocalDate selectedDate) {
+    public CalendarViewCommand(LocalDate selectedDate, MainWindow mainwindow) {
+        mainwindow.handleShowCalendar();
+        mainwindow.getCalendarBox().generateCalendar(selectedDate.getYear(), selectedDate.getMonth());
+        mainwindow.getCalendarBox().viewTaskByDate(selectedDate);
         this.selectedDate = selectedDate;
     }
 

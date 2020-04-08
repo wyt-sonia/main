@@ -56,7 +56,10 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private ModuleListPanel moduleListPanel;
+    private CalendarBox calendarBox;
+
     private CommandBox commandBox;
+
     private ProductivityPage productivityPage;
 
     @FXML
@@ -206,7 +209,7 @@ public class MainWindow extends UiPart<Stage> {
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getStudyBuddyFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
-        commandBox = new CommandBox(this::executeCommand);
+        commandBox = new CommandBox(this::executeCommand, this);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
         logger.fine(FXML + " : End of filling up all the placeholders of this window.");
     }
@@ -415,7 +418,7 @@ public class MainWindow extends UiPart<Stage> {
      * handles calendar to be shown in TaskListHolder.
      */
     @FXML
-    private void handleShowCalendar() {
+    public void handleShowCalendar() {
         logger.fine(FXML + " : Start to handle calendar to be shown.");
         toggleAllHoldersInvisible();
         toggleTaskListHolderView(true, true);
@@ -424,10 +427,10 @@ public class MainWindow extends UiPart<Stage> {
         toggleTaskListPanelTitleView(false);
         setMainTitleText(CALENDAR);
 
-        CalendarBox calendar = new CalendarBox(logic.getFilteredTaskList(), dueSoonListPanelPlaceholder,
+        calendarBox = new CalendarBox(logic.getFilteredTaskList(), dueSoonListPanelPlaceholder,
             dueListPanelTitle);
-        taskListPanelPlaceholder.getChildren().add(calendar.getRoot());
         logger.fine(FXML + " : End of handling calendar to be shown.");
+        taskListPanelPlaceholder.getChildren().add(calendarBox.getRoot());
     }
 
     public TaskListPanel getPersonListPanel() {
@@ -436,6 +439,10 @@ public class MainWindow extends UiPart<Stage> {
 
     public DueSoonListPanel getDueSoonListPanel() {
         return dueSoonListPanel;
+    }
+
+    public CalendarBox getCalendarBox() {
+        return this.calendarBox;
     }
 
     /**

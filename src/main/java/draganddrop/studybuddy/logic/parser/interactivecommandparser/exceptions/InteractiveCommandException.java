@@ -86,6 +86,11 @@ public class InteractiveCommandException extends RuntimeException {
             errorMessage = "Invalid date format, please follow the format below:\n\n" +
                     "dd/MM/yyyy";
             break;
+
+        case "tooLongAway":
+            errorMessage = "Date too far apart from current date, please input a more realistic date";
+            break;
+
         default:
         }
     }
