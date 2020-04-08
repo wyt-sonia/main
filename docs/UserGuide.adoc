@@ -231,9 +231,10 @@ be later than `start date`.
 * Both `archived` and `not archived tasks` will be taken into consideration.
 ... All `index numbers` entered should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).
 
-[IMPORTANT]
-The application allows for addition of duplicate tasks. It will however confirm with you if you are sure you want to add a duplicate. In case you change your mind, <<Delete duplicates>> could be helpful.
-
+.. Adding duplicate tasks:
+... The application allows for addition of duplicate tasks. It will however confirm with you if you are sure you want to add a duplicate. In case you change your mind, <<Delete duplicates>> and <<Edit>> could be helpful.
+... The purpose of the add duplicate feature is to allow you to add many of the same task, and then go back and edit and delete as you like. If we simply did not allow duplicates, you would have to go back and add all the information regarding the task again.
+... If you choose to add a duplicate task, keep in mind that for every command that requires you to provide an index, the first occurrence will be considered, irrespective of the index you have provided. For example, if the tasks at 2 and 6 are duplicates and you choose to delete 6, 2 will be deleted. However, since they duplicates, it should not make a difference!
 
 To `add`:
 
