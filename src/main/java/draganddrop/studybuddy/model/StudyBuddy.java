@@ -235,6 +235,11 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         tasks.add(p);
     }
 
+    public void unarchiveDuplicateTask(Task p) {
+        archivedTasks.remove(p);
+        updateAddDueSoon(p);
+    }
+
     /**
      * Adds a module to the ModuleList.
      *

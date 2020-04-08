@@ -13,7 +13,6 @@ import static draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType.
 
 import java.text.ParseException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import draganddrop.studybuddy.logic.commands.add.AddDuplicateTaskCommand;
@@ -237,9 +236,6 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         case ADD_DUPLICATE:
             if (userInput.equalsIgnoreCase("yes")) {
                 AddDuplicateTaskCommand addDuplicateTaskCommand = new AddDuplicateTaskCommand(task);
-                ArrayList<Task> currentTasks = Task.getCurrentTasks();
-                int index = currentTasks.indexOf(task);
-                currentTasks.get(index).incrementDuplicate();
                 try {
                     logic.executeCommand(addDuplicateTaskCommand);
                     endInteract(END_OF_DUPLICATE_COMMAND_MSG);

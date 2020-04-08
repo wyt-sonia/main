@@ -232,8 +232,8 @@ public class Task implements Comparable<Task>, Cloneable {
         this.duplicate ++;
     }
 
-    public void decrementDuplicate() {
-        this.duplicate --;
+    public void zeroDuplicate() {
+        this.duplicate = 0;
     }
 
     public TaskType getTaskType() {

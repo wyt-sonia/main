@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -184,6 +185,13 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void unarchiveDuplicateTask(Task task) {
+        addDuplicateTask(task);
+        studyBuddy.unarchiveDuplicateTask(task);
+        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+    }
+
+    @Override
     public void addDueSoonTask(Task task) {
         studyBuddy.updateAddDueSoon(task);
         updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
@@ -205,6 +213,19 @@ public class ModelManager implements Model {
     public boolean hasMod(Module mod) {
         requireNonNull(mod);
         return studyBuddy.hasModule(mod);
+    }
+
+    @Override
+    public void addDuplicateTask(Task task) {
+        ArrayList<Task> currentTasks = Task.getCurrentTasks();
+        int index = currentTasks.indexOf(task);
+        Task originalTask = currentTasks.get(index);
+        originalTask.incrementDuplicate();
+        int number = originalTask.getDuplicate();
+        String newTaskName = task.getTaskName()+"("+number+")";
+        task.setTaskName(newTaskName);
+        task.setDuplicate(true);
+        studyBuddy.addTask(task);
     }
 
 

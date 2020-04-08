@@ -39,6 +39,9 @@ public interface Model {
      */
     GuiSettings getGuiSettings();
 
+    void addDuplicateTask(Task task);
+    public void unarchiveDuplicateTask(Task task);
+
     /**
      * Sets the user prefs' GUI settings.
      */

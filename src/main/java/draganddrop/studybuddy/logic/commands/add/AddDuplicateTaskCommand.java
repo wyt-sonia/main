@@ -2,8 +2,6 @@ package draganddrop.studybuddy.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.ArrayList;
-
 import draganddrop.studybuddy.logic.commands.Command;
 import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
@@ -36,13 +34,7 @@ public class AddDuplicateTaskCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        ArrayList<Task> currentTasks = Task.getCurrentTasks();
-        int index = currentTasks.indexOf(toAdd);
-        int number = currentTasks.get(index).getDuplicate();
-        String newTaskName = toAdd.getTaskName()+"("+number+")";
-        toAdd.setTaskName(newTaskName);
-        toAdd.setDuplicate(true);
-        model.addTask(toAdd);
+        model.addDuplicateTask(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
