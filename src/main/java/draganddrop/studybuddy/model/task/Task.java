@@ -42,7 +42,7 @@ public class Task implements Comparable<Task> {
     private double estimatedTimeCost;
     private DateFormat df = null;
     private Date dateObj = null;
-    private boolean duplicate = false;
+    private int duplicate = 0;
 
     public Task(Module module, TaskType taskType, String taskName, String taskDescription, double weight,
                 TaskStatus taskStatus, LocalDateTime[] dateTimes, double estimatedTimeCost,
@@ -210,12 +210,12 @@ public class Task implements Comparable<Task> {
         this.finishDateTime = finishDateTime;
     }
 
-    public boolean isDuplicate() {
+    public int getDuplicate() {
         return duplicate;
     }
 
-    public void setDuplicate(boolean duplicate) {
-        this.duplicate = duplicate;
+    public void incrementDuplicate() {
+        this.duplicate ++;
     }
 
     public TaskType getTaskType() {

@@ -26,6 +26,9 @@ public interface Model {
      */
     ReadOnlyUserPrefs getUserPrefs();
 
+    void clearDueSoonList(ReadOnlyStudyBuddy studyBuddy);
+    public void forceAddDueSoonTask(Task task);
+
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */

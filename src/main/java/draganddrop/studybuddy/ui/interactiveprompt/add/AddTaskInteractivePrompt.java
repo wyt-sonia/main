@@ -13,8 +13,10 @@ import static draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType.
 
 import java.text.ParseException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import draganddrop.studybuddy.logic.commands.add.AddDuplicateTaskCommand;
 import draganddrop.studybuddy.logic.commands.add.AddTaskCommand;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.logic.parser.TimeParser;
@@ -26,6 +28,7 @@ import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskType;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
+
 import javafx.collections.ObservableList;
 
 /**
@@ -36,6 +39,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         + "Index number and module code are both acceptable.\n";
     public static final String QUIT_COMMAND_MSG = "Successfully quited from add task command.";
     private static final String END_OF_COMMAND_MSG = "Task added successfully!";
+    private static final String END_OF_DUPLICATE_COMMAND_MSG = "Task added successfully! We have changed the name slightly for your convenience.";
     private static final String END_OF_COMMAND_DUPLICATE_MSG = "Task will not be added! Key in your next command :)";
     private static final String REQUIRED_TASK_NAME_MSG = "Please enter the task name.";
     private static final String REQUIRED_TASK_TYPE_MSG = "Please choose the task type:\n" + TaskType.getTypeString();
@@ -216,13 +220,13 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         case READY_TO_EXECUTE:
             try {
                 task.setCreationDateTime(LocalDateTime.now());
-                AddTaskCommand addTaskCommand = new AddTaskCommand(task);
-                logic.executeCommand(addTaskCommand);
-                if (task.isDuplicate()) {
+                if (Task.getCurrentTasks().contains(task)) {
                     reply = "This is a duplicate task. Are you sure you would like to proceed?\n"
                         + "Please enter yes or no.";
                     currentTerm = InteractivePromptTerms.ADD_DUPLICATE;
                 } else {
+                    AddTaskCommand addTaskCommand = new AddTaskCommand(task);
+                    logic.executeCommand(addTaskCommand);
                     endInteract(END_OF_COMMAND_MSG);
                 }
             } catch (ParseException | CommandException e) {
@@ -232,10 +236,13 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
 
         case ADD_DUPLICATE:
             if (userInput.equalsIgnoreCase("yes")) {
-                AddTaskCommand addDuplicateTaskCommand = new AddTaskCommand(task);
+                AddDuplicateTaskCommand addDuplicateTaskCommand = new AddDuplicateTaskCommand(task);
+                ArrayList<Task> currentTasks = Task.getCurrentTasks();
+                int index = currentTasks.indexOf(task);
+                currentTasks.get(index).incrementDuplicate();
                 try {
                     logic.executeCommand(addDuplicateTaskCommand);
-                    endInteract(END_OF_COMMAND_MSG);
+                    endInteract(END_OF_DUPLICATE_COMMAND_MSG);
                 } catch (CommandException e) {
                     e.printStackTrace();
                 } catch (ParseException e) {
@@ -244,6 +251,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             } else if (userInput.equalsIgnoreCase("no")) {
                 endInteract(END_OF_COMMAND_DUPLICATE_MSG);
             } else {
+                //change this
                 reply = (new AddTaskCommandException("wrongDuplicateFormat")).getErrorMessage();
             }
             break;

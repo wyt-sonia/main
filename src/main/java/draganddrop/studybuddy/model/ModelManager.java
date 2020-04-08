@@ -101,6 +101,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void clearDueSoonList(ReadOnlyStudyBuddy studyBuddy) {
+        this.studyBuddy.clearDueSoon(studyBuddy);
+    }
+
+    @Override
     public boolean hasTask(Task task) {
         requireNonNull(task);
         return studyBuddy.hasTask(task);
@@ -181,6 +186,12 @@ public class ModelManager implements Model {
     @Override
     public void addDueSoonTask(Task task) {
         studyBuddy.updateAddDueSoon(task);
+        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+    }
+
+    @Override
+    public void forceAddDueSoonTask(Task task) {
+        studyBuddy.addDueSoonTask(task);
         updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
     }
 

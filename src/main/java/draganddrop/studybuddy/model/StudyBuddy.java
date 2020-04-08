@@ -196,6 +196,14 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         scoreStats.copy(newData.getScoreStats());
     }
 
+    public void clearDueSoon(ReadOnlyStudyBuddy newData) {
+        setDueSoonTasks(newData.getDueSoonList());
+    }
+
+    public void addDueSoonTask(Task task) {
+        dueSoonTasks.add(task);
+    }
+
     //// task-level operations
 
     /**

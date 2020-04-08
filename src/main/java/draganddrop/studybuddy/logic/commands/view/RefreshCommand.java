@@ -10,6 +10,7 @@ import draganddrop.studybuddy.commons.core.Messages;
 import draganddrop.studybuddy.logic.commands.Command;
 import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.model.Model;
+import draganddrop.studybuddy.model.StudyBuddy;
 import draganddrop.studybuddy.model.task.Task;
 
 /**
@@ -24,15 +25,18 @@ public class RefreshCommand extends Command {
         requireNonNull(model);
         List<Task> lastShownList = model.getFilteredTaskList();
         logger.info("Attempting to refresh due soon list and tags");
+        model.clearDueSoonList(new StudyBuddy());
         for (int i = 0; i < lastShownList.size(); i++) {
             Task task = lastShownList.get(i);
-            refreshStatus(task, model);
             if (task.isDueSoon()) {
-                model.addDueSoonTask(task);
+                model.forceAddDueSoonTask(task);
             } else {
-                model.deleteDueSoonTask(task);
+                //model.deleteDueSoonTask(task);
+                continue;
             }
+            refreshStatus(task, model);
         }
+
         return new CommandResult(String.format(Messages.MESSAGE_DUE_SOON_TASK_SUCCESS));
     }
 
