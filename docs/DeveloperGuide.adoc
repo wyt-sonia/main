@@ -213,28 +213,64 @@ The Due Soon Tasks feature allows users to view the tasks that have deadlines wi
 
 This feature is implemented using a panel on the main window with a list of tasks due soon that is updated with every command that may affect due soon task list (such as add, delete or archive).
 
-Some commands that trigger due soon feature are:
+Some situations that trigger due soon feature are:
 
-1. Add --
+1. When user enters a task:
 
-   Command: add
+.. What it does: +
+... When a task that is added to the main list, is due within the next week, it is automatically added to the list of due soon tasks. +
+... The list is automatically sorted to be in increasing order of deadlines. +
+... The time left for the deadline is also added.
++
+image::AddDueSoonActivityDiagram.png[width = "200", length = "300", title = "Activity Diagram for Add to Due Soon list"]
+{bl}
 
-When a task that is added to the main list, is due within the next week, it is automatically added to the list of due soon tasks.
+.. Details: +
+... The add command when entered by the user, triggers the creation of an object of the InteractivePrompt class (in this case AddTaskInteractivePrompt). +
+... In the AddTaskInteractivePrompt class, the data entered by user is parsed. +
+... If there are no errors, the AddTaskCommand object is created which triggers the addTask() function in Model. +
+... This function in turns calls addTask() function in Study Buddy. +
+... This function calls the isDueSoon() function in Task to confirm if the task belong to the due soon list. +
+... If it does, it is added to due soon list and main list, and the due soon list is sorted. Else, it is simply added to the main list. +
+.Sequence Diagram for Add to Due Soon list
+image::AddDueSoonSequenceDiagram.png[width = "200", length = "300"]
+{bl}
 
-2. Delete --
+2. When user deletes a task:
 
-   Command: delete
+.. What it does:
+... When a task that is deleted from the main list occurs in the due soon list as well, it is automatically deleted.
 
-When a task that is deleted from the main list occurs in the due soon list as well, it is automatically deleted.
+.. Details:
+... The delete command when entered by the user, triggers the creation of an object of the InteractivePrompt class (in this case DeleteTaskInteractivePrompt).
+... In the DeleteTaskInteractivePrompt class, the data entered by user is parsed.
+... If there are no errors, the DeleteTaskCommand object is created which triggers the deleteTask() function in Model.
+... This function in turns calls removeTask() function in Study Buddy.
+... removeTask() calls the updateDeleteDueSoon() function in StudyBuddy which checks if the task exists in the due soon list.
+... If it does, it is deleted from the due soon list and main list. Else, it is simply deleted from the main list.
 
-3. Refresh --
+3. When user refreshes due soon list:
 
-   Command: refresh
+.. What it does: +
+... Refreshes the list of due soon tasks and status tags. This command is useful for a situation where due soon list is not up to date due to a drastic change in time.
++
+image::DueSoonActivityDiagram.png[width = "500", length = "600", title= "Activity diagram for refresh"]
+{bl}
+.. Details:
+... The refresh command when entered by the user, triggers the creation of an object of the InteractivePrompt class (in this case RefreshTaskInteractivePrompt).
+... In the RefreshTaskInteractivePrompt class, the data entered by user is parsed.
+... If there are no errors, the RefreshCommand object is created which iterates through the main list and calls addDueSoonTask() in Model, for any tasks that are due soon and do not already exist in due soon list.
++
+image::DueSoonSequenceDiagram.png[width = "800", length = "600", title = "Sequence diagram for refresh"]
+{bl}
+[CAUTION]
+The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
-Refreshes the list of due soon tasks and status tags. This command is useful for a situation where due soon list is not up to date due to a drastic change in time.
+4. When the application launches:
+
 
 [NOTE]
-Other command like edit, delete duplicates etc also trigger due soon feature in a similar manner.
+Other commands like edit, delete duplicates etc also trigger due soon feature in a similar manner.
 
 ==== Example Usage Scenario
 Given below is an example usage scenario and how the due soon list mechanism behaves at each step.
@@ -246,10 +282,6 @@ The list of tasks due soon will be initialized and displayed with the initial st
 Step 2. The user executes `add` command to add a task.
 The `add` command execution checks if this task belongs in the due soon tasks list (i.e it is due in 7 days). If it does, the task is added to both lists, else it is only added to the main list. +
 
-.Activity Diagram for Add to Due Soon list
-image::AddDueSoonActivityDiagram.png[width = "200", length = "300"]
-{bl}
-
 Step 3. The user executes `delete` command to delete a task.
 The `delete` command execution also checks if this task exists in the due soon task list. If it does, task is deleted from both lists, else it is only deleted from the main list.
 
@@ -258,13 +290,6 @@ The `refresh` command execution will traverse the main list and check if there a
 
 [NOTE]
 If there are no such inconsistencies, the refresh command will not make any changes to the due soon task list.
-
-.Activity diagram for refresh
-image::DueSoonActivityDiagram.png[width = "500", length = "600"]
-{bl}
-
-.Sequence diagram for refresh
-image::DueSoonSequenceDiagram.png[width = "800", length = "600"]
 
 ==== Design Considerations
 

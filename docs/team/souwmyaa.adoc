@@ -21,6 +21,7 @@ The codebase is in Java and contains about 13kLoc.
 ** What it does:
 . Allows user to view a list of tasks due within the next week in one panel
 . Displays time left before the deadline for each due soon task
+. Automatically sorts tasks to be in order of most urgent to least urgent deadline.
 . Automatically updates when changes are made to the data (additions, deletions, edits etc)
 ** Justification: This feature is extremely helpful to the user because it helps to remind them of upcoming deadlines
 ** Highlights:
@@ -137,10 +138,11 @@ include::../DeveloperGuide.adoc[tag=savingData]
 . Added the introduction to developer guide. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/185[Introduction]
 . Added the Study Buddy icon. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/68[Logo Update]
 . Added all https://github.com/AY1920S2-CS2103T-W16-3/main/labels[labels] and https://github.com/AY1920S2-CS2103T-W16-3/main/milestones?state=closed[milestones] to the issue tracker.
-. Attempted to find bugs in all team members code to help them fix any issues. Example PR https://github.com/AY1920S2-CS2103T-W16-3/main/issues/107[Bug in Tags]
+. Attempted to find bugs in all team members code to help them fix any issues. Example issue https://github.com/AY1920S2-CS2103T-W16-3/main/issues/107[Bug in Tags]
 . Helped maintained consistency in UG and DG by editing some other team member's parts and diagram colors. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/252[Consistency in Documentation]
 . Revised documentation and notified members if they had missed a certain feature/aspect that could cause confusion to users/testers. Example issue https://github.com/AY1920S2-CS2103T-W16-3/main/issues/256[Reminder to edit UG]
 . Wrote test cases for error-prone classes, even if they were not mine. The following links https://github.com/AY1920S2-CS2103T-W16-3/main/pull/166[Parser Tests] and https://github.com/AY1920S2-CS2103T-W16-3/main/pull/139[Interactive Prompt tests] display my team testing work.
+. Contributed to the https://github.com/nus-cs2103-AY1920S2/forum/issues/75[forum].
 
 === Review/Mentoring
 . If a fellow team member's PR does not pass the tests required, I left a helpful comment in order to reduce their work load.
