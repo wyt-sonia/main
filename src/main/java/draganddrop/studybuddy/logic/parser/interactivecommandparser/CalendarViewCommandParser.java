@@ -14,6 +14,9 @@ public class CalendarViewCommandParser {
         } catch (InteractiveCommandException e) {
             throw new CalendarViewCommandException("dateFormatError");
         }
+        if (Math.abs(selectedDate.getYear() - LocalDate.now().getYear()) > 50 ) {
+            throw new CalendarViewCommandException("tooLongAway");
+        }
         return selectedDate;
     }
 }

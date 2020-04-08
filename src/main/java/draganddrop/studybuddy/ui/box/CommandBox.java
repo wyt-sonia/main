@@ -4,6 +4,7 @@ import draganddrop.studybuddy.logic.Logic;
 import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.logic.parser.exceptions.ParseException;
+import draganddrop.studybuddy.ui.MainWindow;
 import draganddrop.studybuddy.ui.UiPart;
 import draganddrop.studybuddy.ui.interactiveprompt.ExitTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
@@ -46,13 +47,15 @@ public class CommandBox extends UiPart<Region> {
     private InteractivePrompt currentInteractivePrompt;
     @FXML
     private TextField commandTextField;
+    private MainWindow mainWindow;
 
-    public CommandBox(CommandExecutor commandExecutor) {
+    public CommandBox(CommandExecutor commandExecutor, MainWindow mainWindow) {
         super(FXML);
         currentInteractivePrompt = null;
         this.commandExecutor = commandExecutor;
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
+        this.mainWindow = mainWindow;
     }
 
     /**
@@ -122,8 +125,9 @@ public class CommandBox extends UiPart<Region> {
                 case "goal":
                     currentInteractivePrompt = new SetGoalInteractivePrompt();
                     break;
+                //change tabs
                 case "calendar":
-                    currentInteractivePrompt = new CalendarViewInteractivePrompt();
+                    currentInteractivePrompt = new CalendarViewInteractivePrompt(mainWindow);
                     break;
                 default:
                     currentInteractivePrompt = new InvalidInputInteractivePrompt();
