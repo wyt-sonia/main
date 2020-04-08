@@ -57,7 +57,10 @@ public class MainWindow extends UiPart<Stage> {
     private HelpWindow helpWindow;
     private ModuleListPanel moduleListPanel;
     private CalendarBox calendarBox;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 86d27e374e4b1c17532176b3a9f24361394c24d0
     private CommandBox commandBox;
 
     private ProductivityPage productivityPage;
@@ -429,8 +432,8 @@ public class MainWindow extends UiPart<Stage> {
 
         calendarBox = new CalendarBox(logic.getFilteredTaskList(), dueSoonListPanelPlaceholder,
             dueListPanelTitle);
-        logger.fine(FXML + " : End of handling calendar to be shown.");
         taskListPanelPlaceholder.getChildren().add(calendarBox.getRoot());
+        logger.fine(FXML + " : End of handling calendar to be shown.");
     }
 
     public TaskListPanel getPersonListPanel() {
