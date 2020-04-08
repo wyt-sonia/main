@@ -17,8 +17,10 @@ import draganddrop.studybuddy.ui.MainWindow;
  */
 public class CalendarViewCommand extends Command {
 
-    private final Logger logger = LogsCenter.getLogger(CalendarViewCommand.class);
     public static final String CALENDAR_VIEW_SUCCESS = "Now showing tasks for date:  %1$s";
+
+    private final Logger logger = LogsCenter.getLogger(CalendarViewCommand.class);
+
     private LocalDate selectedDate;
 
     /**
