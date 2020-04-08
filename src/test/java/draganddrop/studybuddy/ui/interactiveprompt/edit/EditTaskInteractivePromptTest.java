@@ -231,7 +231,7 @@ class EditTaskInteractivePromptTestTest {
                 break;
             }
         }
-        String dateTime = TimeParser.getDateTimeString(LocalDateTime.now().plusDays(7));
+        String dateTime = TimeParser.getDateTimeString(LocalDateTime.now().plusDays(10));
         prompt.interact("");
         prompt.interact(index + 1 + "");
         prompt.interact("4");
