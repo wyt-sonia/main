@@ -1,12 +1,12 @@
 package draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions;
 
 /**
- * pending.
+ * Repreents a DeleteDuplicateTaskCommandException.
  */
 public class DeleteDuplicateTaskCommandException extends InteractiveCommandException {
 
     /*
-     *pending
+     *Pending
      * */
     public DeleteDuplicateTaskCommandException(String errorType) {
         super(errorType);

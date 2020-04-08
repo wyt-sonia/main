@@ -3,7 +3,7 @@ package draganddrop.studybuddy.model.task;
 import java.util.ArrayList;
 
 /**
- * pending.
+ * Represents the Task status.
  */
 public enum TaskStatus {
     PENDING,
@@ -23,16 +23,16 @@ public enum TaskStatus {
     public static TaskStatus getStatus(String status) {
         TaskStatus result = null;
         switch (status.toLowerCase()) {
-        case "pending":
+        case "Pending":
             result = PENDING;
             break;
-        case "finished":
+        case "Finished":
             result = FINISHED;
             break;
-        case "due soon":
+        case "Due Soon":
             result = DUE_SOON;
             break;
-        case "overdue":
+        case "Overdue":
             result = OVERDUE;
             break;
         default:
@@ -43,22 +43,22 @@ public enum TaskStatus {
     /**
      * Converts a TaskStatus enum back into a string, primarily for printing purposes.
      *
-     * @return string, either "pending" or "finished"
+     * @return string, either "Pending" or "Finished"
      */
     public String convertToString() {
         String result = "";
         switch (this) {
         case PENDING:
-            result = "pending";
+            result = "Pending";
             break;
         case FINISHED:
-            result = "finished";
+            result = "Finished";
             break;
         case DUE_SOON:
-            result = "due soon";
+            result = "Due Soon";
             break;
         case OVERDUE:
-            result = "overdue";
+            result = "Overdue";
             break;
         default:
         }

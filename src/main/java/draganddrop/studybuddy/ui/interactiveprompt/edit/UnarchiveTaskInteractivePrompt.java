@@ -22,7 +22,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
- * pending.
+ * RRepresents an UnarchiveTaskInteractivePrompt, which interacts with user to unarchive a task.
  */
 public class UnarchiveTaskInteractivePrompt extends InteractivePrompt {
     public static final String QUIT_COMMAND_MSG = "Successfully quited from unarchive command.";

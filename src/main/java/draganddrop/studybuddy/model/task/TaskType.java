@@ -1,7 +1,7 @@
 package draganddrop.studybuddy.model.task;
 
 /**
- * pending.
+ * Represents the task types.
  */
 public enum TaskType {
     Assignment,
@@ -38,7 +38,10 @@ public enum TaskType {
     }
 
     /**
-     * pending.
+     * Gets related task type according to String the input.
+     *
+     * @param status
+     * @return
      */
     public static TaskType getType(String status) {
         TaskType result = null;

@@ -120,7 +120,7 @@ public class EditTaskCommand extends Command {
     }
 
     /**
-     * Updates due soon list as well
+     * Updates Due Soon list as well
      * @param taskToEdit
      * @param model
      */

@@ -18,7 +18,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType;
 
 /**
- * pending.
+ * Represents a ClearTasksInteractivePrompt which interact with user to clear all tasks.
  */
 public class ClearTasksInteractivePrompt extends InteractivePrompt {
     public static final String QUIT_COMMAND_MSG = "Successfully cleared all tasks.";
@@ -39,7 +39,7 @@ public class ClearTasksInteractivePrompt extends InteractivePrompt {
         switch (currentTerm) {
         case INIT:
             this.reply = "Please press enter to clear all your tasks.\n"
-                + " Else enter quit to go back.";
+                + "Else enter quit to go back.";
             currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             break;
 

@@ -1,6 +1,7 @@
 = Study Buddy - Developer Guide
 :site-section: DeveloperGuide
 :toc:
+:bl: pass:[ +]
 :toc-title:
 :toc-placement: preamble
 :sectnums:
@@ -10,7 +11,8 @@
 ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
-:warning-caption: :warning:
+:caution-caption: :fire:
+:important-caption: :heavy_exclamation_mark:
 endif::[]
 :repoURL: https://github.com/AY1920S2-CS2103T-W16-3/main
 
@@ -19,7 +21,7 @@ By: `Team Drag&Drop`      Since: `Jan 2020`     
 == Introduction
 Study Buddy is a task-management tool made for students who want to be able to track and manage their tasks in one place.
 
-Study Buddy uses various visualization tools such as pie charts and calendars, provides useful functionality such as archive, due soon task list etc to make task management simple and convenient.
+Study Buddy uses various visualization tools such as pie charts and calendars, provides useful functionality such as archive, Due Soon task list etc to make task management simple and convenient.
 
 In particular, Study Buddy is a Command Line Interface (CLI) application that also provides some Graphical User Interface (GUI). This means that users are expected to interact with the Study Buddy mainly through the command line, but each command executed will evoke a visual response as well.
 
@@ -28,6 +30,20 @@ The purpose of this guide is to help potential developers get up to speed on the
 == Setting up
 
 Refer to the guide <<SettingUp#, here>>.
+
+== Commonly Used Symbols
+
+[NOTE]
+This symbol indicates something you should take note of.
+
+[TIP]
+This symbol indicates a tip that you could use.
+
+[CAUTION]
+This symbol indicates an aspect that should be used with caution.
+
+[IMPORTANT]
+This symbol indicates something to which we want to draw your attention.
 
 == Design
 
@@ -70,7 +86,7 @@ Each of the four components
 For example, the `Logic` component (see the class diagram given below) defines it's API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
 
 .Class Diagram of the Logic Component
-image::LogicClassDiagram.png[]
+image::LogicClassDiagram.png[width = "700", length = "500"]
 
 [discrete]
 ==== How the architecture components interact with each other
@@ -78,7 +94,7 @@ image::LogicClassDiagram.png[]
 The _Sequence Diagram_ below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
 
 .Component interactions for `delete 1` command
-image::ArchitectureSequenceDiagram.png[]
+image::ArchitectureSequenceDiagram.png[width = "600", length = "500"]
 
 The sections below give more details of each component.
 
@@ -127,7 +143,7 @@ The command execution will only terminate in two scenarios: +
 
 [[fig-LogicClassDiagram]]
 .Structure of the Logic Component
-image::LogicClassDiagram.png[]
+image::LogicClassDiagram.png[width = "600" length = "500"]
 
 *API* :
 link:{repoURL}/blob/master/src/main/java/draganddrop/studybuddy/logic/Logic.java[`Logic.java`]
@@ -189,63 +205,69 @@ This section describes some noteworthy details on how certain features are imple
 
 The Due Soon Tasks feature allows users to view the tasks that have deadlines within the next week.
 
-This feature is implemented using a panel on the main window with a list of tasks due soon that is updated with every command that may affect due soon task list (such as add, delete or archive).
+This feature is implemented using a panel on the main window with a list of tasks Due Soon that is updated with every command that may affect Due Soon task list (such as add, delete or archive).
 
-Some commands that trigger due soon feature are:
+Some commands that trigger Due Soon feature are:
 
 1. Add --
 
    Command: add
 
-When a task that is added to the main list, is due within the next week, it is automatically added to the list of due soon tasks.
+When a task that is added to the main list, is due within the next week, it is automatically added to the list of Due Soon tasks.
 
 2. Delete --
 
    Command: delete
 
-When a task that is deleted from the main list occurs in the due soon list as well, it is automatically deleted.
+When a task that is deleted from the main list occurs in the Due Soon list as well, it is automatically deleted.
 
 3. Refresh --
 
    Command: refresh
 
-Refreshes the list of due soon tasks and status tags. This command is useful for a situation where due soon list is not up to date due to a drastic change in time.
+Refreshes the list of Due Soon tasks and status tags. This command is useful for a situation where Due Soon list is not up to date due to a drastic change in time.
+
+[NOTE]
+Other command like edit, delete duplicates etc also trigger Due Soon feature in a similar manner.
 
 ==== Example Usage Scenario
-Given below is an example usage scenario and how the due soon list mechanism behaves at each step.
+Given below is an example usage scenario and how the Due Soon list mechanism behaves at each step.
 
 Step 1. The user launches the application for the first time.
 
-The list of tasks due soon will be initialized and displayed with the initial study buddy state. Initialization is done by filtering tasks that are due soon from the general list of tasks.
+The list of tasks Due Soon will be initialized and displayed with the initial study buddy state. Initialization is done by filtering tasks that are Due Soon from the general list of tasks.
 
 Step 2. The user executes `add` command to add a task.
-The `add` command execution checks if this task belongs in the due soon tasks list (i.e it is due in 7 days). If it does, the task is added to both lists, else it is only added to the main list.
+The `add` command execution checks if this task belongs in the Due Soon tasks list (i.e it is due in 7 days). If it does, the task is added to both lists, else it is only added to the main list. +
 
-
-image::AddDueSoonActivityDiagram.png[width = "200", length = "300", title = "Activity Diagram for Add to Due Soon list"]
+.Activity Diagram for Add to Due Soon list
+image::AddDueSoonActivityDiagram.png[width = "200", length = "300"]
+{bl}
 
 Step 3. The user executes `delete` command to delete a task.
-The `delete` command execution also checks if this task exists in the due soon task list. If it does, task is deleted from both lists, else it is only deleted from the main list.
+The `delete` command execution also checks if this task exists in the Due Soon task list. If it does, task is deleted from both lists, else it is only deleted from the main list.
 
-Step 4. The user executes `refresh` command to refresh the due soon task list.
-The `refresh` command execution will traverse the main list and check if there are any inconsistencies. For example, if there has been a change in time and a task is missing from the due soon task list, it will be added.
+Step 4. The user executes `refresh` command to refresh the Due Soon task list.
+The `refresh` command execution will traverse the main list and check if there are any inconsistencies. For example, if there has been a change in time and a task is missing from the Due Soon task list, it will be added.
 
 [NOTE]
-If there are no such inconsistencies, the refresh command will not make any changes to the due soon task list.
+If there are no such inconsistencies, the refresh command will not make any changes to the Due Soon task list.
 
-image::DueSoonActivityDiagram.png[width = "400", length = "600", title = "Activity diagram for refresh"]
+.Activity diagram for refresh
+image::DueSoonActivityDiagram.png[width = "500", length = "600"]
+{bl}
 
-
-image::DueSoonSequenceDiagram.png[width = "600", length = "500", title = "Sequence diagram for refresh"]
+.Sequence diagram for refresh
+image::DueSoonSequenceDiagram.png[width = "800", length = "600"]
 
 ==== Design Considerations
 
 ===== Aspect: How `refresh` command works
 
-* **Alternative 1 (current choice):** Does not clear and reload the due soon task list.
+* **Alternative 1 (current choice):** Does not clear and reload the Due Soon task list.
 ** Pros: Fewer operations need to be performed.
 ** Cons: May have be more prone to errors because list is not completely "refreshed". Some parts of it are the same.
-* **Alternative 2:** Clear and reload the due soon task list.
+* **Alternative 2:** Clear and reload the Due Soon task list.
 ** Pros: Less prone to errors since the entire list is "refreshed".
 ** Cons: More operation intensive.
 // end::dueSoon[]
@@ -293,7 +315,7 @@ Step 4. The user executes `refresh`, and there is no task status update after th
 
 Activity diagram for step 4:
 
-image::TaskSummaryWithRefreshCommandActivityDiagram.png[width = "400", length = "600"]
+image::TaskSummaryWithRefreshCommandActivityDiagram.png[width = "400", length = "500" title = "Task summary with refresh command Activity Diagram"]
 
 
 ==== Design Considerations
@@ -322,7 +344,7 @@ The feature is implemented by overriding the task list display panel on the main
 
 . Displays the name of all tasks on that day in the calendar grid.
 . Access calendars in previous or next month using the buttons on top.
-. Displays more information about tasks for the day on the due soon panel after clicking on a grid. (Not done)
+. Displays more information about tasks for the day on the Due Soon panel after clicking on a grid. (Not done)
 . Fast forward to a specific year/month using CLI. (Not done)
 
 ==== Example usage scenario
@@ -334,7 +356,7 @@ Clicking on the show calendar menu item under the calendar menu will enable this
 
 Activity diagram:
 
-image::CalendarActivityDiagram.png[width = "400", length = "600"]
+image::CalendarActivityDiagram.png[width = "400", length = "600" title = "Calendar Activity Diagram"]
 
 ==== Design considerations
 * It is more efficient to cache the calendar rather than to generate a new one, however, we do not expect the user to have too many tasks and therefore it should not slow down the application.
@@ -347,7 +369,7 @@ Archive uses both the old delete and a new archive command. Upon executing the a
 
 Sequence diagram:
 
-image::ArchiveSequenceDiagram.png[width = "600", length = "500"]
+image::ArchiveSequenceDiagram.png[width = "600", length = "500" title = "Archive Sequence Diagram"]
 
 === Achievement feature
 The achievement feature keeps track of usage statistics and displays the user's achievements
@@ -401,11 +423,8 @@ CAT
 ==== Sequence diagram for creating modules
 This is a sequence of how a module is created using the `create mods` feature. Take note that all interactions go through the `CommandBox` first in the UI, but it will be omitted from this diagram for simplicity.
 
-image::UMLmodule.jpeg[width = "1000", length = "800"]
+image::UMLmodule.jpeg[width = "1000", length = "800", title= "Sequence diagram for modules"]
 
-
-
-=== [Proposed] Data Encryption
 
 === Logging
 
@@ -446,7 +465,8 @@ Refer to the guide <<DevOps#, here>>.
 *Target user profile*:
 
 * has a need to manage a significant number of tasks for various modules
-* prefers desktop apps over other types
+* appreciates visualization tools to aid in task management
+* prefers desktop apps over mobile apps
 * can type fast
 * prefers typing over mouse input
 
@@ -462,13 +482,13 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |Priority |As a ... |I want to ... |So that I can...
 |`* * *` |new user |see usage instructions |refer to instructions when I forget how to use the App
 
-|`* * *` |user |view a list of my tasks | know what I have pending
+|`* * *` |user |view a list of my tasks | know what I have Pending
 
-|`* * *` |user |add a new task | view all my pending tasks in one place
+|`* * *` |user |add a new task | view all my Pending tasks in one place
 
 |`* * *` |user |delete a task |remove entries that I no longer need
 
-|`* * *` |user |mark a task as completed| update my list of pending tasks
+|`* * *` |user |mark a task as completed| update my list of Pending tasks
 
 |`* * *` |user |find a task by keyword |locate details of a task without having to go through the entire list
 
@@ -478,7 +498,9 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |user |delete duplicate tasks | easily filter out any duplicate data in my list
 
-|`* *` |user who likes organization |view all my tasks that are due soon|know what to focus on in the next week
+|`* *` |user |filter all Pending tasks | view all my Pending tasks in one place
+
+|`* *` |user who likes organization |view all my tasks that are Due Soon|know what to focus on in the next week
 
 |`* *` |user who makes typos |be able to edit a task I have added|correct any typos I have made
 
@@ -526,6 +548,42 @@ The given index is invalid.
 Use case resumes at step 2.
 
 [discrete]
+=== Use case: Filter tasks
+
+*MSS*
+
+
+1. User requests to filter tasks
+2. Study Buddy shows two options for filter
+3. User requests to filter by status
+4. Study Buddy provides options to filter by status
+5. User provides input
+6. Study Buddy shows filtered task list
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 3a.
+The given index is invalid.
++
+[none]
+** 3a1. Study Buddy shows an error message.
++
+Use case resumes at step 2.
+
+[none]
+* 3a.
+User chooses to filter by type instead.
++
+[none]
+** 4a. Study Buddy provides options to filter by type
++
+Use case resumes at step 5.
+
+
+[discrete]
 === Use case: Delete duplicates
 
 *MSS*
@@ -558,9 +616,9 @@ Use case ends.
 *MSS*
 
 
-1. User notices due soon list needs to be updates
+1. User notices Due Soon list needs to be updates
 3. User requests to refresh
-4. Study Buddy refreshes the due soon list and status tags
+4. Study Buddy refreshes the Due Soon list and status tags
 +
 Use case ends.
 
@@ -595,23 +653,6 @@ Windows, Linux, Unix, OS-X
 GUI::
 Graphical User Interface i.e a user interface that allows users to interact using graphical icons rather than text-based user interfaces
 
-
-[appendix]
-== Product Survey
-
-*Product Name*
-
-Author: ...
-
-Pros:
-
-* ...
-* ...
-
-Cons:
-
-* ...
-* ...
 
 [appendix]
 == Instructions for Manual Testing
@@ -657,5 +698,15 @@ Error details shown in the status message.
 
 . Dealing with missing/corrupted data files
 
-.. _{explain how to simulate a missing/corrupted file and the expected behavior}_
-_{ more test cases ... }_
+.. Prerequisites: Delete the "tasklist.json" file from data folder.
+
+.. Test case: Launch the application +
+   Expected: The application indicates that the data file needed is missing and creates one.
+Application launches successfully but has no data.
+c
+.. Prerequisites: Modify the "tasklist.json" file to show some incorrect data.
+
+.. Test case: Launch the application +
+   Expected: The application indicates that the data file is corrupted.
+Application launches successfully but has no data.
+

@@ -1,10 +1,10 @@
 @startuml
 
-skinparam ActivityBackgroundColor #lightgrey
-skinparam ActivityBorderColor #grey
-skinparam activityDiamondBorderColor #grey
-skinparam activityDiamondBackgroundColor #grey
-skinparam arrowColor #grey
+skinparam ActivityBackgroundColor #tan
+skinparam ActivityBorderColor #black
+skinparam activityDiamondBorderColor #black
+skinparam activityDiamondBackgroundColor #tan
+skinparam arrowColor #black
 
 
 (*)  --> "User clicks Statistics from menu items"

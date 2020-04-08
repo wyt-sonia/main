@@ -76,7 +76,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             this.reply += moduleListString;
             currentTerm = InteractivePromptTerms.TASK_MODULE;
 
-            task.setStatus("pending");
+            task.setStatus("Pending");
             task.setTaskDescription("No Description");
             task.setWeight(0.0);
             task.setEstimatedTimeCost(0);
@@ -260,7 +260,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     }
 
     /**
-     * hides empty module from the moduleList.
+     * Hides empty module from the moduleList.
      *
      * @param moduleList
      */
@@ -275,7 +275,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     }
 
     /**
-     * modify reply if module is empty.
+     * Modify reply if module is empty.
      *
      * @param module
      * @return

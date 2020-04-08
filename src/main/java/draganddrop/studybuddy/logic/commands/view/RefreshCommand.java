@@ -13,7 +13,7 @@ import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.task.Task;
 
 /**
- * Refreshes the due soon list as well as status tags.
+ * Refreshes the Due Soon list as well as status tags.
  */
 public class RefreshCommand extends Command {
 
@@ -23,7 +23,7 @@ public class RefreshCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         List<Task> lastShownList = model.getFilteredTaskList();
-        logger.info("Attempting to refresh due soon list and tags");
+        logger.info("Attempting to refresh Due Soon list and tags");
         for (int i = 0; i < lastShownList.size(); i++) {
             Task task = lastShownList.get(i);
             refreshStatus(task, model);
@@ -48,7 +48,7 @@ public class RefreshCommand extends Command {
             model.deleteTask(task);
             temp.freshStatus();
             model.addTask(temp);
-            model.sortTasks("Creation DateTime");
+            model.sortTasks("deadline / task start date");
         }
     }
 

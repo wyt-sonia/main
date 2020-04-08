@@ -1,7 +1,7 @@
 package draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions;
 
 /**
- * pending.
+ * Represents an InteractiveCommandException.
  */
 public class InteractiveCommandException extends RuntimeException {
     protected String errorType;

@@ -1,12 +1,12 @@
 package draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions;
 
 /**
- * pending.
+ * Represents a FilterTaskCommandException.
  */
 public class FilterTaskCommandException extends InteractiveCommandException {
 
     /*
-     *pending
+     *Pending
      * */
     public FilterTaskCommandException(String errorType) {
         super(errorType);

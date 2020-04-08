@@ -25,7 +25,7 @@ participant ":Model" as Model MODEL_COLOR
 participant ":StudyBuddy" as StudyBuddy MODEL_COLOR
 end box
 
-[-> DueSoonTaskInteractivePrompt : execute(due soon)
+[-> DueSoonTaskInteractivePrompt : execute(Due Soon)
 activate DueSoonTaskInteractivePrompt
 
 DueSoonTaskInteractivePrompt -> LogicManager : execute()
