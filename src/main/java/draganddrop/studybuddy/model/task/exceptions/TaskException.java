@@ -11,11 +11,11 @@ public class TaskException extends RuntimeException {
         this.errorType = errorType;
 
         switch (errorType) {
-            case "duplicateTask":
-                errorMessage = "Duplicate task! Please try again.";
-                break;
+        case "duplicateTask":
+            errorMessage = "Duplicate task! Please try again.";
+            break;
 
-            default:
+        default:
         }
     }
 

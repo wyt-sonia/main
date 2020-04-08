@@ -104,8 +104,7 @@ public class Task implements Comparable<Task>, Cloneable {
         }
     }
 
-    public Object clone() throws CloneNotSupportedException
-    {
+    public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
 
@@ -229,7 +228,7 @@ public class Task implements Comparable<Task>, Cloneable {
     }
 
     public void incrementDuplicate() {
-        this.duplicate ++;
+        this.duplicate++;
     }
 
     public void zeroDuplicate() {

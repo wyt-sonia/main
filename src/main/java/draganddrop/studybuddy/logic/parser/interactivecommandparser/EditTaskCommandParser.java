@@ -2,6 +2,8 @@ package draganddrop.studybuddy.logic.parser.interactivecommandparser;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import draganddrop.studybuddy.logic.parser.TimeParser;
@@ -26,12 +28,19 @@ public class EditTaskCommandParser {
      * @return
      * @throws EditTaskCommandException
      */
-    public static String parseName(String userInput, int index) throws EditTaskCommandException {
+    public static String parseName(String userInput) throws EditTaskCommandException {
         String result = "";
         if (userInput.isBlank()) {
             throw new EditTaskCommandException("emptyInputError");
-        } else if (userInput.length() > 20) {
+        }
+        if (userInput.length() > 20) {
             throw new EditTaskCommandException("taskNameLengthError");
+        }
+        Pattern pattern = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(userInput);
+        boolean flag = matcher.find();
+        if (flag) {
+            throw new EditTaskCommandException("specialCharInputError");
         } else {
             result = userInput.trim();
         }

@@ -130,6 +130,10 @@ class AddTaskCommandTest {
         public void setStudyBuddy(ReadOnlyStudyBuddy newData) {
             throw new AssertionError("This method should not be called.");
         }
+        @Override
+        public void clearDueSoonList(ReadOnlyStudyBuddy newData) {
+            throw new AssertionError("This method should not be called.");
+        }
 
         @Override
         public void archiveTask(Task task) {
@@ -142,7 +146,17 @@ class AddTaskCommandTest {
         }
 
         @Override
+        public void unarchiveDuplicateTask(Task target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void addDueSoonTask(Task task) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void forceAddDueSoonTask(Task task) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -160,6 +174,10 @@ class AddTaskCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
+        public void addDuplicateTask(Task task) {
+            throw new AssertionError("This method should not be called.");
+        }
 
         @Override
         public void sortDueSoonTasks(){}

@@ -73,9 +73,10 @@ public class UniqueTaskList implements Iterable<Task> {
             throw new TaskNotFoundException();
         }
 
+        /*
         if (target.isSameTask(editedTask) && contains(editedTask)) {
             throw new DuplicateTaskException("duplicateTask");
-        }
+        }*/
 
         internalList.set(index, editedTask);
     }
@@ -176,7 +177,7 @@ public class UniqueTaskList implements Iterable<Task> {
      * @param target a task
      * @param newTaskName the new name of the task
      */
-    public void setTaskName(Task target, String newTaskName) throws DuplicateTaskException{
+    public void setTaskName(Task target, String newTaskName) throws DuplicateTaskException {
         requireNonNull(target);
         requireNonNull(newTaskName);
         target.setTaskName(newTaskName);

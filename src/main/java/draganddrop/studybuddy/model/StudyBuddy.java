@@ -235,6 +235,10 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         tasks.add(p);
     }
 
+    /**
+     * Unarchives a duplicated task.
+     * @param p
+     */
     public void unarchiveDuplicateTask(Task p) {
         archivedTasks.remove(p);
         updateAddDueSoon(p);

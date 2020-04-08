@@ -101,7 +101,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
      */
     public String handleNewValue(String userInput) {
         Index taskIndex = Index.fromZeroBased(taskNumber - 1);
-        Task taskToEdit = getCurrentTasks().get(taskNumber-1);
+        Task taskToEdit = getCurrentTasks().get(taskNumber - 1);
         EditTaskCommand editTaskCommand = new EditTaskCommand(taskIndex, taskField);
         boolean parseSuccess = true;
         String successMessage = END_OF_COMMAND_MSG;
@@ -115,9 +115,12 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         switch (taskField) {
         case TASK_NAME:
             try {
-                String newName = EditTaskCommandParser.parseName(userInput, taskNumber);
+                String newName = EditTaskCommandParser.parseName(userInput);
                 clone.setTaskName(newName);
                 checkDuplicate(clone, taskToEdit);
+                if (taskToEdit.isDuplicate()) {
+                    taskToEdit.setDuplicate(false);
+                }
                 editTaskCommand.provideNewTaskName(newName);
             } catch (EditTaskCommandException e) {
                 parseSuccess = false;
@@ -339,12 +342,14 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         return taskNum;
     }
 
+    /**
+     * Checks if the task will be duplicate if edited.
+     * @param clone
+     * @param taskToEdit
+     */
     public void checkDuplicate(Task clone, Task taskToEdit) {
         if (getCurrentTasks().contains(clone)) {
             throw new DuplicateTaskException("duplicateTask");
-        }
-        if (taskToEdit.isDuplicate()) {
-            taskToEdit.setDuplicate(false);
         }
         if (taskToEdit.getDuplicate() != 0) {
             taskToEdit.zeroDuplicate();

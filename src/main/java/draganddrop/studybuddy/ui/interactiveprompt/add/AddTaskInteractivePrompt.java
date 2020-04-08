@@ -38,7 +38,8 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         + "Index number and module code are both acceptable.\n";
     public static final String QUIT_COMMAND_MSG = "Successfully quited from add task command.";
     private static final String END_OF_COMMAND_MSG = "Task added successfully!";
-    private static final String END_OF_DUPLICATE_COMMAND_MSG = "Task added successfully! We have changed the name slightly for your convenience.";
+    private static final String END_OF_DUPLICATE_COMMAND_MSG = "Task added successfully! "
+            + "We have changed the name slightly for your convenience.";
     private static final String END_OF_COMMAND_DUPLICATE_MSG = "Task will not be added! Key in your next command :)";
     private static final String REQUIRED_TASK_NAME_MSG = "Please enter the task name.";
     private static final String REQUIRED_TASK_TYPE_MSG = "Please choose the task type:\n" + TaskType.getTypeString();

@@ -222,7 +222,7 @@ public class ModelManager implements Model {
         Task originalTask = currentTasks.get(index);
         originalTask.incrementDuplicate();
         int number = originalTask.getDuplicate();
-        String newTaskName = task.getTaskName()+"("+number+")";
+        String newTaskName = task.getTaskName() + "(" + number + ")";
         task.setTaskName(newTaskName);
         task.setDuplicate(true);
         studyBuddy.addTask(task);

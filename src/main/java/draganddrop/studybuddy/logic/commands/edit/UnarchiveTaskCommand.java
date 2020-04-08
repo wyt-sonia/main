@@ -39,7 +39,7 @@ public class UnarchiveTaskCommand extends Command {
         }
 
         Task taskToArchive = lastShownList.get(targetIndex.getZeroBased());
-        if(lastShownMainList.contains(taskToArchive)) {
+        if (lastShownMainList.contains(taskToArchive)) {
             model.unarchiveDuplicateTask(taskToArchive);
         } else {
             model.unarchiveTask(taskToArchive);
