@@ -41,6 +41,7 @@ public class AddDuplicateTaskCommand extends Command {
         int number = currentTasks.get(index).getDuplicate();
         String newTaskName = toAdd.getTaskName()+"("+number+")";
         toAdd.setTaskName(newTaskName);
+        toAdd.setDuplicate(true);
         model.addTask(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }

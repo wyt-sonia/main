@@ -10,6 +10,7 @@ import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.I
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.module.ModuleCode;
 import draganddrop.studybuddy.model.task.TaskType;
+
 import javafx.collections.ObservableList;
 
 /**
@@ -25,12 +26,11 @@ public class EditTaskCommandParser {
      * @return
      * @throws EditTaskCommandException
      */
-    public static String parseName(String userInput) throws EditTaskCommandException {
+    public static String parseName(String userInput, int index) throws EditTaskCommandException {
         String result = "";
         if (userInput.isBlank()) {
             throw new EditTaskCommandException("emptyInputError");
-        }
-        if (userInput.length() > 20) {
+        } else if (userInput.length() > 20) {
             throw new EditTaskCommandException("taskNameLengthError");
         } else {
             result = userInput.trim();

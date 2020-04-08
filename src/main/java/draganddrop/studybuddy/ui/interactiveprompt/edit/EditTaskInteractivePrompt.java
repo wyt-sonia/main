@@ -1,5 +1,6 @@
 package draganddrop.studybuddy.ui.interactiveprompt.edit;
 
+import static draganddrop.studybuddy.model.task.Task.getCurrentTasks;
 import static draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType.EDIT_TASK;
 
 import java.time.LocalDateTime;
@@ -16,8 +17,10 @@ import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskField;
 import draganddrop.studybuddy.model.task.TaskType;
+import draganddrop.studybuddy.model.task.exceptions.DuplicateTaskException;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
+
 import javafx.collections.ObservableList;
 
 /**
@@ -98,25 +101,44 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
      */
     public String handleNewValue(String userInput) {
         Index taskIndex = Index.fromZeroBased(taskNumber - 1);
+        Task taskToEdit = getCurrentTasks().get(taskNumber-1);
         EditTaskCommand editTaskCommand = new EditTaskCommand(taskIndex, taskField);
         boolean parseSuccess = true;
         String successMessage = END_OF_COMMAND_MSG;
+        Task clone = null;
+        try {
+            clone = (Task) taskToEdit.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
 
         switch (taskField) {
         case TASK_NAME:
             try {
-                String newName = EditTaskCommandParser.parseName(userInput);
+                String newName = EditTaskCommandParser.parseName(userInput, taskNumber);
+                clone.setTaskName(newName);
+                if (getCurrentTasks().contains(clone)) {
+                    throw new DuplicateTaskException("duplicateTask");
+                }
                 editTaskCommand.provideNewTaskName(newName);
             } catch (EditTaskCommandException e) {
                 parseSuccess = false;
                 reply = e.getErrorMessage() + "\n\n"
                     + REQUIRED_TASK_NAME_MSG;
+            } catch (DuplicateTaskException e) {
+                parseSuccess = false;
+                reply = e.getErrorMessage() + "\n\n"
+                        + REQUIRED_TASK_NAME_MSG;
             }
             break;
 
         case TASK_TYPE:
             try {
                 TaskType newTaskType = EditTaskCommandParser.parseType(userInput, TaskType.getTaskTypes().length);
+                clone.setTaskType(newTaskType);
+                if (getCurrentTasks().contains(clone)) {
+                    throw new DuplicateTaskException("duplicateTask");
+                }
                 editTaskCommand.provideNewTaskType(newTaskType);
                 successMessage = "The type of task is successfully changed to: " + newTaskType + ".\n";
             } catch (NumberFormatException ex) {
@@ -129,6 +151,10 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                 reply = ex.getErrorMessage()
                     + "\n\n" + REQUIRED_TASK_TYPE_MSG + "\n"
                     + TaskType.getTypeString();
+            } catch (DuplicateTaskException e) {
+                parseSuccess = false;
+                reply = e.getErrorMessage() + "\n\n"
+                        + REQUIRED_TASK_TYPE_MSG;
             }
             break;
 
@@ -136,7 +162,10 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
             try {
                 TaskType taskType = logic.getFilteredTaskList().get(taskIndex.getZeroBased()).getTaskType();
                 LocalDateTime[] newDateTimes = EditTaskCommandParser.parseDateTime(userInput, taskType);
-
+                clone.setDateTimes(newDateTimes);
+                if (getCurrentTasks().contains(clone)) {
+                    throw new DuplicateTaskException("duplicateTask");
+                }
                 if (newDateTimes.length == 1) {
                     userInput = TimeParser.getDateTimeString(newDateTimes[0]);
                 } else {
@@ -147,6 +176,9 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
             } catch (EditTaskCommandException e) {
                 parseSuccess = false;
                 this.reply = e.getErrorMessage();
+            } catch (DuplicateTaskException e) {
+                parseSuccess = false;
+                reply = e.getErrorMessage();
             }
             break;
 
@@ -162,11 +194,19 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                     if (!isWeightSizeValid) {
                         throw new EditTaskCommandException("moduleWeightOverloadError");
                     }
+                    clone.setModule(newModule);
+                    if (getCurrentTasks().contains(clone)) {
+                        throw new DuplicateTaskException("duplicateTask");
+                    }
                     editTaskCommand.provideNewModule(newModule);
                 }
             } catch (EditTaskCommandException e) {
                 parseSuccess = false;
                 this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_MODULE_MSG + "\n" + moduleListString;
+            } catch (DuplicateTaskException e) {
+                parseSuccess = false;
+                reply = e.getErrorMessage() + "\n\n"
+                        + REQUIRED_MODULE_MSG;
             }
             break;
 
@@ -174,6 +214,10 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
             try {
                 if (!userInput.isBlank()) {
                     double newTimeCost = Double.parseDouble(userInput);
+                    clone.setEstimatedTimeCost(newTimeCost);
+                    if (getCurrentTasks().contains(clone)) {
+                        throw new DuplicateTaskException("duplicateTask");
+                    }
                     if (newTimeCost < 0) {
                         throw new EditTaskCommandException("wrongEstimatedTimeRangeError");
                     }
@@ -188,6 +232,10 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
             } catch (EditTaskCommandException e) {
                 parseSuccess = false;
                 this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
+            } catch (DuplicateTaskException e) {
+                parseSuccess = false;
+                reply = e.getErrorMessage() + "\n\n"
+                        + REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
             }
             break;
 
@@ -205,21 +253,37 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                     if (!isWeightSizeValid) {
                         throw new EditTaskCommandException("moduleWeightOverloadError");
                     }
+                    clone.setWeight(newWeight);
+                    if (getCurrentTasks().contains(clone)) {
+                        throw new DuplicateTaskException("duplicateTask");
+                    }
                 }
                 editTaskCommand.provideNewTaskWeight(newWeight);
             } catch (EditTaskCommandException e) {
                 parseSuccess = false;
                 this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_WEIGHT_MSG;
+            } catch (DuplicateTaskException e) {
+                parseSuccess = false;
+                reply = e.getErrorMessage() + "\n\n"
+                        + REQUIRED_TASK_WEIGHT_MSG;
             }
             break;
 
         case TASK_DESCRIPTION:
             try {
                 String newDescription = EditTaskCommandParser.parseDescription(userInput);
+                clone.setTaskDescription(newDescription);
+                if (getCurrentTasks().contains(clone)) {
+                    throw new DuplicateTaskException("duplicateTask");
+                }
                 editTaskCommand.provideNewTaskDescription(newDescription);
             } catch (EditTaskCommandException e) {
                 parseSuccess = false;
                 this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_DESCRIPTION_MSG;
+            } catch (DuplicateTaskException e) {
+                parseSuccess = false;
+                reply = e.getErrorMessage() + "\n\n"
+                        + REQUIRED_TASK_DESCRIPTION_MSG;
             }
             break;
         default:
@@ -230,7 +294,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
             try {
                 logic.executeCommand(editTaskCommand);
                 endInteract(successMessage);
-            } catch (java.text.ParseException | CommandException ex) {
+            } catch (java.text.ParseException | CommandException | DuplicateTaskException ex) {
                 reply = ex.getMessage();
             }
         }

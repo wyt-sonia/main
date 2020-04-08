@@ -16,6 +16,7 @@ import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskField;
 import draganddrop.studybuddy.model.task.TaskType;
+import draganddrop.studybuddy.model.task.exceptions.DuplicateTaskException;
 
 
 /**
@@ -73,7 +74,7 @@ public class EditTaskCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(Model model) throws DuplicateTaskException, CommandException {
         List<Task> lastShownList = model.getFilteredTaskList();
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
