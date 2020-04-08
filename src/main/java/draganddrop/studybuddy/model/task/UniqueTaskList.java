@@ -155,7 +155,7 @@ public class UniqueTaskList implements Iterable<Task> {
         if (!internalList.contains(target)) {
             throw new TaskNotFoundException();
         } else {
-            target.setStatus("finished");
+            target.setStatus("Finished");
             String finishDateTimeString = TimeParser.getDateTimeString(LocalDateTime.now());
             target.setFinishDateTime(TimeParser.parseDateTime(finishDateTimeString));
             int index = internalList.indexOf(target);

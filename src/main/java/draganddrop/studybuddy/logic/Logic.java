@@ -44,7 +44,7 @@ public interface Logic {
     ObservableList<Task> getFilteredTaskList();
 
     /**
-     * Returns an unmodifiable view of the filtered list of tasks that are due soon
+     * Returns an unmodifiable view of the filtered list of tasks that are Due Soon
      */
     ObservableList<Task> getFilteredDueSoonTaskList();
 

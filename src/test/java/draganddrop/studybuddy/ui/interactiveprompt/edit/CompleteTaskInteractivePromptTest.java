@@ -19,7 +19,7 @@ class CompleteTaskInteractivePromptTest {
     @Test
     public void interact_firstInput_returnKeywordPrompt() {
         CompleteTaskInteractivePrompt prompt = new CompleteTaskInteractivePrompt();
-        assertEquals("Please enter the index number of task you wish to mark as finished.",
+        assertEquals("Please enter the index number of task you wish to mark as Finished.",
                 prompt.interact(""));
     }
 }

@@ -151,7 +151,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     }
 
     /**
-     * Checks if task belongs in due soon list and deletes it
+     * Checks if task belongs in Due Soon list and deletes it
      * @param p
      */
     public void updateDeleteDueSoon(Task p) {
@@ -336,7 +336,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     }
 
     /**
-     * Adds task to due soon list if it is due soon.
+     * Adds task to Due Soon list if it is Due Soon.
      * @param target
      */
     public void updateAddDueSoon(Task target) {
