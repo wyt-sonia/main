@@ -56,7 +56,7 @@ public class SampleDataUtil {
 
         return new Task[]{
             new Task(emptyModule, TaskType.Others, "Homework 1", SHORT_DESC, 20.0,
-                TaskStatus.PENDING, pendingDateTime1, 5.0, pastDateTime2),
+                TaskStatus.PENDING, pendingDuration1, 5.0, pastDateTime2),
 
             new Task(emptyModule, TaskType.Presentation, "Leadership Presentation 1",
                 LONG_DESC_WITH_300_CHAR, 0.0, TaskStatus.FINISHED, dueSoonDuration1,
@@ -89,7 +89,7 @@ public class SampleDataUtil {
                 3.0, pastDateTime1),
 
             new Task(cs2105, TaskType.Quiz, "CS2105 Quiz 1", LONG_DESC_WITH_300_CHAR,
-                2.0, TaskStatus.PENDING, pendingDateTime2, 5.0, pastDateTime2),
+                2.0, TaskStatus.PENDING, pendingDuration1, 5.0, pastDateTime2),
 
             new Task(cs2105, TaskType.Others, "Lab 2", SHORT_DESC, 20.0,
                 TaskStatus.FINISHED, overdueDuration2, 15.0, pastDateTime1),
@@ -107,7 +107,7 @@ public class SampleDataUtil {
                 TaskStatus.OVERDUE, overdueDuration2, 15.0, pastDateTime2),
 
             new Task(cs2106, TaskType.Quiz, "CS2106 Quiz 1", SHORT_DESC,
-                2.0, TaskStatus.PENDING, pendingDateTime1, 4.0, pastDateTime2),
+                2.0, TaskStatus.PENDING, pendingDuration1, 4.0, pastDateTime2),
 
             new Task(cs2106, TaskType.Others, "Lab 4", LONG_DESC_WITH_300_CHAR, 8.0,
                 TaskStatus.FINISHED, overdueDuration1, 25.0, pastDateTime2)

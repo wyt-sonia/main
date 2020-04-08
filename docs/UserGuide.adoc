@@ -269,7 +269,7 @@ To `add`:
 . Initiate the command using keyword `add`
 . Study Buddy should respond with `a list of available modules` as:
 +
-image::basic/add/add_module.png[width="600", title="Reponse to 'add'"]
+image::basic/add/add_module.png[width="600", title="Reponse to 'add', asks for module"]
 +
 . You can link this task with a module by entering its `MODULE CODE` | `INDEX NUMBER OF MODULE` here
 , or you can press kbd:[enter] to skip. Here we use `1` (CS2101) as an example.
@@ -369,11 +369,11 @@ This command is for you to mark a task as *Finished*.
 To `done`:
 
 . Key in `done` and press kbd:[enter], you should get this prompt:
-
++
 image::basic/done/done_index.png[width="600", title = "Asks foe task index."]
-
++
 . Now key in the index of the task you wish to complete.
-
++
 . Press kbd:[enter] again to confirm your change.
 +
 image::basic/done/done_confirm.png[width="600", title = "Asks for confirmation"]
@@ -411,7 +411,7 @@ Remember that you can enter `quit` if you wish to go back!
 . Press kbd:[enter] again to confirm
 . Study Buddy has been cleared completely!
 +
-image::basic/clear/clear_result.png[width="700", title="View empty Study Buddy"]
+image::basic/clear/clear_result.png[width="700", title="Clear result"]
 
 ==== Delete
 This commands deletes a task from the existing list, using the index provided by you.
@@ -482,14 +482,20 @@ To `archive`:
 . Initiate the command using keyword `archive`
 . Study Buddy should respond with:
 +
-image::basic/archive/archive_1.png[width="400", title="Response to 'archive'"]
-. Type the index of the task you want to archive.
+image::basic/archive/archive_index.png[width="600", title="Response to 'archive'"]
+. Type the index of the task you want to archive, here use `1` (Leadership Presentation) as an example.
+. Study Buddy will ask for your confirmation before archive the target task.
 +
-image::basic/archive/archive_2.png[width="600", title="Response to task index"]
-. Press kbd:[enter] again to confirm
-. Task has been archived! You can view all archived task under the `StudyBuddy` -> `Archived Tasks` tab.
+image::basic/archive/archive_confirm.png[width="600", title="Asks for confirmation"]
+. Press kbd:[enter] again to confirm, the task will be archived and the user interface will update.
 +
-image::basic/archive/archive_3.png[width="790", title="View archived tasks"]
+image::basic/archive/archive_result.png[width="600", title="Task is archived successfully"]
++
+. You can view the archived task under the `StudyBuddy` -> `Archived Tasks` tab.
++
+image::basic/archive/check_archive.png[width="600", title="Navigates to archived tasks"]
++
+image::basic/archive/archive_list.png[width="600", title="Archived tasks"]
 
 ****
 * To `unarchive` a task, and add it back to the main list, simply follow the same set of commands, but replace the `archive` keyword with `unarchive`
@@ -516,14 +522,14 @@ To `sort`:
 . Initiate the command using keyword `sort`
 . Study Buddy should respond with:
 +
-image::basic/sort/before_sort.png[width="790", title="Response to 'sort'"]
+image::basic/sort/sort_term.png[width="600", title="Response to 'sort'"]
 . Type the index number of sort term and press kbd:[enter].
 +
-image::basic/sort/sort_confirm.png[width="790", title="Asks for sort term"]
+image::basic/sort/sort_confirm.png[width="600", title="Asks for sort term"]
 . Press kbd:[enter] again to confirm
 . The tasks in *All Tasks* panel will be sorted accordingly.
 +
-image::basic/sort/after_sort.png[width="790", title="Sorted tasks"]
+image::basic/sort/sort_result.png[width="600", title="Sorted tasks"]
 
 [TIP]
 The tasks in *All Tasks* panel will not change back to the original order by itself. +
@@ -540,15 +546,12 @@ To `find` a task:
 
 . Study Buddy should respond with:
 +
-image::find/find1.png[width="400" title="Find reponse"]
-
-
-. Enter the keyword that you want to search for. e.g. quiz
-
-
+image::basic/find/find_keyword.png[width="600" title="Response to 'find'"]
++
+. Enter the keyword that you want to search for, e.g. quiz, and press kbd:[enter] to confirm sorting.
 . You have found a list of tasks that contain your keyword!
 +
-image::find/find2.png[width="400" title="Found response"]
+image::basic/find/find_result.png[width="600" title="Find result"]
 
 ****
 * The search is case insensitive. e.g `homework` will match `Homework`
@@ -573,7 +576,7 @@ To use the `list` command:
 
 . Done! All your tasks are listed once again!
 +
-image::list/file.png[width="400" title="List Success"]
+image::basic/list/list_result.png[width="600" title="List result"]
 
 [[Filter]]
 ==== Filter
@@ -596,29 +599,25 @@ To `filter`:
 . Initiate the command using keyword `filter`
 . Study Buddy should respond with:
 +
-image::basic/filter/filter1.png[width="590", title="Response to 'filter'"]
+image::basic/filter/filter_term.png[width="600", title="Response to 'filter'"]
 
 . Enter your choice. If you enter 1, you have chosen to filter by status.
 +
-image::basic/filter/filter2.png[width="590", title="Response to filter by 'status'"]
-
-. Suppose this is what your task list looks like before you filter.
-+
-image::basic/filter/beforeFilter.png[width="790", title="Before filter"]
+image::basic/filter/filter_status.png[width="600", title="Response to filter by 'status'"]
 
 . You can then proceed to choose what status type you would like to filter by. Here we have filtered by "Pending" as an example.
 +
-image::basic/filter/filter3.png[width="790", title="Response to filter by status tag 'Pending'"]
+image::basic/filter/filter_status_result.png[width="600", title="Response to filter by status tag 'Pending'"]
 
 . At point 3 above, if you enter 2 instead, you have chosen to filter by task types.
 +
-image::basic/filter/filter4.png[width="590", title="Response to filter by task 'type'"]
+image::basic/filter/filter_type.png[width="600", title="Response to filter by task 'type'"]
 
 . Once again, imagine your study buddy currently looks like Figure 30 above. (at point 4)
 
 . You can then proceed to choose what task type you would like to filter by. Here we have filtered by "assignment" as an example.
 +
-image::basic/filter/filter5.png[width="790", title="Response to filter by task type 'assignment'"]
+image::basic/filter/filter_type_result.png[width="600", title="Response to filter by task type 'assignment'"]
 
 [[Refresh]]
 ==== Refresh
@@ -631,7 +630,7 @@ Status tags include information on the tasks' status. Details are in <<Status Ta
 
 *Example:*
 
-Say you left Study Buddy open overnight because you fell asleep studying. When you wake up, you notice that the time left for the deadline on the Due Soon tasks is not accurate.
+Say you left Study Buddy open for a few days. When you come back, you notice that the time left for the deadline on the Due Soon tasks is not accurate.
 
 You can refresh them!
 
@@ -639,22 +638,17 @@ To `refresh`:
 
 . Say this is what Study Buddy looks like.
 +
-image::basic/refresh/refresh1.png[width="790", title="Current state (needs to be refreshed)"]
+image::basic/refresh/refresh_before.png[width="600", title="Current state (needs to be refreshed)"]
 +
+Suppose you notice that the task "Homework 1" is still in pending status.
 
-Suppose you notice that the task "Submit UG" is not due "now" anymore because some time has past since the deadline.
-
-. Initiate the refresh command using keyword `refresh`
-. Study Buddy should respond with:
-+
-image::basic/refresh/refresh2.png[width="790", title="Response to 'refresh'"]
-
-. Press kbd:[enter] again to confirm
+. Initiate the refresh command using keyword `refresh` and press kbd:[enter] to confirm the action.
 . Tasks have been refreshed!
 +
-image::basic/refresh/refresh3.png[width="790", title="View refreshed Study Buddy"]
-+
-You will notice that the Overdue task has now moved out of the Due Soon list and has the updated status tag "Overdue".
+image::basic/refresh/refresh_result.png[width="600", title="Refreshed Study Buddy"]
+
+[NOTE]
+After 'refresh', the tasks in *All Tasks Panel* will be sorted by their deadline or start date.
 
 ==== Exit
 This command exits from Study Buddy.
@@ -673,12 +667,9 @@ To `exit`:
 . Initiate the command using keyword `bye`
 . Study Buddy should respond with:
 +
-image::basic/exit/exit1.png[width="790", title="Response to 'bye'"]
-. Type 'yes' if you want to exit and anything else if you do not wish to exit.
-+
-image::basic/exit/exit2.png[width="790", title="Response to any command other than 'yes'"]
-+
-In response to yes, the application should simply close.
+image::basic/exit/exit_confirm.png[width="600", title="Response to 'bye'"]
+. Type 'yes' and press kbd:[enter] to exit, the Study Buddy window will close automatically.
+
 
 [NOTE]
 Any command other than `yes` (including kbd:[enter]) will be considered as a quit from the exit.
@@ -699,17 +690,17 @@ It provides the following functionality:
 
 . It displays your tasks that are due within the next week. (uses deadline you have provided)
 +
-image::duesoon/duesoon1.png[width="790", align= "left", title="Due Soon List"]
+image::duesoon/due_soon.png[width="600", align= "left", title="Due Soon List"]
 
 . It automatically sorts these tasks in an ascending order of deadlines.
 +
-image::duesoon/duesoon3.png[width="790", align= "left", title="Due Soon List"]
+image::duesoon/due_soon_sort.png[width="600", align= "left", title="Due Soon List"]
 
 . It automatically adds applicable tasks when you make changes to your main list, such as add (<<Add>>) or delete (<<Delete>>).
 
 . It displays a tag with the time left to the deadline.
 +
-image::duesoon/duesoon2.png[width="790", align= "left", title="Due Soon List"]
+image::duesoon/due_soon_tag.png[width="600", align= "left", title="Due Soon List"]
 
 . It provides a <<Refresh>> function that allows you to refresh time/state of this list if needed.
 
@@ -722,7 +713,7 @@ Due soon list will never display Finished tasks. If you unarchive a completed ta
 === Modules
 The Modules tab is an easy way for students to organise their task, homework and deadlines into various modules.
 
-image::module/module_1.png[width = "790", title = "`Modules` in the menu bar"]
+image::module/module_1.png[width = "600", title = "`Modules` in the menu bar"]
 
 By default, the Modules tab shows the following:
 
@@ -735,23 +726,23 @@ all tasks will show up here if you have not allocated any tasks to the modules.
 
 . To navigate to the modules page, click on `Modules` in the menu bar.
 +
-image::module/module_2.png[width = "790"]
+image::module/module_nav.png[width = "600" title="Modules dropdown menu"]
 
 . Then click on `Show Modules`. The module page should show up.
 +
-image::module/module_3.png[width = "790"]
+image::module/module_show.png[width = "600" title = "Module page"]
 
 . The clicking on the leftmost tab shows the `*Overview*` of all your modules. it displays the module's name and their code.
 +
-image::module/module_4.png[width = "790"]
+image::module/module_tab_1.png[width = "600" title = "Module tab `Overview`"]
 
 . The rightmost tab shows the list of task that has not been allocated to any modules.
 +
-image::module/module_5.png[width = "790"]
+image::module/module_tab_3.png[width = "600" title = "Module tab `No Module Allocated`"]
 
 . The tabs in the middle are modules that you have added to the modules page.
 +
-image::module/module_6.png[width = "790"]
+image::module/module_tab_2.png[width = "600" title = "Module tab available modules"]
 
 ==== Functions
 ==== Create Modules
@@ -759,37 +750,42 @@ image::module/module_6.png[width = "790"]
 To create a module, click on `Modules` in the menu bar.
 Alternatively, you can key in `create mods` into the input line.
 
-image::module/module_7.png[width = "500", title = "click on `Create`"]
+image::module/module_nav_create.png[width = "600", title = "Click on `Create`"]
 
 Click on `Create`. A prompt will show up at the bottom of the screen.
-Key in the name of your module. The name of this module cannot be the same as your existing modules.
 
-image::module/module_8.png[width = "790", title = "setting module name as 'New Module'"]
+image::module/module_create_name.png[width = "600", title = "Asks for module name"]
+
+Key in the name of your module.The name of this module cannot be the same as your existing modules.
+Here we use "New Module" as an example. +
+Then Study Buddy will ask for the module code.
+
+image::module/module_create_code.png[width = "600", title = "Asks for module code"]
 
 Now key in your Module code. Your Module code should have a 2-3 letter prefix, a 4-digit number, followed
 by a single postfix.
-```
-Correct Module Codes:
-LSM1303
-CS2040C
-IS1103
-MA1521
 
-Incorrect Module Codes:
-CSSS1234    - Prefix is too long
-C0001       - Prefix is too short
-ZZ12345     - number is more than 4 digits
-A1111XX     - Postfix is too long
+====
+Correct Module Codes::
+* LSM1303
+* CS2040C
+* IS1103
+* MA1521
 
-```
+Incorrect Module Codes::
+* CSSS1234    - Prefix is too long
+* C0001       - Prefix is too short
+* ZZ12345     - number is more than 4 digits
+* A1111XX     - Postfix is too long
+====
 
-image::module/module_9.png[width = "790", title = "Keyed in CSS1234 as module code"]
+Here we use "CSS1234" as an example.
 
-image::module/module_10.png[width = "790"]
+image::module/module_create_confirm.png[width = "600" title = "Asks for confirmation"]
 
 Press kbd:[enter] one more time to confirm.
 
-image::module/module_11.png[width = "790", title= "New Module with code CSS1234 created."]
+image::module/module_create_result.png[width = "600", title= "New Module with code CSS1234 created."]
 
 Congratulations, you have added a module to your modules page!
 

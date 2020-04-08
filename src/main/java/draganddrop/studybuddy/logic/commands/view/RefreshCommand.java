@@ -48,7 +48,7 @@ public class RefreshCommand extends Command {
             model.deleteTask(task);
             temp.freshStatus();
             model.addTask(temp);
-            model.sortTasks("Creation DateTime");
+            model.sortTasks("deadline / task start date");
         }
     }
 
