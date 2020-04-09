@@ -80,7 +80,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             this.reply += moduleListString;
             currentTerm = InteractivePromptTerms.TASK_MODULE;
 
-            task.setStatus("pending");
+            task.setStatus("Pending");
             task.setTaskDescription("No Description");
             task.setWeight(0.0);
             task.setEstimatedTimeCost(0);

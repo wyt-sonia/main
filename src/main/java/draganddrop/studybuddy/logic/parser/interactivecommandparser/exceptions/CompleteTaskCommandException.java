@@ -6,7 +6,7 @@ package draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions;
 public class CompleteTaskCommandException extends InteractiveCommandException {
 
     /*
-     *pending
+     *Pending
      * */
     public CompleteTaskCommandException(String errorType) {
         super(errorType);

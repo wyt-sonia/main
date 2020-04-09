@@ -94,10 +94,10 @@ public class Task implements Comparable<Task>, Cloneable {
 
     public void setStatus(String status) {
         switch (status) {
-        case "pending":
+        case "Pending":
             this.taskStatus = TaskStatus.PENDING;
             break;
-        case "finished":
+        case "Finished":
             this.taskStatus = TaskStatus.FINISHED;
             break;
         default:
@@ -113,7 +113,7 @@ public class Task implements Comparable<Task>, Cloneable {
     }
 
     public String getTimeLeft() {
-        String timeLeft = "due: ";
+        String timeLeft = "Due: ";
         df = new SimpleDateFormat("HH:mm dd/MM/yyyy");
         dateObj = new Date();
         long difference = 0;
@@ -317,9 +317,9 @@ public class Task implements Comparable<Task>, Cloneable {
     }
 
     /**
-     * Checks if the task is due soon (next 7 days).
+     * Checks if the task is Due Soon (next 7 days).
      *
-     * @return true if it is due soon, else false
+     * @return true if it is Due Soon, else false
      */
     public boolean isDueSoon() {
         if (getTaskStatus() != TaskStatus.FINISHED) {
@@ -345,7 +345,7 @@ public class Task implements Comparable<Task>, Cloneable {
     }
 
     /**
-     * pending change
+     * Pending change
      * Returns true if both persons have the same identity and data fields.
      * This defines a stronger notion of equality between two tasks.
      */

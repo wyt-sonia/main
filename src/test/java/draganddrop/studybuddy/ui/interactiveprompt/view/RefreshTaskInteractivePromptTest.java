@@ -18,7 +18,7 @@ class RefreshTaskInteractivePromptTest {
     public void interact_secondInput_returnKeywordPrompt() {
         RefreshTaskInteractivePrompt prompt = new RefreshTaskInteractivePrompt();
         prompt.interact("refresh");
-        String reply = "Tasks' status and due soon list is refreshed!";
+        String reply = "Tasks' status and Due Soon list is refreshed!";
         try {
             assertEquals(reply, prompt.interact("/n"));
         } catch (NullPointerException ex) {

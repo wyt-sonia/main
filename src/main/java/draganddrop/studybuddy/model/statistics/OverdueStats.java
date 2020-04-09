@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Stores statistics about number of overdue tasks
+ * Stores statistics about number of Overdue tasks
  */
 public class OverdueStats {
     /**
-     * A list containing daily number of overdue tasks
+     * A list containing daily number of Overdue tasks
      */
     private List<Integer> overdueCountList;
 
@@ -25,7 +25,7 @@ public class OverdueStats {
     }
 
     /**
-     * initializes an empty overdueCountList
+     * initializes an empty OverdueCountList
      */
     public void initList() {
         overdueCountList = new ArrayList<>();

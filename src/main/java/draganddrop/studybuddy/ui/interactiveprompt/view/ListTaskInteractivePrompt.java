@@ -11,7 +11,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType;
  * InteractivePrompt to list the tasks. This is useful after a Find command.
  */
 public class ListTaskInteractivePrompt extends InteractivePrompt {
-    private static final String END_OF_COMMAND_MSG = "Here is the complete list of tasks:";
+    private static final String END_OF_COMMAND_MSG = "Here is the complete list of unarchived tasks :)";
 
     public ListTaskInteractivePrompt() {
         super();

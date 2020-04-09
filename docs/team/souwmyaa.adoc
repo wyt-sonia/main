@@ -101,7 +101,7 @@ This enhancement was a crucial command.
 include::../UserGuide.adoc[tag=introduction]
 . Useful tips +
 include::../UserGuide.adoc[tag=usefulTips]
-. Commonly Used Symbols +
+. Commonly Used Symbols +due
 include::../UserGuide.adoc[tag=symbols]
 . Features:
 .. Delete +

@@ -275,7 +275,7 @@
 .pending_status,
 .done_status,
 .due_soon_status,
-.overdue_status,
+.Overdue_status,
 .important_status {
     -fx-background-radius: 4;
 	-fx-text-fill: white !important;
@@ -287,18 +287,18 @@
     -fx-background-color: #478e47;
 }
 
-/* for task status: pending */
+/* for task status: Pending */
 .pending_status {
     -fx-background-color: #337ab7;
 }
 
-/* for task status: due soon */
+/* for task status: Due Soon */
 .due_soon_status {
     -fx-background-color: #f0ad4e;
 }
 
-/* for task status: overdue */
-.overdue_status {
+/* for task status: Overdue */
+.Overdue_status {
     -fx-background-color: #d9534f;
 }
 

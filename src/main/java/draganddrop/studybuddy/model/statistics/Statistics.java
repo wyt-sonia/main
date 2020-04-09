@@ -66,9 +66,9 @@ public class Statistics {
 
     // Overdue stats
     /**
-     * Records an overdue task
+     * Records an Overdue task
      *
-     * @param overdueTask task that has gone overdue
+     * @param overdueTask task that has gone Overdue
      */
     public void recordOverdueTask(Task overdueTask) {
         int dayIndex = StatsUtil.getDayIndex();
