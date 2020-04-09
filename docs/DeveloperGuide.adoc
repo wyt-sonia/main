@@ -18,6 +18,8 @@ endif::[]
 
 By: `Team Drag&Drop`      Since: `Jan 2020`     
 
+//updated by Souwmyaa
+//tag::introduction[]
 == Introduction
 Study Buddy is a task-management tool made for students who want to be able to track and manage their tasks in one place.
 
@@ -26,6 +28,7 @@ Study Buddy uses various visualization tools such as pie charts and calendars, p
 In particular, Study Buddy is a Command Line Interface (CLI) application that also provides some Graphical User Interface (GUI). This means that users are expected to interact with the Study Buddy mainly through the command line, but each command executed will evoke a visual response as well.
 
 The purpose of this guide is to help potential developers get up to speed on the Study Buddy code base and functionality. We hope that this document will ease the process of further enhancing and developing Study Buddy.
+//end::introduction[]
 
 == Setting up
 
@@ -161,6 +164,8 @@ link:{repoURL}/blob/master/src/main/java/draganddrop/studybuddy/logic/Logic.java
 
 //NOTE: The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
+//updated by Souwmyaa
+//tag::modelComponent[]
 [[Design-Model]]
 === Model component
 
@@ -175,6 +180,7 @@ The `Model`,
 * stores the Study Buddy data.
 * exposes an unmodifiable `ObservableList<Task>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
+//end::modelComponent[]
 
 [[Design-Storage]]
 === Storage component
@@ -207,28 +213,86 @@ The Due Soon Tasks feature allows users to view the tasks that have deadlines wi
 
 This feature is implemented using a panel on the main window with a list of tasks Due Soon that is updated with every command that may affect Due Soon task list (such as add, delete or archive).
 
-Some commands that trigger Due Soon feature are:
+Some situations that trigger due soon feature are:
 
-1. Add --
+1. When user enters a task:
 
-   Command: add
+.. What it does: +
+... When a task that is added to the main list, is due within the next week, it is automatically added to the list of due soon tasks. +
+... The list is automatically sorted to be in increasing order of deadlines. +
+... The time left for the deadline is also added.
++
+image::AddDueSoonActivityDiagram.png[width = "200", length = "300", title = "Activity Diagram for Add to Due Soon list"]
+{bl}
 
+.. Details: +
+... The add command when entered by the user, triggers the creation of an object of the InteractivePrompt class (in this case AddTaskInteractivePrompt). +
+... In the AddTaskInteractivePrompt class, the data entered by user is parsed. +
+... If there are no errors, the AddTaskCommand object is created which triggers the addTask() function in Model. +
+... This function in turns calls addTask() function in Study Buddy. +
+... This function calls the isDueSoon() function in Task to confirm if the task belong to the due soon list. +
+... If it does, it is added to due soon list and main list, and the due soon list is sorted. Else, it is simply added to the main list.
++
+image::AddDueSoonSequence.png[width = "800", length = "600", title = "Sequence Diagram for Add to Due Soon list"]
+{bl}
+[CAUTION]
+The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+{bl}
+2. When user deletes a task:
+=======
 When a task that is added to the main list, is due within the next week, it is automatically added to the list of Due Soon tasks.
 
-2. Delete --
+.. What it does:
+... When a task that is deleted from the main list occurs in the due soon list as well, it is automatically deleted.
++
+image::DeleteDueSoonActivityDiagram.png[width = "200", length = "300", title = "Activity Diagram for Delete from Due Soon list"]
+{bl}
+.. Details:
+... The delete command when entered by the user, triggers the creation of an object of the InteractivePrompt class (in this case DeleteTaskInteractivePrompt).
+... In the DeleteTaskInteractivePrompt class, the data entered by user is parsed.
+... If there are no errors, the DeleteTaskCommand object is created which triggers the deleteTask() function in Model.
+... This function in turns calls removeTask() function in Study Buddy.
+... removeTask() calls the updateDeleteDueSoon() function in StudyBuddy which checks if the task exists in the due soon list.
+... If it does, it is deleted from the due soon list and main list. Else, it is simply deleted from the main list.
++
+image::DeleteDueSoonSequence.png[width = "800", length = "600", title = "Sequence Diagram for Delete from Due Soon list"]
+{bl}
+[CAUTION]
+The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
-   Command: delete
+3. When user refreshes due soon list:
 
+.. What it does: +
+... Refreshes the list of due soon tasks and status tags. This command is useful for a situation where due soon list is not up to date due to a drastic change in time.
++
+image::DueSoonActivityDiagram.png[width = "500", length = "600", title= "Activity diagram for refresh"]
+{bl}
+.. Details:
+... The refresh command when entered by the user, triggers the creation of an object of the InteractivePrompt class (in this case RefreshTaskInteractivePrompt).
+... In the RefreshTaskInteractivePrompt class, the data entered by user is parsed.
+... If there are no errors, the RefreshCommand object is created which clears the due soon list and then, iterates through the main list and calls addDueSoonTask() in Model, for any tasks that are due soon.
++
+image::DueSoonSequenceDiagram.png[width = "800", length = "600", title = "Sequence diagram for refresh"]
+{bl}
+[CAUTION]
+The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+=======
 When a task that is deleted from the main list occurs in the Due Soon list as well, it is automatically deleted.
 
-3. Refresh --
+4. When the application launches:
 
-   Command: refresh
+.. What it does:
+... It loads the due soon tasks into a panel by filtering tasks that are due soon from the main list.
+... This is necessary, because old list of due soon tasks may not be up-to-date.
 
-Refreshes the list of Due Soon tasks and status tags. This command is useful for a situation where Due Soon list is not up to date due to a drastic change in time.
+.. Details:
+... The addTask() function in StudyBuddy class already checks if task is due soon and adds to due soon list (as mentioned above).
+... While all tasks are being added to their respective lists in JsonSerializableStudyBuddy class, the due soon list gets automatically updated.
 
 [NOTE]
-Other command like edit, delete duplicates etc also trigger Due Soon feature in a similar manner.
+Other commands like edit, delete duplicates etc also trigger due soon feature in a similar manner.
+[NOTE]
+Calculation of time left for deadline and check for if task is due soon can be found in the Task class.
 
 ==== Example Usage Scenario
 Given below is an example usage scenario and how the Due Soon list mechanism behaves at each step.
@@ -240,39 +304,29 @@ The list of tasks Due Soon will be initialized and displayed with the initial st
 Step 2. The user executes `add` command to add a task.
 The `add` command execution checks if this task belongs in the Due Soon tasks list (i.e it is due in 7 days). If it does, the task is added to both lists, else it is only added to the main list. +
 
-.Activity Diagram for Add to Due Soon list
-image::AddDueSoonActivityDiagram.png[width = "200", length = "300"]
-{bl}
-
 Step 3. The user executes `delete` command to delete a task.
 The `delete` command execution also checks if this task exists in the Due Soon task list. If it does, task is deleted from both lists, else it is only deleted from the main list.
 
-Step 4. The user executes `refresh` command to refresh the Due Soon task list.
-The `refresh` command execution will traverse the main list and check if there are any inconsistencies. For example, if there has been a change in time and a task is missing from the Due Soon task list, it will be added.
+Step 4. The user executes `refresh` command to refresh the due soon task list.
+The `refresh` command execution will traverse the main list and check if there are any inconsistencies. For example, if there has been a change in time and a task is missing from the due soon task list, it will be added.
+It will also update the time left.
 
 [NOTE]
 If there are no such inconsistencies, the refresh command will not make any changes to the Due Soon task list.
-
-.Activity diagram for refresh
-image::DueSoonActivityDiagram.png[width = "500", length = "600"]
-{bl}
-
-.Sequence diagram for refresh
-image::DueSoonSequenceDiagram.png[width = "800", length = "600"]
 
 ==== Design Considerations
 
 ===== Aspect: How `refresh` command works
 
-* **Alternative 1 (current choice):** Does not clear and reload the Due Soon task list.
-** Pros: Fewer operations need to be performed.
-** Cons: May have be more prone to errors because list is not completely "refreshed". Some parts of it are the same.
-* **Alternative 2:** Clear and reload the Due Soon task list.
+* **Alternative 1 (current choice):** Clear and reload the due soon task list.
 ** Pros: Less prone to errors since the entire list is "refreshed".
 ** Cons: More operation intensive.
+* **Alternative 2:** Does not clear and reload the due soon task list.
+** Pros: Fewer operations need to be performed.
+** Cons: May have be more prone to errors because list is not completely "refreshed". Some parts of it are the same.
 // end::dueSoon[]
 
-// tag::taskSummary[]
+//tag::taskSummary[]
 === Task Summary Feature
 
 ==== Implementation
@@ -472,6 +526,8 @@ Refer to the guide <<DevOps#, here>>.
 
 *Value proposition*: manages tasks faster than a typical mouse/<<GUI,GUI>> driven app
 
+//updated by Souwmyaa
+//tag::userStories[]
 [appendix]
 == User Stories
 
@@ -510,12 +566,15 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |user who takes many modules |add my modules |view my modules
 |=======================================================================
+//end::userStories[]
 
 [appendix]
 == Use Cases
 
 (For all use cases below, the *System* is `Study Buddy` and the *Actor* is the `statistics`, unless specified otherwise)
 
+//updated by Souwmyaa
+//tag::useCasesSouwmyaa[]
 [discrete]
 === Use case: Delete task
 
@@ -634,6 +693,7 @@ Use case ends.
 There is nothing to refresh
 +
 Use case ends.
+//end::useCasesSouwmyaa[]
 
 [appendix]
 == Non Functional Requirements
@@ -694,6 +754,8 @@ Successful deletion indication in the status message.
 Error details shown in the status message.
 .. Other incorrect delete commands to try: `delete x`(where x is anything)
 
+//updated by Souwmyaa
+//tag::savingData[]
 === Saving data
 
 . Dealing with missing/corrupted data files
@@ -709,4 +771,4 @@ c
 .. Test case: Launch the application +
    Expected: The application indicates that the data file is corrupted.
 Application launches successfully but has no data.
-
+//end::savingData[]

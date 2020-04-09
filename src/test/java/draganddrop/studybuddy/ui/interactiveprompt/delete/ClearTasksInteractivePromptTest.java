@@ -18,7 +18,7 @@ class ClearTasksInteractivePromptTest {
     @Test
     public void interact_firstInput_returnKeywordPrompt() {
         ClearTasksInteractivePrompt prompt = new ClearTasksInteractivePrompt();
-        assertEquals("Please press enter to clear all your tasks.\n Else enter quit to go back.",
+        assertEquals("Please press enter to clear all your tasks.\nElse enter quit to go back.",
                 prompt.interact(""));
     }
 

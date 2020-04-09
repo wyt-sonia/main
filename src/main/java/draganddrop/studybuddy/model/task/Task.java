@@ -17,7 +17,7 @@ import draganddrop.studybuddy.model.statistics.Statistics;
 /**
  * Represents a Task.
  */
-public class Task implements Comparable<Task> {
+public class Task implements Comparable<Task>, Cloneable {
     /**
      * The acceptable data and time format.
      */
@@ -42,7 +42,8 @@ public class Task implements Comparable<Task> {
     private double estimatedTimeCost;
     private DateFormat df = null;
     private Date dateObj = null;
-    private boolean duplicate = false;
+    private int duplicate = 0;
+    private boolean isDuplicate = false;
 
     public Task(Module module, TaskType taskType, String taskName, String taskDescription, double weight,
                 TaskStatus taskStatus, LocalDateTime[] dateTimes, double estimatedTimeCost,
@@ -101,6 +102,10 @@ public class Task implements Comparable<Task> {
             break;
         default:
         }
+    }
+
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     public LocalDateTime getDueDate() {
@@ -210,12 +215,24 @@ public class Task implements Comparable<Task> {
         this.finishDateTime = finishDateTime;
     }
 
-    public boolean isDuplicate() {
+    public int getDuplicate() {
         return duplicate;
     }
 
-    public void setDuplicate(boolean duplicate) {
-        this.duplicate = duplicate;
+    public void setDuplicate(boolean dup) {
+        this.isDuplicate = dup;
+    }
+
+    public boolean isDuplicate() {
+        return isDuplicate;
+    }
+
+    public void incrementDuplicate() {
+        this.duplicate++;
+    }
+
+    public void zeroDuplicate() {
+        this.duplicate = 0;
     }
 
     public TaskType getTaskType() {
@@ -347,7 +364,9 @@ public class Task implements Comparable<Task> {
             && otherTask.getModule().equals(getModule())
             && otherTask.getTimeString().equals(getTimeString())
             && otherTask.getTaskType().equals(getTaskType())
-            && otherTask.getTaskDescription().equals(getTaskDescription());
+            && otherTask.getTaskDescription().equals(getTaskDescription())
+            && otherTask.getWeight() == getWeight()
+            && otherTask.getEstimatedTimeCost() == getEstimatedTimeCost();
     }
 
     @Override

@@ -1,0 +1,66 @@
+@startuml
+!include style.puml
+
+skinparam arrowColor #black
+skinparam SequenceBoxBorderColor #black
+skinparam SequenceParticipantBorderThickness 2
+skinparam SequenceReferenceBorderThickness 2
+skinparam DiagramBorderThickness 2
+skinparam SequenceArrowThickness 2
+skinparam SequenceLifeLineBorderColor #black
+skinparam ParticipantBorderColor #black
+
+
+box UI UI_COLOR_T1
+participant ":AddTaskInteractivePrompt" as AddTaskInteractivePrompt UI_COLOR
+end box
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddTaskCommand" as AddTaskCommand LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+participant ":StudyBuddy" as StudyBuddy MODEL_COLOR
+end box
+
+[-> AddTaskInteractivePrompt : execute(due soon)
+activate AddTaskInteractivePrompt
+
+AddTaskInteractivePrompt -> LogicManager : execute()
+activate LogicManager
+
+LogicManager -> AddTaskCommand : execute()
+activate AddTaskCommand
+
+AddTaskCommand -> Model : addTask()
+activate Model
+
+Model -> StudyBuddy : addTask()
+activate StudyBuddy
+
+alt is due soon
+    StudyBuddy->StudyBuddy: addDueSoonTask()
+    StudyBuddy --> Model
+else else
+     StudyBuddy --> Model
+end
+
+deactivate StudyBuddy
+
+Model --> AddTaskCommand
+deactivate Model
+
+AddTaskCommand --> LogicManager
+deactivate AddTaskCommand
+destroy AddTaskCommand
+
+LogicManager --> AddTaskInteractivePrompt
+deactivate LogicManager
+
+[<--AddTaskInteractivePrompt
+deactivate AddTaskInteractivePrompt
+destroy AddTaskInteractivePrompt
+
+@enduml

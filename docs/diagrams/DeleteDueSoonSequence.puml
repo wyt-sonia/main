@@ -1,0 +1,66 @@
+@startuml
+!include style.puml
+
+skinparam arrowColor #black
+skinparam SequenceBoxBorderColor #black
+skinparam SequenceParticipantBorderThickness 2
+skinparam SequenceReferenceBorderThickness 2
+skinparam DiagramBorderThickness 2
+skinparam SequenceArrowThickness 2
+skinparam SequenceLifeLineBorderColor #black
+skinparam ParticipantBorderColor #black
+
+
+box UI UI_COLOR_T1
+participant ":DeleteTaskInteractivePrompt" as DeleteTaskInteractivePrompt UI_COLOR
+end box
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":DeleteTaskCommand" as DeleteTaskCommand LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+participant ":StudyBuddy" as StudyBuddy MODEL_COLOR
+end box
+
+[-> DeleteTaskInteractivePrompt : execute(due soon)
+activate DeleteTaskInteractivePrompt
+
+DeleteTaskInteractivePrompt -> LogicManager : execute()
+activate LogicManager
+
+LogicManager -> DeleteTaskCommand : execute()
+activate DeleteTaskCommand
+
+DeleteTaskCommand -> Model : deleteTask()
+activate Model
+
+Model -> StudyBuddy : deleteTask()
+activate StudyBuddy
+
+alt present in due soon list
+    StudyBuddy->StudyBuddy: deleteDueSoonTask()
+    StudyBuddy --> Model
+else else
+     StudyBuddy --> Model
+end
+
+deactivate StudyBuddy
+
+Model --> DeleteTaskCommand
+deactivate Model
+
+DeleteTaskCommand --> LogicManager
+deactivate DeleteTaskCommand
+destroy DeleteTaskCommand
+
+LogicManager --> DeleteTaskInteractivePrompt
+deactivate LogicManager
+
+[<--DeleteTaskInteractivePrompt
+deactivate DeleteTaskInteractivePrompt
+destroy DeleteTaskInteractivePrompt
+
+@enduml

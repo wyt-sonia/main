@@ -11,6 +11,7 @@ import draganddrop.studybuddy.commons.util.CollectionUtil;
 import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.statistics.Statistics;
+import draganddrop.studybuddy.model.task.exceptions.DuplicateTaskException;
 import draganddrop.studybuddy.model.task.exceptions.TaskNotFoundException;
 
 import javafx.collections.FXCollections;
@@ -51,8 +52,9 @@ public class UniqueTaskList implements Iterable<Task> {
      */
     public void add(Task toAdd) {
         requireNonNull(toAdd);
-        /*if (contains(toAdd)) {
-            throw new DuplicateTaskException();
+        /*
+        if (contains(toAdd)) {
+            throw new DuplicateTaskException("duplicateTask");
         }*/
         internalList.add(toAdd);
         statistics.recordAddedTask(toAdd);
@@ -71,8 +73,9 @@ public class UniqueTaskList implements Iterable<Task> {
             throw new TaskNotFoundException();
         }
 
-        /*if (!target.isSameTask(editedTask) && contains(editedTask)) {
-            throw new DuplicateTaskException();
+        /*
+        if (target.isSameTask(editedTask) && contains(editedTask)) {
+            throw new DuplicateTaskException("duplicateTask");
         }*/
 
         internalList.set(index, editedTask);
@@ -100,8 +103,10 @@ public class UniqueTaskList implements Iterable<Task> {
      */
     public void setTasks(List<Task> tasks) {
         CollectionUtil.requireAllNonNull(tasks);
-        /*if (!tasksAreUnique(tasks)) {
-            throw new DuplicateTaskException();
+
+        /*
+        if (!tasksAreUnique(tasks)) {
+            throw new DuplicateTaskException("duplicateTask");
         }*/
 
         internalList.setAll(tasks);
@@ -172,10 +177,13 @@ public class UniqueTaskList implements Iterable<Task> {
      * @param target a task
      * @param newTaskName the new name of the task
      */
-    public void setTaskName(Task target, String newTaskName) {
+    public void setTaskName(Task target, String newTaskName) throws DuplicateTaskException {
         requireNonNull(target);
         requireNonNull(newTaskName);
         target.setTaskName(newTaskName);
+        /*if (internalList.contains(target)) {
+            throw new DuplicateTaskException("duplicateTask");
+        }*/
         int index = internalList.indexOf(target);
         internalList.set(index, target);
     }
