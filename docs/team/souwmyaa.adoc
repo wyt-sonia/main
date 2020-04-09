@@ -5,8 +5,6 @@
 
 == PROJECT: Study Buddy
 
----
-
 == Overview
 
 StudyBuddy is a desktop application which is designed for students who *wish to manage their module related tasks*.
@@ -160,13 +158,10 @@ include::../DeveloperGuide.adoc[tag=savingData]
 . Contributed to the https://github.com/nus-cs2103-AY1920S2/forum/issues/75[forum].
 
 === Review/Mentoring
-. If a fellow team member's PR does not pass the tests required, I left a helpful comment in order to reduce their work load.
+. If a fellow team member's PR did not pass the tests required, I left helpful comments in order to reduce their work load.
 eg: https://github.com/AY1920S2-CS2103T-W16-3/main/pull/59
-. Regularly approved and merged team member's PR's.
-. Suggested ways to improve their features.
-eg: done command could provide an option to user to delete/archive if necessary
-. Reviewed another team's DG and provided useful feedback.
+. Reviewed another team's DG and provided useful feedback. https://github.com/AY1920S2-CS2103T-W17-3/main/issues/208[Review 1] and https://github.com/AY1920S2-CS2103T-W17-3/main/issues/204[Review 2]
 
-* *Code contributed*: https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#=undefined&search=souwmyaa
+=== Code contributed: https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#=undefined&search=souwmyaa
 
 

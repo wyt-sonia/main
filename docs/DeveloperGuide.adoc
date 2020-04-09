@@ -239,9 +239,6 @@ image::AddDueSoonSequence.png[width = "800", length = "600", title = "Sequence D
 The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 {bl}
 2. When user deletes a task:
-=======
-When a task that is added to the main list, is due within the next week, it is automatically added to the list of Due Soon tasks.
-
 .. What it does:
 ... When a task that is deleted from the main list occurs in the due soon list as well, it is automatically deleted.
 +
@@ -276,8 +273,6 @@ image::DueSoonSequenceDiagram.png[width = "800", length = "600", title = "Sequen
 {bl}
 [CAUTION]
 The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-=======
-When a task that is deleted from the main list occurs in the Due Soon list as well, it is automatically deleted.
 
 4. When the application launches:
 
@@ -552,9 +547,9 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |user |archive tasks |separate the tasks that are not applicable right now
 
-|`* *` |user |delete duplicate tasks | easily filter out any duplicate data in my list
+|`* *` |user |view duplicate tasks | easily filter out any duplicate data in my list
 
-|`* *` |user |filter all Pending tasks | view all my Pending tasks in one place
+|`* *` |user |filter all pending tasks | view all my Pending tasks in one place
 
 |`* *` |user who likes organization |view all my tasks that are Due Soon|know what to focus on in the next week
 
@@ -643,16 +638,13 @@ Use case resumes at step 5.
 
 
 [discrete]
-=== Use case: Delete duplicates
+=== Use case: View duplicates
 
 *MSS*
 
 
-1. User requests to list tasks
-2. Study Buddy shows a list of tasks
-3. User requests to delete all duplicates in the list
-4. Study Buddy deletes all but one occurrence of each task
-
+1. User requests to view duplicates
+2. Study Buddy shows a list of duplicates
 +
 Use case ends.
 
@@ -676,8 +668,8 @@ Use case ends.
 
 
 1. User notices Due Soon list needs to be updates
-3. User requests to refresh
-4. Study Buddy refreshes the Due Soon list and status tags
+2. User requests to refresh
+3. Study Buddy refreshes the Due Soon list and status tags
 +
 Use case ends.
 
