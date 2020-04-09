@@ -91,14 +91,15 @@ public class CalendarBox extends UiPart<Region> {
      * @param calYear  calendar year
      * @param calMonth calendar month
      */
-    private void generateCalendar(int calYear, Month calMonth) {
+    public void generateCalendar(int calYear, Month calMonth) {
+
+        monthBox.getChildren().clear();
 
         month.setText(calMonth.toString());
         year.setText(String.valueOf(calYear));
         calendarMonth = calMonth;
         calendarYear = calYear;
 
-        Label label;
         LocalDate newDate = LocalDate.of(calYear, calMonth, 1);
 
         //day of week of first day
@@ -152,7 +153,6 @@ public class CalendarBox extends UiPart<Region> {
      * Generates calendar from previous month.
      */
     public void onClickPrevious() {
-        monthBox.getChildren().clear();
         if (calendarMonth.getValue() == 1) {
             generateCalendar(this.calendarYear - 1, Month.DECEMBER);
         } else {
@@ -164,7 +164,6 @@ public class CalendarBox extends UiPart<Region> {
      * Generates calendar for next month.
      */
     public void onClickNext() {
-        monthBox.getChildren().clear();
         if (calendarMonth.getValue() == 12) {
             generateCalendar(this.calendarYear + 1, Month.JANUARY);
         } else {
@@ -176,7 +175,6 @@ public class CalendarBox extends UiPart<Region> {
      * Home button. Generates calendar for current month.
      */
     public void onClickHome() {
-        monthBox.getChildren().clear();
         generateCalendar(localDate.getYear(), localDate.getMonth());
     }
 
@@ -203,18 +201,27 @@ public class CalendarBox extends UiPart<Region> {
             }
             int date = rowIndex * 7 + colIndex - firstDayOfWeek + 1;
             LocalDate clickedDate = LocalDate.of(calendarYear, calendarMonth, date);
-            ObservableList<Task> taskByDay = generateTaskList(clickedDate);
-            TaskListPanel taskByDayPanel = new TaskListPanel(taskByDay);
-            dueSoonPanelTitle.setText("Task for " + clickedDate.toString() + " :");
-            dueSoonListPanelPlaceholder.getChildren().clear();
-            dueSoonListPanelPlaceholder.getChildren().add(taskByDayPanel.getRoot());
+            viewTaskByDate(clickedDate);
         }
 
     }
 
     /**
-     * @param date
-     * @return
+     * view task of a selected date
+     * @param selectedDate selected date
+     */
+    public void viewTaskByDate(LocalDate selectedDate) {
+        ObservableList<Task> taskByDay = generateTaskList(selectedDate);
+        TaskListPanel taskByDayPanel = new TaskListPanel(taskByDay);
+        dueSoonPanelTitle.setText("Task for " + selectedDate.toString() + " :");
+        dueSoonListPanelPlaceholder.getChildren().clear();
+        dueSoonListPanelPlaceholder.getChildren().add(taskByDayPanel.getRoot());
+
+    }
+
+    /**
+     * @param date date
+     * @return list of task on the date
      */
     public ObservableList<Task> generateTaskList(LocalDate date) {
         UniqueTaskList taskByDay = new UniqueTaskList();
