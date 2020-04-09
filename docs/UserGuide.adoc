@@ -122,8 +122,7 @@ You can::
 image::dashboard/all_tasks.png[width="600", title = "All tasks panel"]
 
 ===== Task Badges
-To bold the important information of each task in *All Tasks Panel* , we use *Badges* to highlight `Module Code`,
-`Task Type` and  `Task Status` of each task.
+To highlight `Module code`, `Task Type` and  `Task Status` of each task in the *All Tasks list* , we use *Badges*.
 
 Module Badges::
 * All in light steelblue.
@@ -138,34 +137,34 @@ Task Status::
 you may need to use <<Refresh>> command to refresh the status of all tasks.
 
 ==== Tasks Due Soon Panel
-The tasks which will due in next week (i.e. 7 days) will be listed here.
+The tasks that are due within a week (i.e. 7 days) will be listed here.
 You can jump to <<Due Soon Tasks>> to get more details.
 
 image::dashboard/due_soon.png[width="600", title = "Task Due Soon"]
 
 ===== Task Badges
-To bold the important information of each tasks in *Tasks Due Soon Panel* , we use *Badges* to highlight `Weight & Module Code`,
-`Deadline/ Starting Date Counting Down` and  `Task Type` of each tasks.
+To highlight the `Weight & Module Code`,
+`Time left for deadline` and  `Task Type` of each tasks in *Tasks Due Soon Panel* , we use *Badges*.
 
 Weight & Module Code::
 * All in steelblue.
-* It provides weight and the module code of the task.
+* It displays the weight and module code of a task.
 
-Deadline/ Starting Date Counting Down::
+Time left for deadline::
 * All in light orange.
-* It displays the counting down for the tasks' deadline or starting date.
+* It displays the time left for a tasks' deadline.
 * More information please refer to <<Due Soon Tasks>>
 
 Task Type Badges::
 * Different Type Badges are in different colours.
 
 ==== Interactive Prompt Box
-The *Interactive Prompt Box* lays at the bottom of the user interface.
+The *Interactive Prompt Box* can be found at the bottom of the user interface.
 
 To interact with Study Buddy, you can enter the desired command in the box with the words `Please enter your command here...`
 and press kbd:[Enter] to execute.
 
-The reply from Study Buddy will be displayed in the box next to the cartoon boy.
+The reply from Study Buddy will be displayed in the box above.
 
 image::dashboard/prompt_box.png[width="600", title = "Interactive Prompt Box"]
 
@@ -194,7 +193,7 @@ To `help`:
 . Initiate the command using keyword `help`
 . Study Buddy should respond with:
 +
-image::basic/help/help_rep.png[width="600", title="Response to 'help'"]
+image::help.png[width="600", title="Response to 'help'"]
 
 [TIP]
 Remember to scroll down to see the entire reply.
@@ -1064,7 +1063,27 @@ Here are some examples of how to obtain Productivity Points in StudyBuddy:
 
 .. Letting a task go Overdue: _-1_
 
+//updated by Souwmyaa
+//tag::summary[]
+[[Summary]]
 
+== Command Summary
+. add <<Add>>
+. archive <<Archive/ Unarchive>>
+. bye <<Exit>>
+. clear <<Clear>>
+. create mods <<Create Modules>>
+. delete <<Delete>>
+. view duplicates <<View duplicates>>
+. done <<Done>>
+. edit <<Edit>>
+. filter <<Filter>>
+. find <<Find>>
+. help <<Help>>
+. list <<List>>
+. sort <<sort>>
+. refresh <<refresh>>
+//end::summary[]
 
 == FAQ
 

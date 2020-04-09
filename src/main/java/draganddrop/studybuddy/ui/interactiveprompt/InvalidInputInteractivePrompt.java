@@ -8,8 +8,8 @@ import static draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType.
  */
 public class InvalidInputInteractivePrompt extends InteractivePrompt {
     static final String HELP_MSG = "Please enter a valid command option.\n"
-        + "1. add  2. delete  3. edit  4. bye  5. sort  6. find  7. done  8. delete duplicates  "
-        + "9. sort  10. archive  11. help  12. list  13. clear";
+        + "1. add\n2. delete\n3. edit\n4. bye\n5. sort\n6. find\n7. done\n8. view duplicates\n"
+        + "9. sort\n10. archive\n11. help\n12. list\n13. clear";
 
     private InteractivePromptTerms currentTerm;
     private String reply;

@@ -15,7 +15,7 @@ import draganddrop.studybuddy.model.task.Task;
  */
 public class ViewDuplicateTaskCommand extends Command {
 
-    public static final String COMMAND_WORD = "delete duplicates";
+    public static final String COMMAND_WORD = "view duplicates";
 
     private final Predicate<Task> predicate;
 

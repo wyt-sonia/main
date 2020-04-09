@@ -285,7 +285,7 @@ The lifeline for every member should end at the destroy marker (X) but due to a 
 ... While all tasks are being added to their respective lists in JsonSerializableStudyBuddy class, the due soon list gets automatically updated.
 
 [NOTE]
-Other commands like edit, delete duplicates etc also trigger due soon feature in a similar manner.
+Other commands like edit, archive etc also trigger due soon feature in a similar manner.
 [NOTE]
 Calculation of time left for deadline and check for if task is due soon can be found in the Task class.
 
