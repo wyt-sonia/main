@@ -12,12 +12,12 @@ skinparam ParticipantBorderColor #black
 
 
 box UI UI_COLOR_T1
-participant ":DueSoonTaskInteractivePrompt" as DueSoonTaskInteractivePrompt UI_COLOR
+participant ":RefreshTaskInteractivePrompt" as RefreshTaskInteractivePrompt UI_COLOR
 end box
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
-participant ":DueSoonRefreshCommand" as DueSoonRefreshCommand LOGIC_COLOR
+participant ":RefreshCommand" as RefreshCommand LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
@@ -25,16 +25,16 @@ participant ":Model" as Model MODEL_COLOR
 participant ":StudyBuddy" as StudyBuddy MODEL_COLOR
 end box
 
-[-> DueSoonTaskInteractivePrompt : execute(due soon)
-activate DueSoonTaskInteractivePrompt
+[-> RefreshTaskInteractivePrompt : execute(due soon)
+activate RefreshTaskInteractivePrompt
 
-DueSoonTaskInteractivePrompt -> LogicManager : execute()
+RefreshTaskInteractivePrompt -> LogicManager : execute()
 activate LogicManager
 
-LogicManager -> DueSoonRefreshCommand : execute()
-activate DueSoonRefreshCommand
+LogicManager -> RefreshCommand : execute()
+activate RefreshCommand
 
-DueSoonRefreshCommand -> Model : addDueSoonTask()
+RefreshCommand -> Model : addDueSoonTask()
 activate Model
 
 Model -> StudyBuddy : addDueSoonTask()
@@ -43,18 +43,18 @@ activate StudyBuddy
 StudyBuddy --> Model
 deactivate StudyBuddy
 
-Model --> DueSoonRefreshCommand
+Model --> RefreshCommand
 deactivate Model
 
-DueSoonRefreshCommand --> LogicManager
-deactivate DueSoonRefreshCommand
-destroy DueSoonRefreshCommand
+RefreshCommand --> LogicManager
+deactivate RefreshCommand
+destroy RefreshCommand
 
-LogicManager --> DueSoonTaskInteractivePrompt
+LogicManager --> RefreshTaskInteractivePrompt
 deactivate LogicManager
 
-[<--DueSoonTaskInteractivePrompt
-deactivate DueSoonTaskInteractivePrompt
-destroy DueSoonTaskInteractivePrompt
+[<--RefreshTaskInteractivePrompt
+deactivate RefreshTaskInteractivePrompt
+destroy RefreshTaskInteractivePrompt
 
 @enduml

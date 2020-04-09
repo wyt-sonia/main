@@ -19,15 +19,17 @@ The codebase is in Java and contains about 13kLoc.
 
 * *Major enhancement*: added *the Due Soon List feature*
 ** What it does:
-. Allows user to view a list of tasks due within the next week in one panel
-. Displays time left before the deadline for each due soon task
+. Allows user to view a list of tasks due within the next week in one panel.
+. Loads all due soon tasks (with updated time) into the panel when application is launched.
+. Displays time left before the deadline for each due soon task.
 . Automatically sorts tasks to be in order of most urgent to least urgent deadline.
-. Automatically updates when changes are made to the data (additions, deletions, edits etc)
+. Automatically updates when changes are made to the data (additions, deletions, edits etc).
 ** Justification: This feature is extremely helpful to the user because it helps to remind them of upcoming deadlines
 ** Highlights:
 . This enhancement affects existing commands and commands to be added in future since any command that changes data will affect it.
 . The implementation was challenging because it required changes to be made to a lot of commands.
-. It involved working in the logic, storage and UI components of the code base.
+. It involved working in the logic, model, storage and UI components of the code base.
+. It also involved changing the GUI.
 
 * *Major enhancement*: added *the Refresh Due Soon List command*
 ** What it does:
@@ -36,14 +38,30 @@ The codebase is in Java and contains about 13kLoc.
 . It will also update the time left for each deadline on the due soon tasks
 ** Justification: This feature is extremely helpful to the user because if they have had the application open for a long time, the time left in due soon tasks and the due soon list itself may need refreshing.
 ** Highlights:
-This enhancement formed the foundation code base for a lot of other features that needed to be refreshed. For example, the refreshing of status tags is also done using this refresh class.
+. This enhancement formed the foundation code base for a lot of other features that needed to be refreshed. For example, the refreshing of status tags is also done using this refresh class.
+. It required working in the UI, logic and model components of the code base.
+
+* *Major enhancement*: added *the Add Duplicate Tasks feature*
+** What it does:
+. Allows user to add duplicate tasks in the list.
+. It however automatically appends brackets with a number to the task name of duplicate task.
+. The number corresponds to the number of times task has been duplicated.
+** Justification:
+. This feature is helpful to the user because the add task command involves adding several fields.
+. We can only detect duplicates at the end of task addition command, hence if the user makes a mistake in one field, they will have to re-enter everything if duplicates are not allowed.
+. This way, user is given a choice whether or not to add duplicate task and they can go back and edit/delete as they like.
+** Highlights:
+. This feature was quite difficult to implement because there are several corner cases to take care of.
+. It required working on other commands, such as edit command (to stop user from editing a task to be a duplicate) and unarchive command (because user can unarchive a duplicate task).
+. Since address book already had a lot of tests and checks to prevent duplicate tasks, it required a very large amount of refactoring code.
 
 * *Major enhancement*: added *the Delete Task command*
 ** What it does:
 . Allows user to delete an existing task in the list
 ** Justification: This feature is extremely helpful to the user because it enables them to remove tasks from their list.
 ** Highlights:
-This enhancement was a crucial command and is also used as a supporting command by a lot of other features.
+. This enhancement was a crucial command and is also used as a supporting command by a lot of other features.
+. It involved working in the UI, logic and model components of the code base.
 
 * *Major enhancement*: added *the Filter command*
 ** What it does:
@@ -52,6 +70,13 @@ This enhancement was a crucial command and is also used as a supporting command 
 ** Highlights:
 . This enhancement was a crucial command.
 . The implementation was tricky because as the number of choices user was given increased, the checks for exceptions etc became more complex.
+. It involved working in the UI, logic and model components of the code base.
+
+* *Minor enhancement*: added *View Duplicate tasks command*
+** What it does:
+. Allows user to view all duplicate tasks in their list
+** Justification:
+. This feature is helpful to the user because they might want to see all the tasks that have auto-edited names in one place, so they can go back and edit.
 
 * *Minor enhancement*: added *the Exit command*
 ** What it does:
@@ -65,21 +90,6 @@ This enhancement was a crucial command.
 ** What it does:
 . Allows user to delete all data that has been entered
 ** Justification: This feature is helpful to the user if they decide to start with a fresh Study Buddy.
-
-* *Minor enhancement*: added *the Delete Duplicate Tasks command*
-** What it does:
-. Allows user to delete any duplicate tasks in the list
-** Justification: This feature is helpful to the user if they decide to remove any duplicate tasks from their list.
-
-* *Minor enhancement*: added *add duplicate tasks option*
-** What it does:
-. Allows user to add duplicate tasks to their list
-. Rather than not allow duplicate tasks, prompts user asking if he/she is sure they want to add a duplicate task.
-** Justification:
-. This feature is helpful to the user because Study Buddy lets the user decide what they want to do.
-. Eventually if needed, user could use the edit/delete duplicates command to amend any mistakes.
-** Highlights:
-This feature was not easy to implement, because Address Book had a lot of checks to avoid duplication of tasks. These checks needed to be addressed for the feature to work.
 
 === User guide
 
@@ -96,8 +106,10 @@ include::../UserGuide.adoc[tag=symbols]
 . Features:
 .. Delete +
 include::../UserGuide.adoc[tag=delete]
-.. Delete duplicates +
-include::../UserGuide.adoc[tag=deleteDuplicates]
+.. Add duplicates +
+include::../UserGuide.adoc[tag=addDuplicates]
+.. View duplicates +
+include::../UserGuide.adoc[tag=viewDuplicates]
 .. Filter +
 include::../UserGuide.adoc[tag=filter]
 .. Refresh +
@@ -131,6 +143,9 @@ include::../DeveloperGuide.adoc[tag=savingData]
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DueSoonActivityDiagram.puml[Due soon activity diagram]
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DueSoonSequenceDiagram.puml[Due soon sequence diagram]
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/AddDueSoonActivityDiagram.puml[Add due soon task activity diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/AddDueSoonSequence.puml[Add due soon task sequence diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DeleteDueSoonActivityDiagram.puml[Delete due soon task activity diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DeleteDueSoonSequence.puml[Delete due soon task sequence diagram]
 
 === Team-based Tasks
 . Refactored all occurrences of Address Book to Study Buddy. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/135[Refactor]

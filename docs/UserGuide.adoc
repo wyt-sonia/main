@@ -288,6 +288,8 @@ image::basic/add/add_result.png[width="600", title="New task added"]
 [TIP]
 Remember, you can use `quit` command to quit at any step.
 
+//updated by Souwmyaa
+//tag::addDuplicates[]
 ==== Add duplicates
 This command accounts for you adding duplicate tasks. When you attempt to add a duplicate, the name will be modified slightly so that you can differentiate them.
 
@@ -327,6 +329,7 @@ You can view all tasks that have been auto-edited this way, using the <<View dup
 
 [TIP]
 Use the <<Edit>> to edit your duplicated tasks!
+//end::addDuplicates[]
 
 ==== Edit
 
