@@ -223,6 +223,7 @@ Meeting: +
 |===
 +
 .. Other constraints::
+... The application does not allow you to enter a name that has special characters (any character that is not a letter in the alphabet).
 ... The application does not allow you to assign date time that has already passed to a task.
 It must be a time in the future.
 ... For duration, the two dates should follow the order of `start date`-`end date`, the `end date` should
@@ -232,9 +233,7 @@ be later than `start date`.
 ... All `index numbers` entered should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).
 
 .. Adding duplicate tasks:
-... The application allows for addition of duplicate tasks. It will however confirm with you if you are sure you want to add a duplicate. In case you change your mind, <<Delete duplicates>> and <<Edit>> could be helpful.
-... The purpose of the add duplicate feature is to allow you to add many of the same task, and then go back and edit and delete as you like. If we simply did not allow duplicates, you would have to go back and add all the information regarding the task again.
-... If you choose to add a duplicate task, keep in mind that for every command that requires you to provide an index, the first occurrence will be considered, irrespective of the index you have provided. For example, if the tasks at 2 and 6 are duplicates and you choose to delete 6, 2 will be deleted. However, since they duplicates, it should not make a difference!
+... Look at <<Add duplicates>> for more information.
 
 To `add`:
 
@@ -289,6 +288,42 @@ image::basic/add/add_result.png[width="600", title="New task added"]
 [TIP]
 Remember, you can use `quit` command to quit at any step.
 
+==== Add Duplicates
+This command accounts for you adding duplicate tasks. When you attempt to add a duplicate, the name will be modified slightly so that you can differentiate them.
+
+*Example:*
+
+Say you have tried to add a task, you enter all the fields needed and at the end, you realise that you have already added this task.
+
+Study Buddy lets you add duplicate tasks with a slight modification! So, now you can add the task and edit it as needed.
+
+[NOTE]
+A task is considered duplicate when the name, type, module, description, weightage, estimated time cost and deadline are the same. (Status is not checked)
+
+To `add duplicates`:
+
+. Follow the same steps as in <<Add>>, but enter a duplicate task.
+. Study Buddy should respond with:
++
+image::addDuplicate.png[width="600", title="Reponse to adding a duplicate"]
++
+. Type in `yes` if you would like to continue and `no` if you do not.
+. If you type `yes` and press kbd:[enter]
+. The Study Buddy should respond with:
++
+image::addDuplicate1.png[width="600", title="Response to adding duplicate"]
++
+. As you can see in the snippet above, Study Buddy will append a number in brackets to the task name. This number corresponds to the number of times this task name has been duplicated.
+
+[NOTE]
+If you add two duplicates of a task (eg: task(1) and task(2)), and then delete task(1), when u try to duplicate it again, it will get added as task(3). The number will not reset to 2, because this is the third time you are attempting to duplicate.
+
+[TIP]
+You can view all tasks that have been auto-edited this way, using the <<View duplicates>>
+
+[TIP]
+Use the <<Edit>> to edit your duplicated tasks!
+
 ==== Edit
 
 This command is for you to edit an existing task.
@@ -304,6 +339,7 @@ task. You can use this command to edit as you wish.
 
 . Each new value and index number entered will be checked under the same constrain of add command.
 . When editing weight or module, the application will also make sure the total weight of related module's tasks will not overflow (i.e. exceed 100).
+. You cannot edit a task to be a duplicate. i.e all the fields cannot be the same as a task that already exists.
 ====
 
 
@@ -408,34 +444,34 @@ image::basic/delete/deleteResponse1.png[width="790", title="Updated list (withou
 //end::delete[]
 
 //updated by Souwmyaa
-//tag::deleteDuplicates[]
-==== Delete duplicates
-This commands deletes all duplicated tasks in the list.
-
-[NOTE]
-A task is considered duplicate when the name, type, module, description, weightage, estimated time cost and deadline are the same. (Status is not checked)
-
-[CAUTION]
-This feature is case sensitive. This means that if one task is named "Task", it will be considered different from "task".
+//tag::viewDuplicates[]
+==== View duplicates
+This commands filtered all duplicated tasks in the list i.e tasks that have a number appended to their names.
 
 *Example:*
 
-After having added a duplicated task, you realise that there is no more need for this duplicate task. Yet you do not want to scroll through the entire list to delete it.
+Say you want to go back and edit all the tasks that are duplicated in your list. Yet you do not want to scroll through the entire list to find them.
 
-Study Buddy provides you an option to delete all your duplicate tasks from the list!
+Study Buddy provides you an option to view all your duplicate tasks in the list!
 
-To `delete duplicates`:
+[CAUTION]
+You will still need to navigate to the main list and use that index to perform any index based operations (eg: delete, edit etc)
 
-. Initiate the command using keyword `delete duplicates`
+To `view duplicates`:
+
+. Initiate the command using keyword `view duplicates`
 . Study Buddy should respond with:
 +
-image::basic/deleteduplicate/deleteDuplicates1.png[width="500", title="Response to 'delete duplicates'"]
+image::viewDuplicates.png[width="500", title="Response to 'view duplicates'"]
 
 . Press kbd:[enter] again to confirm
-. Duplicate tasks have been deleted! You will notice that only one copy (most recent) of each task will be left in the list.
+. Duplicate tasks have been filtered!
 +
-image::basic/deleteduplicate/deleteDuplicates2.png[width="500", title="Updated list (without duplicate tasks)"]
-//end::deleteDuplicates[]
+image::viewDuplicates1.png[width="500", title="Updated list of duplicate tasks"]
+
+[TIP]
+In order to navigate back to the main list, use <<List>>
+//end::viewDuplicates[]
 
 ==== Archive/ Unarchive
 This commands stores the specified task into a separate list.
@@ -464,6 +500,9 @@ image::basic/archive/archive_3.png[width="790", title="View archived tasks"]
 * To `unarchive` a task, and add it back to the main list, simply follow the same set of commands, but replace the `archive` keyword with `unarchive`
 * Remember to use the index in the *Archived Task* instead of *All Tasks*
 ****
+
+[NOTE]
+If you attempt to unarchive a task that already exists in the main list, the name will automatically be appended with a number in order to avoid duplication. This is done in the same way as <<Add duplicate>>
 
 ==== Sort
 
@@ -604,6 +643,9 @@ Status tags include information on the tasks' status. Details are in <<Status Ta
 Say you left Study Buddy open overnight because you fell asleep studying. When you wake up, you notice that the time left for the deadline on the due soon tasks is not accurate.
 
 You can refresh them!
+
+[TIP]
+You can use this command to update the time left tag on due soon tasks.
 
 To `refresh`:
 

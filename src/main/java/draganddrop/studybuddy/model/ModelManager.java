@@ -220,11 +220,14 @@ public class ModelManager implements Model {
         ArrayList<Task> currentTasks = Task.getCurrentTasks();
         int index = currentTasks.indexOf(task);
         Task originalTask = currentTasks.get(index);
-        originalTask.incrementDuplicate();
-        int number = originalTask.getDuplicate();
-        String newTaskName = task.getTaskName() + "(" + number + ")";
-        task.setTaskName(newTaskName);
+        String originalTaskName = task.getTaskName();
         task.setDuplicate(true);
+        while (currentTasks.contains(task)) {
+            originalTask.incrementDuplicate();
+            int number = originalTask.getDuplicate();
+            String newTaskName = originalTaskName + "(" + number + ")";
+            task.setTaskName(newTaskName);
+        }
         studyBuddy.addTask(task);
     }
 
