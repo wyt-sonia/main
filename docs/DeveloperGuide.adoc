@@ -233,7 +233,7 @@ image::AddDueSoonActivityDiagram.png[width = "200", length = "300", title = "Act
 ... This function calls the isDueSoon() function in Task to confirm if the task belong to the due soon list. +
 ... If it does, it is added to due soon list and main list, and the due soon list is sorted. Else, it is simply added to the main list.
 +
-image::AddDueSoonSequence.png[width = "200", length = "300", title = "Sequence Diagram for Add to Due Soon list"]
+image::AddDueSoonSequence.png[width = "800", length = "600", title = "Sequence Diagram for Add to Due Soon list"]
 {bl}
 [CAUTION]
 The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
@@ -253,7 +253,7 @@ image::DeleteDueSoonActivityDiagram.png[width = "200", length = "300", title = "
 ... removeTask() calls the updateDeleteDueSoon() function in StudyBuddy which checks if the task exists in the due soon list.
 ... If it does, it is deleted from the due soon list and main list. Else, it is simply deleted from the main list.
 +
-image::DeleteDueSoonSequence.png[width = "200", length = "300", title = "Sequence Diagram for Delete from Due Soon list"]
+image::DeleteDueSoonSequence.png[width = "800", length = "600", title = "Sequence Diagram for Delete from Due Soon list"]
 {bl}
 [CAUTION]
 The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
