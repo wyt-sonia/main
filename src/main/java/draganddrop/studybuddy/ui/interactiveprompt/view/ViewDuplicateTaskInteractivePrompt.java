@@ -1,4 +1,4 @@
-package draganddrop.studybuddy.ui.interactiveprompt.delete;
+package draganddrop.studybuddy.ui.interactiveprompt.view;
 
 /*
  * Logic of implementation:
@@ -9,26 +9,29 @@ package draganddrop.studybuddy.ui.interactiveprompt.delete;
  * server display the response if needed
  * */
 
-import static draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType.DELETE_DUPLICATE_TASK;
+import static draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType.VIEW_DUPLICATE_TASK;
 
 import java.text.ParseException;
+import java.util.function.Predicate;
 
-import draganddrop.studybuddy.logic.commands.delete.DeleteDuplicateTaskCommand;
+import draganddrop.studybuddy.logic.commands.delete.ViewDuplicateTaskCommand;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
-import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.DeleteDuplicateTaskCommandException;
+import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.ViewDuplicateTaskCommandException;
+import draganddrop.studybuddy.model.task.Task;
+import draganddrop.studybuddy.model.task.TaskDuplicatePredicate;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
- * Represents a DeleteDuplicateTaskInteractivePrompt, which interacts with user to delete duplicate tasks.
+ * Represents a ViewDuplicateTaskInteractivePrompt, which interacts with user to View duplicate tasks.
  */
-public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
-    public static final String QUIT_COMMAND_MSG = "Successfully quited from delete duplication command.";
-    private static final String END_OF_COMMAND_MSG = "Duplicated task deleted successfully!";
+public class ViewDuplicateTaskInteractivePrompt extends InteractivePrompt {
+    public static final String QUIT_COMMAND_MSG = "Successfully quited from filter duplication command.";
+    private static final String END_OF_COMMAND_MSG = "Filtered duplicated tasks successfully!";
 
-    public DeleteDuplicateTaskInteractivePrompt() {
+    public ViewDuplicateTaskInteractivePrompt() {
         super();
-        this.interactivePromptType = DELETE_DUPLICATE_TASK;
+        this.interactivePromptType = VIEW_DUPLICATE_TASK;
     }
 
     @Override
@@ -42,18 +45,19 @@ public class DeleteDuplicateTaskInteractivePrompt extends InteractivePrompt {
 
         case INIT:
             try {
-                reply = "The duplicate tasks will be deleted\n"
+                reply = "The duplicate tasks will be filtered\n"
                     + "Please press enter again to make the desired changes.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-            } catch (DeleteDuplicateTaskCommandException ex) {
+            } catch (ViewDuplicateTaskCommandException ex) {
                 reply = ex.getErrorMessage();
             }
             break;
 
         case READY_TO_EXECUTE:
             try {
-                DeleteDuplicateTaskCommand deleteDuplicateTaskCommand = new DeleteDuplicateTaskCommand();
-                logic.executeCommand(deleteDuplicateTaskCommand);
+                Predicate<Task> predicate = new TaskDuplicatePredicate();
+                ViewDuplicateTaskCommand viewDuplicateTaskCommand = new ViewDuplicateTaskCommand(predicate);
+                logic.executeCommand(viewDuplicateTaskCommand);
                 super.setEndOfCommand(true);
                 endInteract(END_OF_COMMAND_MSG);
             } catch (CommandException | ParseException ex) {

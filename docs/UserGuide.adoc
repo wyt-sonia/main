@@ -25,6 +25,8 @@ endif::[]
 
 By: `Team Drag&Drop`      Since: `Jan 2020`
 
+//updated by Souwmyaa
+//tag::introduction[]
 == Introduction
 
 Study Buddy is a desktop application which is designed for students who *wish to manage their module related tasks*.
@@ -38,6 +40,7 @@ If you can type fast, Study Buddy can get your module management done faster tha
 Currently, Study Buddy support both Windows and Mac systems. If you are interested, please jump to the <<Quick Start>> to get started.
 
 Hope you enjoy!
+//end::introduction[]
 
 == Quick Start
 
@@ -60,6 +63,8 @@ image::Ui.png[width="790", title="Study Buddy Dashboard"]
 . To view a list of available command, you can key in *`help`* and click kbd:[Enter]. A more detailed description of our features is available in
 <<Features>> of this document.
 
+//updated by Souwmyaa
+//tag::symbols[]
 ==== Commonly Used Symbols
 
 [NOTE]
@@ -73,18 +78,23 @@ This symbol indicates an aspect that should be used with caution.
 
 [IMPORTANT]
 This symbol indicates something to which we want to draw your attention.
+//end::symbols[]
 
+//updated by Souwmyaa
+//tag::usefulTips[]
 ==== Useful tips
 
+* You may need to adjust the size of the Study Buddy window when you launch it.
+* Make sure not to use any extra white spaces before or after commands. Study Buddy might consider it as an invalid command.
 * The scroll bar on the right of the response box can be used to view the entire reply.
 * At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
 * Study Buddy will analyze your input and reply accordingly.
 It utilizes an "interactive command prompt". (explained in each command's description under <<Features>>)
-* kbd:[enter] indicates *the enter key on your keyboard*.
-* *|* indicates an *alternative option* (i.e. A | B implies A or B).
-* When mention about task's *index number*, it refers to the index number displayed in *All Tasks panel*. Noted that the
+* In this document, *[enter]* indicates *hitting the enter key on your keyboard*.
+* In this document, *|* indicates an *alternative option* (i.e. A | B implies A or B).
+* A task's *index number*, refers to the number displayed on the left of a task in *All Tasks panel*. Note that the
 index of the same task could be different after `filter`, `find` and `sort` commands.
-
+//end::usefulTips[]
 
 [[UI]]
 
@@ -252,6 +262,7 @@ Meeting: +
 |===
 +
 .. Other constraints::
+... The application does not allow you to enter a name that has special characters (any character that is not a letter in the alphabet).
 ... The application does not allow you to assign date time that has already passed to a task.
 It must be a time in the future.
 ... For duration, the two dates should follow the order of `start date`-`end date`, the `end date` should
@@ -260,9 +271,8 @@ be later than `start date`.
 * Both `archived` and `not archived tasks` will be taken into consideration.
 ... All `index numbers` entered should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).
 
-[IMPORTANT]
-The application allows for addition of duplicate tasks. It will however confirm with you if you are sure you want to add a duplicate. In case you change your mind, <<Delete duplicates>> could be helpful.
-
+.. Adding duplicate tasks:
+... Look at <<Add duplicates>> for more information.
 
 To `add`:
 
@@ -317,6 +327,49 @@ image::basic/add/add_result.png[width="600", title="New task added"]
 [TIP]
 Remember, you can use `quit` command to quit at any step.
 
+//updated by Souwmyaa
+//tag::addDuplicates[]
+==== Add duplicates
+This command accounts for you adding duplicate tasks. When you attempt to add a duplicate, the name will be modified slightly so that you can differentiate them.
+
+*Example:*
+
+Say you have tried to add a task, you enter all the fields needed and at the end, you realise that you have already added this task.
+
+Study Buddy lets you add duplicate tasks with a slight modification! So, now you can add the task and edit it as needed.
+
+[NOTE]
+A task is considered duplicate when the name, type, module, description, weightage, estimated time cost and deadline are the same. (Status is not checked)
+
+To `add duplicates`:
+
+. Follow the same steps as in <<Add>>, but enter a duplicate task.
+. Study Buddy should respond with:
++
+image::addDuplicate.png[width="600", title="Reponse to adding a duplicate"]
++
+. Type in `yes` if you would like to continue and `no` if you do not.
+. If you type `yes` and press kbd:[enter]
+. The Study Buddy should respond with:
++
+image::addDuplicate1.png[width="600", title="Response to adding duplicate"]
++
+. As you can see in the snippet above, Study Buddy will append a number in brackets to the task name. This number corresponds to the number of times this task name has been duplicated.
++
+[NOTE]
+If you add two duplicates of a task (eg: task(1) and task(2)), and then delete task(1), when u try to duplicate it again, it will get added as task(3). The number will not reset to 2, because this is the third time you are attempting to duplicate.
+
+.  If you choose to enter `no` at step 2, this is what you will see.
++
+image::addDuplicate2.png[width="600", title="Response to choosing not to add"]
+
+[TIP]
+You can view all tasks that have been auto-edited this way, using the <<View duplicates>>
+
+[TIP]
+Use the <<Edit>> to edit your duplicated tasks!
+//end::addDuplicates[]
+
 ==== Edit
 
 This command is for you to edit an existing task.
@@ -332,6 +385,7 @@ task. You can use this command to edit as you wish.
 
 . Each new value and index number entered will be checked under the same constrain of add command.
 . When editing weight or module, the application will also make sure the total weight of related module's tasks will not overflow (i.e. exceed 100).
+. You cannot edit a task to be a duplicate. i.e all the fields cannot be the same as a task that already exists.
 ====
 
 
@@ -386,6 +440,8 @@ image::basic/done/done_result.png[width="600", title = "Done result"]
 You can choose to archive your completed task using the `archive` command. Check more details
 from <<Archive/ Unarchive>>.
 
+//updated by Souwmyaa
+//tag::clear[]
 ==== Clear
 This commands clears all data in the Study Buddy.
 
@@ -411,8 +467,11 @@ Remember that you can enter `quit` if you wish to go back!
 . Press kbd:[enter] again to confirm
 . Study Buddy has been cleared completely!
 +
-image::basic/clear/clear_result.png[width="700", title="Clear result"]
+image::basic/clear/clear_result.png[width="700", title="View empty Study Buddy"]
+//end::clear[]
 
+//updated by Souwmyaa
+//tag::delete[]
 ==== Delete
 This commands deletes a task from the existing list, using the index provided by you.
 
@@ -439,34 +498,37 @@ image::basic/delete/delete_confirm.png[width="600", title="Asks for confirmation
 . Task has been deleted! You will notice that the task at the index you selected has disappeared from the list of tasks.
 +
 image::basic/delete/delete_result.png[width="600", title="Updated All Tasks Panel"]
+//end::delete[]
 
-
-==== Delete duplicates
-This commands deletes all duplicated tasks in the list.
-
-[NOTE]
-A task is considered duplicate when the name, type, module, description, weightage, estimated time cost and deadline are the same. (Status is not checked)
-
-[CAUTION]
-This feature is case sensitive. This means that if one task is named "Task", it will be considered different from "task".
+//updated by Souwmyaa
+//tag::viewDuplicates[]
+==== View duplicates
+This commands filtered all duplicated tasks in the list i.e tasks that have a number appended to their names.
 
 *Example:*
 
-After having added a duplicated task, you realise that there is no more need for this duplicate task. Yet you do not want to scroll through the entire list to delete it.
+Say you want to go back and edit all the tasks that are duplicated in your list. Yet you do not want to scroll through the entire list to find them.
 
-Study Buddy provides you an option to delete all your duplicate tasks from the list!
+Study Buddy provides you an option to view all your duplicate tasks in the list!
 
-To `delete duplicates`:
+[CAUTION]
+You will still need to navigate to the main list and use that index to perform any index based operations (eg: delete, edit etc)
 
-. Initiate the command using keyword `delete duplicates`
+To `view duplicates`:
+
+. Initiate the command using keyword `view duplicates`
 . Study Buddy should respond with:
 +
-image::basic/deleteduplicate/delete_dup_confirm.png[width="600", title="Response to 'delete duplicates'"]
+image::viewDuplicates.png[width="500", title="Response to 'view duplicates'"]
 
 . Press kbd:[enter] again to confirm
-. Duplicate tasks have been deleted! You will notice that only one copy (most recent) of each task will be left in the list.
+. Duplicate tasks have been filtered!
 +
-image::basic/deleteduplicate/delete_dup_result.png[width="600", title="Updated list (without duplicate tasks)"]
+image::viewDuplicates1.png[width="500", title="Updated list of duplicate tasks"]
+
+[TIP]
+In order to navigate back to the main list, use <<List>>
+//end::viewDuplicates[]
 
 ==== Archive/ Unarchive
 This commands stores the specified task into a separate list.
@@ -501,6 +563,9 @@ image::basic/archive/archive_list.png[width="600", title="Archived tasks"]
 * To `unarchive` a task, and add it back to the main list, simply follow the same set of commands, but replace the `archive` keyword with `unarchive`
 * Remember to use the index in the *Archived Task* instead of *All Tasks*
 ****
+
+[NOTE]
+If you attempt to unarchive a task that already exists in the main list, the name will automatically be appended with a number in order to avoid duplication. This is done in the same way as <<Add duplicates>>
 
 [[Sort]]
 ==== Sort
@@ -565,6 +630,7 @@ image::basic/find/find_result.png[width="600" title="Find result"]
 [IMPORTANT]
 To navigate back to the always on display list of tasks, you can use the <<List>> function.
 
+[[LIST]]
 ==== List
 
 Oh no! How do I get the original list back after using `find`? Calm down and use the `list` command!
@@ -578,6 +644,8 @@ To use the `list` command:
 +
 image::basic/list/list_result.png[width="600" title="List result"]
 
+//updated by Souwmyaa
+//tag::filter[]
 [[Filter]]
 ==== Filter
 This commands helps you filter your tasks by category. The two categories available are status and type.
@@ -617,8 +685,11 @@ image::basic/filter/filter_type.png[width="600", title="Response to filter by ta
 
 . You can then proceed to choose what task type you would like to filter by. Here we have filtered by "assignment" as an example.
 +
-image::basic/filter/filter_type_result.png[width="600", title="Response to filter by task type 'assignment'"]
+image::basic/filter/filter5.png[width="790", title="Response to filter by task type 'assignment'"]
+//end::filter[]
 
+//updated by Souwmyaa
+//tag::refresh[]
 [[Refresh]]
 ==== Refresh
 This commands refreshes the list of tasks Due Soon as well as status tags.
@@ -634,6 +705,9 @@ Say you left Study Buddy open for a few days. When you come back, you notice tha
 
 You can refresh them!
 
+[TIP]
+You can use this command to update the time left tag on due soon tasks.
+
 To `refresh`:
 
 . Say this is what Study Buddy looks like.
@@ -645,11 +719,17 @@ Suppose you notice that the task "Homework 1" is still in pending status.
 . Initiate the refresh command using keyword `refresh` and press kbd:[enter] to confirm the action.
 . Tasks have been refreshed!
 +
+image::basic/refresh/refresh3.png[width="790", title="View refreshed Study Buddy"]
++
+You will notice that the overdue task has now moved out of the due soon list and has the updated status tag "overdue".
+//end::refresh[]
 image::basic/refresh/refresh_result.png[width="600", title="Refreshed Study Buddy"]
 
 [NOTE]
 After 'refresh', the tasks in *All Tasks Panel* will be sorted by their deadline or start date.
 
+//updated by Souwmyaa
+//tag::exit[]
 ==== Exit
 This command exits from Study Buddy.
 
@@ -673,6 +753,7 @@ image::basic/exit/exit_confirm.png[width="600", title="Response to 'bye'"]
 
 [NOTE]
 Any command other than `yes` (including kbd:[enter]) will be considered as a quit from the exit.
+//end::exit[]
 
 === Saving Data
 

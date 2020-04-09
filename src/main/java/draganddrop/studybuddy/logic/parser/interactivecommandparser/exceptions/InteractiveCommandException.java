@@ -23,6 +23,10 @@ public class InteractiveCommandException extends RuntimeException {
             errorMessage = "The task you chose is completed already";
             break;
 
+        case "specialCharInputError":
+            errorMessage = "The task name contains special character, please check.";
+            break;
+
         case "taskNameLengthError":
             errorMessage = "The maximum length of task name is 20 characters, please check.";
             break;
