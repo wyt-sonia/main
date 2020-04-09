@@ -562,7 +562,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |user |archive tasks |separate the tasks that are not applicable right now
 
-|`* *` |user |view duplicate tasks | easily filter out any duplicate data in my list
+|`* *` |user |view renamed tasks | easily filter out any renamed data in my list
 
 |`* *` |user |filter all pending tasks | view all my Pending tasks in one place
 
@@ -663,12 +663,12 @@ Use case resumes at step 5.
 
 
 [discrete]
-=== Use case: View duplicates
+=== Use case: View renamed
 
 *MSS*
 
-1. User requests to view duplicates
-2. Study Buddy shows a list of duplicates
+1. User requests to view renamed tasks
+2. Study Buddy shows a list of renamed tasks
 +
 Use case ends.
 

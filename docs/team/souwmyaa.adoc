@@ -71,9 +71,9 @@ The codebase is in Java and contains about 13kLoc.
 . The implementation was tricky because as the number of choices user was given increased, the checks for exceptions etc became more complex.
 . It involved working in the UI, logic and model components of the code base.
 
-* *Minor enhancement*: added *View Duplicate tasks command*
+* *Minor enhancement*: added *View Renamed tasks command*
 ** What it does:
-. Allows user to view all duplicate tasks in their list
+. Allows user to view all renamed tasks in their list
 ** Justification:
 . This feature is helpful to the user because they might want to see all the tasks that have auto-edited names in one place, so they can go back and edit.
 
@@ -107,8 +107,8 @@ include::../UserGuide.adoc[tag=symbols]
 include::../UserGuide.adoc[tag=delete]
 .. Add duplicates +
 include::../UserGuide.adoc[tag=addDuplicates]
-.. View duplicates +
-include::../UserGuide.adoc[tag=viewDuplicates]
+.. View renamed +
+include::../UserGuide.adoc[tag=viewRenamed]
 .. Filter +
 include::../UserGuide.adoc[tag=filter]
 .. Refresh +
