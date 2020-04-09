@@ -23,6 +23,10 @@ public class InteractiveCommandException extends RuntimeException {
             errorMessage = "The task you chose is completed already";
             break;
 
+        case "specialCharInputError":
+            errorMessage = "The task name contains special character, please check.";
+            break;
+
         case "taskNameLengthError":
             errorMessage = "The maximum length of task name is 20 characters, please check.";
             break;
@@ -81,6 +85,16 @@ public class InteractiveCommandException extends RuntimeException {
         case "eventEndBeforeStartError":
             errorMessage = "Invalid date time, the end date you entered is before the start date, please check.";
             break;
+
+        case "dateFormatError":
+            errorMessage = "Invalid date format, please follow the format below:\n\n"
+                            + "dd/MM/yyyy";
+            break;
+
+        case "tooLongAway":
+            errorMessage = "Date too far apart from current date, please input a more realistic date";
+            break;
+
         default:
         }
     }

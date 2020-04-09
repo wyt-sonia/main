@@ -196,6 +196,14 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         scoreStats.copy(newData.getScoreStats());
     }
 
+    public void clearDueSoon(ReadOnlyStudyBuddy newData) {
+        setDueSoonTasks(newData.getDueSoonList());
+    }
+
+    public void addDueSoonTask(Task task) {
+        dueSoonTasks.add(task);
+    }
+
     //// task-level operations
 
     /**
@@ -225,6 +233,15 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         archivedTasks.remove(p);
         updateAddDueSoon(p);
         tasks.add(p);
+    }
+
+    /**
+     * Unarchives a duplicated task.
+     * @param p
+     */
+    public void unarchiveDuplicateTask(Task p) {
+        archivedTasks.remove(p);
+        updateAddDueSoon(p);
     }
 
     /**

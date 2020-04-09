@@ -28,11 +28,6 @@ This visualisation of data helps students become more aware of their Pending wor
 
 === Who can benefit most from Study Buddy?
 
-==== What is CLI?
-
-* CLI is a command line program that accepts text input to execute operating system functions.
-* Compare with graphical user interfaces(GUI), CLI performs interaction with user by keyboard input instead of mouse clicking, such as cmd window.
-
 =======
 * It is designed for students who can type fast and are comfortable with `Command-Line Interface(CLI)`.
 =======

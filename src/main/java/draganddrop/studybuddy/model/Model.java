@@ -26,6 +26,9 @@ public interface Model {
      */
     ReadOnlyUserPrefs getUserPrefs();
 
+    void clearDueSoonList(ReadOnlyStudyBuddy studyBuddy);
+    public void forceAddDueSoonTask(Task task);
+
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -35,6 +38,9 @@ public interface Model {
      * Returns the user prefs' GUI settings.
      */
     GuiSettings getGuiSettings();
+
+    void addDuplicateTask(Task task);
+    public void unarchiveDuplicateTask(Task task);
 
     /**
      * Sets the user prefs' GUI settings.

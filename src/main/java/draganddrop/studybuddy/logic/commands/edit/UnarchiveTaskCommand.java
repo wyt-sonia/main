@@ -33,13 +33,17 @@ public class UnarchiveTaskCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Task> lastShownList = model.getFilteredArchivedTaskList();
-
+        List<Task> lastShownMainList = model.getFilteredTaskList();
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
 
         Task taskToArchive = lastShownList.get(targetIndex.getZeroBased());
-        model.unarchiveTask(taskToArchive);
+        if (lastShownMainList.contains(taskToArchive)) {
+            model.unarchiveDuplicateTask(taskToArchive);
+        } else {
+            model.unarchiveTask(taskToArchive);
+        }
 
         return new CommandResult(String.format(MESSAGE_ARCHIVE_TASK_SUCCESS, taskToArchive));
     }

@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -101,6 +102,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void clearDueSoonList(ReadOnlyStudyBuddy studyBuddy) {
+        this.studyBuddy.clearDueSoon(studyBuddy);
+    }
+
+    @Override
     public boolean hasTask(Task task) {
         requireNonNull(task);
         return studyBuddy.hasTask(task);
@@ -179,8 +185,21 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void unarchiveDuplicateTask(Task task) {
+        addDuplicateTask(task);
+        studyBuddy.unarchiveDuplicateTask(task);
+        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+    }
+
+    @Override
     public void addDueSoonTask(Task task) {
         studyBuddy.updateAddDueSoon(task);
+        updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
+    }
+
+    @Override
+    public void forceAddDueSoonTask(Task task) {
+        studyBuddy.addDueSoonTask(task);
         updateFilteredTaskList(PREDICATE_SHOW_ALL_TASKS);
     }
 
@@ -194,6 +213,22 @@ public class ModelManager implements Model {
     public boolean hasMod(Module mod) {
         requireNonNull(mod);
         return studyBuddy.hasModule(mod);
+    }
+
+    @Override
+    public void addDuplicateTask(Task task) {
+        ArrayList<Task> currentTasks = Task.getCurrentTasks();
+        int index = currentTasks.indexOf(task);
+        Task originalTask = currentTasks.get(index);
+        String originalTaskName = task.getTaskName();
+        task.setDuplicate(true);
+        while (currentTasks.contains(task)) {
+            originalTask.incrementDuplicate();
+            int number = originalTask.getDuplicate();
+            String newTaskName = originalTaskName + "(" + number + ")";
+            task.setTaskName(newTaskName);
+        }
+        studyBuddy.addTask(task);
     }
 
 

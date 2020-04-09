@@ -74,7 +74,7 @@ public class Module {
     public void add(Task toAdd) throws DuplicateTaskException {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicateTaskException();
+            throw new DuplicateTaskException("duplicateTask");
         }
         internalTaskList.add(toAdd);
     }
@@ -87,7 +87,7 @@ public class Module {
     public void addAll(ObservableList<Task> toAdd) throws DuplicateTaskException {
         requireNonNull(toAdd);
         if (!toAdd.filtered(x -> contains(x)).isEmpty()) {
-            throw new DuplicateTaskException();
+            throw new DuplicateTaskException("duplicateTask");
         } else {
             internalTaskList.addAll(toAdd);
         }

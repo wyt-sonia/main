@@ -11,7 +11,7 @@ public enum InteractivePromptType {
     FILTER_TASK,
     ARCHIVE_TASK,
     UNARCHIVE_TASK,
-    DELETE_DUPLICATE_TASK,
+    VIEW_DUPLICATE_TASK,
     COMPLETE_TASK,
     DUE_SOON_TASK,
     CREATE_MODULE,
@@ -22,5 +22,6 @@ public enum InteractivePromptType {
     LIST_TASK,
     CLEAR_TASK,
     SET_GOAL,
-    EDIT_MODULE;
+    EDIT_MODULE,
+    CALENDAR_VIEW;
 }

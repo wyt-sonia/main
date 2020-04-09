@@ -11,14 +11,14 @@ import draganddrop.studybuddy.model.task.Task;
 /**
  *
  */
-public class AddTaskCommand extends Command {
+public class AddDuplicateTaskCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a task to the task list. "
-        + "Parameters: TaskName, TaskType, TaskDateTime";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a duplicate task to the task list. "
+            + "Parameters: TaskName, TaskType, TaskDateTime";
 
-    public static final String MESSAGE_SUCCESS = "New Task added: %1$s";
+    public static final String MESSAGE_SUCCESS = "New Duplicate Task added: %1$s";
     public static final String MESSAGE_DUPLICATE_TASK = "This Task already exists. Are you sure you want to proceed?";
 
     private final Task toAdd;
@@ -26,7 +26,7 @@ public class AddTaskCommand extends Command {
     /**
      * Creates an AddTaskCommand to add the specified {@code Task}
      */
-    public AddTaskCommand(Task task) {
+    public AddDuplicateTaskCommand(Task task) {
         requireNonNull(task);
         this.toAdd = task;
     }
@@ -34,15 +34,15 @@ public class AddTaskCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        model.addTask(toAdd);
+        model.addDuplicateTask(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof AddTaskCommand // instanceof handles nulls
-            && toAdd.equals(((AddTaskCommand) other).toAdd));
+                || (other instanceof AddTaskCommand // instanceof handles nulls
+                && toAdd.equals(((AddDuplicateTaskCommand) other).toAdd));
     }
 
 }
