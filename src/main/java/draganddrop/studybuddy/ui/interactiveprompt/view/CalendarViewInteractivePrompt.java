@@ -23,7 +23,8 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType;
 public class CalendarViewInteractivePrompt extends InteractivePrompt {
 
     public static final String QUIT_COMMAND_MSG = "Successfully quited from calendar view command.";
-    public static final String REQUEST_DATE_MSG = "Please input the date which you want to view.";
+    public static final String REQUEST_DATE_MSG = "Please input the date which you want to view in this format:"
+                                                + "\n\n    dd/MM/yyyy";
     private static final String END_OF_COMMAND_MSG = "Now viewing: ";
 
     private LocalDate selectedDate;

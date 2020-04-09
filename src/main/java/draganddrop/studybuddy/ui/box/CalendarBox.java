@@ -93,6 +93,8 @@ public class CalendarBox extends UiPart<Region> {
      */
     public void generateCalendar(int calYear, Month calMonth) {
 
+        monthBox.getChildren().clear();
+
         month.setText(calMonth.toString());
         year.setText(String.valueOf(calYear));
         calendarMonth = calMonth;
@@ -151,7 +153,6 @@ public class CalendarBox extends UiPart<Region> {
      * Generates calendar from previous month.
      */
     public void onClickPrevious() {
-        monthBox.getChildren().clear();
         if (calendarMonth.getValue() == 1) {
             generateCalendar(this.calendarYear - 1, Month.DECEMBER);
         } else {
@@ -163,7 +164,6 @@ public class CalendarBox extends UiPart<Region> {
      * Generates calendar for next month.
      */
     public void onClickNext() {
-        monthBox.getChildren().clear();
         if (calendarMonth.getValue() == 12) {
             generateCalendar(this.calendarYear + 1, Month.JANUARY);
         } else {
@@ -175,7 +175,6 @@ public class CalendarBox extends UiPart<Region> {
      * Home button. Generates calendar for current month.
      */
     public void onClickHome() {
-        monthBox.getChildren().clear();
         generateCalendar(localDate.getYear(), localDate.getMonth());
     }
 
