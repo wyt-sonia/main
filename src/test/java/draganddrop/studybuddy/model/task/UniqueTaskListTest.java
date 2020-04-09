@@ -1,4 +1,4 @@
-/*package draganddrop.studybuddy.model.task;
+package draganddrop.studybuddy.model.task;
 
 import static draganddrop.studybuddy.logic.commands.CommandTestUtil.VALID_DESCRIPTION_TWO;
 import static draganddrop.studybuddy.logic.commands.CommandTestUtil.VALID_TASK_NAME_TWO;
@@ -138,5 +138,5 @@ public class UniqueTaskListTest {
         assertThrows(UnsupportedOperationException.class, ()
             -> uniqueTaskList.asUnmodifiableObservableList().remove(0));
     }
-}*/
+}
 

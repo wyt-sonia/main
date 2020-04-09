@@ -288,7 +288,7 @@ image::basic/add/add_result.png[width="600", title="New task added"]
 [TIP]
 Remember, you can use `quit` command to quit at any step.
 
-==== Add Duplicates
+==== Add duplicates
 This command accounts for you adding duplicate tasks. When you attempt to add a duplicate, the name will be modified slightly so that you can differentiate them.
 
 *Example:*
@@ -314,9 +314,13 @@ image::addDuplicate.png[width="600", title="Reponse to adding a duplicate"]
 image::addDuplicate1.png[width="600", title="Response to adding duplicate"]
 +
 . As you can see in the snippet above, Study Buddy will append a number in brackets to the task name. This number corresponds to the number of times this task name has been duplicated.
-
++
 [NOTE]
 If you add two duplicates of a task (eg: task(1) and task(2)), and then delete task(1), when u try to duplicate it again, it will get added as task(3). The number will not reset to 2, because this is the third time you are attempting to duplicate.
+
+.  If you choose to enter `no` at step 2, this is what you will see.
++
+image::addDuplicate2.png[width="600", title="Response to choosing not to add"]
 
 [TIP]
 You can view all tasks that have been auto-edited this way, using the <<View duplicates>>
@@ -502,7 +506,7 @@ image::basic/archive/archive_3.png[width="790", title="View archived tasks"]
 ****
 
 [NOTE]
-If you attempt to unarchive a task that already exists in the main list, the name will automatically be appended with a number in order to avoid duplication. This is done in the same way as <<Add duplicate>>
+If you attempt to unarchive a task that already exists in the main list, the name will automatically be appended with a number in order to avoid duplication. This is done in the same way as <<Add duplicates>>
 
 ==== Sort
 
