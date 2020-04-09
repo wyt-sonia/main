@@ -24,12 +24,8 @@ public class RefreshCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         List<Task> lastShownList = model.getFilteredTaskList();
-<<<<<<< HEAD
         logger.info("Attempting to refresh due soon list and tags");
         model.clearDueSoonList(new StudyBuddy());
-=======
-        logger.info("Attempting to refresh Due Soon list and tags");
->>>>>>> c1edf5165e0a8d1485a32d8b6961ed33fc7e07e1
         for (int i = 0; i < lastShownList.size(); i++) {
             Task task = lastShownList.get(i);
             if (task.isDueSoon()) {
