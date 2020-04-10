@@ -137,7 +137,7 @@ public class ScoreStats {
         } else if (currentScore < expertScore) {
             return (expertScore - currentScore) + " PP more to become an Expert";
         } else if (currentScore < masterScore) {
-            return (expertScore - currentScore) + " PP more to become a Master";
+            return (masterScore - currentScore) + " PP more to become a Master";
         } else if (currentScore < grandmasterScore) {
             return (grandmasterScore - currentScore) + " PP more to get to Grandmaster";
         } else if (currentScore < legendScore) {
