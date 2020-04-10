@@ -8,7 +8,7 @@ import java.util.List;
 import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.module.ModuleList;
-import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
+import draganddrop.studybuddy.model.module.exceptions.ModuleException;
 import draganddrop.studybuddy.model.statistics.CompletionStats;
 import draganddrop.studybuddy.model.statistics.GeneralStats;
 import draganddrop.studybuddy.model.statistics.OverdueStats;
@@ -252,7 +252,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     public void addModule(Module module) {
         try {
             moduleList.add(module);
-        } catch (ModuleCodeException ex) {
+        } catch (ModuleException ex) {
             System.out.println("AddModule Failed, from studyBuddy.addModule()");
         }
     }
@@ -261,9 +261,9 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
      * Change Module Name.
      * @param oldModule
      * @param newModule
-     * @throws ModuleCodeException
+     * @throws ModuleException
      */
-    public void changeModuleName(Module oldModule, Module newModule) throws ModuleCodeException {
+    public void changeModuleName(Module oldModule, Module newModule) throws ModuleException {
         refreshAllModuleTaskList(oldModule, newModule);
         moduleList.changeModuleName(oldModule, newModule);
     }
@@ -272,9 +272,9 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
      * Change Module Code.
      * @param oldModule
      * @param newModule
-     * @throws ModuleCodeException
+     * @throws ModuleException
      */
-    public void changeModuleCode(Module oldModule, Module newModule) throws ModuleCodeException {
+    public void changeModuleCode(Module oldModule, Module newModule) throws ModuleException {
         refreshAllModuleTaskList(oldModule, newModule);
         moduleList.changeModuleCode(oldModule, newModule);
     }
@@ -282,9 +282,9 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     /**
      * Delete a existing mod. Transfers all task with the existing mod to emptyMod.
      * @param module
-     * @throws ModuleCodeException
+     * @throws ModuleException
      */
-    public void deleteMod(Module module) throws ModuleCodeException {
+    public void deleteMod(Module module) throws ModuleException {
         refreshAllModuleTaskList(module, new EmptyModule());
         moduleList.remove(module);
     }
@@ -365,11 +365,11 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         }
     }
 
-    public void setModuleInTask(Task target, Module module) throws ModuleCodeException {
+    public void setModuleInTask(Task target, Module module) throws ModuleException {
         if (moduleList.contains(module) || module.equals(new EmptyModule())) {
             tasks.setTaskMod(target, module);
         } else {
-            throw new ModuleCodeException("Module does not exist in studyBuddy!");
+            throw new ModuleException("Module does not exist in studyBuddy!");
         }
     }
 

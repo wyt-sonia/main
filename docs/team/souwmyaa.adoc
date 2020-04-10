@@ -52,7 +52,7 @@ The codebase is in Java and contains about 13kLoc.
 ** Highlights:
 . This feature was quite difficult to implement because there are several corner cases to take care of.
 . It required working on other commands, such as edit command (to stop user from editing a task to be a duplicate) and unarchive command (because user can unarchive a duplicate task).
-. Since address book already had a lot of tests and checks to prevent duplicate tasks, it required a very large amount of refactoring code.
+. Since study buddy already had a lot of tests and checks to prevent duplicate tasks, it required a very large amount of refactoring code.
 
 * *Major enhancement*: added *the Delete Task command*
 ** What it does:

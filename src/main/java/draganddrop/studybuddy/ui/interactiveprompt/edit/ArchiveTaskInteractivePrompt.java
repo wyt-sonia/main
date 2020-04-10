@@ -27,7 +27,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
     public static final String QUIT_COMMAND_MSG = "Successfully quited from archive command.";
     private static final String END_OF_COMMAND_MSG = "Task archived successfully!";
-    private static final String REQUEST_INDEX_MSG = "Please enter the index number of task you wish to archive.";
+    private static final String REQUIRED_INDEX_MSG = "Please enter the index number of task you wish to archive.";
     private int index;
 
     public ArchiveTaskInteractivePrompt() {
@@ -37,7 +37,7 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
 
     @Override
     public String interact(String userInput) {
-        if ("quit".equals(userInput)) {
+        if ("quit".equalsIgnoreCase(userInput)) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
         }
@@ -45,7 +45,7 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
         switch (currentTerm) {
 
         case INIT:
-            this.reply = REQUEST_INDEX_MSG;
+            this.reply = REQUIRED_INDEX_MSG;
             currentTerm = InteractivePromptTerms.TASK_INDEX;
             break;
 
@@ -64,10 +64,10 @@ public class ArchiveTaskInteractivePrompt extends InteractivePrompt {
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (NumberFormatException ex) {
                 reply = (new ArchiveTaskCommandException("wrongIndexFormatError")).getErrorMessage()
-                    + "\n\n" + REQUEST_INDEX_MSG;
+                    + "\n\n" + REQUIRED_INDEX_MSG;
             } catch (ArchiveTaskCommandException ex) {
                 reply = ex.getErrorMessage()
-                    + "\n\n" + REQUEST_INDEX_MSG;
+                    + "\n\n" + REQUIRED_INDEX_MSG;
             }
             break;
 

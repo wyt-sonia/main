@@ -59,6 +59,31 @@ public class InteractiveCommandException extends RuntimeException {
             errorMessage = "Could not find the module based on the module code entered, please check and re-enter.";
             break;
 
+        case "duplicateModuleNameError":
+            errorMessage = "Detected duplicate module name. Please key in another module name.";
+            break;
+
+        case "duplicateModuleCodeError":
+            errorMessage = "Detected duplicate module code. Please key in another module code.";
+            break;
+
+        case "wrongModuleCodeFormatError":
+            errorMessage = "Invalid module code. Please key in module in the correct format. \n\n"
+                + " Module code format:\n"
+                + " include a 2-3 letter prefix,"
+                + " a 4-digit number,"
+                + " then a postfix (Optional).\n"
+                + " E.g. BA1001, CS2030J, LSM2040C";
+            break;
+
+        case "noChangeFromOriginalModuleNameError":
+            errorMessage = "Please enter a different module name.";
+            break;
+
+        case "noChangeFromOriginalModuleCodeError":
+            errorMessage = "Please enter a different module code.";
+            break;
+
         case "invalidIndexRangeError":
             errorMessage = "The index entered is out of range, please check again.";
             break;
