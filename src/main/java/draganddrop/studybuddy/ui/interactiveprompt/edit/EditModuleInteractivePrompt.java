@@ -17,19 +17,19 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
  * Edit module.
  */
 public class EditModuleInteractivePrompt extends InteractivePrompt {
-    static final int CHANGE_NAME = 1;
-    static final int CHANGE_CODE = 2;
-    static final int DELETE_MODULE = 3;
-    static final String END_OF_COMMAND_MSG = "Module edited successfully!";
-    static final String QUIT_COMMAND_MSG = "Successfully quited from editing module.";
-    static final String REQUIRED_MODULE_MSG = "Please key in a module code from the list.";
-    static final String REQUIRED_MODULE_NAME_MSG = "Please key in the new name of your module";
-    static final String REQUIRED_MODULE_CODE_MSG = "Please key in the new code of your module";
-    static final String REQUIRED_CONFIRMATION = "Are you sure you want to delete this module?\n"
+    public static final int CHANGE_NAME = 1;
+    public static final int CHANGE_CODE = 2;
+    public static final int DELETE_MODULE = 3;
+    public static final String END_OF_COMMAND_MSG = "Module edited successfully!";
+    public static final String QUIT_COMMAND_MSG = "Successfully quited from editing module.";
+    public static final String REQUIRED_MODULE_MSG = "Please key in a module code from the list.";
+    public static final String REQUIRED_MODULE_NAME_MSG = "Please key in the new name of your module";
+    public static final String REQUIRED_MODULE_CODE_MSG = "Please key in the new code of your module";
+    public static final String REQUIRED_CONFIRMATION = "Are you sure you want to delete this module?\n"
         + "All tasks in this module will be "
         + "relocated to 'No Module Allocated' tab. \n\nPress enter to proceed";
 
-    static final String CHOICES = "What would you like to do? Key in the index of the action"
+    public static final String CHOICES = "What would you like to do? Key in the index of the action"
         + "that you wish to perform.\n"
         + "1. Change Name\n"
         + "2. Change Module code\n"

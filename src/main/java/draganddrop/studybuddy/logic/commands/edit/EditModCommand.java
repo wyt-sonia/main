@@ -14,7 +14,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
  * Command for editing mod.
  */
 public class EditModCommand extends Command {
-    static final String MOD_DOES_NOT_EXIST = "Module does not exist in Study Buddy!";
+    public static final String MOD_DOES_NOT_EXIST = "Module does not exist in Study Buddy!";
     private Module oldModule;
     private Module newModule;
     private InteractivePromptTerms term;
