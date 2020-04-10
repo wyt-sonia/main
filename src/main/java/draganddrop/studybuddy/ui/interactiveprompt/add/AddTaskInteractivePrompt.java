@@ -20,6 +20,7 @@ import draganddrop.studybuddy.logic.commands.add.AddTaskCommand;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.AddTaskCommandParser;
+import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddDuplicateTaskCommandException;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
 import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.module.Module;
@@ -52,6 +53,8 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         + "number of hours cost or press enter to skip.\n";
     private static final String TASK_INFO_HEADER = "The task is ready to be added, press enter "
         + "again to add the task:\n\n=========== TASK INFO ===========\n";
+    private static final String CONFIRM_MSG = "This is a duplicate task. Are you sure you would like to proceed?\n"
+            + "Please enter yes to continue or no to go back.";
 
     private String moduleListString = "";
     private ObservableList<Module> modules;
@@ -221,8 +224,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             try {
                 task.setCreationDateTime(LocalDateTime.now());
                 if (Task.getCurrentTasks().contains(task)) {
-                    reply = "This is a duplicate task. Are you sure you would like to proceed?\n"
-                        + "Please enter yes or no.";
+                    reply = CONFIRM_MSG;
                     currentTerm = InteractivePromptTerms.ADD_DUPLICATE;
                 } else {
                     AddTaskCommand addTaskCommand = new AddTaskCommand(task);
@@ -249,7 +251,8 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 endInteract(END_OF_COMMAND_DUPLICATE_MSG);
             } else {
                 //change this
-                reply = (new AddTaskCommandException("wrongDuplicateFormat")).getErrorMessage();
+                reply = (new AddDuplicateTaskCommandException("invalidInputError")).getErrorMessage()
+                        + "\n\n" + CONFIRM_MSG;
             }
             break;
 

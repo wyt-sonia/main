@@ -5,11 +5,9 @@
 
 == PROJECT: Study Buddy
 
----
-
 == Overview
 
-StudyBuddy is a desktop application which is designed for students who *wish to manage their module related tasks*.
+StudyBuddy is a desktop application designed for students who *wish to manage their module related tasks* in a convenient and user-friendly interface.
 It is *optimized for those who prefer to work with a Command Line Interface* (CLI) but still contains some aspects of Graphical User Interface (GUI) which was written using JavaFX.
 The codebase is in Java and contains about 13kLoc.
 
@@ -46,6 +44,7 @@ The codebase is in Java and contains about 13kLoc.
 . Allows user to add duplicate tasks in the list.
 . It however automatically appends brackets with a number to the task name of duplicate task.
 . The number corresponds to the number of times task has been duplicated.
+. Ensures that edit and unarchive command do not cause duplication of tasks either.
 ** Justification:
 . This feature is helpful to the user because the add task command involves adding several fields.
 . We can only detect duplicates at the end of task addition command, hence if the user makes a mistake in one field, they will have to re-enter everything if duplicates are not allowed.
@@ -72,9 +71,9 @@ The codebase is in Java and contains about 13kLoc.
 . The implementation was tricky because as the number of choices user was given increased, the checks for exceptions etc became more complex.
 . It involved working in the UI, logic and model components of the code base.
 
-* *Minor enhancement*: added *View Duplicate tasks command*
+* *Minor enhancement*: added *View Renamed tasks command*
 ** What it does:
-. Allows user to view all duplicate tasks in their list
+. Allows user to view all renamed tasks in their list
 ** Justification:
 . This feature is helpful to the user because they might want to see all the tasks that have auto-edited names in one place, so they can go back and edit.
 
@@ -97,27 +96,47 @@ This enhancement was a crucial command.
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-. Introduction +
+. Introduction
+
 include::../UserGuide.adoc[tag=introduction]
-. Useful tips +
+. Useful tips
+
 include::../UserGuide.adoc[tag=usefulTips]
-. Commonly Used Symbols +due
+. Commonly Used Symbols
+
 include::../UserGuide.adoc[tag=symbols]
 . Features:
-.. Delete +
+
+.. Delete
+
 include::../UserGuide.adoc[tag=delete]
-.. Add duplicates +
+.. Add duplicates
+
 include::../UserGuide.adoc[tag=addDuplicates]
-.. View duplicates +
-include::../UserGuide.adoc[tag=viewDuplicates]
-.. Filter +
+.. View renamed
+
+include::../UserGuide.adoc[tag=viewRenamed]
+.. Filter
+
 include::../UserGuide.adoc[tag=filter]
-.. Refresh +
+.. Refresh
+
 include::../UserGuide.adoc[tag=refresh]
-.. Clear +
+.. Due Soon
+
+include::../UserGuide.adoc[tag=dueSoon]
+.. Saving Data
+
+include::../UserGuide.adoc[tag=savingData]
+.. Clear
+
 include::../UserGuide.adoc[tag=clear]
-.. Exit +
+.. Exit
+
 include::../UserGuide.adoc[tag=exit]
+.. Summary
+
+include::../UserGuide.adoc[tag=summary]
 
 === Developer Guide
 
@@ -126,18 +145,25 @@ include::../UserGuide.adoc[tag=exit]
 |===
 
 . Sections:
-.. Introduction +
+.. Introduction
+
 include::../DeveloperGuide.adoc[tag=introduction]
-.. Model Component +
+.. Model Component
+
 include::../DeveloperGuide.adoc[tag=modelComponent]
-.. Due Soon Tasks Feature +
+.. Due Soon Tasks Feature
+
 include::../DeveloperGuide.adoc[tag=dueSoon]
-.. Use cases pertaining to my features +
+.. Use cases pertaining to my features
+
 include::../DeveloperGuide.adoc[tag=useCasesSouwmyaa]
-.. User stories +
+.. User stories
+
 include::../DeveloperGuide.adoc[tag=userStories]
-.. Instructions for Manual Testing- Saving Data +
+.. Instructions for Manual Testing- Saving Data
+
 include::../DeveloperGuide.adoc[tag=savingData]
+
 . Diagrams:
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/ModelClassDiagram.puml[Model class diagram]
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DueSoonActivityDiagram.puml[Due soon activity diagram]
@@ -148,8 +174,8 @@ include::../DeveloperGuide.adoc[tag=savingData]
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DeleteDueSoonSequence.puml[Delete due soon task sequence diagram]
 
 === Team-based Tasks
-. Refactored all occurrences of Study Buddy to Study Buddy. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/135[Refactor]
-. Added the introduction, commonly used symbols and useful tips sections to user guide. Links to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/245[Useful tips and symbols] and https://github.com/AY1920S2-CS2103T-W16-3/main/pull/176[Introduction]
+. Refactored all occurrences of Address Book to Study Buddy. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/135[Refactor]
+. Added the introduction, commonly used symbols, summary and useful tips sections to user guide. Links to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/245[Useful tips and symbols] and https://github.com/AY1920S2-CS2103T-W16-3/main/pull/176[Introduction]
 . Added the introduction to developer guide. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/185[Introduction]
 . Added the Study Buddy icon. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/68[Logo Update]
 . Added all https://github.com/AY1920S2-CS2103T-W16-3/main/labels[labels] and https://github.com/AY1920S2-CS2103T-W16-3/main/milestones?state=closed[milestones] to the issue tracker.
@@ -160,13 +186,10 @@ include::../DeveloperGuide.adoc[tag=savingData]
 . Contributed to the https://github.com/nus-cs2103-AY1920S2/forum/issues/75[forum].
 
 === Review/Mentoring
-. If a fellow team member's PR does not pass the tests required, I left a helpful comment in order to reduce their work load.
+. If a fellow team member's PR did not pass the tests required, I left helpful comments in order to reduce their work load.
 eg: https://github.com/AY1920S2-CS2103T-W16-3/main/pull/59
-. Regularly approved and merged team member's PR's.
-. Suggested ways to improve their features.
-eg: done command could provide an option to user to delete/archive if necessary
-. Reviewed another team's DG and provided useful feedback.
+. Reviewed another team's DG and provided useful feedback. https://github.com/AY1920S2-CS2103T-W17-3/main/issues/208[Review 1] and https://github.com/AY1920S2-CS2103T-W17-3/main/issues/204[Review 2]
 
-* *Code contributed*: https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#=undefined&search=souwmyaa
+=== Code contributed: https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#=undefined&search=souwmyaa
 
 

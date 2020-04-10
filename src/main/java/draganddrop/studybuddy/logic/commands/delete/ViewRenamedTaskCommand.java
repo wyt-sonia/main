@@ -13,13 +13,13 @@ import draganddrop.studybuddy.model.task.Task;
 /**
  * Deletes all repeated tasks from the list.
  */
-public class ViewDuplicateTaskCommand extends Command {
+public class ViewRenamedTaskCommand extends Command {
 
-    public static final String COMMAND_WORD = "delete duplicates";
+    public static final String COMMAND_WORD = "view renamed";
 
     private final Predicate<Task> predicate;
 
-    public ViewDuplicateTaskCommand(Predicate<Task> predicate) {
+    public ViewRenamedTaskCommand(Predicate<Task> predicate) {
         this.predicate = predicate;
     }
 
@@ -27,13 +27,13 @@ public class ViewDuplicateTaskCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredTaskList(predicate);
-        return new CommandResult(String.format(Messages.MESSAGE_VIEW_DUPLICATE_TASK_SUCCESS));
+        return new CommandResult(String.format(Messages.MESSAGE_VIEW_RENAMED_TASK_SUCCESS));
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof ViewDuplicateTaskCommand);
+            || (other instanceof ViewRenamedTaskCommand);
     }
 
 }
