@@ -131,7 +131,7 @@ public class ScoreStats {
         if (currentScore < noviceScore) {
             return (noviceScore - currentScore) + " PP more to become a Novice";
         } else if (currentScore < apprenticeScore) {
-            return (apprenticeScore - currentScore) + " PP more to become an Apprentice";
+            return (apprenticeScore - currentScore) + " PP more to get to Apprentice";
         } else if (currentScore < dukeScore) {
             return (dukeScore - currentScore) + " PP more to become a Duke";
         } else if (currentScore < expertScore) {

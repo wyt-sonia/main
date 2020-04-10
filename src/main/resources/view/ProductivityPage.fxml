@@ -34,16 +34,23 @@
                                        <children>
                                           <AnchorPane prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <Label fx:id="dailyStatsLabel" layoutX="144.0" layoutY="157.0" text="0 / 5 tasks ">
-                                                   <font>
-                                                      <Font name="System Bold" size="14.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label fx:id="preDailyStatsLabel" layoutX="73.0" layoutY="157.0" text="Daily goal: ">
-                                                   <font>
-                                                      <Font size="14.0" />
-                                                   </font>
-                                                </Label>
+                                                <HBox layoutX="73.0" layoutY="157.0">
+                                                   <children>
+                                                      <Label fx:id="preDailyStatsLabel" text="Daily goal: ">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="dailyStatsLabel" text="0 / 5 tasks ">
+                                                         <font>
+                                                            <Font name="System Bold" size="14.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="4.0" />
+                                                         </padding>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
                                                 <ProgressIndicator fx:id="progressIndicator" layoutX="78.4" layoutY="-0.4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="130.0" progress="0.0" styleClass="u-gold-progress" />
                                                 <Circle fx:id="progressCentre" fill="WHITE" layoutX="144.0" layoutY="64.0" radius="60.0" stroke="#c9c3b6" strokeType="INSIDE" />
                                                  <ImageView fx:id="goldStarImageView" fitHeight="50.0" fitWidth="50.0" layoutX="120.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" visible="false">
@@ -161,31 +168,49 @@
                                  <children>
                                     <AnchorPane>
                                        <children>
-                                          <Label fx:id="prePointsLabel" layoutY="40.0" text="You have">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="rankLabel" layoutX="63.0" layoutY="19.0" text="Beginner">
-                                             <font>
-                                                <Font name="System Bold" size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="preRankLabel" layoutY="19.0" text="You are a">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="ppLabel" layoutX="61.0" layoutY="40.0" text="0 PP">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="nextRankLabel" layoutY="61.0" text="20 PP more to become a Novice">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
+                                          <VBox layoutY="19.0">
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Label fx:id="preRankLabel" text="You are a">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="rankLabel" text="Beginner">
+                                                         <font>
+                                                            <Font name="System Bold" size="14.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="4.0" />
+                                                         </padding>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Label fx:id="prePointsLabel" text="You have">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="ppLabel" text="0 PP">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                         <padding>
+                                                            <Insets left="4.0" />
+                                                         </padding>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <Label fx:id="nextRankLabel" text="20 PP more to become a Novice">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
                                           <Circle fx:id="progressCentre1" fill="#ffffff00" layoutX="266.5" layoutY="42.0" radius="43.0" stroke="#9c3d01" strokeType="INSIDE" strokeWidth="2.0" />
                                           <ProgressIndicator fx:id="rankProgressIndicator" layoutX="216.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" progress="0.0" styleClass="u-red-progress" />
                                            <ImageView fx:id="rankZeroImageView" fitHeight="74.0" fitWidth="74.0" layoutX="229.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" visible="false">
