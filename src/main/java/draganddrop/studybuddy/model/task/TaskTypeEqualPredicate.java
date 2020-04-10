@@ -3,7 +3,7 @@ package draganddrop.studybuddy.model.task;
 import java.util.function.Predicate;
 
 /**
- * Tests that a {@code Task}'s {@code Name} matches any of the keywords given.
+ * Tests that a {@code Task}'s {@code Type} matches the type provided.
  */
 public class TaskTypeEqualPredicate implements Predicate<Task> {
 
