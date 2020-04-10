@@ -1,0 +1,29 @@
+@startuml
+
+skinparam objectBackgroundColor #tan
+skinparam objectBorderColor #black
+skinparam arrowColor #black
+
+object "calendarBox:CalendarBox" as cb {
+calYear:2020
+calMonth:April
+}
+
+object "monthBox:GridPane" as mb
+object "next:Button" as next
+object "previous:Button" as prev
+object "p:Pane" as pane
+object "date:Label" as lbl {
+date:1
+}
+
+
+cb -- mb : contains >
+next -- mb : changes >
+prev -- mb : changes >
+cb -- next : contains >
+cb -- prev : contains >
+mb *-- pane : contains >
+mb *-- lbl : contains >
+
+@enduml
