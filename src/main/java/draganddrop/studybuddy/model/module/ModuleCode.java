@@ -2,7 +2,7 @@ package draganddrop.studybuddy.model.module;
 
 import java.util.stream.IntStream;
 
-import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
+import draganddrop.studybuddy.model.module.exceptions.ModuleException;
 /**
  * ModuleCode. Ensures that the module code keyed in matches the proper format. XX0000.
  */
@@ -11,9 +11,9 @@ public class ModuleCode {
     private int number;
     private String postfix;
 
-    public ModuleCode(String fullModuleCode) throws ModuleCodeException {
+    public ModuleCode(String fullModuleCode) throws ModuleException {
         if (fullModuleCode.length() > 8) {
-            throw new ModuleCodeException("The module code should be at most 8 digits, please check.");
+            throw new ModuleException("The module code should be at most 8 digits, please check.");
         }
         this.prefix = parsePrefix(fullModuleCode);
         this.number = parseNumber(fullModuleCode);
@@ -32,7 +32,7 @@ public class ModuleCode {
             parsePrefix(userInput);
             parseNumber(userInput);
             parsePostfix(userInput);
-        } catch (ModuleCodeException e) {
+        } catch (ModuleException e) {
             result = false;
         }
         return result;
@@ -43,15 +43,15 @@ public class ModuleCode {
      *
      * @param input
      * @return
-     * @throws ModuleCodeException
+     * @throws ModuleException
      */
-    private static String parsePrefix(String input) throws ModuleCodeException {
+    private static String parsePrefix(String input) throws ModuleException {
         StringBuilder builder = new StringBuilder();
         IntStream.range(0, input.toCharArray().length)
                 .mapToObj(i -> input.toCharArray()[i]).takeWhile(x -> Character.isAlphabetic(x))
                 .forEach(x -> builder.append(x));
         if (builder.toString().length() < 2 || builder.toString().length() > 3) {
-            throw new ModuleCodeException("Please enter a valid module code.");
+            throw new ModuleException("Please enter a valid module code.");
         } else {
             return builder.toString().toUpperCase();
         }
@@ -62,9 +62,9 @@ public class ModuleCode {
      *
      * @param input
      * @return
-     * @throws ModuleCodeException
+     * @throws ModuleException
      */
-    private static int parseNumber(String input) throws ModuleCodeException {
+    private static int parseNumber(String input) throws ModuleException {
         StringBuilder builder = new StringBuilder();
         IntStream.range(0, input.toCharArray().length)
                 .mapToObj(i -> input.toCharArray()[i]).filter(x -> Character.isDigit(x))
@@ -72,7 +72,7 @@ public class ModuleCode {
         if (builder.toString().length() == 4) {
             return Integer.parseInt(builder.toString());
         } else {
-            throw new ModuleCodeException("Please enter a valid module code.");
+            throw new ModuleException("Please enter a valid module code.");
         }
     }
 
@@ -82,7 +82,7 @@ public class ModuleCode {
      * @param input
      * @return
      */
-    private static String parsePostfix(String input) throws ModuleCodeException {
+    private static String parsePostfix(String input) throws ModuleException {
         StringBuilder builder = new StringBuilder();
         IntStream.range(0, input.toCharArray().length)
                 .mapToObj(i -> input.toCharArray()[i]).dropWhile(x -> Character.isAlphabetic(x))
@@ -90,7 +90,7 @@ public class ModuleCode {
         if (builder.toString().length() < 2) {
             return builder.toString();
         } else {
-            throw new ModuleCodeException("Please enter a valid module code.");
+            throw new ModuleException("Please enter a valid module code.");
         }
 
 

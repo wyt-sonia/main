@@ -12,7 +12,7 @@ import draganddrop.studybuddy.commons.core.GuiSettings;
 import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.commons.util.CollectionUtil;
 import draganddrop.studybuddy.model.module.Module;
-import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
+import draganddrop.studybuddy.model.module.exceptions.ModuleException;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskType;
 
@@ -148,7 +148,7 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void setTaskMod(Task target, Module mod) throws ModuleCodeException {
+    public void setTaskMod(Task target, Module mod) throws ModuleException {
         studyBuddy.setModuleInTask(target, mod);
     }
 
@@ -244,17 +244,17 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void changeModName(Module oldMod, Module newMod) throws ModuleCodeException {
+    public void changeModName(Module oldMod, Module newMod) throws ModuleException {
         studyBuddy.changeModuleName(oldMod, newMod);
     }
 
     @Override
-    public void changeModCode(Module oldMod, Module newMod) throws ModuleCodeException {
+    public void changeModCode(Module oldMod, Module newMod) throws ModuleException {
         studyBuddy.changeModuleCode(oldMod, newMod);
     }
 
     @Override
-    public void deleteMod(Module mod) throws ModuleCodeException {
+    public void deleteMod(Module mod) throws ModuleException {
         studyBuddy.deleteMod(mod);
     }
 

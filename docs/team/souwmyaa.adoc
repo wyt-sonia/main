@@ -53,7 +53,7 @@ The codebase is in Java and contains about 13kLoc.
 ** Highlights:
 . This feature was quite difficult to implement because there are several corner cases to take care of.
 . It required working on other commands, such as edit command (to stop user from editing a task to be a duplicate) and unarchive command (because user can unarchive a duplicate task).
-. Since address book already had a lot of tests and checks to prevent duplicate tasks, it required a very large amount of refactoring code.
+. Since study buddy already had a lot of tests and checks to prevent duplicate tasks, it required a very large amount of refactoring code.
 
 * *Major enhancement*: added *the Delete Task command*
 ** What it does:
@@ -148,7 +148,7 @@ include::../DeveloperGuide.adoc[tag=savingData]
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DeleteDueSoonSequence.puml[Delete due soon task sequence diagram]
 
 === Team-based Tasks
-. Refactored all occurrences of Address Book to Study Buddy. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/135[Refactor]
+. Refactored all occurrences of Study Buddy to Study Buddy. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/135[Refactor]
 . Added the introduction, commonly used symbols and useful tips sections to user guide. Links to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/245[Useful tips and symbols] and https://github.com/AY1920S2-CS2103T-W16-3/main/pull/176[Introduction]
 . Added the introduction to developer guide. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/185[Introduction]
 . Added the Study Buddy icon. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/68[Logo Update]

@@ -9,7 +9,7 @@ import draganddrop.studybuddy.logic.commands.edit.EditModCommand;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.module.Module;
-import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
+import draganddrop.studybuddy.model.module.exceptions.ModuleException;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 
@@ -63,7 +63,7 @@ public class EditModInteractivePrompt extends InteractivePrompt {
                         + CHOICES;
                     currentTerm = InteractivePromptTerms.PICK;
                 }
-            } catch (ModuleCodeException ex) {
+            } catch (ModuleException ex) {
                 reply = "Invalid module code. Please key in module in the correct format.";
             }
             break;
@@ -118,7 +118,7 @@ public class EditModInteractivePrompt extends InteractivePrompt {
                     reply = "Your module " + oldModule.getModuleCode().toString() + " is now coded "
                         + newModule.getModuleCode().toString();
                     endInteract(END_OF_COMMAND_MSG + reply);
-                } catch (ModuleCodeException | CommandException | ParseException ex) {
+                } catch (ModuleException | CommandException | ParseException ex) {
                     reply = ex.getMessage();
                 }
             }

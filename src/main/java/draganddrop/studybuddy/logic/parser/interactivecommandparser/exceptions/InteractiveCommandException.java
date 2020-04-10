@@ -55,6 +55,14 @@ public class InteractiveCommandException extends RuntimeException {
             errorMessage = "Could not find the module based on the module code entered, please check and re-enter.";
             break;
 
+        case "duplicateModuleNameError":
+            errorMessage = "Detected Duplicate Module name. Please key in another module name.";
+            break;
+
+        case "duplicateModuleCodeError":
+            errorMessage = "Detected Duplicate Module code. Please key in another module code.";
+            break;
+
         case "invalidIndexRangeError":
             errorMessage = "The index entered is out of range, please check again.";
             break;

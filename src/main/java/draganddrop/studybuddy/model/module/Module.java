@@ -2,7 +2,7 @@ package draganddrop.studybuddy.model.module;
 
 import static java.util.Objects.requireNonNull;
 
-import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
+import draganddrop.studybuddy.model.module.exceptions.ModuleException;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.exceptions.DuplicateTaskException;
 import draganddrop.studybuddy.model.task.exceptions.TaskNotFoundException;
@@ -23,13 +23,13 @@ public class Module {
      *
      * @param moduleName
      * @param fullModuleCode
-     * @throws ModuleCodeException
+     * @throws ModuleException
      */
     public Module(String moduleName, String fullModuleCode) {
         this.moduleName = moduleName;
         try {
             this.moduleCode = new ModuleCode(fullModuleCode);
-        } catch (ModuleCodeException e) {
+        } catch (ModuleException e) {
             System.out.println("ModuleCode is invalid!");
         }
     }
@@ -38,9 +38,9 @@ public class Module {
      * Same as previous constructor, but a module without a name.
      *
      * @param fullModuleCode
-     * @throws ModuleCodeException
+     * @throws ModuleException
      */
-    public Module(String fullModuleCode) throws ModuleCodeException {
+    public Module(String fullModuleCode) throws ModuleException {
         this.moduleName = "";
         this.moduleCode = new ModuleCode(fullModuleCode);
     }
@@ -49,7 +49,7 @@ public class Module {
         this.moduleName = "";
         try {
             this.moduleCode = new ModuleCode("OO0000O");
-        } catch (ModuleCodeException e) {
+        } catch (ModuleException e) {
             System.out.println("from Module(). ModuleCode is invalid!");
         }
     }
@@ -136,7 +136,7 @@ public class Module {
         return moduleCode;
     }
 
-    public void setModuleCode(String moduleCode) throws ModuleCodeException {
+    public void setModuleCode(String moduleCode) throws ModuleException {
         this.moduleCode = new ModuleCode(moduleCode);
     }
 

@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
+import draganddrop.studybuddy.model.module.exceptions.ModuleException;
 import draganddrop.studybuddy.testutil.Assert;
 
 public class ModuleCodeTest {
@@ -21,53 +21,53 @@ public class ModuleCodeTest {
     private String longPostfix = "CS0000XX";
 
     @Test
-    public void testSampleWith3LetterPrefix() throws ModuleCodeException {
+    public void testSampleWith3LetterPrefix() throws ModuleException {
         new ModuleCode(sample2);
     }
 
     @Test
-    public void postFixOptional() throws ModuleCodeException {
+    public void postFixOptional() throws ModuleException {
         new ModuleCode(postfix);
         new ModuleCode(noPostfix);
     }
 
     @Test
-    public void testEqualsFunctionOnString() throws ModuleCodeException {
+    public void testEqualsFunctionOnString() throws ModuleException {
         assertEquals(sample1, new ModuleCode(sample1).toString());
     }
 
     @Test
     public void moduleCodePostfixTooLong_throwModuleCodeException() {
-        Assert.assertThrows(ModuleCodeException.class, () -> new ModuleCode(longPostfix));
+        Assert.assertThrows(ModuleException.class, () -> new ModuleCode(longPostfix));
     }
 
     @Test
-    public void isSameModuleCode() throws ModuleCodeException {
+    public void isSameModuleCode() throws ModuleException {
         assertEquals(new ModuleCode(sample1), new ModuleCode(sample1Clone));
     }
 
     @Test
-    public void isSameModuleCode_smallCase() throws ModuleCodeException {
+    public void isSameModuleCode_smallCase() throws ModuleException {
         assertEquals(new ModuleCode(sample1), new ModuleCode(sample1SmallCase));
     }
 
     @Test
     public void moduleCodeNoPrefix_throwModuleCodeException() {
-        Assert.assertThrows(ModuleCodeException.class, ()-> new ModuleCode(noPrefix));
+        Assert.assertThrows(ModuleException.class, ()-> new ModuleCode(noPrefix));
     }
 
     @Test
     public void moduleCodeLongPrefix_throwModuleCodeException() {
-        Assert.assertThrows(ModuleCodeException.class, ()-> new ModuleCode(longPrefix));
+        Assert.assertThrows(ModuleException.class, ()-> new ModuleCode(longPrefix));
     }
 
     @Test
     public void moduleCodeLongCode_throwModuleCodeException() {
-        Assert.assertThrows(ModuleCodeException.class, ()-> new ModuleCode(longNumbers));
+        Assert.assertThrows(ModuleException.class, ()-> new ModuleCode(longNumbers));
     }
 
     @Test
     public void moduleCodeNoNum_throwModuleCodeException() {
-        Assert.assertThrows(ModuleCodeException.class, ()-> new ModuleCode(noNumbers));
+        Assert.assertThrows(ModuleException.class, ()-> new ModuleCode(noNumbers));
     }
 }

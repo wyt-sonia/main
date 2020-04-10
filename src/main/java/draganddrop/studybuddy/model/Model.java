@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 
 import draganddrop.studybuddy.commons.core.GuiSettings;
 import draganddrop.studybuddy.model.module.Module;
-import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
+import draganddrop.studybuddy.model.module.exceptions.ModuleException;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskType;
 
@@ -128,7 +128,7 @@ public interface Model {
      */
     void setTaskDateTime(Task target, LocalDateTime[] newDateTimes);
 
-    void setTaskMod(Task target, Module mod) throws ModuleCodeException;
+    void setTaskMod(Task target, Module mod) throws ModuleException;
 
     /**
      * Deletes the given task.
@@ -170,11 +170,11 @@ public interface Model {
 
     void addMod(Module mod);
 
-    void changeModName(Module oldMod, Module newMod) throws ModuleCodeException;
+    void changeModName(Module oldMod, Module newMod) throws ModuleException;
 
-    void changeModCode(Module oldMod, Module newMod) throws ModuleCodeException;
+    void changeModCode(Module oldMod, Module newMod) throws ModuleException;
 
-    void deleteMod(Module mod) throws ModuleCodeException;
+    void deleteMod(Module mod) throws ModuleException;
 
     /**
      * Returns an unmodifiable view of the filtered task list
