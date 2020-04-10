@@ -4,7 +4,6 @@ import static draganddrop.studybuddy.testutil.TestModules.getSampleModule;
 import static draganddrop.studybuddy.testutil.TypicalTasks.getTypicalTaskList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.file.Path;
@@ -28,7 +27,7 @@ class CreateModuleInteractivePromptTest {
 
     @TempDir
     public Path testFolder;
-    CreateModuleInteractivePrompt prompt = new CreateModuleInteractivePrompt();
+    private CreateModuleInteractivePrompt prompt = new CreateModuleInteractivePrompt();
     private Model modelStub = new ModelManager(getTypicalTaskList(), new UserPrefs());
     private LocalDateTime endDateTime = LocalDateTime.now().plusDays(20);
     private LocalDateTime startDateTime = LocalDateTime.now().plusDays(10);
@@ -94,9 +93,12 @@ class CreateModuleInteractivePromptTest {
     public void interactInvalidModuleCodeReturnErrorMessage() {
         prompt.interact("");
         prompt.interact("a");
-        assertTrue(prompt.interact("Csdsdsa").contains(new ModuleException("wrongModuleCodeFormatError").getErrorMessage()));
-        assertTrue(prompt.interact("C111").contains(new ModuleException("wrongModuleCodeFormatError").getErrorMessage()));
-        assertTrue(prompt.interact("C1110").contains(new ModuleException("wrongModuleCodeFormatError").getErrorMessage()));
+        assertTrue(prompt.interact("Csdsdsa")
+            .contains(new ModuleException("wrongModuleCodeFormatError").getErrorMessage()));
+        assertTrue(prompt.interact("C111")
+            .contains(new ModuleException("wrongModuleCodeFormatError").getErrorMessage()));
+        assertTrue(prompt.interact("C1110")
+            .contains(new ModuleException("wrongModuleCodeFormatError").getErrorMessage()));
     }
 
     @Test
