@@ -5,9 +5,11 @@ package draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions;
  */
 public class DeleteTaskCommandException extends InteractiveCommandException {
 
-    /*
-     *Pending
-     * */
+    /**
+     * Creates a DeleteTaskCommandException.
+     *
+     * @param errorType
+     */
     public DeleteTaskCommandException(String errorType) {
         super(errorType);
     }

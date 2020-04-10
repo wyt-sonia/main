@@ -60,7 +60,7 @@ you may refer to the guide below.
 image::Ui.png[width="790", title="Study Buddy Dashboard"]
 +
 . Jump to <<Dashboard>> to get more information about dashboard.
-. To view a list of available command, you can key in *`help`* and click kbd:[Enter]. A more detailed description of our features is available in
+. To view a list of available command, you can key in *`help`* and click kbd:[enter]. A more detailed description of our features is available in
 <<Features>> of this document.
 
 //updated by Souwmyaa
@@ -85,15 +85,14 @@ This symbol indicates something to which we want to draw your attention.
 ==== Useful tips
 
 * You may need to adjust the size of the Study Buddy window when you launch it.
-* Make sure not to use any extra white spaces before or after commands. Study Buddy might consider it as an invalid command.
 * The scroll bar on the right of the response box can be used to view the entire reply.
 * At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
 * Study Buddy will analyze your input and reply accordingly.
 It utilizes an "interactive command prompt". (explained in each command's description under <<Features>>)
-* In this document, *[enter]* indicates *hitting the enter key on your keyboard*.
+* In this document, kbd:[enter] indicates *the enter key on your keyboard*.
 * In this document, *|* indicates an *alternative option* (i.e. A | B implies A or B).
 * A task's *index number*, refers to the number displayed on the left of a task in *All Tasks panel*. Note that the
-index of the same task could be different after `filter`, `find` and `sort` commands.
+index of the same task could be different after some commands, such as `filter`, `find` and `sort`.
 //end::usefulTips[]
 
 [[UI]]
@@ -163,7 +162,7 @@ Task Type Badges::
 The *Interactive Prompt Box* lays at the bottom of the user interface.
 
 To interact with Study Buddy, you can enter the desired command in the box with the words `Please enter your command here...`
-and press kbd:[Enter] to execute.
+and press kbd:[enter] to execute.
 
 The reply from Study Buddy will be displayed in the box next to the cartoon boy.
 
@@ -282,45 +281,45 @@ To `add`:
 image::basic/add/add_module.png[width="600", title="Reponse to 'add', asks for module"]
 +
 . You can link this task with a module by entering its `MODULE CODE` | `INDEX NUMBER OF MODULE` here
-, or you can press kbd:[enter] to skip. Here we use `1` (CS2101) as an example.
+, or you can press kbd:[enter] to skip. Here we use "1" (CS2101) as an example.
 . Study Buddy should respond with the module selected and the request of task name as:
 +
 image::basic/add/add_task_name.png[width="600", title="Asks for task's name"]
 +
-. Here we use `new task` as an example.
+. Here we use "new task" as an example.
 . Study Buddy should respond with the task name defined and the request of task type as:
 +
 image::basic/add/add_task_type.png[width="600", title="Asks for task's type"]
 +
-. Here we use `1` (Assignment) as an example.
+. Here we use "1" (Assignment) as an example.
 . Study Buddy should respond with the task type defined and the request of task's date time information as:
 +
 image::basic/add/add_date_time.png[width="600", title="Asks for task's date time"]
 +
-. Here we use `14:00 04/05/2020` as an example.
+. Here we use "14:00 04/05/2020" as an example.
 . Study Buddy should respond with the date time defined and the request of task's description as:
 +
 image::basic/add/add_desc.png[width="600", title="Asks for task's description"]
 +
-. Here we use `new task description` as an example.
+. Here we use "new task description" as an example.
 . Study Buddy should respond with the description defined and the request of task's weight as:
 +
 image::basic/add/add_weight.png[width="600", title="Asks for task's weight"]
 +
-. Here we use `10` as an example.
+. Here we use "10" as an example.
 . Study Buddy should respond with the weight defined and the request of the estimated number of hours needed as:
 +
 image::basic/add/add_time_cost.png[width="600", title="Asks for estimated number of hours needed"]
 +
-. Here we use `10` as an example.
+. Here we use "10" as an example.
 . Study Buddy should respond with the task details collected and the request of your confirmation to perform the command as:
 +
 image::basic/add/add_task_info_1.png[width="600", title="Asks for user conformation to add a new task"]
 +
 image::basic/add/add_task_info_2.png[width="600", title="Task details collected"]
 +
-. Now, by pressing kbd:[enter] the new task will be added into your Study Buddy.
-. Study Buddy should respond as:
+. Now, by pressing kbd:[enter] the new task will be added into your Study Buddy. Meanwhile, the *All Tasks panel* will
+update accordingly.
 +
 image::basic/add/add_result.png[width="600", title="New task added"]
 
@@ -396,17 +395,17 @@ To `edit`:
 +
 image::basic/edit/edit_index.png[width="600", title="Reponse to 'edit'"]
 +
-. Type the index of the task you want to edit. here use `1` (Homework 1) as an example.
+. Type the index of the task you want to edit. here use "1" (Homework 1) as an example.
 . The Study Buddy should respond with:
 +
 image::basic/edit/edit_response_index.png[width="600", title="List of editable fields"]
 +
-. Type the index of the field you want to edit, here use `2` (task name) as an example.
+. Type the index of the field you want to edit, here use "2" (task name) as an example.
 . The Study Buddy should respond with:
 +
 image::basic/edit/edit_response_task_name.png[width="600", title="Asks for new task name"]
 +
-. Enter new task name, here use `Updated Task` as an example.
+. Enter new task name, here use "Updated Task" as an example.
 . The Study Buddy should respond as below with updated field.
 +
 image::basic/edit/edit_result.png[width="600", title="Task edited"]
@@ -545,7 +544,7 @@ To `archive`:
 . Study Buddy should respond with:
 +
 image::basic/archive/archive_index.png[width="600", title="Response to 'archive'"]
-. Type the index of the task you want to archive, here use `1` (Leadership Presentation) as an example.
+. Type the index of the task you want to archive, here use "1" (Leadership Presentation) as an example.
 . Study Buddy will ask for your confirmation before archive the target task.
 +
 image::basic/archive/archive_confirm.png[width="600", title="Asks for confirmation"]
@@ -791,27 +790,24 @@ Time left is never displayed in days and minutes. Hence if the current time is 9
 Due soon list will never display Finished tasks. If you unarchive a completed task, it will not appear in the Due Soon list.
 
 === Modules
-The Modules tab is an easy way for students to organise their task, homework and deadlines into various modules.
+The modules page organises your tasks into various modules.
+By default (i.e, when there is no module created), the modules page shows the following:
 
-image::module/module_1.png[width = "600", title = "`Modules` in the menu bar"]
+. *Overview*. This tab shows all the modules you created.
 
-By default, the Modules tab shows the following:
-
-.. *Overview*. This tab shows all the modules you will be taking for this semester.
-
-.. *No Module Allocated*. This tab shows the list of tasks that has not yet been allocated to any module. By default,
+. *No Module Allocated*. This tab shows the list of tasks that has not yet been allocated to any module. By default,
 all tasks will show up here if you have not allocated any tasks to the modules.
++
+image::module/module_show.png[width = "600" title = "modules page"]
 
 ==== Navigation
 
-. To navigate to the modules page, click on `Modules` in the menu bar.
+Navigate to modules page::
+. To navigate to the modules page, click on `Modules` -> `Show Modules` in the menu bar or press kbd:[F1] in your keyboard.
 +
-image::module/module_nav.png[width = "600" title="Modules dropdown menu"]
+image::module/modules_show_module.png[width = "600" title="Modules dropdown menu"]
 
-. Then click on `Show Modules`. The module page should show up.
-+
-image::module/module_show.png[width = "600" title = "Module page"]
-
+Navigation in modules page::
 . The clicking on the leftmost tab shows the `*Overview*` of all your modules. it displays the module's name and their code.
 +
 image::module/module_tab_1.png[width = "600" title = "Module tab `Overview`"]
@@ -825,46 +821,57 @@ image::module/module_tab_3.png[width = "600" title = "Module tab `No Module Allo
 image::module/module_tab_2.png[width = "600" title = "Module tab available modules"]
 
 ==== Functions
-==== Create Modules
+===== Create Modules
+[TIP]
+Study Buddy provides tow approaches for user to execute `create module` and `edit module` actions.
 
-To create a module, click on `Modules` in the menu bar.
+To start the interaction of creating a module, click on `Modules`-> `Create` in the menu bar. +
 Alternatively, you can key in `create mods` into the input line.
 
-image::module/module_nav_create.png[width = "600", title = "Click on `Create`"]
+image::module/module_nav_create.png[width = "600", title = "Entry of module creation"]
 
-Click on `Create`. A prompt will show up at the bottom of the screen.
+====
+*Constraints*
 
-image::module/module_create_name.png[width = "600", title = "Asks for module name"]
+. *Module Name* +
+The name of this module cannot be the same as any existing modules.
 
-Key in the name of your module.The name of this module cannot be the same as your existing modules.
-Here we use "New Module" as an example. +
-Then Study Buddy will ask for the module code.
-
-image::module/module_create_code.png[width = "600", title = "Asks for module code"]
-
-Now key in your Module code. Your Module code should have a 2-3 letter prefix, a 4-digit number, followed
+. *Module Code Format* +
+.. The module code also need to be unique. +
+.. The module code should have a 2-3 letter prefix, a 4-digit number, followed
 by a single postfix.
 
+* *Correct Module Code Examples* +
+LSM1303 +
+CS2040C +
+IS1103 +
+MA1521
+
+* *Incorrect Module Code Examples* +
+CSSS1234    - Prefix is too long +
+C0001       - Prefix is too short +
+ZZ12345     - number is more than 4 digits +
+A1111XX     - Postfix is too long
 ====
-Correct Module Codes::
-* LSM1303
-* CS2040C
-* IS1103
-* MA1521
 
-Incorrect Module Codes::
-* CSSS1234    - Prefix is too long
-* C0001       - Prefix is too short
-* ZZ12345     - number is more than 4 digits
-* A1111XX     - Postfix is too long
-====
 
-Here we use "CSS1234" as an example.
+To `Create Module`:
 
+. Click on `Module` -> `Create` or key in `create mods`. A prompt will show up at the bottom of the screen.
++
+image::module/module_create_name.png[width = "600", title = "Asks for module name"]
+
+. Key in the name of your module.Here we use "New Module" as an example.
+Then Study Buddy will ask for the module code.
++
+image::module/module_create_code.png[width = "600", title = "Asks for module code"]
++
+. Here we use "CSS1234" as an example.
++
 image::module/module_create_confirm.png[width = "600" title = "Asks for confirmation"]
 
-Press kbd:[enter] one more time to confirm.
-
+. Press kbd:[enter] to confirm, and the module page will update accordingly.
++
 image::module/module_create_result.png[width = "600", title= "New Module with code CSS1234 created."]
 
 Congratulations, you have added a module to your modules page!
@@ -872,59 +879,76 @@ Congratulations, you have added a module to your modules page!
 
 ==== Edit Modules
 
-. To create a module, click on `Modules` in the menu bar.
+To start the interaction of editing a module, click on `Modules`-> `Edit` in the menu bar. +
 Alternatively, you can key in `edit mods` into the input line.
-+
-image::module/module_12.png[width = "500"]
 
-. Click on `Edit`. A prompt will show up at the bottom of the screen.
+image::module/module_nav_edit.png[width = "600" title = "Entry of module edition"]
 
-. Key in the code of the module that you want to edit.
-+
-image::module/module_13.png[width = "790", title = "Changing module with code  BA1001""]
-+
-image::module/module_14.png[width = "790", title = "Keyed in BA1001"]
-+
-image::module/module_15.png[width = "790", title = "Key in 1, 2 or 3 depending on which option you prefer"]
+Study Buddy provides three module edition options.
 
-. Now you have 3 options. You can choose to:
+Edit options::
+* Change Module name.
+* Change Module code.
+* Delete Module.
 
-.. Change Module name.
-.. Change Module code.
-.. Delete Module.
+====
+*Constraints:*
+
+. When choosing the module to edit, you need to provide a valid and existed module code.
+. When entering the value of new module name or new module code, you need to provide a different valid value.
+. The above "valid" judgment follows the same constraints as <<Create Modules>>.
+====
+
+To `Edit Module`:
+
+. Click on `Module` -> `Edit` key in edit mods.
+A prompt will show up to ask the module code of target module.
++
+image::module/module_edit_code.png[width = "600", title = "Asks for module mode"]
+
+. Key in the code of the module that you want to edit. Here we use "CSS1234" as an example.
+Then Study Buddy will ask for the edit option.
++
+image::module/module_edit_option.png[width = "600", title = "Asks for edit option"]
 
 . Key in the index of your option.
 
-===== a) Change Module Name
-
-image::module/module_16.png[width = "790"]
-
-. Now key in your new module name.
+.. "1" -> Change Module Name
 +
-image::module/module_17.png[width = "790", title = "Module BA1001's name has changed from 'CS' to 'New Module Name'"]
-
-. Module name changed!
-
-===== b) Change Module Code
-
-image::module/module_18.png[width = "790"]
-
-. Now key in your new module code. Make sure it follows the correct format
-as written in 3.7.3.
+Key in your new module name and press kbd:[enter] to confirm the edition. Here we use "Edited Module Name" as an example. +
+The module page will update accordingly.
 +
-image::module/module_19.png[width = "790", title = "Module code BA1001 has changed to CS3230"]
+image::module/module_edit_name_result.png[width = "600", title = "Module name edition result"]
 
-. Module code changed!
-
-===== c) Delete Module
-
-image::module/module_20.png[width = "790"]
-
-. Press kbd:[enter] again to confirmed.
+.. "2" -> Change Module Code
 +
-image::module/module_21.png[width = "790", title = 'deleted BA1001']
+Key in your new module code and press kbd:[enter] to confirm the edition. Here we use "LY3000" as an example. +
+The module page will update accordingly.
++
+image::module/module_edit_code_result.png[width = "600", title = "Module code edition result"]
++
+Module code changed!
 
-. Module deleted! All existing task in this module will be moved to `No Module Allocated` tab.
+.. "3" -> Delete Module
++
+[CAUTION]
+After successfully deleting a module, the related tasks will also be affected.
++
+To delete the chosen module, you only need to press kbd:[enter] to confirmed the deletion.
+To better showcase the behaviour of deletion, here we use "CS2103T" as an example.
+
+... Before delete:
++
+image::module/module_delete_before.png[width = "600", title = 'Before delete']
+
+... After delete: +
+After successfully deleted target module, the module page will update accordingly and switch to
+`Overview` page.
++
+If you switch to `No Module Allocated` tab, you'll find the tasks affected by this deletion (i.e.
+The tasks which belong to the deleted module).
++
+image::module/module_delete_after.png[width = "600", title = 'Checking the affected tasks']
 
 === Statistics
 

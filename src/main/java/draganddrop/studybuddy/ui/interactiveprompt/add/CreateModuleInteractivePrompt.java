@@ -5,7 +5,7 @@ import java.text.ParseException;
 import draganddrop.studybuddy.logic.commands.add.CreateModCommand;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.model.module.Module;
-import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
+import draganddrop.studybuddy.model.module.exceptions.ModuleException;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType;
@@ -16,10 +16,15 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType;
  */
 public class CreateModuleInteractivePrompt extends InteractivePrompt {
     public static final String MODULE_CODE_FORMAT = "Please key in your module code to include a 2-3 letter prefix,"
-            + " a 4-digit number,"
-            + "then a postfix (Optional).\n"
-            + "E.g. BA1001\n       CS2030J     \n       LSM2040C";
-    static final String QUIT_COMMAND_MSG = "Successfully quited from create mod command.";
+        + " a 4-digit number,"
+        + "then a postfix (Optional).\n"
+        + "E.g. BA1001\n       CS2030J     \n       LSM2040C";
+    public static final String QUIT_COMMAND_MSG = "Successfully quited from create mod command.";
+    public static final String SUCCESS_COMMAND_MSG = "Module created!\n\nKey in your next command :)";
+    public static final String REQUIRED_MODULE_NAME_MSG = "Please key in the name of "
+        + "the module that you want to create";
+    public static final String REQUIRED_MODULE_CODE_MSG = "Please key in the module code of the module "
+        + "that you want to create";
 
     private Module module;
 
@@ -31,7 +36,7 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
 
     @Override
     public String interact(String userInput) {
-        if ("quit".equals(userInput)) {
+        if ("quit".equalsIgnoreCase(userInput)) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
         }
@@ -39,45 +44,52 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
         switch (currentTerm) {
 
         case INIT:
-            this.reply = "Please key in the name of the module that you want to create";
+            this.reply = REQUIRED_MODULE_NAME_MSG;
             currentTerm = InteractivePromptTerms.MODULE_NAME;
             break;
         case MODULE_NAME:
-            /*if (!logic.getFilteredModuleList().filtered(x -> x.getModuleName().equals(userInput)).isEmpty()) {
-                reply = "Detected Duplicate Module name. Please key in another module name.";
-            } else*/
-
-            if (userInput.equals("")) {
-                reply = "Please key in something as your module name";
-            } else {
-                this.reply = "The name of module is set to: " + userInput + ".\n"
-                        + "Now key in your module code";
-                module.setModuleName(userInput);
-
-
-                currentTerm = InteractivePromptTerms.MODULE_CODE;
+            try {
+                if (userInput.isBlank()) {
+                    throw new ModuleException("emptyInputError");
+                } else {
+                    if (!logic.getFilteredModuleList()
+                        .filtered(x -> x.getModuleName().equalsIgnoreCase(userInput)).isEmpty()) {
+                        throw new ModuleException("duplicateModuleNameError");
+                    } else {
+                        this.reply = "The name of new module is set to: " + userInput + ".\n\n"
+                            + REQUIRED_MODULE_CODE_MSG;
+                        module.setModuleName(userInput);
+                        currentTerm = InteractivePromptTerms.MODULE_CODE;
+                    }
+                }
+            } catch (ModuleException ex) {
+                reply = ex.getErrorMessage() + "\n\n" + REQUIRED_MODULE_NAME_MSG;
             }
             break;
         case MODULE_CODE:
-            //if (!logic.getFilteredModuleList().filtered(x -> x.toString()
-            // .equals(userInput.toUpperCase())).isEmpty()) {
-            //      reply = "Detected Duplicate Module code. Please key in another module code.";
-            //  } else {
             try {
-                module.setModuleCode(userInput);
-                this.reply = "Module Code: " + module.toString() + "\n"
-                        + "Click 'Enter' again to confirm your changes";
-                currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-            } catch (ModuleCodeException ex) {
-                reply = MODULE_CODE_FORMAT;
+                if (userInput.isBlank()) {
+                    throw new ModuleException("emptyInputError");
+                } else {
+                    if (!logic.getFilteredModuleList().filtered(x -> x.toString()
+                        .equalsIgnoreCase(userInput)).isEmpty()) {
+                        throw new ModuleException("duplicateModuleCodeError");
+                    } else {
+                        module.setModuleCode(userInput);
+                        this.reply = "The module code of new module is set to: " + module.toString() + "\n\n"
+                            + "Please press enter to confirm your changes";
+                        currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
+                    }
+                }
+            } catch (ModuleException ex) {
+                reply = ex.getErrorMessage() + "\n\n" + REQUIRED_MODULE_CODE_MSG;
             }
-            //}
             break;
         case READY_TO_EXECUTE:
             try {
                 CreateModCommand createModCommand = new CreateModCommand(module);
                 logic.executeCommand(createModCommand);
-                reply = "Module created! Key in your next command :)";
+                reply = SUCCESS_COMMAND_MSG;
                 endInteract(reply);
             } catch (ParseException ex) {
                 reply = ex.getMessage();
@@ -87,9 +99,7 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
             break;
         default:
         }
-
         return reply;
-
     }
 
     @Override

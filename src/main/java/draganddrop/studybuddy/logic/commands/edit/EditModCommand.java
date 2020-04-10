@@ -7,14 +7,14 @@ import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.module.Module;
-import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
+import draganddrop.studybuddy.model.module.exceptions.ModuleException;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
  * Command for editing mod.
  */
 public class EditModCommand extends Command {
-    static final String MOD_DOES_NOT_EXIST = "Module does not exist in Study Buddy!";
+    public static final String MOD_DOES_NOT_EXIST = "Module does not exist in Study Buddy!";
     private Module oldModule;
     private Module newModule;
     private InteractivePromptTerms term;
@@ -47,7 +47,7 @@ public class EditModCommand extends Command {
                 default:
                     return new CommandResult("Did nothing! from EditModCommand.");
                 }
-            } catch (ModuleCodeException ex) {
+            } catch (ModuleException ex) {
                 throw new CommandException(ex.getMessage());
             }
         }

@@ -15,7 +15,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.delete.ClearTasksInteractiveP
 import draganddrop.studybuddy.ui.interactiveprompt.delete.DeleteTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.ArchiveTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.CompleteTaskInteractivePrompt;
-import draganddrop.studybuddy.ui.interactiveprompt.edit.EditModInteractivePrompt;
+import draganddrop.studybuddy.ui.interactiveprompt.edit.EditModuleInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.EditTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.SetGoalInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.UnarchiveTaskInteractivePrompt;
@@ -42,7 +42,7 @@ public class CommandBox extends UiPart<Region> {
     private static final String[] interactiveCommandTypes =
         {"add", "edit", "delete", "archive", "done", "view duplicates",
         "clear", "bye", "sort", "refresh", "help",
-        "filter", "create mods", "find", "list", "unarchive", "goal", "calendar"};
+        "filter", "create mods", "edit mods", "find", "list", "unarchive", "goal", "calendar"};
     private final CommandExecutor commandExecutor;
     private InteractivePrompt currentInteractivePrompt;
     @FXML
@@ -119,7 +119,7 @@ public class CommandBox extends UiPart<Region> {
                     currentInteractivePrompt = new CreateModuleInteractivePrompt();
                     break;
                 case "edit mods":
-                    currentInteractivePrompt = new EditModInteractivePrompt();
+                    currentInteractivePrompt = new EditModuleInteractivePrompt();
                     break;
                 //mod related functions will not be shown on UI but available as shortcut
                 case "goal":

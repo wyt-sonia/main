@@ -27,7 +27,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 public class UnarchiveTaskInteractivePrompt extends InteractivePrompt {
     public static final String QUIT_COMMAND_MSG = "Successfully quited from unarchive command.";
     private static final String END_OF_COMMAND_MSG = "Task retrieved successfully!";
-    private static final String REQUEST_INDEX_MSG = "Please enter the index number of task you wish to retrieve.";
+    private static final String REQUIRED_INDEX_MSG = "Please enter the index number of task you wish to retrieve.";
     private int index;
 
     public UnarchiveTaskInteractivePrompt() {
@@ -37,7 +37,7 @@ public class UnarchiveTaskInteractivePrompt extends InteractivePrompt {
 
     @Override
     public String interact(String userInput) {
-        if ("quit".equals(userInput)) {
+        if ("quit".equalsIgnoreCase(userInput)) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
         }
@@ -64,10 +64,10 @@ public class UnarchiveTaskInteractivePrompt extends InteractivePrompt {
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (NumberFormatException ex) {
                 reply = (new UnarchiveTaskCommandException("wrongIndexFormatError")).getErrorMessage()
-                        + "\n\n" + REQUEST_INDEX_MSG;
+                        + "\n\n" + REQUIRED_INDEX_MSG;
             } catch (UnarchiveTaskCommandException ex) {
                 reply = ex.getErrorMessage()
-                        + "\n\n" + REQUEST_INDEX_MSG;
+                        + "\n\n" + REQUIRED_INDEX_MSG;
             }
             break;
 

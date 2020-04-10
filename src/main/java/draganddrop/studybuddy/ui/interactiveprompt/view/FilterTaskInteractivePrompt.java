@@ -32,17 +32,17 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 public class FilterTaskInteractivePrompt extends InteractivePrompt {
     public static final String QUIT_COMMAND_MSG = "Successfully quited from filter task command.";
     private static final String END_OF_COMMAND_MSG = "Tasks filtered successfully!";
-    private static final String REQUEST_OPTION_MSG = "Please enter your choice of filter:\n"
+    private static final String REQUIRED_OPTION_MSG = "Please enter your choice of filter:\n"
             + "1. Status\n"
             + "2. Type\n";
-    private static final String REQUEST_TYPE_MSG = "Please enter the task type you would like to filter by:\n"
+    private static final String REQUIRED_TYPE_MSG = "Please enter the task type you would like to filter by:\n"
             + "1. Assignment\n"
             + "2. Quiz\n"
             + "3. Presentation\n"
             + "4. Meeting\n"
             + "5. Exam\n"
             + "6. Others";
-    private static final String REQUEST_STATUS_MSG = "Please enter the status you would like to filter by:\n"
+    private static final String REQUIRED_STATUS_MSG = "Please enter the status you would like to filter by:\n"
             + "1. Pending\n"
             + "2. Finished\n"
             + "3. Due soon\n"
@@ -59,14 +59,14 @@ public class FilterTaskInteractivePrompt extends InteractivePrompt {
 
     @Override
     public String interact(String userInput) {
-        if ("quit".equals(userInput)) {
+        if ("quit".equalsIgnoreCase(userInput)) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
         }
 
         switch (currentTerm) {
         case INIT:
-            this.reply = REQUEST_OPTION_MSG;
+            this.reply = REQUIRED_OPTION_MSG;
             currentTerm = InteractivePromptTerms.OPTION_TYPE;
             break;
 
@@ -74,15 +74,15 @@ public class FilterTaskInteractivePrompt extends InteractivePrompt {
             try {
                 index = FilterTaskCommandParser.parseOptionIndex(userInput);
                 if (index == 1) {
-                    this.reply = REQUEST_STATUS_MSG;
+                    this.reply = REQUIRED_STATUS_MSG;
                     currentTerm = InteractivePromptTerms.STATUS_TYPE;
                 } else {
-                    this.reply = REQUEST_TYPE_MSG;
+                    this.reply = REQUIRED_TYPE_MSG;
                     currentTerm = InteractivePromptTerms.TASKS_TYPE;
                 }
             } catch (FilterTaskCommandException ex) {
                 reply = ex.getErrorMessage()
-                        + "\n" + REQUEST_OPTION_MSG;
+                        + "\n" + REQUIRED_OPTION_MSG;
             }
             break;
 
@@ -94,7 +94,7 @@ public class FilterTaskInteractivePrompt extends InteractivePrompt {
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (FilterTaskCommandException ex) {
                 reply = ex.getErrorMessage()
-                        + "\n" + REQUEST_TYPE_MSG;
+                        + "\n" + REQUIRED_TYPE_MSG;
             }
             break;
 
@@ -106,7 +106,7 @@ public class FilterTaskInteractivePrompt extends InteractivePrompt {
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (FilterTaskCommandException ex) {
                 reply = ex.getErrorMessage()
-                        + "\n" + REQUEST_STATUS_MSG;
+                        + "\n" + REQUIRED_STATUS_MSG;
             }
             break;
 
