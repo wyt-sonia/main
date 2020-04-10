@@ -25,8 +25,8 @@ public class EditModuleInteractivePrompt extends InteractivePrompt {
     static final String REQUIRED_MODULE_MSG = "Please key in a module code from the list.";
     static final String REQUIRED_MODULE_NAME_MSG = "Please key in the new name of your module";
     static final String REQUIRED_MODULE_CODE_MSG = "Please key in the new code of your module";
-    static final String REQUIRED_CONFIRMATION = "Are you sure you want to delete this module? All task in this module will be "
-        + "relocated to 'No Module Allocated' tab. Press enter to proceed";
+    static final String REQUIRED_CONFIRMATION = "Are you sure you want to delete this module?\nAll tasks in this module will be "
+        + "relocated to 'No Module Allocated' tab. \n\nPress enter to proceed";
 
     static final String CHOICES = "What would you like to do? Key in the index of the action"
         + "that you wish to perform.\n"

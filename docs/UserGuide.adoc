@@ -829,16 +829,17 @@ Study Buddy provides tow approaches for user to execute `create module` and `edi
 To start the interaction of creating a module, click on `Modules`-> `Create` in the menu bar. +
 Alternatively, you can key in `create mods` into the input line.
 
-image::module/module_nav_create.png[width = "600", title = "Entry for ceating module"]
+image::module/module_nav_create.png[width = "600", title = "Entry of module creation"]
 
 ====
 *Constraints*
 
 . *Module Name* +
-The name of this module cannot be the same as your existing modules.
+The name of this module cannot be the same as any existing modules.
 
 . *Module Code Format* +
-Now key in your Module code. Your Module code should have a 2-3 letter prefix, a 4-digit number, followed
+.. The module code also need to be unique. +
+.. The module code should have a 2-3 letter prefix, a 4-digit number, followed
 by a single postfix.
 
 * *Correct Module Code Examples* +
@@ -857,7 +858,7 @@ A1111XX     - Postfix is too long
 
 To `Create Module`:
 
-. Click on `Create` or key in `create mods`. A prompt will show up at the bottom of the screen.
+. Click on `Module` -> `Create` or key in `create mods`. A prompt will show up at the bottom of the screen.
 +
 image::module/module_create_name.png[width = "600", title = "Asks for module name"]
 
@@ -870,7 +871,7 @@ image::module/module_create_code.png[width = "600", title = "Asks for module cod
 +
 image::module/module_create_confirm.png[width = "600" title = "Asks for confirmation"]
 
-. Press kbd:[enter] to confirm.
+. Press kbd:[enter] to confirm, and the module page will update accordingly.
 +
 image::module/module_create_result.png[width = "600", title= "New Module with code CSS1234 created."]
 
@@ -879,59 +880,76 @@ Congratulations, you have added a module to your modules page!
 
 ==== Edit Modules
 
-. To create a module, click on `Modules` in the menu bar.
+To start the interaction of editing a module, click on `Modules`-> `Edit` in the menu bar. +
 Alternatively, you can key in `edit mods` into the input line.
-+
-image::module/module_12.png[width = "500"]
 
-. Click on `Edit`. A prompt will show up at the bottom of the screen.
+image::module/module_nav_edit.png[width = "600" title = "Entry of module edition"]
 
-. Key in the code of the module that you want to edit.
-+
-image::module/module_13.png[width = "790", title = "Changing module with code  BA1001""]
-+
-image::module/module_14.png[width = "790", title = "Keyed in BA1001"]
-+
-image::module/module_15.png[width = "790", title = "Key in 1, 2 or 3 depending on which option you prefer"]
+Study Buddy provides three module edition options.
 
-. Now you have 3 options. You can choose to:
+Edit options::
+* Change Module name.
+* Change Module code.
+* Delete Module.
 
-.. Change Module name.
-.. Change Module code.
-.. Delete Module.
+====
+*Constraints:*
+
+. When choosing the module to edit, you need to provide a valid and existed module code.
+. When entering the value of new module name or new module code, you need to provide a different valid value.
+. The above "valid" judgment follows the same constraints as <<Create Modules>>.
+====
+
+To `Edit Module`:
+
+. Click on `Module` -> `Edit` key in edit mods.
+A prompt will show up to ask the module code of target module.
++
+image::module/module_edit_code.png[width = "600", title = "Asks for module mode"]
+
+. Key in the code of the module that you want to edit. Here we use "CSS1234" as an example.
+Then Study Buddy will ask for the edit option.
++
+image::module/module_edit_option.png[width = "600", title = "Asks for edit option"]
 
 . Key in the index of your option.
 
-===== a) Change Module Name
-
-image::module/module_16.png[width = "790"]
-
-. Now key in your new module name.
+.. "1" -> Change Module Name
 +
-image::module/module_17.png[width = "790", title = "Module BA1001's name has changed from 'CS' to 'New Module Name'"]
-
-. Module name changed!
-
-===== b) Change Module Code
-
-image::module/module_18.png[width = "790"]
-
-. Now key in your new module code. Make sure it follows the correct format
-as written in 3.7.3.
+Key in your new module name and press kbd:[enter] to confirm the edition. Here we use "Edited Module Name" as an example. +
+The module page will update accordingly.
 +
-image::module/module_19.png[width = "790", title = "Module code BA1001 has changed to CS3230"]
+image::module/module_edit_name_result.png[width = "600", title = "Module name edition result"]
 
-. Module code changed!
-
-===== c) Delete Module
-
-image::module/module_20.png[width = "790"]
-
-. Press kbd:[enter] again to confirmed.
+.. "2" -> Change Module Code
 +
-image::module/module_21.png[width = "790", title = 'deleted BA1001']
+Key in your new module code and press kbd:[enter] to confirm the edition. Here we use "LY3000" as an example. +
+The module page will update accordingly.
++
+image::module/module_edit_code_result.png[width = "600", title = "Module code edition result"]
++
+Module code changed!
 
-. Module deleted! All existing task in this module will be moved to `No Module Allocated` tab.
+.. "3" -> Delete Module
++
+[CAUTION]
+After successfully deleting a module, the related tasks will also be affected.
++
+To delete the chosen module, you only need to press kbd:[enter] to confirmed the deletion.
+To better showcase the behaviour of deletion, here we use "CS2103T" as an example.
+
+... Before delete:
++
+image::module/module_delete_before.png[width = "600", title = 'Before delete']
+
+... After delete: +
+After successfully deleted target module, the module page will update accordingly and switch to
+`Overview` page.
++
+If you switch to `No Module Allocated` tab, you'll find the tasks affected by this deletion (i.e.
+The tasks which belong to the deleted module).
++
+image::module/module_delete_after.png[width = "600", title = 'Checking the affected tasks']
 
 === Statistics
 
