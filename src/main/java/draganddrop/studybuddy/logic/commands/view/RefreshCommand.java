@@ -30,9 +30,6 @@ public class RefreshCommand extends Command {
             Task task = lastShownList.get(i);
             if (task.isDueSoon()) {
                 model.forceAddDueSoonTask(task);
-            } else {
-                //model.deleteDueSoonTask(task);
-                continue;
             }
             refreshStatus(task, model);
         }

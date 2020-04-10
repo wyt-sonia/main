@@ -10,9 +10,10 @@ import java.util.regex.Pattern;
 public class TaskRenamedPredicate implements Predicate<Task> {
     @Override
     public boolean test(Task task) {
-        Pattern p = Pattern.compile("[^A-Za-z0-9]");
-        Matcher m = p.matcher(task.getTaskName());
-        return m.find();
+        Pattern pattern = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(task.getTaskName());
+        return matcher.find();
+
     }
 
     @Override

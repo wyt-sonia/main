@@ -113,6 +113,10 @@ include::../UserGuide.adoc[tag=viewRenamed]
 include::../UserGuide.adoc[tag=filter]
 .. Refresh +
 include::../UserGuide.adoc[tag=refresh]
+.. Due Soon +
+include::../UserGuide.adoc[tag=dueSoon]
+.. Saving Data +
+include::../UserGuide.adoc[tag=savingData]
 .. Clear +
 include::../UserGuide.adoc[tag=clear]
 .. Exit +
