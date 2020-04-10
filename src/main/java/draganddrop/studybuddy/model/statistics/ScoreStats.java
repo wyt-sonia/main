@@ -88,7 +88,17 @@ public class ScoreStats {
      * @return a list containing the user's daily scores over the past 7 days
      */
     public List<Integer> getWeeklyScores(int dayIndex) {
-        return scoreList.subList(dayIndex - 6, dayIndex + 1);
+        List<Integer> weeklyScores = scoreList.subList(dayIndex - 6, dayIndex + 1);
+        int largestSoFar = 0;
+        for (int i = 0; i < 7; i++) {
+            int currentElement = weeklyScores.get(i);
+            if (currentElement == 0) {
+                weeklyScores.set(i, largestSoFar);
+            } else {
+                largestSoFar = currentElement;
+            }
+        }
+        return weeklyScores;
     }
 
 

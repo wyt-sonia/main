@@ -274,6 +274,7 @@ public class MainWindow extends UiPart<Stage> {
 
         toggleAllTitle(true);
         toggleMainTitleView(true);
+        setTaskListTitleText(ALL_TASK);
         setMainTitleText(PRODUCTIVITY_PAGE);
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
