@@ -42,7 +42,7 @@ public class CommandBox extends UiPart<Region> {
     private static final String[] interactiveCommandTypes =
         {"add", "edit", "delete", "archive", "done", "view duplicates",
         "clear", "bye", "sort", "refresh", "help",
-        "filter", "create mods", "find", "list", "unarchive", "goal", "calendar"};
+        "filter", "create mods", "edit mods", "find", "list", "unarchive", "goal", "calendar"};
     private final CommandExecutor commandExecutor;
     private InteractivePrompt currentInteractivePrompt;
     @FXML

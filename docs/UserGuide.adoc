@@ -60,7 +60,7 @@ you may refer to the guide below.
 image::Ui.png[width="790", title="Study Buddy Dashboard"]
 +
 . Jump to <<Dashboard>> to get more information about dashboard.
-. To view a list of available command, you can key in *`help`* and click kbd:[Enter]. A more detailed description of our features is available in
+. To view a list of available command, you can key in *`help`* and click kbd:[enter]. A more detailed description of our features is available in
 <<Features>> of this document.
 
 //updated by Souwmyaa
@@ -85,15 +85,14 @@ This symbol indicates something to which we want to draw your attention.
 ==== Useful tips
 
 * You may need to adjust the size of the Study Buddy window when you launch it.
-* Make sure not to use any extra white spaces before or after commands. Study Buddy might consider it as an invalid command.
 * The scroll bar on the right of the response box can be used to view the entire reply.
 * At any point during the execution of a command, you can use `quit` to quit the command and start over/try a different command.
 * Study Buddy will analyze your input and reply accordingly.
 It utilizes an "interactive command prompt". (explained in each command's description under <<Features>>)
-* In this document, *[enter]* indicates *hitting the enter key on your keyboard*.
+* In this document, kbd:[enter] indicates *the enter key on your keyboard*.
 * In this document, *|* indicates an *alternative option* (i.e. A | B implies A or B).
 * A task's *index number*, refers to the number displayed on the left of a task in *All Tasks panel*. Note that the
-index of the same task could be different after `filter`, `find` and `sort` commands.
+index of the same task could be different after some commands, such as `filter`, `find` and `sort`.
 //end::usefulTips[]
 
 [[UI]]
@@ -163,7 +162,7 @@ Task Type Badges::
 The *Interactive Prompt Box* lays at the bottom of the user interface.
 
 To interact with Study Buddy, you can enter the desired command in the box with the words `Please enter your command here...`
-and press kbd:[Enter] to execute.
+and press kbd:[enter] to execute.
 
 The reply from Study Buddy will be displayed in the box next to the cartoon boy.
 
@@ -319,8 +318,8 @@ image::basic/add/add_task_info_1.png[width="600", title="Asks for user conformat
 +
 image::basic/add/add_task_info_2.png[width="600", title="Task details collected"]
 +
-. Now, by pressing kbd:[enter] the new task will be added into your Study Buddy.
-. Study Buddy should respond as:
+. Now, by pressing kbd:[enter] the new task will be added into your Study Buddy. Meanwhile, the *All Tasks panel* will
+update accordingly.
 +
 image::basic/add/add_result.png[width="600", title="New task added"]
 
