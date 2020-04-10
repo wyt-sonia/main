@@ -42,6 +42,7 @@ Currently, Study Buddy supports both Windows and Mac systems. If you are interes
 Hope you enjoy!
 //end::introduction[]
 
+//Start updated by Yuting
 == Quick Start
 
 . Study Buddy relies on a particular computer environment to operate correctly,
@@ -62,6 +63,8 @@ image::Ui.png[width="790", title="Study Buddy Dashboard"]
 . Jump to <<Dashboard>> to get more information about dashboard.
 . To view a list of the available commands, you can key in *`help`* and click kbd:[Enter]. A more detailed description of our features is available in
 <<Features>> of this document.
+//End updated by Yuting
+
 
 //updated by Souwmyaa
 //tag::symbols[]
@@ -95,8 +98,8 @@ It utilizes an "interactive command prompt". (explained in each command's descri
 index of the same task could be different after some commands, such as `filter`, `find` and `sort`.
 //end::usefulTips[]
 
-[[UI]]
 
+//Start updated by Yuting
 == User Interface Introduction
 Study Buddy makes use of color schemes and animations to enhance your user experience.
 
@@ -164,6 +167,7 @@ image::dashboard/prompt_box.png[width="600", title = "Interactive Prompt Box"]
 
 [NOTE]
 To get more detailed information about how to use Study Buddy, please refer to <<Features>>.
+//End updated by Yuting
 
 [[Features]]
 
@@ -187,11 +191,12 @@ To `help`:
 . Initiate the command using keyword `help`
 . Study Buddy should respond with:
 +
-image::help.png[width="600", title="Response to 'help'"]
+image::basic/help/help_rep.png[width="600", title="Response to 'help'"]
 
 [TIP]
 Remember to scroll down to see the entire reply.
 
+//Start updated by Yuting
 ==== Add
 This command enables you to add a new task into Study Buddy.
 
@@ -319,6 +324,8 @@ image::basic/add/add_result.png[width="600", title="New task added"]
 
 [TIP]
 Remember, you can use `quit` command to quit at any step.
+//End updated by Yuting
+
 
 //updated by Souwmyaa
 //tag::addDuplicates[]
@@ -363,6 +370,7 @@ You can view all tasks that have been auto-edited this way, using the <<View dup
 Use the <<Edit>> to edit your duplicated tasks!
 //end::addDuplicates[]
 
+//Start updated by Yuting
 ==== Edit
 
 This command is for you to edit an existing task.
@@ -412,6 +420,7 @@ This command is for you to mark a task as *Finished*.
 
 . A *Finished* task cannot be marked as *Finished* again.
 ====
+//End updated by Yuting
 
 To `done`:
 
@@ -425,7 +434,7 @@ image::basic/done/done_index.png[width="600", title = "Asks for task index."]
 +
 image::basic/done/done_confirm.png[width="600", title = "Asks for confirmation"]
 
-. Task set to `Finished` successfully! Note that the task in your task list has the tag `FINISHED`.
+. Task set to `Finished` successfully! Note that the task in your task list has the tag `Finished`.
 +
 image::basic/done/done_result.png[width="600", title = "Done result"]
 
@@ -561,6 +570,7 @@ image::basic/archive/archive_list.png[width="600", title="Archived tasks"]
 [NOTE]
 If you attempt to unarchive a task that already exists in the main list, the name will automatically be appended with a number in order to avoid duplication. This is done in the same way as <<Add duplicates>>
 
+//Start updated by Yuting
 [[Sort]]
 ==== Sort
 
@@ -593,6 +603,7 @@ image::basic/sort/sort_result.png[width="600", title="Sorted tasks"]
 [TIP]
 The tasks in *All Tasks* panel will not change back to the original order by itself. +
 You can use `sort` -> `Creation Date & Time` to do so.
+//End updated by Yuting
 
 [[Find]]
 ==== Find
@@ -953,6 +964,7 @@ The tasks which belong to the deleted module).
 +
 image::module/module_delete_after.png[width = "600", title = 'Checking the affected tasks']
 
+//Start updated by Yuting
 === Statistics
 
 With all the tasks and modules' information you entered, Study Buddy can provide you a real-time visualized
@@ -1091,6 +1103,8 @@ image::stats/stats_bar_click.png[width="600", align= "left", title="Clicking on 
 As the data of charts are filled dynamically, thus it is possible that their labels can overlap together. +
 This is an unfixed bug regarding the JDK which is caused by JavaFX chart off-sync. To get more information, you may refer to link:{jdk_bug_report}[here]. +
 When this issue happens, you can use any command that can trigger chart updating to refresh the chart.
+//End updated by Yuting
+
 
 === Calendar
 
