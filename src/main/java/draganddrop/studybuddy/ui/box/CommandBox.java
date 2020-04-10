@@ -26,7 +26,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.view.FindTaskInteractivePromp
 import draganddrop.studybuddy.ui.interactiveprompt.view.HelpInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.view.ListTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.view.RefreshTaskInteractivePrompt;
-import draganddrop.studybuddy.ui.interactiveprompt.view.ViewDuplicateTaskInteractivePrompt;
+import draganddrop.studybuddy.ui.interactiveprompt.view.ViewRenamedTaskInteractivePrompt;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -40,7 +40,7 @@ public class CommandBox extends UiPart<Region> {
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes =
-        {"add", "edit", "delete", "archive", "done", "view duplicates",
+        {"add", "edit", "delete", "archive", "done", "view renamed",
         "clear", "bye", "sort", "refresh", "help",
         "filter", "create mods", "edit mods", "find", "list", "unarchive", "goal", "calendar"};
     private final CommandExecutor commandExecutor;
@@ -80,8 +80,8 @@ public class CommandBox extends UiPart<Region> {
                 case "archive":
                     currentInteractivePrompt = new ArchiveTaskInteractivePrompt();
                     break;
-                case "view duplicates":
-                    currentInteractivePrompt = new ViewDuplicateTaskInteractivePrompt();
+                case "view renamed":
+                    currentInteractivePrompt = new ViewRenamedTaskInteractivePrompt();
                     break;
                 case "done":
                     currentInteractivePrompt = new CompleteTaskInteractivePrompt();

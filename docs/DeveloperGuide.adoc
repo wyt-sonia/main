@@ -186,7 +186,7 @@ The `Model`,
 === Storage component
 
 .Structure of the Storage Component
-image::StorageClassDiagram.png[]
+image::StorageClassDiagram.png[width="600", height="400"]
 
 *API* : link:{repoURL}/blob/master/src/main/java/draganddrop/studybuddy/storage/Storage.java[`Storage.java`]
 
@@ -216,8 +216,7 @@ This feature is implemented using a panel on the main window with a list of task
 
 Some situations that trigger due soon feature are:
 
-=======
-*When user enters a task:*
+. *When user enters a task:*
 
 .. What it does: +
 ... When a task that is added to the main list, is due within the next week, it is automatically added to the list of due soon tasks. +
@@ -241,12 +240,7 @@ image::AddDueSoonSequence.png[width = "800", length = "600", title = "Sequence D
 The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 {bl}
 
-=======
-=======
-
-*When user deletes a task:*
-
-When a task that is added to the main list, is due within the next week, it is automatically added to the list of Due Soon tasks.
+2. *When user deletes a task:*
 
 .. What it does:
 ... When a task that is deleted from the main list occurs in the due soon list as well, it is automatically deleted.
@@ -266,10 +260,7 @@ image::DeleteDueSoonSequence.png[width = "800", length = "600", title = "Sequenc
 [CAUTION]
 The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
-=======
-=======
-
-*When user refreshes due soon list:*
+. *When user refreshes due soon list:*
 
 .. What it does: +
 ... Refreshes the list of due soon tasks and status tags. This command is useful for a situation where due soon list is not up to date due to a drastic change in time.
@@ -286,13 +277,7 @@ image::DueSoonSequenceDiagram.png[width = "800", length = "600", title = "Sequen
 [CAUTION]
 The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
-When a task that is deleted from the main list occurs in the Due Soon list as well, it is automatically deleted.
-
-=======
-=======
-
-
-*When the application launches:*
+. *When the application launches:*
 
 .. What it does:
 ... It loads the due soon tasks into a panel by filtering tasks that are due soon from the main list.
@@ -302,10 +287,8 @@ When a task that is deleted from the main list occurs in the Due Soon list as we
 ... The addTask() function in StudyBuddy class already checks if task is due soon and adds to due soon list (as mentioned above).
 ... While all tasks are being added to their respective lists in JsonSerializableStudyBuddy class, the due soon list gets automatically updated.
 
-=======
-
 [NOTE]
-Other commands like edit, delete duplicates etc also trigger due soon feature in a similar manner.
+Other commands like edit, archive etc also trigger due soon feature in a similar manner.
 [NOTE]
 Calculation of time left for deadline and check for if task is due soon can be found in the Task class.
 
@@ -407,17 +390,13 @@ image::TaskSummaryWithRefreshCommandActivityDiagram.png[width = "400", length = 
 ** Pros: More flexible and more interaction possibilities.
 ** Cons: The cost overweight the benefit.
 
-==== Future possibility
-===== Question: should we write this in DG?
 // end::taskSummary[]
-
-
 
 //tag:calendar[]
 === Calendar feature
 
 ==== Implementation
-The calendar feature, as the name suggests, displays a calendar fo users.
+The calendar feature displays a calendar for users.
 
 The feature is implemented by overriding the task list display panel on the main window with calendar box. The calendar currently supports following features:
 
@@ -426,14 +405,27 @@ The feature is implemented by overriding the task list display panel on the main
 . Displays more information about tasks for the day on the Due Soon panel after clicking on a grid.
 . Fast forward to a specific year/month using CLI.
 
-==== Example usage scenario
+When a calender is requested, a CalendarBox object is constructed, the object diagram below shows the structure of a CalendarBox. We will be using the date `01/04/2020` as an example.
+
+image::CalendarBoxObjectDiagram.png[title="CalendarBox object diagram"]
+
+==== Example usage scenarios
+
+===== Using mouse click
 Clicking on the show calendar menu item under the calendar menu will enable this feature. Upon requesting for the calendar to be shown:
 
 . The calendar box object will be constructed
 . The calendar loops through every day of the month while searching for tasks due on that day
 . The task name is added to the calendar grid
 
-Activity diagram:
+===== Using CLI
+As of Study Buddy v1.4, a new feature has been added that allows users to navigate the calendar using CLI.
+
+. The user enters 'calendar' into the command box.
+. The user enters the selected date into the command box.
+. Calendar will be generated the same way as a mouse click, however, it will use the selected date as parameters.
+
+Below is an activity diagram describing the events that will happen:
 
 image::CalendarActivityDiagram.png[width = "400", length = "600" title = "Calendar Activity Diagram"]
 
@@ -446,11 +438,15 @@ Archive stores selected task away into a separate task list, this command is use
 ==== Implementation
 Archive uses both the old delete and a new archive command. Upon executing the archive command, it will call the model to delete the task and archive it elsewhere.
 
+The archived task list is stored within Model as a seperate list.
+[NOTE]
+The index for archived tasks are not used for any commands other than `unarchive`.
+
 Sequence diagram:
 
 image::ArchiveSequenceDiagram.png[width = "600", length = "500" title = "Archive Sequence Diagram"]
 [NOTE]
-The lifeline of an object should not continue after deletion. Lifeline is still shown due to a limitation of plantUML.
+The lifeline of an object should not continue after deletion. Lifeline is shown due to a limitation of plantUML.
 
 === Achievement feature
 The achievement feature keeps track of usage statistics and displays the user's achievements
@@ -528,6 +524,33 @@ The `LogsCenter` class is used to manage the logging levels and logging destinat
 
 Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: `config.json`).
 
+=== [Proposed] Data encryption
+
+Since Study Buddy is an offline application, there is no threat of being attacked via a network channel. However, in case the computer has a shared owner, a password feature can be implemented in the future for privacy purposes.
+
+==== Implementation
+The goal is to encrypt `taskList.json`, while still allowing the owner to access his/her tasks using his password.
+
+We will be using AES (Advanced Encryption Scheme) for encryption, and a slow hashing algorithm to derive a key from the user's password. The slow hashing algorithm is to prevent brute force attacks.
+
+=======
+*Encryption*
+
+. User sets a password. (Optional)
+. Study Buddy uses a slow hashing algorithm (https://github.com/patrickfav/bcrypt[bCrypt]) to generate a key.
+. When user exits the app, Study Buddy will encrypt taskList.json using the https://github.com/facebookarchive/conceal[conceal] library and the generated key.
+. TaskList.json should now be encrypted
+=======
+=======
+*Decryption*
+
+. User enters a password.
+. If the password is correct, the same key should be hashed and taskList.json can be decrypted.
+. If the password is incorrect, user will be allowed to try again.
+=======
+
+We leave it to the user's own jurisdiction to create a strong password.
+
 == Documentation
 
 Refer to the guide <<Documentation#, here>>.
@@ -579,9 +602,9 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |user |archive tasks |separate the tasks that are not applicable right now
 
-|`* *` |user |delete duplicate tasks | easily filter out any duplicate data in my list
+|`* *` |user |view renamed tasks | easily filter out any renamed data in my list
 
-|`* *` |user |filter all Pending tasks | view all my Pending tasks in one place
+|`* *` |user |filter all pending tasks | view all my Pending tasks in one place
 
 |`* *` |user who likes organization |view all my tasks that are Due Soon|know what to focus on in the next week
 
@@ -592,6 +615,8 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* *` |user who is starting a new semester |clear all my tasks|start adding on to an empty list
 
 |`* *` |user who takes many modules |add my modules |view my modules
+
+|`* *` |user who finds it hard to keep track of all my deadlines| have a calendar| easily find tasks due on a day
 |=======================================================================
 //end::userStories[]
 
@@ -680,15 +705,12 @@ Use case resumes at step 5.
 
 
 [discrete]
-=== Use case: Delete duplicates
+=== Use case: View renamed
 
 *MSS*
 
-
-1. Refer to List tasks use case
-2. User requests to delete all duplicates in the list
-3. Study Buddy deletes all but one occurrence of each task
-
+1. User requests to view renamed tasks
+2. Study Buddy shows a list of renamed tasks
 +
 Use case ends.
 
@@ -750,7 +772,7 @@ GUI::
 Graphical User Interface i.e a user interface that allows users to interact using graphical icons rather than text-based user interfaces
 [[Index]]
 Index::
-The index of a task refers to the sequence number of the task in the dashboard
+The index of a task refers to the sequence number of a task in the dashboard
 
 [appendix]
 == Instructions for Manual Testing
@@ -802,7 +824,6 @@ Error details shown in the status message.
 
 .. Test case: Launch the application +
    Expected: The application indicates that the data file needed is missing and creates one.
-Application launches successfully but has no data.
 c
 .. Prerequisites: Modify the "tasklist.json" file to show some incorrect data.
 
@@ -810,3 +831,22 @@ c
    Expected: The application indicates that the data file is corrupted.
 Application launches successfully but has no data.
 //end::savingData[]
+
+[appendix]
+== Effort
+
+=======
+*Interactive prompt*
+
+* AB3 requires users to input a whole line of text at once, which is unintuitive and prone to typos by the user. Furthermore, AB3 uses tags like
+"`\p`" to break the user's input up for parsing. This means that users will not be able to use these strings for any of their inputs.
+
+* Study buddy fixes that issue by introducing an interactive prompt for every command. This required a lot effort as there had to be an interactive prompt
+for every command.
+=======
+
+=======
+*Refactoring*
+
+* AB3 uses the `Person` class which had 5 fields. Study buddy has 12 fields, every one of them is used in a major feature.
+=======

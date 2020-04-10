@@ -33,11 +33,11 @@ Study Buddy is a desktop application which is designed for students who *wish to
 More importantly, Study Buddy is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
 
 You will never have to remember long, wordy commands to use your command line interface, since
-Study Buddy *provides an interactive way of communication*, which not only helps to prevent typos, but also makes the application much easier to use!
+Study Buddy *provides an interactive way of communication*. This not only helps to prevent typos, but also makes the application much easier to use!
 
 If you can type fast, Study Buddy can get your module management done faster than traditional GUI apps.
 
-Currently, Study Buddy support both Windows and Mac systems. If you are interested, please jump to the <<Quick Start>> to get started.
+Currently, Study Buddy supports both Windows and Mac systems. If you are interested, please jump to the <<Quick Start>> to get started.
 
 Hope you enjoy!
 //end::introduction[]
@@ -60,7 +60,7 @@ you may refer to the guide below.
 image::Ui.png[width="790", title="Study Buddy Dashboard"]
 +
 . Jump to <<Dashboard>> to get more information about dashboard.
-. To view a list of available command, you can key in *`help`* and click kbd:[enter]. A more detailed description of our features is available in
+. To view a list of the available commands, you can key in *`help`* and click kbd:[Enter]. A more detailed description of our features is available in
 <<Features>> of this document.
 
 //updated by Souwmyaa
@@ -98,78 +98,72 @@ index of the same task could be different after some commands, such as `filter`,
 [[UI]]
 
 == User Interface Introduction
-The enjoyable user interface of Study Buddy provides you with better user experience.
-Especially its lovely colour themes and vivid animations can release the pressure you have accumulated from school.
+Study Buddy makes use of color schemes and animations to enhance your user experience.
 
 === Dashboard
 The *dashboard* is the landing page each time the application is launched. +
 It consists of different components that can interact with you and provide you with meaningful information.
 
 ==== Navigation Menu Bar
-The *menu bar* lays at the top of the dashboard and is primarily used for navigation.
+The *menu bar* is located at the top of the dashboard and is primarily used for navigation.
 
 image::dashboard/nav_bar.png[width="600", title = "Menu bar"]
 
 ==== All Tasks Panel
 
-By default, the *All Tasks Panel* lists all unarchived task records with their detail information in the order of creation date and time.
-
-You can::
-* Reorder them using command <<Sort>>.
-* Filter them using command <<Filter>> or <<Find>>.
+By default, the *All Tasks Panel* lists all unarchived task tasks with their detailed information in the order of creation date and time.
 
 image::dashboard/all_tasks.png[width="600", title = "All tasks panel"]
 
 ===== Task Badges
-To bold the important information of each task in *All Tasks Panel* , we use *Badges* to highlight `Module Code`,
-`Task Type` and  `Task Status` of each task.
+To highlight `Module code`, `Task Type` and  `Task Status` of each task in the *All Tasks list* , we use *Badges*.
 
 Module Badges::
 * All in light steelblue.
 * If the task is not related to any module, the Module Badges will be omitted.
 
 Task Type Badges::
-* Different Type Badges are in different colours.
+* Badges of different types are in different colours.
 
 Task Status::
-* Different Task Statuses using different colours.
-* The task which is due in next week (i.e. 7 days) will be marked as `Due Soon` status, sometimes
-you may need to use <<Refresh>> command to refresh the status of all tasks.
+* Badges of different status types are in different colours.
+* Tasks that are due within a week (i.e. 7 days) will be marked as `Due Soon`.
+You may need to use the refresh command (<<Refresh>>) to refresh the status of all your tasks.
 
 ==== Tasks Due Soon Panel
-The tasks which will due in next week (i.e. 7 days) will be listed here.
+The tasks that are due within a week (i.e. 7 days) will be listed here.
 You can jump to <<Due Soon Tasks>> to get more details.
 
 image::dashboard/due_soon.png[width="600", title = "Task Due Soon"]
 
 ===== Task Badges
-To bold the important information of each tasks in *Tasks Due Soon Panel* , we use *Badges* to highlight `Weight & Module Code`,
-`Deadline/ Starting Date Counting Down` and  `Task Type` of each tasks.
+To highlight the `Weight & Module Code`,
+`Time left for deadline` and  `Task Type` of each task in the *Tasks Due Soon Panel* , we use *Badges*.
 
 Weight & Module Code::
 * All in steelblue.
-* It provides weight and the module code of the task.
+* Display the weight and module code of a task.
 
-Deadline/ Starting Date Counting Down::
+Time left for deadline::
 * All in light orange.
-* It displays the counting down for the tasks' deadline or starting date.
+* Display the time left for a tasks' deadline.
 * More information please refer to <<Due Soon Tasks>>
 
 Task Type Badges::
-* Different Type Badges are in different colours.
+* Badges of different types are in different colors.
 
 ==== Interactive Prompt Box
-The *Interactive Prompt Box* lays at the bottom of the user interface.
+The *Interactive Prompt Box* can be found at the bottom of the user interface.
 
 To interact with Study Buddy, you can enter the desired command in the box with the words `Please enter your command here...`
 and press kbd:[enter] to execute.
 
-The reply from Study Buddy will be displayed in the box next to the cartoon boy.
+The reply from Study Buddy will be displayed in the box above.
 
 image::dashboard/prompt_box.png[width="600", title = "Interactive Prompt Box"]
 
 [NOTE]
-To get more detailed information about different user interface components, please refer to <<Features>>.
+To get more detailed information about how to use Study Buddy, please refer to <<Features>>.
 
 [[Features]]
 
@@ -180,7 +174,7 @@ This function displays a list of interactive commands that you can use.
 It also provides a link to this document, (our user guide).
 
 [TIP]
-This is the command you should use if you are unsure of what to type for a certain command,
+This is the command you should use if you are unsure of what to type for a certain command.
 
 *Example:*
 
@@ -193,13 +187,13 @@ To `help`:
 . Initiate the command using keyword `help`
 . Study Buddy should respond with:
 +
-image::basic/help/help_rep.png[width="600", title="Response to 'help'"]
+image::help.png[width="600", title="Response to 'help'"]
 
 [TIP]
 Remember to scroll down to see the entire reply.
 
 ==== Add
-This command is for you to record a new task into Study Buddy.
+This command enables you to add a new task into Study Buddy.
 
 - Through the interaction, task's details will be collected.
 .. Required information: task name, task type, task deadline or duration
@@ -266,7 +260,7 @@ Meeting: +
 It must be a time in the future.
 ... For duration, the two dates should follow the order of `start date`-`end date`, the `end date` should
 be later than `start date`.
-... The total weight of tasks under the same module is capped to 100.0.
+... The total weight of tasks under the same module is capped at 100.0.
 * Both `archived` and `not archived tasks` will be taken into consideration.
 ... All `index numbers` entered should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).
 
@@ -338,7 +332,7 @@ Say you have tried to add a task, you enter all the fields needed and at the end
 Study Buddy lets you add duplicate tasks with a slight modification! So, now you can add the task and edit it as needed.
 
 [NOTE]
-A task is considered duplicate when the name, type, module, description, weightage, estimated time cost and deadline are the same. (Status is not checked)
+A task is considered duplicate when the name, type, module, description, weightage, estimated time cost and deadline are the same.
 
 To `add duplicates`:
 
@@ -414,7 +408,7 @@ image::basic/edit/edit_result.png[width="600", title="Task edited"]
 This command is for you to mark a task as *Finished*.
 
 ====
-*Constrains*
+*Constraints*
 
 . A *Finished* task cannot be marked as *Finished* again.
 ====
@@ -449,7 +443,7 @@ Be careful with this command! It will remove any data you may have entered into 
 
 *Example:*
 
-Say you have Finished a semester and would like to clear everything in your Study Buddy and start over.
+Say you have finished a semester and would like to clear everything in your Study Buddy and start over.
 
 You can always clear everything!
 
@@ -460,13 +454,14 @@ To `clear`:
 +
 image::basic/clear/clear_confirm.png[width="590", title="Response to 'clear'"]
 +
-[IMPORTANT]
-Remember that you can enter `quit` if you wish to go back!
-+
-. Press kbd:[enter] again to confirm
+. Type yes and hit kbd:[enter] again to confirm
 . Study Buddy has been cleared completely!
 +
 image::basic/clear/clear_result.png[width="700", title="View empty Study Buddy"]
++
+. At step 2, if you choose to type no and hit kbd:[enter], this is what you will see.
++
+image::basic/clear/clear_no_result.png[width="700", title="Response to no"]
 //end::clear[]
 
 //updated by Souwmyaa
@@ -500,34 +495,34 @@ image::basic/delete/delete_result.png[width="600", title="Updated All Tasks Pane
 //end::delete[]
 
 //updated by Souwmyaa
-//tag::viewDuplicates[]
-==== View duplicates
-This commands filtered all duplicated tasks in the list i.e tasks that have a number appended to their names.
+//tag::viewRenamed[]
+==== View renamed
+This commands filtered all renamed tasks in the list i.e tasks that have a number appended to their names.
 
 *Example:*
 
-Say you want to go back and edit all the tasks that are duplicated in your list. Yet you do not want to scroll through the entire list to find them.
+Say you want to go back and edit all the renamed tasks in your list. Yet you do not want to scroll through the entire list to find them.
 
-Study Buddy provides you an option to view all your duplicate tasks in the list!
+Study Buddy provides you an option to view all your renamed tasks in the list!
 
 [CAUTION]
 You will still need to navigate to the main list and use that index to perform any index based operations (eg: delete, edit etc)
 
-To `view duplicates`:
+To `view renamed`:
 
-. Initiate the command using keyword `view duplicates`
+. Initiate the command using keyword `view renamed`
 . Study Buddy should respond with:
 +
-image::viewDuplicates.png[width="500", title="Response to 'view duplicates'"]
+image::basic/viewrenamed/viewRenamed1.png[width="500", title="Response to 'view renamed'"]
 
 . Press kbd:[enter] again to confirm
-. Duplicate tasks have been filtered!
+. Renamed tasks have been filtered!
 +
-image::viewDuplicates1.png[width="500", title="Updated list of duplicate tasks"]
+image::basic/viewrenamed/viewRenamed2.png[width="500", title="Updated list of renamed tasks"]
 
 [TIP]
 In order to navigate back to the main list, use <<List>>
-//end::viewDuplicates[]
+//end::viewRenamed[]
 
 ==== Archive/ Unarchive
 This commands stores the specified task into a separate list.
@@ -657,7 +652,7 @@ To navigate back to your main list, check out <<List>>
 
 *Example:*
 
-Say you want to view a list of all your Pending tasks.
+Say you want to view a list of all your pending tasks.
 
 Study Buddy provides an option to filter your list!
 
@@ -696,7 +691,7 @@ This commands refreshes the list of tasks Due Soon as well as status tags.
 [IMPORTANT]
 Due soon list shows tasks due within the next week. Details are in <<Due Soon Tasks>>
 [NOTE]
-Status tags include information on the tasks' status. Details are in <<Status Tags>>
+Status tags include information on the tasks' status, eg: pending, overdue etc.
 
 *Example:*
 
@@ -705,7 +700,7 @@ Say you left Study Buddy open for a few days. When you come back, you notice tha
 You can refresh them!
 
 [TIP]
-You can use this command to update the time left tag on due soon tasks.
+Anytime you notice an inconsistency in time left/status, use this command!
 
 To `refresh`:
 
@@ -747,12 +742,16 @@ To `exit`:
 +
 image::basic/exit/exit_confirm.png[width="600", title="Response to 'bye'"]
 . Type 'yes' and press kbd:[enter] to exit, the Study Buddy window will close automatically.
-
+. If instead, you type 'yes' and press kbd:[enter], this is what you will see,
++
+image::basic/exit/exit_no.png[width="600", title="Response to 'no'"]
 
 [NOTE]
-Any command other than `yes` (including kbd:[enter]) will be considered as a quit from the exit.
+You can still use `quit` to go back.
 //end::exit[]
 
+//updated by Souwmyaa
+//tag::savingData[]
 === Saving Data
 
 Study Buddy data is automatically saved in the hard disk after any command that changes the data.
@@ -760,7 +759,10 @@ Study Buddy data is automatically saved in the hard disk after any command that 
 There is no need to save manually.
 
 When the application is closed and re-opened, you should be able to see all the data you have added previously!
+//end::savingData[]
 
+//updated by Souwmyaa
+//tag::dueSoon[]
 === Due Soon Tasks
 
 The Due Soon task list is always on display in your application under `Study Buddy` -> `All tasks`
@@ -787,7 +789,8 @@ image::duesoon/due_soon_tag.png[width="600", align= "left", title="Due Soon List
 Time left is never displayed in days and minutes. Hence if the current time is 9:00 am on 01/04/2020 and the task deadline is 9:02 am on 02/04/2020, it will show time left as 1 day. (not 1 day and 2 minutes)
 
 [NOTE]
-Due soon list will never display Finished tasks. If you unarchive a completed task, it will not appear in the Due Soon list.
+Due soon list will never display finished tasks. eg: if you unarchive a completed task, it will not appear in the Due Soon list.
+//end::dueSoon[]
 
 === Modules
 The modules page organises your tasks into various modules.
@@ -1162,7 +1165,27 @@ Here are some examples of how to obtain Productivity Points in StudyBuddy:
 
 .. Letting a task go Overdue: _-1_
 
+//updated by Souwmyaa
+//tag::summary[]
+[[Summary]]
 
+== Command Summary
+. add <<Add>>
+. archive <<Archive/ Unarchive>>
+. bye <<Exit>>
+. clear <<Clear>>
+. create mods <<Create Modules>>
+. delete <<Delete>>
+. view renamed <<View renamed>>
+. done <<Done>>
+. edit <<Edit>>
+. filter <<Filter>>
+. find <<Find>>
+. help <<Help>>
+. list <<List>>
+. sort <<sort>>
+. refresh <<refresh>>
+//end::summary[]
 
 == FAQ
 

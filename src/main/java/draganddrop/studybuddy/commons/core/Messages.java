@@ -14,5 +14,5 @@ public class Messages {
     public static final String MESSAGE_DUE_SOON_TASK_SUCCESS = "Tasks' status and Due Soon list is updated";
     public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
     public static final String MESSAGE_FILTER_TASK_SUCCESS = "Filtered tasks";
-    public static final String MESSAGE_VIEW_DUPLICATE_TASK_SUCCESS = "Filtered duplicate tasks";
+    public static final String MESSAGE_VIEW_RENAMED_TASK_SUCCESS = "Filtered renamed tasks";
 }
