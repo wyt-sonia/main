@@ -346,13 +346,13 @@ To `add duplicates`:
 . Follow the same steps as in <<Add>>, but enter a duplicate task.
 . Study Buddy should respond with:
 +
-image::addDuplicate.png[width="600", title="Reponse to adding a duplicate"]
+image::duplicate/addDuplicate.png[width="600", title="Reponse to adding a duplicate"]
 +
 . Type in `yes` if you would like to continue and `no` if you do not.
 . If you type `yes` and press kbd:[enter]
 . The Study Buddy should respond with:
 +
-image::addDuplicate1.png[width="600", title="Response to adding duplicate"]
+image::duplicate/addDuplicate1.png[width="600", title="Response to adding duplicate"]
 +
 . As you can see in the snippet above, Study Buddy will append a number in brackets to the task name. This number corresponds to the number of times this task name has been duplicated.
 +
@@ -361,7 +361,7 @@ If you add two duplicates of a task (eg: task(1) and task(2)), and then delete t
 
 .  If you choose to enter `no` at step 2, this is what you will see.
 +
-image::addDuplicate2.png[width="600", title="Response to choosing not to add"]
+image::duplicate/addDuplicate2.png[width="600", title="Response to choosing not to add"]
 
 [TIP]
 You can view all tasks that have been auto-edited this way, using the <<View duplicates>>
@@ -522,12 +522,12 @@ To `view renamed`:
 . Initiate the command using keyword `view renamed`
 . Study Buddy should respond with:
 +
-image::basic/viewrenamed/viewRenamed1.png[width="500", title="Response to 'view renamed'"]
+image::basic/viewrenamed/viewRenamed1.png[width="600", title="Response to 'view renamed'"]
 
 . Press kbd:[enter] again to confirm
 . Renamed tasks have been filtered!
 +
-image::basic/viewrenamed/viewRenamed2.png[width="500", title="Updated list of renamed tasks"]
+image::basic/viewrenamed/viewRenamed2.png[width="600", title="Updated list of renamed tasks"]
 
 [TIP]
 In order to navigate back to the main list, use <<List>>
@@ -1117,15 +1117,15 @@ When this issue happens, you can use any command that can trigger chart updating
 ====
 The calendar feature allows you to visualise your schedule by displaying the number of task you have for the month. This allows students to plan their time efficiently.
 
-The calendar feature can be toggled by clicking `Calendar` -> `Display`
+The calendar feature can be toggled by clicking `Calendar` from the menu bar.
 
-image::calendar/calender_init.png[width="790", align= "left", title="calendar interface"]
+image::calendar/calendar_init.png[width="600", align= "left", title="calendar interface"]
 
 * `Previous` and `Next` buttons can be used to navigate through previous and next months respectively. `Current month` button brings you to the current date, which is in a blue border.
 
 * Clicking on any date will show you all tasks for that day. Keep in mind that the *Index* shown in this panel cannot be used for other commands.
 
-image::calendar/calendar_after_choose_date.png[width="790"", align="left", title="calendar after clicking on a date"]
+image::calendar/calendar_click.png[width="600"", align="left", title="calendar after clicking on a date"]
 
 ==== Navigation using CLI
 Study buddy also allows you to navigate to any date in the `Calendar`.
@@ -1133,15 +1133,15 @@ Study buddy also allows you to navigate to any date in the `Calendar`.
 . To initiate fast navigation, simply key in `calendar` into the input line.
 . Study buddy will ask you for a date
 +
-image::calendar/Calendar_CLI_Date.png[width="790", align="left", title="Interactive prompt after keying in calendar"]
+image::calendar/Calendar_CLI_Date.png[width="600", align="left", title="Interactive prompt after keying in calendar"]
 +
-In this example, we entered `11/04/2020`.
+In this example, we entered `20/04/2020`.
 . Input your date using the format shown and press kbd:[enter] once to proceed.
 . Press kbd:[enter] again to confirm your command.
 
 You will now see the calendar for your selected date as well as all the tasks on that day.
 
-image::calendar/calendar_after_CLI.png[width="790", align="left", title="Successfully navigated calendar using CLI"]
+image::calendar/calendar_after_CLI.png[width="600", align="left", title="Successfully navigated calendar using CLI"]
 
 === Productivity
 
