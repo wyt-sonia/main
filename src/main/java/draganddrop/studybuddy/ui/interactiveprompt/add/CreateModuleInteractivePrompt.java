@@ -48,7 +48,7 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
             break;
         case MODULE_NAME:
             try {
-                if (userInput.equals("")) {
+                if (userInput.isBlank()) {
                     throw new ModuleException("emptyInputError");
                 } else {
                     if (!logic.getFilteredModuleList()
@@ -67,7 +67,7 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
             break;
         case MODULE_CODE:
             try {
-                if (userInput.equals("")) {
+                if (userInput.isBlank()) {
                     throw new ModuleException("emptyInputError");
                 } else {
                     if (!logic.getFilteredModuleList().filtered(x -> x.toString()

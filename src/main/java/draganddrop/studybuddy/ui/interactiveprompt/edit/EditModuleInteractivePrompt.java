@@ -45,7 +45,7 @@ public class EditModuleInteractivePrompt extends InteractivePrompt {
 
     @Override
     public String interact(String userInput) {
-        if (userInput.equals("quit")) {
+        if ("quit".equalsIgnoreCase(userInput)) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
         }
@@ -56,7 +56,7 @@ public class EditModuleInteractivePrompt extends InteractivePrompt {
             break;
         case CHOICE:
             try {
-                if (userInput.equals("")) {
+                if (userInput.isBlank()) {
                     throw new ModuleException("emptyInputError");
                 } else if (ModuleCode.isModuleCode(userInput)) {
                     oldModule = new Module(userInput);
@@ -104,7 +104,7 @@ public class EditModuleInteractivePrompt extends InteractivePrompt {
             break;
         case CHANGE_MOD_NAME:
             try {
-                if (userInput.equals("")) {
+                if (userInput.isBlank()) {
                     throw new ModuleException("emptyInputError");
                 } else if (userInput.equalsIgnoreCase(oldModule.getModuleName())) {
                     throw new ModuleException("noChangeFromOriginalModuleNameError");
@@ -127,7 +127,7 @@ public class EditModuleInteractivePrompt extends InteractivePrompt {
             break;
         case CHANGE_MOD_CODE:
             try {
-                if (userInput.equals("")) {
+                if (userInput.isBlank()) {
                     throw new ModuleException("emptyInputError");
                 } else if (userInput.toUpperCase().equals(oldModule.getModuleCode().toString().toUpperCase())) {
                     throw new ModuleException("noChangeFromOriginalModuleCodeError");

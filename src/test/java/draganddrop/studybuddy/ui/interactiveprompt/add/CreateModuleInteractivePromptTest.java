@@ -29,8 +29,6 @@ class CreateModuleInteractivePromptTest {
     public Path testFolder;
     private CreateModuleInteractivePrompt prompt = new CreateModuleInteractivePrompt();
     private Model modelStub = new ModelManager(getTypicalTaskList(), new UserPrefs());
-    private LocalDateTime endDateTime = LocalDateTime.now().plusDays(20);
-    private LocalDateTime startDateTime = LocalDateTime.now().plusDays(10);
 
     @BeforeEach
     public void setUp() {
@@ -59,7 +57,6 @@ class CreateModuleInteractivePromptTest {
         assertEquals(CreateModuleInteractivePrompt.QUIT_COMMAND_MSG, prompt.interact("quit"));
     }
 
-
     @Test
     public void interactSecondInputReturnKeywordPrompt() {
         prompt.interact("");
@@ -70,10 +67,8 @@ class CreateModuleInteractivePromptTest {
     public void interactThirdInputReturnKeywordPrompt() {
         prompt.interact("");
         prompt.interact("a");
-        String reply = "Module Code: " + "CS1101S" + "\n";
         assertTrue(prompt.interact("CS1101S").contains("CS1101S"));
     }
-
 
     @Test
     public void interactFourthInputReturnKeywordPrompt() {
