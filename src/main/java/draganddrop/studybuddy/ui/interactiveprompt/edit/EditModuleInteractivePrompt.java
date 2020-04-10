@@ -25,7 +25,8 @@ public class EditModuleInteractivePrompt extends InteractivePrompt {
     static final String REQUIRED_MODULE_MSG = "Please key in a module code from the list.";
     static final String REQUIRED_MODULE_NAME_MSG = "Please key in the new name of your module";
     static final String REQUIRED_MODULE_CODE_MSG = "Please key in the new code of your module";
-    static final String REQUIRED_CONFIRMATION = "Are you sure you want to delete this module?\nAll tasks in this module will be "
+    static final String REQUIRED_CONFIRMATION = "Are you sure you want to delete this module?\n"
+        + "All tasks in this module will be "
         + "relocated to 'No Module Allocated' tab. \n\nPress enter to proceed";
 
     static final String CHOICES = "What would you like to do? Key in the index of the action"
@@ -66,7 +67,8 @@ public class EditModuleInteractivePrompt extends InteractivePrompt {
                     } else {
                         oldModule = logic.getFilteredModuleList().get(logic.getFilteredModuleList().indexOf(oldModule));
                         newModule.setModuleName(oldModule.getModuleName());
-                        reply = "Module retrieved: " + newModule.getModuleName() + " " + newModule.getModuleCode() + "\n\n"
+                        reply = "Module retrieved: " + newModule.getModuleName()
+                            + " " + newModule.getModuleCode() + "\n\n"
                             + CHOICES;
                         currentTerm = InteractivePromptTerms.PICK;
                     }
