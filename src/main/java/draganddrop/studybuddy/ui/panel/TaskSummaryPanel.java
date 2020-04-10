@@ -66,12 +66,13 @@ public class TaskSummaryPanel extends UiPart<Region> {
         super(FXML);
 
         // render nodes.
-
         logger.fine(FXML + ": Start to render charts from task summary panel.");
-        renderCharts();
-        bindCharts(observableCurrentTasks, observableArchivedTasks, observableModules);
+
         this.selectedTaskListPanelPlaceholder = selectedTaskListPanelPlaceholder;
         this.selectedTaskListPanelTitle = selectedTaskListPanelTitle;
+
+        renderCharts();
+        bindCharts(observableCurrentTasks, observableArchivedTasks, observableModules);
         selectedTaskListPanelPlaceholder.setBackground(
             new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
         renderSelectedListPanel();
@@ -164,7 +165,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
      * The pie chart is used to show the summary of numbers of different tasks' statuses.
      */
     private void setUpPieChart() {
-        logger.fine(FXML + " PieChart: Start to sets up the pie chart's pie chart and data.");
+        logger.fine(FXML + " PieChart: Start to sets up the pie chart's data and onclick action.");
         ArrayList<PieChart.Data> datas = new ArrayList<>();
         if (!taskSummaryPieChart.getData().isEmpty()) {
             taskSummaryPieChart.getData().clear();
@@ -178,17 +179,25 @@ public class TaskSummaryPanel extends UiPart<Region> {
         }
         logger.fine(FXML + " PieChart: End of binding bind data.");
 
-        logger.fine(FXML + " PieChart: Start to set up the pie chart's pie chart and data.");
+        logger.fine(FXML + " PieChart: Start to set up the pie chart's onclick action.");
         datas.forEach(d -> d.getNode().setOnMouseClicked(e -> {
+            selectedTaskListPanelPlaceholder.setManaged(true);
+            selectedTaskListPanelPlaceholder.setVisible(true);
+
             String statusName = d.getName().split(":")[0].trim();
-            selectedTasks = tempTasks.filtered(task ->
-                task.getTaskStatus().equals(TaskStatus.getStatus(statusName)));
+
+
+            selectedTasks = tempTasks.filtered(task -> {
+                    TaskStatus test = task.getTaskStatus();
+                    TaskStatus test2 = TaskStatus.getStatus(statusName);
+                    return task.getTaskStatus().equals(TaskStatus.getStatus(statusName)); }
+                );
             TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
             selectedTaskListPanelTitle.setText(d.getName().toUpperCase() + " Tasks");
             selectedTaskListPanelPlaceholder.getChildren().clear();
             selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
         }));
-        logger.fine(FXML + " PieChart: End of setting up the pie chart's pie chart and data.");
+        logger.fine(FXML + " PieChart: End of setting up the pie chart's onclick action.");
 
         taskSummaryPieChart.getData().forEach(data ->
             data.nameProperty().bind(
@@ -197,7 +206,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
                 )
             )
         );
-        logger.fine(FXML + " PieChart: End of setting up the pie chart's pie chart and data.");
+        logger.fine(FXML + " PieChart: End of setting up the pie chart's data and onclick action.");
     }
 
     /**
@@ -256,6 +265,9 @@ public class TaskSummaryPanel extends UiPart<Region> {
 
             logger.fine(FXML + " AreaChart: Start to set up the on click action for each data area.");
             datas.forEach(d -> d.getNode().setOnMouseClicked(e -> {
+                selectedTaskListPanelPlaceholder.setManaged(true);
+                selectedTaskListPanelPlaceholder.setVisible(true);
+
                 String moduleCode = d.getExtraValue().toString();
                 String dateString = d.getXValue().toString();
                 LocalDate date = TimeParser.parseDate(dateString);
@@ -275,6 +287,9 @@ public class TaskSummaryPanel extends UiPart<Region> {
 
             logger.fine(FXML + " AreaChart: Start to set up the on click action for each data point.");
             dataSeries.forEach(d -> d.getNode().setOnMouseClicked(e -> {
+                selectedTaskListPanelPlaceholder.setManaged(true);
+                selectedTaskListPanelPlaceholder.setVisible(true);
+
                 String moduleCode = d.getName().equals("Not Module Related")
                     ? new EmptyModule().getModuleCode().toString() : d.getName();
                 selectedTasks = tempTasks.filtered(task ->
@@ -329,6 +344,9 @@ public class TaskSummaryPanel extends UiPart<Region> {
 
         logger.fine(FXML + " BarChart: Start to setting up the on click action for each data area");
         datas.forEach(d -> {
+            selectedTaskListPanelPlaceholder.setManaged(true);
+            selectedTaskListPanelPlaceholder.setVisible(true);
+
             String moduleCode = (d.getExtraValue().toString().split("//"))[0];
             String taskType = (d.getExtraValue().toString().split("//"))[1];
             d.getNode().setOnMouseClicked(e -> {
