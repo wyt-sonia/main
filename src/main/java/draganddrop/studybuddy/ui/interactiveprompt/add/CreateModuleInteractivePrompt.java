@@ -20,9 +20,8 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
         + "then a postfix (Optional).\n"
         + "E.g. BA1001\n       CS2030J     \n       LSM2040C";
     static final String QUIT_COMMAND_MSG = "Successfully quited from create mod command.";
-    static final String REQUEST_MODULE_NAME_MSG = "Please key in the name of the module that you want to create";
-    static final String REQUEST_MODULE_CODE_MSG = "Please key in the module code of the module that you want to create";
-
+    static final String REQUIRED_MODULE_NAME_MSG = "Please key in the name of the module that you want to create";
+    static final String REQUIRED_MODULE_CODE_MSG = "Please key in the module code of the module that you want to create";
 
     private Module module;
 
@@ -34,7 +33,7 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
 
     @Override
     public String interact(String userInput) {
-        if ("quit".equals(userInput)) {
+        if ("quit".equalsIgnoreCase(userInput)) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
         }
@@ -42,7 +41,7 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
         switch (currentTerm) {
 
         case INIT:
-            this.reply = REQUEST_MODULE_NAME_MSG;
+            this.reply = REQUIRED_MODULE_NAME_MSG;
             currentTerm = InteractivePromptTerms.MODULE_NAME;
             break;
         case MODULE_NAME:
@@ -50,17 +49,18 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
                 if (userInput.equals("")) {
                     throw new ModuleException("emptyInputError");
                 } else {
-                    if (!logic.getFilteredModuleList().filtered(x -> x.getModuleName().equals(userInput)).isEmpty()) {
+                    if (!logic.getFilteredModuleList()
+                        .filtered(x -> x.getModuleName().equalsIgnoreCase(userInput)).isEmpty()) {
                         throw new ModuleException("duplicateModuleNameError");
                     } else {
-                        this.reply = "The name of module is set to: " + userInput + ".\n\n"
-                            + REQUEST_MODULE_CODE_MSG;
+                        this.reply = "The name of new module is set to: " + userInput + ".\n\n"
+                            + REQUIRED_MODULE_CODE_MSG;
                         module.setModuleName(userInput);
                         currentTerm = InteractivePromptTerms.MODULE_CODE;
                     }
                 }
             } catch (ModuleException ex) {
-                reply = ex.getErrorMessage() + "\n\n" + REQUEST_MODULE_NAME_MSG;
+                reply = ex.getErrorMessage() + "\n\n" + REQUIRED_MODULE_NAME_MSG;
             }
             break;
         case MODULE_CODE:
@@ -69,17 +69,17 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
                     throw new ModuleException("emptyInputError");
                 } else {
                     if (!logic.getFilteredModuleList().filtered(x -> x.toString()
-                        .equals(userInput.toUpperCase())).isEmpty()) {
+                        .equalsIgnoreCase(userInput)).isEmpty()) {
                         throw new ModuleException("duplicateModuleCodeError");
                     } else {
                         module.setModuleCode(userInput);
-                        this.reply = "Module Code: " + module.toString() + "\n\n"
-                            + "Click 'Enter' again to confirm your changes";
+                        this.reply = "The module code of new module is set to: " + module.toString() + "\n\n"
+                            + "Please press enter to confirm your changes";
                         currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
                     }
                 }
             } catch (ModuleException ex) {
-                reply = ex.getErrorMessage() + "\n\n" + REQUEST_MODULE_CODE_MSG;
+                reply = ex.getErrorMessage() + "\n\n" + REQUIRED_MODULE_CODE_MSG;
             }
             break;
         case READY_TO_EXECUTE:

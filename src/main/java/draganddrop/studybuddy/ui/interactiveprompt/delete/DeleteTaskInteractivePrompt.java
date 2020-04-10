@@ -28,7 +28,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 public class DeleteTaskInteractivePrompt extends InteractivePrompt {
     public static final String QUIT_COMMAND_MSG = "Successfully quited from delete task command.";
     private static final String END_OF_COMMAND_MSG = "Task deleted successfully!";
-    private static final String REQUEST_INDEX_MSG = "Please enter the index number of task you wish to delete.";
+    private static final String REQUIRED_INDEX_MSG = "Please enter the index number of task you wish to delete.";
 
     private int index;
 
@@ -39,14 +39,14 @@ public class DeleteTaskInteractivePrompt extends InteractivePrompt {
 
     @Override
     public String interact(String userInput) {
-        if ("quit".equals(userInput)) {
+        if ("quit".equalsIgnoreCase(userInput)) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
         }
 
         switch (currentTerm) {
         case INIT:
-            this.reply = REQUEST_INDEX_MSG;
+            this.reply = REQUIRED_INDEX_MSG;
             currentTerm = InteractivePromptTerms.TASK_INDEX;
             break;
 
@@ -58,7 +58,7 @@ public class DeleteTaskInteractivePrompt extends InteractivePrompt {
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (DeleteTaskCommandException ex) {
                 reply = ex.getErrorMessage()
-                    + "\n" + REQUEST_INDEX_MSG;
+                    + "\n" + REQUIRED_INDEX_MSG;
             }
             break;
 

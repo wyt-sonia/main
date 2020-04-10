@@ -10,7 +10,7 @@ import draganddrop.studybuddy.ui.box.CalendarBox;
 import draganddrop.studybuddy.ui.box.CommandBox;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.add.CreateModuleInteractivePrompt;
-import draganddrop.studybuddy.ui.interactiveprompt.edit.EditModInteractivePrompt;
+import draganddrop.studybuddy.ui.interactiveprompt.edit.EditModuleInteractivePrompt;
 import draganddrop.studybuddy.ui.panel.DueSoonListPanel;
 import draganddrop.studybuddy.ui.panel.ModuleListPanel;
 import draganddrop.studybuddy.ui.panel.TaskListPanel;
@@ -401,13 +401,13 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * on clicked: leads to EditModInteractivePrompt.
+     * on clicked: leads to EditModuleInteractivePrompt.
      */
     @FXML
     private void handleEditMod() {
         logger.fine(FXML + " : Start to handling edit Mod InteractivePrompt.");
         handleShowModules();
-        commandBox.run(new EditModInteractivePrompt());
+        commandBox.run(new EditModuleInteractivePrompt());
         commandBox.handleCommandEntered();
         logger.fine(FXML + " : End of handling edit Mod InteractivePrompt.");
     }
@@ -452,7 +452,7 @@ public class MainWindow extends UiPart<Stage> {
     private CommandResult executeCommand(InteractivePrompt currentInteractivePrompt, String commandText) {
         logger.fine(FXML + " : Start to handle command execution.");
         currentInteractivePrompt.setLogic(logic);
-        String reply = currentInteractivePrompt.interact(commandText);
+        String reply = currentInteractivePrompt.interact(commandText.trim());
         resultDisplay.setFeedbackToUser(reply);
         if (currentInteractivePrompt.isQuit()) {
             handleExit();
