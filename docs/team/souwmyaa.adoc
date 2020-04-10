@@ -96,32 +96,46 @@ This enhancement was a crucial command.
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-. Introduction +
+. Introduction
+
 include::../UserGuide.adoc[tag=introduction]
-. Useful tips +
+. Useful tips
+
 include::../UserGuide.adoc[tag=usefulTips]
-. Commonly Used Symbols +due
+. Commonly Used Symbols
+
 include::../UserGuide.adoc[tag=symbols]
 . Features:
-.. Delete +
+
+.. Delete
+
 include::../UserGuide.adoc[tag=delete]
-.. Add duplicates +
+.. Add duplicates
+
 include::../UserGuide.adoc[tag=addDuplicates]
-.. View renamed +
+.. View renamed
+
 include::../UserGuide.adoc[tag=viewRenamed]
-.. Filter +
+.. Filter
+
 include::../UserGuide.adoc[tag=filter]
-.. Refresh +
+.. Refresh
+
 include::../UserGuide.adoc[tag=refresh]
-.. Due Soon +
+.. Due Soon
+
 include::../UserGuide.adoc[tag=dueSoon]
-.. Saving Data +
+.. Saving Data
+
 include::../UserGuide.adoc[tag=savingData]
-.. Clear +
+.. Clear
+
 include::../UserGuide.adoc[tag=clear]
-.. Exit +
+.. Exit
+
 include::../UserGuide.adoc[tag=exit]
 .. Summary
+
 include::../UserGuide.adoc[tag=summary]
 
 === Developer Guide
@@ -131,18 +145,25 @@ include::../UserGuide.adoc[tag=summary]
 |===
 
 . Sections:
-.. Introduction +
+.. Introduction
+
 include::../DeveloperGuide.adoc[tag=introduction]
-.. Model Component +
+.. Model Component
+
 include::../DeveloperGuide.adoc[tag=modelComponent]
-.. Due Soon Tasks Feature +
+.. Due Soon Tasks Feature
+
 include::../DeveloperGuide.adoc[tag=dueSoon]
-.. Use cases pertaining to my features +
+.. Use cases pertaining to my features
+
 include::../DeveloperGuide.adoc[tag=useCasesSouwmyaa]
-.. User stories +
+.. User stories
+
 include::../DeveloperGuide.adoc[tag=userStories]
-.. Instructions for Manual Testing- Saving Data +
+.. Instructions for Manual Testing- Saving Data
+
 include::../DeveloperGuide.adoc[tag=savingData]
+
 . Diagrams:
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/ModelClassDiagram.puml[Model class diagram]
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DueSoonActivityDiagram.puml[Due soon activity diagram]
