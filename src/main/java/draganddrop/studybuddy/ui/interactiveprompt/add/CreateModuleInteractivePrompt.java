@@ -19,10 +19,10 @@ public class CreateModuleInteractivePrompt extends InteractivePrompt {
         + " a 4-digit number,"
         + "then a postfix (Optional).\n"
         + "E.g. BA1001\n       CS2030J     \n       LSM2040C";
-    static final String QUIT_COMMAND_MSG = "Successfully quited from create mod command.";
-    static final String SUCCESS_COMMAND_MSG = "Module created!\n\nKey in your next command :)";
-    static final String REQUIRED_MODULE_NAME_MSG = "Please key in the name of the module that you want to create";
-    static final String REQUIRED_MODULE_CODE_MSG = "Please key in the module code of the module "
+    public static final String QUIT_COMMAND_MSG = "Successfully quited from create mod command.";
+    public static final String SUCCESS_COMMAND_MSG = "Module created!\n\nKey in your next command :)";
+    public static final String REQUIRED_MODULE_NAME_MSG = "Please key in the name of the module that you want to create";
+    public static final String REQUIRED_MODULE_CODE_MSG = "Please key in the module code of the module "
         + "that you want to create";
 
     private Module module;

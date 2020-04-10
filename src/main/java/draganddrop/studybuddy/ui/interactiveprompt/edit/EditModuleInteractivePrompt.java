@@ -129,7 +129,7 @@ public class EditModuleInteractivePrompt extends InteractivePrompt {
             try {
                 if (userInput.isBlank()) {
                     throw new ModuleException("emptyInputError");
-                } else if (userInput.toUpperCase().equals(oldModule.getModuleCode().toString().toUpperCase())) {
+                } else if (userInput.equalsIgnoreCase(oldModule.getModuleCode().toString())) {
                     throw new ModuleException("noChangeFromOriginalModuleCodeError");
                 } else if (!logic.getFilteredModuleList().filtered(x -> x.toString()
                     .equalsIgnoreCase(userInput)).isEmpty()) {
