@@ -12,7 +12,7 @@ import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.module.Module;
-import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
+import draganddrop.studybuddy.model.module.exceptions.ModuleException;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskField;
 import draganddrop.studybuddy.model.task.TaskType;
@@ -109,7 +109,7 @@ public class EditTaskCommand extends Command {
             requireNonNull(newModule);
             try {
                 model.setTaskMod(taskToEdit, newModule);
-            } catch (ModuleCodeException ex) {
+            } catch (ModuleException ex) {
                 throw new CommandException("module code invalid/does not exist!!!");
             }
             break;

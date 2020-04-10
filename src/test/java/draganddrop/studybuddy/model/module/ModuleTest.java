@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
 
-import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
+import draganddrop.studybuddy.model.module.exceptions.ModuleException;
 import draganddrop.studybuddy.testutil.Assert;
 import draganddrop.studybuddy.testutil.TestModules;
 
@@ -29,29 +29,29 @@ public class ModuleTest {
     }
 
     @Test
-    public void changeModuleCodeSucceed() throws ModuleCodeException {
+    public void changeModuleCodeSucceed() throws ModuleException {
         sample1.setModuleCode("CC1111");
         assertEquals(sample1.getModuleCode(), new ModuleCode("CC1111"));
     }
 
     @Test
     public void createModuleWithNoPrefix_throwsModuleCodeException() {
-        Assert.assertThrows(ModuleCodeException.class, ()-> new Module("2312312"));
+        Assert.assertThrows(ModuleException.class, ()-> new Module("2312312"));
     }
 
     @Test
     public void createModuleWithNoNumber_throwsModuleCodeException() {
-        Assert.assertThrows(ModuleCodeException.class, ()-> new Module("CS"));
+        Assert.assertThrows(ModuleException.class, ()-> new Module("CS"));
     }
 
     @Test
     public void createModuleExceedPrefixLength_throwsModuleCodeException() {
-        Assert.assertThrows(ModuleCodeException.class, ()-> new Module("CSSS1000"));
+        Assert.assertThrows(ModuleException.class, ()-> new Module("CSSS1000"));
     }
 
     @Test
     public void createModuleExceedLength_throwsModuleCodeException() {
-        Assert.assertThrows(ModuleCodeException.class, ()-> new Module("CS100000000Z"));
+        Assert.assertThrows(ModuleException.class, ()-> new Module("CS100000000Z"));
     }
 
     @Test

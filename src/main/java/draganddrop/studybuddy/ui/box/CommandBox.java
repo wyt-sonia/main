@@ -15,7 +15,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.delete.ClearTasksInteractiveP
 import draganddrop.studybuddy.ui.interactiveprompt.delete.DeleteTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.ArchiveTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.CompleteTaskInteractivePrompt;
-import draganddrop.studybuddy.ui.interactiveprompt.edit.EditModInteractivePrompt;
+import draganddrop.studybuddy.ui.interactiveprompt.edit.EditModuleInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.EditTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.SetGoalInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.UnarchiveTaskInteractivePrompt;
@@ -26,7 +26,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.view.FindTaskInteractivePromp
 import draganddrop.studybuddy.ui.interactiveprompt.view.HelpInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.view.ListTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.view.RefreshTaskInteractivePrompt;
-import draganddrop.studybuddy.ui.interactiveprompt.view.ViewDuplicateTaskInteractivePrompt;
+import draganddrop.studybuddy.ui.interactiveprompt.view.ViewRenamedTaskInteractivePrompt;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -40,9 +40,9 @@ public class CommandBox extends UiPart<Region> {
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
     private static final String[] interactiveCommandTypes =
-        {"add", "edit", "delete", "archive", "done", "view duplicates",
+        {"add", "edit", "delete", "archive", "done", "view renamed",
         "clear", "bye", "sort", "refresh", "help",
-        "filter", "create mods", "find", "list", "unarchive", "goal", "calendar"};
+        "filter", "create mods", "edit mods", "find", "list", "unarchive", "goal", "calendar"};
     private final CommandExecutor commandExecutor;
     private InteractivePrompt currentInteractivePrompt;
     @FXML
@@ -80,8 +80,8 @@ public class CommandBox extends UiPart<Region> {
                 case "archive":
                     currentInteractivePrompt = new ArchiveTaskInteractivePrompt();
                     break;
-                case "view duplicates":
-                    currentInteractivePrompt = new ViewDuplicateTaskInteractivePrompt();
+                case "view renamed":
+                    currentInteractivePrompt = new ViewRenamedTaskInteractivePrompt();
                     break;
                 case "done":
                     currentInteractivePrompt = new CompleteTaskInteractivePrompt();
@@ -119,7 +119,7 @@ public class CommandBox extends UiPart<Region> {
                     currentInteractivePrompt = new CreateModuleInteractivePrompt();
                     break;
                 case "edit mods":
-                    currentInteractivePrompt = new EditModInteractivePrompt();
+                    currentInteractivePrompt = new EditModuleInteractivePrompt();
                     break;
                 //mod related functions will not be shown on UI but available as shortcut
                 case "goal":

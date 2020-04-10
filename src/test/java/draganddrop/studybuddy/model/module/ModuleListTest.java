@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
+import draganddrop.studybuddy.model.module.exceptions.ModuleException;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.testutil.Assert;
 import draganddrop.studybuddy.testutil.TestModules;
@@ -22,7 +22,7 @@ public class ModuleListTest {
     @Test
     public void modListDuplicateMods_throwModuleCodeException() {
         ModuleList moduleList = new ModuleList();
-        Assert.assertThrows(ModuleCodeException.class, ()-> {
+        Assert.assertThrows(ModuleException.class, ()-> {
             for (Module sampleMod: TestModules.getSampleModule()) {
                 moduleList.add(sampleMod);
             }
@@ -30,7 +30,7 @@ public class ModuleListTest {
     }
 
     @Test
-    public void lastModOnListIsEmptyModule() throws ModuleCodeException {
+    public void lastModOnListIsEmptyModule() throws ModuleException {
         ModuleList moduleList = new ModuleList();
         moduleList.add(new EmptyModule());
         moduleList.add(new Module("A", "CS2000"));
@@ -44,7 +44,7 @@ public class ModuleListTest {
     }
 
     @Test
-    public void containsModInList_returnTrue() throws ModuleCodeException {
+    public void containsModInList_returnTrue() throws ModuleException {
         ModuleList moduleList = new ModuleList();
         Module sample1 = TestModules.getSampleModule()[0];
         moduleList.add(sample1);

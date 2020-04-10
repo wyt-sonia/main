@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 
-import draganddrop.studybuddy.model.module.exceptions.ModuleCodeException;
+import draganddrop.studybuddy.model.module.exceptions.ModuleException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -53,11 +53,11 @@ public class ModuleList {
      * Moves Empty module to the back of the internalList.
      * @param module to be added to the ModuleList
      */
-    public void add(Module module) throws ModuleCodeException {
+    public void add(Module module) throws ModuleException {
         if (this.contains(module)) {
-            throw new ModuleCodeException("Duplicate modules");
+            throw new ModuleException("Duplicate modules");
         } else if (this.containsDuplicateName(module.getModuleName())) {
-            throw new ModuleCodeException("Duplicate module name");
+            throw new ModuleException("Duplicate module name");
         } else {
             internalList.add(module);
             shiftEmptyModBack();
@@ -95,13 +95,13 @@ public class ModuleList {
      * Removes module from the list.
      *
      * @param module
-     * @throws ModuleCodeException
+     * @throws ModuleException
      */
-    public void remove(Module module) throws ModuleCodeException {
+    public void remove(Module module) throws ModuleException {
         if (this.contains(module)) {
             internalList.remove(module);
         } else {
-            throw new ModuleCodeException("Module does not exist");
+            throw new ModuleException("Module does not exist");
         }
     }
 
@@ -109,18 +109,18 @@ public class ModuleList {
      * Changes moduleName of a certain mod. Checks for existence of origin mod & duplicity of new name.
      * @param oldModule
      * @param newModule
-     * @throws ModuleCodeException
+     * @throws ModuleException
      */
-    public void changeModuleName(Module oldModule, Module newModule) throws ModuleCodeException {
+    public void changeModuleName(Module oldModule, Module newModule) throws ModuleException {
         if (this.contains(oldModule) && !this.containsDuplicateName(newModule.getModuleName())) {
             int oldIndex = internalList.indexOf(oldModule);
             internalList.set(oldIndex, newModule);
         } else {
             if (!this.contains(oldModule)) {
-                throw new ModuleCodeException("Module does not exist");
+                throw new ModuleException("Module does not exist");
             }
             if (this.containsDuplicateName(newModule.getModuleName())) {
-                throw new ModuleCodeException("A duplicate module name already exist.");
+                throw new ModuleException("A duplicate module name already exist.");
             }
         }
     }
@@ -129,11 +129,11 @@ public class ModuleList {
      * Changes moduleCode of a certain mod. Checks for existence of origin mod & duplicity of new code.
      * @param oldModule
      * @param newModule
-     * @throws ModuleCodeException
+     * @throws ModuleException
      */
-    public void changeModuleCode(Module oldModule, Module newModule) throws ModuleCodeException {
+    public void changeModuleCode(Module oldModule, Module newModule) throws ModuleException {
         if (this.contains(newModule)) {
-            throw new ModuleCodeException("new module code is a duplicate!");
+            throw new ModuleException("new module code is a duplicate!");
         } else if (this.contains(oldModule)) {
             if (!newModule.equals(new EmptyModule())) {
                 newModule.setInternalTaskList(oldModule.getInternalTaskList());
@@ -145,7 +145,7 @@ public class ModuleList {
             int index = this.indexOf(oldModule);
             internalList.set(index, newModule);
         } else {
-            throw new ModuleCodeException("module does not exist");
+            throw new ModuleException("module does not exist");
         }
     }
 
@@ -154,16 +154,16 @@ public class ModuleList {
      *
      * @param moduleCode
      * @return
-     * @throws ModuleCodeException
+     * @throws ModuleException
      */
 
-    public Module get(String moduleCode) throws ModuleCodeException {
+    public Module get(String moduleCode) throws ModuleException {
         Module moduleToFind = new Module(moduleCode);
         if (this.contains(moduleToFind)) {
             int index = this.internalList.indexOf(moduleToFind);
             return this.internalList.get(index);
         } else {
-            throw new ModuleCodeException("Module Not Found");
+            throw new ModuleException("Module Not Found");
         }
     }
 

@@ -216,8 +216,7 @@ This feature is implemented using a panel on the main window with a list of task
 
 Some situations that trigger due soon feature are:
 
-=======
-*When user enters a task:*
+. *When user enters a task:*
 
 .. What it does: +
 ... When a task that is added to the main list, is due within the next week, it is automatically added to the list of due soon tasks. +
@@ -241,12 +240,7 @@ image::AddDueSoonSequence.png[width = "800", length = "600", title = "Sequence D
 The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 {bl}
 
-=======
-=======
-
-*When user deletes a task:*
-
-When a task that is added to the main list, is due within the next week, it is automatically added to the list of Due Soon tasks.
+2. *When user deletes a task:*
 
 .. What it does:
 ... When a task that is deleted from the main list occurs in the due soon list as well, it is automatically deleted.
@@ -266,10 +260,7 @@ image::DeleteDueSoonSequence.png[width = "800", length = "600", title = "Sequenc
 [CAUTION]
 The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
-=======
-=======
-
-*When user refreshes due soon list:*
+. *When user refreshes due soon list:*
 
 .. What it does: +
 ... Refreshes the list of due soon tasks and status tags. This command is useful for a situation where due soon list is not up to date due to a drastic change in time.
@@ -286,13 +277,7 @@ image::DueSoonSequenceDiagram.png[width = "800", length = "600", title = "Sequen
 [CAUTION]
 The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
-When a task that is deleted from the main list occurs in the Due Soon list as well, it is automatically deleted.
-
-=======
-=======
-
-
-*When the application launches:*
+. *When the application launches:*
 
 .. What it does:
 ... It loads the due soon tasks into a panel by filtering tasks that are due soon from the main list.
@@ -302,10 +287,8 @@ When a task that is deleted from the main list occurs in the Due Soon list as we
 ... The addTask() function in StudyBuddy class already checks if task is due soon and adds to due soon list (as mentioned above).
 ... While all tasks are being added to their respective lists in JsonSerializableStudyBuddy class, the due soon list gets automatically updated.
 
-=======
-
 [NOTE]
-Other commands like edit, delete duplicates etc also trigger due soon feature in a similar manner.
+Other commands like edit, archive etc also trigger due soon feature in a similar manner.
 [NOTE]
 Calculation of time left for deadline and check for if task is due soon can be found in the Task class.
 
@@ -619,9 +602,9 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |user |archive tasks |separate the tasks that are not applicable right now
 
-|`* *` |user |delete duplicate tasks | easily filter out any duplicate data in my list
+|`* *` |user |view renamed tasks | easily filter out any renamed data in my list
 
-|`* *` |user |filter all Pending tasks | view all my Pending tasks in one place
+|`* *` |user |filter all pending tasks | view all my Pending tasks in one place
 
 |`* *` |user who likes organization |view all my tasks that are Due Soon|know what to focus on in the next week
 
@@ -722,15 +705,12 @@ Use case resumes at step 5.
 
 
 [discrete]
-=== Use case: Delete duplicates
+=== Use case: View renamed
 
 *MSS*
 
-
-1. Refer to List tasks use case
-2. User requests to delete all duplicates in the list
-3. Study Buddy deletes all but one occurrence of each task
-
+1. User requests to view renamed tasks
+2. Study Buddy shows a list of renamed tasks
 +
 Use case ends.
 
