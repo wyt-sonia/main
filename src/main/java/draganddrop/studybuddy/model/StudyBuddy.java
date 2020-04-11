@@ -235,11 +235,11 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         tasks.add(p);
     }
 
-    void addTaskToMainList(Task p) {
+    public void addTaskToMainList(Task p) {
         tasks.add(p);
     }
 
-    void deleteTaskFromMainList(Task p) {
+    public void deleteTaskFromMainList(Task p) {
         tasks.remove(p);
     }
 
