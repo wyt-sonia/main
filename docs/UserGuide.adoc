@@ -664,6 +664,20 @@ All your tasks are listed once again!
 +
 image::basic/list/list_result.png[width="790",align="center",title="List result"]
 
+==== Goal
+Want to challenge yourself to complete tasks? You can set your daily goal using `goal`.
+
+To use the `goal` command:
+
+. Initiate the command with `goal`
++
+
+
+. Now indicate the number of tasks that you want to complete today.
+It should be a number between 1 and 100.
+
+. Your goal has been set. All the best!
+
 //updated by Souwmyaa
 //tag::filter[]
 [[Filter]]
@@ -756,6 +770,7 @@ You will notice that the overdue task has now moved out of the due soon list and
 
 [NOTE]
 After 'refresh', the tasks in *All Tasks Panel* will be sorted by their deadline or start date.
+
 
 //updated by Souwmyaa
 //tag::exit[]
@@ -1179,6 +1194,9 @@ You will now see the calendar for your selected date as well as all the tasks on
 
 image::calendar/calendar_after_CLI.png[width="790",align="center",title="Successfully navigated calendar using CLI"]
 
+
+//updated by Teik Jun
+//tag::productivity[]
 === Productivity
 
 The productivity page shows insights related to your productivity over the past day, week and more.
@@ -1186,21 +1204,40 @@ By keeping tabs on your past productivity, you can improve your future productiv
 The productivity feature also gamifies your task management experience.
 Doing work has never been more fun!
 
-.1. Daily Productivity Tab
+==== Daily Productivity Tab
+image::productivity/daily_tab.png[width="790",align="center",title="Daily Productivity Tab"]
+
 To get started, click on the Productivity menu button.
-The daily productivity tab records your the number of tasks you completed today.
+The daily productivity tab tracks the number of tasks you completed today.
+As you complete tasks using the `done` command, you will get closer to your daily goal.
+
 You can set a daily goal for the number of tasks you want to complete using the command `goal`.
-Completing your goal each day adds to your streak.
+Completing your goal each day adds to your streak. Your streak will reset to zero if you miss a day.
 
-.2. Weekly Productivity Tab
+==== Weekly Productivity Tab
+image::productivity/weekly_tab.png[width="790",align="center",title="Weekly Productivity Tab"]
+
 On the weekly productivity tab, you can look back on your progress over the past week.
-This tab displays information about your past productivity.
+The weekly tab displays information about your productivity for the past seven days.
 
-.3. Productivity Points Tab
+
+Here, you can keep track of the total number of tasks you completed this week.
+You can visualize the number of tasks you completed using the bar chart shown.
+
+Furthermore, you can keep track of the number of tasks that went overdue this week,
+so that you can be more punctual in the future.
+
+
+==== Productivity Points Tab
+image::productivity/points-tab.png[width="790",align="center",title="Productivity Points Tab" title-align="center"]
+
 You can go to this tab directly by clicking your Productivity Point count on the top right of the menu.
 The Productivity Points tab displays your current Productivity Points (PP) and your progression.
+
+
 You gain Productivity Points upon adding tasks, completing tasks, and using advanced features in StudyBuddy.
 On the other hand, you lose Productivity Points when your tasks go Overdue.
+
 Here are some examples of how to obtain Productivity Points in StudyBuddy:
 
 .. Adding a task: _+1_
@@ -1210,6 +1247,8 @@ Here are some examples of how to obtain Productivity Points in StudyBuddy:
 .. Using advanced features; _+?_ (Explore StudyBuddy to find out!)
 
 .. Letting a task go Overdue: _-1_
+
+//end::productivity[]
 
 //updated by Souwmyaa
 //tag::summary[]
