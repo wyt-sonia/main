@@ -8,8 +8,9 @@ skinparam classBorderColor #black
 package Logic {
 
 package Parser {
-Class AddTaskCommandParser
-Class EditTaskCommandParser
+Class TaskParser
+Class TimeParser
+Class StudyBuddyParser
 }
 
 package Command {
@@ -26,17 +27,36 @@ package Model{
 Class HiddenModel #FFFFFF
 }
 
-Class HiddenOutside #FFFFFF
-HiddenOutside ..> Logic
 
+package Ui {
+Class HiddenUi #FFFFFF
+}
+
+Ui .up.>Parser
+
+Parser---[hidden]>XYZCommand
+
+note right of XYZCommand: XYZCommand includes \nAddTaskCommand, \nFindTaskCommand, etc
+
+Command .right.> Model
+LogicManager -down-> Model
+
+Model.[hidden].> LogicManager
+
+TaskParser -[hidden]-> TimeParser
+StudyBuddyParser -[hidden]-> TaskParser
+
+XYZCommand .up.|> Command
 LogicManager .up.|> Logic
 
-LogicManager --> Model
-Command .right.> Model
-note right of XYZCommand: XYZCommand = AddTaskCommand, \nFindTaskCommand, etc
+
 
 Logic ..> CommandResult
 LogicManager .down.> CommandResult
 Command .up.> CommandResult
-CommandResult --[hidden]-> Parser
+
+
+
+
+
 @enduml
