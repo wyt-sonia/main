@@ -29,9 +29,9 @@ public class RefreshCommand extends Command {
         List<Task> lastShownList = model.getFilteredTaskList();
 
         model.clearDueSoonList(new StudyBuddy());
+
         for (Task task : lastShownList) {
             if (task.isDueSoon()) {
-                task.isDueSoon();
                 model.forceAddDueSoonTask(task);
             }
             refreshStatus(task, model);
