@@ -165,7 +165,7 @@ public class ScoreStats {
         } else if (currentScore < expertScore) {
             return (expertScore - currentScore);
         } else if (currentScore < masterScore) {
-            return (expertScore - currentScore);
+            return (masterScore - currentScore);
         } else if (currentScore < grandmasterScore) {
             return (grandmasterScore - currentScore);
         } else if (currentScore < legendScore) {
@@ -176,6 +176,35 @@ public class ScoreStats {
             return (enlightenedScore - currentScore);
         } else {
             return 0;
+        }
+    }
+
+
+    /**
+     * get the total score required for the current rank minus that of the previous rank
+     * @return total score required for current rank
+     */
+    public int getScoreDifferenceForRank() {
+        if (currentScore < noviceScore) {
+            return noviceScore;
+        } else if (currentScore < apprenticeScore) {
+            return apprenticeScore - noviceScore;
+        } else if (currentScore < dukeScore) {
+            return dukeScore - apprenticeScore;
+        } else if (currentScore < expertScore) {
+            return expertScore - dukeScore;
+        } else if (currentScore < masterScore) {
+            return masterScore - expertScore;
+        } else if (currentScore < grandmasterScore) {
+            return grandmasterScore - masterScore;
+        } else if (currentScore < legendScore) {
+            return legendScore - grandmasterScore;
+        } else if (currentScore < sageScore) {
+            return sageScore - legendScore;
+        } else if (currentScore < enlightenedScore) {
+            return enlightenedScore - sageScore;
+        } else {
+            return 1;
         }
     }
 

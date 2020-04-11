@@ -280,9 +280,9 @@ public class ProductivityPage extends UiPart<Region> implements GoalObserver {
      */
     public void renderRankIcon() {
         toggleRankImageView(getRankNumberFromRank(statistics.getRank()));
-        int scoreToday = statistics.getScoreToday();
+        int scoreDifference = statistics.getScoreDifferenceForRank();
         int scoreToNextRank = statistics.getScoreToNextRank();
-        double rankProgress = (double) scoreToday / (double) (scoreToday + scoreToNextRank);
+        double rankProgress = (double) (scoreDifference - scoreToNextRank) / (double) scoreDifference;
         rankProgressIndicator.setProgress(rankProgress);
     }
 
