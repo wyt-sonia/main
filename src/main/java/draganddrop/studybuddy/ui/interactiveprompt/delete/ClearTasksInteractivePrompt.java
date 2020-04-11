@@ -52,9 +52,7 @@ public class ClearTasksInteractivePrompt extends InteractivePrompt {
                     ClearTasksCommand clearTaskCommand = new ClearTasksCommand();
                     logic.executeCommand(clearTaskCommand);
                     endInteract(END_OF_COMMAND_MSG);
-                } catch (CommandException e) {
-                    e.printStackTrace();
-                } catch (ParseException e) {
+                } catch (CommandException | ParseException e) {
                     e.printStackTrace();
                 }
             } else if (userInput.equalsIgnoreCase("no")) {

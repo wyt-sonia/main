@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Tests that a {@code Task}'s {@code Name} matches any of the keywords given.
+ * Tests that a {@code Task} has been renamed.
  */
 public class TaskRenamedPredicate implements Predicate<Task> {
     @Override

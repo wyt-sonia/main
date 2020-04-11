@@ -118,9 +118,6 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                 String newName = EditTaskCommandParser.parseName(userInput);
                 clone.setTaskName(newName);
                 checkDuplicate(clone, taskToEdit);
-                if (taskToEdit.isDuplicate()) {
-                    taskToEdit.setDuplicate(false);
-                }
                 editTaskCommand.provideNewTaskName(newName);
             } catch (EditTaskCommandException e) {
                 parseSuccess = false;

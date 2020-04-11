@@ -13,15 +13,16 @@ import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.task.Task;
 
 /**
- * Refreshes the Due Soon list as well as status tags.
+ * Filters the list by status or by tags.
  */
 public class FilterTaskCommand extends Command {
 
+    //logging
     private final Logger logger = LogsCenter.getLogger(FilterTaskCommand.class);
     private final Predicate<Task> predicate;
 
     /**
-     * Creates an AddTaskCommand to add the specified {@code Task}
+     * Creates an FilterTaskCommand to filter the list.
      */
     public FilterTaskCommand(Predicate<Task> predicate) {
         this.predicate = predicate;
@@ -31,8 +32,10 @@ public class FilterTaskCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         logger.info("Attempting to filter tasks");
+
         model.updateFilteredTaskList(predicate);
-        return new CommandResult(String.format(Messages.MESSAGE_FILTER_TASK_SUCCESS));
+
+        return new CommandResult(Messages.MESSAGE_FILTER_TASK_SUCCESS);
     }
 
     @Override

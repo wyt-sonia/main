@@ -221,7 +221,6 @@ public class ModelManager implements Model {
         int index = currentTasks.indexOf(task);
         Task originalTask = currentTasks.get(index);
         String originalTaskName = task.getTaskName();
-        task.setDuplicate(true);
         while (currentTasks.contains(task)) {
             originalTask.incrementDuplicate();
             int number = originalTask.getDuplicate();
