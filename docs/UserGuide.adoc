@@ -1273,7 +1273,7 @@ Here are some examples of how to obtain Productivity Points in StudyBuddy:
 
 .. Completing your daily goal: _+(points equivalent to daily goal)_
 
-.. Using advanced features; _+?_ (Explore StudyBuddy to find out!)
+.. Using advanced features; _+1_ (Explore StudyBuddy to find out more!)
 
 .. Letting a task go Overdue: _-1_
 

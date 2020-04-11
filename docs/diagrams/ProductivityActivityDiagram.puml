@@ -1,0 +1,22 @@
+@startuml
+
+skinparam ActivityBackgroundColor #tan
+skinparam ActivityBorderColor #black
+skinparam activityDiamondBorderColor #black
+skinparam activityDiamondBackgroundColor #tan
+skinparam arrowColor #black
+
+start
+:User clicks Productivity menu item;
+:User is directed to Daily Productivity Tab;
+:User executes done command;
+:StudyBuddy updates productivity page;
+if () then ([User reach daily goal])
+:User's streak is incremented;
+else
+endif
+stop
+
+@enduml
+
+
