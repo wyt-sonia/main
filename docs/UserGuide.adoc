@@ -617,6 +617,8 @@ The tasks in *All Tasks Panel* will not change back to the original order by its
 You can use `sort` -> `Creation Date & Time` to do so.
 //End updated by Yuting
 
+//updated by Teik Jun
+//tag::find[]
 [[Find]]
 ==== Find
 
@@ -646,7 +648,10 @@ image::basic/find/find_result.png[width="790",align="center",title="Find result"
 
 [IMPORTANT]
 To navigate back to the always on display list of tasks, you can use the <<List>> function.
+//end::find[]
 
+//updated by Teik Jun
+//tag::list[]
 [[LIST]]
 ==== List
 
@@ -663,7 +668,10 @@ To use the `list` command:
 All your tasks are listed once again!
 +
 image::basic/list/list_result.png[width="790",align="center",title="List result"]
+//end::list[]
 
+//updated by Teik Jun
+//tag::goal[]
 ==== Goal
 Want to challenge yourself to complete tasks? You can set your daily goal using `goal`.
 
@@ -671,14 +679,15 @@ To use the `goal` command:
 
 . Initiate the command with `goal`. StudyBuddy should reply with:
 +
-image::productivity/goal1.png[width="790",align="center",title="Prompt after entering `goal`"]
+image::productivity/goal1.png[width="790", align="center",title="Prompt after entering `goal`"]
 
 . Now indicate the number of tasks that you want to complete today.
 It should be a number between 1 and 100.
 
 . Your goal has been set. All the best!
 +
-image::productivity/goal1.png[width="790",align="center",title="Prompt after entering `goal`"]
+image::productivity/goal2.png[width="790", align="center",title="Prompt after entering 7 in reply"]
+//end::goal[]
 
 //updated by Souwmyaa
 //tag::filter[]
@@ -1252,7 +1261,7 @@ Here are some examples of how to obtain Productivity Points in StudyBuddy:
 
 //end::productivity[]
 
-//updated by Souwmyaa
+//updated by Souwmyaa & Teik Jun
 //tag::summary[]
 [[Summary]]
 == Command Summary
@@ -1268,10 +1277,12 @@ Here are some examples of how to obtain Productivity Points in StudyBuddy:
 . edit <<Edit>>
 . filter <<Filter>>
 . find <<Find>>
-. help <<Help>>
 . list <<List>>
+. goal <<Goal>>
+. help <<Help>>
 . sort <<Sort>>
 . refresh <<Refresh>>
+. exit <<Exit>>
 //end::summary[]
 
 == FAQ
