@@ -106,7 +106,7 @@ public class EditTaskCommand extends Command {
         case TASK_TYPE:
             requireNonNull(newTaskType);
             model.setTaskType(taskToEdit, newTaskType);
-            assert !taskToEdit.getTaskType().equals(newTaskType)
+            assert taskToEdit.getTaskType().equals(newTaskType)
                 : "The task type is not updated to the correct new value, please check.\n";
             break;
         case TASK_DATETIME:

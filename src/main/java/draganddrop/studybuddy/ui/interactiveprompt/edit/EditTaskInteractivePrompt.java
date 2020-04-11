@@ -104,7 +104,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
      */
     public String handleNewValue(String userInput) {
         Index taskIndex = Index.fromZeroBased(taskNumber - 1);
-        Task taskToEdit = getCurrentTasks().get(taskNumber - 1);
+        Task taskToEdit = logic.getStudyBuddy().getTaskList().get(taskNumber - 1);
         EditTaskCommand editTaskCommand = new EditTaskCommand(taskIndex, taskField);
         boolean parseSuccess = true;
         String successMessage = END_OF_COMMAND_MSG;
