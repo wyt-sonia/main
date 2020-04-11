@@ -23,16 +23,16 @@ public enum TaskStatus {
     public static TaskStatus getStatus(String status) {
         TaskStatus result = null;
         switch (status.toLowerCase()) {
-        case "Pending":
+        case "pending":
             result = PENDING;
             break;
-        case "Finished":
+        case "finished":
             result = FINISHED;
             break;
-        case "Due Soon":
+        case "due soon":
             result = DUE_SOON;
             break;
-        case "Overdue":
+        case "overdue":
             result = OVERDUE;
             break;
         default:
