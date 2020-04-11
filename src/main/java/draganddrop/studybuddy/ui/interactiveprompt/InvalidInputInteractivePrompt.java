@@ -7,10 +7,10 @@ import static draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType.
  * Help message will be provided when invalid message caught.
  */
 public class InvalidInputInteractivePrompt extends InteractivePrompt {
-    static final String HELP_MSG = "Please enter a valid command option.\n"
-            + "1. add\n2. archive\n3. bye\n4. clear\n5. create mods\n6. delete\n"
-            + "7. view renamed\n8. done\n9. edit\n10. filter\n11. find\n"
-            + "12. help\n13. list\n14. sort\n15. refresh\n\n";
+    static final String HELP_MSG = "Here is the list of available commands:\n"
+        + "1. add\n2. archive\n3. bye\n4. clear\n5. create mods\n6. delete\n"
+        + "7. view renamed\n8. done\n9. edit\n10. filter\n11. find\n"
+        + "12. help\n13. list\n14. sort\n15. refresh\n16. calendar\n17. goal\n\n";
 
     private InteractivePromptTerms currentTerm;
     private String reply;
