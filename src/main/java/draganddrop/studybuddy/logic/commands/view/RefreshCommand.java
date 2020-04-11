@@ -38,15 +38,15 @@ public class RefreshCommand extends Command {
         }
 
         final int size = lastShownList.size();
-        //refreshing status of all tasks
+
         for (int i = 0; i < size; i++) {
             Task task = lastShownList.get(0);
-            //model.sortTasks("deadline / task start date");
             System.out.println(task.getTaskName());
             refreshStatus(task, model);
         }
 
         model.sortTasks("deadline / task start date");
+
         return new CommandResult(Messages.MESSAGE_DUE_SOON_TASK_SUCCESS);
     }
 
@@ -56,13 +56,9 @@ public class RefreshCommand extends Command {
      * @param model Model
      */
     private void refreshStatus(Task task, Model model) {
-        //boolean isStatusExpired = task.isStatusExpired();
-        //if (isStatusExpired) {
         model.deleteTaskFromMainList(task);
         task.freshStatus();
         model.addTaskToMainList(task);
-            //model.sortTasks("deadline / task start date");
-        //}
     }
 
     @Override
