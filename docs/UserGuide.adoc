@@ -669,14 +669,16 @@ Want to challenge yourself to complete tasks? You can set your daily goal using 
 
 To use the `goal` command:
 
-. Initiate the command with `goal`
+. Initiate the command with `goal`. StudyBuddy should reply with:
 +
-
+image::productivity/goal1.png[width="790",align="center",title="Prompt after entering `goal`"]
 
 . Now indicate the number of tasks that you want to complete today.
 It should be a number between 1 and 100.
 
 . Your goal has been set. All the best!
++
+image::productivity/goal1.png[width="790",align="center",title="Prompt after entering `goal`"]
 
 //updated by Souwmyaa
 //tag::filter[]
