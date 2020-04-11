@@ -439,31 +439,132 @@ image::ArchiveSequenceDiagram.png[width = "600", length = "500" title = "Archive
 [NOTE]
 The lifeline of an object should not continue after deletion. Lifeline is shown due to a limitation of plantUML.
 
-=== Achievement feature
-The achievement feature keeps track of usage statistics and displays the user's achievements
-and feedback on the user's weekly performance.
+//tag:productivity[]
+=== Productivity feature
 
 ==== Implementation
-The achievement feature keeps track of usage statistics that are important to the user.
-Each usage statistic is recorded when the respective user command has completed. The user command is
-said to be completed when the respective `InteractivePrompt` has completed successfully.
+The productivity feature displays insights related to the user's productivity over the
+past day, week and more on the Productivity page.
+The Productivity page is integrated with the main page as a side panel.
 
-For example, the following are the usage statistics logged for the `CompleteTaskInteractivePrompt`.
+The Productivity page is further composed of 3 tabs:
 
-.  Number of tasks completed
-.  Number of tasks completed on time
-.  Number of tasks deadlines missed
-.  Average amount of time exceeded
-.  Average amount of buffer time
-.  Time spent on each type of task
+. Daily Productivity Tab
 
-Similarly, usage statistics are recorded for other user commands as well.
+. Weekly Productivity Tab
+
+. Productivity Points Tab
+
+The Productivity page can be viewed by clicking on the Productivity menu item,
+which directs the user to the Daily Productivity Tab.
+The Productivity page can also be viewed by clicking on the Productivity Points shown on
+the top right of the application window.
+This directs the user to the Productivity Points Tab.
+
+The productivity feature is facilitated by the `Statistics` class, which allows
+StudyBuddy to keep track of relevant usage statistics of the user.
+`Statistics` is further composed of classes that keep track of specific statistics:
+
+.. `CompletionStats` keeps track of the number of tasks completed by the user each day and each week
+
+.. `OverdueStats` keeps track of the number of tasks that went overdue each day and each week.
+
+.. `ScoreStats` keeps track of the user's Productivity Points and rank each day
+
+.. `GeneralStats` keeps track of the user's goal, streak, and other statistics not covered by the other statistics classes
+
+The user can gain or lose Productivity Points in StudyBuddy when certain actions or events are completed. These include:
+
+.. Adding a task: _+1_
+
+.. Completing a task: _+10_
+
+.. Completing your daily goal: _+(points equivalent to daily goal)_
+
+.. Using advanced features; _+1_
+
+.. Letting a task go Overdue: _-1_
+
+Each usage statistic is updated accordingly when the respective user action or event
+has concluded. These statistics are then rendered on the `ProductivityPage`.
+The chart visualizations are implemented using `ProgressIndicator`, `BarChart` and `AreaChart`.
+
+When the statistics are updated, the task list's event listener and classes implementing
+`GoalObserver` will be informed of the changes. `ProductivityPage` re-renders the
+displayed information when either of these are updated.
+
+The data displayed will be automatically updated upon calling any of the following commands:
+
+* `add`
+
+* `done`
+
+* `delete`
+
+* `refresh`
+
+* `goal`
 
 ==== Example Use Scenario
-Clicking on the achievement menu item will enable this feature.
+Given below is an example usage scenario and how the
+Productivity feature behaves at each step.
+
+Step 1: The user launches the application.
+Step 2: The Productivity feature displays the user's Productivity Points on the top right of the screen.
+Step 3: The user clicks the Productivity Menu button
+Step 4: The Daily Productivity Tab is displayed to the user
+Step 5: The user completes a task using `done`
+Step 6: The daily number of tasks is added and Productivity Points is increased.
+If the daily goal has been reached, the user's streak is incremented.
+
+Here is an activity diagram of the aforementioned steps:
+
+image::ProductivityActivityDiagram.png[width = "400", length = "500" title = "Productivity Feature Example Activity Diagram"]
+
+Extension: Suppose the user sees the Productivity Points and clicks it
+Step 3: The user clicks the Productivity Points on the top right of the screen
+Step 4: The Productivity Points Tab is displayed to the user
+
+From here, the user can continue to manage tasks as per Step 5 and 6 above,
+or navigate to other Productivity tabs.
+
+
+
+===== Clicking the Productivity menu item
+image
 
 ==== Design Considerations
-Pending.
+
+===== Aspect: How to re-render Productivity page when statistics are updated
+*Alternative 1*: re-render only the values that have been updated
+
+- Pros: maximizes loading speed and minimizes lag for the user
+
+- Cons: increases complexity for codebase, higher chance of bugs occuring
+
+*Alternative 2*: always re-render the whole Productivity Page
+
+- Pros: easy to implement
+
+- Cons: may result in slower loading speed and more lag for the user
+
+*Alternative 3 (current choice)*: re-render only the values that have been updated
+if it does not result in increased code complexity
+
+- Pros: improves loading speed and decreases lag for the user,
+while keeping the codebase readable and easy to reason with.
+
+- Cons: may result in slower loading speed. However, based on testing,
+this trade-off does not result in any measurable delay.
+
+//As far as feasible, the productivity feature re-renders only the values that
+//have been updated. This improves the loading speed and minimizes lag for the user.
+//However, in some cases, this will lead to more complicated code to reason with.
+//As such, the productivity feature sometimes re-renders more values than necessary.
+//Based on testing, this trade-off made by the productivity feature does not result
+//in any measurable delay.
+
+//end::productivity[]
 
 // tag::dataencryption[]
 === Modules
