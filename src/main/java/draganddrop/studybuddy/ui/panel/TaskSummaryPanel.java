@@ -181,8 +181,6 @@ public class TaskSummaryPanel extends UiPart<Region> {
 
         logger.fine(FXML + " PieChart: Start to set up the pie chart's onclick action.");
         datas.forEach(d -> d.getNode().setOnMouseClicked(e -> {
-            selectedTaskListPanelPlaceholder.setManaged(true);
-            selectedTaskListPanelPlaceholder.setVisible(true);
 
             String statusName = d.getName().split(":")[0].trim();
 
@@ -190,8 +188,9 @@ public class TaskSummaryPanel extends UiPart<Region> {
             selectedTasks = tempTasks.filtered(task -> {
                     TaskStatus test = task.getTaskStatus();
                     TaskStatus test2 = TaskStatus.getStatus(statusName);
-                    return task.getTaskStatus().equals(TaskStatus.getStatus(statusName)); }
-                );
+                    return task.getTaskStatus().equals(TaskStatus.getStatus(statusName));
+                }
+            );
             TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
             selectedTaskListPanelTitle.setText(d.getName().toUpperCase() + " Tasks");
             selectedTaskListPanelPlaceholder.getChildren().clear();
@@ -241,11 +240,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
 
             modules.forEach(m -> {
                 XYChart.Series<String, Number> dueDateDataSeries = new XYChart.Series<>();
-                if (m.getModuleCode().equals(new EmptyModule().getModuleCode())) {
-                    dueDateDataSeries.setName("Not Module Related");
-                } else {
-                    dueDateDataSeries.setName(m.getModuleCode().toString());
-                }
+                dueDateDataSeries.setName(getModuleTitleString(m));
 
                 for (LocalDate d = startDate; d.isBefore(finalEndDate.plusDays(1)); d = d.plusDays(1)) {
                     LocalDate finalD = d;
@@ -265,8 +260,6 @@ public class TaskSummaryPanel extends UiPart<Region> {
 
             logger.fine(FXML + " AreaChart: Start to set up the on click action for each data area.");
             datas.forEach(d -> d.getNode().setOnMouseClicked(e -> {
-                selectedTaskListPanelPlaceholder.setManaged(true);
-                selectedTaskListPanelPlaceholder.setVisible(true);
 
                 String moduleCode = d.getExtraValue().toString();
                 String dateString = d.getXValue().toString();
@@ -287,8 +280,6 @@ public class TaskSummaryPanel extends UiPart<Region> {
 
             logger.fine(FXML + " AreaChart: Start to set up the on click action for each data point.");
             dataSeries.forEach(d -> d.getNode().setOnMouseClicked(e -> {
-                selectedTaskListPanelPlaceholder.setManaged(true);
-                selectedTaskListPanelPlaceholder.setVisible(true);
 
                 String moduleCode = d.getName().equals("Not Module Related")
                     ? new EmptyModule().getModuleCode().toString() : d.getName();
@@ -321,20 +312,19 @@ public class TaskSummaryPanel extends UiPart<Region> {
         if (!taskSummaryStackedBarChart.getData().isEmpty()) {
             taskSummaryStackedBarChart.getData().clear();
         }
+
         logger.fine(FXML + " BarChart: Start to bind data.");
         for (TaskType taskType : Arrays.asList(TaskType.getTaskTypes())) {
             XYChart.Series<String, Number> weightDataSeries = new XYChart.Series<>();
             weightDataSeries.setName(taskType.toString());
             modules.forEach(m -> {
-                if (!m.equals(new EmptyModule())) {
-                    ObservableList<Task> filteredTasks = tempTasks
-                        .filtered(t -> t.getModule().equals(m) && t.getTaskType().equals(taskType));
-                    XYChart.Data<String, Number> tempData = new XYChart.Data<>(m.getModuleCode().toString(),
-                        filteredTasks.stream().mapToDouble(Task::getWeight).sum());
-                    tempData.setExtraValue(m.getModuleCode().toString() + "//" + taskType.toString());
-                    weightDataSeries.getData().add(tempData);
-                    datas.add(tempData);
-                }
+                ObservableList<Task> filteredTasks = tempTasks
+                    .filtered(t -> t.getModule().equals(m) && t.getTaskType().equals(taskType));
+                XYChart.Data<String, Number> tempData = new XYChart.Data<>(getModuleTitleString(m),
+                    filteredTasks.stream().mapToDouble(Task::getWeight).sum());
+                tempData.setExtraValue(m.getModuleCode().toString() + "//" + taskType.toString());
+                weightDataSeries.getData().add(tempData);
+                datas.add(tempData);
             });
             dataSeries.add(weightDataSeries);
         }
@@ -344,8 +334,6 @@ public class TaskSummaryPanel extends UiPart<Region> {
 
         logger.fine(FXML + " BarChart: Start to setting up the on click action for each data area");
         datas.forEach(d -> {
-            selectedTaskListPanelPlaceholder.setManaged(true);
-            selectedTaskListPanelPlaceholder.setVisible(true);
 
             String moduleCode = (d.getExtraValue().toString().split("//"))[0];
             String taskType = (d.getExtraValue().toString().split("//"))[1];
@@ -361,5 +349,16 @@ public class TaskSummaryPanel extends UiPart<Region> {
         });
         logger.fine(FXML + " BarChart: End of setting up the on click action for each data area");
         logger.fine(FXML + " BarChart: End of setting up the stacked bar chart's data and onclick action.");
+    }
+
+
+    private String getModuleTitleString(Module module) {
+        String moduleTitleString = "";
+        if (module.equals(new EmptyModule())) {
+            moduleTitleString = "Not Module Related";
+        } else {
+            moduleTitleString = module.getModuleCode().toString();
+        }
+        return moduleTitleString;
     }
 }
