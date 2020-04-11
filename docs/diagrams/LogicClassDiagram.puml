@@ -7,7 +7,7 @@ skinparam classBorderColor #black
 
 package Logic {
 
-package Parser {
+package InteractiveCommandParser {
 Class TaskParser
 Class TimeParser
 Class StudyBuddyParser
@@ -32,9 +32,9 @@ package Ui {
 Class HiddenUi #FFFFFF
 }
 
-Ui .up.>Parser
-
-Parser---[hidden]>XYZCommand
+Ui .>InteractiveCommandParser : uses
+Ui .>XYZCommand : creates
+InteractiveCommandParser---[hidden]>XYZCommand
 
 note right of XYZCommand: XYZCommand includes \nAddTaskCommand, \nFindTaskCommand, etc
 
@@ -52,7 +52,7 @@ LogicManager .up.|> Logic
 
 
 Logic ..> CommandResult
-LogicManager .down.> CommandResult
+LogicManager .down.> CommandResult : executes
 Command .up.> CommandResult
 
 
