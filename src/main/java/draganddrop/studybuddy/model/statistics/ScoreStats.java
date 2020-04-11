@@ -7,13 +7,13 @@ import java.util.List;
  * stores information about the user's score
  */
 public class ScoreStats {
-    private static final int noviceScore = 10;
-    private static final int apprenticeScore = 50;
-    private static final int dukeScore = 100;
-    private static final int expertScore = 200;
-    private static final int masterScore = 300;
-    private static final int grandmasterScore = 400;
-    private static final int legendScore = 500;
+    private static final int noviceScore = 50;
+    private static final int apprenticeScore = 100;
+    private static final int dukeScore = 200;
+    private static final int expertScore = 300;
+    private static final int masterScore = 400;
+    private static final int grandmasterScore = 500;
+    private static final int legendScore = 700;
     private static final int sageScore = 1000;
     private static final int enlightenedScore = 2000;
 
@@ -165,7 +165,7 @@ public class ScoreStats {
         } else if (currentScore < expertScore) {
             return (expertScore - currentScore);
         } else if (currentScore < masterScore) {
-            return (expertScore - currentScore);
+            return (masterScore - currentScore);
         } else if (currentScore < grandmasterScore) {
             return (grandmasterScore - currentScore);
         } else if (currentScore < legendScore) {
@@ -176,6 +176,35 @@ public class ScoreStats {
             return (enlightenedScore - currentScore);
         } else {
             return 0;
+        }
+    }
+
+
+    /**
+     * get the total score required for the current rank minus that of the previous rank
+     * @return total score required for current rank
+     */
+    public int getScoreDifferenceForRank() {
+        if (currentScore < noviceScore) {
+            return noviceScore;
+        } else if (currentScore < apprenticeScore) {
+            return apprenticeScore - noviceScore;
+        } else if (currentScore < dukeScore) {
+            return dukeScore - apprenticeScore;
+        } else if (currentScore < expertScore) {
+            return expertScore - dukeScore;
+        } else if (currentScore < masterScore) {
+            return masterScore - expertScore;
+        } else if (currentScore < grandmasterScore) {
+            return grandmasterScore - masterScore;
+        } else if (currentScore < legendScore) {
+            return legendScore - grandmasterScore;
+        } else if (currentScore < sageScore) {
+            return sageScore - legendScore;
+        } else if (currentScore < enlightenedScore) {
+            return enlightenedScore - sageScore;
+        } else {
+            return 1;
         }
     }
 

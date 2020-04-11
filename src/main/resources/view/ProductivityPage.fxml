@@ -11,8 +11,8 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
@@ -32,42 +32,46 @@
                                  <children>
                                     <VBox alignment="CENTER" prefHeight="365.0" prefWidth="289.0">
                                        <children>
-                                          <AnchorPane prefHeight="180.0" prefWidth="200.0">
+                                          <HBox alignment="CENTER">
                                              <children>
-                                                <HBox layoutX="73.0" layoutY="157.0">
+                                                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="130.0">
                                                    <children>
-                                                      <Label fx:id="preDailyStatsLabel" text="Daily goal: ">
-                                                         <font>
-                                                            <Font size="14.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <Label fx:id="dailyStatsLabel" text="0 / 5 tasks ">
-                                                         <font>
-                                                            <Font name="System Bold" size="14.0" />
-                                                         </font>
-                                                         <padding>
-                                                            <Insets left="4.0" />
-                                                         </padding>
-                                                      </Label>
+                                                      <ProgressIndicator fx:id="progressIndicator" layoutY="0.20000000298023224" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="130.0" progress="0.0" styleClass="u-gold-progress" />
+                                                      <Circle fx:id="progressCentre" blendMode="SRC_ATOP" fill="WHITE" layoutX="65.0" layoutY="64.3" radius="60.0" stroke="#c9c3b6" strokeType="INSIDE" />
+                                                       <ImageView fx:id="goldStarImageView" fitHeight="50.0" fitWidth="50.0" layoutX="41.599998474121094" layoutY="38.59999389946461" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                           <image>
+                                                               <Image fx:id="goldStarImage" url="@../images/rank/gold_star.png" />
+                                                           </image>
+                                                       </ImageView>
+                                                      <ImageView fx:id="grayStarImageView" fitHeight="50.0" fitWidth="50.0" layoutX="40.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+                                                          <image>
+                                                              <Image fx:id="grayStarImage" url="@../images/rank/gray_star.png" />
+                                                          </image>
+                                                      </ImageView>
                                                    </children>
-                                                </HBox>
-                                                <ProgressIndicator fx:id="progressIndicator" layoutX="78.4" layoutY="-0.4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="130.0" progress="0.0" styleClass="u-gold-progress" />
-                                                <Circle fx:id="progressCentre" fill="WHITE" layoutX="144.0" layoutY="63.6" radius="60.0" stroke="#c9c3b6" strokeType="INSIDE" />
-                                                 <ImageView fx:id="goldStarImageView" fitHeight="50.0" fitWidth="50.0" layoutX="120.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                                                     <image>
-                                                         <Image fx:id="goldStarImage" url="@../images/rank/gold_star.png" />
-                                                     </image>
-                                                 </ImageView>
-                                                <ImageView fx:id="grayStarImageView" fitHeight="50.0" fitWidth="50.0" layoutX="120.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
-                                                    <image>
-                                                        <Image fx:id="grayStarImage" url="@../images/rank/gray_star.png" />
-                                                    </image>
-                                                </ImageView>
+                                                   <HBox.margin>
+                                                      <Insets bottom="5.0" />
+                                                   </HBox.margin>
+                                                </Pane>
                                              </children>
-                                             <VBox.margin>
-                                                <Insets bottom="20.0" />
-                                             </VBox.margin>
-                                          </AnchorPane>
+                                          </HBox>
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <Label fx:id="preDailyStatsLabel" text="Daily goal: ">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="dailyStatsLabel" text="0 / 5 tasks ">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets left="4.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </HBox>
                                           <VBox>
                                              <children>
                                                 <HBox alignment="CENTER">
@@ -87,6 +91,9 @@
                                                          </font>
                                                       </Label>
                                                    </children>
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
                                                 </HBox>
                                              </children>
                                              <VBox.margin>
@@ -166,9 +173,9 @@
                            <children>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <AnchorPane>
+                                    <HBox>
                                        <children>
-                                          <VBox layoutY="19.0">
+                                          <VBox alignment="CENTER">
                                              <children>
                                                 <HBox>
                                                    <children>
@@ -210,49 +217,59 @@
                                                    </font>
                                                 </Label>
                                              </children>
+                                             <padding>
+                                                <Insets right="10.0" />
+                                             </padding>
                                           </VBox>
-                                          <ProgressIndicator fx:id="rankProgressIndicator" layoutX="216.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" progress="0.0" styleClass="u-red-progress" />
-                                          <Circle fx:id="progressCentre1" fill="#ffffff00" layoutX="266.5" layoutY="42.0" radius="43.0" stroke="#9c3d01" strokeType="INSIDE" strokeWidth="2.0" />
-                                           <ImageView fx:id="rankZeroImageView" fitHeight="74.0" fitWidth="74.0" layoutX="229.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                                               <image>
-                                                   <Image fx:id="rankZeroImage" url="@../images/rank/rank0.png" />
-                                               </image>
-                                           </ImageView>
-                                           <ImageView fx:id="rankOneImageView" fitHeight="74.0" fitWidth="74.0" layoutX="229.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                                               <image>
-                                                   <Image fx:id="rankOneImage" url="@../images/rank/rank1.png" />
-                                               </image>
-                                           </ImageView>
-                                           <ImageView fx:id="rankTwoImageView" fitHeight="74.0" fitWidth="74.0" layoutX="229.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                                               <image>
-                                                   <Image fx:id="rankTwoImage" url="@../images/rank/rank2.png" />
-                                               </image>
-                                           </ImageView>
-                                           <ImageView fx:id="rankThreeImageView" fitHeight="74.0" fitWidth="74.0" layoutX="229.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                                           <image>
-                                               <Image fx:id="rankThreeImage" url="@../images/rank/rank3.png" />
-                                           </image>
-                                       </ImageView>
-                                           <ImageView fx:id="rankFourImageView" fitHeight="74.0" fitWidth="74.0" layoutX="229.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                                               <image>
-                                                   <Image fx:id="rankFourImage" url="@../images/rank/rank4.png" />
-                                               </image>
-                                           </ImageView>
-                                           <ImageView fx:id="rankFiveImageView" fitHeight="74.0" fitWidth="74.0" layoutX="229.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                                               <image>
-                                                   <Image fx:id="rankFiveImage" url="@../images/rank/rank5.png" />
-                                               </image>
-                                           </ImageView>
-                                           <ImageView fx:id="rankSixImageView" fitHeight="74.0" fitWidth="74.0" layoutX="229.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                                               <image>
-                                                   <Image fx:id="rankSixImage" url="@../images/rank/rank6.png" />
-                                               </image>
-                                           </ImageView>
+                                          <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0">
+                                             <children>
+                                                <ProgressIndicator fx:id="rankProgressIndicator" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" progress="0.0" styleClass="u-red-progress" />
+                                                <Circle fx:id="progressCentre1" fill="#ffffff00" layoutX="50.20000076293945" layoutY="43.0" radius="43.0" stroke="#9c3d01" strokeType="INSIDE" strokeWidth="2.0" />
+                                                 <ImageView fx:id="rankZeroImageView" fitHeight="73.0" fitWidth="73.0" layoutX="13.8" layoutY="6.3" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                     <image>
+                                                         <Image fx:id="rankZeroImage" url="@../images/rank/rank0.png" />
+                                                     </image>
+                                                 </ImageView>
+                                                 <ImageView fx:id="rankOneImageView" fitHeight="73.0" fitWidth="73.0" layoutX="13.8" layoutY="6.3" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                     <image>
+                                                         <Image fx:id="rankOneImage" url="@../images/rank/rank1.png" />
+                                                     </image>
+                                                 </ImageView>
+                                                 <ImageView fx:id="rankTwoImageView" fitHeight="73.0" fitWidth="73.0" layoutX="13.8" layoutY="6.3" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                     <image>
+                                                         <Image fx:id="rankTwoImage" url="@../images/rank/rank2.png" />
+                                                     </image>
+                                                 </ImageView>
+                                                 <ImageView fx:id="rankThreeImageView" fitHeight="73.0" fitWidth="73.0" layoutX="13.8" layoutY="6.3" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                 <image>
+                                                     <Image fx:id="rankThreeImage" url="@../images/rank/rank3.png" />
+                                                 </image>
+                                             </ImageView>
+                                                 <ImageView fx:id="rankFourImageView" fitHeight="73.0" fitWidth="73.0" layoutX="13.8" layoutY="6.3" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                     <image>
+                                                         <Image fx:id="rankFourImage" url="@../images/rank/rank4.png" />
+                                                     </image>
+                                                 </ImageView>
+                                                 <ImageView fx:id="rankFiveImageView" fitHeight="73.0" fitWidth="73.0" layoutX="13.8" layoutY="6.3" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                     <image>
+                                                         <Image fx:id="rankFiveImage" url="@../images/rank/rank5.png" />
+                                                     </image>
+                                                 </ImageView>
+                                                 <ImageView fx:id="rankSixImageView" fitHeight="73.0" fitWidth="73.0" layoutX="13.8" layoutY="6.3" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                     <image>
+                                                         <Image fx:id="rankSixImage" url="@../images/rank/rank6.png" />
+                                                     </image>
+                                                 </ImageView>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </Pane>
                                        </children>
-                                       <HBox.margin>
+                                       <padding>
                                           <Insets bottom="35.0" top="35.0" />
-                                       </HBox.margin>
-                                    </AnchorPane>
+                                       </padding>
+                                    </HBox>
                                  </children>
                                  <VBox.margin>
                                     <Insets />

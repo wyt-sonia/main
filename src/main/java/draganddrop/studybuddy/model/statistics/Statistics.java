@@ -163,5 +163,11 @@ public class Statistics {
         }
     }
 
-
+    /**
+     * get the total score required for the current rank minus that of the previous rank
+     * @return total score required for current rank
+     */
+    public int getScoreDifferenceForRank() {
+        return scoreStats.getScoreDifferenceForRank();
+    }
 }
