@@ -6,7 +6,7 @@ import java.text.ParseException;
 
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.logic.commands.view.ListTaskCommand;
-import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.EditTaskCommandException;
+import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddOrEditTaskCommandException;
 import draganddrop.studybuddy.model.statistics.Statistics;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
@@ -71,15 +71,15 @@ public class SetGoalInteractivePrompt extends InteractivePrompt {
         int goal = 5;
         try {
             if (userInput.isBlank()) {
-                throw new EditTaskCommandException("emptyInputError");
+                throw new AddOrEditTaskCommandException("emptyInputError");
             }
             goal = Integer.parseInt(userInput.trim());
             if (goal > 100 || goal < 1) {
-                throw new EditTaskCommandException("invalidIndexRangeError");
+                throw new AddOrEditTaskCommandException("invalidIndexRangeError");
             }
         } catch (NumberFormatException e) {
-            return (new EditTaskCommandException("wrongIndexFormatError")).getErrorMessage();
-        } catch (EditTaskCommandException ex) {
+            return (new AddOrEditTaskCommandException("wrongIndexFormatError")).getErrorMessage();
+        } catch (AddOrEditTaskCommandException ex) {
             return ex.getErrorMessage();
         }
         // we reach here if parsing is successful

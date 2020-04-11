@@ -29,8 +29,6 @@ public class DueSoonTaskCard extends UiPart<Region> {
     private HBox cardPane;
     @FXML
     private Label taskName;
-    //@FXML
-    //private Label Module;
     @FXML
     private Label timeLeft;
     @FXML
@@ -51,7 +49,6 @@ public class DueSoonTaskCard extends UiPart<Region> {
         this.task = task;
         id.setText(displayedIndex + ". ");
         taskName.setText(task.getTaskName());
-        //Module.setText(task.getModule().toString());
         timeLeft.setText(task.getTimeLeft());
         renderTask(task);
         dateTime.setText("Deadline/Start at: " + task.getTimeString());

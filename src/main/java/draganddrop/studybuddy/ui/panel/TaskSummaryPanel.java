@@ -36,6 +36,8 @@ import javafx.scene.paint.Color;
 
 /**
  * Panel containing the summary charts of tasks.
+ *
+ * @@author Wang Yuting
  */
 public class TaskSummaryPanel extends UiPart<Region> {
 

@@ -1,14 +1,5 @@
 package draganddrop.studybuddy.ui.interactiveprompt;
 
-/*
- * Logic of implementation:
- * IP will handle all interaction btw user and the window to get the final version of command
- * - FSM
- * Parser will handle to parsing of the command and create a command
- * command will execute the action
- * server display the response if needed
- */
-
 import static draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType.EXIT_TASK;
 
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.ExitTaskCommandException;

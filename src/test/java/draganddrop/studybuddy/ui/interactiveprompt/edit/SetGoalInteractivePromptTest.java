@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import draganddrop.studybuddy.logic.LogicManager;
-import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.EditTaskCommandException;
+import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddOrEditTaskCommandException;
 import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.ModelManager;
 import draganddrop.studybuddy.model.UserPrefs;
@@ -71,7 +71,7 @@ class SetGoalInteractivePromptTest {
     void interactInvalidInputGetException() {
         prompt.interact("goal");
         prompt.interact("102");
-        String errorMessage = (new EditTaskCommandException("invalidIndexRangeError")).getErrorMessage();
+        String errorMessage = (new AddOrEditTaskCommandException("invalidIndexRangeError")).getErrorMessage();
         assertEquals(errorMessage, prompt.interact("102"));
     }
 

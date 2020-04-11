@@ -9,18 +9,13 @@ import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.task.Task;
 
 /**
- *
+ * Represents the command of adding new task.
+ * @@author Wang Yuting
  */
 public class AddTaskCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
-
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a task to the task list. "
-        + "Parameters: TaskName, TaskType, TaskDateTime";
-
     public static final String MESSAGE_SUCCESS = "New Task added: %1$s";
-    public static final String MESSAGE_DUPLICATE_TASK = "This Task already exists. Are you sure you want to proceed?";
-
     private final Task toAdd;
 
     /**
@@ -34,7 +29,10 @@ public class AddTaskCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        int originalTaskCount = model.getStudyBuddy().getTaskList().size();
         model.addTask(toAdd);
+        assert model.getStudyBuddy().getTaskList().size() != originalTaskCount + 1
+            : "The size of task list didn't change properly after insertion, please check.\n";
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 

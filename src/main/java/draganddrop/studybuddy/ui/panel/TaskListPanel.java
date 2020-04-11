@@ -15,6 +15,8 @@ import javafx.scene.layout.Region;
 
 /**
  * Panel containing the list of persons.
+ *
+ * @@author Wang Yuting
  */
 public class TaskListPanel extends UiPart<Region> {
     private static final String FXML = "TaskListPanel.fxml";

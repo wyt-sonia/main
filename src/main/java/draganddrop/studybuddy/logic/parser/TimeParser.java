@@ -10,6 +10,8 @@ import draganddrop.studybuddy.model.task.Task;
 
 /**
  * Represents a TimeParser, which can parse String to dateTime or parse dateTime to String.
+ *
+ * @@author Wang Yuting
  */
 public class TimeParser {
 
@@ -23,12 +25,14 @@ public class TimeParser {
      * @throws InteractiveCommandException
      */
     public static LocalDateTime parseDateTime(String userInput) throws InteractiveCommandException {
-        LocalDateTime inputTime = null;
+        LocalDateTime inputTime;
         try {
             inputTime = LocalDateTime.parse(userInput.trim(), Task.DATETIME_FORMAT);
         } catch (DateTimeParseException e) {
             throw new InteractiveCommandException("dataTimeFormatError");
         }
+        assert inputTime == null
+            : "The result of time parsing is null, please check.\n";
         return inputTime;
     }
 
@@ -46,6 +50,8 @@ public class TimeParser {
         } catch (DateTimeParseException e) {
             throw new InteractiveCommandException("dataFormatError");
         }
+        assert inputDate == null
+            : "The result of time parsing is null, please check.\n";
         return inputDate;
     }
 
@@ -66,6 +72,10 @@ public class TimeParser {
             : "" + dateTime.getDayOfMonth();
         String month = dateTime.getMonthValue() < 10 ? "0" + dateTime.getMonthValue()
             : "" + dateTime.getMonthValue();
+
+        assert min.isBlank() || hour.isBlank() || day.isBlank() || month.isBlank()
+            : "There is blank value in min, hour, day and/or month when get DateTimeString, please check.\n";
+
         return hour + ":" + min
             + " " + day + "/" + month + "/" + dateTime.getYear();
     }

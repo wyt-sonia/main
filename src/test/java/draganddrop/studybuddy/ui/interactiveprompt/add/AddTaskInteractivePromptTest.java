@@ -14,7 +14,7 @@ import org.junit.jupiter.api.io.TempDir;
 
 import draganddrop.studybuddy.logic.LogicManager;
 import draganddrop.studybuddy.logic.parser.TimeParser;
-import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
+import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddOrEditTaskCommandException;
 import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.ModelManager;
 import draganddrop.studybuddy.model.UserPrefs;
@@ -63,27 +63,27 @@ class AddTaskInteractivePromptTest {
     public void addTaskInteractivePromptTestInteractModuleIndexWrongFormatReturnErrorMessage() {
         prompt.interact("");
         assertTrue(prompt.interact("wrongIndexFormat")
-            .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("wrongIndexFormatError").getErrorMessage()));
     }
 
     @Test
     public void addTaskInteractivePromptTestInteractMultipleModuleIndexWrongFormatReturnErrorMessage() {
         prompt.interact("");
         assertTrue(prompt.interact("wrongIndexFormat")
-            .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("wrongIndexFormatError").getErrorMessage()));
         assertTrue(prompt.interact("wrongIndexFormat")
-            .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("wrongIndexFormatError").getErrorMessage()));
         assertTrue(prompt.interact("wrongIndexFormat")
-            .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("wrongIndexFormatError").getErrorMessage()));
     }
 
     @Test
     public void addTaskInteractivePromptTestInteractMultipleModuleIndexWrongFormatFollowByValidIndexReturnMessage() {
         prompt.interact("");
         assertTrue(prompt.interact("wrongIndexFormat")
-            .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("wrongIndexFormatError").getErrorMessage()));
         assertTrue(prompt.interact("wrongIndexFormat")
-            .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("wrongIndexFormatError").getErrorMessage()));
         assertTrue(prompt.interact("1").contains("The module has been set as: "
             + modelStub.getStudyBuddy().getModuleList().get(0).toString()));
     }
@@ -100,14 +100,14 @@ class AddTaskInteractivePromptTest {
     public void addTaskInteractivePromptTestInteractInvalidModuleCodeReturnMessage() {
         prompt.interact("");
         assertTrue(prompt.interact("CSCSCS")
-            .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("wrongIndexFormatError").getErrorMessage()));
     }
 
     @Test
     public void addTaskInteractivePromptTestInteractModuleIndexOutOfRangeZeroReturnErrorMessage() {
         prompt.interact("");
         assertTrue(prompt.interact("0")
-            .contains(new AddTaskCommandException("invalidIndexRangeError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("invalidIndexRangeError").getErrorMessage()));
     }
 
     @Test
@@ -115,7 +115,7 @@ class AddTaskInteractivePromptTest {
         int size = modelStub.getStudyBuddy().getModuleList().size();
         prompt.interact("");
         assertTrue(prompt.interact(size + 1 + "")
-            .contains(new AddTaskCommandException("invalidIndexRangeError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("invalidIndexRangeError").getErrorMessage()));
     }
 
     @Test
@@ -134,7 +134,7 @@ class AddTaskInteractivePromptTest {
         prompt.interact("taskName");
         prompt.interact("1");
         assertTrue(prompt.interact(TimeParser.getDateTimeString(pastDateTime))
-            .contains(new AddTaskCommandException("pastDateTime").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("pastDateTime").getErrorMessage()));
     }
 
     @Test
@@ -145,7 +145,7 @@ class AddTaskInteractivePromptTest {
         prompt.interact("2");
         assertTrue(prompt.interact(TimeParser.getDateTimeString(endDateTime)
             + "-" + TimeParser.getDateTimeString(startDateTime))
-            .contains(new AddTaskCommandException("eventEndBeforeStartError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("eventEndBeforeStartError").getErrorMessage()));
     }
 
     @Test
@@ -165,7 +165,7 @@ class AddTaskInteractivePromptTest {
         prompt.interact("");
         prompt.interact("taskName");
         assertTrue(prompt.interact("")
-            .contains(new AddTaskCommandException("emptyInputError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("emptyInputError").getErrorMessage()));
     }
 
     @Test
@@ -173,7 +173,7 @@ class AddTaskInteractivePromptTest {
         prompt.interact("");
         prompt.interact("");
         assertTrue(prompt.interact("")
-            .contains(new AddTaskCommandException("emptyInputError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("emptyInputError").getErrorMessage()));
     }
 
     @Test
@@ -182,7 +182,7 @@ class AddTaskInteractivePromptTest {
         prompt.interact("");
         prompt.interact("");
         assertTrue(prompt.interact(longTaskName)
-            .contains(new AddTaskCommandException("taskNameLengthError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("taskNameLengthError").getErrorMessage()));
     }
 
     @Test
@@ -199,7 +199,7 @@ class AddTaskInteractivePromptTest {
         prompt.interact("");
         prompt.interact("taskName");
         assertTrue(prompt.interact("wrongIndexFormat")
-            .contains(new AddTaskCommandException("wrongIndexFormatError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("wrongIndexFormatError").getErrorMessage()));
     }
 
     @Test
@@ -209,7 +209,7 @@ class AddTaskInteractivePromptTest {
         prompt.interact("taskName");
         prompt.interact("0");
         assertTrue(prompt.interact("0")
-            .contains(new AddTaskCommandException("invalidIndexRangeError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("invalidIndexRangeError").getErrorMessage()));
     }
 
     @Test
@@ -219,7 +219,7 @@ class AddTaskInteractivePromptTest {
         prompt.interact("");
         prompt.interact("taskName");
         assertTrue(prompt.interact(size + 1 + "")
-            .contains(new AddTaskCommandException("invalidIndexRangeError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("invalidIndexRangeError").getErrorMessage()));
     }
 
     @Test
@@ -250,7 +250,7 @@ class AddTaskInteractivePromptTest {
         prompt.interact(TimeParser.getDateTimeString(startDateTime)
             + "-" + TimeParser.getDateTimeString(endDateTime));
         assertTrue(prompt.interact(longTaskDescription)
-            .contains(new AddTaskCommandException("taskDescriptionLengthError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("taskDescriptionLengthError").getErrorMessage()));
     }
 
     @Test
@@ -275,7 +275,7 @@ class AddTaskInteractivePromptTest {
             + "-" + TimeParser.getDateTimeString(endDateTime));
         prompt.interact("");
         assertTrue(prompt.interact("wrongWeightFormat")
-            .contains(new AddTaskCommandException("wrongWeightFormatError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("wrongWeightFormatError").getErrorMessage()));
     }
 
     @Test
@@ -289,7 +289,7 @@ class AddTaskInteractivePromptTest {
             + "-" + TimeParser.getDateTimeString(endDateTime));
         prompt.interact("");
         assertTrue(prompt.interact("101")
-            .contains(new AddTaskCommandException("wrongWeightRangeError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("wrongWeightRangeError").getErrorMessage()));
     }
 
     @Test
@@ -302,7 +302,7 @@ class AddTaskInteractivePromptTest {
             + "-" + TimeParser.getDateTimeString(endDateTime));
         prompt.interact("");
         assertTrue(prompt.interact("-1")
-            .contains(new AddTaskCommandException("wrongWeightRangeError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("wrongWeightRangeError").getErrorMessage()));
     }
 
     @Test
@@ -342,7 +342,7 @@ class AddTaskInteractivePromptTest {
         prompt.interact("");
         prompt.interact("");
         assertTrue(prompt.interact("wrongTimeCostFormat")
-            .contains(new AddTaskCommandException("wrongEstimatedTimeFormatError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("wrongEstimatedTimeFormatError").getErrorMessage()));
     }
 
     @Test
@@ -356,7 +356,7 @@ class AddTaskInteractivePromptTest {
         prompt.interact("");
         prompt.interact("");
         assertTrue(prompt.interact("-1")
-            .contains(new AddTaskCommandException("wrongEstimatedTimeRangeError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("wrongEstimatedTimeRangeError").getErrorMessage()));
     }
 
     @Test

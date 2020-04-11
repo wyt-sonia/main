@@ -42,14 +42,6 @@ public class CommandResult {
         return feedbackToUser;
     }
 
-    public boolean isShowHelp() {
-        return showHelp;
-    }
-
-    public boolean isExit() {
-        return exit;
-    }
-
     @Override
     public int hashCode() {
         return Objects.hash(feedbackToUser, showHelp, exit);
