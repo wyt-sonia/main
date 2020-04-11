@@ -36,7 +36,7 @@ public class TimeParser {
         try {
             inputTime = LocalDateTime.parse(userInput.trim(), Task.DATETIME_FORMAT);
         } catch (DateTimeParseException e) {
-            logger.log(Level.WARNING, LOG_TAG + ": Data time format error.");
+            logger.log(Level.WARNING, LOG_TAG + ": " + e.getStackTrace());
             throw new InteractiveCommandException("dataTimeFormatError");
         }
 
@@ -61,7 +61,7 @@ public class TimeParser {
         try {
             inputDate = LocalDate.parse(userInput.trim(), DATE_FORMAT);
         } catch (DateTimeParseException e) {
-            logger.log(Level.WARNING, LOG_TAG + ": Data format error.");
+            logger.log(Level.WARNING, LOG_TAG + ": " + e.getStackTrace());
             throw new InteractiveCommandException("dataFormatError");
         }
         assert inputDate != null

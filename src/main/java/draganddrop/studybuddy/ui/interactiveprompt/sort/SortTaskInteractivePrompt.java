@@ -63,10 +63,10 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
                     + "Please click enter again to check the sorted list.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (NumberFormatException ex) {
-                logger.log(Level.WARNING, LOG_TAG + ": " + ex.getMessage());
+                logger.log(Level.WARNING, LOG_TAG + ": " + ex.getStackTrace());
                 reply = (new DeleteTaskCommandException("wrongOptionFormatError")).getErrorMessage();
             } catch (SortTaskCommandException ex) {
-                logger.log(Level.WARNING, LOG_TAG + ": " + ex.getErrorMessage());
+                logger.log(Level.WARNING, LOG_TAG + ": " + ex.getStackTrace());
                 reply = ex.getErrorMessage();
             }
             break;
@@ -77,7 +77,7 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
                 logic.executeCommand(sortTaskCommand);
                 endInteract(END_OF_COMMAND_MSG);
             } catch (CommandException | ParseException ex) {
-                logger.log(Level.WARNING, LOG_TAG + ": " + ex.getMessage());
+                logger.log(Level.WARNING, LOG_TAG + ": " + ex.getStackTrace());
                 reply = ex.getMessage();
             }
             break;

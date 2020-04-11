@@ -37,6 +37,16 @@ public class InteractiveCommandException extends RuntimeException {
             errorMessage = "The maximum length of task name is 20 characters, please check again.";
             break;
 
+        case "changeAssignmentToOtherTaskTypeError":
+            errorMessage = "Due to the deadline/Duration format is different from assignment and the rest task types, "
+                + "we currently don't support \"Assignment -> Another Task Type\" editing.";
+            break;
+
+        case "changeOtherTaskTypeToAssignmentError":
+            errorMessage = "Due to the deadline/Duration format is different from assignment and the rest task types, "
+                + "we currently don't support \"Another Task Type -> Assignment\" editing.";
+            break;
+
         case "taskDescriptionLengthError":
             errorMessage = "The maximum length of task description is 300 characters, please check again.";
             break;

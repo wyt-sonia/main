@@ -105,7 +105,7 @@ public class TaskParser {
         try {
             result[0] = TimeParser.parseDateTime(userInput);
         } catch (InteractiveCommandException e) {
-            logger.log(Level.WARNING, LOG_TAG + ": Task date time format error.");
+            logger.log(Level.WARNING, LOG_TAG + ": " + e.getStackTrace());
             throw new AddOrEditTaskCommandException("dataTimeFormatError");
         }
 
@@ -147,7 +147,7 @@ public class TaskParser {
             result[0] = TimeParser.parseDateTime(tempInputDateTimes[0]);
             result[1] = TimeParser.parseDateTime(tempInputDateTimes[1]);
         } catch (InteractiveCommandException e) {
-            logger.log(Level.WARNING, LOG_TAG + ": Task date time format error.");
+            logger.log(Level.WARNING, LOG_TAG + ": " + e.getStackTrace());
             throw new AddOrEditTaskCommandException("dataTimeFormatError");
         }
 
@@ -227,7 +227,7 @@ public class TaskParser {
                 result = modules.get(index);
             }
         } catch (NumberFormatException e) {
-            logger.log(Level.WARNING, LOG_TAG + ": Wrong index format error.");
+            logger.log(Level.WARNING, LOG_TAG + ": " + e.getStackTrace());
             throw new AddOrEditTaskCommandException("wrongIndexFormatError");
         }
 
@@ -291,7 +291,7 @@ public class TaskParser {
                 throw new AddOrEditTaskCommandException("wrongWeightRangeError");
             }
         } catch (NumberFormatException e) {
-            logger.log(Level.WARNING, LOG_TAG + ": Wrong weight format error.");
+            logger.log(Level.WARNING, LOG_TAG + ": " + e.getStackTrace());
             throw new AddOrEditTaskCommandException("wrongWeightFormatError");
         }
 
@@ -319,7 +319,7 @@ public class TaskParser {
                 throw new AddOrEditTaskCommandException("wrongEstimatedTimeRangeError");
             }
         } catch (NumberFormatException e) {
-            logger.log(Level.WARNING, LOG_TAG + ": Wrong estimated time format error.");
+            logger.log(Level.WARNING, LOG_TAG + ": " + e.getStackTrace());
             throw new AddOrEditTaskCommandException("wrongEstimatedTimeFormatError");
         }
         logger.log(Level.INFO, LOG_TAG + ": End of parseTimeCost with value " + result);

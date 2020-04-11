@@ -392,6 +392,9 @@ You can use this command to edit as you wish.
 More info you can refer from <<Add>>.
 . When editing weight or module, the application will also make sure the total weight of related module's tasks will not overflow (i.e. exceed 100).
 . You cannot edit a task to be a duplicate. i.e all the fields cannot be the same as a task that already exists.
+. Due to the `deadline/Duration format` is different from `Assignment` to `Other Task Types`, we currently don't support:
+.. `Assignment` -> `Another Tsk Type` editing
+.. `Another Tsk Type` -> `Assignment` editing
 ====
 
 To `edit`:
@@ -957,9 +960,9 @@ Congratulations, you have added a module to your modules page!
 To start the interaction of editing a module, click on `Modules`-> `Edit` in the menu bar. +
 Alternatively, you can key in `edit mods` into the input line.
 
-image::module/module_nav_edit.png[width="790",align="center",title = "Entry of module edition"]
+image::module/module_nav_edit.png[width="790",align="center",title = "Entry of module editing"]
 
-Study Buddy provides three module edition options.
+Study Buddy provides three module editing options.
 
 Edit options::
 * Change Module name.
@@ -991,19 +994,19 @@ image::module/module_edit_option.png[width="790",align="center",title = "Asks fo
 
 .. "1" -> Change Module Name
 +
-Key in your new module name and press kbd:[enter] to confirm the edition.
+Key in your new module name and press kbd:[enter] to confirm the editing.
 Here we use "Edited Module Name" as an example. +
 The module page will update accordingly.
 +
-image::module/module_edit_name_result.png[width="790",align="center",title = "Module name edition result"]
+image::module/module_edit_name_result.png[width="790",align="center",title = "Module name editing result"]
 
 .. "2" -> Change Module Code
 +
-Key in your new module code and press kbd:[enter] to confirm the edition.
+Key in your new module code and press kbd:[enter] to confirm the editing.
 Here we use "LY3000" as an example. +
 The module page will update accordingly.
 +
-image::module/module_edit_code_result.png[width="790",align="center",title = "Module code edition result"]
+image::module/module_edit_code_result.png[width="790",align="center",title = "Module code editing result"]
 +
 Module code changed!
 
