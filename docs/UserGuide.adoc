@@ -267,6 +267,8 @@ It must be a time in the future.
 be later than `start date`.
 ... The total weight of tasks under the same module is capped at 100.0.
 * Both `archived` and `not archived tasks` will be taken into consideration.
+* This constraint also applies to tasks without module information. Those tasks will be treated as from a same extra module.
+It is designed for you to practice your time management skill :).
 ... All `index numbers` entered should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).
 ... The "Required Information" cannot be empty, on the other hand, you can press kbd:[enter] to skip the "Optional Information".
 .. Adding duplicate tasks:
@@ -962,6 +964,13 @@ Especially when you execute commands such as
 
 [TIP]
 The colour theme will also change randomly, hope you enjoy :)
+
+
+[NOTE]
+The statistics feature is built on top of the data collected from the basic functionality described in <<Basic features>>.
+Which means Study Buddy only supports keyboard input for statistics generating. +
+Therefore, even though this feature involves mouse-clicking, it is still designed for a fast typist.
+
 
 ==== Navigate to Statistics Page
 You can navigate to Statistics page by clicking the *Statistics* from the menu bar.
