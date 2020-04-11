@@ -1273,7 +1273,7 @@ Here are some examples of how to obtain Productivity Points in StudyBuddy:
 
 [TIP]
 If you complete or add a task while looking at the weekly tab or productivity points tab,
-the color theme changes.
+the color theme changes randomly.
 
 
 //end::productivity[]
