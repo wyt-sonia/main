@@ -382,7 +382,7 @@ When you want to update some details of a task or there are some typo in an exis
 task. You can use this command to edit as you wish.
 
 ====
-*Constrains*
+*Constraints*
 
 . Each new value and index number entered will be checked under the same constrain of add command.
 . When editing weight or module, the application will also make sure the total weight of related module's tasks will not overflow (i.e. exceed 100).
@@ -1151,6 +1151,7 @@ The productivity feature also gamifies your task management experience. Doing wo
 
 
 .1. Daily Productivity Tab
+
 
 To get started, click on the Productivity menu button.
 The daily productivity tab records your the number of tasks you completed today.
