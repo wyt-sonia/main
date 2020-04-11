@@ -368,7 +368,7 @@ The number will not reset to 2, because this is the third time you are attemptin
 image::duplicate/addDuplicate2.png[width="790",align="center",title="Response to choosing not to add"]
 
 [TIP]
-You can view all tasks that have been auto-edited this way, using the <<View duplicates>>
+You can view all tasks that have been auto-edited this way, using the <<View renamed>>
 
 [TIP]
 Use the <<Edit>> to edit your duplicated tasks!
@@ -500,7 +500,7 @@ To `delete`:
 +
 image::basic/delete/delete_index.png[width="790",align="center",title="Response to 'delete'"]
 
-. Type the index of the task you want to delete.
+. Type the index of the task you want to delete. In this case, the index entered is 1.
 +
 image::basic/delete/delete_confirm.png[width="790",align="center",title="Asks for confirmation"]
 . Press kbd:[enter] again to confirm
@@ -514,7 +514,7 @@ image::basic/delete/delete_result.png[width="790",align="center",title="Updated 
 //tag::viewRenamed[]
 ==== View renamed
 
-This commands filtered all renamed tasks in the list i.e tasks that have a number appended to their names.
+This commands filters all renamed tasks in the list i.e tasks that have a number appended to their names.
 
 *Example:*
 
@@ -751,7 +751,7 @@ Suppose you notice that the task "Homework 1" is still in pending status.
 +
 image::basic/refresh/refresh_result.png[width="790",align="center",title="Refreshed Study Buddy"]
 +
-You will notice that the overdue task has now moved out of the due soon list and has the updated status tag "overdue".
+You will notice that the pending task has now moved to the due soon list and the status has been updated.
 //end::refresh[]
 
 [NOTE]
@@ -780,7 +780,7 @@ To `exit`:
 +
 image::basic/exit/exit_confirm.png[width="790",align="center",title="Response to 'bye'"]
 . Type 'yes' and press kbd:[enter] to exit, the Study Buddy window will close automatically.
-. If instead, you type 'yes' and press kbd:[enter], this is what you will see,
+. If instead, you type 'no' and press kbd:[enter], this is what you will see,
 +
 image::basic/exit/exit_no.png[width="790",align="center",title="Response to 'no'"]
 
@@ -813,13 +813,13 @@ image::duesoon/due_soon.png[width="790",align="center",title="Due Soon List"]
 
 . It automatically sorts these tasks in an ascending order of deadlines.
 +
-image::duesoon/due_soon_sort.png[width="790",align="center",title="Due Soon List"]
+image::duesoon/due_soon_sort.png[width="790",align="center",title="Due Soon List Auto-Sort"]
 
 . It automatically adds applicable tasks when you make changes to your main list, such as add (<<Add>>) or delete (<<Delete>>).
 
 . It displays a tag with the time left to the deadline.
 +
-image::duesoon/due_soon_tag.png[width="790",align="center",title="Due Soon List"]
+image::duesoon/due_soon_tag.png[width="790",align="center",title="Due Soon List Time Tags"]
 
 . It provides a <<Refresh>> function that allows you to refresh time/state of this list if needed.
 

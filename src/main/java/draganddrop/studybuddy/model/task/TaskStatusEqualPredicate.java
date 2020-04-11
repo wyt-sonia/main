@@ -3,7 +3,7 @@ package draganddrop.studybuddy.model.task;
 import java.util.function.Predicate;
 
 /**
- * Tests that a {@code Task}'s {@code Name} matches any of the keywords given.
+ * Tests that a {@code Task}'s {@code Status} matches the status provided.
  */
 public class TaskStatusEqualPredicate implements Predicate<Task> {
 

@@ -43,7 +43,6 @@ public class Task implements Comparable<Task>, Cloneable {
     private DateFormat df = null;
     private Date dateObj = null;
     private int duplicate = 0;
-    private boolean isDuplicate = false;
 
     public Task(Module module, TaskType taskType, String taskName, String taskDescription, double weight,
                 TaskStatus taskStatus, LocalDateTime[] dateTimes, double estimatedTimeCost,
@@ -217,14 +216,6 @@ public class Task implements Comparable<Task>, Cloneable {
 
     public int getDuplicate() {
         return duplicate;
-    }
-
-    public void setDuplicate(boolean dup) {
-        this.isDuplicate = dup;
-    }
-
-    public boolean isDuplicate() {
-        return isDuplicate;
     }
 
     public void incrementDuplicate() {

@@ -15,4 +15,5 @@ public class Messages {
     public static final String MESSAGE_DELETE_TASK_SUCCESS = "Deleted Task: %1$s";
     public static final String MESSAGE_FILTER_TASK_SUCCESS = "Filtered tasks";
     public static final String MESSAGE_VIEW_RENAMED_TASK_SUCCESS = "Filtered renamed tasks";
+    public static final String MESSAGE_DUPLICATE_ADD_SUCCESS = "New Duplicate Task added: %1$s";
 }

@@ -18,30 +18,32 @@ import draganddrop.studybuddy.model.task.Task;
  */
 public class RefreshCommand extends Command {
 
+    //logging
     private final Logger logger = LogsCenter.getLogger(RefreshCommand.class);
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        List<Task> lastShownList = model.getFilteredTaskList();
         logger.info("Attempting to refresh due soon list and tags");
+
+        List<Task> lastShownList = model.getFilteredTaskList();
+
         model.clearDueSoonList(new StudyBuddy());
-        for (int i = 0; i < lastShownList.size(); i++) {
-            Task task = lastShownList.get(i);
+
+        for (Task task : lastShownList) {
             if (task.isDueSoon()) {
-                task.isDueSoon();
                 model.forceAddDueSoonTask(task);
             }
             refreshStatus(task, model);
         }
 
-        return new CommandResult(String.format(Messages.MESSAGE_DUE_SOON_TASK_SUCCESS));
+        return new CommandResult(Messages.MESSAGE_DUE_SOON_TASK_SUCCESS);
     }
 
     /**
      * This function refreshes the status tags.
-     * @param task
-     * @param model
+     * @param task a task
+     * @param model Model
      */
     private void refreshStatus(Task task, Model model) {
         boolean isStatusExpired = task.isStatusExpired();

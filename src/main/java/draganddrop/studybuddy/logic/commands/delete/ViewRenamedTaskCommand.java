@@ -11,7 +11,7 @@ import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.task.Task;
 
 /**
- * Deletes all repeated tasks from the list.
+ * Filters all the renamed tasks in the list.
  */
 public class ViewRenamedTaskCommand extends Command {
 
@@ -27,7 +27,7 @@ public class ViewRenamedTaskCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredTaskList(predicate);
-        return new CommandResult(String.format(Messages.MESSAGE_VIEW_RENAMED_TASK_SUCCESS));
+        return new CommandResult(Messages.MESSAGE_VIEW_RENAMED_TASK_SUCCESS);
     }
 
     @Override
