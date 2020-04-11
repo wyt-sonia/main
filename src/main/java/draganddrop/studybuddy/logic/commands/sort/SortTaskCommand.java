@@ -15,6 +15,8 @@ import javafx.collections.ObservableList;
 /**
  * Represent a SortTaskCommand that can handle the sorting of tasks according to
  * user choice.
+ *
+ * @@author Wang Yuting
  */
 public class SortTaskCommand extends Command {
 

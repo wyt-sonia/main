@@ -12,6 +12,8 @@ import javafx.scene.layout.Region;
 
 /**
  * An UI component that displays information of a {@code Person}.
+ *
+ * @@author Wang Yuting
  */
 public class DetailedTaskCard extends UiPart<Region> {
 

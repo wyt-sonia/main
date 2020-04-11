@@ -2,6 +2,7 @@ package draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions;
 
 /**
  * Represents an InteractiveCommandException.
+ *
  */
 public class InteractiveCommandException extends RuntimeException {
     protected String errorType;
@@ -16,7 +17,7 @@ public class InteractiveCommandException extends RuntimeException {
             break;
 
         case "moduleWeightOverloadError":
-            errorMessage = "The maximum sum of task's weights under the same module is 100.0, please check.";
+            errorMessage = "The maximum sum of task's weights under the same module is 100.0, please check again.";
             break;
 
         case "taskCompletedError":
@@ -24,15 +25,15 @@ public class InteractiveCommandException extends RuntimeException {
             break;
 
         case "specialCharInputError":
-            errorMessage = "The task name contains special character, please check.";
+            errorMessage = "The task name contains special character, please check again.";
             break;
 
         case "taskNameLengthError":
-            errorMessage = "The maximum length of task name is 20 characters, please check.";
+            errorMessage = "The maximum length of task name is 20 characters, please check again.";
             break;
 
         case "taskDescriptionLengthError":
-            errorMessage = "The maximum length of task description is 300 characters, please check.";
+            errorMessage = "The maximum length of task description is 300 characters, please check again.";
             break;
 
         case "wrongWeightFormatError":
@@ -56,7 +57,7 @@ public class InteractiveCommandException extends RuntimeException {
             break;
 
         case "noSuchModuleError":
-            errorMessage = "Could not find the module based on the module code entered, please check and re-enter.";
+            errorMessage = "Could not find the module based on the module code entered, please check again.";
             break;
 
         case "duplicateModuleNameError":
@@ -101,10 +102,7 @@ public class InteractiveCommandException extends RuntimeException {
             break;
 
         case "dataTimeFormatError":
-            errorMessage = "Invalid date time format, please follow the format below:\n\n"
-                + "Assignment : HH:mm dd/MM/yyyy   e.g. 12:00 01/01/2020\n\n"
-                + "Rest: HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy\n"
-                + "e.g. 12:00 01/01/2020-14:00 01/01/2020\n";
+            errorMessage = "Invalid date time format, please check again.";
             break;
 
         case "pastDateTime":
@@ -112,7 +110,8 @@ public class InteractiveCommandException extends RuntimeException {
             break;
 
         case "eventEndBeforeStartError":
-            errorMessage = "Invalid date time, the end date you entered is before the start date, please check.";
+            errorMessage = "Invalid date time, the end date you entered is "
+                + "not after the start date, please check again.";
             break;
 
         case "dateFormatError":

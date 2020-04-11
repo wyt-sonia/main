@@ -13,12 +13,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType;
 
 /**
- * Logic of implementation:
- * IP will handle all interaction btw user and the window to get the final version of command
- * - FSM
- * Parser will handle to parsing of the command and create a command
- * command will execute the action
- * server display the response if needed
+ *Represents a CalendarViewInteractivePrompt.
  */
 public class CalendarViewInteractivePrompt extends InteractivePrompt {
 

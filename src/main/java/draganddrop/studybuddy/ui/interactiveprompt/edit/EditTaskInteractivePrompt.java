@@ -9,9 +9,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import draganddrop.studybuddy.commons.core.index.Index;
 import draganddrop.studybuddy.logic.commands.edit.EditTaskCommand;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
+import draganddrop.studybuddy.logic.parser.TaskParser;
 import draganddrop.studybuddy.logic.parser.TimeParser;
-import draganddrop.studybuddy.logic.parser.interactivecommandparser.EditTaskCommandParser;
-import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.EditTaskCommandException;
+import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddOrEditTaskCommandException;
 import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.task.Task;
@@ -20,11 +20,12 @@ import draganddrop.studybuddy.model.task.TaskType;
 import draganddrop.studybuddy.model.task.exceptions.DuplicateTaskException;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
-
 import javafx.collections.ObservableList;
 
 /**
  * Interactive prompt for editing tasks
+ *
+ * @@author Hong Wen, Wang Yuting
  */
 public class EditTaskInteractivePrompt extends InteractivePrompt {
     public static final String QUIT_COMMAND_MSG = "Successfully quit from the edit task command";
@@ -32,10 +33,12 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
 
     private static final String REQUIRED_TASK_FIELD_MSG = "Please choose the field that you wish to edit for task: ";
     private static final String REQUIRED_MODULE_MSG = "Please choose a Module for this task or press enter to skip. "
-        + "Index number and module code are both acceptable.\n";
+        + "\nIndex number and module code are both acceptable.\n";
     private static final String REQUIRED_TASK_NAME_MSG = "Please enter the task name.";
     private static final String REQUIRED_TASK_TYPE_MSG = "Please choose the task type:\n";
-    private static final String REQUIRED_DATE_TIME_MSG = "Please enter the deadline/duration with format: ";
+    private static final String REQUIRED_DATE_TIME_MSG = "Please enter the deadline/duration with format: " + "\n\n"
+        + "Assignment: HH:mm dd/MM/yyyy  e.g. 12:00 01/05/2020"
+        + "\nRest: HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy  e.g. 12:00 01/05/2020-14:00 01/05/2020";
     private static final String REQUIRED_TASK_DESCRIPTION_MSG = "Please enter task "
         + "description or press enter to skip.\n";
     private static final String REQUIRED_TASK_WEIGHT_MSG = "Please enter the weight of the task "
@@ -101,7 +104,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
      */
     public String handleNewValue(String userInput) {
         Index taskIndex = Index.fromZeroBased(taskNumber - 1);
-        Task taskToEdit = getCurrentTasks().get(taskNumber - 1);
+        Task taskToEdit = logic.getStudyBuddy().getTaskList().get(taskNumber - 1);
         EditTaskCommand editTaskCommand = new EditTaskCommand(taskIndex, taskField);
         boolean parseSuccess = true;
         String successMessage = END_OF_COMMAND_MSG;
@@ -115,34 +118,34 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         switch (taskField) {
         case TASK_NAME:
             try {
-                String newName = EditTaskCommandParser.parseName(userInput);
+                String newName = TaskParser.parseName(userInput);
                 clone.setTaskName(newName);
                 checkDuplicate(clone, taskToEdit);
                 editTaskCommand.provideNewTaskName(newName);
-            } catch (EditTaskCommandException e) {
+            } catch (AddOrEditTaskCommandException e) {
                 parseSuccess = false;
                 reply = e.getErrorMessage() + "\n\n"
                     + REQUIRED_TASK_NAME_MSG;
             } catch (DuplicateTaskException e) {
                 parseSuccess = false;
                 reply = e.getErrorMessage() + "\n\n"
-                        + REQUIRED_TASK_NAME_MSG;
+                    + REQUIRED_TASK_NAME_MSG;
             }
             break;
 
         case TASK_TYPE:
             try {
-                TaskType newTaskType = EditTaskCommandParser.parseType(userInput, TaskType.getTaskTypes().length);
+                TaskType newTaskType = TaskParser.parseType(userInput, TaskType.getTaskTypes().length);
                 clone.setTaskType(newTaskType);
                 checkDuplicate(clone, taskToEdit);
                 editTaskCommand.provideNewTaskType(newTaskType);
                 successMessage = "The type of task is successfully changed to: " + newTaskType + ".\n";
             } catch (NumberFormatException ex) {
                 parseSuccess = false;
-                reply = (new EditTaskCommandException("wrongIndexFormatError")).getErrorMessage()
+                reply = (new AddOrEditTaskCommandException("wrongIndexFormatError")).getErrorMessage()
                     + "\n\n" + REQUIRED_TASK_TYPE_MSG + "\n"
                     + TaskType.getTypeString();
-            } catch (EditTaskCommandException ex) {
+            } catch (AddOrEditTaskCommandException ex) {
                 parseSuccess = false;
                 reply = ex.getErrorMessage()
                     + "\n\n" + REQUIRED_TASK_TYPE_MSG + "\n"
@@ -150,14 +153,17 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
             } catch (DuplicateTaskException e) {
                 parseSuccess = false;
                 reply = e.getErrorMessage() + "\n\n"
-                        + REQUIRED_TASK_TYPE_MSG;
+                    + REQUIRED_TASK_TYPE_MSG;
             }
             break;
 
         case TASK_DATETIME:
             try {
+                if (userInput.isBlank()) {
+                    throw new AddOrEditTaskCommandException("emptyInputError");
+                }
                 TaskType taskType = logic.getFilteredTaskList().get(taskIndex.getZeroBased()).getTaskType();
-                LocalDateTime[] newDateTimes = EditTaskCommandParser.parseDateTime(userInput, taskType);
+                LocalDateTime[] newDateTimes = TaskParser.parseDateTime(userInput, taskType);
                 clone.setDateTimes(newDateTimes);
                 checkDuplicate(clone, taskToEdit);
                 if (newDateTimes.length == 1) {
@@ -167,12 +173,12 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                         + "-" + TimeParser.getDateTimeString(newDateTimes[1]);
                 }
                 editTaskCommand.provideNewDateTime(newDateTimes);
-            } catch (EditTaskCommandException e) {
+            } catch (AddOrEditTaskCommandException e) {
                 parseSuccess = false;
-                this.reply = e.getErrorMessage();
+                this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_DATE_TIME_MSG;
             } catch (DuplicateTaskException e) {
                 parseSuccess = false;
-                reply = e.getErrorMessage();
+                reply = e.getErrorMessage() + "\n\n" + REQUIRED_DATE_TIME_MSG;
             }
             break;
 
@@ -181,24 +187,24 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                 if (userInput.isBlank()) {
                     editTaskCommand.provideNewModule(new EmptyModule());
                 } else {
-                    Module newModule = EditTaskCommandParser.parseModule(userInput, modules);
+                    Module newModule = TaskParser.parseModule(userInput, modules);
                     double taskWeight = logic.getFilteredTaskList().get(taskIndex.getZeroBased()).getWeight();
                     boolean isWeightSizeValid = isWeightSizeValid(taskWeight, newModule,
                         logic.getStudyBuddy().getTaskList().get(taskNumber - 1));
                     if (!isWeightSizeValid) {
-                        throw new EditTaskCommandException("moduleWeightOverloadError");
+                        throw new AddOrEditTaskCommandException("moduleWeightOverloadError");
                     }
                     clone.setModule(newModule);
                     checkDuplicate(clone, taskToEdit);
                     editTaskCommand.provideNewModule(newModule);
                 }
-            } catch (EditTaskCommandException e) {
+            } catch (AddOrEditTaskCommandException e) {
                 parseSuccess = false;
                 this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_MODULE_MSG + "\n" + moduleListString;
             } catch (DuplicateTaskException e) {
                 parseSuccess = false;
                 reply = e.getErrorMessage() + "\n\n"
-                        + REQUIRED_MODULE_MSG;
+                    + REQUIRED_MODULE_MSG + "\n" + moduleListString;
             }
             break;
 
@@ -209,7 +215,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                     clone.setEstimatedTimeCost(newTimeCost);
                     checkDuplicate(clone, taskToEdit);
                     if (newTimeCost < 0) {
-                        throw new EditTaskCommandException("wrongEstimatedTimeRangeError");
+                        throw new AddOrEditTaskCommandException("wrongEstimatedTimeRangeError");
                     }
                     editTaskCommand.provideNewTaskTimeCost(newTimeCost);
                 } else {
@@ -217,15 +223,15 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                 }
             } catch (NumberFormatException e) {
                 parseSuccess = false;
-                this.reply = new EditTaskCommandException("wrongEstimatedTimeFormatError").getErrorMessage()
+                this.reply = new AddOrEditTaskCommandException("wrongEstimatedTimeFormatError").getErrorMessage()
                     + "\n\n" + REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
-            } catch (EditTaskCommandException e) {
+            } catch (AddOrEditTaskCommandException e) {
                 parseSuccess = false;
                 this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
             } catch (DuplicateTaskException e) {
                 parseSuccess = false;
                 reply = e.getErrorMessage() + "\n\n"
-                        + REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
+                    + REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
             }
             break;
 
@@ -234,42 +240,42 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                 double newWeight = 0;
                 boolean isWeightSizeValid = true;
                 if (!userInput.isBlank()) {
-                    newWeight = EditTaskCommandParser.parseWeight(userInput);
+                    newWeight = TaskParser.parseWeight(userInput);
                     if (newWeight > 0) {
                         isWeightSizeValid = isWeightSizeValid(newWeight, logic.getFilteredTaskList()
                                 .get(taskIndex.getZeroBased()).getModule(),
                             logic.getStudyBuddy().getTaskList().get(taskNumber - 1));
                     }
                     if (!isWeightSizeValid) {
-                        throw new EditTaskCommandException("moduleWeightOverloadError");
+                        throw new AddOrEditTaskCommandException("moduleWeightOverloadError");
                     }
                     clone.setWeight(newWeight);
                     checkDuplicate(clone, taskToEdit);
                 }
                 editTaskCommand.provideNewTaskWeight(newWeight);
-            } catch (EditTaskCommandException e) {
+            } catch (AddOrEditTaskCommandException e) {
                 parseSuccess = false;
                 this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_WEIGHT_MSG;
             } catch (DuplicateTaskException e) {
                 parseSuccess = false;
                 reply = e.getErrorMessage() + "\n\n"
-                        + REQUIRED_TASK_WEIGHT_MSG;
+                    + REQUIRED_TASK_WEIGHT_MSG;
             }
             break;
 
         case TASK_DESCRIPTION:
             try {
-                String newDescription = EditTaskCommandParser.parseDescription(userInput);
+                String newDescription = TaskParser.parseDescription(userInput);
                 clone.setTaskDescription(newDescription);
                 checkDuplicate(clone, taskToEdit);
                 editTaskCommand.provideNewTaskDescription(newDescription);
-            } catch (EditTaskCommandException e) {
+            } catch (AddOrEditTaskCommandException e) {
                 parseSuccess = false;
                 this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_DESCRIPTION_MSG;
             } catch (DuplicateTaskException e) {
                 parseSuccess = false;
                 reply = e.getErrorMessage() + "\n\n"
-                        + REQUIRED_TASK_DESCRIPTION_MSG;
+                    + REQUIRED_TASK_DESCRIPTION_MSG;
             }
             break;
         default:
@@ -284,6 +290,8 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                 reply = ex.getMessage();
             }
         }
+        assert !this.reply.isBlank()
+            : "The reply of edit task's " + currentTerm.name() + " is blank, please check.\n";
         return reply;
     }
 
@@ -311,7 +319,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
     }
 
     /**
-     * parses task number
+     * Parses task number.
      *
      * @param userInput user input for task number
      * @return an int of task number
@@ -321,19 +329,19 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
 
         try {
             if (userInput.isBlank()) {
-                throw new EditTaskCommandException("emptyInputError");
+                throw new AddOrEditTaskCommandException("emptyInputError");
             }
             taskNum = Integer.parseInt(userInput);
             if (taskNum > logic.getFilteredTaskList().size() || taskNum < 1) {
-                throw new EditTaskCommandException("invalidIndexRangeError");
+                throw new AddOrEditTaskCommandException("invalidIndexRangeError");
             }
             String taskName = logic.getFilteredTaskList().get(taskNum - 1).getTaskName();
             this.reply = REQUIRED_TASK_FIELD_MSG + taskName + ".\n\n"
                 + TaskField.getFieldString();
             this.currentTerm = InteractivePromptTerms.TASK_FIELD;
         } catch (NumberFormatException e) {
-            this.reply = (new EditTaskCommandException("wrongIndexFormatError")).getErrorMessage();
-        } catch (EditTaskCommandException ex) {
+            this.reply = (new AddOrEditTaskCommandException("wrongIndexFormatError")).getErrorMessage();
+        } catch (AddOrEditTaskCommandException ex) {
             this.reply = ex.getErrorMessage();
         }
         return taskNum;
@@ -341,6 +349,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
 
     /**
      * Checks if the task will be duplicate if edited.
+     *
      * @param clone
      * @param taskToEdit
      */
@@ -352,8 +361,9 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
             taskToEdit.zeroDuplicate();
         }
     }
+
     /**
-     * parses the task field.
+     * Parses the task field.
      *
      * @param userInput userInput for task number
      * @return a TaskField
@@ -365,15 +375,15 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         try {
             int taskFieldNumber = Integer.parseInt(userInput);
             if (taskFieldNumber > 7 || taskFieldNumber < 1) {
-                throw new EditTaskCommandException("invalidIndexRangeError");
+                throw new AddOrEditTaskCommandException("invalidIndexRangeError");
             }
             taskField = TaskField.getTaskFieldFromNumber(taskFieldNumber);
             assert (taskField != null);
             this.reply = getTaskFieldMessage(taskField);
             this.currentTerm = InteractivePromptTerms.NEW_VALUE;
         } catch (NumberFormatException e) {
-            this.reply = new EditTaskCommandException("wrongIndexFormatError").getErrorMessage();
-        } catch (EditTaskCommandException e) {
+            this.reply = new AddOrEditTaskCommandException("wrongIndexFormatError").getErrorMessage();
+        } catch (AddOrEditTaskCommandException e) {
             this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_FIELD_MSG + taskName + ".\n\n"
                 + TaskField.getFieldString();
         }
@@ -391,24 +401,23 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                 + moduleListString;
             break;
         case TASK_NAME:
-            result += REQUIRED_TASK_NAME_MSG + "\n";
+            result += REQUIRED_TASK_NAME_MSG;
             break;
         case TASK_TYPE:
             result += REQUIRED_TASK_TYPE_MSG + "\n"
                 + TaskType.getTypeString();
             break;
         case TASK_DATETIME:
-            result += REQUIRED_DATE_TIME_MSG + "\n\n"
-                + "Assignment: HH:mm dd/MM/yyyy \nRest: HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy";
+            result += REQUIRED_DATE_TIME_MSG;
             break;
         case TASK_DESCRIPTION:
-            result += REQUIRED_TASK_DESCRIPTION_MSG + "\n";
+            result += REQUIRED_TASK_DESCRIPTION_MSG;
             break;
         case TASK_WEIGHT:
-            result += REQUIRED_TASK_WEIGHT_MSG + "\n";
+            result += REQUIRED_TASK_WEIGHT_MSG;
             break;
         case TASK_ESTIMATED_TIME_COST:
-            result += REQUIRED_TASK_ESTIMATED_TIME_COST_MSG + "\n";
+            result += REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
             break;
         default:
             throw new IllegalStateException("Unexpected value: " + taskField);
@@ -417,7 +426,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
     }
 
     /**
-     * hides empty module from the moduleList.
+     * Hides empty module from the moduleList.
      *
      * @param moduleList
      */
@@ -430,7 +439,6 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
             }
         });
     }
-
 
 }
 

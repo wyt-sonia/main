@@ -1,7 +1,7 @@
 package draganddrop.studybuddy.logic.parser.interactivecommandparser;
 
-import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.FilterTaskCommandException;
+import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.InteractiveCommandException;
 import draganddrop.studybuddy.model.task.TaskStatus;
 import draganddrop.studybuddy.model.task.TaskType;
 
@@ -14,7 +14,7 @@ public class FilterTaskCommandParser {
      * Parse the {@code userInput} for index value.
      * @param userInput
      * @return integer index
-     * @throws AddTaskCommandException
+     * @throws InteractiveCommandException
      */
     public static TaskStatus parseStatusIndex(String userInput) throws FilterTaskCommandException {
         TaskStatus result;
@@ -38,7 +38,7 @@ public class FilterTaskCommandParser {
      * Parse the {@code userInput} for index value.
      * @param userInput
      * @return integer index
-     * @throws AddTaskCommandException
+     * @throws InteractiveCommandException
      */
     public static int parseOptionIndex(String userInput) throws FilterTaskCommandException {
         int result;
@@ -62,7 +62,7 @@ public class FilterTaskCommandParser {
      * Parse the {@code userInput} for index value.
      * @param userInput
      * @return integer index
-     * @throws AddTaskCommandException
+     * @throws InteractiveCommandException
      */
     public static TaskType parseTypeIndex(String userInput) throws FilterTaskCommandException {
         TaskType result;

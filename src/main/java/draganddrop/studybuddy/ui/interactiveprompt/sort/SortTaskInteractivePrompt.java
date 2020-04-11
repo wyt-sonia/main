@@ -13,6 +13,8 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
  * A interactive prompt for sorting task list.
+ *
+ * @@author Wang Yuting
  */
 public class SortTaskInteractivePrompt extends InteractivePrompt {
     private static final String END_OF_COMMAND_MSG = "Task sorted successfully!";
@@ -71,6 +73,8 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
 
         default:
         }
+        assert !this.reply.isBlank()
+            : "The reply of sort " + currentTerm.name() + " is blank, please check.\n";
         return reply;
     }
 

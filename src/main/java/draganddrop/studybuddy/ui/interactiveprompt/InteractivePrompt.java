@@ -4,6 +4,8 @@ import draganddrop.studybuddy.logic.Logic;
 
 /**
  * Represents an InteractivePrompt.
+ *
+ * @@author Wang Yuting
  */
 public abstract class InteractivePrompt {
     protected Logic logic;
@@ -69,7 +71,7 @@ public abstract class InteractivePrompt {
     }
 
     /**
-     * Handles the quit and back commands
+     * Handles the quit commands.
      *
      * @param userInput   the input given by the user. This should be checked to be either quit or back.
      * @param quitMessage the message that is displayed upon quitting
