@@ -7,13 +7,13 @@ import java.util.List;
  * stores information about the user's score
  */
 public class ScoreStats {
-    private static final int noviceScore = 10;
-    private static final int apprenticeScore = 50;
-    private static final int dukeScore = 100;
-    private static final int expertScore = 200;
-    private static final int masterScore = 300;
-    private static final int grandmasterScore = 400;
-    private static final int legendScore = 500;
+    private static final int noviceScore = 50;
+    private static final int apprenticeScore = 100;
+    private static final int dukeScore = 200;
+    private static final int expertScore = 300;
+    private static final int masterScore = 400;
+    private static final int grandmasterScore = 500;
+    private static final int legendScore = 700;
     private static final int sageScore = 1000;
     private static final int enlightenedScore = 2000;
 

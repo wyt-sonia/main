@@ -11,7 +11,6 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
@@ -35,22 +34,25 @@
                                        <children>
                                           <HBox alignment="CENTER">
                                              <children>
-                                                <AnchorPane prefHeight="148.0" prefWidth="130.0">
+                                                <Pane>
                                                    <children>
-                                                      <ProgressIndicator fx:id="progressIndicator" layoutY="0.20000076293945312" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="130.0" progress="0.0" styleClass="u-gold-progress" />
-                                                      <Circle fx:id="progressCentre" fill="WHITE" layoutX="65.5" layoutY="64.0" radius="60.0" stroke="#c9c3b6" strokeType="INSIDE" />
-                                                       <ImageView fx:id="goldStarImageView" fitHeight="50.0" fitWidth="50.0" layoutX="41.599998474121094" layoutY="38.59999465942383" pickOnBounds="true" preserveRatio="true" visible="false">
+                                                      <ProgressIndicator fx:id="progressIndicator" layoutY="0.20000000298023224" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="147.0" prefWidth="130.0" progress="0.0" styleClass="u-gold-progress" />
+                                                      <Circle fx:id="progressCentre" fill="WHITE" layoutX="65.0" layoutY="64.3" radius="60.0" stroke="#c9c3b6" strokeType="INSIDE" />
+                                                       <ImageView fx:id="goldStarImageView" fitHeight="50.0" fitWidth="50.0" layoutX="41.599998474121094" layoutY="38.59999389946461" pickOnBounds="true" preserveRatio="true" visible="false">
                                                            <image>
                                                                <Image fx:id="goldStarImage" url="@../images/rank/gold_star.png" />
                                                            </image>
                                                        </ImageView>
-                                                      <ImageView fx:id="grayStarImageView" fitHeight="50.0" fitWidth="50.0" layoutX="41.599998474121094" layoutY="38.59999465942383" pickOnBounds="true" preserveRatio="true">
+                                                      <ImageView fx:id="grayStarImageView" fitHeight="50.0" fitWidth="50.0" layoutX="40.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
                                                           <image>
                                                               <Image fx:id="grayStarImage" url="@../images/rank/gray_star.png" />
                                                           </image>
                                                       </ImageView>
                                                    </children>
-                                                </AnchorPane>
+                                                   <HBox.margin>
+                                                      <Insets bottom="5.0" />
+                                                   </HBox.margin>
+                                                </Pane>
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER">
@@ -89,6 +91,9 @@
                                                          </font>
                                                       </Label>
                                                    </children>
+                                                   <VBox.margin>
+                                                      <Insets />
+                                                   </VBox.margin>
                                                 </HBox>
                                              </children>
                                              <VBox.margin>
