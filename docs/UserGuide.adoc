@@ -751,7 +751,7 @@ Suppose you notice that the task "Homework 1" is still in pending status.
 +
 image::basic/refresh/refresh_result.png[width="790",align="center",title="Refreshed Study Buddy"]
 +
-You will notice that the pending has now moved to the due soon list and the status has been updated.
+You will notice that the pending task has now moved to the due soon list and the status has been updated.
 //end::refresh[]
 
 [NOTE]
@@ -813,13 +813,13 @@ image::duesoon/due_soon.png[width="790",align="center",title="Due Soon List"]
 
 . It automatically sorts these tasks in an ascending order of deadlines.
 +
-image::duesoon/due_soon_sort.png[width="790",align="center",title="Due Soon List"]
+image::duesoon/due_soon_sort.png[width="790",align="center",title="Due Soon List Auto-Sort"]
 
 . It automatically adds applicable tasks when you make changes to your main list, such as add (<<Add>>) or delete (<<Delete>>).
 
 . It displays a tag with the time left to the deadline.
 +
-image::duesoon/due_soon_tag.png[width="790",align="center",title="Due Soon List"]
+image::duesoon/due_soon_tag.png[width="790",align="center",title="Due Soon List Time Tags"]
 
 . It provides a <<Refresh>> function that allows you to refresh time/state of this list if needed.
 

@@ -240,7 +240,7 @@ image::AddDueSoonSequence.png[width = "800", length = "600", title = "Sequence D
 The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 {bl}
 
-2. *When user deletes a task:*
+. *When user deletes a task:*
 
 .. What it does:
 ... When a task that is deleted from the main list occurs in the due soon list as well, it is automatically deleted.
@@ -311,15 +311,6 @@ It will also update the time left.
 
 [NOTE]
 If there are no such inconsistencies, the refresh command will not make any changes to the Due Soon task list.
-
-.Activity diagram for refresh
-image::DueSoonActivityDiagram.png[width = "500", length = "600"]
-{bl}
-
-.Sequence diagram for refresh
-image::DueSoonSequenceDiagram.png[width = "800", length = "600"]
-[NOTE]
-The lifeline of an object should not continue after deletion. Lifeline is still shown due to a limitation of plantUML.
 
 
 ==== Design Considerations
