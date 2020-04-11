@@ -333,14 +333,14 @@ class AddTaskInteractivePromptTest {
 
     @Test
     public void addTaskInteractivePromptTestInteractWrongTimeCostFormatReturnErrorMessage() {
-        prompt.interact("");
-        prompt.interact("");
-        prompt.interact("taskName");
-        prompt.interact("2");
-        prompt.interact(TimeParser.getDateTimeString(startDateTime)
+        String t = prompt.interact("");
+        String t1 = prompt.interact("");
+        String t2 = prompt.interact("taskName");
+        String t3 = prompt.interact("2");
+        String t4 = prompt.interact(TimeParser.getDateTimeString(startDateTime)
             + "-" + TimeParser.getDateTimeString(endDateTime));
-        prompt.interact("");
-        prompt.interact("");
+        String t5 = prompt.interact("");
+        String t6 = prompt.interact("");
         assertTrue(prompt.interact("wrongTimeCostFormat")
             .contains(new AddOrEditTaskCommandException("wrongEstimatedTimeFormatError").getErrorMessage()));
     }

@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddOrEditTaskCommandException;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.InteractiveCommandException;
+import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.module.ModuleCode;
 import draganddrop.studybuddy.model.task.TaskType;
@@ -130,7 +131,9 @@ public class TaskParser {
         throws AddOrEditTaskCommandException {
         Module result;
         try {
-            if (ModuleCode.isModuleCode(userInput)) {
+            if (userInput.isBlank()) {
+                result = new EmptyModule();
+            } else if (ModuleCode.isModuleCode(userInput)) {
                 List<Module> tempModules = modules.stream()
                     .filter(m -> m.getModuleCode().toString().equals(userInput.toUpperCase()))
                     .collect(Collectors.toList());
