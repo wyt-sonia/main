@@ -73,8 +73,8 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
 
         default:
         }
-        assert this.reply.isBlank()
-            : "The reply of sort "+ currentTerm.name() +" is blank, please check.\n";
+        assert !this.reply.isBlank()
+            : "The reply of sort " + currentTerm.name() + " is blank, please check.\n";
         return reply;
     }
 

@@ -1,7 +1,7 @@
 package draganddrop.studybuddy.logic.parser.interactivecommandparser;
 
-import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.InteractiveCommandException;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.FilterTaskCommandException;
+import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.InteractiveCommandException;
 import draganddrop.studybuddy.model.task.TaskStatus;
 import draganddrop.studybuddy.model.task.TaskType;
 

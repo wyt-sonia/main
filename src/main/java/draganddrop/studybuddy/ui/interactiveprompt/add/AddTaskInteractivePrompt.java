@@ -246,7 +246,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
 
         default:
         }
-        assert this.reply.isBlank()
+        assert !this.reply.isBlank()
             : "The reply of add task's " + currentTerm.name() + " is blank, please check.\n";
         return reply;
     }

@@ -12,6 +12,9 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType;
 
+/**
+ *Represents a CalendarViewInteractivePrompt.
+ */
 public class CalendarViewInteractivePrompt extends InteractivePrompt {
 
     public static final String QUIT_COMMAND_MSG = "Successfully quited from calendar view command.";

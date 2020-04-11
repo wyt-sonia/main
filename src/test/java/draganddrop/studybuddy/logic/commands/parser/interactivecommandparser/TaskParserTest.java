@@ -33,8 +33,6 @@ public class TaskParserTest {
                     + "Thistaskdescriptionismorethan300characterslong"
                     + "Thistaskdescriptionismorethan300characterslong"
                     + "Thistaskdescriptionismorethan300characterslong"); });
-        assertThrows(AddOrEditTaskCommandException.class, () -> {
-            parser.parseDescription(""); });
         assertEquals("ValidDescription", parser.parseDescription("ValidDescription"));
     }
 

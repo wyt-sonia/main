@@ -29,10 +29,7 @@ public class AddTaskCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        int originalTaskCount = model.getStudyBuddy().getTaskList().size();
         model.addTask(toAdd);
-        assert model.getStudyBuddy().getTaskList().size() != originalTaskCount + 1
-            : "The size of task list didn't change properly after insertion, please check.\n";
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 

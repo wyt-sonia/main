@@ -82,25 +82,25 @@ public class EditTaskCommand extends Command {
         case TASK_NAME:
             requireNonNull(newTaskName);
             model.setTaskName(taskToEdit, newTaskName);
-            assert !taskToEdit.getTaskName().equals(newTaskName)
+            assert taskToEdit.getTaskName().equals(newTaskName)
                 : "The task name is not updated to the correct new value, please check.\n";
             break;
         case TASK_DESCRIPTION:
             requireNonNull(newTaskDescription);
             model.setTaskDescription(taskToEdit, newTaskDescription);
-            assert !taskToEdit.getTaskDescription().equals(newTaskDescription)
+            assert taskToEdit.getTaskDescription().equals(newTaskDescription)
                 : "The task description is not updated to the correct new value, please check.\n";
             break;
         case TASK_WEIGHT:
             requireNonNull(newTaskWeight);
             model.setTaskWeight(taskToEdit, newTaskWeight);
-            assert taskToEdit.getWeight() != newTaskWeight
+            assert taskToEdit.getWeight() == newTaskWeight
                 : "The task weight is not updated to the correct new value, please check.\n";
             break;
         case TASK_ESTIMATED_TIME_COST:
             requireNonNull(newTaskTimeCost);
             model.setTaskTimeCost(taskToEdit, newTaskTimeCost);
-            assert taskToEdit.getEstimatedTimeCost() != newTaskTimeCost
+            assert taskToEdit.getEstimatedTimeCost() == newTaskTimeCost
                 : "The task estimated time needed is not updated to the correct new value, please check.\n";
             break;
         case TASK_TYPE:
@@ -112,14 +112,14 @@ public class EditTaskCommand extends Command {
         case TASK_DATETIME:
             requireNonNull(newDateTimes);
             model.setTaskDateTime(taskToEdit, newDateTimes);
-            assert !taskToEdit.getDateTimes().equals(newDateTimes)
+            assert taskToEdit.getDateTimes().equals(newDateTimes)
                 : "The task date time info is not updated to the correct new value, please check.\n";
             break;
         case TASK_MODULE:
             requireNonNull(newModule);
             try {
                 model.setTaskMod(taskToEdit, newModule);
-                assert !taskToEdit.getModule().equals(newModule)
+                assert taskToEdit.getModule().equals(newModule)
                     : "The task module is not updated to the correct new value, please check.\n";
             } catch (ModuleException ex) {
                 throw new CommandException("module code invalid/does not exist!!!");

@@ -110,8 +110,8 @@ public class InteractiveCommandException extends RuntimeException {
             break;
 
         case "eventEndBeforeStartError":
-            errorMessage = "Invalid date time, the end date you entered is " +
-                "not after the start date, please check again.";
+            errorMessage = "Invalid date time, the end date you entered is "
+                + "not after the start date, please check again.";
             break;
 
         case "dateFormatError":

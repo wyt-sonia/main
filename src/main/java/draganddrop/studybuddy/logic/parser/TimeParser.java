@@ -31,7 +31,7 @@ public class TimeParser {
         } catch (DateTimeParseException e) {
             throw new InteractiveCommandException("dataTimeFormatError");
         }
-        assert inputTime == null
+        assert inputTime != null
             : "The result of time parsing is null, please check.\n";
         return inputTime;
     }
@@ -50,7 +50,7 @@ public class TimeParser {
         } catch (DateTimeParseException e) {
             throw new InteractiveCommandException("dataFormatError");
         }
-        assert inputDate == null
+        assert inputDate != null
             : "The result of time parsing is null, please check.\n";
         return inputDate;
     }
@@ -73,7 +73,7 @@ public class TimeParser {
         String month = dateTime.getMonthValue() < 10 ? "0" + dateTime.getMonthValue()
             : "" + dateTime.getMonthValue();
 
-        assert min.isBlank() || hour.isBlank() || day.isBlank() || month.isBlank()
+        assert !(min.isBlank() || hour.isBlank() || day.isBlank() || month.isBlank())
             : "There is blank value in min, hour, day and/or month when get DateTimeString, please check.\n";
 
         return hour + ":" + min

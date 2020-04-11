@@ -64,7 +64,7 @@ public enum TaskType {
             break;
         default:
         }
-        assert result == null
+        assert result != null
             : "The input string does not match with any task type, please check.\n";
         return result;
     }

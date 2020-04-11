@@ -290,8 +290,8 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                 reply = ex.getMessage();
             }
         }
-        assert this.reply.isBlank()
-            : "The reply of edit task's "+ currentTerm.name() +" is blank, please check.\n";
+        assert !this.reply.isBlank()
+            : "The reply of edit task's " + currentTerm.name() + " is blank, please check.\n";
         return reply;
     }
 

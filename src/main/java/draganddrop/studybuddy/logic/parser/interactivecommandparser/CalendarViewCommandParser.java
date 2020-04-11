@@ -12,11 +12,12 @@ import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.I
 public class CalendarViewCommandParser {
 
     /**
+     * Parses the user input date.
+     *
      * @param userInput input
      * @return date
      * @throws InteractiveCommandException too long away/ incorrect format
      */
-
     public static LocalDate parseDate(String userInput) throws InteractiveCommandException {
         LocalDate selectedDate;
         try {
