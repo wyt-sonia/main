@@ -3,7 +3,10 @@ package draganddrop.studybuddy.ui.interactiveprompt.sort;
 import static draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType.SORT_TASK;
 
 import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.logic.commands.sort.SortTaskCommand;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.DeleteTaskCommandException;
@@ -21,16 +24,21 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
     private static final String QUIT_COMMAND_MSG = "Successfully quited from sort task command.";
     private static final String[] sort_option = {"Deadline / Task Start Date", "Task Name", "Creation DateTime"};
 
+    private static final String LOG_TAG = "TaskListPanel";
+    private final Logger logger = LogsCenter.getLogger(SortTaskInteractivePrompt.class);
+
     private int option;
     private String userInput;
 
     public SortTaskInteractivePrompt() {
         super();
+        logger.log(Level.INFO, LOG_TAG + ": Start of the sort task action.");
         this.interactivePromptType = SORT_TASK;
     }
 
     @Override
     public String interact(String userInput) {
+
         if ("quit".equalsIgnoreCase(userInput)) {
             endInteract(QUIT_COMMAND_MSG);
             return reply;
@@ -55,8 +63,10 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
                     + "Please click enter again to check the sorted list.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (NumberFormatException ex) {
+                logger.log(Level.WARNING, LOG_TAG + ": " + ex.getMessage());
                 reply = (new DeleteTaskCommandException("wrongOptionFormatError")).getErrorMessage();
             } catch (SortTaskCommandException ex) {
+                logger.log(Level.WARNING, LOG_TAG + ": " + ex.getErrorMessage());
                 reply = ex.getErrorMessage();
             }
             break;
@@ -67,6 +77,7 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
                 logic.executeCommand(sortTaskCommand);
                 endInteract(END_OF_COMMAND_MSG);
             } catch (CommandException | ParseException ex) {
+                logger.log(Level.WARNING, LOG_TAG + ": " + ex.getMessage());
                 reply = ex.getMessage();
             }
             break;
@@ -75,6 +86,8 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
         }
         assert !this.reply.isBlank()
             : "The reply of sort " + currentTerm.name() + " is blank, please check.\n";
+        logger.log(Level.INFO, LOG_TAG + ": End of the sort task interaction.");
+
         return reply;
     }
 
@@ -82,6 +95,7 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
     public void endInteract(String msg) {
         this.reply = msg;
         super.setEndOfCommand(true);
+        logger.log(Level.INFO, LOG_TAG + ": End of the sort task action.");
     }
 
 }

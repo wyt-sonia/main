@@ -4,7 +4,10 @@ import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.commons.core.Messages;
 import draganddrop.studybuddy.commons.core.index.Index;
 import draganddrop.studybuddy.logic.commands.Command;
@@ -25,8 +28,11 @@ import draganddrop.studybuddy.model.task.exceptions.DuplicateTaskException;
  * @@author Hong Wen, Wang Yuting
  */
 public class EditTaskCommand extends Command {
+
     public static final String COMMAND_WORD = "edit";
     public static final String EDIT_TASK_SUCCESS = "Task has been edited successfully";
+    private static final String LOG_TAG = "EditTaskCommand";
+    private static final Logger logger = LogsCenter.getLogger(EditTaskCommand.class);
     private final Index targetIndex;
     private final TaskField taskField;
     private String newTaskName = null;
@@ -74,6 +80,7 @@ public class EditTaskCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws DuplicateTaskException, CommandException {
+        logger.log(Level.INFO, LOG_TAG + ": Start to execute edit task command.");
         List<Task> lastShownList = model.getFilteredTaskList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
@@ -125,6 +132,7 @@ public class EditTaskCommand extends Command {
                 assert taskToEdit.getModule().equals(newModule)
                     : "The task module is not updated to the correct new value, please check.\n";
             } catch (ModuleException ex) {
+                logger.log(Level.INFO, LOG_TAG + ": module code invalid/does not exist!!!");
                 throw new CommandException("module code invalid/does not exist!!!");
             }
             break;
@@ -132,6 +140,8 @@ public class EditTaskCommand extends Command {
             throw new IllegalStateException("Unexpected value: " + taskField);
         }
         updateDueSoon(taskToEdit, model);
+
+        logger.log(Level.INFO, LOG_TAG + ": End of executing edit task command.");
         return new CommandResult(EDIT_TASK_SUCCESS);
     }
 
