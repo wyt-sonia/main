@@ -187,23 +187,23 @@ public class Task implements Comparable<Task>, Cloneable {
      * Returns true if the status of the task is expired.
      */
     public boolean isStatusExpired() {
-        boolean result = false;
+        boolean isExpired = false;
         if (this.taskStatus != null && !this.taskStatus.equals(TaskStatus.FINISHED)) {
             LocalDateTime now = LocalDateTime.now();
             if (this.dateTimes[0].isBefore(now) && !this.taskStatus.equals(TaskStatus.OVERDUE)) {
-                result = true;
+                isExpired = true;
             }
             if (this.dateTimes[0].isAfter(now) && this.taskStatus.equals(TaskStatus.OVERDUE)) {
-                result = true;
+                isExpired = true;
             }
             if (this.isDueSoon() && !this.taskStatus.equals(TaskStatus.DUE_SOON)) {
-                result = true;
+                isExpired = true;
             }
             if (!this.isDueSoon() && this.taskStatus.equals(TaskStatus.DUE_SOON)) {
-                result = true;
+                isExpired = true;
             }
         }
-        return result;
+        return isExpired;
     }
 
     public LocalDateTime getFinishDateTime() {

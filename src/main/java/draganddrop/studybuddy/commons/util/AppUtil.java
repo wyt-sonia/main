@@ -21,8 +21,8 @@ public class AppUtil {
      *
      * @throws IllegalArgumentException if {@code condition} is false.
      */
-    public static void checkArgument(Boolean condition) {
-        if (!condition) {
+    public static void checkArgument(Boolean isValid) {
+        if (!isValid) {
             throw new IllegalArgumentException();
         }
     }
@@ -32,8 +32,8 @@ public class AppUtil {
      *
      * @throws IllegalArgumentException with {@code errorMessage} if {@code condition} is false.
      */
-    public static void checkArgument(Boolean condition, String errorMessage) {
-        if (!condition) {
+    public static void checkArgument(Boolean isValid, String errorMessage) {
+        if (!isValid) {
             throw new IllegalArgumentException(errorMessage);
         }
     }

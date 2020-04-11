@@ -36,7 +36,7 @@ public enum TaskType {
     }
 
     /**
-     * Gets related task type according to String the input.
+     * Gets related task type according to the {@code status} string.
      *
      * @param status
      * @return

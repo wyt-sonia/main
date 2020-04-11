@@ -3,15 +3,17 @@ package draganddrop.studybuddy.ui.card;
 import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.task.Task;
+import draganddrop.studybuddy.model.task.TaskStatus;
+import draganddrop.studybuddy.model.task.TaskType;
+import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.ui.UiPart;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 
 /**
- * An UI component that displays information of a {@code Person}.
+ * An UI component that displays the detail information of a {@code Task}.
  *
  * @@author Wang Yuting
  */
@@ -50,22 +52,32 @@ public class DetailedTaskCard extends UiPart<Region> {
     public DetailedTaskCard(Task task, int displayedIndex) {
         super(FXML);
         this.task = task;
+        renderTaskCard(task, displayedIndex);
+    }
+
+    /**
+     * Renders task's text information and badges.
+     *
+     * @param task
+     */
+    private void renderTaskCard(Task task, int displayedIndex) {
+        renderTaskTextFields(task, displayedIndex);
+        renderTaskBadges(task);
+    }
+
+    /**
+     * Renders task's text information.
+     *
+     * @param task
+     * @param displayedIndex
+     */
+    private void renderTaskTextFields(Task task, int displayedIndex) {
         id.setText(displayedIndex + ". ");
         taskName.setText(task.getTaskName());
         description.setText("Task Description: " + task.getTaskDescription());
         weight.setText("Task Weight: " + task.getWeight() + "%");
         estimatedTimeCost.setText("Estimated Time Needed: " + task.getEstimatedTimeCost() + " hr/hrs");
-
-        if (task.getModule().equals(new EmptyModule())) {
-            module.setVisible(false);
-            module.setManaged(false);
-        } else {
-            module.setText(task.getModule().toString());
-            module.getStyleClass().add("module_lbl");
-        }
-
         status.setText(task.getTaskStatus().convertToString());
-        renderTask(task);
         dateTime.setText("Deadline/Duration: " + task.getTimeString());
         creationDateTime.setText("Created at: "
             + TimeParser.getDateTimeString(task.getCreationDateTime()));
@@ -73,12 +85,41 @@ public class DetailedTaskCard extends UiPart<Region> {
     }
 
     /**
-     * Applies different css calss to different task type and status.
+     * Renders task's badges.
      *
      * @param task
      */
-    private void renderTask(Task task) {
-        switch (task.getTaskStatus()) {
+    private void renderTaskBadges(Task task) {
+        renderTaskModuleBadges(task.getModule());
+        renderTaskStatusBadges(task.getTaskStatus());
+        renderTaskTypeBadges(task.getTaskType());
+    }
+
+    /**
+     * Renders the task module badges according to {@code taskModule}.
+     *
+     * @param taskModule
+     */
+    private void renderTaskModuleBadges(Module taskModule) {
+
+        // Omit module Badges if the task is not related to any module.
+        if (taskModule.equals(new EmptyModule())) {
+            module.setVisible(false);
+            module.setManaged(false);
+        } else {
+            module.setText(taskModule.toString());
+            module.getStyleClass().add("module_lbl");
+        }
+    }
+
+
+    /**
+     * Renders the task status badges according to {@code taskStatus}.
+     *
+     * @param taskStatus
+     */
+    private void renderTaskStatusBadges(TaskStatus taskStatus) {
+        switch (taskStatus) {
         case PENDING:
             status.getStyleClass().add("pending_status");
             break;
@@ -93,8 +134,15 @@ public class DetailedTaskCard extends UiPart<Region> {
             break;
         default:
         }
+    }
 
-        switch (task.getTaskType()) {
+    /**
+     * Renders the task type badges according to {@code taskType}.
+     *
+     * @param taskType
+     */
+    private void renderTaskTypeBadges(TaskType taskType) {
+        switch (taskType) {
         case Assignment:
             type.getStyleClass().add("assignment_lbl");
             break;
@@ -134,4 +182,5 @@ public class DetailedTaskCard extends UiPart<Region> {
         return id.getText().equals(detailedTaskCard.id.getText())
             && task.equals(detailedTaskCard.task);
     }
+
 }

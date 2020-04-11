@@ -38,7 +38,8 @@ public class EditTaskCommand extends Command {
     private Module newModule = null;
 
     /**
-     * Creates an edit task command
+     * Creates an edit task command.
+     *
      * @param targetIndex index of target task to be edited
      * @param taskField the task field to be edited
      */
@@ -74,9 +75,11 @@ public class EditTaskCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws DuplicateTaskException, CommandException {
         List<Task> lastShownList = model.getFilteredTaskList();
+
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
+
         Task taskToEdit = lastShownList.get(targetIndex.getZeroBased());
         switch (taskField) {
         case TASK_NAME:
@@ -133,7 +136,8 @@ public class EditTaskCommand extends Command {
     }
 
     /**
-     * Updates Due Soon list as well
+     * Updates Due Soon list as well.
+     *
      * @param taskToEdit
      * @param model
      */

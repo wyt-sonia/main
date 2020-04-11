@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddOrEditTaskCommandException;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.InteractiveCommandException;
-import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.module.ModuleCode;
 import draganddrop.studybuddy.model.task.TaskType;
@@ -31,19 +30,24 @@ public class TaskParser {
      */
     public static String parseName(String userInput) throws AddOrEditTaskCommandException {
         String result = "";
+
         if (userInput.isBlank()) {
             throw new AddOrEditTaskCommandException("emptyInputError");
         }
+
         if (userInput.length() > 20) {
             throw new AddOrEditTaskCommandException("taskNameLengthError");
         }
+
         Pattern pattern = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(userInput);
-        boolean flag = matcher.find();
-        if (flag) {
+        boolean isSpecialCharInside = matcher.find();
+        if (isSpecialCharInside) {
             throw new AddOrEditTaskCommandException("specialCharInputError");
         }
+
         result = userInput.trim();
+
         assert !result.isBlank()
             : "The result of parseName from TaskParser is blank, please check.\n";
         return result;
@@ -58,15 +62,81 @@ public class TaskParser {
      */
     public static String parseDescription(String userInput) throws AddOrEditTaskCommandException {
         String result = "";
+
         if (userInput.length() > 300) {
             throw new AddOrEditTaskCommandException("taskDescriptionLengthError");
         }
+
         result = userInput.trim();
         return result;
     }
 
     /**
-     * Parse the {@code userInput} for task date and time.
+     * Parse the {@code userInput} to assignment's date and time.
+     *
+     * @param userInput
+     * @return
+     * @throws AddOrEditTaskCommandException
+     */
+    private static LocalDateTime[] parseDateTimeForAssignment(String userInput)
+        throws AddOrEditTaskCommandException {
+        LocalDateTime[] result = new LocalDateTime[1];
+
+        // Check date time format
+        try {
+            result[0] = TimeParser.parseDateTime(userInput);
+        } catch (InteractiveCommandException e) {
+            throw new AddOrEditTaskCommandException("dataTimeFormatError");
+        }
+
+        // Checks passed time
+        if (result[0].isBefore(LocalDateTime.now())) {
+            throw new AddOrEditTaskCommandException("pastDateTime");
+        }
+
+        return result;
+    }
+
+    /**
+     * Parse the {@code userInput} to other task type's (except assignment) date and time.
+     *
+     * @param userInput
+     * @return
+     * @throws AddOrEditTaskCommandException
+     */
+    private static LocalDateTime[] parseDateTimeForOtherTaskType(String userInput)
+        throws AddOrEditTaskCommandException {
+        LocalDateTime[] result = new LocalDateTime[2];
+        String[] tempInputDateTimes;
+
+        // Check date time format
+        if (!userInput.contains("-")) {
+            throw new AddOrEditTaskCommandException("dataTimeFormatError");
+        }
+        tempInputDateTimes = userInput.trim().split("-");
+        if (tempInputDateTimes.length != 2 || tempInputDateTimes[0].isBlank()) {
+            throw new AddOrEditTaskCommandException("dataTimeFormatError");
+        }
+        try {
+            result[0] = TimeParser.parseDateTime(tempInputDateTimes[0]);
+            result[1] = TimeParser.parseDateTime(tempInputDateTimes[1]);
+        } catch (InteractiveCommandException e) {
+            throw new AddOrEditTaskCommandException("dataTimeFormatError");
+        }
+
+        // Check passed time and start-end order
+        if (result[0].isBefore(LocalDateTime.now()) || result[1].isBefore(LocalDateTime.now())) {
+            throw new AddOrEditTaskCommandException("pastDateTime");
+        }
+        if (!result[1].isAfter(result[0])) {
+            throw new AddOrEditTaskCommandException("eventEndBeforeStartError");
+        }
+
+        return result;
+    }
+
+    /**
+     * Parse the {@code userInput} to task date and time.
      *
      * @param userInput
      * @param taskType
@@ -78,41 +148,9 @@ public class TaskParser {
         LocalDateTime[] result;
 
         if (taskType.equals(TaskType.Assignment)) {
-            result = new LocalDateTime[1];
-            try {
-                result[0] = TimeParser.parseDateTime(userInput);
-            } catch (InteractiveCommandException e) {
-                throw new AddOrEditTaskCommandException("dataTimeFormatError");
-            }
-            // check passed time
-            if (result[0].isBefore(LocalDateTime.now())) {
-                throw new AddOrEditTaskCommandException("pastDateTime");
-            }
+            result = parseDateTimeForAssignment(userInput);
         } else {
-            result = new LocalDateTime[2];
-            String[] tempInputDateTimes;
-
-            // check date time format
-            if (!userInput.contains("-")) {
-                throw new AddOrEditTaskCommandException("dataTimeFormatError");
-            }
-            tempInputDateTimes = userInput.trim().split("-");
-            if (tempInputDateTimes.length != 2 || tempInputDateTimes[0].isBlank()) {
-                throw new AddOrEditTaskCommandException("dataTimeFormatError");
-            }
-            try {
-                result[0] = TimeParser.parseDateTime(tempInputDateTimes[0]);
-                result[1] = TimeParser.parseDateTime(tempInputDateTimes[1]);
-            } catch (InteractiveCommandException e) {
-                throw new AddOrEditTaskCommandException("dataTimeFormatError");
-            }
-            // check passed time and start-end order
-            if (result[0].isBefore(LocalDateTime.now()) || result[1].isBefore(LocalDateTime.now())) {
-                throw new AddOrEditTaskCommandException("pastDateTime");
-            }
-            if (!result[1].isAfter(result[0])) {
-                throw new AddOrEditTaskCommandException("eventEndBeforeStartError");
-            }
+            result = parseDateTimeForOtherTaskType(userInput);
         }
 
         assert result != null
@@ -130,10 +168,9 @@ public class TaskParser {
     public static Module parseModule(String userInput, ObservableList<Module> modules)
         throws AddOrEditTaskCommandException {
         Module result;
+
         try {
-            if (userInput.isBlank()) {
-                result = new EmptyModule();
-            } else if (ModuleCode.isModuleCode(userInput)) {
+            if (ModuleCode.isModuleCode(userInput)) {
                 List<Module> tempModules = modules.stream()
                     .filter(m -> m.getModuleCode().toString().equals(userInput.toUpperCase()))
                     .collect(Collectors.toList());
@@ -151,6 +188,7 @@ public class TaskParser {
         } catch (NumberFormatException e) {
             throw new AddOrEditTaskCommandException("wrongIndexFormatError");
         }
+
         assert result != null
             : "The result of parseModule from TaskParser is null, please check.\n";
         return result;
@@ -168,13 +206,16 @@ public class TaskParser {
     public static TaskType parseType(String userInput, int size)
         throws AddOrEditTaskCommandException, NumberFormatException {
         TaskType result;
+
         if (userInput.isBlank()) {
             throw new AddOrEditTaskCommandException("emptyInputError");
         }
+
         int index = Integer.parseInt(userInput.trim());
         if (index <= 0 || index > size) {
             throw new AddOrEditTaskCommandException("invalidIndexRangeError");
         }
+
         result = TaskType.getTaskTypes()[index - 1];
         assert result != null
             : "The result of parseType from TaskParser is null, please check.\n";
@@ -189,7 +230,8 @@ public class TaskParser {
      * @throws AddOrEditTaskCommandException
      */
     public static double parseWeight(String userInput) throws AddOrEditTaskCommandException {
-        double result = 0.0;
+        double result;
+
         try {
             result = Double.parseDouble(userInput);
             if (result < 0.0 || result > 100.0) {
@@ -198,6 +240,7 @@ public class TaskParser {
         } catch (NumberFormatException e) {
             throw new AddOrEditTaskCommandException("wrongWeightFormatError");
         }
+
         return result;
     }
 
@@ -209,7 +252,8 @@ public class TaskParser {
      * @throws AddOrEditTaskCommandException
      */
     public static double parseTimeCost(String userInput) throws AddOrEditTaskCommandException {
-        double result = 0.0;
+        double result;
+
         try {
             result = Double.parseDouble(userInput);
             if (result < 0.0) {
@@ -218,6 +262,7 @@ public class TaskParser {
         } catch (NumberFormatException e) {
             throw new AddOrEditTaskCommandException("wrongEstimatedTimeFormatError");
         }
+
         return result;
     }
 }

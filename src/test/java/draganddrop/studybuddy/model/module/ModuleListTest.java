@@ -48,14 +48,14 @@ public class ModuleListTest {
         ModuleList moduleList = new ModuleList();
         Module sample1 = TestModules.getSampleModule()[0];
         moduleList.add(sample1);
-        assertTrue(moduleList.contains(sample1));
+        assertTrue(moduleList.isContains(sample1));
     }
 
     @Test
     public void containsModNotInList_returnFalse() {
         ModuleList moduleList = new ModuleList();
         Module sample1 = TestModules.getSampleModule()[0];
-        assertFalse(moduleList.contains(sample1));
+        assertFalse(moduleList.isContains(sample1));
     }
 
     @Test

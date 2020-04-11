@@ -35,7 +35,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
 /**
- * Panel containing the summary charts of tasks.
+ * An UI component which represents the panel containing the summary charts of tasks.
  *
  * @@author Wang Yuting
  */
@@ -72,41 +72,16 @@ public class TaskSummaryPanel extends UiPart<Region> {
 
         this.selectedTaskListPanelPlaceholder = selectedTaskListPanelPlaceholder;
         this.selectedTaskListPanelTitle = selectedTaskListPanelTitle;
+        selectedTaskListPanelPlaceholder.setBackground(
+            new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
 
         renderCharts();
         bindCharts(observableCurrentTasks, observableArchivedTasks, observableModules);
-        selectedTaskListPanelPlaceholder.setBackground(
-            new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
         renderSelectedListPanel();
-
-        // set up the listener for each chart.
-        logger.fine(FXML + ": Start to set onchange listener for data source.");
-        observableCurrentTasks.addListener(new ListChangeListener<Task>() {
-            @Override
-            public void onChanged(Change<? extends Task> t) {
-                renderCharts();
-                bindCharts(observableCurrentTasks, observableArchivedTasks, observableModules);
-            }
-        });
-
-        observableArchivedTasks.addListener(new ListChangeListener<Task>() {
-            @Override
-            public void onChanged(Change<? extends Task> c) {
-                renderCharts();
-                bindCharts(observableCurrentTasks, observableArchivedTasks, observableModules);
-            }
-        });
-
-        observableModules.addListener(new ListChangeListener<Module>() {
-            @Override
-            public void onChanged(Change<? extends Module> c) {
-                renderCharts();
-                bindCharts(observableCurrentTasks, observableArchivedTasks, observableModules);
-            }
-        });
-        logger.fine(FXML + ": End of setting onchange listener for data source.");
+        setUpOnChangeListener(observableCurrentTasks, observableArchivedTasks, observableModules);
         logger.fine(FXML + ": End of rendering charts from task summary panel.");
     }
+
 
     /**
      * Binds data and set up charts.
@@ -133,6 +108,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
         logger.fine(FXML + ": End of binding data to charts.");
     }
 
+
     /**
      * Renders the selected task list panel accordingly.
      */
@@ -141,6 +117,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
         selectedTaskListPanelPlaceholder.getChildren().clear();
         logger.fine(FXML + ": End of rendering selected task list panel.");
     }
+
 
     /**
      * Renders the charts.
@@ -162,16 +139,30 @@ public class TaskSummaryPanel extends UiPart<Region> {
         taskSummaryStackedBarChart.getXAxis().setLabel("Modules");
     }
 
+
     /**
      * Sets up the pie chart's pie chart and data.
      * The pie chart is used to show the summary of numbers of different tasks' statuses.
      */
     private void setUpPieChart() {
         logger.fine(FXML + " PieChart: Start to sets up the pie chart's data and onclick action.");
+        ArrayList<PieChart.Data> datas = bindPieChartData();
+        SetPieChartOnClickListener(datas);
+        logger.fine(FXML + " PieChart: End of setting up the pie chart's data and onclick action.");
+    }
+
+
+    /**
+     * Binds the data for the stacked pie chart.
+     *
+     * @return an {@code ArrayList} of {@code ieChart.Data}.
+     */
+    private  ArrayList<PieChart.Data> bindPieChartData() {
         ArrayList<PieChart.Data> datas = new ArrayList<>();
         if (!taskSummaryPieChart.getData().isEmpty()) {
             taskSummaryPieChart.getData().clear();
         }
+
         logger.fine(FXML + " PieChart: Start to bind data.");
         for (TaskStatus ts : TaskStatus.getTaskStatusList()) {
             long count = tempTasks.stream().filter(t -> t.getTaskStatus().equals(ts)).count();
@@ -179,27 +170,8 @@ public class TaskSummaryPanel extends UiPart<Region> {
             datas.add(tempData);
             taskSummaryPieChart.getData().add(tempData);
         }
-        logger.fine(FXML + " PieChart: End of binding bind data.");
 
-        logger.fine(FXML + " PieChart: Start to set up the pie chart's onclick action.");
-        datas.forEach(d -> d.getNode().setOnMouseClicked(e -> {
-
-            String statusName = d.getName().split(":")[0].trim();
-
-
-            selectedTasks = tempTasks.filtered(task -> {
-                    TaskStatus test = task.getTaskStatus();
-                    TaskStatus test2 = TaskStatus.getStatus(statusName);
-                    return task.getTaskStatus().equals(TaskStatus.getStatus(statusName));
-                }
-            );
-            TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
-            selectedTaskListPanelTitle.setText(d.getName().toUpperCase() + " Tasks");
-            selectedTaskListPanelPlaceholder.getChildren().clear();
-            selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
-        }));
-        logger.fine(FXML + " PieChart: End of setting up the pie chart's onclick action.");
-
+        // Enhance the label information.
         taskSummaryPieChart.getData().forEach(data ->
             data.nameProperty().bind(
                 Bindings.concat(
@@ -207,8 +179,36 @@ public class TaskSummaryPanel extends UiPart<Region> {
                 )
             )
         );
-        logger.fine(FXML + " PieChart: End of setting up the pie chart's data and onclick action.");
+        logger.fine(FXML + " PieChart: End of binding bind data.");
+        return datas;
     }
+
+
+    /**
+     * Sets up the onClick listener for the stacked pie chart.
+     *
+     * @param datas
+     */
+    private void SetPieChartOnClickListener (ArrayList<PieChart.Data> datas) {
+        logger.fine(FXML + " PieChart: Start to set up the pie chart's onclick action.");
+        datas.forEach(d -> d.getNode().setOnMouseClicked(e -> {
+            String statusName = d.getName().split(":")[0].trim();
+
+            selectedTasks = tempTasks.filtered(task -> {
+                    TaskStatus test = task.getTaskStatus();
+                    TaskStatus test2 = TaskStatus.getStatus(statusName);
+                    return task.getTaskStatus().equals(TaskStatus.getStatus(statusName));
+                }
+            );
+
+            TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
+            selectedTaskListPanelTitle.setText(d.getName().toUpperCase() + " Tasks");
+            selectedTaskListPanelPlaceholder.getChildren().clear();
+            selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+        }));
+        logger.fine(FXML + " PieChart: End of setting up the pie chart's onclick action.");
+    }
+
 
     /**
      * Sets up the area chart's data and onclick action.
@@ -216,17 +216,26 @@ public class TaskSummaryPanel extends UiPart<Region> {
      * Restricted to the future half year.
      */
     private void setUpAreaChart() {
-
         logger.fine(FXML + " AreaChart: Start to set up the area chart's data and onclick action.");
-        if (!taskSummaryAreaChart.getData().isEmpty()) {
-            taskSummaryAreaChart.getData().clear();
-        }
+        bindAreaChartData();
+        logger.fine(FXML + " AreaChart: End of setting up the area chart's data and onclick action.");
+    }
+
+
+    /**
+     * Sets up the area chart's data.
+     */
+    private void bindAreaChartData() {
         ArrayList<XYChart.Data<String, Number>> datas = new ArrayList<>();
         ArrayList<XYChart.Series<String, Number>> dataSeries = new ArrayList<>();
 
+        if (!taskSummaryAreaChart.getData().isEmpty()) {
+            taskSummaryAreaChart.getData().clear();
+        }
         ObservableList<Task> sortedTasks = tempTasks.sorted(Comparator.comparing(t -> t.getDateTimes()[0]));
-        logger.fine(FXML + " AreaChart: Start to bind data.");
+
         if (!sortedTasks.isEmpty()) {
+            logger.fine(FXML + " AreaChart: Start to bind data.");
 
             // to restrict the source of data to the next 2 months
             LocalDate startDate = LocalDate.now();
@@ -260,62 +269,102 @@ public class TaskSummaryPanel extends UiPart<Region> {
             taskSummaryAreaChart.getData().addAll(dataSeries);
             logger.fine(FXML + " AreaChart: End of binding data.");
 
-            logger.fine(FXML + " AreaChart: Start to set up the on click action for each data area.");
-            datas.forEach(d -> d.getNode().setOnMouseClicked(e -> {
-
-                String moduleCode = d.getExtraValue().toString();
-                String dateString = d.getXValue().toString();
-                LocalDate date = TimeParser.parseDate(dateString);
-                selectedTasks = tempTasks.filtered(task ->
-                    task.getModule().getModuleCode().toString().equals(moduleCode)
-                        && task.getDateTimes()[0].toLocalDate().isEqual(date));
-                TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
-                if (moduleCode.equals(new EmptyModule().getModuleCode().toString())) {
-                    selectedTaskListPanelTitle.setText("Tasks due/start on " + dateString);
-                } else {
-                    selectedTaskListPanelTitle.setText("Tasks of " + moduleCode + " due/start on " + dateString);
-                }
-                selectedTaskListPanelPlaceholder.getChildren().clear();
-                selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
-            }));
-            logger.fine(FXML + " AreaChart: End of setting up the on click action for each data area.");
-
-            logger.fine(FXML + " AreaChart: Start to set up the on click action for each data point.");
-            dataSeries.forEach(d -> d.getNode().setOnMouseClicked(e -> {
-
-                String moduleCode = d.getName().equals("Not Module Related")
-                    ? new EmptyModule().getModuleCode().toString() : d.getName();
-                selectedTasks = tempTasks.filtered(task ->
-                    task.getModule().getModuleCode().toString().equals(moduleCode));
-                TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
-                if (moduleCode.equals(new EmptyModule().getModuleCode().toString())) {
-                    selectedTaskListPanelTitle.setText("Tasks without related module");
-                } else {
-                    selectedTaskListPanelTitle.setText("Tasks under " + moduleCode);
-                }
-                selectedTaskListPanelPlaceholder.getChildren().clear();
-                selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
-            }));
-            logger.fine(FXML + " AreaChart: End of setting up the on click action for each data point.");
+            // set up the on click listener
+            setAreaChartOnClickListenerForDataArea(datas);
+            setAreaChartOnClickListenerForDataPoint(dataSeries);
         }
-        logger.fine(FXML + " AreaChart: End of setting up the area chart's data and onclick action.");
     }
+
+
+    /**
+     * Sets up the onClick listener for the area chart's data area.
+     *
+     * @param datas
+     */
+    private void setAreaChartOnClickListenerForDataArea(ArrayList<XYChart.Data<String, Number>> datas) {
+        logger.fine(FXML + " AreaChart: Start to set up the on click action for each data area.");
+        datas.forEach(d -> d.getNode().setOnMouseClicked(e -> {
+
+            String moduleCode = d.getExtraValue().toString();
+            String dateString = d.getXValue();
+            LocalDate date = TimeParser.parseDate(dateString);
+
+            selectedTasks = tempTasks.filtered(task ->
+                task.getModule().getModuleCode().toString().equals(moduleCode)
+                    && task.getDateTimes()[0].toLocalDate().isEqual(date));
+            TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
+
+            if (moduleCode.equals(new EmptyModule().getModuleCode().toString())) {
+                selectedTaskListPanelTitle.setText("Tasks due/start on " + dateString);
+            } else {
+                selectedTaskListPanelTitle.setText("Tasks of " + moduleCode + " due/start on " + dateString);
+            }
+
+            selectedTaskListPanelPlaceholder.getChildren().clear();
+            selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+        }));
+        logger.fine(FXML + " AreaChart: End of setting up the on click action for each data area.");
+
+    }
+
+
+    /**
+     * Sets up the onClick listener for the area chart's data points.
+     *
+     * @param dataSeries
+     */
+    private void setAreaChartOnClickListenerForDataPoint(ArrayList<XYChart.Series<String, Number>> dataSeries) {
+        logger.fine(FXML + " AreaChart: Start to set up the on click action for each data point.");
+
+        dataSeries.forEach(d -> d.getNode().setOnMouseClicked(e -> {
+
+            String moduleCode = d.getName().equals("Not Module Related")
+                ? new EmptyModule().getModuleCode().toString() : d.getName();
+
+            selectedTasks = tempTasks.filtered(task ->
+                task.getModule().getModuleCode().toString().equals(moduleCode));
+            TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
+
+            if (moduleCode.equals(new EmptyModule().getModuleCode().toString())) {
+                selectedTaskListPanelTitle.setText("Tasks without related module");
+            } else {
+                selectedTaskListPanelTitle.setText("Tasks under " + moduleCode);
+            }
+
+            selectedTaskListPanelPlaceholder.getChildren().clear();
+            selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
+        }));
+        logger.fine(FXML + " AreaChart: End of setting up the on click action for each data point.");
+    }
+
 
     /**
      * Sets up the stacked bar chart's data and onclick action.
      * The bar chart is used to show the summary of module related weight status of different task types.
      */
     private void setUpBarChart() {
-
         logger.fine(FXML + " BarChart: Start to set up the stacked bar chart's data and onclick action.");
-        ArrayList<XYChart.Data<String, Number>> datas = new ArrayList<>();
-        ArrayList<XYChart.Series<String, Number>> dataSeries = new ArrayList<>();
+        ArrayList<XYChart.Data<String, Number>> datas = bindBarChartData();
+        setBarChartOnClickListener(datas);
+        logger.fine(FXML + " BarChart: End of setting up the stacked bar chart's data and onclick action.");
+    }
 
+
+    /**
+     * Binds the data for the stacked bar chart.
+     *
+     * @return an {@code ArrayList} of {@code XYChart.Series<String, Number>}.
+     */
+    private ArrayList<XYChart.Data<String, Number>> bindBarChartData() {
         if (!taskSummaryStackedBarChart.getData().isEmpty()) {
             taskSummaryStackedBarChart.getData().clear();
         }
 
+        ArrayList<XYChart.Data<String, Number>> datas = new ArrayList<>();
+        ArrayList<XYChart.Series<String, Number>> dataSeries = new ArrayList<>();
+
         logger.fine(FXML + " BarChart: Start to bind data.");
+
         for (TaskType taskType : Arrays.asList(TaskType.getTaskTypes())) {
             XYChart.Series<String, Number> weightDataSeries = new XYChart.Series<>();
             weightDataSeries.setName(taskType.toString());
@@ -334,11 +383,22 @@ public class TaskSummaryPanel extends UiPart<Region> {
         taskSummaryStackedBarChart.getData().addAll(dataSeries);
         logger.fine(FXML + " BarChart: End of binding data.");
 
-        logger.fine(FXML + " BarChart: Start to setting up the on click action for each data area");
-        datas.forEach(d -> {
+        return datas;
+    }
 
+
+    /**
+     * Sets up the onClick listener for the stacked bar chart.
+     *
+     * @param datas
+     */
+    private void setBarChartOnClickListener(ArrayList<XYChart.Data<String, Number>> datas) {
+        logger.fine(FXML + " BarChart: Start to setting up the on click action for each data area");
+
+        datas.forEach(d -> {
             String moduleCode = (d.getExtraValue().toString().split("//"))[0];
             String taskType = (d.getExtraValue().toString().split("//"))[1];
+
             d.getNode().setOnMouseClicked(e -> {
                 selectedTasks = tempTasks
                     .filtered(task -> task.getModule().getModuleCode().toString().equals(moduleCode)
@@ -349,9 +409,52 @@ public class TaskSummaryPanel extends UiPart<Region> {
                 selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
             });
         });
+
         logger.fine(FXML + " BarChart: End of setting up the on click action for each data area");
-        logger.fine(FXML + " BarChart: End of setting up the stacked bar chart's data and onclick action.");
     }
+
+
+    /**
+     * Sets up the onClick listeners for {@code observableCurrentTasks}, {@code observableArchivedTasks}
+     * and {@code observableModules}.
+     *
+     * @param observableCurrentTasks
+     * @param observableArchivedTasks
+     * @param observableModules
+     */
+    private void setUpOnChangeListener(ObservableList<Task> observableCurrentTasks,
+                                       ObservableList<Task> observableArchivedTasks,
+                                       ObservableList<Module> observableModules) {
+
+        logger.fine(FXML + ": Start to set onchange listener for data source.");
+
+        observableCurrentTasks.addListener(new ListChangeListener<Task>() {
+            @Override
+            public void onChanged(Change<? extends Task> t) {
+                renderCharts();
+                bindCharts(observableCurrentTasks, observableArchivedTasks, observableModules);
+            }
+        });
+
+        observableArchivedTasks.addListener(new ListChangeListener<Task>() {
+            @Override
+            public void onChanged(Change<? extends Task> c) {
+                renderCharts();
+                bindCharts(observableCurrentTasks, observableArchivedTasks, observableModules);
+            }
+        });
+
+        observableModules.addListener(new ListChangeListener<Module>() {
+            @Override
+            public void onChanged(Change<? extends Module> c) {
+                renderCharts();
+                bindCharts(observableCurrentTasks, observableArchivedTasks, observableModules);
+            }
+        });
+
+        logger.fine(FXML + ": End of setting onchange listener for data source.");
+    }
+
 
 
     private String getModuleTitleString(Module module) {

@@ -22,7 +22,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 import javafx.collections.ObservableList;
 
 /**
- * A interactive prompt for adding new task.
+ * An interactive prompt for adding a new task.
  *
  * @@author Wang Yuting
  */
@@ -59,6 +59,61 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         this.modules = null;
     }
 
+    @Override
+    public String interact(String userInput) {
+        if ("quit".equalsIgnoreCase(userInput)) {
+            endInteract(QUIT_COMMAND_MSG);
+            return reply;
+        }
+
+        switch (currentTerm) {
+        case INIT:
+            initTermHandler();
+            break;
+
+        case TASK_MODULE:
+            taskModuleTermHandler(userInput);
+            break;
+
+        case TASK_NAME:
+            handleTaskNameTerm(userInput);
+            break;
+
+        case TASK_TYPE:
+            handleTaskTypeTerm(userInput);
+            break;
+
+        case TASK_DATETIME:
+            handleTaskDateTimeTerm(userInput);
+            break;
+
+        case TASK_DESCRIPTION:
+            handleTaskDescriptionTerm(userInput);
+            break;
+
+        case TASK_WEIGHT:
+            handleTaskWeightTerm(userInput);
+            break;
+
+        case TASK_ESTIMATED_TIME_COST:
+            handleTaskEstimatedTimeCostTerm(userInput);
+            break;
+
+        case READY_TO_EXECUTE:
+            handleTaskReadyToExecuteTerm();
+            break;
+
+        case ADD_DUPLICATE:
+            handleTaskAddDuplicateTerm(userInput);
+            break;
+
+        default:
+        }
+
+        assert !this.reply.isBlank()
+            : "The reply of add task's " + currentTerm.name() + " is blank, please check.\n";
+        return reply;
+    }
 
     /**
      * Handles the INIT term of add task interaction.
@@ -67,6 +122,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      * Prepares the module request message for user.
      */
     private void initTermHandler() {
+
         // Set default value for the new task.
         task.setStatus("Pending");
         task.setTaskDescription("No Description");
@@ -94,22 +150,19 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      */
     private void taskModuleTermHandler(String userInput) {
         try {
-            // Parse the module from user input.
             Module module;
             if (userInput.isBlank()) {
                 module = new EmptyModule();
+            } else {
+                module = TaskParser.parseModule(userInput, modules);
             }
-            module = TaskParser.parseModule(userInput, modules);
             task.setModule(module);
 
-            // Prepare the task name request message for user.
             this.reply = checkAndModifyReply(module) + "\n\n"
                 + REQUIRED_TASK_NAME_MSG;
-
             currentTerm = InteractivePromptTerms.TASK_NAME;
-        } catch (AddOrEditTaskCommandException e) {
 
-            // Displays error message with invalid user input.
+        } catch (AddOrEditTaskCommandException e) {
             reply = e.getErrorMessage() + "\n\n" + REQUIRED_MODULE_MSG + "\n\n" + moduleListString;
         }
     }
@@ -123,20 +176,16 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      *
      * @param userInput
      */
-    private void taskNameTermHandler(String userInput) {
+    private void handleTaskNameTerm(String userInput) {
         try {
-            // Parses the task name from user input.
             userInput = TaskParser.parseName(userInput);
             task.setTaskName(userInput);
 
-            // Prepares the task type request message for user.
             this.reply = "The name of task is set to: " + userInput + ".\n\n"
                 + REQUIRED_TASK_TYPE_MSG;
-
             currentTerm = InteractivePromptTerms.TASK_TYPE;
-        } catch (InteractiveCommandException ex) {
 
-            // Displays error message with invalid user input.
+        } catch (InteractiveCommandException ex) {
             reply = ex.getErrorMessage() + "\n\n"
                 + REQUIRED_TASK_NAME_MSG;
         }
@@ -151,25 +200,19 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      *
      * @param userInput
      */
-    private void taskTypeTermHandler(String userInput) {
+    private void handleTaskTypeTerm(String userInput) {
         try {
-            // Parses the task type from user input.
             TaskType taskType = TaskParser.parseType(userInput, TaskType.getTaskTypes().length);
             task.setTaskType(taskType);
 
-            // Prepares the task date time request message for user.
             this.reply = "The type of task has been set to: " + taskType.toString() + ".\n\n"
                 + REQUIRED_DATE_TIME_MSG + getDateTimeFormat(taskType);
             currentTerm = InteractivePromptTerms.TASK_DATETIME;
 
         } catch (NumberFormatException ex) {
-
-            // Displays error message with invalid user input.
             reply = (new AddOrEditTaskCommandException("wrongIndexFormatError")).getErrorMessage()
                 + "\n\n" + REQUIRED_TASK_TYPE_MSG;
         } catch (AddOrEditTaskCommandException ex) {
-
-            // Displays error message with invalid user input.
             reply = ex.getErrorMessage()
                 + "\n\n" + REQUIRED_TASK_TYPE_MSG;
         }
@@ -184,12 +227,12 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      *
      * @param userInput
      */
-    private void taskDateTimeTermHandler(String userInput) {
+    private void handleTaskDateTimeTerm(String userInput) {
         try {
-            // Parses the task date time from user input.
             if (userInput.isBlank()) {
                 throw new AddOrEditTaskCommandException("emptyInputError");
             }
+
             LocalDateTime[] dateTimes = TaskParser.parseDateTime(userInput, task.getTaskType());
             task.setDateTimes(dateTimes);
             if (dateTimes.length == 1) {
@@ -199,14 +242,11 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                     + "-" + TimeParser.getDateTimeString(dateTimes[1]);
             }
 
-            // Prepares the task description request message for user.
             this.reply = "The date and time is set to: " + userInput + "\n\n"
                 + REQUIRED_TASK_DESCRIPTION_MSG;
-
             currentTerm = InteractivePromptTerms.TASK_DESCRIPTION;
-        } catch (AddOrEditTaskCommandException ex) {
 
-            // Displays error message with invalid user input.
+        } catch (AddOrEditTaskCommandException ex) {
             this.reply = ex.getErrorMessage() + "\n\n"
                 + REQUIRED_DATE_TIME_MSG + getDateTimeFormat(task.getTaskType());
         }
@@ -221,20 +261,18 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      *
      * @param userInput
      */
-    private void taskDescriptionTermHandler(String userInput) {
+    private void handleTaskDescriptionTerm(String userInput) {
+        this.reply = "";
+
         try {
-            // Parses the task description from user input.
             if (!userInput.isBlank()) {
                 task.setTaskDescription(TaskParser.parseDescription(userInput));
                 this.reply = "The task description has been set as " + userInput + "\n\n";
             }
-
-            // Prepares the task weight request message for user.
             this.reply += REQUIRED_TASK_WEIGHT_MSG;
             currentTerm = InteractivePromptTerms.TASK_WEIGHT;
-        } catch (AddOrEditTaskCommandException e) {
 
-            // Displays error message with invalid user input.
+        } catch (AddOrEditTaskCommandException e) {
             this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_DESCRIPTION_MSG;
         }
     }
@@ -248,32 +286,36 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      *
      * @param userInput
      */
-    private void taskWeightTermHandler(String userInput) {
+    private void handleTaskWeightTerm(String userInput) {
+        this.reply = "";
+
         try {
-            // Parses the task weight from user input.
             if (!userInput.isBlank()) {
                 double weight = TaskParser.parseWeight(userInput);
-                double moduleWeightSum = logic.getStudyBuddy().getTaskList()
+
+                // Calculates the sum of the weights of unarchived tasks under targetModule.
+                double moduleWeightSumForUnarchived = logic.getStudyBuddy().getTaskList()
                     .stream()
                     .filter(t -> (t.getModule().equals(task.getModule())))
                     .mapToDouble(Task::getWeight).sum();
-                double moduleWeightSumArchived = logic.getStudyBuddy().getArchivedList()
+
+                // Calculates the sum of the weights of archived tasks under targetModule.
+                double moduleWeightSumForArchivedTasks = logic.getStudyBuddy().getArchivedList()
                     .stream()
                     .filter(t -> t.getModule().equals(task.getModule()))
                     .mapToDouble(Task::getWeight).sum();
-                if (moduleWeightSum + moduleWeightSumArchived + weight > 100) {
+
+                if (moduleWeightSumForUnarchived + moduleWeightSumForArchivedTasks + weight > 100) {
                     throw new AddOrEditTaskCommandException("moduleWeightOverloadError");
                 }
+
                 task.setWeight(weight);
                 this.reply = "The weight of the task has been set as " + userInput + "\n\n";
             }
-
-            // Prepares the task estimated time cost request message for user.
             this.reply += REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
             this.currentTerm = InteractivePromptTerms.TASK_ESTIMATED_TIME_COST;
-        } catch (AddOrEditTaskCommandException e) {
 
-            // Displays error message with invalid user input.
+        } catch (AddOrEditTaskCommandException e) {
             this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_WEIGHT_MSG;
         }
     }
@@ -287,21 +329,19 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      *
      * @param userInput
      */
-    private void taskEstimatedTimeCostTermHandler(String userInput) {
+    private void handleTaskEstimatedTimeCostTerm(String userInput) {
+        this.reply = "";
+
         try {
-            // Parses the estimated time cost of the new task from user input.
             if (!userInput.isBlank()) {
                 task.setEstimatedTimeCost(TaskParser.parseTimeCost(userInput));
                 this.reply = "The estimated number of hours the task might take has been set as "
                     + userInput + "\n\n";
             }
-
-            // Prepares the insertion confirmation request message for user.
             this.reply += TASK_INFO_HEADER + task.toString();
             this.currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
-        } catch (AddOrEditTaskCommandException e) {
 
-            // Displays error message with invalid user input.
+        } catch (AddOrEditTaskCommandException e) {
             this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
         }
     }
@@ -313,9 +353,8 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      * Checks the duplication of the new task and forwards the interaction accordingly.
      * Displays error message with any exception caused.
      */
-    private void taskReadyToExecuteTermHandler() {
+    private void handleTaskReadyToExecuteTerm() {
         try {
-            // Checks the duplication of the new task and forwards the interaction accordingly.
             if (logic.getStudyBuddy().getTaskList().contains(task)) {
                 reply = CONFIRM_MSG;
                 currentTerm = InteractivePromptTerms.ADD_DUPLICATE;
@@ -325,9 +364,8 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 logic.executeCommand(addTaskCommand);
                 endInteract(END_OF_COMMAND_MSG);
             }
-        } catch (ParseException | CommandException e) {
 
-            // Displays error message with any exception caused.
+        } catch (ParseException | CommandException e) {
             this.reply = new InteractiveCommandException("unKnownException").getErrorMessage();
         }
     }
@@ -340,9 +378,8 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      *
      * @param userInput
      */
-    private void taskAddDuplicateTermHandler(String userInput) {
+    private void handleTaskAddDuplicateTerm(String userInput) {
         try {
-            // Parses user option for adding duplicate task and response accordingly.
             if ("yes".equalsIgnoreCase(userInput)) {
                 AddDuplicateTaskCommand addDuplicateTaskCommand = new AddDuplicateTaskCommand(task);
                 logic.executeCommand(addDuplicateTaskCommand);
@@ -352,73 +389,13 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             } else {
                 throw new AddOrEditTaskCommandException("invalidInputError");
             }
-        } catch (ParseException | CommandException e) {
 
-            // Displays error message with any exception caused.
+        } catch (ParseException | CommandException e) {
             this.reply = new InteractiveCommandException("unKnownException").getErrorMessage();
         } catch (AddOrEditTaskCommandException e) {
-
-            // Displays error message with any exception caused.
             reply = e.getErrorMessage() + "\n\n" + CONFIRM_MSG;
         }
     }
-
-    @Override
-    public String interact(String userInput) {
-        if ("quit".equalsIgnoreCase(userInput)) {
-            endInteract(QUIT_COMMAND_MSG);
-            return reply;
-        }
-
-        switch (currentTerm) {
-        case INIT:
-            initTermHandler();
-            break;
-
-        case TASK_MODULE:
-            taskModuleTermHandler(userInput);
-            break;
-
-        case TASK_NAME:
-            taskNameTermHandler(userInput);
-            break;
-
-        case TASK_TYPE:
-            taskTypeTermHandler(userInput);
-            break;
-
-        case TASK_DATETIME:
-            taskDateTimeTermHandler(userInput);
-            break;
-
-        case TASK_DESCRIPTION:
-            taskDescriptionTermHandler(userInput);
-            break;
-
-        case TASK_WEIGHT:
-            taskWeightTermHandler(userInput);
-            break;
-
-        case TASK_ESTIMATED_TIME_COST:
-            taskEstimatedTimeCostTermHandler(userInput);
-            break;
-
-        case READY_TO_EXECUTE:
-            taskReadyToExecuteTermHandler();
-            break;
-
-        case ADD_DUPLICATE:
-            taskAddDuplicateTermHandler(userInput);
-            break;
-
-        default:
-        }
-
-        assert !this.reply.isBlank()
-            : "The reply of add task's " + currentTerm.name() + " is blank, please check.\n";
-        return reply;
-    }
-
 
     @Override
     public void endInteract(String msg) {
@@ -442,7 +419,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     }
 
     /**
-     * Modify reply if module is empty.
+     * Modifies reply if module is empty.
      *
      * @param module
      * @return
@@ -457,7 +434,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     }
 
     /**
-     * Get the date and time format string base on the type of the task.
+     * Gets the date and time format string base on the type of the task.
      *
      * @param taskType
      * @return

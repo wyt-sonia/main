@@ -30,9 +30,9 @@ public class DueSoonListPanel extends UiPart<Region> {
      */
     class TaskListViewCell extends ListCell<Task> {
         @Override
-        protected void updateItem(Task task, boolean empty) {
-            super.updateItem(task, empty);
-            if (empty || task == null) {
+        protected void updateItem(Task task, boolean isEmpty) {
+            super.updateItem(task, isEmpty);
+            if (isEmpty || task == null) {
                 setGraphic(null);
                 setText(null);
             } else {

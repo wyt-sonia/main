@@ -41,7 +41,7 @@ public class UniqueTaskList implements Iterable<Task> {
     /**
      * Returns true if the list contains an equivalent task as the given argument.
      */
-    public boolean contains(Task toCheck) {
+    public boolean isContains(Task toCheck) {
         requireNonNull(toCheck);
         return internalList.stream().anyMatch(toCheck::isSameTask);
     }
@@ -52,10 +52,6 @@ public class UniqueTaskList implements Iterable<Task> {
      */
     public void add(Task toAdd) {
         requireNonNull(toAdd);
-        /*
-        if (contains(toAdd)) {
-            throw new DuplicateTaskException("duplicateTask");
-        }*/
         internalList.add(toAdd);
         statistics.recordAddedTask(toAdd);
     }
@@ -104,11 +100,6 @@ public class UniqueTaskList implements Iterable<Task> {
     public void setTasks(List<Task> tasks) {
         CollectionUtil.requireAllNonNull(tasks);
 
-        /*
-        if (!tasksAreUnique(tasks)) {
-            throw new DuplicateTaskException("duplicateTask");
-        }*/
-
         internalList.setAll(tasks);
     }
 
@@ -134,20 +125,6 @@ public class UniqueTaskList implements Iterable<Task> {
         return other == this // short circuit if same object
             || (other instanceof UniqueTaskList // instanceof handles nulls
             && internalList.equals(((UniqueTaskList) other).internalList));
-    }
-
-    /**
-     * Returns true if {@code tasks} contains only unique tasks.
-     */
-    private boolean tasksAreUnique(List<Task> tasks) {
-        for (int i = 0; i < tasks.size() - 1; i++) {
-            for (int j = i + 1; j < tasks.size(); j++) {
-                if (tasks.get(i).isSameTask(tasks.get(j))) {
-                    return false;
-                }
-            }
-        }
-        return true;
     }
 
     /**
