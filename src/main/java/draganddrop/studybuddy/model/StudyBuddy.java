@@ -406,10 +406,6 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         this.moduleList.setModuleList(modules);
     }
 
-    /*@Override
-    public Statistics getStatistics() {
-        return statistics;
-    }*/
 
     public boolean hasModule(Module module) {
         return moduleList.contains(module);

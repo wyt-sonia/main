@@ -520,7 +520,7 @@ Certain properties of the application can be controlled (e.g user prefs file loc
 Since Study Buddy is an offline application, there is no threat of being attacked via a network channel. However, in case the computer has a shared owner, a password feature can be implemented in the future for privacy purposes.
 
 ==== Implementation
-The goal is to encrypt `taskList.json`, while still allowing the owner to access his/her tasks using his password.
+The goal is to encrypt `taskList3.json`, while still allowing the owner to access his/her tasks using his password.
 
 We will be using AES (Advanced Encryption Scheme) for encryption, and a slow hashing algorithm to derive a key from the user's password. The slow hashing algorithm is to prevent brute force attacks.
 

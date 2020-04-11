@@ -76,16 +76,8 @@ public class Statistics {
         addScore(-1);
     }
 
-    /**
-     * get number of tasks completed late today
-     *
-     * @return returns the number of tasks completed late today
-     */
-    public int getLateCountToday() {
-        return overdueStats.getDailyOverdueCount(StatsUtil.getDayIndex());
-    }
-
     // Score stats
+
     /**
      * get today's score
      * @return today's score
@@ -104,6 +96,36 @@ public class Statistics {
      */
     public void addScore(int scoreToAdd) {
         scoreStats.addScore(StatsUtil.getDayIndex(), scoreToAdd);
+    }
+
+    /**
+     * return user's rank
+     * @return user's rank
+     */
+    public String getRank() {
+        return scoreStats.getRank();
+    }
+
+    /**
+     * return a String of the user's next rank
+     * @return user's next rank
+     */
+    public String getNextRank() {
+        return scoreStats.getNextRank();
+    }
+
+    /**
+     * returns the score required to achieve the next rank
+     * @return score required
+     */
+    public int getScoreToNextRank() {
+        return scoreStats.getScoreToNextRank();
+    }
+
+    // general stats
+
+    public void setObserver(GoalObserver goalObserver) {
+        generalStats.setObserver(goalObserver);
     }
 
     /**
@@ -130,32 +152,16 @@ public class Statistics {
         return generalStats.getStreak();
     }
 
-    public void addStreak() {
-        generalStats.addStreak();
+    /**
+     * if streak has not already been added today, add 1 to the streak
+     * and add score equivalent to daily goal
+     */
+    public void completeDailyGoal() {
+        boolean isStreakAdded = generalStats.addStreak();
+        if (isStreakAdded) {
+            addScore(getGoal());
+        }
     }
 
-    /**
-     * return user's rank
-     * @return user's rank
-     */
-    public String getRank() {
-        return scoreStats.getRank();
-    }
-
-    /**
-     * return a String of the user's next rank
-     * @return user's next rank
-     */
-    public String getNextRank() {
-        return scoreStats.getNextRank();
-    }
-
-    /**
-     * returns the score required to achieve the next rank
-     * @return score required
-     */
-    public int getScoreToNextRank() {
-        return scoreStats.getScoreToNextRank();
-    }
 
 }
