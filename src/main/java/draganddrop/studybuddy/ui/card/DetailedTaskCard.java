@@ -2,10 +2,10 @@ package draganddrop.studybuddy.ui.card;
 
 import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.model.module.EmptyModule;
+import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskStatus;
 import draganddrop.studybuddy.model.task.TaskType;
-import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.ui.UiPart;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

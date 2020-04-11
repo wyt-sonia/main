@@ -147,7 +147,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
     private void setUpPieChart() {
         logger.fine(FXML + " PieChart: Start to sets up the pie chart's data and onclick action.");
         ArrayList<PieChart.Data> datas = bindPieChartData();
-        SetPieChartOnClickListener(datas);
+        setPieChartOnClickListener(datas);
         logger.fine(FXML + " PieChart: End of setting up the pie chart's data and onclick action.");
     }
 
@@ -157,7 +157,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
      *
      * @return an {@code ArrayList} of {@code ieChart.Data}.
      */
-    private  ArrayList<PieChart.Data> bindPieChartData() {
+    private ArrayList<PieChart.Data> bindPieChartData() {
         ArrayList<PieChart.Data> datas = new ArrayList<>();
         if (!taskSummaryPieChart.getData().isEmpty()) {
             taskSummaryPieChart.getData().clear();
@@ -189,7 +189,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
      *
      * @param datas
      */
-    private void SetPieChartOnClickListener (ArrayList<PieChart.Data> datas) {
+    private void setPieChartOnClickListener (ArrayList<PieChart.Data> datas) {
         logger.fine(FXML + " PieChart: Start to set up the pie chart's onclick action.");
         datas.forEach(d -> d.getNode().setOnMouseClicked(e -> {
             String statusName = d.getName().split(":")[0].trim();

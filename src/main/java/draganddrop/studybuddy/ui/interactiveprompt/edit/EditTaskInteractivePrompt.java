@@ -422,7 +422,8 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
      * @param userInput
      * @return true if the task name is valid
      */
-    private boolean isHandleNewTaskDescriptionSuccess(EditTaskCommand editTaskCommand, Task taskToEdit, String userInput) {
+    private boolean isHandleNewTaskDescriptionSuccess(EditTaskCommand editTaskCommand,
+                                                      Task taskToEdit, String userInput) {
         boolean isParseSuccess = true;
 
         try {
