@@ -2,10 +2,6 @@ package draganddrop.studybuddy.ui.interactiveprompt.edit;
 
 import static draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType.SET_GOAL;
 
-import java.text.ParseException;
-
-import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
-import draganddrop.studybuddy.logic.commands.view.ListTaskCommand;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddOrEditTaskCommandException;
 import draganddrop.studybuddy.model.statistics.Statistics;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
@@ -84,13 +80,6 @@ public class SetGoalInteractivePrompt extends InteractivePrompt {
         }
         // we reach here if parsing is successful
         statistics.setGoal(goal);
-        // execute list command to trigger the listener for task list
-        ListTaskCommand listTaskCommand = new ListTaskCommand();
-        try {
-            logic.executeCommand(listTaskCommand);
-        } catch (CommandException | ParseException e) {
-            e.printStackTrace();
-        }
         endInteract(END_OF_COMMAND_MSG);
         return END_OF_COMMAND_MSG;
     }
