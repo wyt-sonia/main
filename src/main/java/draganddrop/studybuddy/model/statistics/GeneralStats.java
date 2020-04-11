@@ -10,11 +10,20 @@ public class GeneralStats {
     private int goal;
     private int streak;
     private List<Boolean> isStreakAddedList;
+    private GoalObserver goalObserver;
 
     public GeneralStats() {
         super();
         this.goal = 5;
         initStreakList();
+    }
+
+    /**
+     * sets the observer to be the given GoalObserver
+     * @param goalObserver the given GoalObserver
+     */
+    public void setObserver(GoalObserver goalObserver) {
+        this.goalObserver = goalObserver;
     }
 
     /**
@@ -42,6 +51,9 @@ public class GeneralStats {
 
     public void setGoal(int goal) {
         this.goal = goal;
+        if (goalObserver != null) {
+            goalObserver.update();
+        }
     }
 
     public int getGoal() {
@@ -54,13 +66,16 @@ public class GeneralStats {
 
     /**
      * adds to the streak only if streak has not already been added today
+     * @return true if streak is added
      */
-    public void addStreak() {
+    public boolean addStreak() {
         int dayIndex = StatsUtil.getDayIndex();
         if (!isStreakAddedList.get(dayIndex)) {
             isStreakAddedList.set(dayIndex, true);
             streak += 1;
+            return true;
+        } else {
+            return false;
         }
     }
-
 }
