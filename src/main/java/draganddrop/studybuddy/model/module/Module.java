@@ -60,7 +60,7 @@ public class Module {
      * @param toCheck
      * @return
      */
-    public boolean contains(Task toCheck) {
+    public boolean isContains(Task toCheck) {
         requireNonNull(toCheck);
         return internalTaskList.stream().anyMatch(toCheck::isSameTask);
     }
@@ -73,7 +73,7 @@ public class Module {
      */
     public void add(Task toAdd) throws DuplicateTaskException {
         requireNonNull(toAdd);
-        if (contains(toAdd)) {
+        if (isContains(toAdd)) {
             throw new DuplicateTaskException("duplicateTask");
         }
         internalTaskList.add(toAdd);
@@ -86,7 +86,7 @@ public class Module {
      */
     public void addAll(ObservableList<Task> toAdd) throws DuplicateTaskException {
         requireNonNull(toAdd);
-        if (!toAdd.filtered(x -> contains(x)).isEmpty()) {
+        if (!toAdd.filtered(x -> isContains(x)).isEmpty()) {
             throw new DuplicateTaskException("duplicateTask");
         } else {
             internalTaskList.addAll(toAdd);
@@ -101,7 +101,7 @@ public class Module {
      */
     public void remove(Task toRemove) throws TaskNotFoundException {
         requireNonNull(toRemove);
-        if (contains(toRemove)) {
+        if (isContains(toRemove)) {
             internalTaskList.remove(toRemove);
         } else {
             throw new TaskNotFoundException();

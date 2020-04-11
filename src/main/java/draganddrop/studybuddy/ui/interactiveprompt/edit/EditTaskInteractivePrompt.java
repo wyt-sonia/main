@@ -10,7 +10,6 @@ import draganddrop.studybuddy.commons.core.index.Index;
 import draganddrop.studybuddy.logic.commands.edit.EditTaskCommand;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.logic.parser.TaskParser;
-import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddOrEditTaskCommandException;
 import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.module.Module;
@@ -69,7 +68,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
     }
 
     /**
-     * handles the sequence of commands for edit
+     * Handles the sequence of commands for task editing.
      *
      * @param userInput input from user
      * @return reply to user
@@ -97,7 +96,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
     }
 
     /**
-     * Creates and executes an edit command, with the new values provided by the user
+     * Creates and executes an edit command, with the new values provided by {@code userInput}.
      *
      * @param userInput input from user
      * @return reply to user
@@ -106,9 +105,9 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         Index taskIndex = Index.fromZeroBased(taskNumber - 1);
         Task taskToEdit = logic.getStudyBuddy().getTaskList().get(taskNumber - 1);
         EditTaskCommand editTaskCommand = new EditTaskCommand(taskIndex, taskField);
-        boolean parseSuccess = true;
-        String successMessage = END_OF_COMMAND_MSG;
+        boolean isParseSuccess;
         Task clone = null;
+
         try {
             clone = (Task) taskToEdit.clone();
         } catch (CloneNotSupportedException e) {
@@ -117,186 +116,337 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
 
         switch (taskField) {
         case TASK_NAME:
-            try {
-                String newName = TaskParser.parseName(userInput);
-                clone.setTaskName(newName);
-                checkDuplicate(clone, taskToEdit);
-                editTaskCommand.provideNewTaskName(newName);
-            } catch (AddOrEditTaskCommandException e) {
-                parseSuccess = false;
-                reply = e.getErrorMessage() + "\n\n"
-                    + REQUIRED_TASK_NAME_MSG;
-            } catch (DuplicateTaskException e) {
-                parseSuccess = false;
-                reply = e.getErrorMessage() + "\n\n"
-                    + REQUIRED_TASK_NAME_MSG;
-            }
+            isParseSuccess = isHandleNewTaskNameSuccess(editTaskCommand, clone, userInput);
             break;
 
         case TASK_TYPE:
-            try {
-                TaskType newTaskType = TaskParser.parseType(userInput, TaskType.getTaskTypes().length);
-                clone.setTaskType(newTaskType);
-                checkDuplicate(clone, taskToEdit);
-                editTaskCommand.provideNewTaskType(newTaskType);
-                successMessage = "The type of task is successfully changed to: " + newTaskType + ".\n";
-            } catch (NumberFormatException ex) {
-                parseSuccess = false;
-                reply = (new AddOrEditTaskCommandException("wrongIndexFormatError")).getErrorMessage()
-                    + "\n\n" + REQUIRED_TASK_TYPE_MSG + "\n"
-                    + TaskType.getTypeString();
-            } catch (AddOrEditTaskCommandException ex) {
-                parseSuccess = false;
-                reply = ex.getErrorMessage()
-                    + "\n\n" + REQUIRED_TASK_TYPE_MSG + "\n"
-                    + TaskType.getTypeString();
-            } catch (DuplicateTaskException e) {
-                parseSuccess = false;
-                reply = e.getErrorMessage() + "\n\n"
-                    + REQUIRED_TASK_TYPE_MSG;
-            }
+            isParseSuccess = isHandleNewTaskTypeSuccess(editTaskCommand, clone, userInput);
             break;
 
         case TASK_DATETIME:
-            try {
-                if (userInput.isBlank()) {
-                    throw new AddOrEditTaskCommandException("emptyInputError");
-                }
-                TaskType taskType = logic.getFilteredTaskList().get(taskIndex.getZeroBased()).getTaskType();
-                LocalDateTime[] newDateTimes = TaskParser.parseDateTime(userInput, taskType);
-                clone.setDateTimes(newDateTimes);
-                checkDuplicate(clone, taskToEdit);
-                if (newDateTimes.length == 1) {
-                    userInput = TimeParser.getDateTimeString(newDateTimes[0]);
-                } else {
-                    userInput = TimeParser.getDateTimeString(newDateTimes[0])
-                        + "-" + TimeParser.getDateTimeString(newDateTimes[1]);
-                }
-                editTaskCommand.provideNewDateTime(newDateTimes);
-            } catch (AddOrEditTaskCommandException e) {
-                parseSuccess = false;
-                this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_DATE_TIME_MSG;
-            } catch (DuplicateTaskException e) {
-                parseSuccess = false;
-                reply = e.getErrorMessage() + "\n\n" + REQUIRED_DATE_TIME_MSG;
-            }
+            isParseSuccess = isHandleNewTaskDateTimeSuccess(editTaskCommand, clone, userInput, taskIndex);
             break;
 
         case TASK_MODULE:
-            try {
-                if (userInput.isBlank()) {
-                    editTaskCommand.provideNewModule(new EmptyModule());
-                } else {
-                    Module newModule = TaskParser.parseModule(userInput, modules);
-                    double taskWeight = logic.getFilteredTaskList().get(taskIndex.getZeroBased()).getWeight();
-                    boolean isWeightSizeValid = isWeightSizeValid(taskWeight, newModule,
-                        logic.getStudyBuddy().getTaskList().get(taskNumber - 1));
-                    if (!isWeightSizeValid) {
-                        throw new AddOrEditTaskCommandException("moduleWeightOverloadError");
-                    }
-                    clone.setModule(newModule);
-                    checkDuplicate(clone, taskToEdit);
-                    editTaskCommand.provideNewModule(newModule);
-                }
-            } catch (AddOrEditTaskCommandException e) {
-                parseSuccess = false;
-                this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_MODULE_MSG + "\n" + moduleListString;
-            } catch (DuplicateTaskException e) {
-                parseSuccess = false;
-                reply = e.getErrorMessage() + "\n\n"
-                    + REQUIRED_MODULE_MSG + "\n" + moduleListString;
-            }
+            isParseSuccess = isHandleNewTaskModuleSuccess(editTaskCommand, clone, userInput, taskIndex);
             break;
 
         case TASK_ESTIMATED_TIME_COST:
-            try {
-                if (!userInput.isBlank()) {
-                    double newTimeCost = Double.parseDouble(userInput);
-                    clone.setEstimatedTimeCost(newTimeCost);
-                    checkDuplicate(clone, taskToEdit);
-                    if (newTimeCost < 0) {
-                        throw new AddOrEditTaskCommandException("wrongEstimatedTimeRangeError");
-                    }
-                    editTaskCommand.provideNewTaskTimeCost(newTimeCost);
-                } else {
-                    editTaskCommand.provideNewTaskTimeCost(0);
-                }
-            } catch (NumberFormatException e) {
-                parseSuccess = false;
-                this.reply = new AddOrEditTaskCommandException("wrongEstimatedTimeFormatError").getErrorMessage()
-                    + "\n\n" + REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
-            } catch (AddOrEditTaskCommandException e) {
-                parseSuccess = false;
-                this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
-            } catch (DuplicateTaskException e) {
-                parseSuccess = false;
-                reply = e.getErrorMessage() + "\n\n"
-                    + REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
-            }
+            isParseSuccess = isHandleNewTaskEstimatedTimeCostSuccess(editTaskCommand, clone, userInput);
             break;
 
         case TASK_WEIGHT:
-            try {
-                double newWeight = 0;
-                boolean isWeightSizeValid = true;
-                if (!userInput.isBlank()) {
-                    newWeight = TaskParser.parseWeight(userInput);
-                    if (newWeight > 0) {
-                        isWeightSizeValid = isWeightSizeValid(newWeight, logic.getFilteredTaskList()
-                                .get(taskIndex.getZeroBased()).getModule(),
-                            logic.getStudyBuddy().getTaskList().get(taskNumber - 1));
-                    }
-                    if (!isWeightSizeValid) {
-                        throw new AddOrEditTaskCommandException("moduleWeightOverloadError");
-                    }
-                    clone.setWeight(newWeight);
-                    checkDuplicate(clone, taskToEdit);
-                }
-                editTaskCommand.provideNewTaskWeight(newWeight);
-            } catch (AddOrEditTaskCommandException e) {
-                parseSuccess = false;
-                this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_WEIGHT_MSG;
-            } catch (DuplicateTaskException e) {
-                parseSuccess = false;
-                reply = e.getErrorMessage() + "\n\n"
-                    + REQUIRED_TASK_WEIGHT_MSG;
-            }
+            isParseSuccess = isHandleNewTaskWeightSuccess(editTaskCommand, clone, userInput, taskIndex);
             break;
 
         case TASK_DESCRIPTION:
-            try {
-                String newDescription = TaskParser.parseDescription(userInput);
-                clone.setTaskDescription(newDescription);
-                checkDuplicate(clone, taskToEdit);
-                editTaskCommand.provideNewTaskDescription(newDescription);
-            } catch (AddOrEditTaskCommandException e) {
-                parseSuccess = false;
-                this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_DESCRIPTION_MSG;
-            } catch (DuplicateTaskException e) {
-                parseSuccess = false;
-                reply = e.getErrorMessage() + "\n\n"
-                    + REQUIRED_TASK_DESCRIPTION_MSG;
-            }
+            isParseSuccess = isHandleNewTaskDescriptionSuccess(editTaskCommand, clone, userInput);
             break;
+
         default:
             throw new IllegalStateException("Unexpected value: " + taskField);
         }
 
-        if (parseSuccess) {
+        if (isParseSuccess) {
             try {
                 logic.executeCommand(editTaskCommand);
-                endInteract(successMessage);
+                endInteract(this.reply);
             } catch (java.text.ParseException | CommandException | DuplicateTaskException ex) {
                 reply = ex.getMessage();
             }
         }
+
         assert !this.reply.isBlank()
             : "The reply of edit task's " + currentTerm.name() + " is blank, please check.\n";
         return reply;
     }
 
     /**
-     * Checks the total weight of tasks under targetModule.
+     * Handles the new task name.
+     * <p>
+     * Parses the {@code userInput} to the new task name.
+     * Display error message for invalid {@code userInput}.
+     *
+     * @param editTaskCommand
+     * @param taskToEdit
+     * @param userInput
+     * @return true if the task name is valid
+     */
+    private boolean isHandleNewTaskNameSuccess(EditTaskCommand editTaskCommand, Task taskToEdit, String userInput) {
+        boolean isParseSuccess = true;
+
+        try {
+            String newName = TaskParser.parseName(userInput);
+
+            taskToEdit.setTaskName(newName);
+            checkDuplicate(taskToEdit, taskToEdit);
+            editTaskCommand.provideNewTaskName(newName);
+
+        } catch (AddOrEditTaskCommandException e) {
+            isParseSuccess = false;
+            reply = e.getErrorMessage() + "\n\n"
+                + REQUIRED_TASK_NAME_MSG;
+        } catch (DuplicateTaskException e) {
+            isParseSuccess = false;
+            reply = e.getErrorMessage() + "\n\n"
+                + REQUIRED_TASK_NAME_MSG;
+        }
+
+        return isParseSuccess;
+    }
+
+    /**
+     * Handles the new task type.
+     * <p>
+     * Parses the {@code userInput} to the new task type.
+     * Display error message for invalid {@code userInput}.
+     *
+     * @param editTaskCommand
+     * @param taskToEdit
+     * @param userInput
+     * @return true if the task name is valid
+     */
+    private boolean isHandleNewTaskTypeSuccess(EditTaskCommand editTaskCommand, Task taskToEdit, String userInput) {
+        boolean isParseSuccess = true;
+
+        try {
+            TaskType newTaskType = TaskParser.parseType(userInput, TaskType.getTaskTypes().length);
+
+            taskToEdit.setTaskType(newTaskType);
+            checkDuplicate(taskToEdit, taskToEdit);
+            editTaskCommand.provideNewTaskType(newTaskType);
+            this.reply = "The type of task is successfully changed to: " + newTaskType + ".\n";
+
+        } catch (NumberFormatException ex) {
+            isParseSuccess = false;
+            reply = (new AddOrEditTaskCommandException("wrongIndexFormatError")).getErrorMessage()
+                + "\n\n" + REQUIRED_TASK_TYPE_MSG + "\n"
+                + TaskType.getTypeString();
+        } catch (AddOrEditTaskCommandException ex) {
+            isParseSuccess = false;
+            reply = ex.getErrorMessage()
+                + "\n\n" + REQUIRED_TASK_TYPE_MSG + "\n"
+                + TaskType.getTypeString();
+        } catch (DuplicateTaskException e) {
+            isParseSuccess = false;
+            reply = e.getErrorMessage() + "\n\n"
+                + REQUIRED_TASK_TYPE_MSG;
+        }
+
+        return isParseSuccess;
+    }
+
+    /**
+     * Handles the new task date time.
+     * <p>
+     * Parses the {@code userInput} to the new task date time.
+     * Display error message for invalid {@code userInput}.
+     *
+     * @param editTaskCommand
+     * @param taskToEdit
+     * @param userInput
+     * @param taskIndex
+     * @return true if the task name is valid
+     */
+    private boolean isHandleNewTaskDateTimeSuccess(EditTaskCommand editTaskCommand, Task taskToEdit, String userInput,
+                                                   Index taskIndex) {
+        boolean isParseSuccess = true;
+
+        try {
+            // Parses date time
+            if (userInput.isBlank()) {
+                throw new AddOrEditTaskCommandException("emptyInputError");
+            }
+            TaskType taskType = logic.getFilteredTaskList().get(taskIndex.getZeroBased()).getTaskType();
+            LocalDateTime[] newDateTimes = TaskParser.parseDateTime(userInput, taskType);
+            taskToEdit.setDateTimes(newDateTimes);
+            checkDuplicate(taskToEdit, taskToEdit);
+
+            editTaskCommand.provideNewDateTime(newDateTimes);
+
+        } catch (AddOrEditTaskCommandException e) {
+            isParseSuccess = false;
+            this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_DATE_TIME_MSG;
+        } catch (DuplicateTaskException e) {
+            isParseSuccess = false;
+            reply = e.getErrorMessage() + "\n\n" + REQUIRED_DATE_TIME_MSG;
+        }
+
+        return isParseSuccess;
+    }
+
+    /**
+     * Handles the new task module.
+     * <p>
+     * Parses the {@code userInput} to the new module.
+     * Display error message for invalid {@code userInput}.
+     *
+     * @param editTaskCommand
+     * @param taskToEdit
+     * @param userInput
+     * @param taskIndex
+     * @return true if the task name is valid
+     */
+    private boolean isHandleNewTaskModuleSuccess(EditTaskCommand editTaskCommand,
+                                                 Task taskToEdit, String userInput, Index taskIndex) {
+        boolean isParseSuccess = true;
+
+        try {
+            Module newModule;
+            if (userInput.isBlank()) {
+                newModule = new EmptyModule();
+            } else {
+                newModule = TaskParser.parseModule(userInput, modules);
+            }
+
+            // checks the weight of the target module.
+            double taskWeight = logic.getFilteredTaskList().get(taskIndex.getZeroBased()).getWeight();
+            boolean isWeightSizeValid = isWeightSizeValid(taskWeight, newModule,
+                logic.getStudyBuddy().getTaskList().get(taskNumber - 1));
+            if (!isWeightSizeValid) {
+                throw new AddOrEditTaskCommandException("moduleWeightOverloadError");
+            }
+
+            taskToEdit.setModule(newModule);
+            checkDuplicate(taskToEdit, taskToEdit);
+            editTaskCommand.provideNewModule(newModule);
+
+        } catch (AddOrEditTaskCommandException e) {
+            isParseSuccess = false;
+            this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_MODULE_MSG + "\n" + moduleListString;
+        } catch (DuplicateTaskException e) {
+            isParseSuccess = false;
+            reply = e.getErrorMessage() + "\n\n"
+                + REQUIRED_MODULE_MSG + "\n" + moduleListString;
+        }
+
+        return isParseSuccess;
+    }
+
+    /**
+     * Handles the new task estimated time cost.
+     * <p>
+     * Parses the {@code userInput} to the new estimated time cost.
+     * Display error message for invalid {@code userInput}.
+     *
+     * @param editTaskCommand
+     * @param taskToEdit
+     * @param userInput
+     * @return true if the task name is valid
+     */
+    private boolean isHandleNewTaskEstimatedTimeCostSuccess(EditTaskCommand editTaskCommand,
+                                                            Task taskToEdit, String userInput) {
+        boolean isParseSuccess = true;
+
+        try {
+            if (!userInput.isBlank()) {
+                double newTimeCost = TaskParser.parseTimeCost(userInput);
+                editTaskCommand.provideNewTaskTimeCost(newTimeCost);
+            } else {
+                editTaskCommand.provideNewTaskTimeCost(0);
+            }
+
+        } catch (NumberFormatException e) {
+            isParseSuccess = false;
+            this.reply = new AddOrEditTaskCommandException("wrongEstimatedTimeFormatError").getErrorMessage()
+                + "\n\n" + REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
+        } catch (AddOrEditTaskCommandException e) {
+            isParseSuccess = false;
+            this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
+        } catch (DuplicateTaskException e) {
+            isParseSuccess = false;
+            reply = e.getErrorMessage() + "\n\n"
+                + REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
+        }
+
+        return isParseSuccess;
+    }
+
+    /**
+     * Handles the new task weight.
+     * <p>
+     * Parses the {@code userInput} to the new weight.
+     * Display error message for invalid {@code userInput}.
+     *
+     * @param editTaskCommand
+     * @param taskToEdit
+     * @param userInput
+     * @param taskIndex
+     * @return true if the task name is valid
+     */
+    private boolean isHandleNewTaskWeightSuccess(EditTaskCommand editTaskCommand, Task taskToEdit,
+                                                 String userInput, Index taskIndex) {
+        boolean isParseSuccess = true;
+
+        try {
+            double newWeight = 0;
+            boolean isWeightSizeValid = true;
+
+            // Checks if the updating of the weight will lead to weight overflow.
+            if (!userInput.isBlank()) {
+                newWeight = TaskParser.parseWeight(userInput);
+                if (newWeight > 0) {
+                    isWeightSizeValid = isWeightSizeValid(newWeight,
+                        logic.getFilteredTaskList().get(taskIndex.getZeroBased()).getModule(),
+                        logic.getStudyBuddy().getTaskList().get(taskNumber - 1));
+                }
+                if (!isWeightSizeValid) {
+                    throw new AddOrEditTaskCommandException("moduleWeightOverloadError");
+                }
+                taskToEdit.setWeight(newWeight);
+                checkDuplicate(taskToEdit, taskToEdit);
+            }
+
+            editTaskCommand.provideNewTaskWeight(newWeight);
+
+        } catch (AddOrEditTaskCommandException e) {
+            isParseSuccess = false;
+            this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_WEIGHT_MSG;
+        } catch (DuplicateTaskException e) {
+            isParseSuccess = false;
+            reply = e.getErrorMessage() + "\n\n"
+                + REQUIRED_TASK_WEIGHT_MSG;
+        }
+
+        return isParseSuccess;
+    }
+
+    /**
+     * Handles the new task description.
+     * <p>
+     * Parses the {@code userInput} to the new description.
+     * Display error message for invalid {@code userInput}.
+     *
+     * @param editTaskCommand
+     * @param taskToEdit
+     * @param userInput
+     * @return true if the task name is valid
+     */
+    private boolean isHandleNewTaskDescriptionSuccess(EditTaskCommand editTaskCommand,
+                                                      Task taskToEdit, String userInput) {
+        boolean isParseSuccess = true;
+
+        try {
+            String newDescription = TaskParser.parseDescription(userInput);
+            taskToEdit.setTaskDescription(newDescription);
+            checkDuplicate(taskToEdit, taskToEdit);
+
+            editTaskCommand.provideNewTaskDescription(newDescription);
+
+        } catch (AddOrEditTaskCommandException e) {
+            isParseSuccess = false;
+            this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_DESCRIPTION_MSG;
+        } catch (DuplicateTaskException e) {
+            isParseSuccess = false;
+            reply = e.getErrorMessage() + "\n\n"
+                + REQUIRED_TASK_DESCRIPTION_MSG;
+        }
+
+        return isParseSuccess;
+    }
+
+    /**
+     * Checks the total weight of tasks under {@code targetModule}.
      *
      * @param toBeAddWeight
      * @param targetModule
@@ -304,22 +454,28 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
      */
     private boolean isWeightSizeValid(double toBeAddWeight, Module targetModule, Task task) {
         boolean isValid = true;
-        double moduleWeightSum = logic.getStudyBuddy().getTaskList()
+
+        // Calculates the sum of the weights of unarchived tasks under targetModule.
+        double moduleWeightSumForUnarchived = logic.getStudyBuddy().getTaskList()
             .stream()
             .filter(t -> (t.getModule().equals(targetModule) && !t.equals(task)))
             .mapToDouble(Task::getWeight).sum();
-        double moduleWeightSumArchived = logic.getStudyBuddy().getArchivedList()
+
+        // Calculates the sum of the weights of archived tasks under targetModule.
+        double moduleWeightSumForArchived = logic.getStudyBuddy().getArchivedList()
             .stream()
             .filter(t -> t.getModule().equals(targetModule))
             .mapToDouble(Task::getWeight).sum();
-        if (moduleWeightSum + moduleWeightSumArchived + toBeAddWeight > 100) {
+
+        if (moduleWeightSumForUnarchived + moduleWeightSumForArchived + toBeAddWeight > 100) {
             isValid = false;
         }
+
         return isValid;
     }
 
     /**
-     * Parses task number.
+     * Parses {@code userInput} to task number.
      *
      * @param userInput user input for task number
      * @return an int of task number
@@ -328,6 +484,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         int taskNum = -1;
 
         try {
+
             if (userInput.isBlank()) {
                 throw new AddOrEditTaskCommandException("emptyInputError");
             }
@@ -336,14 +493,17 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
                 throw new AddOrEditTaskCommandException("invalidIndexRangeError");
             }
             String taskName = logic.getFilteredTaskList().get(taskNum - 1).getTaskName();
+
             this.reply = REQUIRED_TASK_FIELD_MSG + taskName + ".\n\n"
                 + TaskField.getFieldString();
             this.currentTerm = InteractivePromptTerms.TASK_FIELD;
+
         } catch (NumberFormatException e) {
             this.reply = (new AddOrEditTaskCommandException("wrongIndexFormatError")).getErrorMessage();
         } catch (AddOrEditTaskCommandException ex) {
             this.reply = ex.getErrorMessage();
         }
+
         return taskNum;
     }
 
@@ -377,10 +537,12 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
             if (taskFieldNumber > 7 || taskFieldNumber < 1) {
                 throw new AddOrEditTaskCommandException("invalidIndexRangeError");
             }
+
             taskField = TaskField.getTaskFieldFromNumber(taskFieldNumber);
             assert (taskField != null);
             this.reply = getTaskFieldMessage(taskField);
             this.currentTerm = InteractivePromptTerms.NEW_VALUE;
+
         } catch (NumberFormatException e) {
             this.reply = new AddOrEditTaskCommandException("wrongIndexFormatError").getErrorMessage();
         } catch (AddOrEditTaskCommandException e) {
@@ -391,8 +553,15 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         return taskField;
     }
 
+    /**
+     * Gets task field message according to {@code taskField}.
+     *
+     * @param taskField
+     * @return
+     */
     private String getTaskFieldMessage(TaskField taskField) {
         String result = "You are now editing the " + taskField.getLabel() + " field\n";
+
         switch (taskField) {
         case TASK_MODULE:
             moduleListString = "The Modules available are: \n";
@@ -422,6 +591,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         default:
             throw new IllegalStateException("Unexpected value: " + taskField);
         }
+
         return result;
     }
 

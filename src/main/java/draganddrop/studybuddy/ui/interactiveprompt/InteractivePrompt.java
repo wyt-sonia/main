@@ -27,7 +27,7 @@ public abstract class InteractivePrompt {
     public abstract String interact(String userInput);
 
     /**
-     * ends the interaction
+     * Ends the interaction.
      *
      * @param reply message to be displayed to the user upon end of interaction
      */
@@ -36,38 +36,18 @@ public abstract class InteractivePrompt {
         setEndOfCommand(true);
     }
 
-    public boolean isQuit() {
-        return isQuit;
-    }
-
     /**
-     * checks if the userInput is quit or back
+     * Checks if the {@code userInput} is quit.
      *
      * @param userInput
-     * @return true if the userInput is quit or back, false otherwise
+     * @return true if the userInput is quit, false otherwise
      */
     public boolean isQuit(String userInput) {
         return "quit".equalsIgnoreCase(userInput);
     }
 
-    public void setQuit(boolean quit) {
-        isQuit = quit;
-    }
-
-    public void setLogic(Logic logic) {
-        this.logic = logic;
-    }
-
-    public boolean isEndOfCommand() {
-        return isEndOfCommand;
-    }
-
-    public void setEndOfCommand(boolean endOfCommand) {
-        isEndOfCommand = endOfCommand;
-    }
-
-    public InteractivePromptType getInteractivePromptType() {
-        return interactivePromptType;
+    public boolean isQuit() {
+        return isQuit;
     }
 
     /**
@@ -82,5 +62,25 @@ public abstract class InteractivePrompt {
             endInteract(quitMessage);
         }
         return reply;
+    }
+
+    public void setQuit(boolean isQuitCommand) {
+        isQuit = isQuitCommand;
+    }
+
+    public void setLogic(Logic logic) {
+        this.logic = logic;
+    }
+
+    public boolean isEndOfCommand() {
+        return isEndOfCommand;
+    }
+
+    public void setEndOfCommand(boolean isEnd) {
+        isEndOfCommand = isEnd;
+    }
+
+    public InteractivePromptType getInteractivePromptType() {
+        return interactivePromptType;
     }
 }

@@ -2,7 +2,6 @@ package draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions;
 
 /**
  * Represents an InteractiveCommandException.
- *
  */
 public class InteractiveCommandException extends RuntimeException {
     protected String errorType;
@@ -12,6 +11,12 @@ public class InteractiveCommandException extends RuntimeException {
         this.errorType = errorType;
 
         switch (errorType) {
+        case "unKnownException":
+            errorMessage = "Unknown problem happened, please quit this command or relaunch me.\n\n"
+                + "If you still face this error, you may have to contact my developer at: \n"
+                + "https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/ContactUs.adoc";
+            break;
+
         case "emptyInputError":
             errorMessage = "The input is empty, please check again.";
             break;
@@ -116,7 +121,7 @@ public class InteractiveCommandException extends RuntimeException {
 
         case "dateFormatError":
             errorMessage = "Invalid date format, please follow the format below:\n\n"
-                            + "dd/MM/yyyy";
+                + "dd/MM/yyyy";
             break;
 
         case "tooLongAway":

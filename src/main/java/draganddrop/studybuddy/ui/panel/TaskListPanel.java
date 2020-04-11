@@ -14,7 +14,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 
 /**
- * Panel containing the list of persons.
+ * An UI component which represents the panel containing the list of persons.
  *
  * @@author Wang Yuting
  */
@@ -38,10 +38,10 @@ public class TaskListPanel extends UiPart<Region> {
      */
     static class TaskListViewCell extends ListCell<Task> {
         @Override
-        protected void updateItem(Task task, boolean empty) {
-            super.updateItem(task, empty);
+        protected void updateItem(Task task, boolean isEmpty) {
+            super.updateItem(task, isEmpty);
 
-            if (empty || task == null) {
+            if (isEmpty || task == null) {
                 setGraphic(null);
                 setText(null);
             } else {

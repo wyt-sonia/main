@@ -2,19 +2,14 @@ package draganddrop.studybuddy.logic.commands.sort;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.List;
-
 import draganddrop.studybuddy.logic.commands.Command;
 import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.model.Model;
-import draganddrop.studybuddy.model.task.Task;
-
-import javafx.collections.ObservableList;
 
 /**
  * Represent a SortTaskCommand that can handle the sorting of tasks according to
- * user choice.
+ * user's choice.
  *
  * @@author Wang Yuting
  */
@@ -38,8 +33,6 @@ public class SortTaskCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Task> lastShownList = model.getFilteredTaskList();
-        ObservableList<Task> temp = model.getStudyBuddy().getTaskList();
         model.sortTasks(sortKeyword);
         return new CommandResult(String.format(MESSAGE_SORT_TASK_SUCCESS, sortKeyword));
     }

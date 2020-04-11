@@ -23,7 +23,7 @@ public class StringUtil {
      * @param sentence cannot be null
      * @param word     cannot be null, cannot be empty, must be a single word
      */
-    public static boolean containsWordIgnoreCase(String sentence, String word) {
+    public static boolean isContainsWordIgnoreCase(String sentence, String word) {
         requireNonNull(sentence);
         requireNonNull(word);
 

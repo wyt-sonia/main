@@ -18,11 +18,11 @@ public class TimeParser {
     public static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     /**
-     * Parses valid dateTime string to LocalDateTime variable.
+     * Parses {@code userInput} to LocalDateTime variable.
      *
      * @param userInput
-     * @return
-     * @throws InteractiveCommandException
+     * @return LocalDateTime when {@code userInput} format is valid.
+     * @throws InteractiveCommandException when {@code userInput} format is invalid.
      */
     public static LocalDateTime parseDateTime(String userInput) throws InteractiveCommandException {
         LocalDateTime inputTime;
@@ -37,11 +37,11 @@ public class TimeParser {
     }
 
     /**
-     * Parses valid date string to LocalDate variable.
+     * Parses {@code userInput} to LocalDate variable.
      *
      * @param userInput
-     * @return
-     * @throws InteractiveCommandException
+     * @return LocalDate when {@code userInput} format is valid.
+     * @throws InteractiveCommandException when {@code userInput} format is invalid.
      */
     public static LocalDate parseDate(String userInput) throws InteractiveCommandException {
         LocalDate inputDate = null;
@@ -57,10 +57,10 @@ public class TimeParser {
 
 
     /**
-     * Converts LocalDateTime variable to a String as HH:mm dd/MM/yyyy format.
+     * Converts LocalDateTime variable {@code dateTime} to a String as HH:mm dd/MM/yyyy format.
      *
      * @param dateTime
-     * @return
+     * @return String as HH:mm dd/MM/yyyy format
      * @throws InteractiveCommandException
      */
     public static String getDateTimeString(LocalDateTime dateTime) throws InteractiveCommandException {
@@ -81,10 +81,10 @@ public class TimeParser {
     }
 
     /**
-     * Converts LocalDateTime variable to a String as dd/MM/yyyy format.
+     * Converts LocalDateTime variable {@code date} to a String as dd/MM/yyyy format.
      *
      * @param date
-     * @return
+     * @return String as dd/MM/yyyy format
      * @throws InteractiveCommandException
      */
     public static String getDateString(LocalDate date) throws InteractiveCommandException {
@@ -92,6 +92,9 @@ public class TimeParser {
             : "" + date.getDayOfMonth();
         String month = date.getMonthValue() < 10 ? "0" + date.getMonthValue()
             : "" + date.getMonthValue();
+
+        assert !(day.isBlank() || month.isBlank())
+            : "There is blank value in day and/or month when get DateTimeString, please check.\n";
         return day + "/" + month + "/" + date.getYear();
     }
 }
