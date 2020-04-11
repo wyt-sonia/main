@@ -443,7 +443,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-26">
 <p>By: <code>Team Drag&amp;Drop</code>      Since: <code>Jan 2020</code></p>
 </div>
 </div>
@@ -451,10 +451,30 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toctitle"></div>
 <ul class="sectlevel1">
 <li><a href="#_introduction">1. Introduction</a></li>
-<li><a href="#_quick_start">2. Quick Start</a></li>
-<li><a href="#DashBoard">3. Dashboard</a>
+<li><a href="#_quick_start">2. Quick Start</a>
+<ul class="sectlevel3">
+<li><a href="#_commonly_used_symbols">2.1. Commonly Used Symbols</a></li>
+<li><a href="#_useful_tips">2.2. Useful tips</a></li>
+</ul>
+</li>
+<li><a href="#_user_interface_introduction">3. User Interface Introduction</a>
 <ul class="sectlevel2">
-<li><a href="#_understanding_the_dashboard">3.1. Understanding the dashboard</a></li>
+<li><a href="#_dashboard">3.1. Dashboard</a>
+<ul class="sectlevel3">
+<li><a href="#_navigation_menu_bar">3.1.1. Navigation Menu Bar</a></li>
+<li><a href="#_all_tasks_panel">3.1.2. All Tasks Panel</a>
+<ul class="sectlevel4">
+<li><a href="#_task_badges">Task Badges</a></li>
+</ul>
+</li>
+<li><a href="#_tasks_due_soon_panel">3.1.3. Tasks Due Soon Panel</a>
+<ul class="sectlevel4">
+<li><a href="#_task_badges_2">Task Badges</a></li>
+</ul>
+</li>
+<li><a href="#_interactive_prompt_box">3.1.4. Interactive Prompt Box</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#Features">4. Features</a>
@@ -463,17 +483,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel3">
 <li><a href="#_help">4.1.1. Help :</a></li>
 <li><a href="#_add">4.1.2. Add</a></li>
-<li><a href="#_edit">4.1.3. Edit</a></li>
-<li><a href="#_done">4.1.4. Done</a></li>
-<li><a href="#_clear">4.1.5. Clear</a></li>
-<li><a href="#_delete">4.1.6. Delete</a></li>
-<li><a href="#_delete_duplicates">4.1.7. Delete duplicates</a></li>
-<li><a href="#_archive_unarchive">4.1.8. Archive/ Unarchive</a></li>
-<li><a href="#_sort">4.1.9. Sort</a></li>
-<li><a href="#_find">4.1.10. Find</a></li>
-<li><a href="#_list">4.1.11. List</a></li>
-<li><a href="#_refresh">4.1.12. Refresh</a></li>
-<li><a href="#_exit">4.1.13. Exit</a></li>
+<li><a href="#_add_duplicates">4.1.3. Add duplicates</a></li>
+<li><a href="#_edit">4.1.4. Edit</a></li>
+<li><a href="#_done">4.1.5. Done</a></li>
+<li><a href="#_clear">4.1.6. Clear</a></li>
+<li><a href="#_delete">4.1.7. Delete</a></li>
+<li><a href="#_view_renamed">4.1.8. View renamed</a></li>
+<li><a href="#_archive_unarchive">4.1.9. Archive/ Unarchive</a></li>
+<li><a href="#Sort">4.1.10. Sort</a></li>
+<li><a href="#Find">4.1.11. Find</a></li>
+<li><a href="#LIST">4.1.12. List</a></li>
+<li><a href="#Filter">4.1.13. Filter</a></li>
+<li><a href="#Refresh">4.1.14. Refresh</a></li>
+<li><a href="#_exit">4.1.15. Exit</a></li>
 </ul>
 </li>
 <li><a href="#_saving_data">4.2. Saving Data</a></li>
@@ -481,80 +503,93 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_modules">4.4. Modules</a>
 <ul class="sectlevel3">
 <li><a href="#_navigation">4.4.1. Navigation</a></li>
-<li><a href="#_functions">4.4.2. Functions</a></li>
-<li><a href="#_create_modules">4.4.3. Create Modules</a></li>
-<li><a href="#_edit_modules">4.4.4. Edit Modules</a>
+<li><a href="#_functions">4.4.2. Functions</a>
 <ul class="sectlevel4">
-<li><a href="#_a_change_module_name">a) Change Module Name</a></li>
-<li><a href="#_b_change_module_code">b) Change Module Code</a></li>
-<li><a href="#_c_delete_module">c) Delete Module</a></li>
+<li><a href="#_create_modules">Create Modules</a></li>
+</ul>
+</li>
+<li><a href="#_edit_modules">4.4.3. Edit Modules</a></li>
+</ul>
+</li>
+<li><a href="#_statistics">4.5. Statistics</a>
+<ul class="sectlevel3">
+<li><a href="#_navigate_to_statistics_page">4.5.1. Navigate to Statistics Page</a></li>
+<li><a href="#_statistics_page_user_interface_and_interaction">4.5.2. Statistics Page User Interface and Interaction</a>
+<ul class="sectlevel4">
+<li><a href="#_task_status_tab">Task Status Tab</a></li>
+<li><a href="#_module_related_tasks_deadlinestart_date_tab">Module Related Tasks' Deadline/Start Date Tab</a></li>
+<li><a href="#_module_related_tasks_weight_tab">Module Related Tasks' Weight Tab</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_statistics">4.5. Statistics</a></li>
-<li><a href="#_calendar">4.6. Calendar</a></li>
+<li><a href="#_calendar">4.6. Calendar</a>
+<ul class="sectlevel3">
+<li><a href="#_navigation_using_cli">4.6.1. Navigation using CLI</a></li>
+</ul>
+</li>
 <li><a href="#_productivity">4.7. Productivity</a></li>
 </ul>
 </li>
-<li><a href="#_faq">5. FAQ</a></li>
+<li><a href="#Summary">5. Command Summary</a></li>
+<li><a href="#_faq">6. FAQ</a></li>
 </ul>
 </div>
 </div>
-<div class="sect1">
+<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-30">
 <h2 id="_introduction">1. Introduction</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Study Buddy is a desktop application which is designed for students who <strong>wish to manege their module related tasks</strong>.
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-32">
+<p>Study Buddy is a desktop application which is designed for students who <strong>wish to manage their module related tasks</strong>.
 More importantly, Study Buddy is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI).</p>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-35">
 <p>You will never have to remember long, wordy commands to use your command line interface, since
-Study Buddy <strong>provides an interactive way of communication</strong>, which not only helps to prevent typos, but also makes the application much easier to use!</p>
+Study Buddy <strong>provides an interactive way of communication</strong>. This not only helps to prevent typos, but also makes the application much easier to use!</p>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-38">
 <p>If you can type fast, Study Buddy can get your module management done faster than traditional GUI apps.</p>
 </div>
-<div class="paragraph">
-<p>Currently, Study Buddy support both Windows and Mac systems. If you are interested, please jump to the <a href="#_quick_start">Section 2, &#8220;Quick Start&#8221;</a> to get started.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-40">
+<p>Currently, Study Buddy supports both Windows and Mac systems. If you are interested, please jump to the <a href="#_quick_start">Section 2, &#8220;Quick Start&#8221;</a> to get started.</p>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-42">
 <p>Hope you enjoy!</p>
 </div>
 </div>
 </div>
-<div class="sect1">
+<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-46">
 <h2 id="_quick_start">2. Quick Start</h2>
 <div class="sectionbody">
-<div class="olist arabic">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-48">
 <ol class="arabic">
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-48">
 <p>Study Buddy relies on a particular computer environment to operate correctly,
 thus to enjoy it, you need to have <code>Java 11</code> or above installed in your computer.</p>
-<div class="ulist">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-50">
 <ul>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-50">
 <p>Here is the guideline for checking java version of your computer.</p>
-<div class="ulist">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-51">
 <ul>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-51">
 <p><a href="https://www.wikihow.com/Check-Your-Java-Version-in-the-Windows-Command-Line">windows</a></p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-52">
 <p><a href="https://www.wikihow.com/Check-Java-Version-on-a-Mac">mac</a></p>
 </li>
 </ul>
 </div>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-53">
 <p>If your computer does not have java or its version is below <code>Java 11</code>,
 you may refer to the guide below.</p>
-<div class="ulist">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-55">
 <ul>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-55">
 <p><a href="https://docs.oracle.com/en/java/javase/11/install/installation-jdk-microsoft-windows-platforms.html#GUID-C11500A9-252C-46FE-BB17-FC5A9528EAEB">windows</a></p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-56">
 <p><a href="https://docs.oracle.com/en/java/javase/11/install/installation-jdk-macos.html#GUID-2FE451B0-9572-4E38-A1A5-568B77B146DE">mac</a></p>
 </li>
 </ul>
@@ -563,210 +598,377 @@ you may refer to the guide below.</p>
 </ul>
 </div>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-57">
 <p>When your computer is ready, you can download the latest <a href="https://github.com/AY1920S2-CS2103T-W16-3/main/releases"><code>studybuddy.jar</code></a> to get your Study Buddy.</p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-58">
 <p>To better manage your tasks, you may copy the file to the folder you want to use as the home folder for the Study Buddy.</p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-59">
 <p>Last, double-click the file to start the app and the dashboard should appear in a few seconds.</p>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Tip</div>
-</td>
-<td class="content">
-You mey need to adjust the size of the Study Buddy window when you launch it.
-</td>
-</tr>
-</table>
-</div>
-<div class="imageblock">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-61">
 <div class="content">
 <img src="images/Ui.png" alt="Ui" width="790">
 </div>
 <div class="title">Figure 1. Study Buddy Dashboard</div>
 </div>
 </li>
-<li>
-<p>The box with the words <code>Enter your command here&#8230;&#8203;</code> is where you can key in your desired command and click <kbd>Enter</kbd> to execute.</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-63">
+<p>Jump to <a href="#_dashboard">Section 3.1, &#8220;Dashboard&#8221;</a> to get more information about dashboard.</p>
 </li>
-<li>
-<p>To view a list of available command, you can key in <strong><code>help</code></strong> and click <kbd>Enter</kbd>. A more detailed description of our features is available in
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-64">
+<p>To view a list of the available commands, you can key in <strong><code>help</code></strong> and click <kbd>Enter</kbd>. A more detailed description of our features is available in
 <a href="#Features">Section 4, &#8220;Features&#8221;</a> of this document.</p>
 </li>
 </ol>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Tip</div>
-</td>
-<td class="content">
-Study Buddy will analyze your input and reply accordingly.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="DashBoard">3. Dashboard</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_understanding_the_dashboard">3.1. Understanding the dashboard</h3>
-<div class="paragraph">
-<p>The top of the DashBoard is the <strong>menu bar</strong>. You can access other data such as
-modules &amp; archives.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/dashboard/dashboard_1%205.png" alt="dashboard 1 5" width="600">
-</div>
-<div class="title">Figure 2. Access other features here!</div>
-</div>
-<div class="paragraph">
-<p>The left side features your entire list of tasks to complete.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/dashboard/dashboard_1%202.png" alt="dashboard 1 2" width="600">
-</div>
-<div class="title">Figure 3. All task to complete</div>
-</div>
-<div class="paragraph">
-<p>The right side displays your tasks that are to be Due Soon</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/dashboard/dashboard_1%203.png" alt="dashboard 1 3" width="600">
-</div>
-<div class="title">Figure 4. Task Due Soon</div>
-</div>
-<div class="paragraph">
-<p>The bottom is your input line. You can type your commands to tell Study Buddy what to do and he will reply
-you!</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/dashboard/dashboard_1%204.png" alt="dashboard 1 4" width="600">
-</div>
-<div class="title">Figure 5. Chat with Studdy Buddy here!</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="Features">4. Features</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_basic_features">4.1. Basic features</h3>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>Command Format</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
-</li>
-<li>
-<p><strong>SB</strong> and <strong>You</strong> refers to <strong>Study Buddy</strong> and the <strong>User</strong> respectively.</p>
-</li>
-<li>
-<p>When a line is preceded by <strong>SB</strong>, it implies that it is a <strong>reply displayed by Study Buddy</strong>.</p>
-</li>
-<li>
-<p>When a line is preceded by <strong>You</strong>, it implies that it is a value that must be <strong>entered by the user</strong>.</p>
-</li>
-<li>
-<p><strong>[enter]</strong> indicates <strong>hitting the enter key on your keyboard</strong>.</p>
-</li>
-<li>
-<p><strong>[exits]</strong> indicates that <strong>application has closed</strong>.</p>
-</li>
-<li>
-<p><strong>|</strong> connects <strong>alternative option</strong> (i.e. A | B &#8594; A or B).</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="admonitionblock note">
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-71">
+<h4 id="_commonly_used_symbols">2.1. Commonly Used Symbols</h4>
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-74">
 <table>
 <tr>
 <td class="icon">
 <div class="title">Note</div>
 </td>
 <td class="content">
-These features utilize interactive command prompt. (described in section <a href="#Interactive Command Prompt">[Interactive Command Prompt]</a> )
+This symbol indicates something you should take note of.
 </td>
 </tr>
 </table>
 </div>
-<div class="sect3">
-<h4 id="_help">4.1.1. Help :</h4>
-<div class="paragraph">
-<p><strong>Description:</strong></p>
+<div class="admonitionblock tip has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-77">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+This symbol indicates a tip that you could use.
+</td>
+</tr>
+</table>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>This function displays a list of interactive commands that you can use.</p>
+<div class="admonitionblock caution has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-80">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Caution</div>
+</td>
+<td class="content">
+This symbol indicates an aspect that should be used with caution.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-83">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+This symbol indicates something to which we want to draw your attention.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-88">
+<h4 id="_useful_tips">2.2. Useful tips</h4>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-90">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-90">
+<p>You may need to adjust the size of the Study Buddy window when you launch it.</p>
 </li>
-<li>
-<p>It also provides a link to this document, (our user guide) for your convenience.</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-91">
+<p>The scroll bar on the right of the response box can be used to view the entire reply.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-92">
+<p>At any point during the execution of a command, you can use <code>quit</code> to quit the command and start over/try a different command.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-93">
+<p>Study Buddy will analyze your input and reply accordingly.
+It utilizes an "interactive command prompt". (explained in each command&#8217;s description under <a href="#Features">Section 4, &#8220;Features&#8221;</a>)</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-95">
+<p>In this document, <kbd>enter</kbd> indicates <strong>the enter key on your keyboard</strong>.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-96">
+<p>In this document, <strong>|</strong> indicates an <strong>alternative option</strong> (i.e. A | B implies A or B).</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-97">
+<p>A task&#8217;s <strong>index number</strong>, refers to the number displayed on the left of a task in <strong>All Tasks Panel</strong>. Note that the
+index of the same task could be different after some commands, such as <code>filter</code>, <code>find</code> and <code>sort</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-103">
+<h2 id="_user_interface_introduction">3. User Interface Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-104">
+<p>Study Buddy makes use of color schemes and animations to enhance your user experience.</p>
+</div>
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-106">
+<h3 id="_dashboard">3.1. Dashboard</h3>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-107">
+<p>The <strong>dashboard</strong> is the landing page each time the application is launched.<br>
+It consists of different components that can interact with you and provide you with meaningful information.</p>
+</div>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-110">
+<h4 id="_navigation_menu_bar">3.1.1. Navigation Menu Bar</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-111">
+<p>The <strong>menu bar</strong> is located at the top of the dashboard and is primarily used for navigation.</p>
+</div>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-113">
+<div class="content">
+<img src="images/dashboard/nav_bar.png" alt="nav bar" width="790">
+</div>
+<div class="title">Figure 2. Menu bar</div>
+</div>
+</div>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-115">
+<h4 id="_all_tasks_panel">3.1.2. All Tasks Panel</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-117">
+<p>By default, the <strong>All Tasks Panel</strong> lists all unarchived task tasks with their detailed information in the order of creation date and time.</p>
+</div>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-119">
+<div class="content">
+<img src="images/dashboard/all_tasks.png" alt="all tasks" width="600">
+</div>
+<div class="title">Figure 3. All Tasks Panel</div>
+</div>
+<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-121">
+<h5 id="_task_badges">Task Badges</h5>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-122">
+<p>To highlight <code>Module code</code>, <code>Task Type</code> and  <code>Task Status</code> of each task in the <strong>All Tasks list</strong> , we use <strong>Badges</strong>.</p>
+</div>
+<div class="dlist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-124">
+<dl>
+<dt class="hdlist1">Module Badges</dt>
+<dd>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-125">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-125">
+<p>All in light steelblue.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-126">
+<p>If the task is not related to any module, the Module Badges will be omitted.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Task Type Badges</dt>
+<dd>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-129">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-129">
+<p>Badges of different types are in different colours.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Task Status</dt>
+<dd>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-132">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-132">
+<p>Badges of different status types are in different colours.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-133">
+<p>Tasks that are due within a week (i.e. 7 days) will be marked as <code>Due Soon</code>.
+You may need to use the refresh command (<a href="#Refresh">Section 4.1.14, &#8220;Refresh&#8221;</a>) to refresh the status of all your tasks.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-136">
+<h4 id="_tasks_due_soon_panel">3.1.3. Tasks Due Soon Panel</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-137">
+<p>The tasks that are due within a week (i.e. 7 days) will be listed here.
+You can jump to <a href="#_due_soon_tasks">Section 4.3, &#8220;Due Soon Tasks&#8221;</a> to get more details.</p>
+</div>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-140">
+<div class="content">
+<img src="images/dashboard/due_soon.png" alt="due soon" width="600">
+</div>
+<div class="title">Figure 4. Task Due Soon Panel</div>
+</div>
+<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-142">
+<h5 id="_task_badges_2">Task Badges</h5>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-143">
+<p>To highlight the <code>Weight &amp; Module Code</code>,
+<code>Time left for deadline</code> and  <code>Task Type</code> of each task in the <strong>Tasks Due Soon Panel</strong> , we use <strong>Badges</strong>.</p>
+</div>
+<div class="dlist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-146">
+<dl>
+<dt class="hdlist1">Weight &amp; Module Code</dt>
+<dd>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-147">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-147">
+<p>All in steelblue.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-148">
+<p>Display the weight and module code of a task.</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Time left for deadline</dt>
+<dd>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-151">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-151">
+<p>All in light orange.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-152">
+<p>Display the time left for a tasks' deadline.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-153">
+<p>More information please refer to <a href="#_due_soon_tasks">Section 4.3, &#8220;Due Soon Tasks&#8221;</a></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Task Type Badges</dt>
+<dd>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-156">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-156">
+<p>Badges of different types are in different colors.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-158">
+<h4 id="_interactive_prompt_box">3.1.4. Interactive Prompt Box</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-159">
+<p>The <strong>Interactive Prompt Box</strong> can be found at the bottom of the user interface.</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-161">
+<p>To interact with Study Buddy, you can enter the desired command in the box with the words <code>Please enter your command here&#8230;&#8203;</code>
+and press <kbd>enter</kbd> to execute.</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-164">
+<p>The reply from Study Buddy will be displayed in the box above.</p>
+</div>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-166">
+<div class="content">
+<img src="images/dashboard/prompt_box.png" alt="prompt box" width="790">
+</div>
+<div class="title">Figure 5. Interactive Prompt Box</div>
+</div>
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-169">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+To get more detailed information about how to use Study Buddy, please refer to <a href="#Features">Section 4, &#8220;Features&#8221;</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-174">
+<h2 id="Features">4. Features</h2>
+<div class="sectionbody">
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-175">
+<h3 id="_basic_features">4.1. Basic features</h3>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-176">
+<h4 id="_help">4.1.1. Help :</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-177">
+<p>This function displays a list of interactive commands that you can use.
+It also provides a link to this document, (our user guide).</p>
+</div>
+<div class="admonitionblock tip has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-181">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+This is the command you should use if you are unsure of what to type for a certain command.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-183">
+<p><strong>Example:</strong></p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-185">
+<p>Say you have forgotten the format of a command and need some help.</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-187">
+<p>Study Buddy provides a help command for your convenience!</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-189">
+<p>To <code>help</code>:</p>
+</div>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-191">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-191">
+<p>Initiate the command using keyword <code>help</code></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-192">
+<p>Study Buddy should respond with:</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-194">
+<div class="content">
+<img src="images/basic/help/help_rep.png" alt="help rep" width="790">
+</div>
+<div class="title">Figure 6. Response to 'help'</div>
+</div>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><strong>Format:</strong></p>
-</div>
-<div class="paragraph">
-<p><mark>You-</mark> <code>help</code></p>
-</div>
-<div class="paragraph">
-<p><strong>SB -</strong> list of interactive commands</p>
-</div>
-<div class="paragraph">
-<p><strong>Example:</strong></p>
-</div>
-<div class="paragraph">
-<p><strong>You-</strong> <code>help</code></p>
-</div>
-<div class="paragraph">
-<p><strong>SB -</strong> &#160;Here is the list of available commands:<br>
-&#160;&#160;&#160;&#160;&#160;1. add  2. delete  3. edit  4. bye  5. sort  6. find  7. done  8. delete duplicates  9. sort  10. archive  11. help<br>
-&#160;&#160;&#160;&#160;&#160;12. list  13. clear 14. create mods</p>
-</div>
-<div class="paragraph">
-<p>&#160;&#160;&#160;&#160;&#160;&#160;User Guide: <a href="https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html" class="bare">https://ay1920s2-cs2103t-w16-3.github.io/main/UserGuide.html</a></p>
+<div class="admonitionblock tip has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-197">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Remember to scroll down to see the entire reply.
+</td>
+</tr>
+</table>
 </div>
 </div>
-<div class="sect3">
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-200">
 <h4 id="_add">4.1.2. Add</h4>
-<div class="paragraph">
-<p>This command is for you to record a new task into Study Buddy.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-201">
+<p>This command enables you to add a new task into Study Buddy.</p>
 </div>
-<div class="ulist">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-203">
 <ul>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-203">
 <p>Through the interaction, task&#8217;s details will be collected.</p>
-<div class="olist loweralpha">
+<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-204">
 <ol class="loweralpha" type="a">
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-204">
 <p>Required information: task name, task type, task deadline or duration</p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-205">
 <p>Optional information: module, task description, task weight, estimated number of hours needed</p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-206">
 <p>Input format requirement:</p>
-<table class="tableblock frame-all grid-all stretch">
+<table class="tableblock frame-all grid-all stretch has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-209">
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 50%;">
@@ -836,30 +1038,46 @@ yyyy &#8594; year</code></p></td>
 </tbody>
 </table>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-262">
 <p>Other constraints::</p>
-<div class="olist lowerroman">
+<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-263">
 <ol class="lowerroman" type="i">
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-263">
+<p>The application does not allow you to enter a name that has special characters (any character that is not a letter in the alphabet).</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-264">
 <p>The application does not allow you to assign date time that has already passed to a task.
 It must be a time in the future.</p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-266">
 <p>For duration, the two dates should follow the order of <code>start date</code>-<code>end date</code>, the <code>end date</code> should
 be later than <code>start date</code>.</p>
 </li>
-<li>
-<p>The total weight of tasks under the same module is caped to 100.0.</p>
-<div class="olist upperalpha">
-<ol class="upperalpha" type="A">
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-268">
+<p>The total weight of tasks under the same module is capped at 100.0.</p>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-269">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-269">
 <p>Both <code>archived</code> and <code>not archived tasks</code> will be taken into consideration.</p>
+</li>
+</ul>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-270">
+<p>All <code>index numbers</code> entered should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-271">
+<p>The "Required Information" cannot be empty, on the other hand, you can press <kbd>enter</kbd> to skip the "Optional Information".</p>
 </li>
 </ol>
 </div>
 </li>
-<li>
-<p>All <code>index numbers</code> should be positive and within a valid range. (i.e When there is only 5 modules available, the valid module index number range is 1 to 5).</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-272">
+<p>Adding duplicate tasks:</p>
+<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-273">
+<ol class="lowerroman" type="i">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-273">
+<p>Look at <a href="#_add_duplicates">Section 4.1.3, &#8220;Add duplicates&#8221;</a> for more information.</p>
 </li>
 </ol>
 </div>
@@ -869,278 +1087,358 @@ be later than <code>start date</code>.</p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-The application allows for addition of duplicate tasks. It will however confirm with you if you are sure you want to add a duplicate.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-275">
 <p>To <code>add</code>:</p>
 </div>
-<div class="olist arabic">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-277">
 <ol class="arabic">
-<li>
-<p>Initiate the command using keyword <code>add</code></p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-277">
+<p>Initiate the command using keyword <code>add</code> + <kbd>enter</kbd>.</p>
 </li>
-<li>
-<p>Study Buddy should respond with <code>a list of available modules</code> as:</p>
-<div class="imageblock">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-278">
+<p>Study Buddy should start with asking module information with <code>a list of available modules</code> as:</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-280">
 <div class="content">
-<img src="images/basic/add/add_module.png" alt="add module" width="600">
+<img src="images/basic/add/add_module.png" alt="add module" width="790">
 </div>
-<div class="title">Figure 6. Reponse to 'add'</div>
+<div class="title">Figure 7. Reponse to 'add', asks for module</div>
 </div>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-282">
 <p>You can link this task with a module by entering its <code>MODULE CODE</code> | <code>INDEX NUMBER OF MODULE</code> here
-, or you can press <kbd>enter</kbd> to skip. Here we use <code>1</code> (CS2101) as an example.</p>
+, or you can press <kbd>enter</kbd> to skip. Here we use "1" (CS2101) as an example.</p>
 </li>
-<li>
-<p>Study Buddy should respond with the module selected and the request of task name as:</p>
-<div class="imageblock">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-284">
+<p>After the selection of module, Study Buddy should ask for the task name.
+Here we use "new task" as an example.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-286">
+<p>After entered the task&#8217;s name and press <kbd>enter</kbd>, Study Buddy should prompt for task type with the list of available types as:</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-288">
 <div class="content">
-<img src="images/basic/add/add_task_name.png" alt="add task name" width="600">
-</div>
-<div class="title">Figure 7. Asks for task&#8217;s name</div>
-</div>
-</li>
-<li>
-<p>Here we use <code>new task</code> as an example.</p>
-</li>
-<li>
-<p>Study Buddy should respond with the task name defined and the request of task type as:</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/basic/add/add_task_type.png" alt="add task type" width="600">
+<img src="images/basic/add/add_task_type.png" alt="add task type" width="790">
 </div>
 <div class="title">Figure 8. Asks for task&#8217;s type</div>
 </div>
 </li>
-<li>
-<p>Here we use <code>1</code> (Assignment) as an example.</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-290">
+<p>You can use the <code>INDEX NUMBER</code> here to choose a task type. Here we use "1" (Assignment) as an example.</p>
 </li>
-<li>
-<p>Study Buddy should respond with the task type defined and the request of task&#8217;s date time information as:</p>
-<div class="imageblock">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-291">
+<p>After the selection of task type,
+Study Buddy will prompt for new task&#8217;s date-time information together with the type related date-time format (i.e. different task types support different date-time formats).
+Here we use "14:00 04/05/2020" as an example.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-295">
+<p>Next, Study Buddy should ask for the new task&#8217;s description, and we use "new task description" as an example.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-296">
+<p>Then, Study Buddy should ask for the new task&#8217;s weight. Here we use "10" as an example.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-297">
+<p>Next, Study Buddy will prompt for the estimated number of hours needed for this new task. Here we use "10" as an example.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-298">
+<p>Once you specify the estimated time needed and press <kbd>enter</kbd>,
+Study Buddy should respond with the task details collected and ask for your confirmation to add the task as:</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-301">
 <div class="content">
-<img src="images/basic/add/add_date_time.png" alt="add date time" width="600">
+<img src="images/basic/add/add_task_info_1.png" alt="add task info 1" width="790">
 </div>
-<div class="title">Figure 9. Asks for task&#8217;s date time</div>
+<div class="title">Figure 9. Asks for user conformation to add a new task</div>
 </div>
-</li>
-<li>
-<p>Here we use <code>14:00 04/05/2020</code> as an example.</p>
-</li>
-<li>
-<p>Study Buddy should respond with the date time defined and the request of task&#8217;s description as:</p>
-<div class="imageblock">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-303">
 <div class="content">
-<img src="images/basic/add/add_desc.png" alt="add desc" width="600">
+<img src="images/basic/add/add_task_info_2.png" alt="add task info 2" width="790">
 </div>
-<div class="title">Figure 10. Asks for task&#8217;s description</div>
+<div class="title">Figure 10. Task details collected</div>
 </div>
 </li>
-<li>
-<p>Here we use <code>new task description</code> as an example.</p>
-</li>
-<li>
-<p>Study Buddy should respond with the description defined and the request of task&#8217;s weight as:</p>
-<div class="imageblock">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-305">
+<p>Now, by pressing <kbd>enter</kbd> the new task will be added into your Study Buddy. Meanwhile, the <strong>All Tasks Panel</strong> will
+update accordingly.  For this example, the panel should update as below.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-308">
 <div class="content">
-<img src="images/basic/add/add_weight.png" alt="add weight" width="600">
+<img src="images/basic/add/add_result.png" alt="add result" width="790">
 </div>
-<div class="title">Figure 11. Asks for task&#8217;s weight</div>
-</div>
-</li>
-<li>
-<p>Here we use <code>10</code> as an example.</p>
-</li>
-<li>
-<p>Study Buddy should respond with the weight defined and the request of the estimated number of hours needed as:</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/basic/add/add_time_cost.png" alt="add time cost" width="600">
-</div>
-<div class="title">Figure 12. Asks for estimated number of hours needed</div>
-</div>
-</li>
-<li>
-<p>Here we use <code>10</code> as an example.</p>
-</li>
-<li>
-<p>Study Buddy should respond with the task details collected and the request of your confirmation to perform the command as:</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/basic/add/add_task_info_1.png" alt="add task info 1" width="600">
-</div>
-<div class="title">Figure 13. Asks for user conformation to add a new task</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/basic/add/add_task_info_2.png" alt="add task info 2" width="600">
-</div>
-<div class="title">Figure 14. Task details collected</div>
-</div>
-</li>
-<li>
-<p>Now, by pressing <kbd>enter</kbd> the new task will be added into your Study Buddy.</p>
-</li>
-<li>
-<p>Study Buddy should respond as:</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/basic/add/add_result.png" alt="add result" width="600">
-</div>
-<div class="title">Figure 15. New task added</div>
+<div class="title">Figure 11. New task added</div>
 </div>
 </li>
 </ol>
 </div>
-<div class="admonitionblock tip">
+<div class="admonitionblock tip has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-311">
 <table>
 <tr>
 <td class="icon">
 <div class="title">Tip</div>
 </td>
 <td class="content">
-You can use <code>quit</code> command to quit from each step.
+Remember, you can use <code>quit</code> command to quit at any step.
 </td>
 </tr>
 </table>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_edit">4.1.3. Edit</h4>
-<div class="paragraph">
-<p>This command is for you to edit an existing task.
-To indicate the task you want to edit, you need to provide its index number.</p>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-317">
+<h4 id="_add_duplicates">4.1.3. Add duplicates</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-318">
+<p>This command accounts for you adding duplicate tasks. When you attempt to add a duplicate, the name will be modified slightly so that you can differentiate them.</p>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-320">
 <p><strong>Example:</strong></p>
 </div>
-<div class="paragraph">
-<p>When you want to update some details of a task or there are some typo in an existing
-task. You can use this command to edit as you wish.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-322">
+<p>Say you have tried to add a task, you enter all the fields needed and at the end, you realise that you have already added this task.</p>
 </div>
-<div class="admonitionblock note">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-324">
+<p>Study Buddy lets you add duplicate tasks with a slight modification! So, now you can add the task and edit it as needed.</p>
+</div>
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-327">
 <table>
 <tr>
 <td class="icon">
 <div class="title">Note</div>
 </td>
 <td class="content">
-Each new value and index number entered will be checked under the same constrain of add command.
+A task is considered duplicate when the name, type, module, description, weightage, estimated time cost and deadline are the same.
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-329">
+<p>To <code>add duplicates</code>:</p>
+</div>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-331">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-331">
+<p>Follow the same steps as in <a href="#_add">Section 4.1.2, &#8220;Add&#8221;</a>, but enter a duplicate task.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-332">
+<p>Study Buddy should respond with:</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-334">
+<div class="content">
+<img src="images/duplicate/addDuplicate.png" alt="addDuplicate" width="790">
+</div>
+<div class="title">Figure 12. Reponse to adding a duplicate</div>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-336">
+<p>Type in <code>yes</code> if you would like to continue and <code>no</code> if you do not.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-337">
+<p>If you type <code>yes</code> and press <kbd>enter</kbd></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-338">
+<p>The Study Buddy should respond with:</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-340">
+<div class="content">
+<img src="images/duplicate/addDuplicate1.png" alt="addDuplicate1" width="790">
+</div>
+<div class="title">Figure 13. Response to adding duplicate</div>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-342">
+<p>As you can see in the snippet above, Study Buddy will append a number in brackets to the task name. This number corresponds to the number of times this task name has been duplicated.</p>
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-345">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+If you add two duplicates of a task (eg: task(1) and task(2)), and then delete task(1), when u try to duplicate it again, it will get added as task(3). The number will not reset to 2, because this is the third time you are attempting to duplicate.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-347">
+<p>If you choose to enter <code>no</code> at step 2, this is what you will see.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-349">
+<div class="content">
+<img src="images/duplicate/addDuplicate2.png" alt="addDuplicate2" width="790">
+</div>
+<div class="title">Figure 14. Response to choosing not to add</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock tip has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-352">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+You can view all tasks that have been auto-edited this way, using the <a href="#View duplicates">[View duplicates]</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-355">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Use the <a href="#_edit">Section 4.1.4, &#8220;Edit&#8221;</a> to edit your duplicated tasks!
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-359">
+<h4 id="_edit">4.1.4. Edit</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-361">
+<p>This command is for you to edit an existing task.
+To indicate the task you want to edit, you need to provide its index number.</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-364">
+<p><strong>Example:</strong></p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-366">
+<p>Say when there are some typo in an existing task. You can use this command to edit as you wish.</p>
+</div>
+<div class="exampleblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-368">
+<div class="content">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-369">
+<p><strong>Constrains</strong></p>
+</div>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-371">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-371">
+<p>Each new value entered will be checked under the same constrain of add command. More info you can refer from <a href="#_add">Section 4.1.2, &#8220;Add&#8221;</a>.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-372">
+<p>When editing weight or module, the application will also make sure the total weight of related module&#8217;s tasks will not overflow (i.e. exceed 100).</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-373">
+<p>You cannot edit a task to be a duplicate. i.e all the fields cannot be the same as a task that already exists.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-377">
 <p>To <code>edit</code>:</p>
 </div>
-<div class="olist arabic">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-379">
 <ol class="arabic">
-<li>
-<p>Initiate the command using keyword <code>edit</code></p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-379">
+<p>Initiate the command using keyword <code>edit</code> + <kbd>enter</kbd>.</p>
 </li>
-<li>
-<p>Study Buddy should respond with:</p>
-<div class="imageblock">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-380">
+<p>Study Buddy should start the task editing interaction by asking you the index number of the desired task. Here use "1" (Homework 1) as an example.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-381">
+<p>When you specified the target task, Study Buddy should continue the interaction by prompting you
+with the list of editable information. You can choose any of them via an index number. Here we use "2" (Task name) as an example.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-384">
 <div class="content">
-<img src="images/basic/edit/edit_index.png" alt="edit index" width="600">
+<img src="images/basic/edit/edit_response_index.png" alt="edit response index" width="790">
 </div>
-<div class="title">Figure 16. Reponse to 'edit'</div>
+<div class="title">Figure 15. List of editable fields</div>
 </div>
 </li>
-<li>
-<p>Type the index of the task you want to edit. here use <code>1</code> (Quiz 1) as an example.</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-386">
+<p>After you selected the field to edit, Study Buddy should asks you for the new value. For this
+example, let&#8217;s use "Updated Task" as the new task name.</p>
 </li>
-<li>
-<p>The Study Buddy should respond with:</p>
-<div class="imageblock">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-388">
+<p>Once you specified the updated information and press <kbd>enter</kbd>, the updated record will be
+captured, and the <strong>All Tasks Panel</strong> will update automatically. For this example, the panel
+should update as below.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-392">
 <div class="content">
-<img src="images/basic/edit/edit_response_index.png" alt="edit response index" width="600">
+<img src="images/basic/edit/edit_result.png" alt="edit result" width="790">
 </div>
-<div class="title">Figure 17. List of editable fields</div>
-</div>
-</li>
-<li>
-<p>Type the index of the field you want to edit, here use <code>2</code> (task name) as an example.</p>
-</li>
-<li>
-<p>The Study Buddy should respond with:</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/basic/edit/edit_response_task_name.png" alt="edit response task name" width="600">
-</div>
-<div class="title">Figure 18. Asks for new task name</div>
-</div>
-</li>
-<li>
-<p>Enter new task name, here use <code>new task</code> as an example.</p>
-</li>
-<li>
-<p>The Study Buddy should respond as below with updated field.</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/basic/edit/edit_result.png" alt="edit result" width="600">
-</div>
-<div class="title">Figure 19. Task edited</div>
+<div class="title">Figure 16. Task edited</div>
 </div>
 </li>
 </ol>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_done">4.1.4. Done</h4>
-<div class="paragraph">
-<p>This command completes a task. Key in <code>done</code> &amp; you should get this prompt:</p>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-395">
+<h4 id="_done">4.1.5. Done</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-396">
+<p>This command is for you to mark a task as <strong>Finished</strong>.</p>
 </div>
-<div class="imageblock">
+<div class="exampleblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-398">
 <div class="content">
-<img src="images/basic/done/done_1.png" alt="done 1" width="700">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-399">
+<p><strong>Constraints</strong></p>
 </div>
-<div class="title">Figure 20. Presentation to be marked as Finished</div>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-401">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-401">
+<p>A <strong>Finished</strong> task cannot be marked as <strong>Finished</strong> again.</p>
+</li>
+</ol>
 </div>
-<div class="paragraph">
+</div>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-405">
+<p>To <code>done</code>:</p>
+</div>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-407">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-407">
+<p>Key in <code>done</code> and press <kbd>enter</kbd>, you should get this prompt:</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-409">
+<div class="content">
+<img src="images/basic/done/done_index.png" alt="done index" width="790">
+</div>
+<div class="title">Figure 17. Asks for task index.</div>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-411">
 <p>Now key in the index of the task you wish to complete.</p>
-</div>
-<div class="imageblock">
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-413">
+<p>Press <kbd>enter</kbd> again to confirm your change.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-415">
 <div class="content">
-<img src="images/basic/done/done_2.png" alt="done 2" width="700">
+<img src="images/basic/done/done_confirm.png" alt="done confirm" width="790">
 </div>
-<div class="title">Figure 21. Press <code>Enter</code> to confirm changes</div>
+<div class="title">Figure 18. Asks for confirmation</div>
 </div>
-<div class="paragraph">
-<p>Press <code>Enter</code> again to confirm your change.</p>
-</div>
-<div class="imageblock">
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-417">
+<p>Task set to <code>Finished</code> successfully! Note that the task in your task list has the tag <code>Finished</code>.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-419">
 <div class="content">
-<img src="images/basic/done/done_3.png" alt="done 3" width="700">
+<img src="images/basic/done/done_result.png" alt="done result" width="790">
 </div>
-<div class="title">Figure 22. Presentation 1 is marked as Finished</div>
+<div class="title">Figure 19. Done result</div>
 </div>
-<div class="paragraph">
-<p>Task set to <code>done</code> successfully! Note that the task in your task list has the tag <code>FINISHED</code>.
-You can choose to archive it using the <code>archive</code> command.</p>
+</li>
+</ol>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_clear">4.1.5. Clear</h4>
-<div class="paragraph">
-<p>This commands clears all data in the Study Buddy.</p>
-</div>
-<div class="admonitionblock warning">
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-422">
 <table>
 <tr>
 <td class="icon">
-<div class="title">Warning</div>
+<div class="title">Note</div>
+</td>
+<td class="content">
+You can choose to archive your completed task using the <code>archive</code> command. Check more details
+from <a href="#_archive_unarchive">Section 4.1.9, &#8220;Archive/ Unarchive&#8221;</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-427">
+<h4 id="_clear">4.1.6. Clear</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-428">
+<p>This commands clears all data in the Study Buddy.</p>
+</div>
+<div class="admonitionblock caution has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-431">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Caution</div>
 </td>
 <td class="content">
 Be careful with this command! It will remove any data you may have entered into the Study Buddy and you cannot retrieve it.
@@ -1148,380 +1446,425 @@ Be careful with this command! It will remove any data you may have entered into 
 </tr>
 </table>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-433">
 <p><strong>Example:</strong></p>
 </div>
-<div class="paragraph">
-<p>Say you have Finished a semester and would like to clear everything in your Study Buddy and start over.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-435">
+<p>Say you have finished a semester and would like to clear everything in your Study Buddy and start over.</p>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-437">
 <p>You can always clear everything!</p>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-439">
 <p>To <code>clear</code>:</p>
 </div>
-<div class="olist arabic">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-441">
 <ol class="arabic">
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-441">
 <p>Initiate the command using keyword <code>clear</code></p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-442">
 <p>Study Buddy should respond with:</p>
-<div class="imageblock">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-444">
 <div class="content">
-<img src="images/basic/clear/clear1.png" alt="clear1" width="590">
+<img src="images/basic/clear/clear_confirm.png" alt="clear confirm" width="790">
 </div>
-<div class="title">Figure 23. Response to 'clear'</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-You can enter <code>quit</code> if you wish to go back!
-</td>
-</tr>
-</table>
+<div class="title">Figure 20. Response to 'clear'</div>
 </div>
 </li>
-<li>
-<p>Press <code>enter</code> again to confirm</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-446">
+<p>Type yes and hit <kbd>enter</kbd> again to confirm</p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-447">
 <p>Study Buddy has been cleared completely!</p>
-<div class="imageblock">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-449">
 <div class="content">
-<img src="images/basic/clear/clear2.png" alt="clear2" width="700">
+<img src="images/basic/clear/clear_result.png" alt="clear result" width="790">
 </div>
-<div class="title">Figure 24. View empty Study Buddy</div>
+<div class="title">Figure 21. View empty Study Buddy</div>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-451">
+<p>At step 2, if you choose to type no and hit <kbd>enter</kbd>, this is what you will see.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-453">
+<div class="content">
+<img src="images/basic/clear/clear_no_result.png" alt="clear no result" width="790">
+</div>
+<div class="title">Figure 22. Response to no</div>
 </div>
 </li>
 </ol>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_delete">4.1.6. Delete</h4>
-<div class="paragraph">
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-458">
+<h4 id="_delete">4.1.7. Delete</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-459">
 <p>This commands deletes a task from the existing list, using the index provided by you.</p>
 </div>
-<div class="paragraph">
-<p><strong>Example:</strong></p>
-</div>
-<div class="paragraph">
-<p>After having added a task, you realise that there has been a change and you do not need to do that task anymore.</p>
-</div>
-<div class="paragraph">
-<p>Study Buddy provides you an option to delete that task from the list!</p>
-</div>
-<div class="paragraph">
-<p>To <code>delete</code>:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Initiate the command using keyword <code>delete</code></p>
-</li>
-<li>
-<p>Study Buddy should respond with:</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/basic/delete/deleteResponse2.png" alt="deleteResponse2" width="790">
-</div>
-<div class="title">Figure 25. Response to 'delete'</div>
-</div>
-</li>
-<li>
-<p>Type the index of the task you want to delete.</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/basic/delete/deleteResponse3.png" alt="deleteResponse3" width="500">
-</div>
-<div class="title">Figure 26. Response to delete index 1</div>
-</div>
-</li>
-<li>
-<p>Press <code>enter</code> again to confirm</p>
-</li>
-<li>
-<p>Task has been deleted! You will notice that the task at the index you selected has disappeared from the list of tasks.</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/basic/delete/deleteResponse1.png" alt="deleteResponse1" width="790">
-</div>
-<div class="title">Figure 27. Updated list (without deleted task)</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_delete_duplicates">4.1.7. Delete duplicates</h4>
-<div class="paragraph">
-<p>This commands deletes all duplicated tasks in the list.</p>
-</div>
-<div class="admonitionblock note">
+<div class="admonitionblock caution has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-462">
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<div class="title">Caution</div>
 </td>
 <td class="content">
-A task is considered duplicate when the name, type, module, description, weightage, estimated time cost and deadline are the same. (Status is not checked)
+Once a task is deleted, it cannot be retrieved. Use this command with caution!
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-464">
 <p><strong>Example:</strong></p>
 </div>
-<div class="paragraph">
-<p>After having added a duplicated task, you realise that there is no more need for this duplicate task. Yet you do not want to scroll through the entire list to delete it.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-466">
+<p>After having added a task, you realise that there has been a change and you do not need to do that task anymore.</p>
 </div>
-<div class="paragraph">
-<p>Study Buddy provides you an option to delete all your duplicate tasks from the list!</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-468">
+<p>Study Buddy provides you an option to delete that task from the list!</p>
 </div>
-<div class="paragraph">
-<p>To <code>delete duplicates</code>:</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-470">
+<p>To <code>delete</code>:</p>
 </div>
-<div class="olist arabic">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-472">
 <ol class="arabic">
-<li>
-<p>Initiate the command using keyword <code>delete duplicates</code></p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-472">
+<p>Initiate the command using keyword <code>delete</code></p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-473">
 <p>Study Buddy should respond with:</p>
-<div class="imageblock">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-475">
 <div class="content">
-<img src="images/basic/deleteduplicate/deleteDuplicates1.png" alt="deleteDuplicates1" width="790">
+<img src="images/basic/delete/delete_index.png" alt="delete index" width="790">
 </div>
-<div class="title">Figure 28. Response to 'delete duplicates'</div>
+<div class="title">Figure 23. Response to 'delete'</div>
 </div>
 </li>
-<li>
-<p>Press <code>enter</code> again to confirm</p>
-</li>
-<li>
-<p>Duplicate tasks have been deleted! You will notice that only one copy (most recent) of each task will be left in the list.</p>
-<div class="imageblock">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-477">
+<p>Type the index of the task you want to delete.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-479">
 <div class="content">
-<img src="images/basic/deleteduplicate/deleteDuplicates2.png" alt="deleteDuplicates2" width="790">
+<img src="images/basic/delete/delete_confirm.png" alt="delete confirm" width="790">
 </div>
-<div class="title">Figure 29. Updated list (without duplicate tasks)</div>
+<div class="title">Figure 24. Asks for confirmation</div>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-480">
+<p>Press <kbd>enter</kbd> again to confirm</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-481">
+<p>Task has been deleted! You will notice that the task at the index you selected has disappeared from the list of tasks.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-483">
+<div class="content">
+<img src="images/basic/delete/delete_result.png" alt="delete result" width="790">
+</div>
+<div class="title">Figure 25. Updated All Tasks Panel</div>
 </div>
 </li>
 </ol>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_archive_unarchive">4.1.8. Archive/ Unarchive</h4>
-<div class="paragraph">
-<p>This commands stores the specified task into a separate list.</p>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-488">
+<h4 id="_view_renamed">4.1.8. View renamed</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-489">
+<p>This commands filtered all renamed tasks in the list i.e tasks that have a number appended to their names.</p>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-491">
 <p><strong>Example:</strong></p>
 </div>
-<div class="paragraph">
-<p>After a hard days work, you completed some tasks. You don&#8217;t want them in your to-do list anymore, but you don&#8217;t want to delete them; some of the information in the task card could still be useful.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-493">
+<p>Say you want to go back and edit all the renamed tasks in your list. Yet you do not want to scroll through the entire list to find them.</p>
 </div>
-<div class="paragraph">
-<p>You can always store them in an archive!</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-495">
+<p>Study Buddy provides you an option to view all your renamed tasks in the list!</p>
 </div>
-<div class="paragraph">
-<p>To <code>archive</code>:</p>
+<div class="admonitionblock caution has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-498">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Caution</div>
+</td>
+<td class="content">
+You will still need to navigate to the main list and use that index to perform any index based operations (eg: delete, edit etc)
+</td>
+</tr>
+</table>
 </div>
-<div class="olist arabic">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-500">
+<p>To <code>view renamed</code>:</p>
+</div>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-502">
 <ol class="arabic">
-<li>
-<p>Initiate the command using keyword <code>archive</code></p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-502">
+<p>Initiate the command using keyword <code>view renamed</code></p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-503">
 <p>Study Buddy should respond with:</p>
-<div class="imageblock">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-505">
 <div class="content">
-<img src="images/basic/archive/archive_1.png" alt="archive 1" width="790">
+<img src="images/basic/viewrenamed/viewRenamed1.png" alt="viewRenamed1" width="790">
 </div>
-<div class="title">Figure 30. Response to 'archive'</div>
+<div class="title">Figure 26. Response to 'view renamed'</div>
 </div>
 </li>
-<li>
-<p>Type the index of the task you want to archive.</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/basic/archive/archive_2.png" alt="archive 2" width="790">
-</div>
-<div class="title">Figure 31. Response to task index</div>
-</div>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-507">
+<p>Press <kbd>enter</kbd> again to confirm</p>
 </li>
-<li>
-<p>Press <code>enter</code> again to confirm</p>
-</li>
-<li>
-<p>Task has been archived! You can view all archived task under the <code>StudyBuddy</code> &#8594; <code>Archived Tasks</code> tab.</p>
-<div class="imageblock">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-508">
+<p>Renamed tasks have been filtered!</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-510">
 <div class="content">
-<img src="images/basic/archive/archive_3.png" alt="archive 3" width="790">
+<img src="images/basic/viewrenamed/viewRenamed2.png" alt="viewRenamed2" width="790">
 </div>
-<div class="title">Figure 32. View archived tasks</div>
+<div class="title">Figure 27. Updated list of renamed tasks</div>
 </div>
 </li>
 </ol>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>To <code>unarchive</code> a task, and add it back to the main list, simply follow the same set of commands, but replace the <code>archive</code> keyword with <code>unarchive</code></p>
-</li>
-<li>
-<p>Remember to use the index in the <strong>Archived Task</strong> instead of <strong>All Tasks</strong></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_sort">4.1.9. Sort</h4>
-<div class="paragraph">
-<p><strong>Description</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>This command is for you to reorder the task list in <strong>All Tasks</strong> panel.</p>
-</li>
-<li>
-<p>Currently you can sort tasks by their</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Deadline / Task Start Date</p>
-</li>
-<li>
-<p>Task Name</p>
-</li>
-<li>
-<p>Creation Date &amp; Time</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/basic/sort/beforeSort.png" alt="beforeSort" width="790">
-</div>
-<div class="title">Figure 33. All Task Panel</div>
-</div>
-<div class="paragraph">
-<p><strong>Format</strong></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>You-</strong> <code>sort</code></p>
-</div>
-<div class="paragraph">
-<p><strong>SB -</strong> asks for sorting term and provides the list of available sorting terms</p>
-</div>
-<div class="paragraph">
-<p><strong>You-</strong> <code>INDEX NUMBER OF SORTING TERM</code></p>
-</div>
-<div class="paragraph">
-<p><strong>SB -</strong> asks for your confirmation</p>
-</div>
-<div class="paragraph">
-<p><strong>You-</strong> <code>[enter]</code></p>
-</div>
-<div class="paragraph">
-<p><strong>SB -</strong> Task sorted successfully!</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Example</strong></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>You-</strong> <code>sort</code></p>
-</div>
-<div class="paragraph">
-<p><strong>SB -</strong> Please choose the sort keyword:<br>
-&#160;&#160;&#160;&#160;1. Deadline / Task Start Date<br>
-&#160;&#160;&#160;&#160;2. Task Name<br>
-&#160;&#160;&#160;&#160;3. Creation Date &amp; Time</p>
-</div>
-<div class="paragraph">
-<p><strong>You-</strong> <code>1</code></p>
-</div>
-<div class="paragraph">
-<p><strong>SB -</strong> The task  will be sorted by Deadline / Task Start Date.<br>
-&#160;&#160;&#160;&#160;Please click enter again to check the sorted list.</p>
-</div>
-<div class="paragraph">
-<p><strong>You-</strong> <code>[enter]</code></p>
-</div>
-<div class="paragraph">
-<p><strong>SB -</strong> Task sorted successfully!</p>
-</div>
-</div>
-</div>
-<div class="admonitionblock tip">
+<div class="admonitionblock tip has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-513">
 <table>
 <tr>
 <td class="icon">
 <div class="title">Tip</div>
 </td>
 <td class="content">
-The <code>All Tasks Panel</code> will update automatically after successfully sort the tasks.
+In order to navigate back to the main list, use <a href="#LIST">Section 4.1.12, &#8220;List&#8221;</a>
 </td>
 </tr>
 </table>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_find">4.1.10. Find</h4>
-<div class="paragraph">
-<p>Finds tasks whose names contain any of the given keywords.</p>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-516">
+<h4 id="_archive_unarchive">4.1.9. Archive/ Unarchive</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-517">
+<p>This commands stores the specified task into a separate list.</p>
 </div>
-<div class="paragraph">
-<p>To <code>find</code> a task:</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-519">
+<p><strong>Example:</strong></p>
 </div>
-<div class="olist arabic">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-521">
+<p>After a hard days work, you completed some tasks. You don&#8217;t want them in your to-do list anymore, but you don&#8217;t want to delete them; some of the information in the task card could still be useful.</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-523">
+<p>You can always store them in an archive!</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-525">
+<p>To <code>archive</code>:</p>
+</div>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-527">
 <ol class="arabic">
-<li>
-<p>Initiate the command with <code>find</code>.</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-527">
+<p>Initiate the command using keyword <code>archive</code></p>
 </li>
-<li>
-<p>Enter the keyword that you want to search for.</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-528">
+<p>Study Buddy should respond with:</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-530">
+<div class="content">
+<img src="images/basic/archive/archive_index.png" alt="archive index" width="790">
+</div>
+<div class="title">Figure 28. Response to 'archive'</div>
+</div>
 </li>
-<li>
-<p>You have found a list of tasks that contain your keyword!</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-531">
+<p>Type the index of the task you want to archive, here use "1" (Leadership Presentation) as an example.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-532">
+<p>Study Buddy will ask for your confirmation before archive the target task.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-534">
+<div class="content">
+<img src="images/basic/archive/archive_confirm.png" alt="archive confirm" width="790">
+</div>
+<div class="title">Figure 29. Asks for confirmation</div>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-535">
+<p>Press <kbd>enter</kbd> again to confirm, the task will be archived and the user interface will update.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-537">
+<div class="content">
+<img src="images/basic/archive/archive_result.png" alt="archive result" width="790">
+</div>
+<div class="title">Figure 30. Task is archived successfully</div>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-539">
+<p>You can view the archived task under the <code>StudyBuddy</code> &#8594; <code>Archived Tasks</code> tab.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-541">
+<div class="content">
+<img src="images/basic/archive/check_archive.png" alt="check archive" width="790">
+</div>
+<div class="title">Figure 31. Navigates to archived tasks</div>
+</div>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-543">
+<div class="content">
+<img src="images/basic/archive/archive_list.png" alt="archive list" width="790">
+</div>
+<div class="title">Figure 32. Archived tasks</div>
+</div>
 </li>
 </ol>
 </div>
-<div class="sidebarblock">
+<div class="sidebarblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-545">
 <div class="content">
-<div class="ulist">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-546">
 <ul>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-546">
+<p>To <code>unarchive</code> a task, and add it back to the main list, simply follow the same set of commands, but replace the <code>archive</code> keyword with <code>unarchive</code></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-547">
+<p>Remember to use the index in the <strong>Archived Task</strong> instead of <strong>All Tasks</strong></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-551">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+If you attempt to unarchive a task that already exists in the main list, the name will automatically be appended with a number in order to avoid duplication.
+This is done in the same way as <a href="#_add_duplicates">Section 4.1.3, &#8220;Add duplicates&#8221;</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-556">
+<h4 id="Sort">4.1.10. Sort</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-558">
+<p>This command is for you to reorder the task list in <strong>All Tasks Panel</strong>.</p>
+</div>
+<div class="exampleblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-559">
+<div class="content">
+<div class="dlist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-560">
+<dl>
+<dt class="hdlist1">Currently you can sort tasks by their</dt>
+<dd>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-561">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-561">
+<p>Deadline / Task Start Date</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-562">
+<p>Task Name</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-563">
+<p>Creation Date &amp; Time</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-565">
+<p><strong>Example</strong></p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-567">
+<p>When you want to sort all your unarchived tasks by their deadline or start date,
+you may utilize this command to achieve the desired order.</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-570">
+<p>To <code>sort</code>:</p>
+</div>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-572">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-572">
+<p>Initiate the command using keyword <code>sort</code> + <kbd>enter</kbd>.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-573">
+<p>Study Buddy should provide the list of sorting options as below，
+and you can use the index number to select the desired sort.
+Here we use <code>1</code> (Deadline / Task Start Date) as an example.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-577">
+<div class="content">
+<img src="images/basic/sort/sort_term.png" alt="sort term" width="790">
+</div>
+<div class="title">Figure 33. Sorting options and the order of the tasks before sort</div>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-578">
+<p>After the selection, Study Buddy should ask for your confirmation to perform the reorder.
+You can press <kbd>enter</kbd> again to confirm.
+Meanwhile, the tasks in <strong>All Tasks Panel</strong> will be sorted accordingly.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-582">
+<div class="content">
+<img src="images/basic/sort/sort_result.png" alt="sort result" width="790">
+</div>
+<div class="title">Figure 34. The order of the tasks after sort</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock tip has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-585">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+The tasks in <strong>All Tasks Panel</strong> will not change back to the original order by itself.<br>
+You can use <code>sort</code> &#8594; <code>Creation Date &amp; Time</code> to do so.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-590">
+<h4 id="Find">4.1.11. Find</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-592">
+<p>Finds tasks whose names contain any of the given keywords.</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-594">
+<p>To <code>find</code> a task:</p>
+</div>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-596">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-596">
+<p>Initiate the command with <code>find</code>.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-598">
+<p>Study Buddy should respond with:</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-600">
+<div class="content">
+<img src="images/basic/find/find_keyword.png" alt="find keyword" width="790">
+</div>
+<div class="title">Figure 35. Response to 'find'</div>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-602">
+<p>Enter the keyword that you want to search for, e.g. quiz, and press <kbd>enter</kbd> to confirm sorting.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-603">
+<p>You have found a list of tasks that contain your keyword!</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-605">
+<div class="content">
+<img src="images/basic/find/find_result.png" alt="find result" width="790">
+</div>
+<div class="title">Figure 36. Find result</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="sidebarblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-607">
+<div class="content">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-608">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-608">
 <p>The search is case insensitive. e.g <code>homework</code> will match <code>Homework</code></p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-609">
 <p>The order of the keywords does not matter. e.g. <code>CS Homework</code> will match <code>Homework CS</code></p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-610">
 <p>Only the name is searched.</p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-611">
 <p>Substrings will be matched e.g. <code>work</code> will match <code>Homework</code></p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-612">
 <p>Tasks matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>CS Homework</code> can return <code>CS Quiz</code>,
 <code>Reflection Homework</code>.</p>
 </li>
@@ -1529,75 +1872,152 @@ The <code>All Tasks Panel</code> will update automatically after successfully so
 </div>
 </div>
 </div>
-<div class="paragraph">
-<p><strong>Examples</strong></p>
+<div class="admonitionblock important has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-617">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+To navigate back to the always on display list of tasks, you can use the <a href="#LIST">Section 4.1.12, &#8220;List&#8221;</a> function.
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph">
-<p><strong>You-</strong> <code>find</code><br></p>
 </div>
-<div class="paragraph">
-<p>S - Please type in a keyword that you want to search for.</p>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-620">
+<h4 id="LIST">4.1.12. List</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-622">
+<p>Oh no! How do I get the original list back after using <code>find</code>? Calm down and use the <code>list</code> command!
+The <code>list</code> command lists all the tasks that have been created in StudyBuddy.</p>
 </div>
-<div class="paragraph">
-<p><strong>You-</strong> <code>quiz</code></p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-625">
+<p>To use the <code>list</code> command:</p>
 </div>
-<div class="paragraph">
-<p>S - Returns <code>Weekly Quiz</code> and <code>Quiz 3</code></p>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-627">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-627">
+<p>Initiate the command with <code>list</code>.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-629">
+<p>Done! All your tasks are listed once again!</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-631">
+<div class="content">
+<img src="images/basic/list/list_result.png" alt="list result" width="790">
 </div>
-<div class="admonitionblock note">
+<div class="title">Figure 37. List result</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-636">
+<h4 id="Filter">4.1.13. Filter</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-637">
+<p>This commands helps you filter your tasks by category. The two categories available are status and type.</p>
+</div>
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-640">
 <table>
 <tr>
 <td class="icon">
 <div class="title">Note</div>
 </td>
 <td class="content">
-To navigate back to the always on display list of tasks, you can use the <a href="#_list">Section 4.1.11, &#8220;List&#8221;</a> function.
+Note that Due Soon tasks are already filtered for you. Refer to <a href="#_due_soon_tasks">Section 4.3, &#8220;Due Soon Tasks&#8221;</a>
 </td>
 </tr>
 </table>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_list">4.1.11. List</h4>
-<div class="paragraph">
-<p><strong>Format:</strong></p>
-</div>
-<div class="paragraph">
-<p><strong>You-</strong> <code>list</code></p>
-</div>
-<div class="paragraph">
-<p><strong>SB -</strong> done!</p>
-</div>
-<div class="paragraph">
-<p><strong>Description</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>This function allows you to view a list of all your tasks.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Example:</strong></p>
-</div>
-<div class="paragraph">
-<p><strong>You-</strong> <code>list</code></p>
-</div>
-<div class="paragraph">
-<p><strong>SB -</strong> Here is the complete list of tasks:</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_refresh">4.1.12. Refresh</h4>
-<div class="paragraph">
-<p>This commands refreshes the list of tasks Due Soon as well as status tags.</p>
-</div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-643">
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<div class="title">Tip</div>
+</td>
+<td class="content">
+To navigate back to your main list, check out <a href="#LIST">Section 4.1.12, &#8220;List&#8221;</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-645">
+<p><strong>Example:</strong></p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-647">
+<p>Say you want to view a list of all your pending tasks.</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-649">
+<p>Study Buddy provides an option to filter your list!</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-651">
+<p>To <code>filter</code>:</p>
+</div>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-653">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-653">
+<p>Initiate the command using keyword <code>filter</code></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-654">
+<p>Study Buddy should respond with:</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-656">
+<div class="content">
+<img src="images/basic/filter/filter_term.png" alt="filter term" width="790">
+</div>
+<div class="title">Figure 38. Response to 'filter'</div>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-658">
+<p>Enter your choice. If you enter 1, you have chosen to filter by status.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-660">
+<div class="content">
+<img src="images/basic/filter/filter_status.png" alt="filter status" width="790">
+</div>
+<div class="title">Figure 39. Response to filter by 'status'</div>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-662">
+<p>You can then proceed to choose what status type you would like to filter by. Here we have filtered by "Pending" as an example.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-664">
+<div class="content">
+<img src="images/basic/filter/filter_status_result.png" alt="filter status result" width="790">
+</div>
+<div class="title">Figure 40. Response to filter by status tag 'Pending'</div>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-666">
+<p>At point 3 above, if you enter 2 instead, you have chosen to filter by task types.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-668">
+<div class="content">
+<img src="images/basic/filter/filter_type.png" alt="filter type" width="790">
+</div>
+<div class="title">Figure 41. Response to filter by task 'type'</div>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-670">
+<p>Once again, imagine your study buddy currently looks like Figure 30 above. (at point 4)</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-672">
+<p>You can then proceed to choose what task type you would like to filter by. Here we have filtered by "assignment" as an example.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-674">
+<div class="content">
+<img src="images/basic/filter/filter_type_result.png" alt="filter type result" width="790">
+</div>
+<div class="title">Figure 42. Response to filter by task type 'assignment'</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-680">
+<h4 id="Refresh">4.1.14. Refresh</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-681">
+<p>This commands refreshes the list of tasks Due Soon as well as status tags.</p>
+</div>
+<div class="admonitionblock important has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-684">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
 </td>
 <td class="content">
 Due soon list shows tasks due within the next week. Details are in <a href="#_due_soon_tasks">Section 4.3, &#8220;Due Soon Tasks&#8221;</a>
@@ -1605,201 +2025,215 @@ Due soon list shows tasks due within the next week. Details are in <a href="#_du
 </tr>
 </table>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-686">
 <table>
 <tr>
 <td class="icon">
 <div class="title">Note</div>
 </td>
 <td class="content">
-Status tags include information on the tasks' status. Details are in <a href="#Status Tags">[Status Tags]</a>
+Status tags include information on the tasks' status, eg: pending, overdue etc.
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-688">
 <p><strong>Example:</strong></p>
 </div>
-<div class="paragraph">
-<p>Say you left Study Buddy open overnight because you fell asleep studying. When you wake up, you notice that the time left for the deadline on the Due Soon tasks is not accurate.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-690">
+<p>Say you left Study Buddy open for a few days. When you come back, you notice that the time left for the deadline on the Due Soon tasks is not accurate.</p>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-692">
 <p>You can refresh them!</p>
 </div>
-<div class="paragraph">
+<div class="admonitionblock tip has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-695">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Anytime you notice an inconsistency in time left/status, use this command!
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-697">
 <p>To <code>refresh</code>:</p>
 </div>
-<div class="olist arabic">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-699">
 <ol class="arabic">
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-699">
 <p>Say this is what Study Buddy looks like.</p>
-<div class="imageblock">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-701">
 <div class="content">
-<img src="images/basic/refresh/refresh1.png" alt="refresh1" width="790">
+<img src="images/basic/refresh/refresh_before.png" alt="refresh before" width="790">
 </div>
-<div class="title">Figure 34. Current state (needs to be refreshed)</div>
+<div class="title">Figure 43. Current state (needs to be refreshed)</div>
 </div>
-<div class="paragraph">
-<p>Suppose you notice that the task "Submit UG" is not due "now" anymore because some time has past since the deadline.</p>
-</div>
-</li>
-<li>
-<p>Initiate the refresh command using keyword <code>refresh</code></p>
-</li>
-<li>
-<p>Study Buddy should respond with:</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/basic/refresh/refresh2.png" alt="refresh2" width="790">
-</div>
-<div class="title">Figure 35. Response to 'refresh'</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-703">
+<p>Suppose you notice that the task "Homework 1" is still in pending status.</p>
 </div>
 </li>
-<li>
-<p>Press <code>enter</code> again to confirm</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-705">
+<p>Initiate the refresh command using keyword <code>refresh</code> and press <kbd>enter</kbd> to confirm the action.</p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-706">
 <p>Tasks have been refreshed!</p>
-<div class="imageblock">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-708">
 <div class="content">
-<img src="images/basic/refresh/refresh3.png" alt="refresh3" width="790">
+<img src="images/basic/refresh/refresh_result.png" alt="refresh result" width="790">
 </div>
-<div class="title">Figure 36. View refreshed Study Buddy</div>
+<div class="title">Figure 44. Refreshed Study Buddy</div>
 </div>
-<div class="paragraph">
-<p>You will notice that the Overdue task has now moved out of the Due Soon list and has the updated status tag "Overdue".</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-710">
+<p>You will notice that the overdue task has now moved out of the due soon list and has the updated status tag "overdue".</p>
 </div>
 </li>
 </ol>
 </div>
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-714">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+After 'refresh', the tasks in <strong>All Tasks Panel</strong> will be sorted by their deadline or start date.
+</td>
+</tr>
+</table>
 </div>
-<div class="sect3">
-<h4 id="_exit">4.1.13. Exit</h4>
-<div class="paragraph">
+</div>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-718">
+<h4 id="_exit">4.1.15. Exit</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-719">
 <p>This command exits from Study Buddy.</p>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-722">
 <table>
 <tr>
 <td class="icon">
 <div class="title">Note</div>
 </td>
 <td class="content">
-All your data will be saved and reloaded when you open the application later! You can find details about this in <a href="#Saving the data">[Saving the data]</a>
+All your data will be saved and reloaded when you open the application later! You can find details about this in <a href="#_saving_data">Section 4.2, &#8220;Saving Data&#8221;</a>
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-724">
 <p><strong>Example:</strong></p>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-726">
 <p>After working all day, you would like to close the application and have a good night&#8217;s sleep.</p>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-728">
 <p>You can always exit the application!</p>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-730">
 <p>To <code>exit</code>:</p>
 </div>
-<div class="olist arabic">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-732">
 <ol class="arabic">
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-732">
 <p>Initiate the command using keyword <code>bye</code></p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-733">
 <p>Study Buddy should respond with:</p>
-<div class="imageblock">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-735">
 <div class="content">
-<img src="images/basic/exit/exit1.png" alt="exit1" width="790">
+<img src="images/basic/exit/exit_confirm.png" alt="exit confirm" width="790">
 </div>
-<div class="title">Figure 37. Response to 'bye'</div>
+<div class="title">Figure 45. Response to 'bye'</div>
 </div>
 </li>
-<li>
-<p>Type 'yes' if you want to exit and anything else if you do not wish to exit.</p>
-<div class="imageblock">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-736">
+<p>Type 'yes' and press <kbd>enter</kbd> to exit, the Study Buddy window will close automatically.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-737">
+<p>If instead, you type 'yes' and press <kbd>enter</kbd>, this is what you will see,</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-739">
 <div class="content">
-<img src="images/basic/exit/exit2.png" alt="exit2" width="790">
+<img src="images/basic/exit/exit_no.png" alt="exit no" width="790">
 </div>
-<div class="title">Figure 38. Response to any command other than 'yes'</div>
-</div>
-<div class="paragraph">
-<p>In response to yes, the application should simply close.</p>
+<div class="title">Figure 46. Response to 'no'</div>
 </div>
 </li>
 </ol>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-742">
 <table>
 <tr>
 <td class="icon">
 <div class="title">Note</div>
 </td>
 <td class="content">
-Any command other than <code>yes</code> (including <code>enter</code>) will be considered as a quit from the exit.
+You can still use <code>quit</code> to go back.
 </td>
 </tr>
 </table>
 </div>
 </div>
 </div>
-<div class="sect2">
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-747">
 <h3 id="_saving_data">4.2. Saving Data</h3>
-<div class="paragraph">
-<p>Study Buddy data is automatically saved in the hard disk after any command that changes the data.
-+ There is no need to save manually.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-749">
+<p>Study Buddy data is automatically saved in the hard disk after any command that changes the data.</p>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-751">
+<p>There is no need to save manually.</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-753">
 <p>When the application is closed and re-opened, you should be able to see all the data you have added previously!</p>
 </div>
 </div>
-<div class="sect2">
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-758">
 <h3 id="_due_soon_tasks">4.3. Due Soon Tasks</h3>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-760">
 <p>The Due Soon task list is always on display in your application under <code>Study Buddy</code> &#8594; <code>All tasks</code></p>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-762">
 <p>It provides the following functionality:</p>
 </div>
-<div class="olist arabic">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-764">
 <ol class="arabic">
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-764">
 <p>It displays your tasks that are due within the next week. (uses deadline you have provided)</p>
-<div class="imageblock text-left">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-766">
 <div class="content">
-<img src="images/duesoon/duesoon1.png" alt="duesoon1" width="790">
+<img src="images/duesoon/due_soon.png" alt="due soon" width="790">
 </div>
-<div class="title">Figure 39. Due Soon List</div>
+<div class="title">Figure 47. Due Soon List</div>
 </div>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-768">
 <p>It automatically sorts these tasks in an ascending order of deadlines.</p>
-<div class="imageblock text-left">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-770">
 <div class="content">
-<img src="images/duesoon/duesoon3.png" alt="duesoon3" width="790">
+<img src="images/duesoon/due_soon_sort.png" alt="due soon sort" width="790">
 </div>
-<div class="title">Figure 40. Due Soon List</div>
+<div class="title">Figure 48. Due Soon List</div>
 </div>
 </li>
-<li>
-<p>It automatically adds applicable tasks when you make changes to your main list, such as add (<a href="#_add">Section 4.1.2, &#8220;Add&#8221;</a>) or delete (<a href="#_delete">Section 4.1.6, &#8220;Delete&#8221;</a>).</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-772">
+<p>It automatically adds applicable tasks when you make changes to your main list, such as add (<a href="#_add">Section 4.1.2, &#8220;Add&#8221;</a>) or delete (<a href="#_delete">Section 4.1.7, &#8220;Delete&#8221;</a>).</p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-774">
 <p>It displays a tag with the time left to the deadline.</p>
-<div class="imageblock text-left">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-776">
 <div class="content">
-<img src="images/duesoon/duesoon2.png" alt="duesoon2" width="790">
+<img src="images/duesoon/due_soon_tag.png" alt="due soon tag" width="790">
 </div>
-<div class="title">Figure 41. Due Soon List</div>
+<div class="title">Figure 49. Due Soon List</div>
 </div>
 </li>
-<li>
-<p>It provides a <a href="#_refresh">Section 4.1.12, &#8220;Refresh&#8221;</a> function that allows you to refresh time/state of this list if needed.</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-778">
+<p>It provides a <a href="#Refresh">Section 4.1.14, &#8220;Refresh&#8221;</a> function that allows you to refresh time/state of this list if needed.</p>
 </li>
 </ol>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-781">
 <table>
 <tr>
 <td class="icon">
@@ -1811,389 +2245,689 @@ Time left is never displayed in days and minutes. Hence if the current time is 9
 </tr>
 </table>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-784">
 <table>
 <tr>
 <td class="icon">
 <div class="title">Note</div>
 </td>
 <td class="content">
-Due soon list will never display Finished tasks. If you unarchive a completed task, it will not appear in the Due Soon list.
+Due soon list will never display finished tasks. eg: if you unarchive a completed task, it will not appear in the Due Soon list.
 </td>
 </tr>
 </table>
 </div>
 </div>
-<div class="sect2">
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-787">
 <h3 id="_modules">4.4. Modules</h3>
-<div class="paragraph">
-<p>The Modules tab is an easy way for students to organise their task, homework and deadlines into various modules.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-788">
+<p>The modules page organises your tasks into various modules.
+By default (i.e, when there is no module created), the modules page shows the following:</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/module/module_1.png" alt="module 1" width="790">
-</div>
-<div class="title">Figure 42. <code>Modules</code> in the menu bar</div>
-</div>
-<div class="paragraph">
-<p>By default, the Modules tab shows the following:</p>
-</div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><strong>Overview</strong>. This tab shows all the modules you will be taking for this semester.</p>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-791">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-791">
+<p><strong>Overview</strong>. This tab shows all the modules you created.</p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-793">
 <p><strong>No Module Allocated</strong>. This tab shows the list of tasks that has not yet been allocated to any module. By default,
 all tasks will show up here if you have not allocated any tasks to the modules.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-796">
+<div class="content">
+<img src="images/module/module_show.png" alt="module show" width="790">
+</div>
+<div class="title">Figure 50. modules page</div>
+</div>
 </li>
 </ol>
 </div>
-<div class="sect3">
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-798">
 <h4 id="_navigation">4.4.1. Navigation</h4>
-<div class="paragraph">
-<p>To navigate to the modules page, click on <code>Modules</code> in the menu bar.</p>
-</div>
-<div class="imageblock">
+<div class="dlist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-800">
+<dl>
+<dt class="hdlist1">Navigate to modules page</dt>
+<dd>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-801">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-801">
+<p>To navigate to the modules page, click on <code>Modules</code> &#8594; <code>Show Modules</code> in the menu bar or press <kbd>F1</kbd> in your keyboard.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-803">
 <div class="content">
-<img src="images/module/module_2.png" alt="module 2" width="790">
+<img src="images/module/modules_show_module.png" alt="modules show module" width="790">
 </div>
+<div class="title">Figure 51. Modules dropdown menu</div>
 </div>
-<div class="paragraph">
-<p>Then click on <code>Show Modules</code>. The module page should show up.</p>
+</li>
+</ol>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/module/module_3.png" alt="module 3" width="790">
-</div>
-</div>
-<div class="paragraph">
+</dd>
+<dt class="hdlist1">Navigation in modules page</dt>
+<dd>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-806">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-806">
 <p>The clicking on the leftmost tab shows the <code><strong>Overview</strong></code> of all your modules. it displays the module&#8217;s name and their code.</p>
-</div>
-<div class="imageblock">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-808">
 <div class="content">
-<img src="images/module/module_4.png" alt="module 4" width="790">
+<img src="images/module/module_tab_1.png" alt="module tab 1" width="790">
 </div>
+<div class="title">Figure 52. Module tab <code>Overview</code></div>
 </div>
-<div class="paragraph">
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-810">
 <p>The rightmost tab shows the list of task that has not been allocated to any modules.</p>
-</div>
-<div class="imageblock">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-812">
 <div class="content">
-<img src="images/module/module_5.png" alt="module 5" width="790">
+<img src="images/module/module_tab_3.png" alt="module tab 3" width="790">
 </div>
+<div class="title">Figure 53. Module tab <code>No Module Allocated</code></div>
 </div>
-<div class="paragraph">
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-814">
 <p>The tabs in the middle are modules that you have added to the modules page.</p>
-</div>
-<div class="imageblock">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-816">
 <div class="content">
-<img src="images/module/module_6.png" alt="module 6" width="790">
+<img src="images/module/module_tab_2.png" alt="module tab 2" width="790">
+</div>
+<div class="title">Figure 54. Module tab available modules</div>
+</div>
+</li>
+</ol>
+</div>
+</dd>
+</dl>
 </div>
 </div>
-</div>
-<div class="sect3">
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-818">
 <h4 id="_functions">4.4.2. Functions</h4>
-
+<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-819">
+<h5 id="_create_modules">Create Modules</h5>
+<div class="admonitionblock tip has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-821">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Study Buddy provides tow approaches for user to execute <code>create module</code> and <code>edit module</code> actions.
+</td>
+</tr>
+</table>
 </div>
-<div class="sect3">
-<h4 id="_create_modules">4.4.3. Create Modules</h4>
-<div class="paragraph">
-<p>To create a module, click on <code>Modules</code> in the menu bar.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-823">
+<p>To start the interaction of creating a module, click on <code>Modules</code>&#8594; <code>Create</code> in the menu bar.<br>
+Alternatively, you can key in <code>create mods</code> into the input line.</p>
 </div>
-<div class="paragraph">
-<p>Alternatively, you can key in <code>create mods</code> into the input line.</p>
-</div>
-<div class="imageblock">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-826">
 <div class="content">
-<img src="images/module/module_7.png" alt="module 7" width="500">
+<img src="images/module/module_nav_create.png" alt="module nav create" width="790">
 </div>
-<div class="title">Figure 43. click on <code>Create</code></div>
+<div class="title">Figure 55. Entry of module creation</div>
 </div>
-<div class="paragraph">
-<p>Click on <code>Create</code>. A prompt will show up at the bottom of the screen.
-Key in the name of your module. The name of this module cannot be the same as your existing modules.</p>
-</div>
-<div class="imageblock">
+<div class="exampleblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-828">
 <div class="content">
-<img src="images/module/module_8.png" alt="module 8" width="790">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-829">
+<p><strong>Constraints</strong></p>
 </div>
-<div class="title">Figure 44. setting module name as 'New Module'</div>
-</div>
-<div class="paragraph">
-<p>Now key in your Module code. Your Module code should have a 2-3 letter prefix, a 4-digit number, followed
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-831">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-831">
+<p><strong>Module Name</strong><br>
+The name of this module cannot be the same as any existing modules.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-834">
+<p><strong>Module Code Format</strong><br></p>
+<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-835">
+<ol class="loweralpha" type="a">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-835">
+<p>The module code also need to be unique.<br></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-836">
+<p>The module code should have a 2-3 letter prefix, a 4-digit number, followed
 by a single postfix.</p>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-839">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-839">
+<p><strong>Correct Module Code Examples</strong><br>
+LSM1303<br>
+CS2040C<br>
+IS1103<br>
+MA1521</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-845">
+<p><strong>Incorrect Module Code Examples</strong><br>
+CSSS1234    - Prefix is too long<br>
+C0001       - Prefix is too short<br>
+ZZ12345     - number is more than 4 digits<br>
+A1111XX     - Postfix is too long</p>
+</li>
+</ul>
 </div>
-<div class="listingblock">
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-853">
+<p>To <code>Create Module</code>:</p>
+</div>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-855">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-855">
+<p>Click on <code>Module</code> &#8594; <code>Create</code> or key in <code>create mods</code>. A prompt will show up at the bottom of the screen.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-857">
 <div class="content">
-<pre class="CodeRay highlight"><code>Correct Module Codes:
-LSM1303
-CS2040C
-IS1103
-MA1521
-
-Incorrect Module Codes:
-CSSS1234    - Prefix is too long
-C0001       - Prefix is too short
-ZZ12345     - number is more than 4 digits
-A1111XX     - Postfix is too long</code></pre>
+<img src="images/module/module_create_name.png" alt="module create name" width="790">
 </div>
+<div class="title">Figure 56. Asks for module name</div>
 </div>
-<div class="imageblock">
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-859">
+<p>Key in the name of your module.Here we use "New Module" as an example.
+Then Study Buddy will ask for the module code.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-862">
 <div class="content">
-<img src="images/module/module_9.png" alt="module 9" width="790">
+<img src="images/module/module_create_code.png" alt="module create code" width="790">
 </div>
-<div class="title">Figure 45. Keyed in CSS1234 as module code</div>
+<div class="title">Figure 57. Asks for module code</div>
 </div>
-<div class="imageblock">
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-864">
+<p>Here we use "CSS1234" as an example.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-866">
 <div class="content">
-<img src="images/module/module_10.png" alt="module 10" width="790">
+<img src="images/module/module_create_confirm.png" alt="module create confirm" width="790">
 </div>
+<div class="title">Figure 58. Asks for confirmation</div>
 </div>
-<div class="paragraph">
-<p>Press <code>Enter</code> one more time to confirm.</p>
-</div>
-<div class="imageblock">
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-868">
+<p>Press <kbd>enter</kbd> to confirm, and the module page will update accordingly.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-870">
 <div class="content">
-<img src="images/module/module_11.png" alt="module 11" width="790">
+<img src="images/module/module_create_result.png" alt="module create result" width="790">
 </div>
-<div class="title">Figure 46. New Module with code CSS1234 created.</div>
+<div class="title">Figure 59. New Module with code CSS1234 created.</div>
 </div>
-<div class="paragraph">
+</li>
+</ol>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-872">
 <p>Congratulations, you have added a module to your modules page!</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_edit_modules">4.4.4. Edit Modules</h4>
-<div class="paragraph">
-<p>To create a module, click on <code>Modules</code> in the menu bar.</p>
 </div>
-<div class="paragraph">
-<p>Alternatively, you can key in <code>edit mods</code> into the input line.</p>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-875">
+<h4 id="_edit_modules">4.4.3. Edit Modules</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-877">
+<p>To start the interaction of editing a module, click on <code>Modules</code>&#8594; <code>Edit</code> in the menu bar.<br>
+Alternatively, you can key in <code>edit mods</code> into the input line.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-880">
 <div class="content">
-<img src="images/module/module_12.png" alt="module 12" width="500">
+<img src="images/module/module_nav_edit.png" alt="module nav edit" width="790">
 </div>
+<div class="title">Figure 60. Entry of module edition</div>
 </div>
-<div class="paragraph">
-<p>Click on <code>Edit</code>. A prompt will show up at the bottom of the screen.
-Key in the code of the module that you want to edit.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-882">
+<p>Study Buddy provides three module edition options.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/module/module_13.png" alt="module 13" width="790" height=""">
-</div>
-<div class="title">Figure 47. Changing module with code  BA1001</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/module/module_14.png" alt="module 14" width="790">
-</div>
-<div class="title">Figure 48. Keyed in BA1001</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/module/module_15.png" alt="module 15" width="790">
-</div>
-<div class="title">Figure 49. Key in 1, 2 or 3 depending on which option you prefer</div>
-</div>
-<div class="paragraph">
-<p>Now you have 3 options. You can choose to:</p>
-</div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
+<div class="dlist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-884">
+<dl>
+<dt class="hdlist1">Edit options</dt>
+<dd>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-885">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-885">
 <p>Change Module name.</p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-886">
 <p>Change Module code.</p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-887">
 <p>Delete Module.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="exampleblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-889">
+<div class="content">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-890">
+<p><strong>Constraints:</strong></p>
+</div>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-892">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-892">
+<p>When choosing the module to edit, you need to provide a valid and existed module code.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-893">
+<p>When entering the value of new module name or new module code, you need to provide a different valid value.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-894">
+<p>The above "valid" judgment follows the same constraints as <a href="#_create_modules">Section 4.4.2.1, &#8220;Create Modules&#8221;</a>.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
+</div>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-897">
+<p>To <code>Edit Module</code>:</p>
+</div>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-899">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-899">
+<p>Click on <code>Module</code> &#8594; <code>Edit</code> key in edit mods.
+A prompt will show up to ask the module code of target module.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-902">
+<div class="content">
+<img src="images/module/module_edit_code.png" alt="module edit code" width="790">
+</div>
+<div class="title">Figure 61. Asks for module mode</div>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-904">
+<p>Key in the code of the module that you want to edit. Here we use "CSS1234" as an example.
+Then Study Buddy will ask for the edit option.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-907">
+<div class="content">
+<img src="images/module/module_edit_option.png" alt="module edit option" width="790">
+</div>
+<div class="title">Figure 62. Asks for edit option</div>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-909">
 <p>Key in the index of your option.</p>
+<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-911">
+<ol class="loweralpha" type="a">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-911">
+<p>"1" &#8594; Change Module Name</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-913">
+<p>Key in your new module name and press <kbd>enter</kbd> to confirm the edition. Here we use "Edited Module Name" as an example.<br>
+The module page will update accordingly.</p>
 </div>
-<div class="sect4">
-<h5 id="_a_change_module_name">a) Change Module Name</h5>
-<div class="imageblock">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-916">
 <div class="content">
-<img src="images/module/module_16.png" alt="module 16" width="790">
+<img src="images/module/module_edit_name_result.png" alt="module edit name result" width="790">
 </div>
+<div class="title">Figure 63. Module name edition result</div>
 </div>
-<div class="paragraph">
-<p>Now key in your new module name.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-918">
+<p>"2" &#8594; Change Module Code</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-920">
+<p>Key in your new module code and press <kbd>enter</kbd> to confirm the edition. Here we use "LY3000" as an example.<br>
+The module page will update accordingly.</p>
 </div>
-<div class="imageblock">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-923">
 <div class="content">
-<img src="images/module/module_17.png" alt="module 17" width="790">
+<img src="images/module/module_edit_code_result.png" alt="module edit code result" width="790">
 </div>
-<div class="title">Figure 50. Module BA1001&#8217;s name has changed from 'CS' to 'New Module Name'</div>
+<div class="title">Figure 64. Module code edition result</div>
 </div>
-<div class="paragraph">
-<p>Module name changed!</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_b_change_module_code">b) Change Module Code</h5>
-<div class="imageblock">
-<div class="content">
-<img src="images/module/module_18.png" alt="module 18" width="790">
-</div>
-</div>
-<div class="paragraph">
-<p>Now key in your new module code. Make sure it follows the correct format
-as written in 3.7.3.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/module/module_19.png" alt="module 19" width="790">
-</div>
-<div class="title">Figure 51. Module code BA1001 has changed to CS3230</div>
-</div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-925">
 <p>Module code changed!</p>
 </div>
-</div>
-<div class="sect4">
-<h5 id="_c_delete_module">c) Delete Module</h5>
-<div class="imageblock">
-<div class="content">
-<img src="images/module/module_20.png" alt="module 20" width="790">
-</div>
-</div>
-<div class="paragraph">
-<p>Press <code>Enter</code> again to confirmed.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/module/module_21.png" alt="module 21" width="790">
-</div>
-<div class="title">Figure 52. deleted BA1001</div>
-</div>
-<div class="paragraph">
-<p>Module deleted! All existing task in this module will be moved to <code>No Module Allocated</code> tab.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_statistics">4.5. Statistics</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Purpose</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>The Statistics page provides summary of tasks' different aspects, such as:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Task Status</p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-927">
+<p>"3" &#8594; Delete Module</p>
+<div class="admonitionblock caution has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-930">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Caution</div>
+</td>
+<td class="content">
+After successfully deleting a module, the related tasks will also be affected.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-932">
+<p>To delete the chosen module, you only need to press <kbd>enter</kbd> to confirmed the deletion.
+To better showcase the behaviour of deletion, here we use "CS2103T" as an example.</p>
+</div>
+<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-935">
+<ol class="lowerroman" type="i">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-935">
+<p>Before delete:</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-937">
+<div class="content">
+<img src="images/module/module_delete_before.png" alt="module delete before" width="790">
+</div>
+<div class="title">Figure 65. Before delete</div>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-939">
+<p>After delete:<br>
+After successfully deleted target module, the module page will update accordingly and switch to
+<code>Overview</code> page.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-943">
+<p>If you switch to <code>No Module Allocated</code> tab, you&#8217;ll find the tasks affected by this deletion (i.e.
+The tasks which belong to the deleted module).</p>
+</div>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-946">
+<div class="content">
+<img src="images/module/module_delete_after.png" alt="module delete after" width="790">
+</div>
+<div class="title">Figure 66. Checking the affected tasks</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-949">
+<h3 id="_statistics">4.5. Statistics</h3>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-951">
+<p>With all the tasks and modules' information you entered,
+Study Buddy can provide you with a real-time visualized statistics about:</p>
+</div>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-954">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-954">
+<p>Task status</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-955">
 <p>Module related tasks' deadline/ start date</p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-956">
 <p>Module related tasks' weight</p>
 </li>
 </ul>
 </div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-958">
+<p>It utilizes different types of charts to make the information more intuitive.
+In addition, the chart is always updated in sync with your task records.
+Especially when you execute commands such as
+<code>add</code> <code>edit</code> <code>delete</code> <code>sort</code>  <code>find</code> <code>archive</code> <code>done</code> <code>list</code> and <code>clear</code>.</p>
+</div>
+<div class="admonitionblock tip has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-964">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+The colour theme will also change randomly, hope you enjoy :)
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-966">
+<h4 id="_navigate_to_statistics_page">4.5.1. Navigate to Statistics Page</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-967">
+<p>You can navigate to Statistics page by clicking the <strong>Statistics</strong> from the menu bar.</p>
+</div>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-969">
+<div class="content">
+<img src="images/stats/stats_nav.png" alt="stats nav" width="790">
+</div>
+<div class="title">Figure 67. Entry of Statistics page</div>
+</div>
+</div>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-971">
+<h4 id="_statistics_page_user_interface_and_interaction">4.5.2. Statistics Page User Interface and Interaction</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-972">
+<p>The left panel contains different charts for different statistics.
+You can use the tabs circled in light orange to navigate.</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-975">
+<p>When you click on a statistics chart,
+the associated task records will be listed automatically in the right-side panel.</p>
+</div>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-978">
+<div class="content">
+<img src="images/stats/stats_ui.png" alt="stats ui" width="790">
+</div>
+<div class="title">Figure 68. Statistics Page User Interface </div>
+</div>
+<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-980">
+<h5 id="_task_status_tab">Task Status Tab</h5>
+<div class="dlist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-982">
+<dl>
+<dt class="hdlist1">Introduction</dt>
+<dd>
+<p>This clickable <strong>pie chart</strong> compares the number of tasks in different statuses.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-985">
+<div class="content">
+<img src="images/stats/stats_pie.png" alt="stats pie" width="790">
+</div>
+<div class="title">Figure 69. Task Status Chart</div>
+</div>
+</dd>
+<dt class="hdlist1">Clicking Action</dt>
+<dd>
+<p>When you click on the chart,
+all the tasks with the selected status will display on the right-side panel automatically.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-991">
+<p>Here is an example when you are clicking on the <strong>Due Soon</strong> portion.</p>
+</div>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-993">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-993">
+<p>The part highlighted by light purple lines represents all your Due Soon tasks. When you are clicking on
+it, all tasks with Due Soon status will be listed in the right-side panel.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-996">
+<p>You can refer to the screenshot below where the relevant information is highlighted for you.</p>
+</div>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-998">
+<div class="content">
+<img src="images/stats/stats_pie_click.png" alt="stats pie click" width="790">
+</div>
+<div class="title">Figure 70. Clicking on 'Due Soon' part</div>
+</div>
 </li>
-<li>
-<p>It utilizes different charts to make the information more visualized and easy to understand.</p>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1000">
+<h5 id="_module_related_tasks_deadlinestart_date_tab">Module Related Tasks' Deadline/Start Date Tab</h5>
+<div class="dlist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1002">
+<dl>
+<dt class="hdlist1">Introduction</dt>
+<dd>
+<p>This clickable <strong>area chart</strong> summarizes the task deadlines or start dates for different modules.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1005">
+<div class="content">
+<img src="images/stats/stats_area.png" alt="stats area" width="790">
+</div>
+<div class="title">Figure 71. Module Related Tasks' Deadline/Start Date Chart</div>
+</div>
+<div class="exampleblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1007">
+<div class="content">
+<div class="dlist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1008">
+<dl>
+<dt class="hdlist1">Chart Details</dt>
+<dd>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1009">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1009">
+<p>The <strong>X-axis</strong> represents a particular date.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1010">
+<p>The <strong>Y-axis</strong> represents the number of tasks.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1011">
+<p>The <strong>area</strong> (i.e. The triangles or quadrilaterals exclude their vertices) with the same background colour
+represents the tasks under the same module.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1013">
+<p>The <strong>data point</strong> (i.e. The vertices of the triangles or quadrilaterals) represents
+tasks under a particular module, which will due or start on the same specific data.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1015">
+<p>Tasks under different module have a different background colour.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1016">
+<p>Only the tasks due or start within <strong>the next 60 days</strong> will display in both chart or right-side
+panel.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1018">
+<p>Since the colour of each module is translucent, "extra" colours may appear as a result of
+data overlapping.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1020">
+<p>When clicking on an overlapping area, only one layer&#8217;s related records will be listed in the right-side panel.</p>
 </li>
 </ol>
 </div>
-</li>
-<li>
-<p>Navigate to Statistics Page</p>
-<div class="ulist">
-<ul>
-<li>
-<p>You can press the Statistics button in the menu bar to navigate to Statistics Page</p>
-<div class="imageblock text-left">
-<div class="content">
-<img src="images/stats/entryOfStatistics.png" alt="entryOfStatistics" width="790">
+</dd>
+</dl>
 </div>
-<div class="title">Figure 53. Statistics entry</div>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">Clicking Action</dt>
+<dd>
+<p>After you click on the chart, the related task records will display on the right-side panel automatically.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1025">
+<p>Here are two different behaviours according to the place you click.</p>
+</div>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1027">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1027">
+<p><strong>Click on data area</strong>:</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1029">
+<p>The tasks under a particular module will be listed in the right-side panel.</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1031">
+<p>Here is an example when you are clicking on the area of module "CS2101".</p>
+</div>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1033">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1033">
+<p>The parts highlighted using light purple lines represents the tasks under module "CS2101".
+When you are clicking on those areas, the tasks under CS2101 and will due or start within
+the next 60 days will display in the right-side panel.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1037">
+<p>You can refer to the screenshot below where the relevant information is highlighted for you.</p>
+</div>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1039">
+<div class="content">
+<img src="images/stats/stats_area_click_area.png" alt="stats area click area" width="790">
+</div>
+<div class="title">Figure 72. Clicking on the area of module 'CS2101'</div>
 </div>
 </li>
 </ul>
 </div>
 </li>
-<li>
-<p>UI introduction &amp; Charts Provided</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>After press Statistics button from menu bar, the Statistics page will display as its initial status.</p>
-<div class="imageblock text-left">
-<div class="content">
-<img src="images/stats/initStatisticsPage.png" alt="initStatisticsPage" width="790">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1041">
+<p><strong>Click on data point</strong>:</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1043">
+<p>The tasks under a particular module and will due or start on a specific date will be listed in the right-side panel.</p>
 </div>
-<div class="title">Figure 54. Statistics initial page</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1045">
+<p>Here is an example when you are clicking on the data point of tasks under module "CS2101" and
+will due or start on 13/04/2020.</p>
+</div>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1048">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1048">
+<p>The point circled in light purple is the data point you clicked. After you clicked on this point,
+the tasks under module "CS2101" and will due or start on 13/04/2020 will display in the right-side panel.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1051">
+<p>You can refer to the screenshot below where the relevant information is highlighted for you.</p>
+</div>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1053">
+<div class="content">
+<img src="images/stats/stats_click_point.png" alt="stats click point" width="790">
+</div>
+<div class="title">Figure 73. Clicking on the data point of module 'CS2101&#8217;s tasks which will due or start on 13/04/2020</div>
 </div>
 </li>
-<li>
-<p>The left panel displays different charts, and the right panel will display related tasks when you clicking on the chart.</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p><strong>Task Status</strong></p>
-<div class="imageblock text-left">
-<div class="content">
-<img src="images/stats/pieChartClick.png" alt="pieChartClick" width="790">
-</div>
-<div class="title">Figure 55. right panel update when clicking on pie chart</div>
-</div>
-</li>
-<li>
-<p><strong>Module related tasks' deadline/ start date</strong></p>
-<div class="imageblock text-left">
-<div class="content">
-<img src="images/stats/areaChartClickOnArea.png" alt="areaChartClickOnArea" width="790">
-</div>
-<div class="title">Figure 56. right panel update when clicking on area chart&#8217;s area</div>
-</div>
-<div class="imageblock text-left">
-<div class="content">
-<img src="images/stats/areaChartClickDataPoint.png" alt="areaChartClickDataPoint" width="790">
-</div>
-<div class="title">Figure 57. right panel update when clicking on area chart&#8217;s data point</div>
-</div>
-</li>
-<li>
-<p><strong>Module related tasks' weight</strong><br></p>
-<div class="imageblock text-left">
-<div class="content">
-<img src="images/stats/barChartClick.png" alt="barChartClick" width="790">
-</div>
-<div class="title">Figure 58. right panel update when clicking on bar chart</div>
+</ul>
 </div>
 </li>
 </ol>
 </div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1055">
+<h5 id="_module_related_tasks_weight_tab">Module Related Tasks' Weight Tab</h5>
+<div class="dlist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1056">
+<dl>
+<dt class="hdlist1">Introduction</dt>
+<dd>
+<p>This clickable <strong>stacked bar chart</strong> compares the weight of different types of tasks in each module.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1059">
+<div class="content">
+<img src="images/stats/stats_bar.png" alt="stats bar" width="790">
+</div>
+<div class="title">Figure 74. Module Related Tasks' Weight Chart</div>
+</div>
+<div class="exampleblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1061">
+<div class="content">
+<div class="dlist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1062">
+<dl>
+<dt class="hdlist1">Chart Details</dt>
+<dd>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1063">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1063">
+<p>The <strong>X-axis</strong> represents different modules.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1064">
+<p>The <strong>Y-axis</strong> represents the weight-sum under the same module.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1065">
+<p>The <strong>blocks</strong> in each bar represent the total weight of a particular task type.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1066">
+<p>Different task type has a different background colour.</p>
 </li>
 </ol>
 </div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">Clicking Action</dt>
+<dd>
+<p>After you click on the chart,
+the tasks under the selected module and type will display on the right-side panel automatically.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1072">
+<p>Here is an example when you are clicking on the block which represents the assignments of module "CS2101".</p>
+</div>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1074">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1074">
+<p>The block highlighted using light purple lines represents the assignments of module "CS2101".
+When you are clicking it, all assignments of module "CS2101" will show in the right-side panel.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1077">
+<p>You can refer to the screenshot below where the relevant information is highlighted for you.</p>
+</div>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1079">
+<div class="content">
+<img src="images/stats/stats_bar_click.png" alt="stats bar click" width="790">
+</div>
+<div class="title">Figure 75. Clicking on the block of 'CS2101''s assignments</div>
+</div>
 </li>
-<li>
-<p>Dynamic updating</p>
-<div class="paragraph">
-<p>Each chart will update automatically when you perform <code>add</code> <code>edit</code> <code>delete</code> <code>sort</code>  <code>find</code> <code>archive</code> <code>done</code> <code>list</code> and <code>clear</code></p>
+</ul>
 </div>
-<div class="paragraph">
-<p>The color theme will also change randomly, hope you enjoy :)</p>
+</dd>
+</dl>
 </div>
-</li>
-</ol>
-</div>
-<div class="admonitionblock note">
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1082">
 <table>
 <tr>
 <td class="icon">
@@ -2201,101 +2935,220 @@ as written in 3.7.3.</p>
 </td>
 <td class="content">
 As the data of charts are filled dynamically, thus it is possible that their labels can overlap together.<br>
-This is due to JavaFX chart off-sync and it was raised <a href="https://bugs.openjdk.java.net/browse/JDK-8198830">here</a>.<br>
+This is an unfixed bug regarding the JDK which is caused by JavaFX chart off-sync. To get more information, you may refer to <a href="https://bugs.openjdk.java.net/browse/JDK-8198830">here</a>.<br>
 When this issue happens, you can use any command that can trigger chart updating to refresh the chart.
 </td>
 </tr>
 </table>
 </div>
 </div>
-<div class="sect2">
+</div>
+</div>
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1088">
 <h3 id="_calendar">4.6. Calendar</h3>
-<div class="paragraph">
+<div class="exampleblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1090">
+<div class="content">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1091">
+<p><strong>Constraints</strong></p>
+</div>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1093">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1093">
+<p>The calendar GUI does not work well if the window size is set too small.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1094">
+<p>You will not be able to navigate too far into the past/ future using CLI.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1097">
 <p>The calendar feature allows you to visualise your schedule by displaying the number of task you have for the month. This allows students to plan their time efficiently.</p>
 </div>
-<div class="paragraph">
-<p>The calendar feature can be toggled by clicking <code>Calendar</code> &#8594; <code>Display</code></p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1099">
+<p>The calendar feature can be toggled by clicking <code>Calendar</code> from the menu bar.</p>
 </div>
-<div class="imageblock text-left">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1101">
 <div class="content">
-<img src="images/calendar/calender_init.png" alt="calender init" width="790">
+<img src="images/calendar/calendar_init.png" alt="calendar init" width="790">
 </div>
-<div class="title">Figure 59. calendar interface</div>
+<div class="title">Figure 76. calendar interface</div>
 </div>
-<div class="ulist">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1103">
 <ul>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1103">
 <p><code>Previous</code> and <code>Next</code> buttons can be used to navigate through previous and next months respectively. <code>Current month</code> button brings you to the current date, which is in a blue border.</p>
 </li>
-<li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1105">
 <p>Clicking on any date will show you all tasks for that day. Keep in mind that the <strong>Index</strong> shown in this panel cannot be used for other commands.</p>
 </li>
 </ul>
 </div>
-<div class="imageblock">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1107">
 <div class="content">
-<img src="images/calendar/calendar_after_choose_date.png" alt="calendar after choose date" width=", align=" height="left"">
+<img src="images/calendar/calendar_click.png" alt="calendar click" width="790">
 </div>
-<div class="title">Figure 60. calendar after clicking on a date</div>
+<div class="title">Figure 77. calendar after clicking on a date</div>
+</div>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1109">
+<h4 id="_navigation_using_cli">4.6.1. Navigation using CLI</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1110">
+<p>Study buddy also allows you to navigate to any date in the <code>Calendar</code>.</p>
+</div>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1112">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1112">
+<p>To initiate fast navigation, simply key in <code>calendar</code> into the input line.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1113">
+<p>Study buddy will ask you for a date</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1115">
+<div class="content">
+<img src="images/calendar/Calendar_CLI_Date.png" alt="Calendar CLI Date" width="790">
+</div>
+<div class="title">Figure 78. Interactive prompt after keying in calendar</div>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1117">
+<p>In this example, we entered <code>20/04/2020</code>.</p>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1118">
+<p>Input your date using the format shown and press <kbd>enter</kbd> once to proceed.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1119">
+<p>Press <kbd>enter</kbd> again to confirm your command.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1121">
+<p>You will now see the calendar for your selected date as well as all the tasks on that day.</p>
+</div>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1123">
+<div class="content">
+<img src="images/calendar/calendar_after_CLI.png" alt="calendar after CLI" width="790">
+</div>
+<div class="title">Figure 79. Successfully navigated calendar using CLI</div>
 </div>
 </div>
-<div class="sect2">
+</div>
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1125">
 <h3 id="_productivity">4.7. Productivity</h3>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1127">
 <p>The productivity page shows insights related to your productivity over the past day, week and more.
 By keeping tabs on your past productivity, you can improve your future productivity.
 The productivity feature also gamifies your task management experience. Doing work has never been more fun!</p>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1134">
 <div class="title">1. Daily Productivity Tab</div>
-<p>The daily productivity tab records your the number of tasks you completed today.
-You can set a daily goal for the number of tasks you want to complete.
+<p>To get started, click on the Productivity menu button.
+The daily productivity tab records your the number of tasks you completed today.
+You can set a daily goal for the number of tasks you want to complete using the command <code>goal</code>.
 Completing your goal each day adds to your streak.</p>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1141">
 <div class="title">2. Weekly Productivity Tab</div>
 <p>On the weekly productivity tab, you can look back on your progress over the past week.
 This tab displays information about your past productivity.</p>
 </div>
-<div class="paragraph">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1147">
 <div class="title">3. Productivity Points Tab</div>
-<p>The Productivity Points tab displays your current Productivity Points (PP) and your progression.
+<p>You can go to this tab directly by clicking your Productivity Point count on the top right of the menu.
+The Productivity Points tab displays your current Productivity Points (PP) and your progression.
 You gain Productivity Points upon adding tasks, completing tasks, and using advanced features in StudyBuddy.
 On the other hand, you lose Productivity Points when your tasks go Overdue.
 Here are some examples of how to obtain Productivity Points in StudyBuddy:</p>
 </div>
-<div class="olist loweralpha">
+<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1153">
 <ol class="loweralpha" type="a">
-<li>
-<p>Adding a task: +1</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1153">
+<p>Adding a task: <em>+1</em></p>
 </li>
-<li>
-<p>Completing a task: +10</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1155">
+<p>Completing a task: <em>+10</em></p>
 </li>
-<li>
-<p>Using advanced features; +? (Explore StudyBuddy to find out!)</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1157">
+<p>Using advanced features; <em>+?</em> (Explore StudyBuddy to find out!)</p>
 </li>
-<li>
-<p>Letting a task go Overdue: -1</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1159">
+<p>Letting a task go Overdue: <em>-1</em></p>
 </li>
 </ol>
 </div>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_faq">5. FAQ</h2>
+<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1165">
+<h2 id="Summary">5. Command Summary</h2>
 <div class="sectionbody">
-<div class="paragraph">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1166">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1166">
+<p>add <a href="#_add">Section 4.1.2, &#8220;Add&#8221;</a></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1167">
+<p>archive <a href="#_archive_unarchive">Section 4.1.9, &#8220;Archive/ Unarchive&#8221;</a></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1168">
+<p>bye <a href="#_exit">Section 4.1.15, &#8220;Exit&#8221;</a></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1169">
+<p>clear <a href="#_clear">Section 4.1.6, &#8220;Clear&#8221;</a></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1170">
+<p>create mods <a href="#_create_modules">Section 4.4.2.1, &#8220;Create Modules&#8221;</a></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1171">
+<p>delete <a href="#_delete">Section 4.1.7, &#8220;Delete&#8221;</a></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1172">
+<p>view renamed <a href="#_view_renamed">Section 4.1.8, &#8220;View renamed&#8221;</a></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1173">
+<p>done <a href="#_done">Section 4.1.5, &#8220;Done&#8221;</a></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1174">
+<p>edit <a href="#_edit">Section 4.1.4, &#8220;Edit&#8221;</a></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1175">
+<p>filter <a href="#Filter">Section 4.1.13, &#8220;Filter&#8221;</a></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1176">
+<p>find <a href="#Find">Section 4.1.11, &#8220;Find&#8221;</a></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1177">
+<p>help <a href="#Help">[Help]</a></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1178">
+<p>list <a href="#LIST">Section 4.1.12, &#8220;List&#8221;</a></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1179">
+<p>sort <a href="#sort">[sort]</a></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1180">
+<p>refresh <a href="#refresh">[refresh]</a></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1183">
+<h2 id="_faq">6. FAQ</h2>
+<div class="sectionbody">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1185">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
 <strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Study Buddy folder (should be under data &#8594; taskList.json).</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/UserGuide.adoc-1188">
+<p><strong>Q</strong>: How do I save my data?<br>
+<strong>A</strong>: Study buddy saves your data automatically after every command.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-04-04 22:44:59 +0800
+Last updated 2020-04-11 11:16:31 +0800
 </div>
 </div>
 </body>
