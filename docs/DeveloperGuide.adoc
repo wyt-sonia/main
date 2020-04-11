@@ -439,31 +439,72 @@ image::ArchiveSequenceDiagram.png[width = "600", length = "500" title = "Archive
 [NOTE]
 The lifeline of an object should not continue after deletion. Lifeline is shown due to a limitation of plantUML.
 
-=== Achievement feature
-The achievement feature keeps track of usage statistics and displays the user's achievements
-and feedback on the user's weekly performance.
+//tag:productivity[]
+=== Productivity feature
 
 ==== Implementation
-The achievement feature keeps track of usage statistics that are important to the user.
-Each usage statistic is recorded when the respective user command has completed. The user command is
-said to be completed when the respective `InteractivePrompt` has completed successfully.
+The productivity feature displays insights related to the user's productivity over the
+past day, week and more on the Productivity page.
+The Productivity Page can be viewed by clicking on the Productivity menu item or
+clicking on the Productivity Points shown live on the top right of the application window.
 
-For example, the following are the usage statistics logged for the `CompleteTaskInteractivePrompt`.
+The productivity feature is facilitated by `Statistics`, which allows
+StudyBuddy to keep track of relevant usage statistics of the user.
+`Statistics` is further composed of classes that keep track of specific statistics:
 
-.  Number of tasks completed
-.  Number of tasks completed on time
-.  Number of tasks deadlines missed
-.  Average amount of time exceeded
-.  Average amount of buffer time
-.  Time spent on each type of task
+.. `CompletionStats` keeps track of the number of tasks completed by the user each day and each week
 
-Similarly, usage statistics are recorded for other user commands as well.
+.. `OverdueStats` keeps track of the number of tasks that went overdue each day and each week.
+
+.. `ScoreStats` keeps track of the user's Productivity Points and rank each day
+
+.. `GeneralStats` keeps track of the user's goal, streak, and other statistics not covered by the other statistics classes
+
+The user can gain or lose Productivity Points in StudyBuddy when certain actions or events are completed. These include:
+
+.. Adding a task: _+1_
+
+.. Completing a task: _+10_
+
+.. Completing your daily goal: _+(points equivalent to daily goal)_
+
+.. Using advanced features; _+1_
+
+.. Letting a task go Overdue: _-1_
+
+Each usage statistic is updated accordingly when the respective user action or event
+has concluded. These statistics are then rendered on the `ProductivityPage`.
+The chart visualizations are implemented using `ProgressIndicator`, `BarChart` and `AreaChart`.
+
+When the statistics are updated, the task list's event listener and classes implementing
+`GoalObserver` will be informed of the changes. `ProductivityPage` re-renders the
+displayed information when either of these are updated.
+
+The data displayed will be automatically updated upon calling any of the following commands:
+
+* `add`
+
+* `done`
+
+* `delete`
+
+* `refresh`
+
+* `goal`
 
 ==== Example Use Scenario
-Clicking on the achievement menu item will enable this feature.
+There are two ways to
+Clicking on the  menu item will enable this feature.
 
 ==== Design Considerations
-Pending.
+As far as feasible, the productivity feature re-renders only the values that
+have been updated. This improves the loading speed and minimizes lag for the user.
+However, in some cases, this will lead to more complicated code to reason with.
+As such, the productivity feature sometimes re-renders more values than necessary.
+Based on testing, this trade-off made by the productivity feature does not result
+in any measurable delay.
+
+//end::productivity[]
 
 // tag::dataencryption[]
 === Modules
