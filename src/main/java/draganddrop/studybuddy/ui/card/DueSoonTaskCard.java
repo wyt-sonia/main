@@ -10,7 +10,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 
 /**
- * An UI component that displays information of a {@code Person}.
+ * An UI component that displays information of a Due Soon Task.
+ *
+ * @@author souwmyaa
  */
 public class DueSoonTaskCard extends UiPart<Region> {
 
