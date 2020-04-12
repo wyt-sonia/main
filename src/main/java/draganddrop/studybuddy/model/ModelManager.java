@@ -242,6 +242,14 @@ public class ModelManager implements Model {
 
     }
 
+    public void addTaskToMainList(Task task) {
+        studyBuddy.addTaskToMainList(task);
+    }
+
+    public void deleteTaskFromMainList(Task task) {
+        studyBuddy.deleteTaskFromMainList(task);
+    }
+
     @Override
     public void changeModName(Module oldMod, Module newMod) throws ModuleException {
         studyBuddy.changeModuleName(oldMod, newMod);
