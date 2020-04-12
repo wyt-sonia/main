@@ -242,10 +242,18 @@ public class ModelManager implements Model {
 
     }
 
+    /**
+     * Adds the task to the main list only.
+     * @param task task
+     */
     public void addTaskToMainList(Task task) {
         studyBuddy.addTaskToMainList(task);
     }
 
+    /**
+     * Deletes the task only from main list.
+     * @param task task
+     */
     public void deleteTaskFromMainList(Task task) {
         studyBuddy.deleteTaskFromMainList(task);
     }

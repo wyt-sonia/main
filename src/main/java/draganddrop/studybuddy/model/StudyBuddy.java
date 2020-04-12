@@ -235,17 +235,25 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         tasks.add(p);
     }
 
+    /**
+     * Adds the task only to the main list.
+     * @param p task
+     */
     public void addTaskToMainList(Task p) {
         tasks.add(p);
     }
 
+    /**
+     * Deletes the task only from main list.
+     * @param p task
+     */
     public void deleteTaskFromMainList(Task p) {
         tasks.remove(p);
     }
 
     /**
      * Unarchives a duplicated task.
-     * @param p
+     * @param p task
      */
     public void unarchiveDuplicateTask(Task p) {
         archivedTasks.remove(p);

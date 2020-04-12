@@ -41,7 +41,6 @@ public class RefreshCommand extends Command {
 
         for (int i = 0; i < size; i++) {
             Task task = lastShownList.get(0);
-            System.out.println(task.getTaskName());
             refreshStatus(task, model);
         }
 
