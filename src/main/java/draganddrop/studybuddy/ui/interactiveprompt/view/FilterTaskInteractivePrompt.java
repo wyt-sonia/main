@@ -19,6 +19,8 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
  * Interaction with user for filtering tasks.
+ *
+ * @@author souwmyaa
  */
 public class FilterTaskInteractivePrompt extends InteractivePrompt {
     public static final String QUIT_COMMAND_MSG = "Successfully quited from filter task command.";

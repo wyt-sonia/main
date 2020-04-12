@@ -291,6 +291,7 @@ The lifeline for every member should end at the destroy marker (X) but due to a 
 Other commands like edit, archive etc also trigger due soon feature in a similar manner.
 [NOTE]
 Calculation of time left for deadline and check for if task is due soon can be found in the Task class.
+//end::dueSoon[]
 
 ==== Example Usage Scenario
 Given below is an example usage scenario and how the Due Soon list mechanism behaves at each step.
@@ -312,7 +313,7 @@ It will also update the time left.
 [NOTE]
 If there are no such inconsistencies, the refresh command will not make any changes to the Due Soon task list.
 
-
+//tag::refresh[]
 ==== Design Considerations
 
 ===== Aspect: How `refresh` command works
@@ -323,7 +324,7 @@ If there are no such inconsistencies, the refresh command will not make any chan
 * **Alternative 2:** Does not clear and reload the due soon task list.
 ** Pros: Fewer operations need to be performed.
 ** Cons: May have be more prone to errors because list is not completely "refreshed". Some parts of it are the same.
-// end::dueSoon[]
+// end::refresh[]
 
 //tag::taskSummary[]
 === Task Summary Feature

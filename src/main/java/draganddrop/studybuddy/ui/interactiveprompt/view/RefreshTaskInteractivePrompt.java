@@ -12,6 +12,8 @@ import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
  * Represents a RefreshTaskInteractivePrompt, which interacts with user to refresh the tasks.
+ *
+ * @@author souwmyaa
  */
 public class RefreshTaskInteractivePrompt extends InteractivePrompt {
 
