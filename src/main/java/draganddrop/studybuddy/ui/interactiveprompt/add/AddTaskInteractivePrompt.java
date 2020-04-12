@@ -413,6 +413,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
         try {
             if (logic.getStudyBuddy().getTaskList().contains(task)) {
                 reply = CONFIRM_MSG;
+                task.setCreationDateTime(LocalDateTime.now());
                 currentTerm = InteractivePromptTerms.ADD_DUPLICATE;
             } else {
                 task.setCreationDateTime(LocalDateTime.now());
