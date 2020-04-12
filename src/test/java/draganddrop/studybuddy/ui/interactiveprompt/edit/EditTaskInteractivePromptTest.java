@@ -52,19 +52,19 @@ class EditTaskInteractivePromptTestTest {
     }
 
     @Test
-    public void editTaskInteractivePromptTestInteractQuitCommandReturnMessage() {
+    public void editTaskPromptTestQuitCommandReturnMessage() {
         EditTaskInteractivePrompt prompt = new EditTaskInteractivePrompt();
         assertEquals(EditTaskInteractivePrompt.QUIT_COMMAND_MSG, prompt.interact("quit"));
     }
 
     @Test
-    public void editTaskInteractivePromptTestInteractFirstInputReturnKeywordPrompt() {
+    public void editTaskPromptTestFirstInputReturnKeywordPrompt() {
         assertEquals("Please enter the index of the task that you wish to edit.",
             prompt.interact(""));
     }
 
     @Test
-    public void editTaskInteractivePromptTestInteractTaskIndexLowerBoundaryReturnMessage() {
+    public void editTaskPromptTestTaskIndexLowerBoundaryReturnMessage() {
         ObservableList<Task> tasksStub = modelStub.getStudyBuddy().getTaskList();
         String lowerBoundary = "1";
         prompt.interact("");
@@ -75,7 +75,7 @@ class EditTaskInteractivePromptTestTest {
     }
 
     @Test
-    public void editTaskInteractivePromptTestInteractTaskIndexHigherBoundaryReturnMessage() {
+    public void editTaskPromptTestTaskIndexHigherBoundaryReturnMessage() {
         ObservableList<Task> tasksStub = modelStub.getStudyBuddy().getTaskList();
         int taskListSize = tasksStub.size();
         String higherBoundary = "" + taskListSize;
@@ -87,7 +87,7 @@ class EditTaskInteractivePromptTestTest {
     }
 
     @Test
-    public void editTaskInteractivePromptTestInteractTaskIndexOutOfRangeZeroReturnErrorMessage() {
+    public void editTaskPromptTestTaskIndexOutOfRangeZeroReturnErrorMessage() {
         String zero = "0";
         prompt.interact("");
         assertEquals(new AddOrEditTaskCommandException("invalidIndexRangeError").getErrorMessage(),
@@ -95,7 +95,7 @@ class EditTaskInteractivePromptTestTest {
     }
 
     @Test
-    public void editTaskInteractivePromptTestInteractTaskIndexOutOfRangeSizePlusOneReturnErrorMessage() {
+    public void editTaskPromptTestTaskIndexOutOfRangeSizePlusOneReturnErrorMessage() {
         ObservableList<Task> tasksStub = modelStub.getStudyBuddy().getTaskList();
         int taskListSizePlusOne = tasksStub.size() + 1;
         prompt.interact("");
@@ -104,14 +104,14 @@ class EditTaskInteractivePromptTestTest {
     }
 
     @Test
-    public void editTaskInteractivePromptTestInteractTaskIndexWrongFormatReturnErrorMessage() {
+    public void editTaskPromptTestTaskIndexWrongFormatReturnErrorMessage() {
         prompt.interact("");
         assertEquals(new AddOrEditTaskCommandException("wrongIndexFormatError").getErrorMessage(),
             prompt.interact("wrongIndexFormat"));
     }
 
     @Test
-    public void editTaskInteractivePromptTestInteractTaskFieldIndexWrongFormatReturnErrorMessage() {
+    public void editTaskPromptTestTaskFieldIndexWrongFormatReturnErrorMessage() {
         prompt.interact("");
         prompt.interact("1");
         prompt.interact("wrongIndexFormat");
@@ -120,7 +120,7 @@ class EditTaskInteractivePromptTestTest {
     }
 
     @Test
-    public void editTaskInteractivePromptTestInteractTaskFieldIndexOutOfRangeZeroReturnErrorMessage() {
+    public void editTaskPromptTestTaskFieldIndexOutOfRangeZeroReturnErrorMessage() {
         prompt.interact("");
         prompt.interact("1");
         assertTrue(prompt.interact("0")
@@ -128,7 +128,7 @@ class EditTaskInteractivePromptTestTest {
     }
 
     @Test
-    public void editTaskInteractivePromptTestInteractTaskFieldIndexOutOfRangeSizePlusOneReturnErrorMessage() {
+    public void editTaskPromptTestTaskFieldIndexOutOfRangeSizePlusOneReturnErrorMessage() {
         int size = TaskField.values().length;
         prompt.interact("");
         prompt.interact("1");
@@ -137,7 +137,7 @@ class EditTaskInteractivePromptTestTest {
     }
 
     @Test
-    public void editTaskInteractivePromptTestInteractTaskEmptyNameErrorReturnErrorMessage() {
+    public void editTaskPromptTestTaskEmptyNameErrorReturnErrorMessage() {
         prompt.interact("");
         prompt.interact("2");
         prompt.interact("2");
@@ -147,7 +147,7 @@ class EditTaskInteractivePromptTestTest {
     }
 
     @Test
-    public void editTaskInteractivePromptTestInteractTaskWeightErrorReturnErrorMessage() {
+    public void editTaskPromptTestTaskWeightErrorReturnErrorMessage() {
         prompt.interact("");
         prompt.interact("2");
         prompt.interact("6");
@@ -156,7 +156,7 @@ class EditTaskInteractivePromptTestTest {
     }
 
     @Test
-    public void editTaskInteractivePromptTestiIteractTaskWeightErrorNegativeReturnErrorMessage() {
+    public void editTaskPromptTestTaskWeightErrorNegativeReturnErrorMessage() {
         prompt.interact("");
         prompt.interact("2");
         prompt.interact("6");
@@ -165,7 +165,25 @@ class EditTaskInteractivePromptTestTest {
     }
 
     @Test
-    public void editTaskInteractivePromptTestInteracEditTaskNameReturnErrorMessage() {
+    public void editTaskPromptTestEditTaskTypeFromOtherToAssignmentReturnErrorMessage() {
+        prompt.interact("");
+        prompt.interact("2");
+        prompt.interact("3");
+        assertTrue(prompt.interact("1")
+            .contains(new AddOrEditTaskCommandException("changeOtherTaskTypeToAssignmentError").getErrorMessage()));
+    }
+
+    @Test
+    public void editTaskPromptTestEditTaskTypeFromAssignmentToOtherReturnErrorMessage() {
+        prompt.interact("");
+        prompt.interact("3");
+        prompt.interact("3");
+        assertTrue(prompt.interact("4")
+            .contains(new AddOrEditTaskCommandException("changeAssignmentToOtherTaskTypeError").getErrorMessage()));
+    }
+
+    @Test
+    public void editTaskPromptTestEditTaskNameReturnMessage() {
         String newName = "new task name";
         prompt.interact("");
         prompt.interact("2");
@@ -175,7 +193,7 @@ class EditTaskInteractivePromptTestTest {
     }
 
     @Test
-    public void editTaskInteractivePromptTestInteractEditModuleReturnErrorMessage() {
+    public void editTaskPromptTestEditModuleReturnMessage() {
         prompt.interact("");
         prompt.interact("2");
         prompt.interact("1");
@@ -184,7 +202,7 @@ class EditTaskInteractivePromptTestTest {
     }
 
     @Test
-    public void editTaskInteractivePromptTestInteractEditTaskWeightReturnErrorMessage() {
+    public void editTaskPromptTestEditTaskWeightReturnMessage() {
         prompt.interact("");
         prompt.interact("2");
         prompt.interact("6");
@@ -193,7 +211,7 @@ class EditTaskInteractivePromptTestTest {
     }
 
     @Test
-    public void editTaskInteractivePromptTestInteractEditTaskDescriptionReturnErrorMessage() {
+    public void editTaskPromptTestEditTaskDescriptionReturnMessage() {
         String taskDescription = "taskDescription";
         prompt.interact("");
         prompt.interact("2");
@@ -203,7 +221,7 @@ class EditTaskInteractivePromptTestTest {
     }
 
     @Test
-    public void editTaskInteractivePromptTestInteractEditTaskTimeCostReturnErrorMessage() {
+    public void editTaskPromptTestEditTaskTimeCostReturnMessage() {
         double timeCost = 10.0;
         prompt.interact("");
         prompt.interact("2");
@@ -213,17 +231,7 @@ class EditTaskInteractivePromptTestTest {
     }
 
     @Test
-    public void editTaskInteractivePromptTestInteractEditTaskTypeReturnErrorMessage() {
-        TaskType taskType = TaskType.getTaskTypes()[0];
-        prompt.interact("");
-        prompt.interact("2");
-        prompt.interact("3");
-        prompt.interact("1");
-        assertEquals(taskType, modelStub.getStudyBuddy().getTaskList().get(1).getTaskType());
-    }
-
-    @Test
-    public void editTaskInteractivePromptTestInteractEditTaskDateReturnErrorMessage() {
+    public void editTaskPromptTestEditTaskDateReturnMessage() {
         int index = 0;
         for (Task t : modelStub.getStudyBuddy().getTaskList()) {
             if (t.getTaskType().equals(TaskType.Assignment)) {
