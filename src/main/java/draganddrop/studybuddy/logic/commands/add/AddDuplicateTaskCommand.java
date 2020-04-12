@@ -39,6 +39,7 @@ public class AddDuplicateTaskCommand extends Command {
                 break;
             }
         }
+
         return new CommandResult(String.format(Messages.MESSAGE_DUPLICATE_ADD_SUCCESS, toAdd));
     }
 

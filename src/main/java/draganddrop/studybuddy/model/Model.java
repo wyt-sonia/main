@@ -46,6 +46,10 @@ public interface Model {
      */
     void addDuplicateTask(Task task, Task originalTask);
 
+    /**
+     * Unarchives a duplicate task.
+     * @param task
+     */
     void unarchiveDuplicateTask(Task task);
 
     /**

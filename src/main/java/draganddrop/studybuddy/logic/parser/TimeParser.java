@@ -84,8 +84,9 @@ public class TimeParser {
      */
     public static String getDateTimeString(LocalDateTime dateTime) throws InteractiveCommandException {
         logger.log(Level.INFO, LOG_TAG + ": Start to get date time string.");
-        System.out.println("This is where the error is");
+
         requireNonNull(dateTime);
+
         String min = dateTime.getMinute() < 10 ? "0" + dateTime.getMinute()
             : "" + dateTime.getMinute();
         String hour = dateTime.getHour() < 10 ? "0" + dateTime.getHour()

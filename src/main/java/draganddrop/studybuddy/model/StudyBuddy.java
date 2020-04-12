@@ -235,6 +235,11 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         tasks.add(p);
     }
 
+    /**
+     * Adds a duplicate task to the main list.
+     * @param task
+     * @param originalTask
+     */
     public void addDuplicateTask(Task task, Task originalTask) {
         String originalTaskName = task.getTaskName();
         while (tasks.isContains(task)) {
