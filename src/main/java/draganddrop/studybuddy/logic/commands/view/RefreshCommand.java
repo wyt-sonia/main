@@ -38,6 +38,7 @@ public class RefreshCommand extends Command {
         }
         model.sortDueSoonTasks();
 
+        //refreshing the status tags
         final int size = lastShownList.size();
 
         for (int i = 0; i < size; i++) {
