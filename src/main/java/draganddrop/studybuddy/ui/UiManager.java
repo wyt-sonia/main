@@ -6,7 +6,6 @@ import draganddrop.studybuddy.MainApp;
 import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.commons.util.StringUtil;
 import draganddrop.studybuddy.logic.Logic;
-
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;

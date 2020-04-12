@@ -3,7 +3,6 @@ package draganddrop.studybuddy.commons.util;
 import static java.util.Objects.requireNonNull;
 
 import draganddrop.studybuddy.MainApp;
-
 import javafx.scene.image.Image;
 
 /**

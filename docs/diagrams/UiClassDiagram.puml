@@ -5,23 +5,17 @@ skinparam arrowColor UI_COLOR_T4
 skinparam classBackgroundColor UI_COLOR
 skinparam classBorderColor #black
 
+
 package UI <<Rectangle>>{
-Interface Ui <<Interface>>
-Class "{abstract}\nUiPart" as UiPart
-Class UiManager
-Class MainWindow
-Class HelpWindow
-Class ModCard
-Class TaskCard
-Class ResultDisplay
-Class DueSoonDisplay
-Class TaskSummaryPanel
-Class DueSoonListPanel
-Class ModuleListPanel
-Class TaskListPanel
-Class CalendarBox
+Class XYZPanel
+Class XYZCard
 Class CommandBox
+CLass FeedbackDisplayBox
+Class MainWindow
 Class StatusBarFooter
+Interface Ui <<Interface>>
+Class UiManager
+Class "{abstract}\nUiPart" as UiPart
 }
 
 package Model <<Rectangle>> {
@@ -32,51 +26,52 @@ package Logic <<Rectangle>> {
 Class HiddenLogic #FFFFFF
 }
 
-Class HiddenOutside #FFFFFF
-HiddenOutside ..> Ui
 
 UiManager .left.|> Ui
-UiManager -down-> MainWindow
-MainWindow --> HelpWindow
-MainWindow *-down-> CommandBox
-MainWindow *-down-> TaskSummaryPanel
-MainWindow *-down-> DueSoonListPanel
-MainWindow *-down-> CalendarBox
-MainWindow *-down-> ModuleListPanel
-MainWindow *-down-> ResultDisplay
-MainWindow *-down-> TaskListPanel
-MainWindow *-down-> StatusBarFooter
-MainWindow *-down-> DueSoonDisplay
 
-TaskListPanel -down-> TaskCard
-DueSoonListPanel -down-> TaskCard
-ModuleListPanel -down-> ModCard
+
+UiManager -down-> MainWindow
+MainWindow *-down-> StatusBarFooter
+MainWindow *-down-> CommandBox
+MainWindow *-down-> FeedbackDisplayBox
+MainWindow *-down-> XYZPanel
+XYZPanel *-down-> XYZCard
+
+
+StatusBarFooter -right[hidden]- FeedbackDisplayBox
+MainWindow -down[hidden]- UiManager
 
 
 MainWindow -left-|> UiPart
-
-ResultDisplay --|> UiPart
-DueSoonDisplay --|> UiPart
-TaskSummaryPanel --|> UiPart
-ModuleListPanel --|> UiPart
-CalendarBox --|> UiPart
-DueSoonListPanel --|> UiPart
+XYZCard --|> UiPart
+XYZPanel --|> UiPart
 CommandBox --|> UiPart
-TaskListPanel --|> UiPart
-TaskCard --|> UiPart
-ModCard --|> UiPart
+FeedbackDisplayBox --|> UiPart
 StatusBarFooter --|> UiPart
-HelpWindow -down-|> UiPart
 
-TaskCard ..> Model
-ModCard ..> Model
+
+XYZCard ..> Model
+XYZPanel ..> Model
+
+
 UiManager -right-> Logic
 MainWindow -left-> Logic
+CommandBox -left-> Logic
 
-TaskListPanel -[hidden]left- HelpWindow
-HelpWindow -[hidden]left- CommandBox
-CommandBox -[hidden]left- ResultDisplay
-ResultDisplay -[hidden]left- StatusBarFooter
+CommandBox -left[hidden]- FeedbackDisplayBox
+MainWindow -down[hidden]- UiPart
 
-MainWindow -[hidden]-|> UiPart
+note right of XYZPanel UI_COLOR_NOTE
+<b>XYZPanel</b> = CalendarPanel,
+DueSoonListPanel, ModuleListPanel,
+ProductivityPanel, TaskListPanel,
+TaskSummaryPanel
+end note
+
+note right of XYZCard UI_COLOR_NOTE
+<b>XYZCard</b> = DetailedTaskCard,
+DueSoonTaskCard, ModCard
+end note
+
+
 @enduml

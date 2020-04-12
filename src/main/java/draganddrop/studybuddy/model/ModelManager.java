@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -15,7 +14,6 @@ import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.module.exceptions.ModuleException;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskType;
-
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 
@@ -217,11 +215,10 @@ public class ModelManager implements Model {
 
     @Override
     public void addDuplicateTask(Task task) {
-        ArrayList<Task> currentTasks = Task.getCurrentTasks();
-        int index = currentTasks.indexOf(task);
-        Task originalTask = currentTasks.get(index);
+        int index = studyBuddy.getTaskList().indexOf(task);
+        Task originalTask = studyBuddy.getTaskList().get(index);
         String originalTaskName = task.getTaskName();
-        while (currentTasks.contains(task)) {
+        while (studyBuddy.getTaskList().contains(task)) {
             originalTask.incrementDuplicate();
             int number = originalTask.getDuplicate();
             String newTaskName = originalTaskName + "(" + number + ")";

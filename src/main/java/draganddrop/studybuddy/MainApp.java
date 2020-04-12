@@ -28,7 +28,6 @@ import draganddrop.studybuddy.storage.StudyBuddyStorage;
 import draganddrop.studybuddy.storage.UserPrefsStorage;
 import draganddrop.studybuddy.ui.Ui;
 import draganddrop.studybuddy.ui.UiManager;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 

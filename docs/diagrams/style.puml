@@ -12,6 +12,7 @@
 !define UI_COLOR_T2 #3FC71B
 !define UI_COLOR_T3 #000000
 !define UI_COLOR_T4 #000000
+!define UI_COLOR_NOTE #c2d7f3
 
 !define LOGIC_COLOR  #D2B48C
 !define LOGIC_COLOR_T1 #FFFFFF

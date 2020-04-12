@@ -4,7 +4,7 @@ skinparam objectBackgroundColor #tan
 skinparam objectBorderColor #black
 skinparam arrowColor #black
 
-object "calendarBox:CalendarBox" as cb {
+object "calendarPanel:CalendarPanel" as cb {
 calYear:2020
 calMonth:April
 }
