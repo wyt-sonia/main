@@ -2,6 +2,8 @@ package draganddrop.studybuddy.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.List;
+
 import draganddrop.studybuddy.commons.core.Messages;
 import draganddrop.studybuddy.logic.commands.Command;
 import draganddrop.studybuddy.logic.commands.CommandResult;
@@ -28,7 +30,16 @@ public class AddDuplicateTaskCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.addDuplicateTask(toAdd);
+
+        List<Task> lastShownList = model.getFilteredTaskList();
+
+        for (Task task : lastShownList) {
+            if (task.equals(toAdd)) {
+                model.addDuplicateTask(toAdd, task);
+                break;
+            }
+        }
+
         return new CommandResult(String.format(Messages.MESSAGE_DUPLICATE_ADD_SUCCESS, toAdd));
     }
 

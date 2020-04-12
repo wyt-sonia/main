@@ -409,13 +409,12 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      */
     private void handleTaskReadyToExecuteTerm() {
         logger.log(Level.INFO, LOG_TAG + ": Start of ready to execute term.");
-
+        task.setCreationDateTime(LocalDateTime.now());
         try {
             if (logic.getStudyBuddy().getTaskList().contains(task)) {
                 reply = CONFIRM_MSG;
                 currentTerm = InteractivePromptTerms.ADD_DUPLICATE;
             } else {
-                task.setCreationDateTime(LocalDateTime.now());
                 AddTaskCommand addTaskCommand = new AddTaskCommand(task);
                 logic.executeCommand(addTaskCommand);
                 logger.log(Level.INFO, LOG_TAG + ": User added a unique new task.");

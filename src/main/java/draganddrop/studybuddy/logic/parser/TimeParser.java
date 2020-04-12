@@ -1,5 +1,7 @@
 package draganddrop.studybuddy.logic.parser;
 
+import static java.util.Objects.requireNonNull;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -82,6 +84,8 @@ public class TimeParser {
      */
     public static String getDateTimeString(LocalDateTime dateTime) throws InteractiveCommandException {
         logger.log(Level.INFO, LOG_TAG + ": Start to get date time string.");
+
+        requireNonNull(dateTime);
 
         String min = dateTime.getMinute() < 10 ? "0" + dateTime.getMinute()
             : "" + dateTime.getMinute();

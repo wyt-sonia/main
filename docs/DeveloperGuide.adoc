@@ -436,8 +436,8 @@ The index for archived tasks are not used for any commands other than `unarchive
 Sequence diagram:
 
 image::ArchiveSequenceDiagram.png[width = "600", length = "500" title = "Archive Sequence Diagram"]
-[NOTE]
-The lifeline of an object should not continue after deletion. Lifeline is shown due to a limitation of plantUML.
+[CAUTION]
+The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 //tag:productivity[]
 === Productivity feature

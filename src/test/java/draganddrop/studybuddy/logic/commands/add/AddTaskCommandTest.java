@@ -185,7 +185,7 @@ class AddTaskCommandTest {
         }
 
         @Override
-        public void addDuplicateTask(Task task) {
+        public void addDuplicateTask(Task task, Task originalTask) {
             throw new AssertionError("This method should not be called.");
         }
 

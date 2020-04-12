@@ -36,12 +36,13 @@ public class RefreshCommand extends Command {
                 model.forceAddDueSoonTask(task);
             }
         }
+        model.sortDueSoonTasks();
 
+        //refreshing the status tags
         final int size = lastShownList.size();
 
         for (int i = 0; i < size; i++) {
             Task task = lastShownList.get(0);
-            System.out.println(task.getTaskName());
             refreshStatus(task, model);
         }
 

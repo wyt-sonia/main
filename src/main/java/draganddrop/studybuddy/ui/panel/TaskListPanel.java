@@ -7,6 +7,7 @@ import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.ui.UiPart;
 import draganddrop.studybuddy.ui.card.DetailedTaskCard;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -47,6 +48,7 @@ public class TaskListPanel extends UiPart<Region> {
                 setText(null);
             } else {
                 setGraphic(new DetailedTaskCard(task, getIndex() + 1).getRoot());
+                //setGraphic(new DetailedTaskCard(task, getIndex()).getRoot());
             }
         }
     }
