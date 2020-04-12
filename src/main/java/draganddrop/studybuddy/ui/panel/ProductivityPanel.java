@@ -1,4 +1,4 @@
-package draganddrop.studybuddy.ui;
+package draganddrop.studybuddy.ui.panel;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -8,6 +8,7 @@ import draganddrop.studybuddy.model.statistics.GoalObserver;
 import draganddrop.studybuddy.model.statistics.Statistics;
 import draganddrop.studybuddy.model.statistics.StatsUtil;
 import draganddrop.studybuddy.model.task.Task;
+import draganddrop.studybuddy.ui.UiPart;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -23,13 +24,13 @@ import javafx.scene.layout.Region;
 import javafx.scene.shape.Circle;
 
 /**
- * Productivity page that contains usage statistics
+ * Productivity panel that displays usage statistics
  */
-public class ProductivityPage extends UiPart<Region> implements GoalObserver {
-    private static final String FXML = "ProductivityPage.fxml";
+public class ProductivityPanel extends UiPart<Region> implements GoalObserver {
+    private static final String FXML = "ProductivityPanel.fxml";
     private static Statistics statistics;
 
-    private final Logger logger = LogsCenter.getLogger(ProductivityPage.class);
+    private final Logger logger = LogsCenter.getLogger(ProductivityPanel.class);
     private ObservableList<Task> taskList;
 
     @FXML
@@ -88,11 +89,11 @@ public class ProductivityPage extends UiPart<Region> implements GoalObserver {
     private ProgressIndicator rankProgressIndicator;
 
 
-    public ProductivityPage(ObservableList<Task> taskList, Label menuPointsLabel) {
+    public ProductivityPanel(ObservableList<Task> taskList, Label menuPointsLabel) {
         super(FXML);
         this.taskList = taskList;
         this.menuPointsLabel = menuPointsLabel;
-        generateProductivityPage();
+        generateProductivityPanel();
 
         productivityTabPane.widthProperty().addListener((observable, oldValue, newValue) -> {
             productivityTabPane.setTabMinWidth(productivityTabPane.getWidth() / 3 - 40);
@@ -102,20 +103,20 @@ public class ProductivityPage extends UiPart<Region> implements GoalObserver {
         taskList.addListener(new ListChangeListener<Task>() {
             @Override
             public void onChanged(Change<? extends Task> t) {
-                generateProductivityPage();
+                generateProductivityPanel();
             }
         });
         statistics.setObserver(this);
     }
 
     public static void setStatistics(Statistics statistics) {
-        ProductivityPage.statistics = statistics;
+        ProductivityPanel.statistics = statistics;
     }
 
     /**
      * generates the productivity page
      */
-    public void generateProductivityPage() {
+    public void generateProductivityPanel() {
         renderDailyTab();
         renderWeeklyTab();
         renderScoreTab();
