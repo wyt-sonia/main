@@ -1075,7 +1075,7 @@ This clickable *pie chart* compares the number of tasks in different statuses.
 image::stats/stats_pie.png[width="790",align="center",title = "Task Status Chart"]
 
 Clicking Action::
-When you click on the chart, all the tasks with the selected status will display on the right-side panel automatically.
+When you click on the chart, all tasks with the selected status will display on the right-side panel automatically.
 +
 Here is an example when you are clicking on the *Due Soon* portion.
 +
