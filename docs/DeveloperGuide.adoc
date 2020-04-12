@@ -444,7 +444,7 @@ The lifeline for every member should end at the destroy marker (X) but due to a 
 
 ==== Implementation
 The productivity feature displays insights related to the user's productivity over the
-past day, week and more on the Productivity page.
+past day, week and more on the Productivity panel.
 The Productivity page is integrated with the main page as a side panel.
 
 The Productivity page is further composed of 3 tabs:
@@ -486,11 +486,11 @@ The user can gain or lose Productivity Points in StudyBuddy when certain actions
 .. Letting a task go Overdue: _-1_
 
 Each usage statistic is updated accordingly when the respective user action or event
-has concluded. These statistics are then rendered on the `ProductivityPage`.
+has concluded. These statistics are then rendered on the `ProductivityPanel`.
 The chart visualizations are implemented using `ProgressIndicator`, `BarChart` and `AreaChart`.
 
 When the statistics are updated, the task list's event listener and classes implementing
-`GoalObserver` will be informed of the changes. `ProductivityPage` re-renders the
+`GoalObserver` will be informed of the changes. `ProductivityPanel` re-renders the
 displayed information when either of these are updated.
 
 The data displayed will be automatically updated upon calling any of the following commands:
@@ -535,14 +535,14 @@ image
 
 ==== Design Considerations
 
-===== Aspect: How to re-render Productivity page when statistics are updated
+===== Aspect: How to re-render Productivity Panel when statistics are updated
 *Alternative 1*: re-render only the values that have been updated
 
 - Pros: maximizes loading speed and minimizes lag for the user
 
 - Cons: increases complexity for codebase, higher chance of bugs occuring
 
-*Alternative 2*: always re-render the whole Productivity Page
+*Alternative 2*: always re-render the whole Productivity Panel
 
 - Pros: easy to implement
 

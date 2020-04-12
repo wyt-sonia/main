@@ -13,6 +13,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.add.CreateModuleInteractivePr
 import draganddrop.studybuddy.ui.interactiveprompt.edit.EditModuleInteractivePrompt;
 import draganddrop.studybuddy.ui.panel.DueSoonListPanel;
 import draganddrop.studybuddy.ui.panel.ModuleListPanel;
+import draganddrop.studybuddy.ui.panel.ProductivityPanel;
 import draganddrop.studybuddy.ui.panel.TaskListPanel;
 import draganddrop.studybuddy.ui.panel.TaskSummaryPanel;
 
@@ -40,7 +41,7 @@ public class MainWindow extends UiPart<Stage> {
     private static final String ARCHIVED_TASK = "Archived Task";
     private static final String CALENDAR = "Calendar";
     private static final String TASK_SUMMARY = "Task Summary";
-    private static final String PRODUCTIVITY_PAGE = "Your Productivity";
+    private static final String PRODUCTIVITY_TITLE = "Your Productivity";
 
     private static final String FXML = "MainWindow.fxml";
 
@@ -59,7 +60,7 @@ public class MainWindow extends UiPart<Stage> {
     private CalendarBox calendarBox;
     private CommandBox commandBox;
 
-    private ProductivityPage productivityPage;
+    private ProductivityPanel productivityPanel;
 
     @FXML
     private Label menuPointsLabel;
@@ -95,7 +96,7 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane modulePaneHolder;
 
     @FXML
-    private StackPane productivityPageHolder;
+    private StackPane productivityPanelHolder;
 
     @FXML
     private Label taskListPanelTitle;
@@ -173,10 +174,10 @@ public class MainWindow extends UiPart<Stage> {
         taskSummaryHolder.setManaged(false);
 
         //Productivity page
-        productivityPage = new ProductivityPage(logic.getFilteredTaskList(), menuPointsLabel);
-        productivityPageHolder.getChildren().add(productivityPage.getRoot());
-        productivityPageHolder.setVisible(false);
-        productivityPageHolder.setManaged(false);
+        productivityPanel = new ProductivityPanel(logic.getFilteredTaskList(), menuPointsLabel);
+        productivityPanelHolder.getChildren().add(productivityPanel.getRoot());
+        productivityPanelHolder.setVisible(false);
+        productivityPanelHolder.setManaged(false);
 
         moduleListPanel = new ModuleListPanel(logic.getFilteredModuleList(), logic.getFilteredTaskList());
         modulePaneHolder.getChildren().add(moduleListPanel.getRoot());
@@ -247,7 +248,7 @@ public class MainWindow extends UiPart<Stage> {
 
 
     /**
-     * handles showing the productivity page
+     * handles showing the productivity panel
      */
     @FXML
     private void handleShowProductivity() {
@@ -259,30 +260,30 @@ public class MainWindow extends UiPart<Stage> {
         toggleAllTitle(true);
         toggleMainTitleView(true);
         setTaskListTitleText(ALL_TASK);
-        setMainTitleText(PRODUCTIVITY_PAGE);
+        setMainTitleText(PRODUCTIVITY_TITLE);
         taskListPanel = new TaskListPanel(logic.getFilteredTaskList());
         taskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
         logger.fine(FXML + " : End of executing show productivity.");
     }
 
     /**
-     * shows the productivity page and selects the Productivity Points tab
+     * shows the productivity panel and selects the Productivity Points tab
      */
     @FXML
     private void handleShowProductivityPoints() {
         logger.fine(FXML + " : Start to show productivity points.");
-        productivityPage.selectTab(2);
+        productivityPanel.selectTab(2);
         handleShowProductivity();
         logger.fine(FXML + " : End of executing show productivity points.");
     }
 
     /**
-     * shows the productivity page and selects the Daily tab
+     * shows the productivity panel and selects the Daily tab
      */
     @FXML
     private void handleShowProductivityDaily() {
         logger.fine(FXML + " : Start to show productivity daily.");
-        productivityPage.selectTab(0);
+        productivityPanel.selectTab(0);
         handleShowProductivity();
         logger.fine(FXML + " : End of showing productivity daily.");
     }
@@ -525,7 +526,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void toggleProductivityHolderView(boolean val) {
-        setPaneView(productivityPageHolder, val);
+        setPaneView(productivityPanelHolder, val);
     }
 
 
