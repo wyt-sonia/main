@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 
 import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.commons.util.FileUtil;
-
 import javafx.application.Application;
 
 /**

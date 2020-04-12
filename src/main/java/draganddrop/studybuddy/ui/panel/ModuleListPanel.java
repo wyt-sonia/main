@@ -8,7 +8,6 @@ import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.ui.UiPart;
 import draganddrop.studybuddy.ui.card.ModCard;
-
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

@@ -11,7 +11,6 @@ import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.ReadOnlyStudyBuddy;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.task.Task;
-
 import javafx.collections.ObservableList;
 
 
