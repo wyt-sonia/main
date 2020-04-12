@@ -4,7 +4,6 @@ import draganddrop.studybuddy.logic.Logic;
 import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.logic.parser.exceptions.ParseException;
-import draganddrop.studybuddy.ui.MainWindow;
 import draganddrop.studybuddy.ui.UiPart;
 import draganddrop.studybuddy.ui.interactiveprompt.ExitTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;

@@ -7,7 +7,6 @@ import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.logic.commands.view.CalendarViewCommand;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.CalendarViewCommandParser;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.CalendarViewCommandException;
-import draganddrop.studybuddy.ui.MainWindow;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptType;
