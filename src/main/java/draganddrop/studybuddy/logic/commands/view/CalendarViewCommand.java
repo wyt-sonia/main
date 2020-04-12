@@ -28,8 +28,8 @@ public class CalendarViewCommand extends Command {
      */
     public CalendarViewCommand(LocalDate selectedDate, MainWindow mainwindow) {
         mainwindow.handleShowCalendar();
-        mainwindow.getCalendarBox().generateCalendar(selectedDate.getYear(), selectedDate.getMonth());
-        mainwindow.getCalendarBox().viewTaskByDate(selectedDate);
+        mainwindow.getCalendarPanel().generateCalendar(selectedDate.getYear(), selectedDate.getMonth());
+        mainwindow.getCalendarPanel().viewTaskByDate(selectedDate);
         this.selectedDate = selectedDate;
     }
 

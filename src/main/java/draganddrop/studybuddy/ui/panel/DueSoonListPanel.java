@@ -3,7 +3,6 @@ package draganddrop.studybuddy.ui.panel;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.ui.UiPart;
 import draganddrop.studybuddy.ui.card.DueSoonTaskCard;
-
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;

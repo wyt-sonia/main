@@ -14,7 +14,6 @@ import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.module.exceptions.ModuleException;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskType;
-
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 

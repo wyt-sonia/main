@@ -5,10 +5,10 @@ import static java.util.Objects.requireNonNull;
 import draganddrop.studybuddy.logic.commands.Command;
 import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
+import draganddrop.studybuddy.logic.interactiveprompt.InteractivePromptTerms;
 import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.module.exceptions.ModuleException;
-import draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms;
 
 /**
  * Command for editing mod.

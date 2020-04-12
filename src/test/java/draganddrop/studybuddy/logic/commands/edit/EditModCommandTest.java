@@ -1,9 +1,9 @@
 package draganddrop.studybuddy.logic.commands.edit;
 
-import static draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms.CHANGE_MOD_CODE;
-import static draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms.CHANGE_MOD_NAME;
-import static draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms.DELETE_MOD;
-import static draganddrop.studybuddy.ui.interactiveprompt.InteractivePromptTerms.INIT;
+import static draganddrop.studybuddy.logic.interactiveprompt.InteractivePromptTerms.CHANGE_MOD_CODE;
+import static draganddrop.studybuddy.logic.interactiveprompt.InteractivePromptTerms.CHANGE_MOD_NAME;
+import static draganddrop.studybuddy.logic.interactiveprompt.InteractivePromptTerms.DELETE_MOD;
+import static draganddrop.studybuddy.logic.interactiveprompt.InteractivePromptTerms.INIT;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
