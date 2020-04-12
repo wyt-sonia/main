@@ -150,11 +150,25 @@ public interface Model {
     void unarchiveTask(Task task);
 
     /**
-     * Adds the given task.
+     * Adds the given task to the due soon list.
      *
      * @param task must not already exist in the study buddy.
      */
     void addDueSoonTask(Task task);
+
+    /**
+     * Adds the given task to the main list.
+     *
+     * @param task must not already exist in the study buddy.
+     */
+    void addTaskToMainList(Task task);
+
+    /**
+     * Deletes the given task from the main list.
+     *
+     * @param task task
+     */
+    void deleteTaskFromMainList(Task task);
 
     /**
      * Adds the given task.

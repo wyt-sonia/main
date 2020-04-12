@@ -151,6 +151,16 @@ class AddTaskCommandTest {
         }
 
         @Override
+        public void addTaskToMainList(Task target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteTaskFromMainList(Task target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void addDueSoonTask(Task task) {
             throw new AssertionError("This method should not be called.");
         }

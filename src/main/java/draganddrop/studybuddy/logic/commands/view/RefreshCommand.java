@@ -28,14 +28,24 @@ public class RefreshCommand extends Command {
 
         List<Task> lastShownList = model.getFilteredTaskList();
 
+        //resetting the due soon list
         model.clearDueSoonList(new StudyBuddy());
 
         for (Task task : lastShownList) {
             if (task.isDueSoon()) {
                 model.forceAddDueSoonTask(task);
             }
+        }
+
+        final int size = lastShownList.size();
+
+        for (int i = 0; i < size; i++) {
+            Task task = lastShownList.get(0);
+            System.out.println(task.getTaskName());
             refreshStatus(task, model);
         }
+
+        model.sortTasks("deadline / task start date");
 
         return new CommandResult(Messages.MESSAGE_DUE_SOON_TASK_SUCCESS);
     }
@@ -46,14 +56,9 @@ public class RefreshCommand extends Command {
      * @param model Model
      */
     private void refreshStatus(Task task, Model model) {
-        boolean isStatusExpired = task.isStatusExpired();
-        if (isStatusExpired) {
-            Task temp = task;
-            model.deleteTask(task);
-            temp.freshStatus();
-            model.addTask(temp);
-            model.sortTasks("deadline / task start date");
-        }
+        model.deleteTaskFromMainList(task);
+        task.freshStatus();
+        model.addTaskToMainList(task);
     }
 
     @Override

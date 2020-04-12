@@ -96,45 +96,29 @@ This enhancement was a crucial command.
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-. Introduction
-
 include::../UserGuide.adoc[tag=introduction]
-. Useful tips
 
 include::../UserGuide.adoc[tag=usefulTips]
-. Commonly Used Symbols
 
 include::../UserGuide.adoc[tag=symbols]
-. Features:
-
-.. Delete
 
 include::../UserGuide.adoc[tag=delete]
-.. Add duplicates
 
 include::../UserGuide.adoc[tag=addDuplicates]
-.. View renamed
 
 include::../UserGuide.adoc[tag=viewRenamed]
-.. Filter
 
 include::../UserGuide.adoc[tag=filter]
-.. Refresh
 
 include::../UserGuide.adoc[tag=refresh]
-.. Due Soon
 
 include::../UserGuide.adoc[tag=dueSoon]
-.. Saving Data
 
 include::../UserGuide.adoc[tag=savingData]
-.. Clear
 
 include::../UserGuide.adoc[tag=clear]
-.. Exit
 
 include::../UserGuide.adoc[tag=exit]
-.. Summary
 
 include::../UserGuide.adoc[tag=summary]
 
@@ -144,23 +128,15 @@ include::../UserGuide.adoc[tag=summary]
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
 |===
 
-. Sections:
-.. Introduction
-
 include::../DeveloperGuide.adoc[tag=introduction]
-.. Model Component
 
 include::../DeveloperGuide.adoc[tag=modelComponent]
-.. Due Soon Tasks Feature
 
 include::../DeveloperGuide.adoc[tag=dueSoon]
-.. Use cases pertaining to my features
 
 include::../DeveloperGuide.adoc[tag=useCasesSouwmyaa]
-.. User stories
 
 include::../DeveloperGuide.adoc[tag=userStories]
-.. Instructions for Manual Testing- Saving Data
 
 include::../DeveloperGuide.adoc[tag=savingData]
 
