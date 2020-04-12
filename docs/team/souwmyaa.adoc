@@ -1,56 +1,57 @@
-= Soumwyaa Sabarinathann - Project Portfolio
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
-== PROJECT: Study Buddy
+=== [teal]#*Soumwyaa Sabarinathann - Project Portfolio*#
 
-== Overview
+[teal]#*Project: Study Buddy*#
 
-StudyBuddy is a desktop application designed for students who *wish to manage their module related tasks* in a convenient and user-friendly interface.
+[teal]#*Overview*#
 
-== Summary of contributions
+StudyBuddy is a desktop application designed for students who *wish to manage their module related tasks* in a convenient and user-friendly interface. The application is written in Java and spans over 12k lines of code.
 
-=== Enhancements
+[teal]#*Summary of contributions*#
 
 * *Major enhancement*: added *the Due Soon List feature*
-** What it does:
-. Allows user to view a list of tasks due within the next week in one panel.
-. Displays time left before the deadline for each due soon task.
-. Auto-sorts tasks to be in order of most urgent to least urgent deadline.
-. Auto-updates when changes are made to the data (additions, deletions, edits etc).
-** Justification: Helpful to the user because it reminds them of upcoming deadlines.
+** Function:
+It allows users to view a list of tasks due within the next week in one panel. It also displays time left before the deadline for each due soon task, auto-sorts tasks to be in order of most urgent to least urgent deadline and auto-updates when changes are made to the data (additions, deletions, edits etc). +
+It also provides a refresh command that is used to update the due soon list so it doesn't become invalid after a certain duration of time.
+** Justification:
+Helpful to the user because it reminds them of upcoming deadlines.
 ** Highlights:
-. This implementation was challenging because it required changes to be made to every command that changed data.
-. It involved working in the logic, model, storage and UI components of the code base.
-. It also involved changing the GUI.
-
-* *Major enhancement*: added *the Refresh Due Soon List command*
-** What it does:
-. Updates the time left for each deadline and the state of due soon list.
-** Justification: Helpful to the user because after some time has past, list/time left may need to be updated.
-** Highlights:
-. This enhancement formed the foundation for other features that needed to be refreshed. eg: refreshing status tags.
-. It required working in the UI, logic and model components of the code base.
+This implementation was challenging because it required changes to be made to every command that changed data. It involved working in the logic, model, storage and UI components of the code base. It also involved changing the GUI.
 
 * *Major enhancement*: added *the Add Duplicate Tasks feature*
-** What it does:
-. Allows user to add duplicate tasks by automatically appending brackets with a number to its task name.
-. The number corresponds to the number of times task has been duplicated.
-** Justification:If the user makes a mistake in one field while adding task, they will have to re-enter all 12 fields if duplicates are not allowed.
+** Function:
+It allows users to add duplicate tasks by automatically appending brackets with a number to its task name. The number corresponds to the number of times task has been duplicated.
+** Justification:
+If the user makes a mistake in one field while adding task, they will have to re-enter all 12 fields if duplicates are not allowed.
 ** Highlights:
-. It required working on other commands, such as edit command and unarchive command to prevent duplication.
-. Since study buddy already had a lot of checks to prevent duplicate tasks, it required a large amount of refactoring code.
+It required working on other commands, such as edit command and unarchive command to prevent duplication. Since study buddy already had a lot of checks to prevent duplicate tasks, it required a large amount of refactoring code.
 
 * *Minor enhancement*: added *the Delete Task command*
-** What it does: Allows user to delete an existing task in the list
+** Function: Allows user to delete an existing task in the list
 ** Justification: Helpful to the user because it enables them to remove tasks from their list.
 
 * *Minor enhancement*: added *the Filter command*
-** What it does: Allows user to filter by status (eg: finished, pending etc) or by type (eg: assignment, quiz etc)
+** Function: Allows user to filter by status (eg: finished, pending etc) or by type (eg: assignment, quiz etc)
 ** Justification: This feature is extremely helpful to the user because it enables them to filter their list of all tasks by various categories.
 
-=== User guide
+[teal]#*Code contributed:*# +
+https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#=undefined&search=souwmyaa
+
+[teal]#*Team-based Tasks*# +
+1. Refactored all occurrences of Address Book to Study Buddy. Link to Pull Request https://github.com/AY1920S2-CS2103T-W16-3/main/pull/135[#135] +
+2. Helped to maintain the issue tracker. Links to issues https://github.com/AY1920S2-CS2103T-W16-3/main/issues/283[#283], https://github.com/AY1920S2-CS2103T-W16-3/main/issues/268[#268]. +
+3. Attempted to find bugs in all team members code to help them fix any issues. Links to issues https://github.com/AY1920S2-CS2103T-W16-3/main/issues/107[#107], https://github.com/AY1920S2-CS2103T-W16-3/main/issues/256[#256] +
+4. Wrote test cases for error-prone classes, even if they were not mine. Links to Pull Requests https://github.com/AY1920S2-CS2103T-W16-3/main/pull/166[#166], https://github.com/AY1920S2-CS2103T-W16-3/main/pull/139[#139] +
+5. Contributed to the forum. Link to issue https://github.com/nus-cs2103-AY1920S2/forum/issues/75[#75]
+
+[teal]#*Review/Mentoring*# +
+1. Reviewed other members Pull Requests. Links to Pull Requests https://github.com/AY1920S2-CS2103T-W16-3/main/pull/59[#59], https://github.com/AY1920S2-CS2103T-W16-3/main/pull/279[#279] +
+2. Reviewed another team's DG and provided useful feedback. Links to issues https://github.com/AY1920S2-CS2103T-W17-3/main/issues/208[#208], https://github.com/AY1920S2-CS2103T-W17-3/main/issues/204[#204]
+
+[teal]#*User guide*#
 
 |===
 |_Given below is a section that I contributed to the User Guide. It showcases my ability to write documentation targeting end-users._
@@ -58,7 +59,7 @@ StudyBuddy is a desktop application designed for students who *wish to manage th
 
 include::../UserGuide.adoc[tag=delete]
 
-=== Developer Guide
+[teal]#*Developer Guide*#
 
 |===
 |_Given below are some sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
@@ -75,25 +76,5 @@ https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/AddDueS
 https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/AddDueSoonSequence.puml[Add due soon task sequence diagram] +
 https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DeleteDueSoonActivityDiagram.puml[Delete due soon task activity diagram] +
 https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DeleteDueSoonSequence.puml[Delete due soon task sequence diagram]
-
-=== Team-based Tasks
-. Refactored all occurrences of Address Book to Study Buddy. Link to Pull Request https://github.com/AY1920S2-CS2103T-W16-3/main/pull/135[#135]
-. Added the introduction, commonly used symbols, summary and useful tips sections to user guide. Links to Pull Requests https://github.com/AY1920S2-CS2103T-W16-3/main/pull/245[#245], https://github.com/AY1920S2-CS2103T-W16-3/main/pull/176[#176]
-. Added the introduction to developer guide. Link to Pull Request https://github.com/AY1920S2-CS2103T-W16-3/main/pull/185[#185]
-. Added the Study Buddy icon. Link to Pull Request https://github.com/AY1920S2-CS2103T-W16-3/main/pull/68[#68]
-. Added all labels and milestones to the issue tracker. Links to https://github.com/AY1920S2-CS2103T-W16-3/main/labels[labels] and https://github.com/AY1920S2-CS2103T-W16-3/main/milestones?state=closed[milestones].
-. Attempted to find bugs in all team members code to help them fix any issues. Link to issue https://github.com/AY1920S2-CS2103T-W16-3/main/issues/107[#107]
-. Helped maintained consistency in User and Developer guide by editing some other team member's parts and diagram colors. Link to Pull Request https://github.com/AY1920S2-CS2103T-W16-3/main/pull/252[#252]
-. Revised documentation and notified members if they had missed a certain feature/aspect that could cause confusion to users/testers. Link to issue https://github.com/AY1920S2-CS2103T-W16-3/main/issues/256[#256]
-. Wrote test cases for error-prone classes, even if they were not mine. Links to Pull Requests https://github.com/AY1920S2-CS2103T-W16-3/main/pull/166[#166], https://github.com/AY1920S2-CS2103T-W16-3/main/pull/139[#139]
-. Contributed to the forum. Link to issue https://github.com/nus-cs2103-AY1920S2/forum/issues/75[#75]
-
-=== Review/Mentoring
-. If a fellow team member's PR did not pass the tests required, I left helpful comments in order to reduce their work load.
-Link to Pull Request https://github.com/AY1920S2-CS2103T-W16-3/main/pull/59[#59]
-. Reviewed another team's DG and provided useful feedback. Links to issues https://github.com/AY1920S2-CS2103T-W17-3/main/issues/208[#208], https://github.com/AY1920S2-CS2103T-W17-3/main/issues/204[#204]
-
-=== Code contributed: +
-https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#=undefined&search=souwmyaa
 
 

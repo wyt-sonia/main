@@ -892,20 +892,96 @@ Close the window.
 .. Re-launch the app by double-clicking the jar file. +
    Expected: The most recent window size and location is retained.
 
-
+//updated by Souwmyaa
 === Deleting a task
 
 . Deleting a task while all tasks are listed
 
-.. Prerequisites: List all tasks using the `list` command.
-Multiple tasks in the list.
+.. Prerequisites:
+... List all tasks using the `list` command.
+... Multiple tasks in the list.
+
 .. Test case: `delete [Enter]` + `1` +
    Expected: First task is deleted from the list.
 Successful deletion indication in the status message.
+
 .. Test case: `delete [Enter]` + `0` +
    Expected: No task is deleted.
 Error details shown in the status message.
 .. Other incorrect delete commands to try: `delete x`(where x is anything)
+
+//updated by Souwmyaa
+=== Refreshing the due soon list
+
+. Refreshing the due soon list when the time left is off
+
+.. Prerequisites:
+... Have some tasks in the due soon list
+... Change the time of your PC to a time in the past/future
+
+.. Test case: Use the `refresh` command +
+   Expected: All the tags with time left now show updated time.
+Successful refresh indication in the status message.
+
+//updated by Souwmyaa
+=== Adding a duplicate task
+
+. Adding a duplicate task to the list
+
+.. Prerequisites:
+... Have at least one task in the unarchived tasks list
+
+.. Test case: Use the `add` command to add a duplicate of an existing task +
+   Expected: It will add this duplicate task and append (1) at the end of its name. +
+Successful add indication in the status message.
+
+//updated by Souwmyaa
+=== Filter tasks
+
+. Filters tasks by status or type
+
+.. Prerequisites:
+... Have a few tasks in the unarchived tasks list of different types and status'
+
+.. Test case: Use the `filter` command to filter by 'status' -> 'pending' +
+   Expected: It will filter all your pending tasks in the list. +
+Successful filter indication in the status message.
+
+//updated by Souwmyaa
+=== Clear tasks
+
+. Clears all tasks in the study buddy
+
+.. Prerequisites:
+... Have a few tasks in the unarchived tasks list
+
+.. Test case: Use the `clear` command +
+   Expected: It will clear everything in Study Buddy. +
+Successful clear indication in the status message.
+
+
+//updated by Souwmyaa
+=== View renamed
+
+. Filters all tasks in your list with a number appended in brackets (auto-renamed)
+
+.. Prerequisites:
+... Have a few duplicated tasks in the unarchived tasks list
+
+.. Test case: Use the `View renamed` command +
+   Expected: It filters all the auto-renamed tasks out. +
+Successful filter indication in the status message.
+
+//updated by Souwmyaa
+=== Exit
+
+. Exits from the application
+
+.. Prerequisites:
+... Launch the application
+
+.. Test case: Use the `bye` command +
+   Expected: It exits the application.
 
 //updated by Souwmyaa
 //tag::savingData[]
