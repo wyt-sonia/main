@@ -249,6 +249,9 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
             task.setTaskName(newTaskName);
         }
         tasks.add(task);
+        if (task.isDueSoon()) {
+            addDueSoonTask(task);
+        }
     }
 
     /**
