@@ -47,15 +47,13 @@ public class CommandBox extends UiPart<Region> {
     private InteractivePrompt currentInteractivePrompt;
     @FXML
     private TextField commandTextField;
-    private MainWindow mainWindow;
 
-    public CommandBox(CommandExecutor commandExecutor, MainWindow mainWindow) {
+    public CommandBox(CommandExecutor commandExecutor) {
         super(FXML);
         currentInteractivePrompt = null;
         this.commandExecutor = commandExecutor;
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
-        this.mainWindow = mainWindow;
     }
 
     /**
@@ -127,7 +125,7 @@ public class CommandBox extends UiPart<Region> {
                     break;
                 //change tabs
                 case "calendar":
-                    currentInteractivePrompt = new CalendarViewInteractivePrompt(mainWindow);
+                    currentInteractivePrompt = new CalendarViewInteractivePrompt();
                     break;
                 default:
                     currentInteractivePrompt = new InvalidInputInteractivePrompt();

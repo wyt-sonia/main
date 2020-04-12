@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.time.LocalDate;
 import java.util.logging.Logger;
 
+import com.sun.tools.javac.Main;
 import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.logic.commands.Command;
 import draganddrop.studybuddy.logic.commands.CommandResult;
@@ -26,11 +27,12 @@ public class CalendarViewCommand extends Command {
     /**
      *
      */
-    public CalendarViewCommand(LocalDate selectedDate, MainWindow mainwindow) {
-        mainwindow.handleShowCalendar();
-        mainwindow.getCalendarBox().generateCalendar(selectedDate.getYear(), selectedDate.getMonth());
-        mainwindow.getCalendarBox().viewTaskByDate(selectedDate);
+    public CalendarViewCommand(LocalDate selectedDate) {
         this.selectedDate = selectedDate;
+        MainWindow.getInstance().handleShowCalendar();
+        MainWindow.getInstance().getCalendarBox().generateCalendar(selectedDate.getYear(), selectedDate.getMonth());
+        MainWindow.getInstance().getCalendarBox().viewTaskByDate(selectedDate);
+        logger.info("Selected date: " + selectedDate.toString());
     }
 
     @Override

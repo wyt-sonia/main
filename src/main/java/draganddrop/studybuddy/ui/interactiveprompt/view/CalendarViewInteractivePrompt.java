@@ -23,12 +23,10 @@ public class CalendarViewInteractivePrompt extends InteractivePrompt {
     private static final String END_OF_COMMAND_MSG = "Now viewing: ";
 
     private LocalDate selectedDate;
-    private MainWindow mainWindow;
 
-    public CalendarViewInteractivePrompt(MainWindow mainWindow) {
+    public CalendarViewInteractivePrompt() {
         super();
         this.interactivePromptType = InteractivePromptType.CALENDAR_VIEW;
-        this.mainWindow = mainWindow;
     }
     @Override
     public String interact(String userInput) {
@@ -57,7 +55,7 @@ public class CalendarViewInteractivePrompt extends InteractivePrompt {
 
         case READY_TO_EXECUTE:
             try {
-                CalendarViewCommand cvCommand = new CalendarViewCommand(selectedDate, mainWindow);
+                CalendarViewCommand cvCommand = new CalendarViewCommand(selectedDate);
                 logic.executeCommand(cvCommand);
                 endInteract(END_OF_COMMAND_MSG + selectedDate.toString());
             } catch (CommandException | ParseException e) {
