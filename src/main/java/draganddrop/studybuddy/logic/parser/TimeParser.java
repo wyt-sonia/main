@@ -16,7 +16,7 @@ import draganddrop.studybuddy.model.task.Task;
 /**
  * Represents a TimeParser, which can parse String to dateTime or parse dateTime to String.
  *
- * @@author Wang Yuting
+ * @@author wyt-sonia
  */
 public class TimeParser {
 

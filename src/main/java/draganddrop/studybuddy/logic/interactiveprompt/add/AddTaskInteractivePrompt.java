@@ -27,7 +27,7 @@ import javafx.collections.ObservableList;
 /**
  * An interactive prompt for adding a new task.
  *
- * @@author Wang Yuting
+ * @@author wyt-sonia
  */
 public class AddTaskInteractivePrompt extends InteractivePrompt {
     public static final String REQUIRED_MODULE_MSG = "Please choose a module for this task or press enter to skip. "

@@ -24,8 +24,6 @@ import draganddrop.studybuddy.model.task.exceptions.DuplicateTaskException;
 
 /**
  * Edits the details of an existing task in the study buddy.
- *
- * @@author Hong Wen, Wang Yuting
  */
 public class EditTaskCommand extends Command {
 

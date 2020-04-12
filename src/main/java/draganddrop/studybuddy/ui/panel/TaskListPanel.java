@@ -17,7 +17,7 @@ import javafx.scene.layout.Region;
 /**
  * An UI component which represents the panel containing the list of persons.
  *
- * @@author Wang Yuting
+ * @@author wyt-sonia
  */
 public class TaskListPanel extends UiPart<Region> {
     private static final String FXML = "TaskListPanel.fxml";

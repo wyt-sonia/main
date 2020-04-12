@@ -26,8 +26,6 @@ import javafx.collections.ObservableList;
 
 /**
  * Interactive prompt for editing tasks
- *
- * @@author Hong Wen, Wang Yuting
  */
 public class EditTaskInteractivePrompt extends InteractivePrompt {
     public static final String QUIT_COMMAND_MSG = "Successfully quit from the edit task command";

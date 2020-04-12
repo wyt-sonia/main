@@ -38,7 +38,7 @@ import javafx.scene.paint.Color;
 /**
  * An UI component which represents the panel containing the summary charts of tasks.
  *
- * @@author Wang Yuting
+ * @@author wyt-sonia
  */
 public class TaskSummaryPanel extends UiPart<Region> {
 

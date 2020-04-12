@@ -17,7 +17,7 @@ import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.S
 /**
  * A interactive prompt for sorting task list.
  *
- * @@author Wang Yuting
+ * @@author wyt-sonia
  */
 public class SortTaskInteractivePrompt extends InteractivePrompt {
     private static final String END_OF_COMMAND_MSG = "Task sorted successfully!";

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Represents the Task status.
  *
- * @@author Wang Yuting
+ * @@author wyt-sonia
  */
 public enum TaskStatus {
     PENDING,

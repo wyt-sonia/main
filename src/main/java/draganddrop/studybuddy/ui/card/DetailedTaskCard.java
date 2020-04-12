@@ -19,7 +19,7 @@ import javafx.scene.layout.Region;
 /**
  * An UI component that displays the detail information of a {@code Task}.
  *
- * @@author Wang Yuting
+ * @@author wyt-sonia
  */
 public class DetailedTaskCard extends UiPart<Region> {
 

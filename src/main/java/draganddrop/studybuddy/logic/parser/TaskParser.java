@@ -20,7 +20,7 @@ import javafx.collections.ObservableList;
  * Represents a TaskParser, which can parse all fields for tasks during interactive communication.
  * Especially for interactions of add task and edit task.
  *
- * @@author Wang Yuting
+ * @@author wyt-sonia
  */
 public class TaskParser {
 

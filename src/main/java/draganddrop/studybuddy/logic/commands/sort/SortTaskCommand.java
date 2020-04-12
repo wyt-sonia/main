@@ -15,7 +15,7 @@ import draganddrop.studybuddy.model.Model;
  * Represent a SortTaskCommand that can handle the sorting of tasks according to
  * user's choice.
  *
- * @@author Wang Yuting
+ * @@author wyt-sonia
  */
 public class SortTaskCommand extends Command {
 

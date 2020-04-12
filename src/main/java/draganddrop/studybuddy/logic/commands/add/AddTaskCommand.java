@@ -15,7 +15,7 @@ import draganddrop.studybuddy.model.task.Task;
 /**
  * Represents the command of adding new task.
  *
- * @@author Wang Yuting
+ * @@author wyt-sonia
  */
 public class AddTaskCommand extends Command {
 
