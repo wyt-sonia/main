@@ -12,10 +12,11 @@ skinparam ParticipantBorderColor #black
 
 
 box UI UI_COLOR_T1
-participant ":RefreshTaskInteractivePrompt" as RefreshTaskInteractivePrompt UI_COLOR
+participant ":UI" as UI UI_COLOR
 end box
 
 box Logic LOGIC_COLOR_T1
+participant ":RefreshTaskInteractivePrompt" as RefreshTaskInteractivePrompt LOGIC_COLOR
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":RefreshCommand" as RefreshCommand LOGIC_COLOR
 end box
@@ -25,7 +26,7 @@ participant ":Model" as Model MODEL_COLOR
 participant ":StudyBuddy" as StudyBuddy MODEL_COLOR
 end box
 
-[-> RefreshTaskInteractivePrompt : execute(due soon)
+UI-> RefreshTaskInteractivePrompt : execute(due soon)
 activate RefreshTaskInteractivePrompt
 
 RefreshTaskInteractivePrompt -> LogicManager : execute()
@@ -53,7 +54,7 @@ destroy RefreshCommand
 LogicManager --> RefreshTaskInteractivePrompt
 deactivate LogicManager
 
-[<--RefreshTaskInteractivePrompt
+UI<--RefreshTaskInteractivePrompt
 deactivate RefreshTaskInteractivePrompt
 destroy RefreshTaskInteractivePrompt
 

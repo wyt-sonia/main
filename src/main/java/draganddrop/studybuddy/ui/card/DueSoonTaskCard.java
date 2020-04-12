@@ -4,14 +4,15 @@ import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.ui.UiPart;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 
 /**
- * An UI component that displays information of a {@code Person}.
+ * An UI component that displays information of a Due Soon Task.
+ *
+ * @@author souwmyaa
  */
 public class DueSoonTaskCard extends UiPart<Region> {
 

@@ -6,17 +6,15 @@ import draganddrop.studybuddy.commons.core.GuiSettings;
 import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.logic.Logic;
 import draganddrop.studybuddy.logic.commands.CommandResult;
-import draganddrop.studybuddy.ui.box.CalendarBox;
-import draganddrop.studybuddy.ui.box.CommandBox;
-import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
-import draganddrop.studybuddy.ui.interactiveprompt.add.CreateModuleInteractivePrompt;
-import draganddrop.studybuddy.ui.interactiveprompt.edit.EditModuleInteractivePrompt;
+import draganddrop.studybuddy.logic.interactiveprompt.InteractivePrompt;
+import draganddrop.studybuddy.logic.interactiveprompt.add.CreateModuleInteractivePrompt;
+import draganddrop.studybuddy.logic.interactiveprompt.edit.EditModuleInteractivePrompt;
+import draganddrop.studybuddy.ui.panel.CalendarPanel;
 import draganddrop.studybuddy.ui.panel.DueSoonListPanel;
 import draganddrop.studybuddy.ui.panel.ModuleListPanel;
 import draganddrop.studybuddy.ui.panel.ProductivityPanel;
 import draganddrop.studybuddy.ui.panel.TaskListPanel;
 import draganddrop.studybuddy.ui.panel.TaskSummaryPanel;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -55,13 +53,11 @@ public class MainWindow extends UiPart<Stage> {
     private TaskListPanel taskListPanel;
     private TaskSummaryPanel taskSummaryPanel;
     private DueSoonListPanel dueSoonListPanel;
-    private ResultDisplay resultDisplay;
-    private HelpWindow helpWindow;
-    private ModuleListPanel moduleListPanel;
-    private CalendarBox calendarBox;
-    private CommandBox commandBox;
-
     private ProductivityPanel productivityPanel;
+    private ModuleListPanel moduleListPanel;
+    private CalendarPanel calendarPanel;
+    private FeedbackDisplayBox feedbackDisplayBox;
+    private CommandBox commandBox;
 
     @FXML
     private Label menuPointsLabel;
@@ -133,7 +129,6 @@ public class MainWindow extends UiPart<Stage> {
         setWindowDefaultSize(logic.getGuiSettings());
 
         setAccelerators();
-        helpWindow = new HelpWindow();
         mainWindow = this;
         logger.fine(FXML + " : End of setting up the Main Window.");
     }
@@ -189,8 +184,8 @@ public class MainWindow extends UiPart<Stage> {
         dueSoonListPanel = new DueSoonListPanel(logic.getFilteredDueSoonTaskList());
         dueSoonListPanelPlaceholder.getChildren().add(dueSoonListPanel.getRoot());
 
-        resultDisplay = new ResultDisplay();
-        resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
+        feedbackDisplayBox = new FeedbackDisplayBox();
+        resultDisplayPlaceholder.getChildren().add(feedbackDisplayBox.getRoot());
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getStudyBuddyFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
@@ -210,20 +205,6 @@ public class MainWindow extends UiPart<Stage> {
             primaryStage.setX(guiSettings.getWindowCoordinates().getX());
             primaryStage.setY(guiSettings.getWindowCoordinates().getY());
         }
-    }
-
-    /**
-     * Opens the help window or focuses on it if it's already opened.
-     */
-    @FXML
-    public void handleHelp() {
-        logger.fine(FXML + " : Start to execute help handler.");
-        if (!helpWindow.isShowing()) {
-            helpWindow.show();
-        } else {
-            helpWindow.focus();
-        }
-        logger.fine(FXML + " : End of executing help handler.");
     }
 
     /**
@@ -299,7 +280,6 @@ public class MainWindow extends UiPart<Stage> {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
             (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
-        helpWindow.hide();
         primaryStage.hide();
         logger.fine(FXML + " : End of handling exit.");
     }
@@ -414,9 +394,9 @@ public class MainWindow extends UiPart<Stage> {
         toggleTaskListPanelTitleView(false);
         setMainTitleText(CALENDAR);
 
-        calendarBox = new CalendarBox(logic.getFilteredTaskList(), dueSoonListPanelPlaceholder,
+        calendarPanel = new CalendarPanel(logic.getFilteredTaskList(), dueSoonListPanelPlaceholder,
             dueListPanelTitle);
-        taskListPanelPlaceholder.getChildren().add(calendarBox.getRoot());
+        taskListPanelPlaceholder.getChildren().add(calendarPanel.getRoot());
         logger.fine(FXML + " : End of handling calendar to be shown.");
     }
 
@@ -428,8 +408,8 @@ public class MainWindow extends UiPart<Stage> {
         return dueSoonListPanel;
     }
 
-    public CalendarBox getCalendarBox() {
-        return this.calendarBox;
+    public CalendarPanel getCalendarPanel() {
+        return this.calendarPanel;
     }
 
     /**
@@ -441,7 +421,7 @@ public class MainWindow extends UiPart<Stage> {
         logger.fine(FXML + " : Start to handle command execution.");
         currentInteractivePrompt.setLogic(logic);
         String reply = currentInteractivePrompt.interact(commandText.trim());
-        resultDisplay.setFeedbackToUser(reply);
+        feedbackDisplayBox.setFeedbackToUser(reply);
         if (currentInteractivePrompt.isQuit()) {
             handleExit();
         }

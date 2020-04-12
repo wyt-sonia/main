@@ -6,7 +6,6 @@ import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.statistics.GeneralStats;
 import draganddrop.studybuddy.model.statistics.ScoreStats;
 import draganddrop.studybuddy.model.task.Task;
-
 import javafx.collections.ObservableList;
 
 /**

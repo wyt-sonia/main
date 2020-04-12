@@ -5,7 +5,6 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import draganddrop.studybuddy.model.module.exceptions.ModuleException;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;

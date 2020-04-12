@@ -40,8 +40,8 @@ public class CalendarViewCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         MainWindow.getInstance().handleShowCalendar();
-        MainWindow.getInstance().getCalendarBox().generateCalendar(selectedDate.getYear(), selectedDate.getMonth());
-        MainWindow.getInstance().getCalendarBox().viewTaskByDate(selectedDate);
+        MainWindow.getInstance().getCalendarPanel().generateCalendar(selectedDate.getYear(), selectedDate.getMonth());
+        MainWindow.getInstance().getCalendarPanel().viewTaskByDate(selectedDate);
         return new CommandResult(String.format(CALENDAR_VIEW_SUCCESS, selectedDate.toString()));
     }
 

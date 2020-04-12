@@ -13,7 +13,6 @@ import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.statistics.Statistics;
 import draganddrop.studybuddy.model.task.exceptions.DuplicateTaskException;
 import draganddrop.studybuddy.model.task.exceptions.TaskNotFoundException;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

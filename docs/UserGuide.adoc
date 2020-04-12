@@ -28,6 +28,7 @@ By: `Team Drag&Drop`      Since: `Jan 2020`
 //updated by Souwmyaa
 //tag::introduction[]
 == Introduction
+(Contributed by Souwmyaa) +
 
 Study Buddy is a desktop application which is designed for students who *wish to manage their module related tasks*.
 More importantly, Study Buddy is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
@@ -37,7 +38,9 @@ This not only helps to prevent typos, but also makes the application much easier
 
 If you can type fast, Study Buddy can get your module management done faster than traditional GUI apps.
 
-Currently, Study Buddy supports both Windows and Mac systems.
+The purpose of this document is to explain in detail, how users can utilize the various commands and functions that Study Buddy provides.
+
+Currently, we support both Windows and Mac systems.
 If you are interested, please jump to the <<Quick Start>> to get started.
 
 Hope you enjoy!
@@ -69,6 +72,7 @@ A more detailed description of our features is available in
 //updated by Souwmyaa
 //tag::symbols[]
 ==== Commonly Used Symbols
+(Contributed by Souwmyaa) +
 
 [NOTE]
 This symbol indicates something you should take note of.
@@ -86,6 +90,7 @@ This symbol indicates something to which we want to draw your attention.
 //updated by Souwmyaa
 //tag::usefulTips[]
 ==== Useful tips
+(Contributed by Souwmyaa) +
 
 * You may need to adjust the size of the Study Buddy window when you launch it.
 * The scroll bar on the right of the response box can be used to view the entire reply.
@@ -329,6 +334,7 @@ Remember, you can use `quit` command to quit at any step.
 //updated by Souwmyaa
 //tag::addDuplicates[]
 ==== Add duplicates
+(Contributed by Souwmyaa) +
 
 This command accounts for you adding duplicate tasks.
 When you attempt to add a duplicate, the name will be modified slightly so that you can differentiate them.
@@ -450,6 +456,7 @@ Check more details from <<Archive/ Unarchive>>.
 //updated by Souwmyaa
 //tag::clear[]
 ==== Clear
+(Contributed by Souwmyaa) +
 
 This commands clears all data in the Study Buddy.
 
@@ -483,6 +490,7 @@ image::basic/clear/clear_no_result.png[width="790",align="center",title="Respons
 //updated by Souwmyaa
 //tag::delete[]
 ==== Delete
+(Contributed by Souwmyaa) +
 
 This commands deletes a task from the existing list, using the index provided by you.
 
@@ -516,6 +524,7 @@ image::basic/delete/delete_result.png[width="790",align="center",title="Updated 
 //updated by Souwmyaa
 //tag::viewRenamed[]
 ==== View renamed
+(Contributed by Souwmyaa) +
 
 This commands filters all renamed tasks in the list i.e tasks that have a number appended to their names.
 
@@ -700,6 +709,7 @@ about the Productivity Page in <<Productivity>>.
 //tag::filter[]
 [[Filter]]
 ==== Filter
+(Contributed by Souwmyaa) +
 
 This commands helps you filter your tasks by category.
 The two categories available are status and type.
@@ -750,6 +760,7 @@ image::basic/filter/filter_type_result.png[width="790",align="center",title="Res
 //tag::refresh[]
 [[Refresh]]
 ==== Refresh
+(Contributed by Souwmyaa) +
 
 This commands refreshes the list of tasks Due Soon as well as status tags.
 
@@ -793,6 +804,7 @@ After 'refresh', the tasks in *All Tasks Panel* will be sorted by their deadline
 //updated by Souwmyaa
 //tag::exit[]
 ==== Exit
+(Contributed by Souwmyaa) +
 
 This command exits from Study Buddy.
 
@@ -824,6 +836,7 @@ You can still use `quit` to go back.
 //updated by Souwmyaa
 //tag::savingData[]
 === Saving Data
+(Contributed by Souwmyaa) +
 
 Study Buddy data is automatically saved in the hard disk after any command that changes the data.
 
@@ -835,6 +848,7 @@ When the application is closed and re-opened, you should be able to see all the 
 //updated by Souwmyaa
 //tag::dueSoon[]
 === Due Soon Tasks
+(Contributed by Souwmyaa) +
 
 The Due Soon task list is always on display in your application under `Study Buddy` -> `All tasks`
 
@@ -852,7 +866,7 @@ image::duesoon/due_soon_sort.png[width="790",align="center",title="Due Soon List
 
 . It displays a tag with the time left to the deadline.
 +
-image::duesoon/due_soon_tag.png[width="790",align="center",title="Due Soon List Time Tags"]
+image::duesoon/due_soon_tag.png[width="790", align="center",title="Due Soon List Time Tags"]
 
 . It provides a <<Refresh>> function that allows you to refresh time/state of this list if needed.
 
@@ -1075,7 +1089,7 @@ This clickable *pie chart* compares the number of tasks in different statuses.
 image::stats/stats_pie.png[width="790",align="center",title = "Task Status Chart"]
 
 Clicking Action::
-When you click on the chart, all the tasks with the selected status will display on the right-side panel automatically.
+When you click on the chart, all tasks with the selected status will display on the right-side panel automatically.
 +
 Here is an example when you are clicking on the *Due Soon* portion.
 +
@@ -1287,6 +1301,7 @@ They're free! :)
 //tag::summary[]
 [[Summary]]
 == Command Summary
+(Contributed by Souwmyaa) +
 
 . help <<Help>>
 . add <<Add>>

@@ -12,6 +12,8 @@ import draganddrop.studybuddy.model.task.Task;
 
 /**
  * Adds a duplicate task to the list.
+ *
+ * @@author souwmyaa
  */
 public class AddDuplicateTaskCommand extends Command {
 
