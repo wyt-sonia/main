@@ -18,7 +18,7 @@ import draganddrop.studybuddy.model.task.Task;
 class ArchiveTaskInteractivePromptTest {
 
     @BeforeEach
-    public void setup() {
+    public void setUp() {
         ArrayList<Task> temp = new ArrayList<>(Arrays.asList(getSampleTasks()));
         Task.updateCurrentTaskList(temp);
     }
