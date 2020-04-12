@@ -36,6 +36,7 @@ public class RefreshCommand extends Command {
                 model.forceAddDueSoonTask(task);
             }
         }
+        model.sortDueSoonTasks();
 
         final int size = lastShownList.size();
 
