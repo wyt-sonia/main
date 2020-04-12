@@ -15,6 +15,7 @@ ifdef::env-github[]
 :important-caption: :heavy_exclamation_mark:
 endif::[]
 :repoURL: https://github.com/AY1920S2-CS2103T-W16-3/main
+:jdk_bug_report: https://bugs.openjdk.java.net/browse/JDK-8198830
 
 By: `Team Drag&Drop`      Since: `Jan 2020`     
 
@@ -23,9 +24,9 @@ By: `Team Drag&Drop`      Since: `Jan 2020`     
 == Introduction
 Study Buddy is a task-management tool made for students who want to be able to track and manage their tasks in one place.
 
-Study Buddy uses various visualization tools such as pie charts and calendars, provides useful functionality such as archive, Due Soon task list etc to make task management simple and convenient.
+Study Buddy uses various visualization tools such as pie charts and calendars, provides useful features such as the Due Soon task list, a productivity tracker etc to make task management simple and convenient.
 
-In particular, Study Buddy is a Command Line Interface (CLI) application that also provides some Graphical User Interface (GUI). This means that users are expected to interact with the Study Buddy mainly through the command line, but each command executed will evoke a visual response as well.
+In particular, Study Buddy is a Command Line Interface (<<CLI,CLI>>) application that also provides some Graphical User Interface (<<GUI,GUI>>). This means that users are expected to interact with the Study Buddy mainly through the command line, but each command executed will evoke a visual response as well.
 
 The purpose of this guide is to help potential developers get up to speed on the Study Buddy code base and functionality. We hope that this document will ease the process of further enhancing and developing Study Buddy.
 //end::introduction[]
@@ -97,7 +98,7 @@ image::LogicClassDiagram.png[width = "700", length = "500"]
 The _Sequence Diagram_ below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
 
 .Component interactions for `delete 1` command
-image::ArchitectureSequenceDiagram.png[width = "600", length = "500"]
+image::ArchitectureSequenceDiagram.png[width = "450"]
 
 The sections below give more details of each component.
 
@@ -105,41 +106,33 @@ The sections below give more details of each component.
 === UI component
 
 .Structure of the UI Component
-image::UiClassDiagram.png[]
+image::UiClassDiagram.png[width = "650" ]
 
 *API* : link:{repoURL}/tree/master/src/main/java/draganddrop/studybuddy/ui[`Ui.java`]
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`BrandingLabel`, `TaskListPanel`,
- `DueSoonTaskListPanel`, `TaskSummaryPanel`, `CalenderPanel`, `ResultDisplay`, `CommandBox`, `StatusBarFooter` etc.
-
-All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
-
-The `TaskListPanel` and `DueSoonTaskListPanel` can switch with `TaskSummaryPanel` or `CalenderPanel` accordingly
-as user click `Statistics->Task Summary` or `Calender->Show Calender`.
+The `UI` consists of a `MainWindow` which is made up by different components such as `StatusBarFooter`, `FeedbackDisplayBox`,
+ `CommandBox` as well as variants `Panels` and `Cards`. All these components, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses JavaFx UI framework.
 The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
 For example, the layout of the link:{repoURL}/blob/master/src/main/java/draganddrop/studybuddy/ui/MainWindow.java[`MainWindow`] is specified in link:{repoURL}/blob/master/src/main/resources/view/MainWindow.fxml[`MainWindow.fxml`]
 
-Study Buddy provides an interactive way for command execution. `AddTaskInteractivePrompt`, `DeleteTaskInteractivePrompt`,
-`SortTaskInteractivePrompt` etc are used to handle each types of command executions. Besides, they all `extends` the `InteractivePrompt` abstract class.
 
-The `UI` component,
+The `UI` component::
+* *Interacts with user* in an interactive process with the help of `Logic` component.
+** `CommandBox` collects the user keyboard input.
+** `Logic` parses user input in each interaction and executes the command subsequently if the interaction ends without any exception.
+** `FeedbackDisplayBox` responses system information to user, such as error message and command execution result.
+*** When invalid input received, proper message will respond via `FeedbackDisplayBox`. The interaction of the command will not be terminated, user can continue with the process with valid input.
 
-* Provides interactive command process.
-* Allows users to exit from a command execution at any interaction step using `quit`.
-* Validate user input in each interaction.
-* When invalid input received, proper message will respond in `ResultDisplay` node.
-The execution of the command will not be terminated, user can continue with the process with valid input.
-* Result in final executable command and executes it using the `Logic` component.
-* Listens for changes to `Model` data so that the UI can be updated with the modified data.
+* *Listens for changes to Model data* so that the UI can be updated simultaneously.
+** All Cards components and `CalenderPanel`, `ModuleListPanel`, `ProductivityPanel` and `TaskSummaryPanel` will listen to
+the changes to Model data.
 
 [NOTE]
 The command execution will only terminate in two scenarios: +
 1.  When the command is successfully executed. +
 2.  When the user enter `quit` and kbd:[enter] to exit the execution.
-
-
 
 [[Design-Logic]]
 === Logic component
@@ -291,6 +284,7 @@ The lifeline for every member should end at the destroy marker (X) but due to a 
 Other commands like edit, archive etc also trigger due soon feature in a similar manner.
 [NOTE]
 Calculation of time left for deadline and check for if task is due soon can be found in the Task class.
+//end::dueSoon[]
 
 ==== Example Usage Scenario
 Given below is an example usage scenario and how the Due Soon list mechanism behaves at each step.
@@ -312,7 +306,7 @@ It will also update the time left.
 [NOTE]
 If there are no such inconsistencies, the refresh command will not make any changes to the Due Soon task list.
 
-
+//tag::refresh[]
 ==== Design Considerations
 
 ===== Aspect: How `refresh` command works
@@ -323,63 +317,123 @@ If there are no such inconsistencies, the refresh command will not make any chan
 * **Alternative 2:** Does not clear and reload the due soon task list.
 ** Pros: Fewer operations need to be performed.
 ** Cons: May have be more prone to errors because list is not completely "refreshed". Some parts of it are the same.
-// end::dueSoon[]
+// end::refresh[]
 
 //tag::taskSummary[]
 === Task Summary Feature
 
 ==== Implementation
 
-The task summary feature allows user to enjoy visualized and real-time statistics of their tasks' information.
+. *Feature introduction*
++
+The task summary feature automatically summarizes the collected data into different charts.
+It also allows the user to click on a chart to find the relevant tasks.
+The UI of the feature is in the `Statistics` Page.
+. *Implementation detail*
++
+This feature is implemented using `JavaFx` charts such as `PieChart`, `AreaChart` and `StackedBarChart`, as well as a
+`Task List Panel`.
++
+The Task List Panel is used to show the relevant task records when the user clicks on these `charts`.
 
-This feature is implemented using different charts as `pie chart`, `area chart`, `bar chart` and `line chart`.
-All charts are organized in a `TabPanel` which will replace the `ListPanel` and `Due Soon List Panel` in the main window when
-`Task Summary` in the `Menu` is clicked.
 
-The data of each chart will automatically rebind when user manage their tasks using the commands as below:
+. *Charts & DataBind & OnClick Action Table*
++
 
-* `add`
-* `done`
-* `delete`
-* `refresh`
+[TIP]
+To improve the readability, only the tasks due or start within the next *60 days* will be counted into `Area Chart`.
++
+[cols="3,2,3",options="header"]
+|===
+|Chart Type |Data Used|OnClick Action
 
+|*PieChart* +
+{bl}
+Compare the number of tasks in different statuses.
+|{bl}
+`TaskStatus`, `TaskCount`
+|Display all tasks with the selected status.
+
+|*AreaChar* +
+{bl}
+Summarize the task deadlines or start dates for different modules.
+|{bl}
+`ModuleCode`, `Deadline/Start date`, +
+ `TaskCount`
+|*Click on area*: +
+Display tasks under the selected module. +
+{bl}
+*Click on data point*: +
+Display tasks under the selected module and will due or start the chosen date.
+
+|*StackedBar Chart* +
+{bl}
+Compare the weight of different types of tasks in each module.
+|{bl}
+`ModuleCode`, `TaskType`, `WeightSum`
+|Display tasks under the selected module and type.
+
+|===
+
+. *OnChangeListener*
++
+The feature listens to the change of `UnArchived Task List`, `Archived Task List` and `Module List`.
++
+Therefore, the charts can automatically update according to the command execution.
++
+Currently, commands as `add` `edit` `delete` `sort` `find` `archive` `done` `list` and `clear` can
+trigger the refresh of the charts.
++
+image::TaskSummaryOnDataChangeSequenceDiagram.png[width = "800" align="center" title = "Sequence diagram for task summary UI update when data change"]
++
 [NOTE]
-Only when there is task status change after `refresh`, the charts will refresh accordingly.
+It is possible that the pie chart's labels can overlap together.
+This is an unfixed bug regarding the JDK which is caused by JavaFX chart off-sync. To get more information, you may refer to link:{jdk_bug_report}[here].
+When this issue happens, you can use any command that can trigger chart updating to refresh the chart.
 
 ==== Example Usage Scenario
 Given below is an example usage scenario and how the task summary mechanism behaves at each step.
 
-Step 1. The user launches the application with some alive and archived task records in the `storage`.
-Statistics will perform on the records retrieved, and the result will be visualized as different charts organized in a `tab panel`.
-After the user clicks `Statistics -> Task Summary`, the `tab panel` will display.
-The user successfully executes `add`, `delete` or `done` command when any chart is on the screen.
-The diagram will automatically refresh and reflect the updated record.
+Step 1. The user launches the application for the first time, the statistics will perform on top of the sample records,
+and the result will be visualized into different charts organized in the `Tab Panel`. After the user clicks `Statistics`
+from the top menu bar, the `Tab Panel` and the `Task List Panel` will display.
 
-Step 2. The user successfully executes `add`, `delete` or `done` command when any chart is on the screen.
-The diagram will automatically refresh and reflect the updated record.
+Step 2. The user navigates to the `Statistics` Page for the first time. The `Tab Panel` should
+display the `Pie Chart` and the `Task List Panel` is empty with a title: "Click on Chart to View Related Tasks".
+Indeed, this is how the `Statistics` Page looks like every time the user navigates back from another Page.
 
+Step 3. The user clicks on `Pie Chart` 's `Pending` portion. All tasks in `Pending` status should display in `Task List Panel`.
+Meanwhile, the title of the Panel will change to "PENDING: # Tasks" (# stands for the number of `Pending` tasks).
 
-Step 3. The user executes `refresh` command, and there is a task status update after the execution.
-For example, when the user is playing with the application, and meanwhile, a task expires.
-The status won't update until user call `refresh` command. In this case, the chart will also automatically refresh and reflect the updated record.
+Step 4. The user clicks on `Area Chart` 's `CS2101` area. All tasks under `CS2101` should display in `Task List Panel`.
+Meanwhile, the title of the Panel will change to "Tasks under CS2101".
 
-Step 4. The user executes `refresh`, and there is no task status update after the execution. The charts will remain the same.
-
-
-Activity diagram for step 4:
-
-image::TaskSummaryWithRefreshCommandActivityDiagram.png[width = "400", length = "500" title = "Task summary with refresh command Activity Diagram"]
-
+Step 5. The user executes `add` command at `Statistics` Page,
+the charts should update automatically.
 
 ==== Design Considerations
-===== Aspect: How to display charts
+===== Aspect: Will this feature contribute value to CLI user
+Consideration::
+Task Summary feature involves mouse clicking event.
++
+Explanation::
+The most significant value of Task Summary Feature is the statistics it provides, instead of retrieving the
+relevant tasks.
++
+The statistics is auto-generated along the way the user managing their task records using keyboard input.
+Which means Study Buddy only supports keyboard input for statistics generating.
+Therefore,
+this feature still let the CLI users gain more benefits.
 
-* **Alternative 1 (current choice):** Use a `tab panel` to organize different charts.
-** Pros: Easy to organize and the UI is clean.
-** Cons: Less interaction, and clicking is required. While allowing user to use command to switch among different tabs is under construction.
-* **Alternative 2:** Use a simple `panel` to hold the chart, and allow user to use command to toggle the type of charts.
-** Pros: More flexible and more interaction possibilities.
-** Cons: The cost overweight the benefit.
+===== Aspect: How to update charts
+* **Alternative 1 (current choice):** Use `onChangeListener` to monitor the data update and re-render the UI accordingly.
+** Pros: More user-friendly, no need to manually update.
+** Cons: Might encounter JavaFX chart off-sync bug, and results in label overlapping. But user can always use another
+command which can trigger data updating to walk around this problem.
+* **Alternative 2:** Ask the user to re-launch the application or just re-open the Page to trigger the UI rendering.
+** Pros: Safe from the JavaFX chart off-sync bug.
+** Cons: Force user to close or navigate around the application every time he/she wants to
+check the updated charts.
 
 // end::taskSummary[]
 
@@ -396,9 +450,9 @@ The feature is implemented by overriding the task list display panel on the main
 . Displays more information about tasks for the day on the Due Soon panel after clicking on a grid.
 . Fast forward to a specific year/month using CLI.
 
-When a calender is requested, a CalendarBox object is constructed, the object diagram below shows the structure of a CalendarBox. We will be using the date `01/04/2020` as an example.
+When a calender is requested, a CalendarPanel object is constructed, the object diagram below shows the structure of a CalendarPanel. We will be using the date `01/04/2020` as an example.
 
-image::CalendarBoxObjectDiagram.png[title="CalendarBox object diagram"]
+image::CalendarBoxObjectDiagram.png[title="CalendarPanel object diagram"]
 
 ==== Example usage scenarios
 
@@ -691,13 +745,15 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |view a list of my tasks | know what I have Pending
 
-|`* * *` |user |add a new task | view all my Pending tasks in one place
+|`* * *` |user |add a new task | view all my tasks in one place
 
 |`* * *` |user |delete a task |remove entries that I no longer need
 
 |`* * *` |user |mark a task as completed| update my list of Pending tasks
 
 |`* * *` |user |find a task by keyword |locate details of a task without having to go through the entire list
+
+|`* *` |user with task deadline extended |edit the particular task | update my task accordingly
 
 |`* *` |user with many deadlines |sort tasks in order of deadlines |organise my list by priority
 
@@ -716,6 +772,10 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* *` |user who is starting a new semester |clear all my tasks|start adding on to an empty list
 
 |`* *` |user who takes many modules |add my modules |view my modules
+
+|`* *` |user who has many tasks | check the summary of their current status | better plan my time
+
+|`* *` |user who has many tasks | check the summary of their current status | better plan my time
 
 |`* *` |user who finds it hard to keep track of all my deadlines| have a calendar| easily find tasks due on a day
 |=======================================================================
@@ -858,7 +918,9 @@ Use case ends.
 == Non Functional Requirements
 
 . Should work on any <<mainstream-os,mainstream OS>> as long as it has Java `11` or above installed.
-. Should be able to hold a good number of tasks without a noticeable sluggishness in performance for typical usage.
+. Should come with automated unit tests and open source code.
+. Should work on both 32-bit and 64-bit environments.
+. Should be able to hold up to 1000 tasks without a noticeable sluggishness in performance for typical usage.
 . A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
 
@@ -874,6 +936,12 @@ Graphical User Interface i.e a user interface that allows users to interact usin
 [[Index]]
 Index::
 The index of a task refers to the sequence number of a task in the dashboard
+[[CLI]]
+CLI::
+Command Line Interface i.e a text base interface
+[[AB3]]
+AB3::
+Address Book Version 3 - the code base that Study Buddy is built upon
 
 [appendix]
 == Instructions for Manual Testing
@@ -889,7 +957,7 @@ These instructions only provide a starting point for testers to work on; testers
 
 .. Download the jar file and copy into an empty folder
 .. Double-click the jar file +
-   Expected: Shows the GUI with a set of sample tasks.
+   Expected: Shows the <<GUI, GUI>> with a set of sample tasks.
 The window size may not be optimum.
 
 . Saving window preferences
@@ -900,20 +968,96 @@ Close the window.
 .. Re-launch the app by double-clicking the jar file. +
    Expected: The most recent window size and location is retained.
 
-
+//updated by Souwmyaa
 === Deleting a task
 
 . Deleting a task while all tasks are listed
 
-.. Prerequisites: List all tasks using the `list` command.
-Multiple tasks in the list.
+.. Prerequisites:
+... List all tasks using the `list` command.
+... Multiple tasks in the list.
+
 .. Test case: `delete [Enter]` + `1` +
    Expected: First task is deleted from the list.
 Successful deletion indication in the status message.
+
 .. Test case: `delete [Enter]` + `0` +
    Expected: No task is deleted.
 Error details shown in the status message.
 .. Other incorrect delete commands to try: `delete x`(where x is anything)
+
+//updated by Souwmyaa
+=== Refreshing the due soon list
+
+. Refreshing the due soon list when the time left is off
+
+.. Prerequisites:
+... Have some tasks in the due soon list
+... Change the time of your PC to a time in the past/future
+
+.. Test case: Use the `refresh` command +
+   Expected: All the tags with time left now show updated time.
+Successful refresh indication in the status message.
+
+//updated by Souwmyaa
+=== Adding a duplicate task
+
+. Adding a duplicate task to the list
+
+.. Prerequisites:
+... Have at least one task in the unarchived tasks list
+
+.. Test case: Use the `add` command to add a duplicate of an existing task +
+   Expected: It will add this duplicate task and append (1) at the end of its name. +
+Successful add indication in the status message.
+
+//updated by Souwmyaa
+=== Filter tasks
+
+. Filters tasks by status or type
+
+.. Prerequisites:
+... Have a few tasks in the unarchived tasks list of different types and status'
+
+.. Test case: Use the `filter` command to filter by 'status' -> 'pending' +
+   Expected: It will filter all your pending tasks in the list. +
+Successful filter indication in the status message.
+
+//updated by Souwmyaa
+=== Clear tasks
+
+. Clears all tasks in the study buddy
+
+.. Prerequisites:
+... Have a few tasks in the unarchived tasks list
+
+.. Test case: Use the `clear` command +
+   Expected: It will clear everything in Study Buddy. +
+Successful clear indication in the status message.
+
+
+//updated by Souwmyaa
+=== View renamed
+
+. Filters all tasks in your list with a number appended in brackets (auto-renamed)
+
+.. Prerequisites:
+... Have a few duplicated tasks in the unarchived tasks list
+
+.. Test case: Use the `View renamed` command +
+   Expected: It filters all the auto-renamed tasks out. +
+Successful filter indication in the status message.
+
+//updated by Souwmyaa
+=== Exit
+
+. Exits from the application
+
+.. Prerequisites:
+... Launch the application
+
+.. Test case: Use the `bye` command +
+   Expected: It exits the application.
 
 //updated by Souwmyaa
 //tag::savingData[]
@@ -936,18 +1080,16 @@ Application launches successfully but has no data.
 [appendix]
 == Effort
 
-=======
 *Interactive prompt*
 
-* AB3 requires users to input a whole line of text at once, which is unintuitive and prone to typos by the user. Furthermore, AB3 uses tags like
-"`\p`" to break the user's input up for parsing. This means that users will not be able to use these strings for any of their inputs.
+* <<AB3,AB3>> requires users to input a whole line of text at once, which is unintuitive and prone to typos by the user.
+
+* Furthermore, <<AB3,AB3>> uses tags like "`\p`" to break the user's input up for parsing. This means that users will not be able to use these strings for any of their inputs.
 
 * Study buddy fixes that issue by introducing an interactive prompt for every command. This required a lot effort as there had to be an interactive prompt
 for every command.
-=======
 
-=======
 *Refactoring*
 
-* AB3 uses the `Person` class which had 5 fields. Study buddy has 12 fields, every one of them is used in a major feature.
-=======
+* While <<AB3,AB3>> uses the `Person` class which had 5 fields, Study buddy has 12 fields and every one of them is used in a major feature.
+

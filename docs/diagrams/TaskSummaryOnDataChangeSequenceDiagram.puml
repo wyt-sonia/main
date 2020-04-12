@@ -1,0 +1,42 @@
+@startuml
+!include style.puml
+
+skinparam arrowColor #black
+skinparam SequenceBoxBorderColor #black
+skinparam SequenceParticipantBorderThickness 2
+skinparam SequenceReferenceBorderThickness 2
+skinparam DiagramBorderThickness 2
+skinparam SequenceArrowThickness 2
+skinparam SequenceLifeLineBorderColor #black
+skinparam ParticipantBorderColor #black
+
+actor User
+
+participant ":UI" as UI UI_COLOR
+participant ":Logic" as Logic UI_COLOR
+participant ":Model" as Model UI_COLOR
+
+User -> UI : interactionToUpdateData(new data)
+activate UI
+
+UI -> Logic : executeUpdate(new data)
+activate Logic
+
+Logic -> Model : update(new data)
+deactivate Logic
+activate Model
+
+
+Model -> Model : updated(new data)
+activate Model
+deactivate Model
+deactivate Model
+
+UI -> UI : render()
+activate UI
+deactivate UI
+UI --> User: show updated data
+deactivate UI
+
+
+@enduml
