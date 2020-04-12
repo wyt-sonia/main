@@ -25,7 +25,7 @@ Study Buddy is a task-management tool made for students who want to be able to t
 
 Study Buddy uses various visualization tools such as pie charts and calendars, provides useful features such as the Due Soon task list, a productivity tracker etc to make task management simple and convenient.
 
-In particular, Study Buddy is a Command Line Interface (CLI) application that also provides some Graphical User Interface (GUI). This means that users are expected to interact with the Study Buddy mainly through the command line, but each command executed will evoke a visual response as well.
+In particular, Study Buddy is a Command Line Interface (<<CLI,CLI>>) application that also provides some Graphical User Interface (<<GUI,GUI>>). This means that users are expected to interact with the Study Buddy mainly through the command line, but each command executed will evoke a visual response as well.
 
 The purpose of this guide is to help potential developers get up to speed on the Study Buddy code base and functionality. We hope that this document will ease the process of further enhancing and developing Study Buddy.
 //end::introduction[]
@@ -850,7 +850,9 @@ Use case ends.
 == Non Functional Requirements
 
 . Should work on any <<mainstream-os,mainstream OS>> as long as it has Java `11` or above installed.
-. Should be able to hold a good number of tasks without a noticeable sluggishness in performance for typical usage.
+. Should come with automated unit tests and open source code.
+. Should work on both 32-bit and 64-bit environments.
+. Should be able to hold up to 1000 tasks without a noticeable sluggishness in performance for typical usage.
 . A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
 
@@ -866,6 +868,12 @@ Graphical User Interface i.e a user interface that allows users to interact usin
 [[Index]]
 Index::
 The index of a task refers to the sequence number of a task in the dashboard
+[[CLI]]
+CLI::
+Command Line Interface i.e a text base interface
+[[AB3]]
+AB3::
+Address Book Version 3 - the code base that Study Buddy is built upon
 
 [appendix]
 == Instructions for Manual Testing
@@ -881,7 +889,7 @@ These instructions only provide a starting point for testers to work on; testers
 
 .. Download the jar file and copy into an empty folder
 .. Double-click the jar file +
-   Expected: Shows the GUI with a set of sample tasks.
+   Expected: Shows the <<GUI, GUI>> with a set of sample tasks.
 The window size may not be optimum.
 
 . Saving window preferences
@@ -1004,18 +1012,16 @@ Application launches successfully but has no data.
 [appendix]
 == Effort
 
-=======
 *Interactive prompt*
 
-* AB3 requires users to input a whole line of text at once, which is unintuitive and prone to typos by the user. Furthermore, AB3 uses tags like
-"`\p`" to break the user's input up for parsing. This means that users will not be able to use these strings for any of their inputs.
+* <<AB3,AB3>> requires users to input a whole line of text at once, which is unintuitive and prone to typos by the user.
+
+* Furthermore, <<AB3,AB3>> uses tags like "`\p`" to break the user's input up for parsing. This means that users will not be able to use these strings for any of their inputs.
 
 * Study buddy fixes that issue by introducing an interactive prompt for every command. This required a lot effort as there had to be an interactive prompt
 for every command.
-=======
 
-=======
 *Refactoring*
 
-* AB3 uses the `Person` class which had 5 fields. Study buddy has 12 fields, every one of them is used in a major feature.
-=======
+* While <<AB3,AB3>> uses the `Person` class which had 5 fields, Study buddy has 12 fields and every one of them is used in a major feature.
+
