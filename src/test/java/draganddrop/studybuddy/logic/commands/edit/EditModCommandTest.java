@@ -20,24 +20,22 @@ import draganddrop.studybuddy.model.module.Module;
 
 
 public class EditModCommandTest {
-    private Module moduleA = new Module("A", "CS1111");
-    private Module moduleB = new Module("B", "CS2222");
     private Model model = new ModelManager();
 
     @Test
-    public void createCommandWithEmptyFirstMod_throwNullPointerException() {
+    public void createCommandWithEmptyFirstModThrowNullPointerException() {
         assertThrows(NullPointerException.class, (
             ) -> new EditModCommand(null, new EmptyModule(), CHANGE_MOD_NAME));
     }
 
     @Test
-    public void createCommandWithEmptySecondMod_throwNullPointerException() {
+    public void createCommandWithEmptySecondModThrowNullPointerException() {
         assertThrows(NullPointerException.class, (
             ) -> new EditModCommand(new EmptyModule(), null, CHANGE_MOD_NAME));
     }
 
     @Test
-    public void execute_nonExistentMod_returnReply() throws CommandException {
+    public void execute_nonExistentModReturnReply() throws CommandException {
         EditModCommand editModCommand = new EditModCommand(new Module("name", "CS2111"),
                 new Module("name", "CS1111"), null);
         assertEquals("Module does not exist in Study Buddy!",
@@ -45,7 +43,7 @@ public class EditModCommandTest {
     }
 
     @Test
-    public void execute_invalidTerm_returnReply() throws CommandException {
+    public void execute_invalidTermReturnReply() throws CommandException {
         CreateModCommand createModCommand = new CreateModCommand(new Module("", "CS1231"));
         createModCommand.execute(model);
         EditModCommand editModCommand = new EditModCommand(new Module("", "CS1231"),
@@ -56,7 +54,7 @@ public class EditModCommandTest {
     }
 
     @Test
-    public void executionChangeModuleName_success() throws CommandException {
+    public void executionChangeModuleNameSuccess() throws CommandException {
         CreateModCommand createModCommand = new CreateModCommand(new Module("name", "CS1231"));
         createModCommand.execute(model);
 
@@ -68,7 +66,7 @@ public class EditModCommandTest {
     }
 
     @Test
-    public void executionChangeModuleCode_success() throws CommandException {
+    public void executionChangeModuleCodeSuccess() throws CommandException {
         CreateModCommand createModCommand = new CreateModCommand(new Module("name", "CS1231"));
         createModCommand.execute(model);
 
@@ -80,7 +78,7 @@ public class EditModCommandTest {
     }
 
     @Test
-    public void executionDeleteMod_success() throws CommandException {
+    public void executionDeleteModSuccess() throws CommandException {
         CreateModCommand createModCommand = new CreateModCommand(new Module("name", "CS1231"));
         createModCommand.execute(model);
 
@@ -93,7 +91,7 @@ public class EditModCommandTest {
     }
 
     @Test
-    public void executeDuplicateMod_throwCommandException() throws CommandException {
+    public void executeDuplicateModThrowCommandException() throws CommandException {
         CreateModCommand createModCommand1 = new CreateModCommand(
                 new Module("name1", "CS1231"));
         CreateModCommand createModCommand2 = new CreateModCommand(
@@ -109,7 +107,7 @@ public class EditModCommandTest {
     }
 
     @Test
-    public void executeDuplicateCode_throwCommandException() throws CommandException {
+    public void executeDuplicateCodeThrowCommandException() throws CommandException {
         CreateModCommand createModCommand1 = new CreateModCommand(
                 new Module("name1", "CS1231"));
         CreateModCommand createModCommand2 = new CreateModCommand(
