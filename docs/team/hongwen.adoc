@@ -64,6 +64,26 @@ Allow users to edit change the module in which the task was assigned to.
 So that users can edit and reassign task to a different existing module.
 
 
+=== Team-based Tasks
+.. Debugged a serious bug involving storage that was holding the entire team back for a week at the start of tP.
+.. Help to refactor team's code by creating parent class.
+.. Helped repackaged some of the old codes into separate folders, as well as reorganizing
+`commands` and `interactiveprompts` into many folders
+.. Modified & cropped many of the team's UG images for better readability.
+.. Helped shorten some existing nested codes with `streams`.
+
+=== Review/Mentoring
+
+* Left constructive feedback on teammate's repo.
+* Left feedback for another team's DG. https://github.com/AY1920S2-CS2103-W14-3/main/issues/59[59]
+* Left feedback for another team's UG. https://github.com/aegis-bot/ped/issues/4 [4]
+
+
+
+=== Code contributed:
+https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=aegis-bot&sort=groupTitle&sortWithin=title&since=2020-02-14&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false
+
+
 === User guide
 
 |===
@@ -87,25 +107,5 @@ include::../DeveloperGuide.adoc[tag = mod]
 . Diagrams:
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/ArchitectureDiagram.puml[ArchitectureDiagram]
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/ModuleSequenceDiagram.puml.puml[ModuleSequenceDiagram]
-
-=== Team-based Tasks
-.. Debugged a serious bug involving storage that was holding the entire team back for a week at the start of tP.
-.. Help to refactor team's code by creating parent class.
-.. Helped repackaged some of the old codes into separate folders, as well as reorganizing
-`commands` and `interactiveprompts` into many folders
-.. Modified & cropped many of the team's UG images for better readability.
-.. Helped shorten some existing nested codes with `streams`.
-
-=== Review/Mentoring
-
-* Left constructive feedback on teammate's repo.
-* Left feedback for another team's DG. https://github.com/AY1920S2-CS2103-W14-3/main/issues/59[59]
-* Left feedback for another team's UG. https://github.com/aegis-bot/ped/issues/4 [4]
-
-
-
-=== Code contributed:
-https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=aegis-bot&sort=groupTitle&sortWithin=title&since=2020-02-14&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false
-
 
 
