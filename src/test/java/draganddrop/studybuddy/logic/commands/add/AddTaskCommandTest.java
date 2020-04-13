@@ -31,7 +31,7 @@ import javafx.collections.ObservableList;
 class AddTaskCommandTest {
 
     @Test
-    public void construct_NullTask_throwsNullPointerException() {
+    public void constructorNullTask_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new AddTaskCommand(null));
     }
 
