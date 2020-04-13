@@ -1088,4 +1088,4 @@ for every command.
 
 * While <<AB3,AB3>> uses the `Person` class which had 5 fields, Study buddy uses the `Task` class that has 12 fields and every one of them is used in a major feature.
 
-* The <<GUI, GUI>> has seen a major revamp, with 5 different tabs with sub-tabs. 
+* The <<GUI, GUI>> has seen a major revamp, with 5 different tabs as well as some sub-tabs.

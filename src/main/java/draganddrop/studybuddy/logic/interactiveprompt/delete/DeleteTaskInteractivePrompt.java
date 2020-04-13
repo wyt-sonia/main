@@ -16,7 +16,7 @@ import draganddrop.studybuddy.model.task.Task;
 /**
  * Represents a DeleteTaskInteractivePrompt, which interacts with user to delete task.
  *
- * @@author souwmyaa
+ * @@author Souwmyaa Sabarinathann
  */
 public class DeleteTaskInteractivePrompt extends InteractivePrompt {
     public static final String QUIT_COMMAND_MSG = "Successfully quited from delete task command.";

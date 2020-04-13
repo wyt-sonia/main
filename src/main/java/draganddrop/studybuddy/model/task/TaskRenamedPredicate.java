@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 /**
  * Tests that a {@code Task} has been renamed.
  *
- * @@author souwmyaa
+ * @@author Souwmyaa Sabarinathann
  */
 public class TaskRenamedPredicate implements Predicate<Task> {
     @Override
