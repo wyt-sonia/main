@@ -125,6 +125,7 @@ public class Task implements Comparable<Task>, Cloneable {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
         int daysBetween = (int) (difference / DAYS_DIVISOR);
         int hoursBetween = ((int) (difference / HOURS_DIVISOR)) % 24;
         int minsBetween = ((int) (difference / MINUTES_DIVISOR)) % 60;

@@ -23,7 +23,7 @@ public class TestUtil {
      * Appends {@code fileName} to the sandbox folder path and returns the resulting path.
      * Creates the sandbox folder if it doesn't exist.
      */
-    public static Path getFilePathInSandboxFolder(String fileName) {
+    public static Path getFilePathInSandboxFolder(String fileName) throws RuntimeException {
         try {
             Files.createDirectories(SANDBOX_FOLDER);
         } catch (IOException e) {
