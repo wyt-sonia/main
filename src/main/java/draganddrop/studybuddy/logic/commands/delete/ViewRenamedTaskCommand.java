@@ -13,7 +13,7 @@ import draganddrop.studybuddy.model.task.Task;
 /**
  * Filters all the renamed tasks in the list.
  *
- * @@author souwmyaa
+ * @@author Souwmyaa Sabarinathann
  */
 public class ViewRenamedTaskCommand extends Command {
 

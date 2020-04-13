@@ -8,7 +8,7 @@ import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.model.Model;
 
 /**
- * Represent a ListTaskCommand that can List all persons in the task list to the user.
+ * Represent a ListTaskCommand that can List all tasks in the task list to the user.
  */
 public class ListTaskCommand extends Command {
     public static final String COMMAND_WORD = "list";

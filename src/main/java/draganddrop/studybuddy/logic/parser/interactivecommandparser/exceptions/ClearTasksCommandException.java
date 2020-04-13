@@ -2,6 +2,8 @@ package draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions;
 
 /**
  * Represents a ClearTasksCommandException.
+ *
+ * @@author Souwmyaa Sabarinathann
  */
 public class ClearTasksCommandException extends InteractiveCommandException {
 

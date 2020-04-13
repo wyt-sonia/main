@@ -6,19 +6,16 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Collections;
-import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import draganddrop.studybuddy.model.module.Module;
-import draganddrop.studybuddy.model.statistics.GeneralStats;
-import draganddrop.studybuddy.model.statistics.ScoreStats;
-import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.testutil.TypicalTasks;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
+/**
+ * Test class for Study Buddy
+ *
+ * @@author Souwmyaa Sabarinathann
+ */
 public class StudyBuddyTest {
 
     private final StudyBuddy studyBuddy = new StudyBuddy();
@@ -61,49 +58,4 @@ public class StudyBuddyTest {
         assertThrows(UnsupportedOperationException.class, () -> studyBuddy.getTaskList().remove(0));
     }
 
-    /**
-     * A stub ReadOnlyStudyBuddy whose tasks list can violate interface constraints.
-     */
-    private static class StudyBuddyStub implements ReadOnlyStudyBuddy {
-        private final ObservableList<Task> tasks = FXCollections.observableArrayList();
-
-        @Override
-        public ObservableList<Task> getTaskList() {
-            return tasks;
-        }
-
-        @Override
-        public List<Integer> getCompleteCountList() {
-            return null;
-        }
-
-        @Override
-        public List<Integer> getOverdueCountList() {
-            return null;
-        }
-
-        @Override
-        public ScoreStats getScoreStats() {
-            return null;
-        }
-
-        @Override
-        public GeneralStats getGeneralStats() {
-            return null;
-        }
-
-        @Override
-        public ObservableList<Task> getArchivedList() {
-            return null;
-        }
-
-        @Override
-        public ObservableList<Task> getDueSoonList() {
-            return null;
-        }
-
-        public ObservableList<Module> getModuleList() {
-            return null;
-        }
-    }
 }

@@ -5,8 +5,9 @@ import static draganddrop.studybuddy.logic.commands.CommandTestUtil.assertComman
 import static draganddrop.studybuddy.testutil.TypicalIndexes.INDEX_FIRST_TASK;
 import static draganddrop.studybuddy.testutil.TypicalIndexes.INDEX_SECOND_TASK;
 import static draganddrop.studybuddy.testutil.TypicalTasks.getTypicalTaskList;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
@@ -62,19 +63,19 @@ public class DeleteTaskCommandTest {
         DeleteTaskCommand deleteSecondCommand = new DeleteTaskCommand(INDEX_SECOND_TASK);
 
         // same object -> returns true
-        assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
+        assertEquals(deleteFirstCommand, deleteFirstCommand);
 
         // same values -> returns true
         DeleteTaskCommand deleteFirstCommandCopy = new DeleteTaskCommand(INDEX_FIRST_TASK);
-        assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
+        assertEquals(deleteFirstCommand, deleteFirstCommandCopy);
 
         // different types -> returns false
-        assertFalse(deleteFirstCommand.equals(1));
+        assertNotEquals(1, deleteFirstCommand);
 
         // null -> returns false
-        assertFalse(deleteFirstCommand == null);
+        assertNotNull(deleteFirstCommand);
 
-        // different person -> returns false
-        assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
+        // different task -> returns false
+        assertNotEquals(deleteFirstCommand, deleteSecondCommand);
     }
 }

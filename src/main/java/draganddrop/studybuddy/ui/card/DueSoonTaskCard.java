@@ -12,7 +12,7 @@ import javafx.scene.layout.Region;
 /**
  * An UI component that displays information of a Due Soon Task.
  *
- * @@author souwmyaa
+ * @@author Souwmyaa Sabarinathann
  */
 public class DueSoonTaskCard extends UiPart<Region> {
 

@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 /**
  * Tests that a {@code Task}'s {@code Status} matches the status provided.
  *
- * @@author souwmyaa
+ * @@author Souwmyaa Sabarinathann
  */
 public class TaskStatusEqualPredicate implements Predicate<Task> {
 

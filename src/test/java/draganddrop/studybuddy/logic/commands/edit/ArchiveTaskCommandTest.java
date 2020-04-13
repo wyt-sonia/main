@@ -5,8 +5,9 @@ import static draganddrop.studybuddy.logic.commands.CommandTestUtil.assertComman
 import static draganddrop.studybuddy.testutil.TypicalIndexes.INDEX_FIRST_TASK;
 import static draganddrop.studybuddy.testutil.TypicalIndexes.INDEX_SECOND_TASK;
 import static draganddrop.studybuddy.testutil.TypicalTasks.getTypicalTaskList;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
@@ -62,20 +63,20 @@ class ArchiveTaskCommandTest {
         ArchiveTaskCommand archiveSecondCommand = new ArchiveTaskCommand(INDEX_SECOND_TASK);
 
         // same object -> returns true
-        assertTrue(archiveFirstCommand.equals(archiveFirstCommand));
+        assertEquals(archiveFirstCommand, archiveFirstCommand);
 
         // same values -> returns true
         ArchiveTaskCommand archiveFirstCommandCopy = new ArchiveTaskCommand(INDEX_FIRST_TASK);
-        assertTrue(archiveFirstCommand.equals(archiveFirstCommandCopy));
+        assertEquals(archiveFirstCommand, archiveFirstCommandCopy);
 
         // different types -> returns false
-        assertFalse(archiveFirstCommand.equals(1));
+        assertNotEquals(1, archiveFirstCommand);
 
         // null -> returns false
-        assertFalse(archiveFirstCommand == null);
+        assertNotNull(archiveFirstCommand);
 
-        // different person -> returns false
-        assertFalse(archiveFirstCommand.equals(archiveSecondCommand));
+        // different task -> returns false
+        assertNotEquals(archiveFirstCommand, archiveSecondCommand);
     }
 
 }

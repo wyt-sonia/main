@@ -3,6 +3,7 @@ package draganddrop.studybuddy.logic.commands.view;
 import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDate;
+
 import java.util.logging.Logger;
 
 import draganddrop.studybuddy.commons.core.LogsCenter;
@@ -26,23 +27,29 @@ public class CalendarViewCommand extends Command {
     /**
      *
      */
-    public CalendarViewCommand(LocalDate selectedDate, MainWindow mainwindow) {
-        mainwindow.handleShowCalendar();
-        mainwindow.getCalendarPanel().generateCalendar(selectedDate.getYear(), selectedDate.getMonth());
-        mainwindow.getCalendarPanel().viewTaskByDate(selectedDate);
+    public CalendarViewCommand(LocalDate selectedDate) {
         this.selectedDate = selectedDate;
+        logger.info("Selected date: " + selectedDate.toString());
+    }
+
+    public LocalDate getSelectedDate() {
+        return selectedDate;
     }
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
+        MainWindow.getInstance().handleShowCalendar();
+        MainWindow.getInstance().getCalendarPanel().generateCalendar(selectedDate.getYear(), selectedDate.getMonth());
+        MainWindow.getInstance().getCalendarPanel().viewTaskByDate(selectedDate);
         return new CommandResult(String.format(CALENDAR_VIEW_SUCCESS, selectedDate.toString()));
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof CalendarViewCommand); // state check
+                || (other instanceof CalendarViewCommand
+                && ((CalendarViewCommand) other).getSelectedDate().equals(this.getSelectedDate()));
     }
 
 }

@@ -12,7 +12,7 @@ import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.C
 /**
  * Represents a ClearTasksInteractivePrompt which interact with user to clear all tasks.
  *
- * @@author souwmyaa
+ * @@author Souwmyaa Sabarinathann
  */
 public class ClearTasksInteractivePrompt extends InteractivePrompt {
     public static final String QUIT_COMMAND_MSG = "Successfully quit from clear command.";

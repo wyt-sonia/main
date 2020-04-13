@@ -340,7 +340,7 @@ public class Task implements Comparable<Task>, Cloneable {
     }
 
     /**
-     * Returns true if both persons have the same identity and data fields.
+     * Returns true if both tasks have the same identity and data fields.
      * This defines a stronger notion of equality between two tasks.
      */
     @Override

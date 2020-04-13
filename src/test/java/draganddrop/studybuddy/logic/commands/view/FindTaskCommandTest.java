@@ -4,8 +4,8 @@ import static draganddrop.studybuddy.logic.commands.CommandTestUtil.assertComman
 import static draganddrop.studybuddy.testutil.TypicalTasks.getSampleTasks;
 import static draganddrop.studybuddy.testutil.TypicalTasks.getTypicalTaskList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -19,7 +19,9 @@ import draganddrop.studybuddy.model.UserPrefs;
 import draganddrop.studybuddy.model.task.TaskNameContainsKeywordsPredicate;
 
 /**
- * Contains integration tests (interaction with the Model) for {@code FindTaskCommand}.
+ * Test class for FindTaskCommand class
+ *
+ * @@author Souwmyaa Sabarinathann
  */
 public class FindTaskCommandTest {
     private Model model = new ModelManager(getTypicalTaskList(), new UserPrefs());
@@ -36,20 +38,20 @@ public class FindTaskCommandTest {
         FindTaskCommand findSecondCommand = new FindTaskCommand(secondPredicate);
 
         // same object -> returns true
-        assertTrue(findFirstCommand.equals(findFirstCommand));
+        assertEquals(findFirstCommand, findFirstCommand);
 
         // same values -> returns true
         FindTaskCommand findFirstCommandCopy = new FindTaskCommand(firstPredicate);
-        assertTrue(findFirstCommand.equals(findFirstCommandCopy));
+        assertEquals(findFirstCommand, findFirstCommandCopy);
 
         // different types -> returns false
-        assertFalse(findFirstCommand.equals(1));
+        assertNotEquals(1, findFirstCommand);
 
         // null -> returns false
-        assertFalse(findFirstCommand == null);
+        assertNotNull(findFirstCommand);
 
-        // different person -> returns false
-        assertFalse(findFirstCommand.equals(findSecondCommand));
+        // different task -> returns false
+        assertNotEquals(findFirstCommand, findSecondCommand);
     }
 
     @Test

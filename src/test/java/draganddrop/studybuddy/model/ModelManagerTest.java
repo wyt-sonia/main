@@ -2,6 +2,8 @@ package draganddrop.studybuddy.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.file.Path;
@@ -15,6 +17,11 @@ import draganddrop.studybuddy.testutil.Assert;
 import draganddrop.studybuddy.testutil.StudyBuddyBuilder;
 import draganddrop.studybuddy.testutil.TypicalTasks;
 
+/**
+ * Test class for ModelManager.
+ *
+ * @@author Souwmyaa Sabarinathann
+ */
 public class ModelManagerTest {
 
     private ModelManager modelManager = new ModelManager();
@@ -99,16 +106,16 @@ public class ModelManagerTest {
         // same values -> returns true
         modelManager = new ModelManager(studyBuddy, userPrefs);
         ModelManager modelManagerCopy = new ModelManager(studyBuddy, userPrefs);
-        assertTrue(modelManager.equals(modelManagerCopy));
+        assertEquals(modelManager, modelManagerCopy);
 
         // same object -> returns true
-        assertTrue(modelManager.equals(modelManager));
+        assertEquals(modelManager, modelManager);
 
         // null -> returns false
-        assertFalse(modelManager == null);
+        assertNotNull(modelManager);
 
         // different types -> returns false
-        assertFalse(modelManager.equals(5));
+        assertNotEquals(5, modelManager);
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredTaskList(Model.PREDICATE_SHOW_ALL_TASKS);
@@ -116,6 +123,6 @@ public class ModelManagerTest {
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setStudyBuddyFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(studyBuddy, differentUserPrefs)));
+        assertNotEquals(modelManager, new ModelManager(studyBuddy, differentUserPrefs));
     }
 }

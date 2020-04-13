@@ -13,12 +13,14 @@ import org.junit.jupiter.api.Test;
 import draganddrop.studybuddy.model.task.Task;
 
 /**
- * This is the test class for clear tasks interactive prompt
+ * This is the test class for archive tasks interactive prompt.
+ *
+ * @@author Souwmyaa Sabarinathann
  */
 class ArchiveTaskInteractivePromptTest {
 
     @BeforeEach
-    public void setup() {
+    public void setUp() {
         ArrayList<Task> temp = new ArrayList<>(Arrays.asList(getSampleTasks()));
         Task.updateCurrentTaskList(temp);
     }
@@ -52,7 +54,5 @@ class ArchiveTaskInteractivePromptTest {
         prompt.interact("1");
         assertThrows(NullPointerException.class, ()->prompt.interact(""));
     }
-
-
 
 }

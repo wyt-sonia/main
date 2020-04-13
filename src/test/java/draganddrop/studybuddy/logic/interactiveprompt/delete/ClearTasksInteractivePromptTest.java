@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 /**
  * This is the test class for clear tasks interactive prompt
+ *
+ * @@author Souwmyaa Sabarinathann
  */
 class ClearTasksInteractivePromptTest {
 

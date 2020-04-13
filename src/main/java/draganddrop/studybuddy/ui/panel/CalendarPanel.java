@@ -101,6 +101,8 @@ public class CalendarPanel extends UiPart<Region> {
 
         LocalDate newDate = LocalDate.of(calYear, calMonth, 1);
 
+        logger.info("Calendar: Generating calendar for " + calMonth.toString() + calYear);
+
         //day of week of first day
         int dayOfWeek = newDate.getDayOfWeek().getValue();
 

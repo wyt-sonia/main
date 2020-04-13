@@ -40,6 +40,7 @@ public class MainWindow extends UiPart<Stage> {
     private static final String CALENDAR = "Calendar";
     private static final String TASK_SUMMARY = "Task Summary";
     private static final String PRODUCTIVITY_TITLE = "Your Productivity";
+    private static MainWindow mainWindow;
 
     private static final String FXML = "MainWindow.fxml";
 
@@ -128,6 +129,7 @@ public class MainWindow extends UiPart<Stage> {
         setWindowDefaultSize(logic.getGuiSettings());
 
         setAccelerators();
+        mainWindow = this;
         logger.fine(FXML + " : End of setting up the Main Window.");
     }
 
@@ -188,7 +190,7 @@ public class MainWindow extends UiPart<Stage> {
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getStudyBuddyFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
-        commandBox = new CommandBox(this::executeCommand, this);
+        commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
         logger.fine(FXML + " : End of filling up all the placeholders of this window.");
     }
@@ -398,7 +400,7 @@ public class MainWindow extends UiPart<Stage> {
         logger.fine(FXML + " : End of handling calendar to be shown.");
     }
 
-    public TaskListPanel getPersonListPanel() {
+    public TaskListPanel getTaskListPanel() {
         return taskListPanel;
     }
 
@@ -533,5 +535,9 @@ public class MainWindow extends UiPart<Stage> {
     private void setPaneView(Pane pane, boolean val) {
         pane.setVisible(val);
         pane.setManaged(val);
+    }
+
+    public static MainWindow getInstance() {
+        return mainWindow;
     }
 }
