@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import draganddrop.studybuddy.commons.core.GuiSettings;
@@ -29,12 +28,12 @@ public class ModelManagerTest {
     @Test
     public void constructor() {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
-        Assertions.assertEquals(new GuiSettings(), modelManager.getGuiSettings());
+        assertEquals(new GuiSettings(), modelManager.getGuiSettings());
         assertEquals(new StudyBuddy(), new StudyBuddy(modelManager.getStudyBuddy()));
     }
 
     @Test
-    public void setUserPrefs_nullUserPrefs_throwsNullPointerException() {
+    public void setUserPrefsNullUserPrefsThrowsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> modelManager.setUserPrefs(null));
     }
 

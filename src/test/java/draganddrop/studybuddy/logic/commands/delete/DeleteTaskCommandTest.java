@@ -5,9 +5,8 @@ import static draganddrop.studybuddy.logic.commands.CommandTestUtil.assertComman
 import static draganddrop.studybuddy.testutil.TypicalIndexes.INDEX_FIRST_TASK;
 import static draganddrop.studybuddy.testutil.TypicalIndexes.INDEX_SECOND_TASK;
 import static draganddrop.studybuddy.testutil.TypicalTasks.getTypicalTaskList;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +22,7 @@ public class DeleteTaskCommandTest {
     private Model model = new ModelManager(getTypicalTaskList(), new UserPrefs());
 
     @Test
-    public void execute_validIndexUnfilteredList_success() {
+    public void executeValidUnfilteredListSuccess() {
         Task taskToDelete = model.getFilteredTaskList().get(INDEX_FIRST_TASK.getZeroBased());
         DeleteTaskCommand atCommand = new DeleteTaskCommand(INDEX_FIRST_TASK);
 
@@ -63,19 +62,19 @@ public class DeleteTaskCommandTest {
         DeleteTaskCommand deleteSecondCommand = new DeleteTaskCommand(INDEX_SECOND_TASK);
 
         // same object -> returns true
-        assertEquals(deleteFirstCommand, deleteFirstCommand);
+        assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
 
         // same values -> returns true
         DeleteTaskCommand deleteFirstCommandCopy = new DeleteTaskCommand(INDEX_FIRST_TASK);
-        assertEquals(deleteFirstCommand, deleteFirstCommandCopy);
+        assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
 
         // different types -> returns false
-        assertNotEquals(1, deleteFirstCommand);
+        assertFalse(deleteFirstCommand.equals(1));
 
         // null -> returns false
-        assertNotNull(deleteFirstCommand);
+        assertFalse(deleteFirstCommand == null);
 
-        // different task -> returns false
-        assertNotEquals(deleteFirstCommand, deleteSecondCommand);
+        // different person -> returns false
+        assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
     }
 }
