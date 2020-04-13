@@ -80,13 +80,19 @@ public class TypicalTasks {
         for (Task sampleTask : getSampleTasks()) {
             sampleAb.addTask(sampleTask);
         }
-        for (Task sampleTask : getSampleArchivedTasks()) {
-            sampleAb.addArchiveTask(sampleTask);
-        }
         return sampleAb;
     }
 
     public static StudyBuddy getOnlyTaskList() {
-        return new StudyBuddy();
+        StudyBuddy sampleAb = new StudyBuddy();
+        Task testTask1 = new Task(emptyModule, TaskType.Presentation, "Leadership Presentation 1",
+                LONG_DESC_WITH_300_CHAR, 0.0, TaskStatus.FINISHED, dateTimesOne,
+                3.0, pastDateTime1);
+        Task testTask2 = new Task(emptyModule, TaskType.Presentation, "Leadership Presentation 2",
+                LONG_DESC_WITH_300_CHAR, 0.0, TaskStatus.FINISHED, dateTimesOne,
+                3.0, pastDateTime1);
+        sampleAb.addTask(testTask1);
+        sampleAb.addArchiveTask(testTask2);
+        return sampleAb;
     }
 }
