@@ -40,12 +40,6 @@ activate LogicManager
 LogicManager -> ArchiveTaskCommand : execute()
 activate ArchiveTaskCommand
 
-ArchiveTaskCommand -> Model : delete(1)
-activate Model
-
-Model --> ArchiveTaskCommand
-deactivate Model
-
 ArchiveTaskCommand -> Model : archive(1)
 activate Model
 

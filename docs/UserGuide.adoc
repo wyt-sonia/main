@@ -571,7 +571,11 @@ image::basic/viewrenamed/viewRenamed2.png[width="790",align="center",title="Upda
 In order to navigate back to the main list, use <<List>>
 //end::viewRenamed[]
 
+//updated by gx-huang
+//tag::archive/unarchive[]
 ==== Archive/ Unarchive
+
+(Contributed by gexiang) +
 
 This commands stores the specified task into a separate list.
 
@@ -610,6 +614,7 @@ image::basic/archive/archive_list.png[width="790",align="center",title="Archived
 [NOTE]
 If you attempt to unarchive a task that already exists in the main list, the name will automatically be appended with a number in order to avoid duplication.
 This is done in the same way as <<Add duplicates>>
+//end::archive/unarchive[]
 
 //Start updated by Yuting
 [[Sort]]
@@ -1202,8 +1207,11 @@ To get more information, you may refer to link:{jdk_bug_report}[here]. +
 When this issue happens, you can use any command that can trigger chart updating to refresh the chart.
 //End updated by Yuting
 
-
+//updated by gx-huang
+//tag::calendar[]
 === Calendar
+
+(contributed by gexiang)
 
 ====
 *Constraints*
@@ -1243,7 +1251,7 @@ In this example, we entered `20/04/2020`.
 You will now see the calendar for your selected date as well as all the tasks on that day.
 
 image::calendar/calendar_after_CLI.png[width="790",align="center",title="Successfully navigated calendar using CLI"]
-
+//end::calendar[]
 
 //updated by Teik Jun
 //tag::productivity[]
@@ -1317,7 +1325,24 @@ They're free! :)
 
 //end::productivity[]
 
-//updated by Souwmyaa
+//tag::Password[]
+=== Password [Coming in v2.0]
+(Contributed by ge xiang) +
+In order to protect your privacy from shared users of a computer, Study Buddy v2.0 will include a new feature that encrypts your data.
+You will be the only one able to view your tasks using your password that you can set optionally.
+
+Here's how to protect your data:
+
+. Set a password
+. When you exit Study Buddy, your tasks stored in `tasklist.json` will be encrypted.
+. The next time you use `Study Buddy`, you will be required to enter the same password and Study Buddy will decrypt the file for you.
+. You will have unlimited tries to enter the password.
+
+[TIP]
+Remember to use a strong password!
+//end::Password[]
+
+//updated by Souwmyaa & Teik Jun
 //tag::summary[]
 [[Summary]]
 == Command Summary
@@ -1343,8 +1368,10 @@ They're free! :)
 
 //end::summary[]
 
+//updated by gx-huang
+//tag::FAQ[]
 == FAQ
-(Contributed by Teik Jun)
+(Contributed by Teik Jun & ge xiang)
 
 *Q*: How do I transfer my data to another Computer? +
 *A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Study Buddy folder (should be under data -> taskList.json).
@@ -1352,6 +1379,11 @@ They're free! :)
 *Q*: How do I save my data? +
 *A*: Study buddy saves your data automatically after every command.
 
+*Q*: The task I'm trying to delete/archive is in the task list, but study buddy keeps replying that my index is out of range! +
+*A*: Check that you are using the index from the "All Tasks" list. This can be accessed from the tab `StudyBuddy` -> `All tasks`. +
+Unless you are using the `unarchive` command, use the "Archived list" index found at `StudyBuddy` -> `Archived tasks` instead.
+
 *Q*: How do I update to the latest version of Study Buddy +
 *A*: Simply download the latest `.jar` file released on our GitHub page: +
 https://github.com/AY1920S2-CS2103T-W16-3/main/releases
+
