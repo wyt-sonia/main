@@ -110,7 +110,7 @@ image::ArchitectureSequenceDiagram.png[width = "450"]
 
 The sections below give more details of each component.
 
-[[Design-Ui]]
+//tag::UIComponent[]
 === UI component
 
 .Structure of the UI Component
@@ -141,6 +141,7 @@ the changes to Model data.
 The command execution will only terminate in two scenarios: +
 1.  When the command is successfully executed. +
 2.  When the user enter `quit` and kbd:[enter] to exit the execution.
+//end::UIComponent[]
 
 
 //updated by Teik Jun
@@ -224,7 +225,7 @@ Classes used by multiple components are in the `draganddrop.studybuddy.commons` 
 
 This section describes some noteworthy details on how certain features are implemented.
 
-
+//tag::InteractiveCommandProcessFeature[]
 === Interactive Command Process Feature
 
 ==== Implementation
@@ -285,7 +286,7 @@ the process without making any changes to the task.
 
 ** Pros: Save the data from previous stages, especially in add task interaction, thus user no need to repeatedly
 enter the same information. Also the clear instruction provided by error message makes the
-interaction more straightforward.
+interaction more straightforward. Besides, this approach can improve the typo-tolerance of the application.
 
 ** Cons: The interaction can only be stopped when user successfully complete the process or use
 `quit` to exit half-way.
@@ -296,6 +297,7 @@ interaction. It will be useful when user want to quit from a particular process 
 (i.e. `quit`).
 ** Cons: User has to restart the entire interaction process when the he/she enter
 invalid command.
+//end::InteractiveCommandProcessFeature[]
 
 // tag::dueSoon[]
 === Due Soon Tasks Feature
@@ -529,7 +531,7 @@ The Task Summary Feature provides tow main services:
 +
 The retrieving service is built on top of the statistics result.
 Meanwhile, the statistics is auto-generated along the way the user managing their records using *keyboard input*. +
-Therefore, this feature can make a fast typist be more productive, especially when Study Buddy
+Therefore, this feature can make a fast typist be more productive, especially when Study Buddy primarily
 supports the CLI.
 
 ===== Aspect: How to update charts
@@ -886,7 +888,7 @@ Refer to the guide <<DevOps#, here>>.
 
 Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (unlikely to have) - `*`
 
-[width="59%",cols="22%,<23%,<25%,<30%",options="header",]
+[cols="1,1,3,3",options="header"]
 |=======================================================================
 |Priority |As a ... |I want to ... |So that I can...
 |`* * *` |new user |see usage instructions |refer to instructions when I forget how to use the App
@@ -900,8 +902,6 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* * *` |user |mark a task as completed| update my list of Pending tasks
 
 |`* * *` |user |find a task by keyword |locate details of a task without having to go through the entire list
-
-|`* *` |user with task deadline extended |edit the particular task | update my task accordingly
 
 |`* *` |user with many deadlines |sort tasks in order of deadlines |organise my list by priority
 
@@ -921,24 +921,184 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |user who takes many modules |add my modules |view my modules
 
-|`* *` |user who has many tasks | check the summary of their current status | better plan my time
-
-|`* *` |user who has many tasks | check the summary of their current status | better plan my time
-
 |`* *` |user who finds it hard to keep track of all my deadlines| have a calendar| easily find tasks due on a day
+//end::userStories[]
 
 |`* *` |user who is stressed out by all my deadlines| have a fun todolist| have fun while completing my tasks
 
 |`* *` |user who wants to be more productive | have an overview of my task completed this week| monitor my progress
 
 
-|=======================================================================
-//end::userStories[]
+//tag::userStoriesYuting[]
+|`* *` |user who is forgetful| have a clear instruction every time I made mistake in command | play with the application more fluently
+
+|`* *` |user whose deadline of a task is extended | edit the particular task | update my task accordingly
+
+|`* *` |user who is lazy | set daily goal | force myself to study
+
+|`* *` |user who lacks of motivation | get award by completing task | be motivated
+
+|`* *` |user who has many tasks | check the summary of their current status in one place | do my future plan easily
+
+|`* *` |user who has many modules | view all tasks under a particular module | focus on this module
+
+|`* *` |user who has many modules and tasks | check the summary of task deadlines under different modules | understand which module need to study first
+
+|`* *` |user who has many modules and tasks | check the summary of task weights under different modules | understand which assessment should pay more attention to
+
+|`* *` |user who likes multitasking| adjust the application's window size | fit it with other windows
+//end::userStoriesYuting[]
+
 
 [appendix]
 == Use Cases
 
 (For all use cases below, the *System* is `Study Buddy` and the *Actor* is the `user`, unless specified otherwise)
+
+
+//tag::useCasesYuting[]
+[discrete]
+=== Use case: Add a new task
+
+*MSS*
+
+1. User requests to add a new task.
+2. Study Buddy requests user to choose module from available module list.
+3. User chooses module.
+4. Study Buddy requests for task name.
+5. User provides task name.
+6. Study Buddy requests user to choose task type from available task type list.
+7. User provides task type.
+8. Study Buddy requests for task description.
+9. User provides task description.
+10. Study Buddy requests for task weight.
+11. User provides task weight.
+12. Study Buddy requests for estimated cost of time for this task.
+13. User provides estimated time cost for this task.
+14. Study Buddy requests for confirmation.
+15. User confirms.
+16. Study Buddy inserts the new task to user's task list.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 3a. User can press enter to skip.
++
+[none]
+** Use case resumes at step 4.
+
+* 3b.
+The given index is invalid.
++
+[none]
+** 3b1. Study Buddy shows an error message.
++
+Use case resumes at step 3.
+* 3c.
+The given module code is invalid.
++
+[none]
+** 3c1. Study Buddy shows an error message.
++
+Use case resumes at step 3.
+[none]
+* 5a.
+The length of given task name exceeds 20 characters.
++
+[none]
+** 5a1. Study Buddy shows an error message.
++
+Use case resumes at step 5.
+* 7a.
+The given index is invalid.
++
+[none]
+** 7a1. Study Buddy shows an error message.
++
+Use case resumes at step 7.
+* 9a.
+User can press enter to skip.
++
+[none]
+** Use case resumes at step 10.
++
+* 9b.
+The length of given task description exceeds 300 characters.
++
+[none]
+** 9b1. Study Buddy shows an error message.
++
+Use case resumes at step 9.
+* 11a.
+User can press enter to skip.
++
+[none]
+** Use case resumes at step 12.
++
+* 11b.
+The given weight is invalid.
++
+[none]
+** 11b1. Study Buddy shows an error message.
++
+Use case resumes at step 11.
+* 13a.
+User can press enter to skip.
++
+[none]
+** Use case resumes at step 14.
+
+* 13b.
+The given estimated cost of time is invalid.
++
+[none]
+** 13b1. Study Buddy shows an error message.
++
+Use case resumes at step 13.
+* a. At any time, user enters quit and press enter to exit the interaction.
++
+Use case ends.
+
+[discrete]
+=== Use case: Edit task's weight
+
+*MSS*
+
+1. User requests to edit a specific task in the list
+2. Study Buddy asks for the index
+3. User provides index
+4. Study Buddy asks for the index of the field that he/she wish to edit for the task
+5. User selects index of Task weight
+6. Study Buddy asks for the new weight
+7. User provides the new weight
+8. Study Buddy updates the selected tasks weight to the new value
++
+Use case ends.
+
+*Extensions*
+[none]
+* 3a.
+The given index is invalid.
++
+[none]
+** 3a1. Study Buddy shows an error message.
++
+Use case resumes at step 3.
+* 7a.
+The given weight is invalid.
++
+[none]
+** 7a1. Study Buddy shows an error message.
++
+Use case resumes at step 7.
+* a. At any time, user enters quit and press enter to exit the interaction.
++
+Use case ends.
+//end::useCasesYuting[]
+
+
 
 //updated by Souwmyaa
 //tag::useCasesSouwmyaa[]
