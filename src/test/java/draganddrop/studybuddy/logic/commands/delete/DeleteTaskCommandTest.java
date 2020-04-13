@@ -22,7 +22,7 @@ public class DeleteTaskCommandTest {
     private Model model = new ModelManager(getTypicalTaskList(), new UserPrefs());
 
     @Test
-    public void execute_validIndexUnfilteredList_success() {
+    public void executeValidUnfilteredListSuccess() {
         Task taskToDelete = model.getFilteredTaskList().get(INDEX_FIRST_TASK.getZeroBased());
         DeleteTaskCommand atCommand = new DeleteTaskCommand(INDEX_FIRST_TASK);
 
