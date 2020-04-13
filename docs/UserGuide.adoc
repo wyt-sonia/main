@@ -46,8 +46,10 @@ If you are interested, please jump to the <<Quick Start>> to get started.
 Hope you enjoy!
 //end::introduction[]
 
-//Start updated by Yuting
+//tag::quickStart[]
 == Quick Start
+
+(Contributed by Yuting)
 
 . Study Buddy relies on a particular computer environment to operate correctly, thus to enjoy it, you need to have `Java 11` or above installed in your computer.
 - Here is the guideline for checking java version of your computer.
@@ -66,7 +68,7 @@ image::Ui.png[width="790",align="center",title="Study Buddy Dashboard"]
 . To view a list of the available commands, you can key in *`help`* and click kbd:[Enter].
 A more detailed description of our features is available in
 <<Features>> of this document.
-//End updated by Yuting
+//end::quickStart[]
 
 
 //updated by Souwmyaa
@@ -103,8 +105,6 @@ It utilizes an "interactive command prompt". (explained in each command's descri
 Note that the index of the same task could be different after some commands, such as `filter`, `find` and `sort`.
 //end::usefulTips[]
 
-
-//Start updated by Yuting
 
 //tag::intro[]
 == User Interface Introduction
@@ -195,8 +195,9 @@ image::dashboard/prompt_box.png[width="790",align="center",title = "Interactive 
 
 [NOTE]
 To get more detailed information about how to use Study Buddy, please refer to <<Features>>.
-//End updated by Yuting
+<<<<<<< HEAD
 //end::intro[]
+
 [[Features]]
 == Features
 
@@ -226,8 +227,9 @@ image::basic/help/help_rep.png[width="790",align="center",title="Response to 'he
 [TIP]
 Remember to scroll down to see the entire reply.
 
-//Start updated by Yuting
+//tag::add[]
 ==== Add
+(Contributed by Yuting)
 
 This command enables you to add a new task into Study Buddy.
 
@@ -344,7 +346,7 @@ image::basic/add/add_result.png[width="790",align="center",title="New task added
 
 [TIP]
 Remember, you can use `quit` command to quit at any step.
-//End updated by Yuting
+//end::add[]
 
 
 //updated by Souwmyaa
@@ -399,8 +401,9 @@ You can view all tasks that have been auto-edited this way, using the <<View ren
 Use the <<Edit>> to edit your duplicated tasks!
 //end::addDuplicates[]
 
-//Start updated by Yuting
+//tag::edit[]
 ==== Edit
+(Contributed by Yuting)
 
 This command is for you to edit an existing task.
 To indicate the task you want to edit, you need to provide its index number.
@@ -439,7 +442,7 @@ For this example, let's use "Updated Task" as the new task name.
 For this example, the panel should update as below.
 +
 image::basic/edit/edit_result.png[width="790",align="center",title="Task edited"]
-//End updated by Yuting
+//end::edit[]
 
 ==== Done
 
@@ -623,9 +626,10 @@ If you attempt to unarchive a task that already exists in the main list, the nam
 This is done in the same way as <<Add duplicates>>
 //end::archive/unarchive[]
 
-//Start updated by Yuting
+//tag::sort[]
 [[Sort]]
 ==== Sort
+(Contributed by Yuting)
 
 This command is for you to reorder the task list in *All Tasks Panel*.
 
@@ -656,7 +660,7 @@ image::basic/sort/sort_result.png[width="790",align="center",title="The order of
 [TIP]
 The tasks in *All Tasks Panel* will not change back to the original order by itself. +
 You can use `sort` -> `Creation Date & Time` to do so.
-//End updated by Yuting
+//end::sort[]
 
 //updated by Teik Jun
 //tag::find[]
@@ -1077,9 +1081,9 @@ If you switch to `No Module Allocated` tab, you'll find the tasks affected by th
 image::module/module_delete_after.png[width="790",align="center",title = 'Checking the affected tasks']
 //end::Modules[]
 
-//Start updated by Yuting
-
+//tag::Statistics[]
 === Statistics
+(Contributed by Yuting)
 
 With all the tasks and modules' information you entered, Study Buddy can provide you with a real-time visualized statistics about:
 
@@ -1216,7 +1220,7 @@ As the data of charts are filled dynamically, thus it is possible that their lab
 This is an unfixed bug regarding the JDK which is caused by JavaFX chart off-sync.
 To get more information, you may refer to link:{jdk_bug_report}[here]. +
 When this issue happens, you can use any command that can trigger chart updating to refresh the chart.
-//End updated by Yuting
+//end::Statistics[]
 
 //updated by gx-huang
 //tag::calendar[]
