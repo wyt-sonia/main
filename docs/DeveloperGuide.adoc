@@ -623,7 +623,7 @@ There were two possible ways to store archived tasks:
 The first choice was chosen as it speeds up the runtime. Also, it makes it easier to manage the indexes.
 //end::archive[]
 
-//tag:productivity[]
+//tag::productivity[]
 === Productivity feature
 
 ==== Implementation
