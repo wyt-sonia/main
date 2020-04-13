@@ -948,7 +948,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |user who likes multitasking| adjust the application's window size | fit it with other windows
 //end::userStoriesYuting[]
-
+|=======================================================================
 
 [appendix]
 == Use Cases
