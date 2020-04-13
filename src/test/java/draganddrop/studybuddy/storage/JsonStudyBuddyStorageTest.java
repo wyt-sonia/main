@@ -22,7 +22,7 @@ public class JsonStudyBuddyStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonStudyBuddyStorageTest");
 
     @Test
-    public void readStudyBuddy_nullFilePath_throwsNullPointerException() {
+    public void readStudyBuddynullFilePaththrowsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> readStudyBuddy(null));
     }
 
@@ -37,18 +37,18 @@ public class JsonStudyBuddyStorageTest {
     }
 
     @Test
-    public void read_missingFile_emptyResult() throws Exception {
+    public void readmissingFileemptyResult() throws Exception {
         assertFalse(readStudyBuddy("NonExistentFile.json").isPresent());
     }
 
     @Test
-    public void read_notJsonFormat_exceptionThrown() {
+    public void readnotJsonFormatexceptionThrown() {
         Assert.assertThrows(DataConversionException.class, () -> readStudyBuddy("notJsonFormatStudyBuddy.json"));
     }
 
 
     @Test
-    public void saveStudyBuddy_nullStudyBuddy_throwsNullPointerException() {
+    public void saveStudyBuddynullStudyBuddythrowsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> saveStudyBuddy(null, "SomeFile.json"));
     }
 
@@ -65,7 +65,7 @@ public class JsonStudyBuddyStorageTest {
     }
 
     @Test
-    public void saveStudyBuddy_nullFilePath_throwsNullPointerException() {
+    public void saveStudyBuddynullFilePaththrowsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> saveStudyBuddy(new StudyBuddy(), null));
     }
 }

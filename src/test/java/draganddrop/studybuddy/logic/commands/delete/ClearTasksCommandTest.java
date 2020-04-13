@@ -19,7 +19,7 @@ import draganddrop.studybuddy.model.UserPrefs;
 public class ClearTasksCommandTest {
 
     @Test
-    public void execute_emptyStudyBuddy_success() {
+    public void executeemptyStudyBuddysuccess() {
         Model model = new ModelManager();
         Model expectedModel = new ModelManager();
 
@@ -27,7 +27,7 @@ public class ClearTasksCommandTest {
     }
 
     @Test
-    public void execute_nonEmptyStudyBuddy_success() {
+    public void executenonEmptyStudyBuddysuccess() {
         Model model = new ModelManager(getTypicalTaskList(), new UserPrefs());
         Model expectedModel = new ModelManager(getTypicalTaskList(), new UserPrefs());
         expectedModel.setStudyBuddy(new StudyBuddy());
