@@ -114,9 +114,6 @@ This feature can help uer to prioritize their task by desired aspect.
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/265[UG update and bug fix]
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/262[Bug fixes and UG update]
 
-. Set up Travis
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/15[Update project name and Travis link]
-
 . Improved the code quality for the whole project:
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/276[Code quality]
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/271[Code quality improvement]
