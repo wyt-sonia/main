@@ -390,11 +390,9 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
      * @param target
      */
     public void updateAddDueSoon(Task target) {
-        if (!dueSoonTasks.isContains(target)) {
-            if (target.isDueSoon()) {
-                dueSoonTasks.add(target);
-                sortDueSoonTasks();
-            }
+        if (!dueSoonTasks.isContains(target) && target.isDueSoon()) {
+            dueSoonTasks.add(target);
+            sortDueSoonTasks();
         }
     }
 

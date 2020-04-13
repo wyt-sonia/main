@@ -26,7 +26,7 @@ public class ModelManagerTest {
     private ModelManager modelManager = new ModelManager();
 
     @Test
-    public void constructor() {
+    public void construct() {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
         assertEquals(new StudyBuddy(), new StudyBuddy(modelManager.getStudyBuddy()));
@@ -38,7 +38,7 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void setUserPrefs_validUserPrefs_copiesUserPrefs() {
+    public void setUserPrefsValidUserPrefsCopiesUserPrefs() {
         UserPrefs userPrefs = new UserPrefs();
         userPrefs.setStudyBuddyFilePath(Paths.get("studyBuddy/file/path"));
         userPrefs.setGuiSettings(new GuiSettings(1, 2, 3, 4));
@@ -52,47 +52,47 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void setGuiSettings_nullGuiSettings_throwsNullPointerException() {
+    public void setGuiSettingsNullGuiSettingsThrowsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> modelManager.setGuiSettings(null));
     }
 
     @Test
-    public void setGuiSettings_validGuiSettings_setsGuiSettings() {
+    public void setGuiSettingsValidGuiSettingsSetsGuiSettings() {
         GuiSettings guiSettings = new GuiSettings(1, 2, 3, 4);
         modelManager.setGuiSettings(guiSettings);
         assertEquals(guiSettings, modelManager.getGuiSettings());
     }
 
     @Test
-    public void setStudyBuddyFilePath_nullPath_throwsNullPointerException() {
+    public void setStudyBuddyFilePathNullPathThrowsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> modelManager.setStudyBuddyFilePath(null));
     }
 
     @Test
-    public void setStudyBuddyFilePath_validPath_setsStudyBuddyFilePath() {
+    public void setStudyBuddyFilePathValidPathSetsStudyBuddyFilePath() {
         Path path = Paths.get("studyBuddy/file/path");
         modelManager.setStudyBuddyFilePath(path);
         assertEquals(path, modelManager.getStudyBuddyFilePath());
     }
 
     @Test
-    public void hasTask_nullTask_throwsNullPointerException() {
+    public void hasTaskNullTaskThrowsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> modelManager.hasTask(null));
     }
 
     @Test
-    public void hasTask_taskNotInStudyBuddy_returnsFalse() {
+    public void hasTaskTaskNotInStudyBuddyReturnsFalse() {
         assertFalse(modelManager.hasTask(TypicalTasks.getSampleTasks()[0]));
     }
 
     @Test
-    public void hasTask_taskInStudyBuddy_returnsTrue() {
+    public void hasTaskTaskInStudyBuddyReturnsTrue() {
         modelManager.addTask(TypicalTasks.getSampleTasks()[0]);
         assertTrue(modelManager.hasTask(TypicalTasks.getSampleTasks()[0]));
     }
 
     @Test
-    public void getFilteredTaskList_modifyList_throwsUnsupportedOperationException() {
+    public void getFilteredTaskListModifyListThrowsUnsupportedOperationException() {
         Assert.assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredTaskList().remove(0));
     }
 
