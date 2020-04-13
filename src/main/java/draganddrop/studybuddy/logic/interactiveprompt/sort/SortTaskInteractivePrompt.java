@@ -16,8 +16,6 @@ import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.S
 
 /**
  * A interactive prompt for sorting task list.
- *
- * @@author Wang Yuting
  */
 public class SortTaskInteractivePrompt extends InteractivePrompt {
     private static final String END_OF_COMMAND_MSG = "Task sorted successfully!";
@@ -32,7 +30,7 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
 
     public SortTaskInteractivePrompt() {
         super();
-        logger.log(Level.INFO, LOG_TAG + ": Start of the sort task action.");
+        logger.info(LOG_TAG + ": Start of the sort task action.");
         this.interactivePromptType = SORT_TASK;
     }
 
@@ -86,7 +84,7 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
         }
         assert !this.reply.isBlank()
             : "The reply of sort " + currentTerm.name() + " is blank, please check.\n";
-        logger.log(Level.INFO, LOG_TAG + ": End of the sort task interaction.");
+        logger.info(LOG_TAG + ": End of the sort task interaction.");
 
         return reply;
     }
@@ -95,7 +93,7 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
     public void endInteract(String msg) {
         this.reply = msg;
         super.setEndOfCommand(true);
-        logger.log(Level.INFO, LOG_TAG + ": End of the sort task action.");
+        logger.info(LOG_TAG + ": End of the sort task action.");
     }
 
 }

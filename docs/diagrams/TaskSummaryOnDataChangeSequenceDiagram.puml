@@ -16,27 +16,27 @@ participant ":UI" as UI UI_COLOR
 participant ":Logic" as Logic UI_COLOR
 participant ":Model" as Model UI_COLOR
 
-User -> UI : interactionToUpdateData(new data)
+User -> UI : interact(new data)
 activate UI
 
-UI -> Logic : executeUpdate(new data)
+UI -> Logic : executeCommand(updateCommand)
 activate Logic
+note right UI_COLOR_NOTE: <b>updateCommand</b>\n can be add, edit, delete etc. \ncommands
 
-Logic -> Model : update(new data)
+Logic -> Model : saveStudyBuddy(updated StudyBuddy)
 deactivate Logic
 activate Model
 
 
-Model -> Model : updated(new data)
+Model -> Model : saveStudyBuddy(updated StudyBuddy)
 activate Model
 deactivate Model
 deactivate Model
 
 UI -> UI : render()
+note right UI_COLOR_NOTE: the UI detects module change \nand renders automatically
 activate UI
 deactivate UI
-UI --> User: show updated data
+UI --> User: show latest statistics
 deactivate UI
-
-
 @enduml
