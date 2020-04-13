@@ -63,10 +63,7 @@ public class ModuleList {
      * relocates Empty Module to the back of the internalList if it exist.
      */
     private void shiftEmptyModBack() {
-        //check last mod for Empty Module
-        if (internalList.get(internalList.size() - 1).equals(new EmptyModule())) {
-            //Do nothing
-        } else { //if it is not empty
+        if (!internalList.get(internalList.size() - 1).equals(new EmptyModule())) {
             if (internalList.contains(new EmptyModule())) {
                 int emptyIndex = internalList.indexOf(new EmptyModule());
                 swap(emptyIndex, emptyIndex + 1);
