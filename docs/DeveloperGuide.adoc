@@ -92,6 +92,7 @@ For example, the `Logic` component (see the class diagram given below) defines i
 
 .Class Diagram of the Logic Component
 image::LogicClassDiagram.png[width = "700", length = "500"]
+Note: HiddenModel is used to represent the hidden contents of the Model Component.
 
 [discrete]
 ==== How the architecture components interact with each other
@@ -145,7 +146,8 @@ image::LogicClassDiagram.png[width = "600" length = "500"]
 *API* :
 link:{repoURL}/blob/master/src/main/java/draganddrop/studybuddy/logic/Logic.java[`Logic.java`]
 
-. The `InteractiveCommandPrompt` in `Ui` uses the parsers to parse the user command.
+. After receiving the user input from Ui, `InteractivePrompt` processes the user's input,
+using the Parsers to parse the command if necessary.
 . This results in a `Command` object which is executed by the `LogicManager`.
 . The command execution can affect the `Model` (e.g. adding or editing a task).
 . The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
@@ -685,10 +687,6 @@ Step 4: The Productivity Points Tab is displayed to the user
 From here, the user can continue to manage tasks as per Step 5 and 6 above,
 or navigate to other Productivity tabs.
 
-
-
-===== Clicking the Productivity menu item
-image
 
 ==== Design Considerations
 
