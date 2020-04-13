@@ -75,7 +75,7 @@ class ArchiveTaskCommandTest {
         // null -> returns false
         assertNotNull(archiveFirstCommand);
 
-        // different person -> returns false
+        // different task -> returns false
         assertNotEquals(archiveFirstCommand, archiveSecondCommand);
     }
 
