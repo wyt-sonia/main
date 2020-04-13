@@ -437,7 +437,7 @@ check the updated charts.
 
 // end::taskSummary[]
 
-//tag:calendar[]
+//tag::calendar[]
 === Calendar feature
 
 ==== Implementation
@@ -453,6 +453,13 @@ The feature is implemented by overriding the task list display panel on the main
 When a calender is requested, a CalendarPanel object is constructed, the object diagram below shows the structure of a CalendarPanel. We will be using the date `01/04/2020` as an example.
 
 image::CalendarBoxObjectDiagram.png[title="CalendarPanel object diagram"]
+
+Tasks shown in `calendar` will automatically be updated upon using any of the following commands:
+* `add`
+* `delete`
+* `archive`
+* `unarchive`
+* Any other commands that modifies the task list
 
 ==== Example usage scenarios
 
@@ -476,7 +483,9 @@ image::CalendarActivityDiagram.png[width = "400", length = "600" title = "Calend
 
 ==== Design considerations
 * It is more efficient to cache the calendar rather than to generate a new one, however, we do not expect the user to have too many tasks and therefore it should not slow down the application.
+//end::calendar[]
 
+//tag::archive[]
 === Archive feature
 Archive stores selected task away into a separate task list, this command is used when the user has completed a task but still wants to keep track of it.
 
@@ -492,6 +501,7 @@ Sequence diagram:
 image::ArchiveSequenceDiagram.png[width = "600", length = "500" title = "Archive Sequence Diagram"]
 [CAUTION]
 The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+//end::archive[]
 
 //tag:productivity[]
 === Productivity feature
@@ -620,7 +630,6 @@ this trade-off does not result in any measurable delay.
 
 //end::productivity[]
 
-// tag::dataencryption[]
 === Modules
 The `modules` feature enables users to be able to group and view their tasks according to various modules or subjects.
 Each module is assigned with a unique module code & a name.
@@ -670,6 +679,7 @@ The `LogsCenter` class is used to manage the logging levels and logging destinat
 
 Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: `config.json`).
 
+//tag::dataencryption[]
 === [Proposed] Data encryption
 
 Since Study Buddy is an offline application, there is no threat of being attacked via a network channel. However, in case the computer has a shared owner, a password feature can be implemented in the future for privacy purposes.
@@ -696,6 +706,8 @@ We will be using AES (Advanced Encryption Scheme) for encryption, and a slow has
 =======
 
 We leave it to the user's own jurisdiction to create a strong password.
+//end::dataencryption[]
+
 
 == Documentation
 

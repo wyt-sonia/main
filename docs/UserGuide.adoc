@@ -554,7 +554,11 @@ image::basic/viewrenamed/viewRenamed2.png[width="790",align="center",title="Upda
 In order to navigate back to the main list, use <<List>>
 //end::viewRenamed[]
 
+//updated by gx-huang
+//tag::archive/unarchive[]
 ==== Archive/ Unarchive
+
+(Contributed by gexiang) +
 
 This commands stores the specified task into a separate list.
 
@@ -593,6 +597,7 @@ image::basic/archive/archive_list.png[width="790",align="center",title="Archived
 [NOTE]
 If you attempt to unarchive a task that already exists in the main list, the name will automatically be appended with a number in order to avoid duplication.
 This is done in the same way as <<Add duplicates>>
+//end::archive/unarchive[]
 
 //Start updated by Yuting
 [[Sort]]
@@ -1184,7 +1189,8 @@ To get more information, you may refer to link:{jdk_bug_report}[here]. +
 When this issue happens, you can use any command that can trigger chart updating to refresh the chart.
 //End updated by Yuting
 
-
+//updated by gx-huang
+//tag::calendar[]
 === Calendar
 
 ====
@@ -1225,7 +1231,7 @@ In this example, we entered `20/04/2020`.
 You will now see the calendar for your selected date as well as all the tasks on that day.
 
 image::calendar/calendar_after_CLI.png[width="790",align="center",title="Successfully navigated calendar using CLI"]
-
+//end::calendar[]
 
 //updated by Teik Jun
 //tag::productivity[]
@@ -1297,6 +1303,12 @@ They're free! :)
 
 //end::productivity[]
 
+//tag::Password[]
+=== Password [Coming in v2.0]
+In order to protect your privacy, Study Buddy v2.0 will include a new feature that encrypts your data.
+You will be the only one able to view your tasks using your password that you can set optionally.
+//end::Password[]
+
 //updated by Souwmyaa & Teik Jun
 //tag::summary[]
 [[Summary]]
@@ -1323,6 +1335,8 @@ They're free! :)
 
 //end::summary[]
 
+//updated by gx-huang
+//tag::FAQ[]
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
@@ -1330,3 +1344,7 @@ They're free! :)
 
 *Q*: How do I save my data? +
 *A*: Study buddy saves your data automatically after every command.
+
+*Q*: The task I'm trying to delete/archive is in the task list, but study buddy keeps replying that my index is out of range! +
+*A*: Check that you are using the index from the "All Tasks" list. This can be accessed from the tab `StudyBuddy` -> `All tasks`. +
+Unless you are using the `unarchive` command, use the "Archived list" index found at `StudyBuddy` -> `Archived tasks` instead.
