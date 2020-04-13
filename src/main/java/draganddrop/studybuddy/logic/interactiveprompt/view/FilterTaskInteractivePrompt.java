@@ -20,7 +20,7 @@ import draganddrop.studybuddy.model.task.TaskTypeEqualPredicate;
 /**
  * Interaction with user for filtering tasks.
  *
- * @@author souwmyaa
+ * @@author Souwmyaa Sabarinathann
  */
 public class FilterTaskInteractivePrompt extends InteractivePrompt {
     public static final String QUIT_COMMAND_MSG = "Successfully quited from filter task command.";

@@ -12,7 +12,7 @@ import javafx.scene.layout.Region;
 /**
  * Panel containing the list of tasks Due Soon.
  *
- * @@author souwmyaa
+ * @@author Souwmyaa Sabarinathann
  */
 public class DueSoonListPanel extends UiPart<Region> {
     private static final String FXML = "DueSoonListPanel.fxml";
@@ -27,7 +27,7 @@ public class DueSoonListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Task} using a {@code DetailedTaskCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Task} using a {@code DueSoonTaskCard}.
      */
     class TaskListViewCell extends ListCell<Task> {
         @Override

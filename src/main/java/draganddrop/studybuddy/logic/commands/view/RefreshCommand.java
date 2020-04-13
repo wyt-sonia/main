@@ -15,6 +15,8 @@ import draganddrop.studybuddy.model.task.Task;
 
 /**
  * Refreshes the Due Soon list as well as status tags.
+ *
+ * @@author Souwmyaa Sabarinathann, Wang Yuting
  */
 public class RefreshCommand extends Command {
 

@@ -11,7 +11,9 @@ import draganddrop.studybuddy.model.ModelManager;
 import draganddrop.studybuddy.model.UserPrefs;
 
 /**
- * Contains integration tests (interaction with the Model) and unit tests for ListCommand.
+ * Test for ListTasksCommand.
+ *
+ * @@author Souwmyaa Sabarinathann
  */
 public class ListTasksCommandTest {
 
@@ -31,7 +33,6 @@ public class ListTasksCommandTest {
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
-        //showTaskAtIndex(model, INDEX_FIRST_TASK);
         assertCommandSuccess(new ListTaskCommand(), model, ListTaskCommand.MESSAGE_SUCCESS, expectedModel);
     }
 }
