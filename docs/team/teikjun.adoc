@@ -1,0 +1,92 @@
+:site-section: AboutUs
+:imagesDir: ../images
+:stylesDir: ../stylesheets
+
+=== [teal]#*Tan Teik Jun - Project Portfolio*#
+
+[teal]#*Project: Study Buddy*#
+
+[teal]#*Overview*#
+
+StudyBuddy is a desktop application designed for students who *wish to manage their module related tasks* in a convenient and user-friendly interface. The application is written in Java and spans over 12k lines of code.
+
+[teal]#*Summary of contributions*#
+
+* *Major enhancement*: added *Productivity feature*
+** Function:
+It allows the user to keep track of productivity in a fun manner. The productivity feature displays metrics that are recorded over the past day, week, and more. It also introduces a point and rank system to gamify the user experience.
+** Justification:
+This is helpful to the user as it allows the user to keep track of progress in an interesting way.
+** Highlights:
+This implementation was challenging because it required a lot of statistics to be logged all over the application. Finally, these statistics needed to be displayed on the Ui in an visually appealing and useful manner.
+
+* *Major enhancement*: added *the Edit Task command*
+** Function:
+The edit command allows the user to edit any information about the tasks.
+This includes the task name, date, description, etc.
+** Justification:
+If the user needs to edit the detail of the task, the user can simply use the edit
+command instead of deleting the task and creating a new one. This is hugely convenient for the user.
+** Highlights:
+This implementation was challenging because editing things may lead to a lot of side effects. However, I have managed to avoid these side effects by using defensive programming.
+
+* *Minor enhancement*: added *the Find Task command*
+** Function: Allows user to find an existing task in the list
+** Justification: Helpful to the user when the list is long because it enables them to look for a certain task in the list.
+
+* *Minor enhancement*: added *the List command*
+** Function: Allows user to list all the existing tasks.
+** Justification: After using a command like Find or Filter, the List command is necessary to recover the original list.
+
+* *Minor enhancement*: added *the Help command*
+** Function: Shows the user the list of available commands and the user guide.
+** Justification: Users require the help command when they are unsure of how to use the application.
+
+* *Minor enhancement*: added *navigation shortcuts for pages*
+** Function: Allows user to navigate the pages using keys instead of using
+** Justification: This feature helps fast typists (the target user) work more efficiently.
+
+[teal]#*Code contributed:*# +
+https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#=undefined&search=teikjun
+
+[teal]#*Team-based Tasks*# +
+1. Set up the team repository and ensured that the repository was protected from any accidental merges. +
+2. Ensured that the integration process was smooth and bug-free. Set up Travis and AppVeyor to ensure that only working code is integrated. +
+3. Ensured code quality was well-maintained. Set up Codacy to keep track of code quality and coverage. +
+4. Ensured that the code was well-tested. I wrote tests for classes that were error-prone, and set up Coveralls to keep track of code coverage. +
+5. Helped to maintain the issue tracker. Links to issues https://github.com/AY1920S2-CS2103T-W16-3/main/issues/46[#46], https://github.com/AY1920S2-CS2103T-W16-3/main/issues/47[#47]. +
+
+
+[teal]#*Review/Mentoring*# +
+1. Reviewed other members Pull Requests and helped them learn git workflow. Example Pull Request: https://github.com/AY1920S2-CS2103T-W16-3/main/pull/56[#56] +
+2. Reviewed another team's DG and provided useful feedback. Example Issue: https://github.com/AY1920S2-CS2103T-W17-3/main/issues/209[#209]
+
+
+
+
+[teal]#*User guide*#
+
+|===
+|_Given below is a section that I contributed to the User Guide. It showcases my ability to write documentation targeting end-users._
+|===
+
+
+include::../UserGuide.adoc[tag=productivity]
+
+[teal]#*Developer Guide*#
+
+|===
+|_Given below are some sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|===
+
+include::../DeveloperGuide.adoc[tag=logicComponent]
+include::../DeveloperGuide.adoc[tag=productivity]
+
+
+Diagrams: +
+https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/ListTaskSequenceDiagram.puml[Add List Task Sequence Diagram] +
+https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/LogicClassDiagram.puml[Add Logic Class Diagram] +
+https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/ProductivityObjectDiagram.puml[Add Productivity Feature Object Diagram] +
+https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/ProductivityActivityDiagram.puml[Add Productivity Feature Activity Diagram]
+
+
