@@ -1,22 +1,18 @@
-= Wang Yuting - Project Portfolio
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
+= Wang Yuting - Project Portfolio
 
 == PROJECT: Study Buddy
 
 == Overview
 
-StudyBuddy is a desktop application designed for students who *wish to manage their module related tasks* in a convenient and user-friendly interface.
-It is *optimized for those who prefer to work with a Command Line Interface* (CLI) but still contains some aspects of Graphical User Interface (GUI) which was written using JavaFX.
-The codebase is in Java and contains about 13kLoc.
+StudyBuddy is a desktop application designed for students who *wish to manage their module related tasks* in a convenient and user-friendly interface. The application is written in Java and spans over 12k lines of code.
 
 == Summary of contributions
 
-=== Enhancements
-
 * *Major enhancement*: designed *the interactive process logic*
-** *What it does*:
+** *Function*:
 . It allows user to execute his/her command in an interactive way.
 . Display clear instruction or error message at each interaction step.
 . When invalid command received (e.g. the user made a typo mistake), the interaction will not
@@ -32,7 +28,7 @@ notable benefit to CLI users.
 I needed to finish it so that my team can started to work on their own part.
 
 * *Major enhancement*: designed *the UI/UX of Study Buddy*
-** *Includes*:
+** *Function*:
 . The GUI of:
 .. Landing page (i.e. the all tasks page)
 .. Modules page
@@ -55,7 +51,7 @@ which helps users to ease the pressure accumulated from school.
 To design and implement of the UI/UX requires lot of self-learning and reference.
 
 * *Major enhancement*: added *task summary feature*
-** *What it does*:
+** *Function*:
 . Automatically summarizes the collected data into different charts.
 .. *pie chart* compares the number of tasks in different statuses.
 .. *area chart* summarizes the task deadlines or start dates for different modules.
@@ -76,7 +72,7 @@ practice on Lambda.
 the comparison results obtained from different charts can be variant.
 
 * *Major enhancement*: added *the Add and Edit command*
-** *What it does*:
+** *Function*:
 +
 . Add: Allows user to add a new task in the list.
 . Edit: Allows user to edit an existing task in the list.
@@ -93,7 +89,7 @@ such as:
 
 
 * *Minor enhancement*: added *the Sort command*
-** *What it does*:
+** *Function*:
 . Allows user to sort their tasks by:
 .. Deadline / Task Start Date
 .. Task Name
@@ -102,79 +98,9 @@ such as:
 +
 This feature can help uer to prioritize their task by desired aspect.
 
-* *Minor enhancement*: added *the Refresh status functionality*
-** *What it does*:
-+
-Refresh the task status according the time.
-** *Justification*:
-+
-This feature is helpful for user to update their tasks status, especially when he/she left the
-application running at the background for a long time.
 
-=== User guide
-
-|===
-|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
-|===
-
-include::../UserGuide.adoc[tag=intro]
-
-include::../UserGuide.adoc[tag=UIIntroduction]
-
-include::../UserGuide.adoc[tag=add]
-
-include::../UserGuide.adoc[tag=edit]
-
-include::../UserGuide.adoc[tag=sort]
-
-include::../UserGuide.adoc[tag=Statistics]
-
-=== Developer Guide
-
-|===
-|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
-|===
-
-include::../DeveloperGuide.adoc[tag=UIComponent]
-
-include::../DeveloperGuide.adoc[tag=InteractiveCommandProcessFeature]
-
-include::../DeveloperGuide.adoc[tag=taskSummary]
-+
-// include::../DeveloperGuide.adoc[tag=userStoriesYuting]
-// copy from DG to maintain the format
-[cols="1,1,3,3",options="header"]
-|=======================================================================
-|Priority |As a ... |I want to ... |So that I can...
-
-|`* *` |user who is forgetful| have a clear instruction every time I made mistake in command | play with the application more fluently
-
-|`* *` |user whose deadline of a task is extended | edit the particular task | update my task accordingly
-
-|`* *` |user who is lazy | set daily goal | force myself to study
-
-|`* *` |user who lacks of motivation | get award by completing task | be motivated
-
-|`* *` |user who has many tasks | check the summary of their current status in one place | do my future plan easily
-
-|`* *` |user who has many modules | view all tasks under a particular module | focus on this module
-
-|`* *` |user who has many modules and tasks | check the summary of task deadlines under different modules | understand which module need to study first
-
-|`* *` |user who has many modules and tasks | check the summary of task weights under different modules | understand which assessment should pay more attention to
-
-|`* *` |user who likes multitasking| adjust the application's window size | fit it with other windows
-
-|=======================================================================
-
-include::../DeveloperGuide.adoc[tag=useCasesYuting]
-
-. Diagrams:
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/UiClassDiagram.puml[UI class diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/AddTaskObjectDiagram.puml[Add task object diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/QuitFromInteractionActivityDiagram.puml[Quit from interaction activity diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/TaskSummaryOnClickActivityDiagram.puml[Task summary on click activity diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/TaskSummaryOnDataChangeSequenceDiagram.puml[Task summary on data changing sequence diagram]
+=== Code contributed:
+. https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=wyt-sonia[code contribution link]
 
 === Team-based Tasks
 
@@ -182,34 +108,14 @@ include::../DeveloperGuide.adoc[tag=useCasesYuting]
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/27[Interactive feature implemented with Add Task function]
 
 . Renamed the product
- .. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/15[Update project name and Travis link]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/15[Update project name and Travis link]
 
 . Edited and provided all pictures for User Guide:
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/265[UG update and bug fix]
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/262[Bug fixes and UG update]
 
-. Added the Quick Start Section in User Guide:
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/165[UG and archive task index validation]
-
-. Updated Readme document:
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/23[readme website bug fix]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/7[UI updated and readme updated]
-
-. Improve the format of User Guide
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/189[UG format update]
-
-. Removed extra file from AB3
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/90[remove extra file]
-
 . Set up Travis
- .. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/15[Update project name and Travis link]
-
-. Added the init sample data for the application
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/194[add new init data]
-
-
-. Refactor all Address Book into Study Buddy, excluding doc files
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/140[Refactor all Address Book into Study Buddy, excluding doc files]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/15[Update project name and Travis link]
 
 . Improved the code quality for the whole project:
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/276[Code quality]
@@ -233,25 +139,40 @@ include::../DeveloperGuide.adoc[tag=useCasesYuting]
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/89[UI improvement and better tracking of task status]
 .. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/257[UI update and UG update]
 
-. Continually develop the whole logic of Study Buddy:
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/87[Track creation dateTime]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/95[Main feature update and Task attribute update]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/174[Edit function rewrite & validation]
-
-
-
-
-
-
-. Contributed to the https://github.com/nus-cs2103-AY1920S2/forum/issues/75[forum].
-
 === Review/Mentoring
 . Reviewed another team's DG and provided useful feedback.
 .. https://github.com/AY1920S2-CS2103T-W17-3/main/issues/206[Review for DG]
 .. https://github.com/AY1920S2-CS2103T-W17-3/main/issues/207[Review for DG_02]
 .. https://github.com/AY1920S2-CS2103T-W17-3/main/issues/210[Review for DG 03]
 
-=== Code contributed:
-. https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=wyt-sonia[code contribution link]
 
+=== User guide
+
+|===
+|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+|===
+
+include::../UserGuide.adoc[tag=intro]
+include::../UserGuide.adoc[tag=add]
+include::../UserGuide.adoc[tag=edit]
+include::../UserGuide.adoc[tag=sort]
+include::../UserGuide.adoc[tag=Statistics]
+
+=== Developer Guide
+
+|===
+|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|===
+
+include::../DeveloperGuide.adoc[tag=UIComponent]
+include::../DeveloperGuide.adoc[tag=InteractiveCommandProcessFeature]
+include::../DeveloperGuide.adoc[tag=taskSummary]
++
+
+. Diagrams:
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/UiClassDiagram.puml[UI class diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/AddTaskObjectDiagram.puml[Add task object diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/QuitFromInteractionActivityDiagram.puml[Quit from interaction activity diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/TaskSummaryOnClickActivityDiagram.puml[Task summary on click activity diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/TaskSummaryOnDataChangeSequenceDiagram.puml[Task summary on data changing sequence diagram]
 

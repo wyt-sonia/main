@@ -195,7 +195,6 @@ image::dashboard/prompt_box.png[width="790",align="center",title = "Interactive 
 
 [NOTE]
 To get more detailed information about how to use Study Buddy, please refer to <<Features>>.
-<<<<<<< HEAD
 //end::intro[]
 
 [[Features]]
