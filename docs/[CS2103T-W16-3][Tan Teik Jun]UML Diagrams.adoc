@@ -1,0 +1,71 @@
+:imagesDir: images
+:bl: pass:[ +]
+:stylesDir: ./stylesheets
+
+== UML Diagrams
+
+By: `Tan Teik Jun`
+
+
+=== Logic Class Diagram
+
+image::LogicClassDiagram.png[width = "850", title="Logic Class Diagram"]
+
+[teal]#*Description:*# +
+This Class Diagram explains the interactions between the
+classes within the Logic Component.
+It also explains how the Logic Component interacts with the Model component.
+
+This diagram provides a high-level abstraction of the `Logic` component of the architecture. The detailed implementation is handled by other
+diagrams in the Developer Guide.
+
+Developers can use this high-level
+overview to understand the `Logic` Component,
+before diving into the detailed implementation of the `Logic` Component.
+
+
+{bl}
+{bl}
+{bl}
+{bl}
+
+
+=== List Sequence Diagram
+
+image::ListTaskSequenceDiagram.png[width = "700", title="Sequence diagram for archive task"]
+
+*Description:* +
+This Sequence Diagram explains how the `list` command works. This is used as an example to illustrate how the `Logic` Component works.
+
+This diagram shows the interaction between Ui, Logic and Model during the command `list`. Developers can use this as a reference for any new commands.
+
+{bl}
+
+=== Productivity Feature Object Diagram
+
+image::ProductivityObjectDiagram.png[width = "750", title="Objects used for Productivity Feature"]
+
+*Description:* +
+
+This Object Diagram displays the objects used to record statistics needed for Productivity Feature.
+It also shows how the different objects are related and interact with one another. +
+
+This diagram is useful for developers who wish to modify how the Productivity feature works.
+Objects used to display the Ui (e.g. labels and panes) are excluded from this diagram.
+
+
+=== Productivity Feature Activity Diagram
+
+image::ProductivityActivityDiagram.png[width = "300", title="Activity diagram for Productivity Feature"]
+
+[teal]#*Description:*# +
+This Activity Diagram illustrates an example use scenario for the Productivity Feature.
+This diagram helps developers to understand the motivation behind the
+Productivity Feature.
+
+This diagram also helps to explain how the daily goal and streak mechanism works in StudyBuddy.
+It shows that the user's streak is updated when the daily goal is reached.
+
+With this understanding, developers can easily modify
+the current behavior of the Productivity Feature.
+
