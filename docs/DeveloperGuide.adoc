@@ -138,6 +138,9 @@ The command execution will only terminate in two scenarios: +
 1.  When the command is successfully executed. +
 2.  When the user enter `quit` and kbd:[enter] to exit the execution.
 
+
+//updated by Teik Jun
+//tag::logicComponent[]
 [[Design-Logic]]
 === Logic component
 
@@ -162,6 +165,11 @@ Otherwise, if no more information is needed, proceed to the next step.
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `interact("list")` API call.
 
 image::ListTaskSequenceDiagram.png[width = "700", length = "600", title = "Sequence diagram for list"]
+
+[CAUTION]
+The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+
+//end::logicComponent[]
 
 
 //Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
