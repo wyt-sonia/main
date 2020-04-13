@@ -7,20 +7,20 @@ import org.junit.jupiter.api.Test;
 class FindTaskInteractivePromptTest {
 
     @Test
-    public void interact_firstInput_returnKeywordPrompt() {
+    public void interactFirstInputReturnKeywordPrompt() {
         FindTaskInteractivePrompt prompt = new FindTaskInteractivePrompt();
         assertEquals(prompt.getKeywordPrompt(), prompt.interact("find"));
     }
 
     @Test
-    public void interact_secondInput_returnKeywordPrompt() {
+    public void interactSecondInputReturnKeywordPrompt() {
         FindTaskInteractivePrompt prompt = new FindTaskInteractivePrompt();
         prompt.interact("find");
         assertEquals(prompt.getConfirmationPrompt("randomKeyword"), prompt.interact("randomKeyword"));
     }
 
     @Test
-    public void interact_quitCommand_returnQuitMessage() {
+    public void interactQuitCommandReturnQuitMessage() {
         FindTaskInteractivePrompt prompt = new FindTaskInteractivePrompt();
         assertEquals(prompt.getQuitMessage(), prompt.interact("quit"));
     }

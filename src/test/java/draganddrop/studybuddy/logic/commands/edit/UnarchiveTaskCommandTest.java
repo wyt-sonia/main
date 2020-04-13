@@ -23,7 +23,7 @@ class UnarchiveTaskCommandTest {
     private Model model = new ModelManager(getTypicalTaskList(), new UserPrefs());
 
     @Test
-    public void execute_validIndexUnfilteredList_success() {
+    public void executeValidIndexUnfilteredListSuccess() {
         Task taskToArchive = model.getFilteredArchivedTaskList().get(INDEX_FIRST_TASK.getZeroBased());
         UnarchiveTaskCommand atCommand = new UnarchiveTaskCommand(INDEX_FIRST_TASK);
 
@@ -36,7 +36,7 @@ class UnarchiveTaskCommandTest {
     }
 
     @Test
-    public void execute_invalidIndexUnfilteredList_throwsCommandException() {
+    public void executeInvalidIndexUnfilteredListThrowsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredTaskList().size() + 1);
         UnarchiveTaskCommand archiveCommand = new UnarchiveTaskCommand(outOfBoundIndex);
 
@@ -44,7 +44,7 @@ class UnarchiveTaskCommandTest {
     }
 
     @Test
-    public void execute_validIndexFilteredList_success() {
+    public void executeValidIndexFilteredListSuccess() {
 
         Task taskToArchive = model.getFilteredArchivedTaskList().get(INDEX_FIRST_TASK.getZeroBased());
         UnarchiveTaskCommand atCommand = new UnarchiveTaskCommand(INDEX_FIRST_TASK);

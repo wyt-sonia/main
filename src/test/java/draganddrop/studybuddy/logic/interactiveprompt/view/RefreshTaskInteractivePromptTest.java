@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 class RefreshTaskInteractivePromptTest {
 
     @Test
-    public void interact_firstInput_returnKeywordPrompt() {
+    public void interactFirstInputReturnKeywordPrompt() {
         RefreshTaskInteractivePrompt prompt = new RefreshTaskInteractivePrompt();
         String reply = "The tasks list will be refreshed.\n"
                 + " Please press enter again to make the desired changes.";
@@ -20,7 +20,7 @@ class RefreshTaskInteractivePromptTest {
     }
 
     @Test
-    public void interact_quitCommand_returnQuitMessage() {
+    public void interactQuitCommandReturnQuitMessage() {
         RefreshTaskInteractivePrompt prompt = new RefreshTaskInteractivePrompt();
         String reply = "Successfully quited from refresh command.";
         assertEquals(reply, prompt.interact("quit"));

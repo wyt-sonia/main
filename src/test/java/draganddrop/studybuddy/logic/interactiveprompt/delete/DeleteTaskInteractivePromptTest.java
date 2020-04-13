@@ -14,20 +14,20 @@ class DeleteTaskInteractivePromptTest {
     private Model model = new ModelManager(getTypicalTaskList(), new UserPrefs());
 
     @Test
-    public void interact_quitCommand_returnMessage() {
+    public void interactQuitCommandReturnMessage() {
         DeleteTaskInteractivePrompt prompt = new DeleteTaskInteractivePrompt();
         assertEquals(DeleteTaskInteractivePrompt.QUIT_COMMAND_MSG, prompt.interact("quit"));
     }
 
     @Test
-    public void interact_firstInput_returnKeywordPrompt() {
+    public void interactFirstInputReturnKeywordPrompt() {
         DeleteTaskInteractivePrompt prompt = new DeleteTaskInteractivePrompt();
         assertEquals("Please enter the index number of task you wish to delete.",
                 prompt.interact(""));
     }
 
     @Test
-    public void interact_secondInput_returnKeywordPrompt() {
+    public void interactSecondInputReturnKeywordPrompt() {
         DeleteTaskInteractivePrompt prompt = new DeleteTaskInteractivePrompt();
         prompt.interact("");
         String reply = "The task " + model.getStudyBuddy().getTaskList().get(0).getTaskName()

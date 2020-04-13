@@ -74,17 +74,17 @@ public class ConfigUtilTest {
     }
 
     @Test
-    public void save_nullConfig_throwsNullPointerException() {
+    public void saveNullConfigThrowsNullPointerException() {
         assertThrows(NullPointerException.class, () -> save(null, "SomeFile.json"));
     }
 
     @Test
-    public void save_nullFile_throwsNullPointerException() {
+    public void saveNullFileThrowsNullPointerException() {
         assertThrows(NullPointerException.class, () -> save(new Config(), null));
     }
 
     @Test
-    public void saveConfig_allInOrder_success() throws DataConversionException, IOException {
+    public void saveConfigAllInOrderSuccess() throws DataConversionException, IOException {
         Config original = getTypicalConfig();
 
         Path configFilePath = tempDir.resolve("TempConfig.json");

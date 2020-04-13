@@ -35,7 +35,7 @@ public class DeleteTaskCommandTest {
     }
 
     @Test
-    public void execute_invalidIndexUnfilteredList_throwsCommandException() {
+    public void executeInvalidIndexUnfilteredListThrowsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredTaskList().size() + 1);
         DeleteTaskCommand deleteCommand = new DeleteTaskCommand(outOfBoundIndex);
 
@@ -43,7 +43,7 @@ public class DeleteTaskCommandTest {
     }
 
     @Test
-    public void execute_validIndexFilteredList_success() {
+    public void executeValidIndexFilteredListSuccess() {
 
         Task taskToDelete = model.getFilteredTaskList().get(INDEX_FIRST_TASK.getZeroBased());
         DeleteTaskCommand deleteCommand = new DeleteTaskCommand(INDEX_FIRST_TASK);
