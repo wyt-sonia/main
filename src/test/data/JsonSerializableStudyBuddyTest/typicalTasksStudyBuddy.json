@@ -1,3 +1,26 @@
 {
-  "tasks" : []
+  "tasks" : [{
+    "taskName" : "Leadership Presentation 1",
+    "taskType" : "Presentation",
+    "taskDateTime" : "23:59 12/12/2020-23:59 21/12/2020",
+    "taskDescription" : "This is a long task description with 300 characters. 12345678901234567890123456789012345678901234567This is a long task description with 300 characters. 12345678901234567890123456789012345678901234567This is a long task description with 300 characters. 12345678901234567890123456789012345678901234567",
+    "weight" : 0.0,
+    "estimatedTimeCost" : 3.0,
+    "status" : "OVERDUE",
+    "taskCreationDateTime" : "20:22 02/04/2020",
+    "taskFinishDateTime" : "",
+    "moduleCode" : "OO0000O"
+  }],
+  "archivedTasks" : [{
+    "taskName" : "Leadership Presentation 2",
+    "taskType" : "Presentation",
+    "taskDateTime" : "23:59 12/12/2020-23:59 21/12/2020",
+    "taskDescription" : "This is a long task description with 300 characters. 12345678901234567890123456789012345678901234567This is a long task description with 300 characters. 12345678901234567890123456789012345678901234567This is a long task description with 300 characters. 12345678901234567890123456789012345678901234567",
+    "weight" : 0.0,
+    "estimatedTimeCost" : 3.0,
+    "status" : "OVERDUE",
+    "taskCreationDateTime" : "20:22 02/04/2020",
+    "taskFinishDateTime" : "",
+    "moduleCode" : "OO0000O"
+  }]
 }

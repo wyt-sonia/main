@@ -35,5 +35,4 @@ public class JsonSerializableStudyBuddyTest {
         assertThrows(InteractiveCommandException.class, dataFromFile::toModelType);
     }
 
-
 }

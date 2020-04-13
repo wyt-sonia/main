@@ -13,7 +13,7 @@ IVLE was developed by our team that is based in the http://www.comp.nus.edu.sg[S
 === Huang Ge Xiang
 
 image::gx-huang.png[width="150",align= "left"]
-{empty}[http://github.com/gx-huang[github]]
+{empty}[http://github.com/gx-huang[github]][<<gx-huang#, portfolio>>]
 
 Responsibilities: Testing + Deadlines
 
