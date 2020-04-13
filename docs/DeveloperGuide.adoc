@@ -664,10 +664,6 @@ From here, the user can continue to manage tasks as per Step 5 and 6 above,
 or navigate to other Productivity tabs.
 
 
-
-===== Clicking the Productivity menu item
-image
-
 ==== Design Considerations
 
 ===== Aspect: How to re-render Productivity Panel when statistics are updated
