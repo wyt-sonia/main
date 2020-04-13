@@ -400,7 +400,7 @@ public class MainWindow extends UiPart<Stage> {
         logger.fine(FXML + " : End of handling calendar to be shown.");
     }
 
-    public TaskListPanel getPersonListPanel() {
+    public TaskListPanel getTaskListPanel() {
         return taskListPanel;
     }
 

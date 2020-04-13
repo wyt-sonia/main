@@ -207,7 +207,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     //// task-level operations
 
     /**
-     * Adds an archived person to the study buddy.
+     * Adds an archived task to the study buddy.
      *
      * @param p must not already exist in the study buddy.
      */

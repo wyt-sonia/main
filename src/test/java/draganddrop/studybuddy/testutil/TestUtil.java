@@ -33,21 +33,7 @@ public class TestUtil {
     }
 
     /**
-     * Returns the middle index of the person in the {@code model}'s person list.
-     */
-    public static Index getMidIndex(Model model) {
-        return Index.fromOneBased(model.getFilteredTaskList().size() / 2);
-    }
-
-    /**
-     * Returns the last index of the person in the {@code model}'s person list.
-     */
-    public static Index getLastIndex(Model model) {
-        return Index.fromOneBased(model.getFilteredTaskList().size());
-    }
-
-    /**
-     * Returns the person in the {@code model}'s person list at {@code index}.
+     * Returns the task in the {@code model}'s task list at {@code index}.
      */
     public static Task getTask(Model model, Index index) {
         return model.getFilteredTaskList().get(index.getZeroBased());
