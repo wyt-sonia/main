@@ -106,6 +106,7 @@ Note that the index of the same task could be different after some commands, suc
 
 //Start updated by Yuting
 == User Interface Introduction
+(Contributed by Yuting & Teik Jun)
 
 Study Buddy makes use of color schemes and animations to enhance your user experience.
 
@@ -119,6 +120,19 @@ It consists of different components that can interact with you and provide you w
 The *menu bar* is located at the top of the dashboard and is primarily used for navigation.
 
 image::dashboard/nav_bar.png[width="790",align="center",title = "Menu bar"]
+
+Shortcuts are available for navigating to each page:
+
+kbd:[F1] - Modules
+
+kbd:[F3] - Statistics
+
+kbd:[F4] - Calendar
+
+kbd:[F5] - Productivity
+
+kbd:[F6] - StudyBuddy (All Tasks)
+
 
 ==== All Tasks Panel
 
@@ -636,6 +650,7 @@ You can use `sort` -> `Creation Date & Time` to do so.
 //tag::find[]
 [[Find]]
 ==== Find
+(Contributed by Teik Jun)
 
 Finds tasks whose names contain any of the given keywords.
 
@@ -669,6 +684,7 @@ To navigate back to the full list of tasks, you can use the <<List>> function.
 //tag::list[]
 [[LIST]]
 ==== List
+(Contributed by Teik Jun)
 
 Oh no!
 How do I get the original list back after using `find`?
@@ -688,6 +704,8 @@ image::basic/list/list_result.png[width="790",align="center",title="List result"
 //updated by Teik Jun
 //tag::goal[]
 ==== Goal
+(Contributed by Teik Jun)
+
 Want to challenge yourself to complete tasks? You can set your daily goal using `goal`.
 
 To use the `goal` command:
@@ -1230,6 +1248,7 @@ image::calendar/calendar_after_CLI.png[width="790",align="center",title="Success
 //updated by Teik Jun
 //tag::productivity[]
 === Productivity
+(Contributed by Teik Jun)
 
 The productivity page shows insights related to your productivity over the past day, week and more.
 By keeping tabs on your past productivity, you can improve your future productivity.
@@ -1239,7 +1258,7 @@ Doing work has never been more fun!
 ==== Daily Productivity Tab
 image::productivity/daily_tab.png[width="790",align="center",title="Daily Productivity Tab"]
 
-To get started, click on the Productivity menu button.
+To get started, click on the Productivity menu button or type kbd:[F6].
 The daily productivity tab tracks the number of tasks you completed today.
 As you complete tasks using the `done` command, you will get closer to your daily goal.
 
@@ -1249,7 +1268,7 @@ Your streak will reset to zero if you fail to complete your goal.
 [TIP]
 You can set a daily goal for the number of tasks you want to complete using the command `goal`.
 Refer to <<Goal>> for more details on the `goal` command.
-Note that the streak can only be completed once a day,
+Note that the streak can only be increased once a day,
 even if you change your goal after completing your streak.
 
 
@@ -1270,6 +1289,7 @@ If you complete or add a task while looking at the weekly tab or productivity po
 the color theme changes randomly.
 
 ==== Productivity Points Tab
+
 image::productivity/points-tab.png[width="790",align="center",title="Productivity Points Tab" title-align="center"]
 
 You can go to this tab directly by clicking your Productivity Point count on the top right of the menu.
@@ -1297,7 +1317,7 @@ They're free! :)
 
 //end::productivity[]
 
-//updated by Souwmyaa & Teik Jun
+//updated by Souwmyaa
 //tag::summary[]
 [[Summary]]
 == Command Summary
@@ -1324,9 +1344,14 @@ They're free! :)
 //end::summary[]
 
 == FAQ
+(Contributed by Teik Jun)
 
 *Q*: How do I transfer my data to another Computer? +
 *A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Study Buddy folder (should be under data -> taskList.json).
 
 *Q*: How do I save my data? +
 *A*: Study buddy saves your data automatically after every command.
+
+*Q*: How do I update to the latest version of Study Buddy +
+*A*: Simply download the latest `.jar` file released on our GitHub page: +
+https://github.com/AY1920S2-CS2103T-W16-3/main/releases
