@@ -1,4 +1,4 @@
-= Soumwyaa Sabarinathann - Project Portfolio
+= Wang Yuting - Project Portfolio
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
@@ -16,79 +16,100 @@ The codebase is in Java and contains about 13kLoc.
 === Enhancements
 
 * *Major enhancement*: designed *the interactive process logic*
-** What it does:
-. To
-. Loads all due soon tasks (with updated time) into the panel when application is launched.
-. Displays time left before the deadline for each due soon task.
-. Automatically sorts tasks to be in order of most urgent to least urgent deadline.
-. Automatically updates when changes are made to the data (additions, deletions, edits etc).
-** Justification: This feature is extremely helpful to the user because it helps to remind them of upcoming deadlines
-** Highlights:
-. This enhancement affects existing commands and commands to be added in future since any command that changes data will affect it.
-. The implementation was challenging because it required changes to be made to a lot of commands.
-. It involved working in the logic, model, storage and UI components of the code base.
-. It also involved changing the GUI.
-
-* *Major enhancement*: added *task summary feature*
-** What it does:
-. Allows user to refresh due soon task list
-. This command will add any tasks that have recently become due soon
-. It will also update the time left for each deadline on the due soon tasks
-** Justification: This feature is extremely helpful to the user because if they have had the application open for a long time, the time left in due soon tasks and the due soon list itself may need refreshing.
-** Highlights:
-. This enhancement formed the foundation code base for a lot of other features that needed to be refreshed. For example, the refreshing of status tags is also done using this refresh class.
-. It required working in the UI, logic and model components of the code base.
+** *What it does*:
+. It allows user to execute his/her command in an interactive way.
+. Display clear instruction or error message at each interaction step.
+. When invalid command received (e.g. the user made a typo mistake), the interaction will not
+terminate, instead, it will response with clear instruction and wait for user's next action.
+. Allow user to quit from interaction using "quit" keyword.
+** *Justification*: +
+. This feature saves user from remembering long, wordy commands to use the command line interface.
+. The "stay and wait" reaction against any invalid input improves the typo-tolerance of the application, which contributes a
+notable benefit to CLI users.
+** *Highlights*:
+. The implementation was challenging because it required a huge changes in the original logic.
+. The time left me to design and develop this logic was tight because
+I needed to finish it so that my team can started to work on their own part.
 
 * *Major enhancement*: designed *the UI/UX of Study Buddy*
-** What it does:
-. Allows user to add duplicate tasks in the list.
-. It however automatically appends brackets with a number to the task name of duplicate task.
-. The number corresponds to the number of times task has been duplicated.
-. Ensures that edit and unarchive command do not cause duplication of tasks either.
-** Justification:
-. This feature is helpful to the user because the add task command involves adding several fields.
-. We can only detect duplicates at the end of task addition command, hence if the user makes a mistake in one field, they will have to re-enter everything if duplicates are not allowed.
-. This way, user is given a choice whether or not to add duplicate task and they can go back and edit/delete as they like.
-** Highlights:
-. This feature was quite difficult to implement because there are several corner cases to take care of.
-. It required working on other commands, such as edit command (to stop user from editing a task to be a duplicate) and unarchive command (because user can unarchive a duplicate task).
-. Since study buddy already had a lot of tests and checks to prevent duplicate tasks, it required a very large amount of refactoring code.
+** *Includes*:
+. The GUI of:
+.. Landing page (i.e. the all tasks page)
+.. Modules page
+.. Statistics page
+.. Calendar page
+.. The Task card (i.e. the items in task list)
+. Responsive layout. The inner components can automatically adjust themselves according to
+the current width and height.
+. The mouse events when:
+.. hovering on menu bar item, calendar button, as well as tabs in modules and statistics page
+.. focusing on list items (e.g. all tasks list)
+.. clicking on chars in statistics page
+** *Justification*:
+. The GUI of this application follows a relaxed style,
+which helps users to ease the pressure accumulated from school.
+. The responsive layout allows the application to be adapted to different screen sizes.
+. The mouse event makes it easier for user to focus on what he/she is doing.
+** *Highlights*:
++
+To design and implement of the UI/UX requires lot of self-learning and reference.
 
-* *Major enhancement*: added *the add and edit Task command*
-** What it does:
-. Allows user to delete an existing task in the list
-** Justification: This feature is extremely helpful to the user because it enables them to remove tasks from their list.
-** Highlights:
-. This enhancement was a crucial command and is also used as a supporting command by a lot of other features.
-. It involved working in the UI, logic and model components of the code base.
+* *Major enhancement*: added *task summary feature*
+** *What it does*:
+. Automatically summarizes the collected data into different charts.
+.. *pie chart* compares the number of tasks in different statuses.
+.. *area chart* summarizes the task deadlines or start dates for different modules.
+.. *stacked bar chart* compares the weight of different types of tasks in each module
+. Retrieves and displays relevant tasks when user clicking on a chart.
+. Listen to the data change and update simultaneously.
+** *Justification*:
+. The statistics helps user to integrates scattered information in one place and represents in dynamic charts,
+witch makes the information more straightforward.
+. With this feature, user can be more productive as they have better idea of what is going on and
+what is more important.
+. The statistics is auto-generated along the way the user managing their records using keyboard input,
+which means this feature can contribute significant value to those fast typist.
+** *Highlights*:
+. The data bind of each chart is not easy to implement, especially when I take this opportunity to
+practice on Lambda.
+. It also needs to be careful when choosing a suitable chart for a data set. Even for the same collection of data,
+the comparison results obtained from different charts can be variant.
 
-* *Major enhancement*: added *the edit command*
-** What it does:
-. Allows user to filter by status (eg: finished, pending etc) or by type (eg: assignment, quiz etc)
-** Justification: This feature is extremely helpful to the user because it enables them to filter their list of all tasks by various categories.
-** Highlights:
-. This enhancement was a crucial command.
-. The implementation was tricky because as the number of choices user was given increased, the checks for exceptions etc became more complex.
-. It involved working in the UI, logic and model components of the code base.
+* *Major enhancement*: added *the Add and Edit command*
+** *What it does*:
++
+. Add: Allows user to add a new task in the list.
+. Edit: Allows user to edit an existing task in the list.
+** *Justification*:
++
+This feature is extremely helpful to the user because it enables them to insert and edit task.
+** *Highlights*:
++
+Implementing this basic functionality is not easy because it involves a lot of obvious and non-obvious validation,
+such as:
 
-* *Minor enhancement*: added *the sort tasks command*
-** What it does:
-. Allows user to view all renamed tasks in their list
-** Justification:
-. This feature is helpful to the user because they might want to see all the tasks that have auto-edited names in one place, so they can go back and edit.
+.. obvious: empty input for required fields, wrong input format etc.
+.. non-obvious: the validation of time, task weight etc.
 
-* *Minor enhancement*: added *the Exit command*
-** What it does:
-. Allows user to exit the application
-. In case user has entered this command by mistake, provides an option to go back.
-** Justification: This feature is extremely helpful to the user because it enables them to exit when needed.
-** Highlights:
-This enhancement was a crucial command.
 
-* *Minor enhancement*: added *the Clear command*
-** What it does:
-. Allows user to delete all data that has been entered
-** Justification: This feature is helpful to the user if they decide to start with a fresh Study Buddy.
+* *Minor enhancement*: added *the Sort command*
+** *What it does*:
+. Allows user to sort their tasks by:
+.. Deadline / Task Start Date
+.. Task Name
+.. Creation Date & Time
+** *Justification*:
++
+This feature can help uer to prioritize their task by desired aspect.
+
+* *Minor enhancement*: added *the Refresh status functionality*
+** *What it does*:
++
+Refresh the task status according the time.
+** *Justification*:
++
+This feature is helpful for user to update their tasks status, especially when he/she left the
+application running at the background for a long time.
 
 === User guide
 
@@ -96,31 +117,17 @@ This enhancement was a crucial command.
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-include::../UserGuide.adoc[tag=introduction]
+include::../UserGuide.adoc[tag=quickStart]
 
-include::../UserGuide.adoc[tag=usefulTips]
+include::../UserGuide.adoc[tag=UIIntroduction]
 
-include::../UserGuide.adoc[tag=symbols]
+include::../UserGuide.adoc[tag=add]
 
-include::../UserGuide.adoc[tag=delete]
+include::../UserGuide.adoc[tag=edit]
 
-include::../UserGuide.adoc[tag=addDuplicates]
+include::../UserGuide.adoc[tag=sort]
 
-include::../UserGuide.adoc[tag=viewRenamed]
-
-include::../UserGuide.adoc[tag=filter]
-
-include::../UserGuide.adoc[tag=refresh]
-
-include::../UserGuide.adoc[tag=dueSoon]
-
-include::../UserGuide.adoc[tag=savingData]
-
-include::../UserGuide.adoc[tag=clear]
-
-include::../UserGuide.adoc[tag=exit]
-
-include::../UserGuide.adoc[tag=summary]
+include::../UserGuide.adoc[tag=Statistics]
 
 === Developer Guide
 
@@ -128,44 +135,124 @@ include::../UserGuide.adoc[tag=summary]
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
 |===
 
-include::../DeveloperGuide.adoc[tag=introduction]
+include::../DeveloperGuide.adoc[tag=UIComponent]
 
-include::../DeveloperGuide.adoc[tag=modelComponent]
+include::../DeveloperGuide.adoc[tag=InteractiveCommandProcessFeature]
 
-include::../DeveloperGuide.adoc[tag=dueSoon]
+include::../DeveloperGuide.adoc[tag=taskSummary]
++
+// include::../DeveloperGuide.adoc[tag=userStoriesYuting]
+// copy from DG to maintain the format
+[cols="1,1,3,3",options="header"]
+|=======================================================================
+|Priority |As a ... |I want to ... |So that I can...
 
-include::../DeveloperGuide.adoc[tag=useCasesSouwmyaa]
+|`* *` |user who is forgetful| have a clear instruction every time I made mistake in command | play with the application more fluently
 
-include::../DeveloperGuide.adoc[tag=userStories]
+|`* *` |user whose deadline of a task is extended | edit the particular task | update my task accordingly
 
-include::../DeveloperGuide.adoc[tag=savingData]
+|`* *` |user who is lazy | set daily goal | force myself to study
+
+|`* *` |user who lacks of motivation | get award by completing task | be motivated
+
+|`* *` |user who wants to improve productivity| view the history goal-complement rate | keep track of the changing of my productivity
+
+|`* *` |user who has many tasks | check the summary of their current status in one place | do my future plan easily
+
+|`* *` |user who has many modules | view all tasks under a particular module | focus on this module
+
+|`* *` |user who has many modules and tasks | check the summary of task deadlines under different modules | understand which module need to study first
+
+|`* *` |user who has many modules and tasks | check the summary of task weights under different modules | understand which assessment should pay more attention to
+
+|`* *` |user who likes multitasking| adjust the application's window size | fit it with other windows
+|=======================================================================
+
+include::../DeveloperGuide.adoc[tag=useCasesYuting]
 
 . Diagrams:
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/ModelClassDiagram.puml[Model class diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DueSoonActivityDiagram.puml[Due soon activity diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DueSoonSequenceDiagram.puml[Due soon sequence diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/AddDueSoonActivityDiagram.puml[Add due soon task activity diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/AddDueSoonSequence.puml[Add due soon task sequence diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DeleteDueSoonActivityDiagram.puml[Delete due soon task activity diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DeleteDueSoonSequence.puml[Delete due soon task sequence diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/UiClassDiagram.puml[UI class diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/AddTaskObjectDiagram.puml[Add task object diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/QuitFromInteractionActivityDiagram.puml[Quit from interaction activity diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/TaskSummaryOnClickActivityDiagram.puml[Task summary on click activity diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/TaskSummaryOnDataChangeSequenceDiagram.puml[Task summary on data changing sequence diagram]
 
 === Team-based Tasks
-. Refactored all occurrences of Address Book to Study Buddy. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/135[Refactor]
-. Added the introduction, commonly used symbols, summary and useful tips sections to user guide. Links to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/245[Useful tips and symbols] and https://github.com/AY1920S2-CS2103T-W16-3/main/pull/176[Introduction]
-. Added the introduction to developer guide. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/185[Introduction]
-. Added the Study Buddy icon. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/68[Logo Update]
-. Added all https://github.com/AY1920S2-CS2103T-W16-3/main/labels[labels] and https://github.com/AY1920S2-CS2103T-W16-3/main/milestones?state=closed[milestones] to the issue tracker.
-. Attempted to find bugs in all team members code to help them fix any issues. Example issue https://github.com/AY1920S2-CS2103T-W16-3/main/issues/107[Bug in Tags]
-. Helped maintained consistency in UG and DG by editing some other team member's parts and diagram colors. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/252[Consistency in Documentation]
-. Revised documentation and notified members if they had missed a certain feature/aspect that could cause confusion to users/testers. Example issue https://github.com/AY1920S2-CS2103T-W16-3/main/issues/256[Reminder to edit UG]
-. Wrote test cases for error-prone classes, even if they were not mine. The following links https://github.com/AY1920S2-CS2103T-W16-3/main/pull/166[Parser Tests] and https://github.com/AY1920S2-CS2103T-W16-3/main/pull/139[Interactive Prompt tests] display my team testing work.
+
+. Morphed the original AB3 into a different product: Study Buddy
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/27[Interactive feature implemented with Add Task function]
+
+. Renamed the product
+ .. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/15[Update project name and Travis link]
+
+. Edited and provided all pictures for User Guide:
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/265[UG update and bug fix]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/262[Bug fixes and UG update]
+
+. Added the Quick Start Section in User Guide:
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/165[UG and archive task index validation]
+
+. Updated Readme document:
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/23[readme website bug fix]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/7[UI updated and readme updated]
+
+. Improve the format of User Guide
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/189[UG format update]
+
+. Removed extra file from AB3
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/90[remove extra file]
+
+. Set up Travis
+ .. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/15[Update project name and Travis link]
+
+. Added the init sample data for the application
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/194[add new init data]
+
+
+. Refactor all Address Book into Study Buddy, excluding doc files
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/140[Refactor all Address Book into Study Buddy, excluding doc files]
+
+. Improved the code quality for the whole project:
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/276[Code quality]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/271[Code quality improvement]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/182[Code quality improves]
+
+. Troubleshoot and fixed bugs at the whole project scope:
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/100[bug fix for overdue check]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/124[DG update and bug fix]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/98[Bug fixed: Bug with task index]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/59[Bug fix, Quit/Sort function implementing and UI improving]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/63[Bug fix for not handling invalid user input]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/279[more log, bug fix, typo fix]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/262[Bug fixes and UG update]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/240[module index bug fix]
+
+. Helped Implemented the GUI for the whole project:
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/74[GUI for list view updated and GUI bug fix]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/71[GUI improvement]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/59[Bug fix, Quit/Sort function implementing and UI improving]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/89[UI improvement and better tracking of task status]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/257[UI update and UG update]
+
+. Continually develop the whole logic of Study Buddy:
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/87[Track creation dateTime]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/95[Main feature update and Task attribute update]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/174[Edit function rewrite & validation]
+
+
+
+
+
+
 . Contributed to the https://github.com/nus-cs2103-AY1920S2/forum/issues/75[forum].
 
 === Review/Mentoring
-. If a fellow team member's PR did not pass the tests required, I left helpful comments in order to reduce their work load.
-eg: https://github.com/AY1920S2-CS2103T-W16-3/main/pull/59
-. Reviewed another team's DG and provided useful feedback. https://github.com/AY1920S2-CS2103T-W17-3/main/issues/208[Review 1] and https://github.com/AY1920S2-CS2103T-W17-3/main/issues/204[Review 2]
+. Reviewed another team's DG and provided useful feedback.
+.. https://github.com/AY1920S2-CS2103T-W17-3/main/issues/206[Review for DG]
+.. https://github.com/AY1920S2-CS2103T-W17-3/main/issues/207[Review for DG_02]
+.. https://github.com/AY1920S2-CS2103T-W17-3/main/issues/210[Review for DG 03]
 
-=== Code contributed: https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#=undefined&search=souwmyaa
+=== Code contributed:
+. https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=wyt-sonia[code contribution link]
 
 
