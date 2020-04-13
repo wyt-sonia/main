@@ -18,18 +18,18 @@ public class AppUtilTest {
     }
 
     @Test
-    public void checkArgument_true_nothingHappens() {
+    public void checkArgumentTrueNothingHappens() {
         AppUtil.checkArgument(true);
         AppUtil.checkArgument(true, "");
     }
 
     @Test
-    public void checkArgument_falseWithoutErrorMessage_throwsIllegalArgumentException() {
+    public void checkArgumentFalseWithoutErrorMessageThrowsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> AppUtil.checkArgument(false));
     }
 
     @Test
-    public void checkArgument_falseWithErrorMessage_throwsIllegalArgumentException() {
+    public void checkArgumentFalseWithErrorMessageThrowsIllegalArgumentException() {
         String errorMessage = "error message";
         assertThrows(IllegalArgumentException.class, errorMessage, () -> AppUtil.checkArgument(false, errorMessage));
     }
