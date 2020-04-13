@@ -105,6 +105,8 @@ Note that the index of the same task could be different after some commands, suc
 
 
 //Start updated by Yuting
+
+//tag::intro[]
 == User Interface Introduction
 (Contributed by Yuting, Hong Wen & Teik Jun)
 
@@ -194,7 +196,7 @@ image::dashboard/prompt_box.png[width="790",align="center",title = "Interactive 
 [NOTE]
 To get more detailed information about how to use Study Buddy, please refer to <<Features>>.
 //End updated by Yuting
-
+//end::intro[]
 [[Features]]
 == Features
 
@@ -443,6 +445,8 @@ image::basic/edit/edit_result.png[width="790",align="center",title="Task edited"
 
 (Contributed by Hong Wen)
 
+//tag::Done[]
+
 This command is for you to mark a task as *Finished*.
 
 ====
@@ -471,6 +475,7 @@ image::basic/done/done_result.png[width="790",align="center",title = "Done resul
 [NOTE]
 You can choose to archive your completed task using the `archive` command.
 Check more details from <<Archive/ Unarchive>>.
+//end::Done[]
 
 //updated by Souwmyaa
 //tag::clear[]
@@ -902,6 +907,8 @@ Hence if the current time is 9:00 am on 01/04/2020 and the task deadline is 9:02
 Due soon list will never display finished tasks. eg: if you unarchive a completed task, it will not appear in the Due Soon list.
 //end::dueSoon[]
 
+
+//tag::Modules[]
 === Modules
 (Contributed by Hong Wen)
 
@@ -1068,6 +1075,7 @@ After successfully deleted target module, the module page will update accordingl
 If you switch to `No Module Allocated` tab, you'll find the tasks affected by this deletion (i.e. The tasks which belong to the deleted module).
 +
 image::module/module_delete_after.png[width="790",align="center",title = 'Checking the affected tasks']
+//end::Modules[]
 
 //Start updated by Yuting
 

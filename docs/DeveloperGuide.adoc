@@ -52,6 +52,8 @@ This symbol indicates something to which we want to draw your attention.
 
 == Design
 
+//tag::ArchitectureDiagram[]
+
 [[Design-Architecture]]
 === Architecture
 
@@ -60,6 +62,8 @@ image::ArchitectureDiagram.png[]
 
 The *_Architecture Diagram_* given above explains the high-level design of the App.
 Given below is a quick overview of each component.
+
+//end::ArchitectureDiagram[]
 
 [TIP]
 The `.puml` files used to create diagrams in this document can be found in the link:{repoURL}/tree/master/docs/diagrams[diagrams] folder.
@@ -750,7 +754,9 @@ this trade-off does not result in any measurable delay.
 
 //end::productivity[]
 
+//tag::mod[]
 === Modules
+(Contributed by Hong Wen)
 The `modules` feature enables users to be able to group and view their tasks according to various modules or subjects.
 Each module is assigned with a unique module code & a name.
 By default, all task created with the `add` command will be be assigned to module code `OO0000O`.
@@ -790,6 +796,8 @@ which will then return to the user.
 [CAUTION]
 The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 {bl}
+
+//end::mod[]
 
 
 === Logging

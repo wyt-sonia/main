@@ -1,4 +1,4 @@
-= Soumwyaa Sabarinathann - Project Portfolio
+= Tin Hong Wen  - Project Portfolio
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
@@ -13,82 +13,56 @@ The codebase is in Java and contains about 13kLoc.
 
 == Summary of contributions
 
-=== Enhancements
+=== Main Enhancements
 
-* *Major enhancement*: designed *the interactive process logic*
-** What it does:
-. To
-. Loads all due soon tasks (with updated time) into the panel when application is launched.
-. Displays time left before the deadline for each due soon task.
-. Automatically sorts tasks to be in order of most urgent to least urgent deadline.
-. Automatically updates when changes are made to the data (additions, deletions, edits etc).
-** Justification: This feature is extremely helpful to the user because it helps to remind them of upcoming deadlines
-** Highlights:
-. This enhancement affects existing commands and commands to be added in future since any command that changes data will affect it.
-. The implementation was challenging because it required changes to be made to a lot of commands.
-. It involved working in the logic, model, storage and UI components of the code base.
-. It also involved changing the GUI.
+==== Designed the Module Feature
+** Function:
+This optional feature enables users to view their tasks sorted according to the modules that they have taken.
+Each module is designed to contain a name, a unique module code, as well as all the tasks that it holds.
+Users can choose to assign their task to any module they want (or not at all), as well as create new modules,
+edit or delete any existing modules.
 
-* *Major enhancement*: added *task summary feature*
-** What it does:
-. Allows user to refresh due soon task list
-. This command will add any tasks that have recently become due soon
-. It will also update the time left for each deadline on the due soon tasks
-** Justification: This feature is extremely helpful to the user because if they have had the application open for a long time, the time left in due soon tasks and the due soon list itself may need refreshing.
-** Highlights:
-. This enhancement formed the foundation code base for a lot of other features that needed to be refreshed. For example, the refreshing of status tags is also done using this refresh class.
-. It required working in the UI, logic and model components of the code base.
-
-* *Major enhancement*: designed *the UI/UX of Study Buddy*
-** What it does:
-. Allows user to add duplicate tasks in the list.
-. It however automatically appends brackets with a number to the task name of duplicate task.
-. The number corresponds to the number of times task has been duplicated.
-. Ensures that edit and unarchive command do not cause duplication of tasks either.
 ** Justification:
-. This feature is helpful to the user because the add task command involves adding several fields.
-. We can only detect duplicates at the end of task addition command, hence if the user makes a mistake in one field, they will have to re-enter everything if duplicates are not allowed.
-. This way, user is given a choice whether or not to add duplicate task and they can go back and edit/delete as they like.
-** Highlights:
-. This feature was quite difficult to implement because there are several corner cases to take care of.
-. It required working on other commands, such as edit command (to stop user from editing a task to be a duplicate) and unarchive command (because user can unarchive a duplicate task).
-. Since study buddy already had a lot of tests and checks to prevent duplicate tasks, it required a very large amount of refactoring code.
+Given how college students have many, many task coming from multiple assignments,
+I believe this is one of the good way they can organise and view their tasks if they need to sift
+multiple tasks.
 
-* *Major enhancement*: added *the add and edit Task command*
-** What it does:
-. Allows user to delete an existing task in the list
-** Justification: This feature is extremely helpful to the user because it enables them to remove tasks from their list.
 ** Highlights:
-. This enhancement was a crucial command and is also used as a supporting command by a lot of other features.
-. It involved working in the UI, logic and model components of the code base.
+One of the challenging features is to design something for tasks that do not have any modules
+assigned to them. All task by default will have a module attached to them, so we have to create a "figurehead" module
+for these tasks. This figurehead module have to be able to conceal its module code from the user and has to prevent
+users from edits and deletes.
 
-* *Major enhancement*: added *the edit command*
-** What it does:
-. Allows user to filter by status (eg: finished, pending etc) or by type (eg: assignment, quiz etc)
-** Justification: This feature is extremely helpful to the user because it enables them to filter their list of all tasks by various categories.
+Another difficulty is dealing with storage. To avoid changing the order of the tasks, module has to be designed to
+temporarily store tasks instead of actually storing it in the program.
+
+
+==== Edit & Create Module Function
+** Function:
+These 2 features allows users to create new modules, as well as edit existing modules. Users cannot
+create any modules with duplicate names or code, or those with invalid module codes. In `edit mods`,
+users can choose to edit name, code or even delete existing modules.
+
 ** Highlights:
-. This enhancement was a crucial command.
-. The implementation was tricky because as the number of choices user was given increased, the checks for exceptions etc became more complex.
-. It involved working in the UI, logic and model components of the code base.
+One key challenge with designing `edit mod` function is dealing with existing tasks is under the module.
+The program has to be designed to change the module of each consecutive task that was under the module,
+making this portion fragile.
 
-* *Minor enhancement*: added *the sort tasks command*
-** What it does:
-. Allows user to view all renamed tasks in their list
+==== Added Complete Function
+** Function:
+Allows users to set their task from pending to `Finished`.
 ** Justification:
-. This feature is helpful to the user because they might want to see all the tasks that have auto-edited names in one place, so they can go back and edit.
+To allow users to mark their task as complete so that it can be easily ignored /hidden by the user.
 
-* *Minor enhancement*: added *the Exit command*
-** What it does:
-. Allows user to exit the application
-. In case user has entered this command by mistake, provides an option to go back.
-** Justification: This feature is extremely helpful to the user because it enables them to exit when needed.
-** Highlights:
-This enhancement was a crucial command.
 
-* *Minor enhancement*: added *the Clear command*
-** What it does:
-. Allows user to delete all data that has been entered
-** Justification: This feature is helpful to the user if they decide to start with a fresh Study Buddy.
+=== Minor Enhancements
+==== Added 'modules' option in Edit function
+** Function:
+Allow users to edit change the module in which the task was assigned to.
+
+** Justification:
+So that users can edit and reassign task to a different existing module.
+
 
 === User guide
 
@@ -96,31 +70,10 @@ This enhancement was a crucial command.
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
-include::../UserGuide.adoc[tag=introduction]
+include::../UserGuide.adoc[tag=intro]
+include::../UserGuide.adoc[tag=Done]
+include::../UserGuide.adoc[tag=Modules]
 
-include::../UserGuide.adoc[tag=usefulTips]
-
-include::../UserGuide.adoc[tag=symbols]
-
-include::../UserGuide.adoc[tag=delete]
-
-include::../UserGuide.adoc[tag=addDuplicates]
-
-include::../UserGuide.adoc[tag=viewRenamed]
-
-include::../UserGuide.adoc[tag=filter]
-
-include::../UserGuide.adoc[tag=refresh]
-
-include::../UserGuide.adoc[tag=dueSoon]
-
-include::../UserGuide.adoc[tag=savingData]
-
-include::../UserGuide.adoc[tag=clear]
-
-include::../UserGuide.adoc[tag=exit]
-
-include::../UserGuide.adoc[tag=summary]
 
 === Developer Guide
 
@@ -128,44 +81,31 @@ include::../UserGuide.adoc[tag=summary]
 |_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
 |===
 
-include::../DeveloperGuide.adoc[tag=introduction]
-
-include::../DeveloperGuide.adoc[tag=modelComponent]
-
-include::../DeveloperGuide.adoc[tag=dueSoon]
-
-include::../DeveloperGuide.adoc[tag=useCasesSouwmyaa]
-
-include::../DeveloperGuide.adoc[tag=userStories]
-
-include::../DeveloperGuide.adoc[tag=savingData]
+include::../DeveloperGuide.adoc[tag = ArchitectureDiagram]
+include::../DeveloperGuide.adoc[tag = mod]
 
 . Diagrams:
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/ModelClassDiagram.puml[Model class diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DueSoonActivityDiagram.puml[Due soon activity diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DueSoonSequenceDiagram.puml[Due soon sequence diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/AddDueSoonActivityDiagram.puml[Add due soon task activity diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/AddDueSoonSequence.puml[Add due soon task sequence diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DeleteDueSoonActivityDiagram.puml[Delete due soon task activity diagram]
-.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/DeleteDueSoonSequence.puml[Delete due soon task sequence diagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/ArchitectureDiagram.puml[ArchitectureDiagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/ModuleSequenceDiagram.puml.puml[ModuleSequenceDiagram]
 
 === Team-based Tasks
-. Refactored all occurrences of Address Book to Study Buddy. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/135[Refactor]
-. Added the introduction, commonly used symbols, summary and useful tips sections to user guide. Links to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/245[Useful tips and symbols] and https://github.com/AY1920S2-CS2103T-W16-3/main/pull/176[Introduction]
-. Added the introduction to developer guide. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/185[Introduction]
-. Added the Study Buddy icon. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/68[Logo Update]
-. Added all https://github.com/AY1920S2-CS2103T-W16-3/main/labels[labels] and https://github.com/AY1920S2-CS2103T-W16-3/main/milestones?state=closed[milestones] to the issue tracker.
-. Attempted to find bugs in all team members code to help them fix any issues. Example issue https://github.com/AY1920S2-CS2103T-W16-3/main/issues/107[Bug in Tags]
-. Helped maintained consistency in UG and DG by editing some other team member's parts and diagram colors. Link to PR https://github.com/AY1920S2-CS2103T-W16-3/main/pull/252[Consistency in Documentation]
-. Revised documentation and notified members if they had missed a certain feature/aspect that could cause confusion to users/testers. Example issue https://github.com/AY1920S2-CS2103T-W16-3/main/issues/256[Reminder to edit UG]
-. Wrote test cases for error-prone classes, even if they were not mine. The following links https://github.com/AY1920S2-CS2103T-W16-3/main/pull/166[Parser Tests] and https://github.com/AY1920S2-CS2103T-W16-3/main/pull/139[Interactive Prompt tests] display my team testing work.
-. Contributed to the https://github.com/nus-cs2103-AY1920S2/forum/issues/75[forum].
+.. Debugged a serious bug involving storage that was holding the entire team back for a week at the start of tP.
+.. Help to refactor team's code by creating parent class.
+.. Helped repackaged some of the old codes into separate folders, as well as reorganizing
+`commands` and `interactiveprompts` into many folders
+.. Modified & cropped many of the team's UG images for better readability.
+.. Helped shorten some existing nested codes with `streams`.
 
 === Review/Mentoring
-. If a fellow team member's PR did not pass the tests required, I left helpful comments in order to reduce their work load.
-eg: https://github.com/AY1920S2-CS2103T-W16-3/main/pull/59
-. Reviewed another team's DG and provided useful feedback. https://github.com/AY1920S2-CS2103T-W17-3/main/issues/208[Review 1] and https://github.com/AY1920S2-CS2103T-W17-3/main/issues/204[Review 2]
 
-=== Code contributed: https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#=undefined&search=souwmyaa
+* Left constructive feedback on teammate's repo.
+* Left feedback for another team's DG. https://github.com/AY1920S2-CS2103-W14-3/main/issues/59[59]
+* Left feedback for another team's UG. https://github.com/aegis-bot/ped/issues/4 [4]
+
+
+
+=== Code contributed:
+https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=aegis-bot&sort=groupTitle&sortWithin=title&since=2020-02-14&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false
+
 
 
