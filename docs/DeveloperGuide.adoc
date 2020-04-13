@@ -648,7 +648,16 @@ CAT
 ==== Sequence diagram for creating modules
 This is a sequence of how a module is created using the `create mods` feature. Take note that all interactions go through the `CommandBox` first in the UI, but it will be omitted from this diagram for simplicity.
 
-image::UMLmodule.jpeg[width = "1000", length = "800", title= "Sequence diagram for modules"]
+image::ModuleSequenceDiagram.png[width = "1000", length = "800", title= "Sequence diagram for modules"]
+1. When the user keys in  `create mods` or click *Module/create* on the menu bar,
+a `CreateModuleInteractivePrompt` class is created. It automatically constructs an `EmptyModule`.
+
+2. The interactivePrompt class will then change module attributes such as
+name and `ModuleCode` on according to user input.
+
+3. At the last stage, the prompt will construct a `CreateModCommand` for execution.
+It will go through the various layers in Model before returning to the prompt,
+which will then return to the user.
 
 
 === Logging
