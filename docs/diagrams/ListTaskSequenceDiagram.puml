@@ -1,0 +1,57 @@
+@startuml
+!include style.puml
+
+skinparam arrowColor #black
+skinparam SequenceBoxBorderColor #black
+skinparam SequenceParticipantBorderThickness 1
+skinparam SequenceReferenceBorderThickness 2
+skinparam DiagramBorderThickness 2
+skinparam SequenceArrowThickness 1
+skinparam SequenceLifeLineBorderColor #black
+skinparam ParticipantBorderColor #black
+
+
+box UI UI_COLOR_T1
+participant ":UI" as UI UI_COLOR
+end box
+
+box Logic LOGIC_COLOR_T1
+participant ":ListTaskInteractivePrompt" as ListTaskInteractivePrompt LOGIC_COLOR
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":ListTaskCommand" as ListTaskCommand LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":ModelManager" as Model MODEL_COLOR
+
+end box
+
+UI -> ListTaskInteractivePrompt : execute("list")
+activate ListTaskInteractivePrompt
+
+ListTaskInteractivePrompt -> LogicManager : executeCommand()
+activate LogicManager
+
+LogicManager -> ListTaskCommand : execute()
+activate ListTaskCommand
+
+ListTaskCommand -> Model : updateFilteredTaskList()
+activate Model
+
+
+
+Model --> ListTaskCommand
+deactivate Model
+
+ListTaskCommand --> LogicManager
+deactivate ListTaskCommand
+destroy ListTaskCommand
+
+LogicManager --> ListTaskInteractivePrompt
+deactivate LogicManager
+
+UI<--ListTaskInteractivePrompt
+deactivate ListTaskInteractivePrompt
+destroy ListTaskInteractivePrompt
+
+@enduml
