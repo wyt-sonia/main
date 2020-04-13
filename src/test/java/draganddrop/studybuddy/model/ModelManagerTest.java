@@ -69,30 +69,30 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void setStudyBuddyFilePath_validPath_setsStudyBuddyFilePath() {
+    public void setStudyBuddyFilePathValidPathSetsStudyBuddyFilePath() {
         Path path = Paths.get("studyBuddy/file/path");
         modelManager.setStudyBuddyFilePath(path);
         assertEquals(path, modelManager.getStudyBuddyFilePath());
     }
 
     @Test
-    public void hasTask_nullTask_throwsNullPointerException() {
+    public void hasTaskNullTaskThrowsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> modelManager.hasTask(null));
     }
 
     @Test
-    public void hasTask_taskNotInStudyBuddy_returnsFalse() {
+    public void hasTaskTaskNotInStudyBuddyReturnsFalse() {
         assertFalse(modelManager.hasTask(TypicalTasks.getSampleTasks()[0]));
     }
 
     @Test
-    public void hasTask_taskInStudyBuddy_returnsTrue() {
+    public void hasTaskTaskInStudyBuddyReturnsTrue() {
         modelManager.addTask(TypicalTasks.getSampleTasks()[0]);
         assertTrue(modelManager.hasTask(TypicalTasks.getSampleTasks()[0]));
     }
 
     @Test
-    public void getFilteredTaskList_modifyList_throwsUnsupportedOperationException() {
+    public void getFilteredTaskListModifyListThrowsUnsupportedOperationException() {
         Assert.assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredTaskList().remove(0));
     }
 

@@ -35,7 +35,7 @@ public class EditModCommandTest {
     }
 
     @Test
-    public void execute_nonExistentModReturnReply() throws CommandException {
+    public void executeNonExistentModReturnReply() throws CommandException {
         EditModCommand editModCommand = new EditModCommand(new Module("name", "CS2111"),
                 new Module("name", "CS1111"), null);
         assertEquals("Module does not exist in Study Buddy!",
@@ -43,7 +43,7 @@ public class EditModCommandTest {
     }
 
     @Test
-    public void execute_invalidTermReturnReply() throws CommandException {
+    public void executeInvalidTermReturnReply() throws CommandException {
         CreateModCommand createModCommand = new CreateModCommand(new Module("", "CS1231"));
         createModCommand.execute(model);
         EditModCommand editModCommand = new EditModCommand(new Module("", "CS1231"),
