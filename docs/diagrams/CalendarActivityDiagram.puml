@@ -14,7 +14,7 @@ label lab1
 
 :Time parser parses the date;
 
-if () then ([Requested date is within
+if () then ([Selected date is within
 50 years of current date])
 
 :Calendar is generated;
@@ -22,5 +22,7 @@ if () then ([Requested date is within
 else ([else])
 :Error is thrown;
 endif
+
+:User sees calendar with all tasks on selected date;
 stop
 @enduml

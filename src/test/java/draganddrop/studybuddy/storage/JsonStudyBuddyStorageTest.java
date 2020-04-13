@@ -42,13 +42,13 @@ public class JsonStudyBuddyStorageTest {
     }
 
     @Test
-    public void read_notJsonFormat_exceptionThrown() {
+    public void readnotJsonFormatexceptionThrown() {
         Assert.assertThrows(DataConversionException.class, () -> readStudyBuddy("notJsonFormatStudyBuddy.json"));
     }
 
 
     @Test
-    public void saveStudyBuddy_nullStudyBuddy_throwsNullPointerException() {
+    public void saveStudyBuddynullStudyBuddythrowsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> saveStudyBuddy(null, "SomeFile.json"));
     }
 
@@ -65,7 +65,7 @@ public class JsonStudyBuddyStorageTest {
     }
 
     @Test
-    public void saveStudyBuddy_nullFilePath_throwsNullPointerException() {
+    public void saveStudyBuddynullFilePaththrowsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> saveStudyBuddy(new StudyBuddy(), null));
     }
 }

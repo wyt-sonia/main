@@ -92,6 +92,7 @@ For example, the `Logic` component (see the class diagram given below) defines i
 
 .Class Diagram of the Logic Component
 image::LogicClassDiagram.png[width = "700", length = "500"]
+Note: HiddenModel is used to represent the hidden contents of the Model Component.
 
 [discrete]
 ==== How the architecture components interact with each other
@@ -145,7 +146,8 @@ image::LogicClassDiagram.png[width = "600" length = "500"]
 *API* :
 link:{repoURL}/blob/master/src/main/java/draganddrop/studybuddy/logic/Logic.java[`Logic.java`]
 
-. The `InteractiveCommandPrompt` in `Ui` uses the parsers to parse the user command.
+. After receiving the user input from Ui, `InteractivePrompt` processes the user's input,
+using the Parsers to parse the command if necessary.
 . This results in a `Command` object which is executed by the `LogicManager`.
 . The command execution can affect the `Model` (e.g. adding or editing a task).
 . The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
@@ -518,7 +520,7 @@ command which can trigger data updating to walk around this problem.
 check the updated charts.
 // end::taskSummary[]
 
-//tag:calendar[]
+//tag::calendar[]
 === Calendar feature
 
 ==== Implementation
@@ -535,6 +537,14 @@ When a calender is requested, a CalendarPanel object is constructed, the object 
 
 image::CalendarBoxObjectDiagram.png[title="CalendarPanel object diagram"]
 
+Tasks shown in `calendar` will automatically be updated upon using any of the following commands:
+
+* `add`
+* `delete`
+* `archive`
+* `unarchive`
+* Any other commands that modifies the task list
+
 ==== Example usage scenarios
 
 ===== Using mouse click
@@ -549,7 +559,9 @@ As of Study Buddy v1.4, a new feature has been added that allows users to naviga
 
 . The user enters 'calendar' into the command box.
 . The user enters the selected date into the command box.
-. Calendar will be generated the same way as a mouse click, however, it will use the selected date as parameters.
+. Calendar will be generated the same way as a mouse click, however, it will use the entered date as parameters.
+
+It is implemented by getting the latest instance of `MainWindow` and directly changing the UI by calling `handleShowCalendar()`.
 
 Below is an activity diagram describing the events that will happen:
 
@@ -557,14 +569,17 @@ image::CalendarActivityDiagram.png[width = "400", length = "600" title = "Calend
 
 ==== Design considerations
 * It is more efficient to cache the calendar rather than to generate a new one, however, we do not expect the user to have too many tasks and therefore it should not slow down the application.
+* The implementation used for CLI involves a static method in MainWindow which might be unsafe, however, it was the best choice given the time constraints.
+//end::calendar[]
 
+//tag::archive[]
 === Archive feature
 Archive stores selected task away into a separate task list, this command is used when the user has completed a task but still wants to keep track of it.
 
 ==== Implementation
-Archive uses both the old delete and a new archive command. Upon executing the archive command, it will call the model to delete the task and archive it elsewhere.
+Archive uses a new archive command. Upon executing the archive command, it will call the model to delete the task and archive it
+into another list stored within model.
 
-The archived task list is stored within Model as a seperate list.
 [NOTE]
 The index for archived tasks are not used for any commands other than `unarchive`.
 
@@ -573,6 +588,15 @@ Sequence diagram:
 image::ArchiveSequenceDiagram.png[width = "600", length = "500" title = "Archive Sequence Diagram"]
 [CAUTION]
 The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+
+==== Design consideration
+There were two possible ways to store archived tasks:
+
+. Store it as a separate list
+. Add another field to task to keep track of its archived state
+
+The first choice was chosen as it speeds up the runtime. Also, it makes it easier to manage the indexes.
+//end::archive[]
 
 //tag:productivity[]
 === Productivity feature
@@ -664,10 +688,6 @@ From here, the user can continue to manage tasks as per Step 5 and 6 above,
 or navigate to other Productivity tabs.
 
 
-
-===== Clicking the Productivity menu item
-image
-
 ==== Design Considerations
 
 ===== Aspect: How to re-render Productivity Panel when statistics are updated
@@ -701,7 +721,6 @@ this trade-off does not result in any measurable delay.
 
 //end::productivity[]
 
-// tag::dataencryption[]
 === Modules
 The `modules` feature enables users to be able to group and view their tasks according to various modules or subjects.
 Each module is assigned with a unique module code & a name.
@@ -765,6 +784,7 @@ The `LogsCenter` class is used to manage the logging levels and logging destinat
 
 Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: `config.json`).
 
+//tag::dataencryption[]
 === [Proposed] Data encryption
 
 Since Study Buddy is an offline application, there is no threat of being attacked via a network channel. However, in case the computer has a shared owner, a password feature can be implemented in the future for privacy purposes.
@@ -791,6 +811,8 @@ We will be using AES (Advanced Encryption Scheme) for encryption, and a slow has
 =======
 
 We leave it to the user's own jurisdiction to create a strong password.
+//end::dataencryption[]
+
 
 == Documentation
 

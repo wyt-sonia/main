@@ -13,7 +13,7 @@ IVLE was developed by our team that is based in the http://www.comp.nus.edu.sg[S
 === Huang Ge Xiang
 
 image::gx-huang.png[width="150",align= "left"]
-{empty}[http://github.com/gx-huang[github]]
+{empty}[http://github.com/gx-huang[github]][<<gx-huang#, portfolio>>]
 
 Responsibilities: Testing + Deadlines
 
@@ -40,7 +40,7 @@ Responsibilities: Team lead (assistant) + Integration + Testing
 === Souwmyaa Sabarinathann
 
 image::souwmyaa.png[width="150",align="left"]
-{empty}[http://github.com/souwmyaa[github]]
+{empty}[http://github.com/souwmyaa[github]] [<<souwmyaa#, portfolio>>]
 
 Responsibilities: Documentation + Deliverables + deadlines
 

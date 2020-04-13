@@ -7,7 +7,7 @@ skinparam classBorderColor #black
 
 package Logic {
 
-package InteractiveCommandParser {
+package Parser {
 Class TaskParser
 Class TimeParser
 Class StudyBuddyParser
@@ -19,6 +19,10 @@ Class CommandResult
 Class "{abstract}\nCommand" as Command
 }
 
+package InteractivePrompt {
+Class XYZInteractivePrompt
+}
+
 Interface Logic <<Interface>>
 Class LogicManager
 }
@@ -27,24 +31,15 @@ package Model{
 Class HiddenModel #FFFFFF
 }
 
-
-package Ui {
-Class HiddenUi #FFFFFF
-}
-
-Ui .>InteractiveCommandParser : uses
-Ui .>XYZCommand : creates
-InteractiveCommandParser---[hidden]>XYZCommand
-
-note right of XYZCommand: XYZCommand includes \nAddTaskCommand, \nFindTaskCommand, etc
+XYZInteractivePrompt .>Parser : uses
+XYZInteractivePrompt .>XYZCommand : creates
 
 Command .right.> Model
 LogicManager -down-> Model
 
 Model.[hidden].> LogicManager
 
-TaskParser -[hidden]-> TimeParser
-StudyBuddyParser -[hidden]-> TaskParser
+
 
 XYZCommand .up.|> Command
 LogicManager .up.|> Logic
@@ -52,11 +47,11 @@ LogicManager .up.|> Logic
 
 
 Logic ..> CommandResult
-LogicManager .down.> CommandResult : executes
+LogicManager .down> CommandResult : executes
 Command .up.> CommandResult
 
 
-
+note right of XYZInteractivePrompt: XYZInteractivePrompt includes \nAddTaskInteractivePrompt, \nFindTaskInteractivePrompt, etc.\n\nSimilarly,\nXYZCommand includes \nAddTaskCommand, \nFindTaskCommand, etc.
 
 
 @enduml

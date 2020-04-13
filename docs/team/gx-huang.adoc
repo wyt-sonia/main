@@ -1,0 +1,86 @@
+= Huang ge xiang - Project Portfolio
+:site-section: AboutUs
+:imagesDir: ../images
+:stylesDir: ../stylesheets
+
+== PROJECT: Study Buddy
+
+== Overview
+
+StudyBuddy is a desktop application designed for students who *wish to manage their module related tasks* in a convenient and user-friendly interface.
+It is *optimized for those who prefer to work with a Command Line Interface* (CLI) but still contains the benefits of *Graphical User Interface* (GUI).
+The codebase is in Java and contains about 13kLoc.
+
+== Summary of contributions
+
+=== Enhancements
+
+*Major enhancements*
+
+* Added a *calendar* to Study buddy.
+** _What it does_:
+*** The calendar allows users to have an overview of all the tasks that has to be done.
+*** Calendar also allows you to view all tasks due on the day the user clicks on.
+** _Justification_:
+*** This feature is important as the task list will be too cluttered without it.
+*** A calendar gives a good indication of how busy the user is going to be.
+** _Highlights_
++
+Challenges faced when implementing this feature:
+
+. Had to learn what the different panes and objects in javafx does and choose the most suitable one for the feature
+. There was an 50% chance (tested) the click event would return the wrong object,
+leading to complications. This meant that tasks cannot be within the calendar itself.
+I had to reverse engineer the algorithm used to generate a calendar and use that data to find tasks for the date the user clicked on.
+
+* *Archive* and *unarchive*
+** _What it does_:
+*** Allows users to store their task into a separate archive list
+*** Unarchive retrieves tasks from archive list and stores it into the main list
+** _Justification_:
+*** Archive allows users to store task that they have completed or do not wish to look at right now, while still keeping those tasks in check.
+*** This is important as users sometimes do not wish to delete a task they completed.
+** _Highlights_:
+*** This feature was not particularly difficult to implement. However, as it is the first feature to be pushed to address book,
+I had to carefully trace and modify the code to make sure it did not break address book.
+
+*Minor enhancements*
+
+* *Calendar view command*
+** Calendar view command was created in response to an https://github.com/AY1920S2-CS2103T-W16-3/main/issues/217[issue] that claimed the app is not CLI friendly.
+** This command allows a user to jump to any date they want to on the calendar.
+** It also serves as a way to find tasks by date.
+
+=== Code contributed
+https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#=undefined&search=gx-huang[Tp-dashboard]
+
+=== Team-based Tasks
+* Helped set up the github team and repo.
+* Assigned issues to my team mates. https://github.com/AY1920S2-CS2103T-W16-3/main/issues/33[33], https://github.com/AY1920S2-CS2103T-W16-3/main/issues/31[31]
+* Wrote proposed feature in developer's guide.
+* Created test cases for classes that were not mine. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/61[61]
+
+=== Review/Mentoring
+* Left constructive feedback on my team mate's pull request. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/58[58]
+* Helped resolve some issues my team mates had regarding address book 3. https://github.com/AY1920S2-CS2103T-W16-3/main/issues/49[49]
+* Left feedback for another team's DG. https://github.com/AY1920S2-CS2103-W14-3/main/issues/59[59]
+
+=== User guide contributions
+
+=======
+Given below is a section that I contributed to the User Guide. It showcases my ability to write documentation targeting end-users.
+=======
+
+include::../UserGuide.adoc/[tag=calendar]
+
+=== Developer Guide contributions
+
+=======
+Given below are some sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.
+=======
+
+include::../DeveloperGuide.adoc/[tag=calendar]
+
+include::../DeveloperGuide.adoc/[tag=archive]
+
+include::../DeveloperGuide.adoc/[tag=dataencryption]
