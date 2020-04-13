@@ -926,18 +926,13 @@ Use case ends.
 *Extensions*
 
 [none]
-* 2a.
-The list is empty.
-+
-Use case ends.
-
-* 3a.
+* 4a.
 The given index is invalid.
 +
 [none]
-** 3a1. Study Buddy shows an error message.
+** 4a1. Study Buddy shows an error message.
 +
-Use case resumes at step 2.
+Use case resumes at step 3.
 
 [discrete]
 === Use case: Filter tasks
@@ -967,7 +962,7 @@ Use case resumes at step 2.
 
 [none]
 * 3a.
-User chooses to filter by type instead.
+User chooses to filter by type.
 +
 [none]
 ** 4a. Study Buddy provides options to filter by type
@@ -988,13 +983,10 @@ Use case ends.
 *Extensions*
 
 [none]
-* 2a.
-The list is empty.
-+
-Use case ends.
-
-* 3a.
+* 1a.
 There are no duplicate tasks
+[none]
+** 1a1. Study Buddy shows an empty list
 +
 Use case ends.
 
@@ -1004,7 +996,7 @@ Use case ends.
 *MSS*
 
 
-1. User notices Due Soon list needs to be updates
+1. User notices Due Soon list needs to be updated
 2. User requests to refresh
 3. Study Buddy refreshes the Due Soon list and status tags
 +
@@ -1016,10 +1008,17 @@ Use case ends.
 * 2a.
 The list is empty.
 +
+[none]
+** 2a1. List remains the same
++
 Use case ends.
 
-* 3a.
+[none]
+* 2b.
 There is nothing to refresh
++
+[none]
+** 2b1. List remains the same
 +
 Use case ends.
 //end::useCasesSouwmyaa[]
