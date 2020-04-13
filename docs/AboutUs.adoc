@@ -22,7 +22,7 @@ Responsibilities: Testing + Deadlines
 === Wang Yuting
 
 image::wyt-sonia.png[width="150",align="left"]
-{empty}[http://github.com/wyt-sonia[github]]
+{empty}[http://github.com/wyt-sonia[github]][<<wyt-sonia#, portfolio>>]
 
 Responsibilities: Team Lead + Integration
 
@@ -31,7 +31,7 @@ Responsibilities: Team Lead + Integration
 === Teik Jun Tan
 
 image::teikjun.png[width="150",align="left"]
-{empty}[http://github.com/teikjun[github]]
+{empty}[http://github.com/teikjun[github]][<<teikjun#, portfolio>>]
 
 Responsibilities: Team lead (assistant) + Integration + Testing
 
@@ -49,7 +49,7 @@ Responsibilities: Documentation + Deliverables + deadlines
 === Hong Wen
 
 image::aegis-bot.png[width="150",align="left"]
-{empty}[http://github.com/aegis-bot[github]]
+{empty}[http://github.com/aegis-bot[github]] [<<aegis-bot#, portfolio>>]
 
 Responsibilities: Code Quality
 
