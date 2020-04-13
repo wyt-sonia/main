@@ -37,10 +37,10 @@ public class CommandBox extends UiPart<Region> {
 
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
-    private static final String[] interactiveCommandTypes =
-        {"add", "edit", "delete", "archive", "done", "view renamed",
-            "clear", "bye", "sort", "refresh", "help",
-            "filter", "create mods", "edit mods", "find", "list", "unarchive", "goal", "calendar"};
+    //private static final String[] interactiveCommandTypes =
+    //{"add", "edit", "delete", "archive", "done", "view renamed",
+    //"clear", "bye", "sort", "refresh", "help",
+    //"filter", "create mods", "edit mods", "find", "list", "unarchive", "goal", "calendar"};
     private final CommandExecutor commandExecutor;
     private InteractivePrompt currentInteractivePrompt;
     @FXML

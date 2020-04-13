@@ -86,7 +86,6 @@ class JsonAdaptedTask {
         // for datetime
         LocalDateTime[] dateTimes;
         String[] timeTerms = taskDateTime.split("-");
-        int count = timeTerms.length;
         if (timeTerms.length == 2) {
             dateTimes = new LocalDateTime[2];
             dateTimes[0] = TimeParser.parseDateTime(timeTerms[0]);

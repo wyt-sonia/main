@@ -27,12 +27,12 @@ public class ListTasksCommandTest {
     }
 
     @Test
-    public void executelistIsNotFilteredshowsSameList() {
+    public void executeListIsNotFilteredShowsSameList() {
         assertCommandSuccess(new ListTaskCommand(), model, ListTaskCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
     @Test
-    public void executelistIsFilteredshowsEverything() {
+    public void executeListIsFilteredShowsEverything() {
         assertCommandSuccess(new ListTaskCommand(), model, ListTaskCommand.MESSAGE_SUCCESS, expectedModel);
     }
 }

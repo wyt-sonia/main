@@ -22,7 +22,7 @@ public class JsonStudyBuddyStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonStudyBuddyStorageTest");
 
     @Test
-    public void readStudyBuddynullFilePaththrowsNullPointerException() {
+    public void readStudyBuddyNullFilePathThrowsNullPointerException() {
         Assert.assertThrows(NullPointerException.class, () -> readStudyBuddy(null));
     }
 
@@ -37,7 +37,7 @@ public class JsonStudyBuddyStorageTest {
     }
 
     @Test
-    public void readmissingFileemptyResult() throws Exception {
+    public void readMissingFileEmptyResult() throws Exception {
         assertFalse(readStudyBuddy("NonExistentFile.json").isPresent());
     }
 

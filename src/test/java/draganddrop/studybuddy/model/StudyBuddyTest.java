@@ -26,35 +26,35 @@ public class StudyBuddyTest {
     }
 
     @Test
-    public void resetDatanullthrowsNullPointerException() {
+    public void resetDataNullThrowsNullPointerException() {
         assertThrows(NullPointerException.class, () -> studyBuddy.resetData(null));
     }
 
     @Test
-    public void resetDatawithValidReadOnlyStudyBuddyreplacesData() {
+    public void resetDataWithValidReadOnlyStudyBuddyReplacesData() {
         StudyBuddy newData = TypicalTasks.getTypicalTaskList();
         studyBuddy.resetData(newData);
         assertEquals(newData, studyBuddy);
     }
 
     @Test
-    public void hasTasknullTaskthrowsNullPointerException() {
+    public void hasTaskNullTaskThrowsNullPointerException() {
         assertThrows(NullPointerException.class, () -> studyBuddy.hasTask(null));
     }
 
     @Test
-    public void hasTasktaskNotInStudyBuddyreturnsFalse() {
+    public void hasTaskTaskNotInStudyBuddyReturnsFalse() {
         assertFalse(studyBuddy.hasTask(TypicalTasks.getSampleTasks()[0]));
     }
 
     @Test
-    public void hasTasktaskInStudyBuddyreturnsTrue() {
+    public void hasTaskInStudyBuddyReturnsTrue() {
         studyBuddy.addTask(TypicalTasks.getSampleTasks()[0]);
         assertTrue(studyBuddy.hasTask(TypicalTasks.getSampleTasks()[0]));
     }
 
     @Test
-    public void getTaskListmodifyListthrowsUnsupportedOperationException() {
+    public void getTaskListModifyListThrowsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> studyBuddy.getTaskList().remove(0));
     }
 

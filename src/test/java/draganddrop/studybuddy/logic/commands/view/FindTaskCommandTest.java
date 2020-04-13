@@ -55,7 +55,7 @@ public class FindTaskCommandTest {
     }
 
     @Test
-    public void executezeroKeywordsnoTaskFound() {
+    public void executeZeroKeywordsNoTaskFound() {
         String expectedMessage = String.format(Messages.MESSAGE_TASKS_LISTED_OVERVIEW, 0);
         TaskNameContainsKeywordsPredicate predicate = preparePredicate(" ");
         FindTaskCommand command = new FindTaskCommand(predicate);
@@ -65,7 +65,7 @@ public class FindTaskCommandTest {
     }
 
     @Test
-    public void executemultipleKeywordsmultipleTasksFound() {
+    public void executeMultipleKeywordsMultipleTasksFound() {
         String expectedMessage = String.format(Messages.MESSAGE_TASKS_LISTED_OVERVIEW, 2);
         TaskNameContainsKeywordsPredicate predicate = preparePredicate("Quiz");
         FindTaskCommand command = new FindTaskCommand(predicate);

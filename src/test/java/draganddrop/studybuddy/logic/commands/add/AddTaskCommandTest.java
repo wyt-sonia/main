@@ -31,12 +31,12 @@ import javafx.collections.ObservableList;
 class AddTaskCommandTest {
 
     @Test
-    public void constructornullTaskthrowsNullPointerException() {
+    public void constructorNullTaskThrowsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new AddTaskCommand(null));
     }
 
     @Test
-    public void executetaskAcceptedByModeladdSuccessful() throws Exception {
+    public void execute_taskAcceptedByModelAddSuccessful() throws Exception {
         ModelStubAcceptingTaskAdded modelStub = new ModelStubAcceptingTaskAdded();
         Task validTask = new TaskBuilder().build();
 

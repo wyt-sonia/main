@@ -20,7 +20,7 @@ import javafx.collections.ObservableList;
  */
 public class ModuleListTest {
     @Test
-    public void modListDuplicateMods_throwModuleCodeException() {
+    public void modListDuplicateModsThrowModuleCodeException() {
         ModuleList moduleList = new ModuleList();
         Assert.assertThrows(ModuleException.class, ()-> {
             for (Module sampleMod: TestModules.getSampleModule()) {
@@ -44,7 +44,7 @@ public class ModuleListTest {
     }
 
     @Test
-    public void containsModInList_returnTrue() throws ModuleException {
+    public void containsModInListReturnTrue() throws ModuleException {
         ModuleList moduleList = new ModuleList();
         Module sample1 = TestModules.getSampleModule()[0];
         moduleList.add(sample1);
@@ -52,7 +52,7 @@ public class ModuleListTest {
     }
 
     @Test
-    public void containsModNotInList_returnFalse() {
+    public void containsModNotInListReturnFalse() {
         ModuleList moduleList = new ModuleList();
         Module sample1 = TestModules.getSampleModule()[0];
         assertFalse(moduleList.isContains(sample1));
