@@ -1,0 +1,111 @@
+= Tin Hong Wen  - Project Portfolio
+:site-section: AboutUs
+:imagesDir: ../images
+:stylesDir: ../stylesheets
+
+== PROJECT: Study Buddy
+
+== Overview
+
+StudyBuddy is a desktop application designed for students who *wish to manage their module related tasks* in a convenient and user-friendly interface.
+It is *optimized for those who prefer to work with a Command Line Interface* (CLI) but still contains some aspects of Graphical User Interface (GUI) which was written using JavaFX.
+The codebase is in Java and contains about 13kLoc.
+
+== Summary of contributions
+
+=== Main Enhancements
+
+==== Designed the Module Feature
+** Function:
+This optional feature enables users to view their tasks sorted according to the modules that they have taken.
+Each module is designed to contain a name, a unique module code, as well as all the tasks that it holds.
+Users can choose to assign their task to any module they want (or not at all), as well as create new modules,
+edit or delete any existing modules.
+
+** Justification:
+Given how college students have many, many task coming from multiple assignments,
+I believe this is one of the good way they can organise and view their tasks if they need to sift
+multiple tasks.
+
+** Highlights:
+One of the challenging features is to design something for tasks that do not have any modules
+assigned to them. All task by default will have a module attached to them, so we have to create a "figurehead" module
+for these tasks. This figurehead module have to be able to conceal its module code from the user and has to prevent
+users from edits and deletes.
+
+Another difficulty is dealing with storage. To avoid changing the order of the tasks, module has to be designed to
+temporarily store tasks instead of actually storing it in the program.
+
+
+==== Edit & Create Module Function
+** Function:
+These 2 features allows users to create new modules, as well as edit existing modules. Users cannot
+create any modules with duplicate names or code, or those with invalid module codes. In `edit mods`,
+users can choose to edit name, code or even delete existing modules.
+
+** Highlights:
+One key challenge with designing `edit mod` function is dealing with existing tasks is under the module.
+The program has to be designed to change the module of each consecutive task that was under the module,
+making this portion fragile.
+
+==== Added Complete Function
+** Function:
+Allows users to set their task from pending to `Finished`.
+** Justification:
+To allow users to mark their task as complete so that it can be easily ignored /hidden by the user.
+
+
+=== Minor Enhancements
+==== Added 'modules' option in Edit function
+** Function:
+Allow users to edit change the module in which the task was assigned to.
+
+** Justification:
+So that users can edit and reassign task to a different existing module.
+
+
+=== Team-based Tasks
+.. Debugged a serious bug involving storage that was holding the entire team back for a week at the start of tP.
+.. Help to refactor team's code by creating parent class.
+.. Helped repackaged some of the old codes into separate folders, as well as reorganizing
+`commands` and `interactiveprompts` into many folders
+.. Modified & cropped many of the team's UG images for better readability.
+.. Helped shorten some existing nested codes with `streams`.
+
+=== Review/Mentoring
+
+* Left constructive feedback on teammate's repo.
+* Left feedback for another team's DG. https://github.com/AY1920S2-CS2103-W14-3/main/issues/59[59]
+* Left feedback for another team's UG. https://github.com/aegis-bot/ped/issues/4 [4]
+
+
+
+=== Code contributed:
+https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=aegis-bot&sort=groupTitle&sortWithin=title&since=2020-02-14&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false
+
+
+=== User guide
+
+|===
+|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+|===
+
+include::../UserGuide.adoc[tag=intro]
+include::../UserGuide.adoc[tag=Done]
+include::../UserGuide.adoc[tag=Modules]
+
+
+=== Developer Guide
+
+|===
+|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|===
+
+include::../DeveloperGuide.adoc[tag = ArchitectureDiagram]
+include::../DeveloperGuide.adoc[tag = mod]
+
+. Diagrams:
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/ArchitectureDiagram.puml[ArchitectureDiagram]
+.. https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/diagrams/ModuleSequenceDiagram.puml.puml[ModuleSequenceDiagram]
+
+
