@@ -76,6 +76,4 @@ DueSoonTaskCard, ModCard
 end note
 
 note "The <b>HiddenLogic</b> and <b>HiddenModel</b> \nrepresent the less important details \nfrom <b>Logic</b> and <b>Model</b> components" as N1 UI_COLOR_NOTE
-
-
 @enduml

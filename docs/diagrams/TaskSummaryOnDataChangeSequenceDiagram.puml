@@ -39,8 +39,4 @@ activate UI
 deactivate UI
 UI --> User: show latest statistics
 deactivate UI
-
-
-
-
 @enduml
