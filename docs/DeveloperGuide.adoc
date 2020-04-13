@@ -92,7 +92,9 @@ For example, the `Logic` component (see the class diagram given below) defines i
 
 .Class Diagram of the Logic Component
 image::LogicClassDiagram.png[width = "800", length = "500"]
-Note: HiddenModel is used to represent the hidden contents of the Model Component.
+
+[NOTE]
+HiddenModel is used to represent the hidden contents of the Model Component.
 
 [discrete]
 ==== How the architecture components interact with each other
@@ -146,12 +148,21 @@ image::LogicClassDiagram.png[width = "800" length = "500"]
 *API* :
 link:{repoURL}/blob/master/src/main/java/draganddrop/studybuddy/logic/Logic.java[`Logic.java`]
 
-. After receiving the user input from Ui, `InteractivePrompt` processes the user's input,
-using the Parsers to parse the command if necessary.
+. After receiving the user input from Ui, `InteractivePrompt` processes the user's input.
+.. If the user input is complicated, `InteractivePrompt` uses `Parser` classes to
+parse the input.
+.. If more information is needed from the user, `InteractivePrompt` signals the `Ui`
+component to prompt the user for more information using the `interact` command.
+Otherwise, if no more information is needed, proceed to the next step.
 . This results in a `Command` object which is executed by the `LogicManager`.
 . The command execution can affect the `Model` (e.g. adding or editing a task).
 . The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 . In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying a help message to the user.
+
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `interact("list")` API call.
+
+image::ListTaskSequenceDiagram.png[width = "700", length = "600", title = "Sequence diagram for list"]
+
 
 //Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
@@ -632,7 +643,15 @@ StudyBuddy to keep track of relevant usage statistics of the user.
 
 .. `GeneralStats` keeps track of the user's goal, streak, and other statistics not covered by the other statistics classes
 
-The user can gain or lose Productivity Points in StudyBuddy when certain actions or events are completed. These include:
+The object diagram for the Productivity feature is shown below: +
+
+image::ProductivityObjectDiagram.png[width = 900 title="Productivity object diagram"]
+
+The Productivity feature displays the Producitivity Points of the user, this is recorded in `currentScore`
+and `scoreList` attributes in `ScoreStats` class.
+
+The user can gain or lose Productivity Points in StudyBuddy when certain actions or events are completed.
+These include:
 
 .. Adding a task: _+1_
 
@@ -663,6 +682,8 @@ The data displayed will be automatically updated upon calling any of the followi
 * `refresh`
 
 * `goal`
+
+* Any command that modifies the task list
 
 ==== Example Use Scenario
 Given below is an example usage scenario and how the
