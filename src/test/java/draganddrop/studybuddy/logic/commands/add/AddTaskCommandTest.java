@@ -41,7 +41,7 @@ class AddTaskCommandTest {
     }
 
     @Test
-    public void executeTask_acceptedByModel_addSuccessful() throws Exception {
+    public void executeTask_AcceptedByModel_AddSuccessful() throws Exception {
         ModelStubAcceptingTaskAdded modelStub = new ModelStubAcceptingTaskAdded();
         Task validTask = new TaskBuilder().build();
 
