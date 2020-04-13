@@ -16,12 +16,14 @@ import draganddrop.studybuddy.logic.interactiveprompt.InteractivePrompt;
 import draganddrop.studybuddy.logic.interactiveprompt.InteractivePromptTerms;
 import draganddrop.studybuddy.logic.parser.TaskParser;
 import draganddrop.studybuddy.logic.parser.TimeParser;
+import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddDuplicateTaskCommandException;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddOrEditTaskCommandException;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.InteractiveCommandException;
 import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.module.Module;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.model.task.TaskType;
+
 import javafx.collections.ObservableList;
 
 /**
@@ -446,7 +448,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             } else if ("no".equalsIgnoreCase(userInput)) {
                 endInteract(END_OF_COMMAND_DUPLICATE_MSG);
             } else {
-                throw new AddOrEditTaskCommandException("invalidInputError");
+                throw new AddDuplicateTaskCommandException("invalidInputError");
             }
 
         } catch (ParseException | CommandException e) {

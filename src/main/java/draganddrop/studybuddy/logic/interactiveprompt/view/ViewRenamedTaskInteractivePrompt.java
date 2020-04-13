@@ -15,9 +15,11 @@ import draganddrop.studybuddy.model.task.TaskRenamedPredicate;
 
 /**
  * Represents a ViewRenamedTaskInteractivePrompt, which interacts with user to View duplicate tasks.
+ *
+ * @@author Souwmyaa Sabarinathann
  */
 public class ViewRenamedTaskInteractivePrompt extends InteractivePrompt {
-    public static final String QUIT_COMMAND_MSG = "Successfully quited from filter renamed command.";
+    public static final String QUIT_COMMAND_MSG = "Successfully quited from view renamed command.";
     private static final String END_OF_COMMAND_MSG = "Filtered renamed tasks successfully!";
 
     public ViewRenamedTaskInteractivePrompt() {

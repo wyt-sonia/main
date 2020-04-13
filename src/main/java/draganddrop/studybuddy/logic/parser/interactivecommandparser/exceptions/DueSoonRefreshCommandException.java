@@ -2,6 +2,8 @@ package draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions;
 
 /**
  * Represents a DueSoonRefreshCommandException.
+ *
+ * @@author Souwmyaa Sabarinathann
  */
 public class DueSoonRefreshCommandException extends InteractiveCommandException {
 

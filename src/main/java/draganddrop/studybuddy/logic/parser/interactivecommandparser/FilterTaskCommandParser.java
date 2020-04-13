@@ -7,6 +7,8 @@ import draganddrop.studybuddy.model.task.TaskType;
 
 /**
  * Parses the index for a filter command.
+ *
+ * @@author Souwmyaa Sabarinathann
  */
 public class FilterTaskCommandParser {
 

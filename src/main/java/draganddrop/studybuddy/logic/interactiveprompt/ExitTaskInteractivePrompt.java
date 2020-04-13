@@ -6,6 +6,8 @@ import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.E
 
 /**
  * Represents a ExitTaskInteractivePrompt, which allows user to quit from each interactive stage.
+ *
+ * @@author Souwmyaa Sabarinathann
  */
 public class ExitTaskInteractivePrompt extends InteractivePrompt {
 

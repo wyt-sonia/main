@@ -12,6 +12,8 @@ import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.D
 
 /**
  * Represents a RefreshTaskInteractivePrompt, which interacts with user to refresh the tasks.
+ *
+ * @@author Souwmyaa Sabarinathann
  */
 public class RefreshTaskInteractivePrompt extends InteractivePrompt {
 

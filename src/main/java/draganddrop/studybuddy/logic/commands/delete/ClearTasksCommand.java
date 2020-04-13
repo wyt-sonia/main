@@ -10,6 +10,8 @@ import draganddrop.studybuddy.model.StudyBuddy;
 
 /**
  * Clears all data in study buddy.
+ *
+ * @@author Souwmyaa Sabarinathann
  */
 public class ClearTasksCommand extends Command {
 

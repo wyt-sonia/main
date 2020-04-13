@@ -24,9 +24,9 @@ By: `Team Drag&Drop`      Since: `Jan 2020`     
 == Introduction
 Study Buddy is a task-management tool made for students who want to be able to track and manage their tasks in one place.
 
-Study Buddy uses various visualization tools such as pie charts and calendars, provides useful functionality such as archive, Due Soon task list etc to make task management simple and convenient.
+It uses various visualization tools such as pie charts and calendars, provides useful features such as the Due Soon task list, a productivity tracker etc to make task management simple and convenient.
 
-In particular, Study Buddy is a Command Line Interface (CLI) application that also provides some Graphical User Interface (GUI). This means that users are expected to interact with the Study Buddy mainly through the command line, but each command executed will evoke a visual response as well.
+In particular, Study Buddy is a Command Line Interface (<<CLI,CLI>>) application that also provides some Graphical User Interface (<<GUI,GUI>>). This means that users are expected to interact with their Study Buddy mainly through the command line, but each command executed will evoke a visual response as well.
 
 The purpose of this guide is to help potential developers get up to speed on the Study Buddy code base and functionality. We hope that this document will ease the process of further enhancing and developing Study Buddy.
 //end::introduction[]
@@ -35,6 +35,7 @@ The purpose of this guide is to help potential developers get up to speed on the
 
 Refer to the guide <<SettingUp#, here>>.
 
+//updated by Souwmyaa
 == Commonly Used Symbols
 
 [NOTE]
@@ -326,6 +327,9 @@ image::DeleteDueSoonSequence.png[width = "800", length = "600", title = "Sequenc
 [CAUTION]
 The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
+[NOTE]
+Other commands like edit, archive etc also trigger due soon feature in a similar manner.
+
 . *When user refreshes due soon list:*
 
 .. What it does: +
@@ -354,9 +358,8 @@ The lifeline for every member should end at the destroy marker (X) but due to a 
 ... While all tasks are being added to their respective lists in JsonSerializableStudyBuddy class, the due soon list gets automatically updated.
 
 [NOTE]
-Other commands like edit, archive etc also trigger due soon feature in a similar manner.
-[NOTE]
 Calculation of time left for deadline and check for if task is due soon can be found in the Task class.
+//end::dueSoon[]
 
 ==== Example Usage Scenario
 Given below is an example usage scenario and how the Due Soon list mechanism behaves at each step.
@@ -378,7 +381,7 @@ It will also update the time left.
 [NOTE]
 If there are no such inconsistencies, the refresh command will not make any changes to the Due Soon task list.
 
-
+//tag::refresh[]
 ==== Design Considerations
 
 ===== Aspect: How `refresh` command works
@@ -389,7 +392,7 @@ If there are no such inconsistencies, the refresh command will not make any chan
 * **Alternative 2:** Does not clear and reload the due soon task list.
 ** Pros: Fewer operations need to be performed.
 ** Cons: May have be more prone to errors because list is not completely "refreshed". Some parts of it are the same.
-// end::dueSoon[]
+// end::refresh[]
 
 //tag::taskSummary[]
 === Task Summary Feature
@@ -724,7 +727,16 @@ CAT
 ==== Sequence diagram for creating modules
 This is a sequence of how a module is created using the `create mods` feature. Take note that all interactions go through the `CommandBox` first in the UI, but it will be omitted from this diagram for simplicity.
 
-image::UMLmodule.jpeg[width = "1000", length = "800", title= "Sequence diagram for modules"]
+image::ModuleSequenceDiagram.png[width = "1000", length = "800", title= "Sequence diagram for modules"]
+1. When the user keys in  `create mods` or click *Module/create* on the menu bar,
+a `CreateModuleInteractivePrompt` class is created. It automatically constructs an `EmptyModule`.
+
+2. The interactivePrompt class will then change module attributes such as
+name and `ModuleCode` on according to user input.
+
+3. At the last stage, the prompt will construct a `CreateModCommand` for execution.
+It will go through the various layers in Model before returning to the prompt,
+which will then return to the user.
 
 
 === Logging
@@ -798,7 +810,10 @@ Refer to the guide <<DevOps#, here>>.
 * can type fast
 * prefers typing over mouse input
 
-*Value proposition*: manages tasks faster than a typical mouse/<<GUI,GUI>> driven app
+*Value proposition*:
+
+* manages tasks faster than a typical mouse/<<GUI,GUI>> driven app
+* uses interactive prompt to enhance user experience
 
 //updated by Souwmyaa
 //tag::userStories[]
@@ -872,7 +887,6 @@ Use case ends.
 === Use case: Delete task
 
 *MSS*
-
 
 1. Refer to List task use case
 2. User requests to delete a specific task in the list
@@ -987,7 +1001,9 @@ Use case ends.
 == Non Functional Requirements
 
 . Should work on any <<mainstream-os,mainstream OS>> as long as it has Java `11` or above installed.
-. Should be able to hold a good number of tasks without a noticeable sluggishness in performance for typical usage.
+. Should come with automated unit tests and open source code.
+. Should work on both 32-bit and 64-bit environments.
+. Should be able to hold up to 1000 tasks without a noticeable sluggishness in performance for typical usage.
 . A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
 
@@ -1003,6 +1019,12 @@ Graphical User Interface i.e a user interface that allows users to interact usin
 [[Index]]
 Index::
 The index of a task refers to the sequence number of a task in the dashboard
+[[CLI]]
+CLI::
+Command Line Interface i.e a text base interface
+[[AB3]]
+AB3::
+Address Book Version 3 - the code base that Study Buddy is built upon
 
 [appendix]
 == Instructions for Manual Testing
@@ -1018,7 +1040,7 @@ These instructions only provide a starting point for testers to work on; testers
 
 .. Download the jar file and copy into an empty folder
 .. Double-click the jar file +
-   Expected: Shows the GUI with a set of sample tasks.
+   Expected: Shows the <<GUI, GUI>> with a set of sample tasks.
 The window size may not be optimum.
 
 . Saving window preferences
@@ -1029,20 +1051,96 @@ Close the window.
 .. Re-launch the app by double-clicking the jar file. +
    Expected: The most recent window size and location is retained.
 
-
+//updated by Souwmyaa
 === Deleting a task
 
 . Deleting a task while all tasks are listed
 
-.. Prerequisites: List all tasks using the `list` command.
-Multiple tasks in the list.
+.. Prerequisites:
+... List all tasks using the `list` command.
+... Multiple tasks in the list.
+
 .. Test case: `delete [Enter]` + `1` +
    Expected: First task is deleted from the list.
 Successful deletion indication in the status message.
+
 .. Test case: `delete [Enter]` + `0` +
    Expected: No task is deleted.
 Error details shown in the status message.
 .. Other incorrect delete commands to try: `delete x`(where x is anything)
+
+//updated by Souwmyaa
+=== Refreshing the due soon list
+
+. Refreshing the due soon list when the time left is off
+
+.. Prerequisites:
+... Have some tasks in the due soon list
+... Change the time of your PC to a time in the past/future
+
+.. Test case: Use the `refresh` command +
+   Expected: All the tags with time left now show updated time.
+Successful refresh indication in the status message.
+
+//updated by Souwmyaa
+=== Adding a duplicate task
+
+. Adding a duplicate task to the list
+
+.. Prerequisites:
+... Have at least one task in the unarchived tasks list
+
+.. Test case: Use the `add` command to add a duplicate of an existing task +
+   Expected: It will add this duplicate task and append (1) at the end of its name. +
+Successful add indication in the status message.
+
+//updated by Souwmyaa
+=== Filter tasks
+
+. Filters tasks by status or type
+
+.. Prerequisites:
+... Have a few tasks in the unarchived tasks list of different types and status'
+
+.. Test case: Use the `filter` command to filter by 'status' -> 'pending' +
+   Expected: It will filter all your pending tasks in the list. +
+Successful filter indication in the status message.
+
+//updated by Souwmyaa
+=== Clear tasks
+
+. Clears all tasks in the study buddy
+
+.. Prerequisites:
+... Have a few tasks in the unarchived tasks list
+
+.. Test case: Use the `clear` command +
+   Expected: It will clear everything in Study Buddy. +
+Successful clear indication in the status message.
+
+
+//updated by Souwmyaa
+=== View renamed
+
+. Filters all tasks in your list with a number appended in brackets (auto-renamed)
+
+.. Prerequisites:
+... Have a few duplicated tasks in the unarchived tasks list
+
+.. Test case: Use the `View renamed` command +
+   Expected: It filters all the auto-renamed tasks out. +
+Successful filter indication in the status message.
+
+//updated by Souwmyaa
+=== Exit
+
+. Exits from the application
+
+.. Prerequisites:
+... Launch the application
+
+.. Test case: Use the `bye` command +
+   Expected: It exits the application.
 
 //updated by Souwmyaa
 //tag::savingData[]
@@ -1065,18 +1163,17 @@ Application launches successfully but has no data.
 [appendix]
 == Effort
 
-=======
 *Interactive prompt*
 
-* AB3 requires users to input a whole line of text at once, which is unintuitive and prone to typos by the user. Furthermore, AB3 uses tags like
-"`\p`" to break the user's input up for parsing. This means that users will not be able to use these strings for any of their inputs.
+* <<AB3,AB3>> requires users to input a whole line of text at once, which is unintuitive and prone to typos by the user.
+
+* Furthermore, <<AB3,AB3>> uses tags like "`\p`" to break the user's input up for parsing. This means that users will not be able to use these strings for any of their inputs.
 
 * Study buddy fixes that issue by introducing an interactive prompt for every command. This required a lot effort as there had to be an interactive prompt
 for every command.
-=======
 
-=======
 *Refactoring*
 
-* AB3 uses the `Person` class which had 5 fields. Study buddy has 12 fields, every one of them is used in a major feature.
-=======
+* While <<AB3,AB3>> uses the `Person` class which had 5 fields, Study buddy uses the `Task` class that has 12 fields and every one of them is used in a major feature.
+
+* The <<GUI, GUI>> has seen a major revamp, with 5 different tabs as well as some sub-tabs.

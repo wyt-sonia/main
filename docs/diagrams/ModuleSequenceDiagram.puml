@@ -1,0 +1,117 @@
+@startuml
+!include style.puml
+
+skinparam arrowColor #black
+skinparam SequenceBoxBorderColor #black
+skinparam SequenceParticipantBorderThickness 2
+skinparam SequenceReferenceBorderThickness 2
+skinparam DiagramBorderThickness 2
+skinparam SequenceArrowThickness 2
+skinparam SequenceLifeLineBorderColor #black
+skinparam ParticipantBorderColor #black
+
+Actor user
+
+box UI UI_COLOR_T1
+participant ":CreateModule\nInteractivePrompt" as CreateModuleInteractivePrompt UI_COLOR
+end box
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":CreateMod\nCommand" as CreateModCommand LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Module" as Module MODEL_COLOR
+participant ":ModuleCode" as ModuleCode MODEL_COLOR
+participant ":Model" as Model MODEL_COLOR
+participant ":StudyBuddy" as StudyBuddy MODEL_COLOR
+participant ":ModuleList" as ModuleList MODEL_COLOR
+end box
+
+create CreateModuleInteractivePrompt
+user --> CreateModuleInteractivePrompt
+activate CreateModuleInteractivePrompt
+
+create Module
+CreateModuleInteractivePrompt -> Module:EmptyModule()
+activate Module
+
+CreateModuleInteractivePrompt <-- Module
+deactivate Module
+
+user <-- CreateModuleInteractivePrompt:reply
+user -> CreateModuleInteractivePrompt: interact()
+
+CreateModuleInteractivePrompt -> Module:setModuleName()
+activate Module
+
+CreateModuleInteractivePrompt <-- Module
+deactivate Module
+
+user <-- CreateModuleInteractivePrompt:reply
+user -> CreateModuleInteractivePrompt: interact()
+
+CreateModuleInteractivePrompt -> Module:setModuleCode()
+activate Module
+
+create ModuleCode
+Module -> ModuleCode
+activate ModuleCode
+
+ModuleCode -> Module
+deactivate ModuleCode
+
+CreateModuleInteractivePrompt <-- Module
+deactivate Module
+
+user <-- CreateModuleInteractivePrompt:reply
+user -> CreateModuleInteractivePrompt: interact()
+
+create CreateModCommand
+CreateModuleInteractivePrompt -> CreateModCommand
+activate CreateModCommand
+
+CreateModCommand --> CreateModuleInteractivePrompt
+
+CreateModuleInteractivePrompt -> LogicManager: executeCommand\n(CreateModCommand)
+activate LogicManager
+
+LogicManager -> CreateModCommand:execute()
+
+CreateModCommand -> Model:addMod(module)
+activate Model
+
+Model -> StudyBuddy: addModule(module)
+activate StudyBuddy
+
+StudyBuddy -> ModuleList:add(module)
+activate ModuleList
+
+ModuleList --> ModuleList: boolean\ncontains(module)
+
+ModuleList --> StudyBuddy
+deactivate ModuleList
+
+StudyBuddy --> Model
+deactivate StudyBuddy
+
+Model --> CreateModCommand
+deactivate Model
+
+CreateModCommand --> LogicManager
+destroy CreateModCommand
+
+LogicManager --> CreateModuleInteractivePrompt
+deactivate LogicManager
+
+CreateModuleInteractivePrompt --> user:reply
+destroy CreateModuleInteractivePrompt
+
+
+
+
+
+
+
+@enduml

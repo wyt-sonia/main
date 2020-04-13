@@ -13,7 +13,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 
 /**
- * An UI component which represents the panel containing the list of persons.
+ * An UI component which represents the panel containing the list of tasks.
  *
  * @@author wyt-sonia
  */
@@ -34,7 +34,7 @@ public class TaskListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Person} using a {@code DetailedTaskCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Task} using a {@code DetailedTaskCard}.
      */
     static class TaskListViewCell extends ListCell<Task> {
         @Override

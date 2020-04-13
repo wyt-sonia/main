@@ -5,7 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 /**
- * This is the test class for clear tasks interactive prompt
+ * This is the test class for complete tasks interactive prompt.
+ *
+ * @@author Souwmyaa Sabarinathann
  */
 class CompleteTaskInteractivePromptTest {
 

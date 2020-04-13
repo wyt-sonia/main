@@ -7,18 +7,19 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
 
 import draganddrop.studybuddy.commons.exceptions.DataConversionException;
 import draganddrop.studybuddy.model.ReadOnlyStudyBuddy;
 import draganddrop.studybuddy.model.StudyBuddy;
 import draganddrop.studybuddy.testutil.Assert;
 
+/**
+ * Test class for JsonStudyBuddyStorage
+ *
+ * @@author Souwmyaa Sabarinathann
+ */
 public class JsonStudyBuddyStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonStudyBuddyStorageTest");
-
-    @TempDir
-    public Path testFolder;
 
     @Test
     public void readStudyBuddy_nullFilePath_throwsNullPointerException() {

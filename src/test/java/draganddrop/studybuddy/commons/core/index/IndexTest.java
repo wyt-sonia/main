@@ -3,7 +3,8 @@ package draganddrop.studybuddy.commons.core.index;
 import static draganddrop.studybuddy.testutil.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
@@ -39,22 +40,22 @@ public class IndexTest {
 
     @Test
     public void equals() {
-        final Index fifthPersonIndex = Index.fromOneBased(5);
+        final Index fifthTaskIndex = Index.fromOneBased(5);
 
         // same values -> returns true
-        assertTrue(fifthPersonIndex.equals(Index.fromOneBased(5)));
-        assertTrue(fifthPersonIndex.equals(Index.fromZeroBased(4)));
+        assertEquals(fifthTaskIndex, Index.fromOneBased(5));
+        assertEquals(fifthTaskIndex, Index.fromZeroBased(4));
 
         // same object -> returns true
-        assertTrue(fifthPersonIndex.equals(fifthPersonIndex));
+        assertEquals(fifthTaskIndex, fifthTaskIndex);
 
         // null -> returns false
-        assertFalse(fifthPersonIndex == null);
+        assertNotNull(fifthTaskIndex);
 
         // different types -> returns false
-        assertFalse(fifthPersonIndex.equals(5.0f));
+        assertFalse(fifthTaskIndex.equals(5.0f));
 
         // different index -> returns false
-        assertFalse(fifthPersonIndex.equals(Index.fromOneBased(1)));
+        assertNotEquals(fifthTaskIndex, Index.fromOneBased(1));
     }
 }

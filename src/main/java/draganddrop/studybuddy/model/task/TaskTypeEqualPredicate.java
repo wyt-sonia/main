@@ -4,6 +4,8 @@ import java.util.function.Predicate;
 
 /**
  * Tests that a {@code Task}'s {@code Type} matches the type provided.
+ *
+ * @@author Souwmyaa Sabarinathann
  */
 public class TaskTypeEqualPredicate implements Predicate<Task> {
 

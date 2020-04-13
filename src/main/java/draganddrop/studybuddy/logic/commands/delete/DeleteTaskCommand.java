@@ -14,6 +14,8 @@ import draganddrop.studybuddy.model.task.Task;
 
 /**
  * Deletes a task identified using it's displayed index from the list.
+ *
+ * @@author Souwmyaa Sabarinathann
  */
 public class DeleteTaskCommand extends Command {
 

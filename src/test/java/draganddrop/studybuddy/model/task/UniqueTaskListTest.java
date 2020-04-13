@@ -16,6 +16,11 @@ import org.junit.jupiter.api.Test;
 import draganddrop.studybuddy.model.task.exceptions.TaskNotFoundException;
 import draganddrop.studybuddy.testutil.TaskBuilder;
 
+/**
+ * Test class for Unique Task List
+ *
+ * @@author Souwmyaa Sabarinathann
+ */
 public class UniqueTaskListTest {
     private final UniqueTaskList uniqueTaskList = new UniqueTaskList();
     private Task task1 = getSampleTasks()[0];

@@ -6,6 +6,8 @@ import draganddrop.studybuddy.model.task.Task;
 
 /**
  * Parses the index for a delete command.
+ *
+ * @@author Souwmyaa Sabarinathann
  */
 public class DeleteTaskCommandParser {
 

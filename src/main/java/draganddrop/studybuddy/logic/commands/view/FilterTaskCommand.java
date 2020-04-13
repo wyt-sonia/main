@@ -14,6 +14,8 @@ import draganddrop.studybuddy.model.task.Task;
 
 /**
  * Filters the list by status or by tags.
+ *
+ * @@author Souwmyaa Sabarinathann
  */
 public class FilterTaskCommand extends Command {
 
