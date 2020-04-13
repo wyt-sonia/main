@@ -918,6 +918,12 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* *` |user who has many tasks | check the summary of their current status | better plan my time
 
 |`* *` |user who finds it hard to keep track of all my deadlines| have a calendar| easily find tasks due on a day
+
+|`* *` |user who is stressed out by all my deadlines| have a fun todolist| have fun while completing my tasks
+
+|`* *` |user who wants to be more productive | have an overview of my task completed this week| monitor my progress
+
+
 |=======================================================================
 //end::userStories[]
 
