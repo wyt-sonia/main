@@ -35,6 +35,7 @@ The purpose of this guide is to help potential developers get up to speed on the
 
 Refer to the guide <<SettingUp#, here>>.
 
+//updated by Souwmyaa
 == Commonly Used Symbols
 
 [NOTE]
@@ -253,6 +254,9 @@ image::DeleteDueSoonSequence.png[width = "800", length = "600", title = "Sequenc
 [CAUTION]
 The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
+[NOTE]
+Other commands like edit, archive etc also trigger due soon feature in a similar manner.
+
 . *When user refreshes due soon list:*
 
 .. What it does: +
@@ -280,8 +284,6 @@ The lifeline for every member should end at the destroy marker (X) but due to a 
 ... The addTask() function in StudyBuddy class already checks if task is due soon and adds to due soon list (as mentioned above).
 ... While all tasks are being added to their respective lists in JsonSerializableStudyBuddy class, the due soon list gets automatically updated.
 
-[NOTE]
-Other commands like edit, archive etc also trigger due soon feature in a similar manner.
 [NOTE]
 Calculation of time left for deadline and check for if task is due soon can be found in the Task class.
 //end::dueSoon[]
@@ -720,7 +722,10 @@ Refer to the guide <<DevOps#, here>>.
 * can type fast
 * prefers typing over mouse input
 
-*Value proposition*: manages tasks faster than a typical mouse/<<GUI,GUI>> driven app
+*Value proposition*:
+
+* manages tasks faster than a typical mouse/<<GUI,GUI>> driven app
+* uses interactive prompt to enhance user experience
 
 //updated by Souwmyaa
 //tag::userStories[]
@@ -794,7 +799,6 @@ Use case ends.
 === Use case: Delete task
 
 *MSS*
-
 
 1. Refer to List task use case
 2. User requests to delete a specific task in the list
@@ -1082,5 +1086,6 @@ for every command.
 
 *Refactoring*
 
-* While <<AB3,AB3>> uses the `Person` class which had 5 fields, Study buddy has 12 fields and every one of them is used in a major feature.
+* While <<AB3,AB3>> uses the `Person` class which had 5 fields, Study buddy uses the `Task` class that has 12 fields and every one of them is used in a major feature.
 
+* The <<GUI, GUI>> has seen a major revamp, with 5 different tabs with sub-tabs. 

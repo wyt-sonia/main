@@ -31,16 +31,16 @@ By: `Team Drag&Drop`      Since: `Jan 2020`
 (Contributed by Souwmyaa) +
 
 Study Buddy is a desktop application which is designed for students who *wish to manage their module related tasks*.
-More importantly, Study Buddy is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
+More importantly, Study Buddy is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). This means that while you primarily interact with Study Buddy through text based commands, each command executed will evoke a visual response as well.
 
 You will never have to remember long, wordy commands to use your command line interface, since Study Buddy *provides an interactive way of communication*.
-This not only helps to prevent typos, but also makes the application much easier to use!
+This not only helps prevent typos, but also makes the application much easier to use!
 
 If you can type fast, Study Buddy can get your module management done faster than traditional GUI apps.
 
 The purpose of this document is to explain in detail, how users can utilize the various commands and functions that Study Buddy provides.
 
-Currently, we support both Windows and Mac systems.
+Currently, we support both Windows and Mac operating systems.
 If you are interested, please jump to the <<Quick Start>> to get started.
 
 Hope you enjoy!
