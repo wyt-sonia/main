@@ -80,6 +80,9 @@ public class TypicalTasks {
         for (Task sampleTask : getSampleTasks()) {
             sampleAb.addTask(sampleTask);
         }
+        for (Task sampleTask : getSampleArchivedTasks()) {
+            sampleAb.addArchiveTask(sampleTask);
+        }
         return sampleAb;
     }
 
