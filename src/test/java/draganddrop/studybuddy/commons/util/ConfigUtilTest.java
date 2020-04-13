@@ -24,22 +24,22 @@ public class ConfigUtilTest {
     public Path tempDir;
 
     @Test
-    public void read_null_throwsNullPointerException() {
+    public void readNullThrowsNullPointerException() {
         assertThrows(NullPointerException.class, () -> read(null));
     }
 
     @Test
-    public void read_missingFile_emptyResult() throws DataConversionException {
+    public void readMissingFileEmptyResult() throws DataConversionException {
         assertFalse(read("NonExistentFile.json").isPresent());
     }
 
     @Test
-    public void read_notJsonFormat_exceptionThrown() {
+    public void readNotJsonFormatExceptionThrown() {
         assertThrows(DataConversionException.class, () -> read("NotJsonFormatConfig.json"));
     }
 
     @Test
-    public void read_fileInOrder_successfullyRead() throws DataConversionException {
+    public void readFileInOrderSuccessfullyRead() throws DataConversionException {
 
         Config expected = getTypicalConfig();
 
@@ -48,13 +48,13 @@ public class ConfigUtilTest {
     }
 
     @Test
-    public void read_valuesMissingFromFile_defaultValuesUsed() throws DataConversionException {
+    public void readValuesMissingFromFileDefaultValuesUsed() throws DataConversionException {
         Config actual = read("EmptyConfig.json").get();
         assertEquals(new Config(), actual);
     }
 
     @Test
-    public void read_extraValuesInFile_extraValuesIgnored() throws DataConversionException {
+    public void readExtraValuesInFileExtraValuesIgnored() throws DataConversionException {
         Config expected = getTypicalConfig();
         Config actual = read("ExtraValuesConfig.json").get();
 

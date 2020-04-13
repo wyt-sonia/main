@@ -15,10 +15,6 @@ import javafx.collections.transformation.FilteredList;
 public class ModuleList {
     private ObservableList<Module> internalList = FXCollections.observableArrayList();
 
-    public ModuleList() {
-
-    }
-
     /**
      * To be executed every time whenever a module is added.
      *
@@ -67,14 +63,10 @@ public class ModuleList {
      * relocates Empty Module to the back of the internalList if it exist.
      */
     private void shiftEmptyModBack() {
-        //check last mod for Empty Module
-        if (internalList.get(internalList.size() - 1).equals(new EmptyModule())) {
-            //Do nothing
-        } else { //if it is not empty
-            if (internalList.contains(new EmptyModule())) {
-                int emptyIndex = internalList.indexOf(new EmptyModule());
-                swap(emptyIndex, emptyIndex + 1);
-            }
+        if (!internalList.get(internalList.size() - 1).equals(new EmptyModule())
+                && internalList.contains(new EmptyModule())) {
+            int emptyIndex = internalList.indexOf(new EmptyModule());
+            swap(emptyIndex, emptyIndex + 1);
         }
     }
 

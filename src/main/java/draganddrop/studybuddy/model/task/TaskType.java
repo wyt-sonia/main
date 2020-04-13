@@ -3,7 +3,7 @@ package draganddrop.studybuddy.model.task;
 /**
  * Represents the task types.
  *
- * @@author Wang Yuting
+ * @@author wyt-sonia
  */
 public enum TaskType {
     Assignment,

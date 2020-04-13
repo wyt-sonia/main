@@ -3,13 +3,13 @@ package draganddrop.studybuddy.logic.commands.add;
 import static draganddrop.studybuddy.testutil.Assert.assertThrows;
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -28,11 +28,6 @@ import draganddrop.studybuddy.testutil.TaskBuilder;
 
 import javafx.collections.ObservableList;
 
-/**
- * Test class for AddTaskCommand
- *
- * @@author Souwmyaa Sabarinathann
- */
 class AddTaskCommandTest {
 
     @Test
@@ -48,7 +43,7 @@ class AddTaskCommandTest {
         CommandResult commandResult = new AddTaskCommand(validTask).execute(modelStub);
 
         assertEquals(String.format(AddTaskCommand.MESSAGE_SUCCESS, validTask), commandResult.getFeedbackToUser());
-        assertEquals(Collections.singletonList(validTask), modelStub.tasksAdded);
+        assertEquals(Arrays.asList(validTask), modelStub.tasksAdded);
     }
 
     @Test
@@ -60,27 +55,27 @@ class AddTaskCommandTest {
         AddTaskCommand add2command = new AddTaskCommand(task2);
 
         //same object -> returns true
-        assertEquals(add1command, add1command);
+        assertTrue(add1command.equals(add1command));
 
         //same values -> returns true
         AddTaskCommand add1copycommand = new AddTaskCommand(task1);
-        assertEquals(add1command, add1copycommand);
+        assertTrue(add1command.equals(add1copycommand));
 
         //different types -> reutrns false
-        assertNotEquals(1, add1command);
+        assertFalse(add1command.equals(1));
 
         //null -> returns false
-        assertNotNull(add1command);
+        assertFalse(add1command == null);
 
         //diff task -> returns false
-        assertNotEquals(add1command, add2command);
+        assertFalse(add1command.equals(add2command));
 
     }
 
     /**
      * A default model stub that have all of the methods failing.
      */
-    private static class ModelStub implements Model {
+    private class ModelStub implements Model {
         @Override
         public ReadOnlyUserPrefs getUserPrefs() {
             throw new AssertionError("This method should not be called.");
@@ -289,9 +284,27 @@ class AddTaskCommandTest {
     }
 
     /**
+     * A Model stub that contains a single task.
+     */
+    private class ModelStubWithTask extends AddTaskCommandTest.ModelStub {
+        private final Task task;
+
+        ModelStubWithTask(Task task) {
+            requireNonNull(task);
+            this.task = task;
+        }
+
+        @Override
+        public boolean hasTask(Task task) {
+            requireNonNull(task);
+            return this.task.isSameTask(task);
+        }
+    }
+
+    /**
      * A Model stub that always accept the task being added.
      */
-    private static class ModelStubAcceptingTaskAdded extends AddTaskCommandTest.ModelStub {
+    private class ModelStubAcceptingTaskAdded extends AddTaskCommandTest.ModelStub {
         final ArrayList<Task> tasksAdded = new ArrayList<>();
 
         @Override

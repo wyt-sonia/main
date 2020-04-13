@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import draganddrop.studybuddy.commons.core.LogsCenter;
@@ -38,7 +37,7 @@ import javafx.scene.paint.Color;
 /**
  * An UI component which represents the panel containing the summary charts of tasks.
  *
- * @@author Wang Yuting
+ * @@author wyt-sonia
  */
 public class TaskSummaryPanel extends UiPart<Region> {
 
@@ -70,7 +69,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
         super(FXML);
 
         // render nodes.
-        logger.log(Level.INFO, LOG_TAG + ": Start to render charts from task summary panel.");
+        logger.info(LOG_TAG + ": Start to render charts from task summary panel.");
 
         this.selectedTaskListPanelPlaceholder = selectedTaskListPanelPlaceholder;
         this.selectedTaskListPanelTitle = selectedTaskListPanelTitle;
@@ -81,7 +80,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
         bindCharts(observableCurrentTasks, observableArchivedTasks, observableModules);
         renderSelectedListPanel();
         setUpOnChangeListener(observableCurrentTasks, observableArchivedTasks, observableModules);
-        logger.log(Level.INFO, LOG_TAG + ": End of rendering charts from task summary panel.");
+        logger.info(LOG_TAG + ": End of rendering charts from task summary panel.");
     }
 
 
@@ -95,7 +94,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
     private void bindCharts(ObservableList<Task> observableCurrentTasks,
                             ObservableList<Task> observableArchivedTasks, ObservableList<Module> observableModules) {
 
-        logger.log(Level.INFO, LOG_TAG + ": Start to bind data to charts.");
+        logger.info(LOG_TAG + ": Start to bind data to charts.");
         if (tempTasks != null) {
             tempTasks.clear();
         }
@@ -107,7 +106,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
         setUpPieChart();
         setUpAreaChart();
         setUpBarChart();
-        logger.log(Level.INFO, LOG_TAG + ": End of binding data to charts.");
+        logger.info(LOG_TAG + ": End of binding data to charts.");
     }
 
 
@@ -115,9 +114,9 @@ public class TaskSummaryPanel extends UiPart<Region> {
      * Renders the selected task list panel accordingly.
      */
     public void renderSelectedListPanel() {
-        logger.log(Level.INFO, LOG_TAG + ": Start to render selected task list panel.");
+        logger.info(LOG_TAG + ": Start to render selected task list panel.");
         selectedTaskListPanelPlaceholder.getChildren().clear();
-        logger.log(Level.INFO, LOG_TAG + ": End of rendering selected task list panel.");
+        logger.info(LOG_TAG + ": End of rendering selected task list panel.");
     }
 
 
@@ -147,10 +146,10 @@ public class TaskSummaryPanel extends UiPart<Region> {
      * The pie chart is used to show the summary of numbers of different tasks' statuses.
      */
     private void setUpPieChart() {
-        logger.log(Level.INFO, LOG_TAG + " PieChart: Start to sets up the pie chart's data and onclick action.");
+        logger.info(LOG_TAG + " PieChart: Start to sets up the pie chart's data and onclick action.");
         ArrayList<PieChart.Data> datas = bindPieChartData();
         setPieChartOnClickListener(datas);
-        logger.log(Level.INFO, LOG_TAG + " PieChart: End of setting up the pie chart's data and onclick action.");
+        logger.info(LOG_TAG + " PieChart: End of setting up the pie chart's data and onclick action.");
     }
 
 
@@ -165,7 +164,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
             taskSummaryPieChart.getData().clear();
         }
 
-        logger.log(Level.INFO, LOG_TAG + " PieChart: Start to bind data.");
+        logger.info(LOG_TAG + " PieChart: Start to bind data.");
         for (TaskStatus ts : TaskStatus.getTaskStatusList()) {
             long count = tempTasks.stream().filter(t -> t.getTaskStatus().equals(ts)).count();
             PieChart.Data tempData = new PieChart.Data(ts.convertToString(), count);
@@ -181,7 +180,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
                 )
             )
         );
-        logger.log(Level.INFO, LOG_TAG + " PieChart: End of binding bind data.");
+        logger.info(LOG_TAG + " PieChart: End of binding bind data.");
         return datas;
     }
 
@@ -192,23 +191,19 @@ public class TaskSummaryPanel extends UiPart<Region> {
      * @param datas
      */
     private void setPieChartOnClickListener(ArrayList<PieChart.Data> datas) {
-        logger.log(Level.INFO, LOG_TAG + " PieChart: Start to set up the pie chart's onclick action.");
+        logger.info(LOG_TAG + " PieChart: Start to set up the pie chart's onclick action.");
         datas.forEach(d -> d.getNode().setOnMouseClicked(e -> {
             String statusName = d.getName().split(":")[0].trim();
 
-            selectedTasks = tempTasks.filtered(task -> {
-                    TaskStatus test = task.getTaskStatus();
-                    TaskStatus test2 = TaskStatus.getStatus(statusName);
-                    return task.getTaskStatus().equals(TaskStatus.getStatus(statusName));
-                }
-            );
+            selectedTasks = tempTasks.filtered(task ->
+                task.getTaskStatus().equals(TaskStatus.getStatus(statusName)));
 
             TaskListPanel taskListPanel = new TaskListPanel(selectedTasks);
             selectedTaskListPanelTitle.setText(d.getName().toUpperCase() + " Tasks");
             selectedTaskListPanelPlaceholder.getChildren().clear();
             selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
         }));
-        logger.log(Level.INFO, LOG_TAG + " PieChart: End of setting up the pie chart's onclick action.");
+        logger.info(LOG_TAG + " PieChart: End of setting up the pie chart's onclick action.");
     }
 
 
@@ -218,9 +213,9 @@ public class TaskSummaryPanel extends UiPart<Region> {
      * Restricted to the future half year.
      */
     private void setUpAreaChart() {
-        logger.log(Level.INFO, LOG_TAG + " AreaChart: Start to set up the area chart's data and onclick action.");
+        logger.info(LOG_TAG + " AreaChart: Start to set up the area chart's data and onclick action.");
         bindAreaChartData();
-        logger.log(Level.INFO, LOG_TAG + " AreaChart: End of setting up the area "
+        logger.info(LOG_TAG + " AreaChart: End of setting up the area "
             + "chart's data and onclick action.");
     }
 
@@ -238,7 +233,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
         ObservableList<Task> sortedTasks = tempTasks.sorted(Comparator.comparing(t -> t.getDateTimes()[0]));
 
         if (!sortedTasks.isEmpty()) {
-            logger.log(Level.INFO, LOG_TAG + " AreaChart: Start to bind data.");
+            logger.info(LOG_TAG + " AreaChart: Start to bind data.");
 
             // to restrict the source of data to the next 2 months
             LocalDate startDate = LocalDate.now();
@@ -270,7 +265,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
                 dataSeries.add(dueDateDataSeries);
             });
             taskSummaryAreaChart.getData().addAll(dataSeries);
-            logger.log(Level.INFO, LOG_TAG + " AreaChart: End of binding data.");
+            logger.info(LOG_TAG + " AreaChart: End of binding data.");
 
             // set up the on click listener
             setAreaChartOnClickListenerForDataArea(datas);
@@ -285,7 +280,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
      * @param datas
      */
     private void setAreaChartOnClickListenerForDataArea(ArrayList<XYChart.Data<String, Number>> datas) {
-        logger.log(Level.INFO, LOG_TAG + " AreaChart: Start to set up the on click action for each data area.");
+        logger.info(LOG_TAG + " AreaChart: Start to set up the on click action for each data area.");
         datas.forEach(d -> d.getNode().setOnMouseClicked(e -> {
 
             String moduleCode = d.getExtraValue().toString();
@@ -306,7 +301,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
             selectedTaskListPanelPlaceholder.getChildren().clear();
             selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
         }));
-        logger.log(Level.INFO, LOG_TAG + " AreaChart: End of setting up the on click action for each data area.");
+        logger.info(LOG_TAG + " AreaChart: End of setting up the on click action for each data area.");
 
     }
 
@@ -317,7 +312,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
      * @param dataSeries
      */
     private void setAreaChartOnClickListenerForDataPoint(ArrayList<XYChart.Series<String, Number>> dataSeries) {
-        logger.log(Level.INFO, LOG_TAG + " AreaChart: Start to set up the on click action for each data point.");
+        logger.info(LOG_TAG + " AreaChart: Start to set up the on click action for each data point.");
 
         dataSeries.forEach(d -> d.getNode().setOnMouseClicked(e -> {
 
@@ -337,7 +332,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
             selectedTaskListPanelPlaceholder.getChildren().clear();
             selectedTaskListPanelPlaceholder.getChildren().add(taskListPanel.getRoot());
         }));
-        logger.log(Level.INFO, LOG_TAG + " AreaChart: End of setting up the on click action for each data point.");
+        logger.info(LOG_TAG + " AreaChart: End of setting up the on click action for each data point.");
     }
 
 
@@ -346,11 +341,11 @@ public class TaskSummaryPanel extends UiPart<Region> {
      * The bar chart is used to show the summary of module related weight status of different task types.
      */
     private void setUpBarChart() {
-        logger.log(Level.INFO, LOG_TAG + " BarChart: Start to set up the stacked bar chart's "
+        logger.info(LOG_TAG + " BarChart: Start to set up the stacked bar chart's "
             + "data and onclick action.");
         ArrayList<XYChart.Data<String, Number>> datas = bindBarChartData();
         setBarChartOnClickListener(datas);
-        logger.log(Level.INFO, LOG_TAG + " BarChart: End of setting up the stacked bar chart's"
+        logger.info(LOG_TAG + " BarChart: End of setting up the stacked bar chart's"
             + " data and onclick action.");
     }
 
@@ -368,7 +363,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
         ArrayList<XYChart.Data<String, Number>> datas = new ArrayList<>();
         ArrayList<XYChart.Series<String, Number>> dataSeries = new ArrayList<>();
 
-        logger.log(Level.INFO, LOG_TAG + " BarChart: Start to bind data.");
+        logger.info(LOG_TAG + " BarChart: Start to bind data.");
 
         for (TaskType taskType : Arrays.asList(TaskType.getTaskTypes())) {
             XYChart.Series<String, Number> weightDataSeries = new XYChart.Series<>();
@@ -386,7 +381,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
         }
 
         taskSummaryStackedBarChart.getData().addAll(dataSeries);
-        logger.log(Level.INFO, LOG_TAG + " BarChart: End of binding data.");
+        logger.info(LOG_TAG + " BarChart: End of binding data.");
 
         return datas;
     }
@@ -398,7 +393,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
      * @param datas
      */
     private void setBarChartOnClickListener(ArrayList<XYChart.Data<String, Number>> datas) {
-        logger.log(Level.INFO, LOG_TAG + " BarChart: Start to setting up the on click action for each data area");
+        logger.info(LOG_TAG + " BarChart: Start to setting up the on click action for each data area");
 
         datas.forEach(d -> {
             String moduleCode = (d.getExtraValue().toString().split("//"))[0];
@@ -415,7 +410,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
             });
         });
 
-        logger.log(Level.INFO, LOG_TAG + " BarChart: End of setting up the on click action for each data area");
+        logger.info(LOG_TAG + " BarChart: End of setting up the on click action for each data area");
     }
 
 
@@ -431,7 +426,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
                                        ObservableList<Task> observableArchivedTasks,
                                        ObservableList<Module> observableModules) {
 
-        logger.log(Level.INFO, LOG_TAG + ": Start to set onchange listener for data source.");
+        logger.info(LOG_TAG + ": Start to set onchange listener for data source.");
 
         observableCurrentTasks.addListener(new ListChangeListener<Task>() {
             @Override
@@ -457,7 +452,7 @@ public class TaskSummaryPanel extends UiPart<Region> {
             }
         });
 
-        logger.log(Level.INFO, LOG_TAG + ": End of setting onchange listener for data source.");
+        logger.info(LOG_TAG + ": End of setting onchange listener for data source.");
     }
 
 
