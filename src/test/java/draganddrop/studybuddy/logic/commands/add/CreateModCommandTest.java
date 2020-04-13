@@ -23,7 +23,7 @@ public class CreateModCommandTest {
 
 
     @Test
-    public void addDuplicateModule_throwsCommandException() {
+    public void addDuplicateModuleThrowsCommandException() {
         CreateModCommand createModCommand = new CreateModCommand(moduleA);
         Assertions.assertThrows(CommandException.class, () -> {
             createModCommand.execute(model);
@@ -32,7 +32,7 @@ public class CreateModCommandTest {
     }
 
     @Test
-    public void addDuplicateModule_correctExceptionMessage() {
+    public void addDuplicateModuleCorrectExceptionMessage() {
         String expectedMessage = CreateModCommand.MESSAGE_DUPLICATE_TASK;
         CreateModCommand createModCommand = new CreateModCommand(moduleA);
         try {
@@ -44,7 +44,7 @@ public class CreateModCommandTest {
     }
 
     @Test
-    public void addModule_success() throws CommandException {
+    public void addModuleSuccess() throws CommandException {
         String expectedMessage = String.format(CreateModCommand.MESSAGE_SUCCESS, moduleB);
         CreateModCommand createModCommand = new CreateModCommand(moduleB);
         assertEquals(createModCommand.execute(model).getFeedbackToUser(), expectedMessage);

@@ -12,9 +12,6 @@ public class InvalidInputInteractivePrompt extends InteractivePrompt {
         + "7. view renamed\n8. done\n9. edit\n10. filter\n11. find\n"
         + "12. help\n13. list\n14. sort\n15. refresh\n16. calendar\n17. goal\n\n";
 
-    private InteractivePromptTerms currentTerm;
-    private String reply;
-
     public InvalidInputInteractivePrompt() {
         super();
         this.interactivePromptType = INVALID_MSG;

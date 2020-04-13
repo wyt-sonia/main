@@ -35,22 +35,22 @@ public class ModuleTest {
     }
 
     @Test
-    public void createModuleWithNoPrefix_throwsModuleCodeException() {
+    public void createModuleWithNoPrefixThrowsModuleCodeException() {
         Assert.assertThrows(ModuleException.class, ()-> new Module("2312312"));
     }
 
     @Test
-    public void createModuleWithNoNumber_throwsModuleCodeException() {
+    public void createModuleWithNoNumberThrowsModuleCodeException() {
         Assert.assertThrows(ModuleException.class, ()-> new Module("CS"));
     }
 
     @Test
-    public void createModuleExceedPrefixLength_throwsModuleCodeException() {
+    public void createModuleExceedPrefixLengthThrowsModuleCodeException() {
         Assert.assertThrows(ModuleException.class, ()-> new Module("CSSS1000"));
     }
 
     @Test
-    public void createModuleExceedLength_throwsModuleCodeException() {
+    public void createModuleExceedLengthThrowsModuleCodeException() {
         Assert.assertThrows(ModuleException.class, ()-> new Module("CS100000000Z"));
     }
 

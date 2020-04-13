@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class ConfigTest {
 
     @Test
-    public void toString_defaultObject_stringReturned() {
+    public void toStringDefaultObjectStringReturned() {
         String defaultConfigAsString = "Current log level : INFO\n"
             + "Preference file Location : preferences.json";
 

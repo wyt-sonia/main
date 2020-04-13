@@ -15,7 +15,7 @@ import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.D
 public class DeleteTaskCommandParserTest {
 
     @Test
-    public void parse_invalidIndex_check() {
+    public void parseInvalidIndexCheck() {
         assertThrows(DeleteTaskCommandException.class, () -> {
             parseIndex("-1"); });
         assertThrows(DeleteTaskCommandException.class, () -> {

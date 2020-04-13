@@ -12,14 +12,14 @@ import org.junit.jupiter.api.Test;
 class CompleteTaskInteractivePromptTest {
 
     @Test
-    public void interactquitCommandreturnMessage() {
+    public void interactQuitCommandReturnMessage() {
         CompleteTaskInteractivePrompt prompt = new CompleteTaskInteractivePrompt();
         assertEquals(CompleteTaskInteractivePrompt.QUIT_COMMAND_MSG, prompt.interact("quit"));
     }
 
 
     @Test
-    public void interactfirstInputreturnKeywordPrompt() {
+    public void interactFirstInputReturnKeywordPrompt() {
         CompleteTaskInteractivePrompt prompt = new CompleteTaskInteractivePrompt();
         assertEquals("Please enter the index number of task you wish to mark as Finished.",
                 prompt.interact(""));

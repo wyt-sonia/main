@@ -12,12 +12,12 @@ import org.junit.jupiter.api.Test;
 public class FilterTaskInteractivePromptTest {
 
     @Test
-    public void interactquitCommandreturnMessage() {
+    public void interactQuitCommandReturnMessage() {
         FilterTaskInteractivePrompt prompt = new FilterTaskInteractivePrompt();
         assertEquals("Successfully quited from filter task command.", prompt.interact("quit"));
     }
     @Test
-    public void interactfirstInputreturnKeywordPrompt() {
+    public void interactFirstInputReturnKeywordPrompt() {
         FilterTaskInteractivePrompt prompt = new FilterTaskInteractivePrompt();
         assertEquals("Please enter your choice of filter:\n"
                         + "1. Status\n"
@@ -26,7 +26,7 @@ public class FilterTaskInteractivePromptTest {
     }
 
     @Test
-    public void interactsecondInput1returnKeywordPrompt() {
+    public void interactSecondInput1ReturnKeywordPrompt() {
         FilterTaskInteractivePrompt prompt = new FilterTaskInteractivePrompt();
         prompt.interact("filter");
         assertEquals("Please enter the status you would like to filter by:\n"
@@ -37,7 +37,7 @@ public class FilterTaskInteractivePromptTest {
     }
 
     @Test
-    public void interactthirdInput1returnKeywordPrompt() {
+    public void interactThirdInput1ReturnKeywordPrompt() {
         FilterTaskInteractivePrompt prompt = new FilterTaskInteractivePrompt();
         prompt.interact("filter");
         prompt.interact("1");
@@ -46,7 +46,7 @@ public class FilterTaskInteractivePromptTest {
     }
 
     @Test
-    public void interactthirdInput2returnKeywordPrompt() {
+    public void interactThirdInput2ReturnKeywordPrompt() {
         FilterTaskInteractivePrompt prompt = new FilterTaskInteractivePrompt();
         prompt.interact("filter");
         prompt.interact("1");
@@ -55,7 +55,7 @@ public class FilterTaskInteractivePromptTest {
     }
 
     @Test
-    public void interactthirdInput3returnKeywordPrompt() {
+    public void interactThirdInput3ReturnKeywordPrompt() {
         FilterTaskInteractivePrompt prompt = new FilterTaskInteractivePrompt();
         prompt.interact("filter");
         prompt.interact("1");
@@ -64,7 +64,7 @@ public class FilterTaskInteractivePromptTest {
     }
 
     @Test
-    public void interactthirdInput4returnKeywordPrompt() {
+    public void interactThirdInput4ReturnKeywordPrompt() {
         FilterTaskInteractivePrompt prompt = new FilterTaskInteractivePrompt();
         prompt.interact("filter");
         prompt.interact("1");
@@ -73,7 +73,7 @@ public class FilterTaskInteractivePromptTest {
     }
 
     @Test
-    public void interactsecondInput2returnKeywordPrompt() {
+    public void interactSecondInput2ReturnKeywordPrompt() {
         FilterTaskInteractivePrompt prompt = new FilterTaskInteractivePrompt();
         prompt.interact("filter");
         assertEquals("Please enter the task type you would like to filter by:\n"
@@ -86,7 +86,7 @@ public class FilterTaskInteractivePromptTest {
     }
 
     @Test
-    public void interactthirdInput5returnKeywordPrompt() {
+    public void interactThirdInput5ReturnKeywordPrompt() {
         FilterTaskInteractivePrompt prompt = new FilterTaskInteractivePrompt();
         prompt.interact("filter");
         prompt.interact("2");
@@ -95,7 +95,7 @@ public class FilterTaskInteractivePromptTest {
     }
 
     @Test
-    public void interactthirdInput6returnKeywordPrompt() {
+    public void interactThirdInput6ReturnKeywordPrompt() {
         FilterTaskInteractivePrompt prompt = new FilterTaskInteractivePrompt();
         prompt.interact("filter");
         prompt.interact("2");
@@ -104,7 +104,7 @@ public class FilterTaskInteractivePromptTest {
     }
 
     @Test
-    public void interactthirdInput7returnKeywordPrompt() {
+    public void interactThirdInput7ReturnKeywordPrompt() {
         FilterTaskInteractivePrompt prompt = new FilterTaskInteractivePrompt();
         prompt.interact("filter");
         prompt.interact("2");
@@ -113,7 +113,7 @@ public class FilterTaskInteractivePromptTest {
     }
 
     @Test
-    public void interactthirdInput8returnKeywordPrompt() {
+    public void interactThirdInput8ReturnKeywordPrompt() {
         FilterTaskInteractivePrompt prompt = new FilterTaskInteractivePrompt();
         prompt.interact("filter");
         prompt.interact("2");
@@ -122,7 +122,7 @@ public class FilterTaskInteractivePromptTest {
     }
 
     @Test
-    public void interactthirdInput9returnKeywordPrompt() {
+    public void interactThirdInput9ReturnKeywordPrompt() {
         FilterTaskInteractivePrompt prompt = new FilterTaskInteractivePrompt();
         prompt.interact("filter");
         prompt.interact("2");
@@ -131,7 +131,7 @@ public class FilterTaskInteractivePromptTest {
     }
 
     @Test
-    public void interactthirdInput10returnKeywordPrompt() {
+    public void interactThirdInput10ReturnKeywordPrompt() {
         FilterTaskInteractivePrompt prompt = new FilterTaskInteractivePrompt();
         prompt.interact("filter");
         prompt.interact("2");

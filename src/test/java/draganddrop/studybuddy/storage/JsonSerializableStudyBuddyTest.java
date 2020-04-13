@@ -20,7 +20,7 @@ public class JsonSerializableStudyBuddyTest {
     private static final Path INVALID_TASK_FILE = TEST_DATA_FOLDER.resolve("invalidTaskStudyBuddy.json");
 
     @Test
-    public void toModelType_typicalTasksFile_success() throws Exception {
+    public void toModelTypeTypicalTasksFileSuccess() throws Exception {
         JsonSerializableStudyBuddy dataFromFile = JsonUtil.readJsonFile(TYPICAL_TASKS_FILE,
                 JsonSerializableStudyBuddy.class).get();
         StudyBuddy studyBuddyFromFile = dataFromFile.toModelType();
@@ -29,7 +29,7 @@ public class JsonSerializableStudyBuddyTest {
     }
 
     @Test
-    public void toModelType_invalidTaskFile_throwsIllegalValueException() throws Exception {
+    public void toModelTypeInvalidTaskFileThrowsIllegalValueException() throws Exception {
         JsonSerializableStudyBuddy dataFromFile = JsonUtil.readJsonFile(INVALID_TASK_FILE,
                 JsonSerializableStudyBuddy.class).get();
         assertThrows(InteractiveCommandException.class, dataFromFile::toModelType);

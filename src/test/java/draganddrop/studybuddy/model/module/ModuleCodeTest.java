@@ -37,7 +37,7 @@ public class ModuleCodeTest {
     }
 
     @Test
-    public void moduleCodePostfixTooLong_throwModuleCodeException() {
+    public void moduleCodePostfixTooLongThrowModuleCodeException() {
         Assert.assertThrows(ModuleException.class, () -> new ModuleCode(longPostfix));
     }
 
@@ -47,27 +47,27 @@ public class ModuleCodeTest {
     }
 
     @Test
-    public void isSameModuleCode_smallCase() throws ModuleException {
+    public void isSameModuleCodeSmallCase() throws ModuleException {
         assertEquals(new ModuleCode(sample1), new ModuleCode(sample1SmallCase));
     }
 
     @Test
-    public void moduleCodeNoPrefix_throwModuleCodeException() {
+    public void moduleCodeNoPrefixThrowModuleCodeException() {
         Assert.assertThrows(ModuleException.class, ()-> new ModuleCode(noPrefix));
     }
 
     @Test
-    public void moduleCodeLongPrefix_throwModuleCodeException() {
+    public void moduleCodeLongPrefixThrowModuleCodeException() {
         Assert.assertThrows(ModuleException.class, ()-> new ModuleCode(longPrefix));
     }
 
     @Test
-    public void moduleCodeLongCode_throwModuleCodeException() {
+    public void moduleCodeLongCodeThrowModuleCodeException() {
         Assert.assertThrows(ModuleException.class, ()-> new ModuleCode(longNumbers));
     }
 
     @Test
-    public void moduleCodeNoNum_throwModuleCodeException() {
+    public void moduleCodeNoNumThrowModuleCodeException() {
         Assert.assertThrows(ModuleException.class, ()-> new ModuleCode(noNumbers));
     }
 }
