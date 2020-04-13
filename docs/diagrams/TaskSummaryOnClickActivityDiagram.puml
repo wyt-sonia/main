@@ -1,0 +1,29 @@
+@startuml
+!include style.puml
+
+skinparam DiagramBorderThickness 2
+skinparam ActivityBackgroundColor UI_COLOR
+skinparam ActivityBorderColor #black
+skinparam activityDiamondBorderColor #black
+skinparam activityDiamondBackgroundColor UI_COLOR
+skinparam arrowColor #black
+
+|User|
+start
+:launch <b>Study Buddy</b>;
+|#AntiqueWhite|UI|
+    :render the <b>charts</b> using the <b>records</b> loaded from <b>storage</b>;
+|User|
+:click on a particular portion of a <b>chart</b>;
+|UI|
+: check the <b>records</b> one by one;
+while () is ([not reach the end of records])
+  if () then ([current record is related to the clicked portion])
+      :add it into a <b>filtered record list</b>;
+    else ([else])
+    endif
+endwhile ([else]])
+: render the <b>Task List Panel</b> using the <b>filtered record list</b>;
+stop
+
+@enduml

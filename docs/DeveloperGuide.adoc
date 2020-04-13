@@ -199,6 +199,79 @@ Classes used by multiple components are in the `draganddrop.studybuddy.commons` 
 
 This section describes some noteworthy details on how certain features are implemented.
 
+
+=== Interactive Command Process Feature
+
+==== Implementation
+
+. *Feature introduction*
++
+The Interactive Command Process Feature allows user to execute his/her command in an
+interactive way.
+
+. *Implementation detail*
++
+This feature applies on all commands provided by Study Buddy and is implemented using:
+
+.. The `*CommandBox*` from `UI` component to collect user input and init an associate interactivePrompt
+.. The `*InteractivePrompt*` from `Logic` component to parse user input step by step and generate meaningful response
+message accordingly.
+It also produces an executable `Command` from each successful interaction to perform the user's desired action.
+... Different types of `InteractivePrompt` such as `AddTaskInteractivePrompt` are provided to handel interactions with different purpose.
++
+image::AddTaskObjectDiagram.png[width = "550" align="center" title = "Object diagram when user add task using interactive command process"]
++
+... Allow user to quit from each step of an interaction using `quit` (case insensitive) key word. Here is an example of user quiting from add task interactive command process.
++
+image::QuitFromInteractionActivityDiagram.png[width = "550" align="center" title = "Activity diagram when user quite from add task interactive command process"]
+
+==== Example Usage Scenario
+Given below is an example usage scenario and how the interactive command process mechanism behaves at each step.
+
+Step 1. The user launches the application for the first time and skips the user guid.
+By following the hint from `UI` (i.e. when `CommandBox` is idle, it should display "Please enter your command here..."),
+he can try some random input and hit enter to get the list of available commands.
+
+Step 2. The user picks a command from the list and type it in the `CommandBox`. The guide information of the next step will
+display in `FeedbackDisplayBox` after user press enter.
+
+[NOTE]
+For some commands there is only one interaction involved, such as `help` and `list`. In such a case
+the application will execute the command right after user press enter.
+
+Step 3. The user made a typo mistake in the data and time filed when adding a task record.
+Proper massage with the error type and the correct format of the data and time will be displayed in the
+`FeedbackDisplayBox`. User can follow the instruction to continue the interaction.
+
+Step 4. The user is performing an interaction to edit a task, but realized he/she
+chose a wrong task from the list, he/she can use `quit` to exit
+the process without making any changes to the task.
+
+==== Design Considerations
+
+===== Aspect: How to react to an invalid input
+* *Alternative 1 (current choice):* provides relevant error message and stays at current interaction step.
++
+** *If the next input is*
++
+- Invalid: provides the relevant error message and continue waiting for another input.
+- Valid: start next interaction step.
+- `quit`: quite from the command process.
+
+** Pros: Save the data from previous stages, especially in add task interaction, thus user no need to repeatedly
+enter the same information. Also the clear instruction provided by error message makes the
+interaction more straightforward.
+
+** Cons: The interaction can only be stopped when user successfully complete the process or use
+`quit` to exit half-way.
+
+* **Alternative 2:** Quite from current step with proper error message.
+** Pros: Quit the interaction immediately, which allows user to start with a new
+interaction. It will be useful when user want to quit from a particular process but forgets the exit command
+(i.e. `quit`).
+** Cons: User has to restart the entire interaction process when the he/she enter
+invalid command.
+
 // tag::dueSoon[]
 === Due Soon Tasks Feature
 
@@ -336,10 +409,10 @@ The UI of the feature is in the `Statistics` Page.
 This feature is implemented using `JavaFx` charts such as `PieChart`, `AreaChart` and `StackedBarChart`, as well as a
 `Task List Panel`.
 +
-The Task List Panel is used to show the relevant task records when the user clicks on these `charts`.
+The `Task List Panel` is used to show the relevant task records when the user clicks on `charts`.
 
 
-. *Charts & DataBind & OnClick Action Table*
+. *Table of Charts & DataBind & OnClick Action*
 +
 
 [TIP]
@@ -376,22 +449,24 @@ Compare the weight of different types of tasks in each module.
 |Display tasks under the selected module and type.
 
 |===
++
+image::TaskSummaryOnClickActivityDiagram.png[width = "650" align="center" title = "Sequence diagram for task summary UI update when data change"]
 
 . *OnChangeListener*
 +
-The feature listens to the change of `UnArchived Task List`, `Archived Task List` and `Module List`.
+The feature listens to the change of `Model's` `UnArchived Task Records`, `Archived Task Records` and `Module Records`.
 +
-Therefore, the charts can automatically update according to the command execution.
+Once a change is captured, the charts will automatically re-render to show the latest statistics.
 +
-Currently, commands as `add` `edit` `delete` `sort` `find` `archive` `done` `list` and `clear` can
+Currently, commands as `add` `edit` `delete` `sort` `find` `archive` `done` `list` `clear` etc. can
 trigger the refresh of the charts.
 +
 image::TaskSummaryOnDataChangeSequenceDiagram.png[width = "800" align="center" title = "Sequence diagram for task summary UI update when data change"]
 +
 [NOTE]
-It is possible that the pie chart's labels can overlap together.
+It is possible that the labels of charts can overlap together.
 This is an unfixed bug regarding the JDK which is caused by JavaFX chart off-sync. To get more information, you may refer to link:{jdk_bug_report}[here].
-When this issue happens, you can use any command that can trigger chart updating to refresh the chart.
+When this issue happens, you can use any command that can trigger chart updating to refresh.
 
 ==== Example Usage Scenario
 Given below is an example usage scenario and how the task summary mechanism behaves at each step.
@@ -413,30 +488,34 @@ Meanwhile, the title of the Panel will change to "Tasks under CS2101".
 Step 5. The user executes `add` command at `Statistics` Page,
 the charts should update automatically.
 
+Step 6. The user executes `done` command at another page, and navigate back to `Statistics` Page
+the charts should show the latest statistics.
+
 ==== Design Considerations
 ===== Aspect: Will this feature contribute value to CLI user
 Consideration::
-Task Summary feature involves mouse clicking event.
+Task Summary feature involves mouse clicking event when user retrieving relevant tasks.
 +
 Explanation::
-The most significant value of Task Summary Feature is the statistics it provides, instead of retrieving the
-relevant tasks.
+The Task Summary Feature provides tow main services:
+ 1. The *automatic statistics* of the user input (i.e. the tasks and modules information).
+ 2. The relevant *records retrieving*.
+
 +
-The statistics is auto-generated along the way the user managing their task records using keyboard input.
-Which means Study Buddy only supports keyboard input for statistics generating.
-Therefore,
-this feature still let the CLI users gain more benefits.
+The retrieving service is built on top of the statistics result.
+Meanwhile, the statistics is auto-generated along the way the user managing their records using *keyboard input*. +
+Therefore, this feature can make a fast typist be more productive, especially when Study Buddy
+supports the CLI.
 
 ===== Aspect: How to update charts
-* **Alternative 1 (current choice):** Use `onChangeListener` to monitor the data update and re-render the UI accordingly.
-** Pros: More user-friendly, no need to manually update.
+* **Alternative 1 (current choice):** Use `onChangeListener` to monitor the data update and re-render the UI simultaneously.
+** Pros: More user-friendly, no need to ask user to manually update.
 ** Cons: Might encounter JavaFX chart off-sync bug, and results in label overlapping. But user can always use another
 command which can trigger data updating to walk around this problem.
-* **Alternative 2:** Ask the user to re-launch the application or just re-open the Page to trigger the UI rendering.
+* **Alternative 2:** Trigger the UI rendering by asking the user to re-launch the application or navigate away and back to the page.
 ** Pros: Safe from the JavaFX chart off-sync bug.
 ** Cons: Force user to close or navigate around the application every time he/she wants to
 check the updated charts.
-
 // end::taskSummary[]
 
 //tag:calendar[]
