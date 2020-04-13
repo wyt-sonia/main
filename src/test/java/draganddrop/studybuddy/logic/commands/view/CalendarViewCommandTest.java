@@ -1,7 +1,8 @@
 package draganddrop.studybuddy.logic.commands.view;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -20,20 +21,20 @@ class CalendarViewCommandTest {
         CalendarViewCommand cvSecondCommand = new CalendarViewCommand(selectedDate2);
 
         // same object -> returns true
-        assertTrue(cvFirstCommand.equals(cvFirstCommand));
+        assertEquals(cvFirstCommand, cvFirstCommand);
 
         // same values -> returns true
         CalendarViewCommand calendarViewCommandCopy = new CalendarViewCommand(selectedDate1);
-        assertTrue(cvFirstCommand.equals(calendarViewCommandCopy));
+        assertEquals(cvFirstCommand, calendarViewCommandCopy);
 
         // different types -> returns false
-        assertFalse(cvFirstCommand.equals(1));
+        assertNotEquals(1, cvFirstCommand);
 
         // null -> returns false
-        assertFalse(cvFirstCommand == null);
+        assertNotNull(cvFirstCommand);
 
-        // different person -> returns false
-        assertFalse(cvFirstCommand.equals(cvSecondCommand));
+        // different task -> returns false
+        assertNotEquals(cvFirstCommand, cvSecondCommand);
     }
 
 }

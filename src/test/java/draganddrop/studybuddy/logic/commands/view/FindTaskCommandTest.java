@@ -50,7 +50,7 @@ public class FindTaskCommandTest {
         // null -> returns false
         assertNotNull(findFirstCommand);
 
-        // different person -> returns false
+        // different task -> returns false
         assertNotEquals(findFirstCommand, findSecondCommand);
     }
 

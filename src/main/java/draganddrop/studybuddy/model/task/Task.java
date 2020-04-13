@@ -125,6 +125,7 @@ public class Task implements Comparable<Task>, Cloneable {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
         int daysBetween = (int) (difference / DAYS_DIVISOR);
         int hoursBetween = ((int) (difference / HOURS_DIVISOR)) % 24;
         int minsBetween = ((int) (difference / MINUTES_DIVISOR)) % 60;
@@ -339,7 +340,7 @@ public class Task implements Comparable<Task>, Cloneable {
     }
 
     /**
-     * Returns true if both persons have the same identity and data fields.
+     * Returns true if both tasks have the same identity and data fields.
      * This defines a stronger notion of equality between two tasks.
      */
     @Override

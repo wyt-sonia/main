@@ -116,6 +116,21 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private Label productivityTitle;
 
+    @FXML
+    private MenuItem productivityMenuItem;
+
+    @FXML
+    private MenuItem calendarMenuItem;
+
+    @FXML
+    private MenuItem allTaskMenuItem;
+
+    @FXML
+    private MenuItem archiveMenuItem;
+
+    @FXML
+    private MenuItem statisticsMenuItem;
+
 
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
@@ -138,7 +153,11 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void setAccelerators() {
+        setAccelerator(allTaskMenuItem, KeyCombination.valueOf("F6"));
         setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
+        setAccelerator(statisticsMenuItem, KeyCombination.valueOf("F3"));
+        setAccelerator(calendarMenuItem, KeyCombination.valueOf("F4"));
+        setAccelerator(productivityMenuItem, KeyCombination.valueOf("F5"));
     }
 
     /**
@@ -400,7 +419,7 @@ public class MainWindow extends UiPart<Stage> {
         logger.fine(FXML + " : End of handling calendar to be shown.");
     }
 
-    public TaskListPanel getPersonListPanel() {
+    public TaskListPanel getTaskListPanel() {
         return taskListPanel;
     }
 

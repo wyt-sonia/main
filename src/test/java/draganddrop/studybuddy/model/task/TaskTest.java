@@ -55,7 +55,7 @@ public class TaskTest {
         // different type -> returns false
         assertNotEquals(5, task1);
 
-        // different person -> returns false
+        // different task -> returns false
         assertNotEquals(task1, task2);
 
         // different name -> returns false
