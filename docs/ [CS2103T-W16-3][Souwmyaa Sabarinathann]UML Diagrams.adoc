@@ -1,0 +1,52 @@
+:imagesDir: images
+:bl: pass:[ +]
+:stylesDir: ./stylesheets
+
+== [teal]#UML Diagrams#
+
+By: `Souwmyaa`
+
+=== [teal]#Model class diagram#
+
+image::ModelClassDiagram.png[width = "400", length = "300"]
+[teal]#Structure of the Model Component#
+
+[teal]#*Description:*# +
+Explains the inner workings of the Model component of the code base. +
+Gives an overall understanding of how `Model`, `StudyBuddy` and `Task` work together.
+
+{bl}
+{bl}
+
+=== [teal]#Delete Due Soon Task Sequence diagram#
+
+image::DeleteDueSoonSequence.png[width = "500", length = "600"]
+
+[teal]#Sequence Diagram for Delete from Due Soon list#
+
+[teal]#*Description:*# +
+Explains how tasks are auto-deleted from the due soon list upon deletion from main list. +
+This diagram helps potential developers understand how all functions that affect this list would work. +
+
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+
+=== [teal]#Refresh activity diagram#
+
+image::DueSoonActivityDiagram.png[width = "500", length = "600"]
+
+[teal]#Activity diagram for refresh#
+
+[teal]#*Description:*# +
+Explains the general control flow of the refresh command.
+

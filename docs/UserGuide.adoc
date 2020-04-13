@@ -31,16 +31,16 @@ By: `Team Drag&Drop`      Since: `Jan 2020`
 (Contributed by Souwmyaa) +
 
 Study Buddy is a desktop application which is designed for students who *wish to manage their module related tasks*.
-More importantly, Study Buddy is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI).
+More importantly, Study Buddy is *optimized for those who prefer to work with a Command Line Interface* (CLI) while still having the benefits of a Graphical User Interface (GUI). This means that while you primarily interact with Study Buddy through text based commands, each command executed will evoke a visual response as well.
 
 You will never have to remember long, wordy commands to use your command line interface, since Study Buddy *provides an interactive way of communication*.
-This not only helps to prevent typos, but also makes the application much easier to use!
+This not only helps prevent typos, but also makes the application much easier to use!
 
 If you can type fast, Study Buddy can get your module management done faster than traditional GUI apps.
 
 The purpose of this document is to explain in detail, how users can utilize the various commands and functions that Study Buddy provides.
 
-Currently, we support both Windows and Mac systems.
+Currently, we support both Windows and Mac operating systems.
 If you are interested, please jump to the <<Quick Start>> to get started.
 
 Hope you enjoy!
@@ -349,6 +349,9 @@ So, now you can add the task and edit it as needed.
 [NOTE]
 A task is considered duplicate when the name, type, module, description, weightage, estimated time cost and deadline are the same.
 
+[IMPORTANT]
+This feature is case sensitive i.e if you have one task named "Homework" and another named "homework", they will be considered to be different.
+
 To `add duplicates`:
 
 . Follow the same steps as in <<Add>>, but enter a duplicate task.
@@ -484,7 +487,7 @@ image::basic/clear/clear_result.png[width="790",align="center",title="View empty
 +
 . At step 2, if you choose to type no and hit kbd:[enter], this is what you will see.
 +
-image::basic/clear/clear_no_result.png[width="790",align="center",title="Response to no"]
+image::basic/clear/clear_no_result.png[width="790",align="center",title="Response to choosing not to clear"]
 //end::clear[]
 
 //updated by Souwmyaa
@@ -492,7 +495,7 @@ image::basic/clear/clear_no_result.png[width="790",align="center",title="Respons
 ==== Delete
 (Contributed by Souwmyaa) +
 
-This commands deletes a task from the existing list, using the index provided by you.
+This commands deletes a task from the existing list, using the index provided by you. Index simply refers to the number on the left of the task in the `All Tasks` panel.
 
 [CAUTION]
 Once a task is deleted, it cannot be retrieved.
@@ -531,11 +534,11 @@ This commands filters all renamed tasks in the list i.e tasks that have a number
 *Example:*
 
 Say you want to go back and edit all the renamed tasks in your list.
-Yet you do not want to scroll through the entire list to find them.
+However, you do not want to scroll through the entire list to find them.
 
 Study Buddy provides you an option to view all your renamed tasks in the list!
 
-[CAUTION]
+[IMPORTANT]
 You will still need to navigate to the main list and use that index to perform any index based operations (eg: delete, edit etc)
 
 To `view renamed`:
@@ -788,18 +791,14 @@ Anytime you notice an inconsistency in time left/status, use this command!
 
 To `refresh`:
 
-. Say this is what Study Buddy looks like.
+. Say this is what Study Buddy looks like and you notice that the task "Homework 1" is still in pending status although it should be in due soon status.
 +
 image::basic/refresh/refresh_before.png[width="790",align="center",title="Current state (needs to be refreshed)"]
-+
-Suppose you notice that the task "Homework 1" is still in pending status.
 
 . Initiate the refresh command using keyword `refresh` and press kbd:[enter] to confirm the action.
-. Tasks have been refreshed!
+. Tasks have been refreshed! You will notice that the pending task has now moved to the due soon list and the status has been updated.
 +
 image::basic/refresh/refresh_result.png[width="790",align="center",title="Refreshed Study Buddy"]
-+
-You will notice that the pending task has now moved to the due soon list and the status has been updated.
 //end::refresh[]
 
 [NOTE]
@@ -832,10 +831,10 @@ image::basic/exit/exit_confirm.png[width="790",align="center",title="Response to
 . Type 'yes' and press kbd:[enter] to exit, the Study Buddy window will close automatically.
 . If instead, you type 'no' and press kbd:[enter], this is what you will see,
 +
-image::basic/exit/exit_no.png[width="790",align="center",title="Response to 'no'"]
+image::basic/exit/exit_no.png[width="790",align="center",title="Response to choosing not to exit"]
 
-[NOTE]
-You can still use `quit` to go back.
+[TIP]
+You can still use `quit` command to go back!
 //end::exit[]
 
 //updated by Souwmyaa

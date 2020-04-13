@@ -12,6 +12,11 @@ import draganddrop.studybuddy.model.ModelManager;
 import draganddrop.studybuddy.model.StudyBuddy;
 import draganddrop.studybuddy.model.UserPrefs;
 
+/**
+ * Test class for ClearTasksCommand.
+ *
+ * @@author Souwmyaa Sabarinathann
+ */
 public class ClearTasksCommandTest {
 
     @Test
