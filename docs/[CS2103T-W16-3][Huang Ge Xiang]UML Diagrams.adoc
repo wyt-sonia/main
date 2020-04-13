@@ -1,0 +1,66 @@
+:imagesDir: images
+:bl: pass:[ +]
+:stylesDir: ./stylesheets
+
+== UML Diagrams
+
+By: `Huang ge xiang`
+
+=== CalendarPanel object diagram
+
+image::CalendarBoxObjectDiagram.png[width = "400", title="Objects in a calendarPanel"]
+
+*Description:* +
+
+Shows the objects inside a `CalendarPanel` and how the different objects are related and interact with one another. +
+Unimportant objects like labels and backgrounds are left out.
+
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+
+=== Archive task Sequence diagram
+
+image::ArchiveSequenceDiagram.png[width = "600", title="Sequence diagram for archive task"]
+
+*Description:* +
+Explains how tasks are archived. This diagram shows the interaction between logic and model during the command `archive`
+and `unarchive`. Future developers can use this as a reference for any new commands.
+
+
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+{bl}
+
+
+
+=== Calendar view activity diagram
+
+image::CalendarActivityDiagram.png[width = "500", title="Activity diagram for Calendar view"]
+
+[teal]#*Description:*# +
+Explains the general control flow of the `calendar` command.
+
