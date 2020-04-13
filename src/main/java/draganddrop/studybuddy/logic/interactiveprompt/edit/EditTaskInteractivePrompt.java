@@ -60,7 +60,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         super();
         this.modules = null;
         this.interactivePromptType = EDIT_TASK;
-        logger.log(Level.INFO, LOG_TAG + ": Start of an edit task action.");
+        logger.info(LOG_TAG + ": Start of an edit task action.");
     }
 
     @Override
@@ -156,7 +156,7 @@ public class EditTaskInteractivePrompt extends InteractivePrompt {
         if (isParseSuccess) {
             try {
                 logic.executeCommand(editTaskCommand);
-                logger.log(Level.INFO, LOG_TAG + ": End of an edit task action.");
+                logger.info(LOG_TAG + ": End of an edit task action.");
                 this.reply = SUCCESS_EDIT_MSG;
                 endInteract(this.reply);
             } catch (java.text.ParseException | CommandException | DuplicateTaskException ex) {

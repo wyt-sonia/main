@@ -4,8 +4,6 @@ import draganddrop.studybuddy.logic.Logic;
 
 /**
  * Represents an InteractivePrompt.
- *
- * @@author wyt-sonia
  */
 public abstract class InteractivePrompt {
     protected Logic logic;

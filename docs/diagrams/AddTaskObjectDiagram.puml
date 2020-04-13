@@ -1,0 +1,36 @@
+@startuml
+!include style.puml
+
+skinparam DiagramBorderThickness 2
+skinparam arrowThickness 1.1
+skinparam arrowColor #black
+skinparam classBackgroundColor STORAGE_COLOR
+skinparam classBorderColor #black
+
+package UI {
+Class :CommandBox
+}
+
+package Logic {
+Class :AddTaskInteractivePrompt
+Class :AddTaskCommand
+Class :LogicManager
+}
+
+package Storage {
+Class :HiddenStorage #FFFFFF
+}
+
+":CommandBox" -right- ":AddTaskInteractivePrompt"
+
+":AddTaskInteractivePrompt" -- ":LogicManager"
+
+":LogicManager" -right- ":HiddenStorage"
+
+":LogicManager" -- ":AddTaskCommand"
+
+note "The <b>HiddenStorage</b> \nrepresents the less important details \nfrom <b>Storage</b> components" as N1 UI_COLOR_NOTE
+
+
+
+@enduml

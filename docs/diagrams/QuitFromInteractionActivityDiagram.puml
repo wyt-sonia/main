@@ -1,0 +1,22 @@
+@startuml
+!include style.puml
+
+skinparam DiagramBorderThickness 2
+skinparam ActivityBackgroundColor UI_COLOR
+skinparam ActivityBorderColor #black
+skinparam activityDiamondBorderColor #black
+skinparam activityDiamondBackgroundColor UI_COLOR
+skinparam arrowColor #black
+
+|User|
+start
+:launch <b>Study Buddy</b>;
+:type <b>add</b> and press <b>enter</b> to add a new task;
+|#AntiqueWhite|UI|
+:ask for the task's module information;
+|User|
+:type <b>quit</b> and press <b>enter</b>;
+|UI|
+:quit from the add task interaction;
+stop
+@enduml

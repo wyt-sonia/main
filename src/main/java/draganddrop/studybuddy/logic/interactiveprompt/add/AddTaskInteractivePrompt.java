@@ -26,8 +26,6 @@ import javafx.collections.ObservableList;
 
 /**
  * An interactive prompt for adding a new task.
- *
- * @@author wyt-sonia
  */
 public class AddTaskInteractivePrompt extends InteractivePrompt {
     public static final String REQUIRED_MODULE_MSG = "Please choose a module for this task or press enter to skip. "
@@ -64,7 +62,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
 
     public AddTaskInteractivePrompt() {
         super();
-        logger.log(Level.INFO, LOG_TAG + ": Start of an add task action.");
+        logger.info(LOG_TAG + ": Start of an add task action.");
         this.interactivePromptType = ADD_TASK;
         this.task = new Task();
         this.modules = null;
@@ -74,7 +72,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
     public String interact(String userInput) {
 
         if ("quit".equalsIgnoreCase(userInput)) {
-            logger.log(Level.INFO, LOG_TAG + ": User quite from add task action.");
+            logger.info(LOG_TAG + ": User quite from add task action.");
             endInteract(QUIT_COMMAND_MSG);
             return reply;
         }
@@ -135,7 +133,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      * Prepares the module request message for user.
      */
     private void initTermHandler() {
-        logger.log(Level.INFO, LOG_TAG + ": Start tof init term.");
+        logger.info(LOG_TAG + ": Start tof init term.");
         // Set default value for the new task.
         task.setStatus("Pending");
         task.setTaskDescription("No Description");
@@ -151,7 +149,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
 
         currentTerm = InteractivePromptTerms.TASK_MODULE;
 
-        logger.log(Level.INFO, LOG_TAG + ": End of init term.");
+        logger.info(LOG_TAG + ": End of init term.");
     }
 
     /**
@@ -164,7 +162,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      * @param userInput
      */
     private void taskModuleTermHandler(String userInput) {
-        logger.log(Level.INFO, LOG_TAG + ": Start of task module term.");
+        logger.info(LOG_TAG + ": Start of task module term.");
 
         try {
             Module module;
@@ -184,7 +182,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             reply = e.getErrorMessage() + "\n\n" + REQUIRED_MODULE_MSG + "\n\n" + moduleListString;
         }
 
-        logger.log(Level.INFO, LOG_TAG + ": End of task module term.");
+        logger.info(LOG_TAG + ": End of task module term.");
     }
 
     /**
@@ -197,7 +195,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      * @param userInput
      */
     private void handleTaskNameTerm(String userInput) {
-        logger.log(Level.INFO, LOG_TAG + ": Start of task name term.");
+        logger.info(LOG_TAG + ": Start of task name term.");
 
         try {
             userInput = TaskParser.parseName(userInput);
@@ -213,7 +211,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 + REQUIRED_TASK_NAME_MSG;
         }
 
-        logger.log(Level.INFO, LOG_TAG + ": End of task name term.");
+        logger.info(LOG_TAG + ": End of task name term.");
     }
 
     /**
@@ -226,7 +224,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      * @param userInput
      */
     private void handleTaskTypeTerm(String userInput) {
-        logger.log(Level.INFO, LOG_TAG + ": Start of task type term.");
+        logger.info(LOG_TAG + ": Start of task type term.");
         try {
             TaskType taskType = TaskParser.parseType(userInput, TaskType.getTaskTypes().length);
             task.setTaskType(taskType);
@@ -246,7 +244,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             reply = ex.getErrorMessage()
                 + "\n\n" + REQUIRED_TASK_TYPE_MSG;
         }
-        logger.log(Level.INFO, LOG_TAG + ": End of task type term.");
+        logger.info(LOG_TAG + ": End of task type term.");
     }
 
     /**
@@ -259,7 +257,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      * @param userInput
      */
     private void handleTaskDateTimeTerm(String userInput) {
-        logger.log(Level.INFO, LOG_TAG + ": Start of task date time term.");
+        logger.info(LOG_TAG + ": Start of task date time term.");
 
         try {
             if (userInput.isBlank()) {
@@ -286,7 +284,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 + REQUIRED_DATE_TIME_MSG + getDateTimeFormat(task.getTaskType());
         }
 
-        logger.log(Level.INFO, LOG_TAG + ": End of task date time term.");
+        logger.info(LOG_TAG + ": End of task date time term.");
     }
 
     /**
@@ -299,7 +297,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      * @param userInput
      */
     private void handleTaskDescriptionTerm(String userInput) {
-        logger.log(Level.INFO, LOG_TAG + ": Start of task description time term.");
+        logger.info(LOG_TAG + ": Start of task description time term.");
 
         this.reply = "";
 
@@ -317,7 +315,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_DESCRIPTION_MSG;
         }
 
-        logger.log(Level.INFO, LOG_TAG + ": End of task description term.");
+        logger.info(LOG_TAG + ": End of task description term.");
     }
 
     /**
@@ -330,7 +328,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      * @param userInput
      */
     private void handleTaskWeightTerm(String userInput) {
-        logger.log(Level.INFO, LOG_TAG + ": Start of task weight term.");
+        logger.info(LOG_TAG + ": Start of task weight term.");
 
         this.reply = "";
 
@@ -365,7 +363,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_WEIGHT_MSG;
         }
 
-        logger.log(Level.INFO, LOG_TAG + ": End of task weight term.");
+        logger.info(LOG_TAG + ": End of task weight term.");
     }
 
     /**
@@ -378,7 +376,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      * @param userInput
      */
     private void handleTaskEstimatedTimeCostTerm(String userInput) {
-        logger.log(Level.INFO, LOG_TAG + ": Start of task estimated time cost term.");
+        logger.info(LOG_TAG + ": Start of task estimated time cost term.");
 
         this.reply = "";
 
@@ -397,7 +395,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             this.reply = e.getErrorMessage() + "\n\n" + REQUIRED_TASK_ESTIMATED_TIME_COST_MSG;
         }
 
-        logger.log(Level.INFO, LOG_TAG + ": End of task estimated time cost term.");
+        logger.info(LOG_TAG + ": End of task estimated time cost term.");
     }
 
 
@@ -408,7 +406,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      * Displays error message with any exception caused.
      */
     private void handleTaskReadyToExecuteTerm() {
-        logger.log(Level.INFO, LOG_TAG + ": Start of ready to execute term.");
+        logger.info(LOG_TAG + ": Start of ready to execute term.");
         task.setCreationDateTime(LocalDateTime.now());
         try {
             if (logic.getStudyBuddy().getTaskList().contains(task)) {
@@ -417,17 +415,15 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             } else {
                 AddTaskCommand addTaskCommand = new AddTaskCommand(task);
                 logic.executeCommand(addTaskCommand);
-                logger.log(Level.INFO, LOG_TAG + ": User added a unique new task.");
+                logger.info(LOG_TAG + ": User added a unique new task.");
                 endInteract(END_OF_COMMAND_MSG);
             }
-
         } catch (ParseException | CommandException e) {
-
             logger.log(Level.WARNING, LOG_TAG + ": " + e.getMessage());
             this.reply = new InteractiveCommandException("unKnownException").getErrorMessage();
         }
 
-        logger.log(Level.INFO, LOG_TAG + ": End of ready to execute term.");
+        logger.info(LOG_TAG + ": End of ready to execute term.");
     }
 
     /**
@@ -439,13 +435,13 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
      * @param userInput
      */
     private void handleTaskAddDuplicateTerm(String userInput) {
-        logger.log(Level.INFO, LOG_TAG + ": Start of  add duplicated task term.");
+        logger.info(LOG_TAG + ": Start of  add duplicated task term.");
 
         try {
             if ("yes".equalsIgnoreCase(userInput)) {
                 AddDuplicateTaskCommand addDuplicateTaskCommand = new AddDuplicateTaskCommand(task);
                 logic.executeCommand(addDuplicateTaskCommand);
-                logger.log(Level.INFO, LOG_TAG + ": User added a duplicated task.");
+                logger.info(LOG_TAG + ": User added a duplicated task.");
                 endInteract(END_OF_DUPLICATE_COMMAND_MSG);
             } else if ("no".equalsIgnoreCase(userInput)) {
                 endInteract(END_OF_COMMAND_DUPLICATE_MSG);
@@ -461,13 +457,13 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
             reply = e.getErrorMessage() + "\n\n" + CONFIRM_MSG;
         }
 
-        logger.log(Level.INFO, LOG_TAG + ": End of add duplicated task term.");
+        logger.info(LOG_TAG + ": End of add duplicated task term.");
     }
 
     @Override
     public void endInteract(String msg) {
         this.reply = msg;
-        logger.log(Level.INFO, LOG_TAG + ": End of add task action.");
+        logger.info(LOG_TAG + ": End of add task action.");
         super.setEndOfCommand(true);
     }
 

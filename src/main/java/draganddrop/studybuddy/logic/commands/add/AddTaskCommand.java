@@ -2,7 +2,6 @@ package draganddrop.studybuddy.logic.commands.add;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import draganddrop.studybuddy.commons.core.LogsCenter;
@@ -14,8 +13,6 @@ import draganddrop.studybuddy.model.task.Task;
 
 /**
  * Represents the command of adding new task.
- *
- * @@author wyt-sonia
  */
 public class AddTaskCommand extends Command {
 
@@ -36,9 +33,9 @@ public class AddTaskCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        logger.log(Level.INFO, LOG_TAG + ": Start to execute the add task command.");
+        logger.info(LOG_TAG + ": Start to execute the add task command.");
         model.addTask(toAdd);
-        logger.log(Level.INFO, LOG_TAG + ": End of executing the add task command.");
+        logger.info(LOG_TAG + ": End of executing the add task command.");
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 

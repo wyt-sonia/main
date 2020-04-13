@@ -1,6 +1,5 @@
 package draganddrop.studybuddy.ui.card;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import draganddrop.studybuddy.commons.core.LogsCenter;
@@ -68,10 +67,10 @@ public class DetailedTaskCard extends UiPart<Region> {
      * @param task
      */
     private void renderTaskCard(Task task, int displayedIndex) {
-        logger.log(Level.INFO, LOG_TAG + ": Start to render task card.");
+        logger.info(LOG_TAG + ": Start to render task card.");
         renderTaskTextFields(task, displayedIndex);
         renderTaskBadges(task);
-        logger.log(Level.INFO, LOG_TAG + ": End of rendering task card.");
+        logger.info(LOG_TAG + ": End of rendering task card.");
     }
 
     /**
@@ -81,7 +80,7 @@ public class DetailedTaskCard extends UiPart<Region> {
      * @param displayedIndex
      */
     private void renderTaskTextFields(Task task, int displayedIndex) {
-        logger.log(Level.INFO, LOG_TAG + ": Start to render task text fields.");
+        logger.info(LOG_TAG + ": Start to render task text fields.");
 
         id.setText(displayedIndex + ". ");
         taskName.setText(task.getTaskName());
@@ -94,7 +93,7 @@ public class DetailedTaskCard extends UiPart<Region> {
             + TimeParser.getDateTimeString(task.getCreationDateTime()));
         type.setText(task.getTaskType().toString());
 
-        logger.log(Level.INFO, LOG_TAG + ": End of rendering task text fields.");
+        logger.info(LOG_TAG + ": End of rendering task text fields.");
     }
 
     /**
@@ -103,13 +102,13 @@ public class DetailedTaskCard extends UiPart<Region> {
      * @param task
      */
     private void renderTaskBadges(Task task) {
-        logger.log(Level.INFO, LOG_TAG + ": Start to render task badges.");
+        logger.info(LOG_TAG + ": Start to render task badges.");
 
         renderTaskModuleBadges(task.getModule());
         renderTaskStatusBadges(task.getTaskStatus());
         renderTaskTypeBadges(task.getTaskType());
 
-        logger.log(Level.INFO, LOG_TAG + ": End of rendering task badges.");
+        logger.info(LOG_TAG + ": End of rendering task badges.");
     }
 
     /**
@@ -118,7 +117,7 @@ public class DetailedTaskCard extends UiPart<Region> {
      * @param taskModule
      */
     private void renderTaskModuleBadges(Module taskModule) {
-        logger.log(Level.INFO, LOG_TAG + ": Start to render task module badges.");
+        logger.info(LOG_TAG + ": Start to render task module badges.");
 
         // Omit module Badges if the task is not related to any module.
         if (taskModule.equals(new EmptyModule())) {
@@ -129,7 +128,7 @@ public class DetailedTaskCard extends UiPart<Region> {
             module.getStyleClass().add("module_lbl");
         }
 
-        logger.log(Level.INFO, LOG_TAG + ": End of rendering task module badges.");
+        logger.info(LOG_TAG + ": End of rendering task module badges.");
     }
 
 
@@ -139,7 +138,7 @@ public class DetailedTaskCard extends UiPart<Region> {
      * @param taskStatus
      */
     private void renderTaskStatusBadges(TaskStatus taskStatus) {
-        logger.log(Level.INFO, LOG_TAG + ": Start to render task status badges.");
+        logger.info(LOG_TAG + ": Start to render task status badges.");
 
         switch (taskStatus) {
         case PENDING:
@@ -157,7 +156,7 @@ public class DetailedTaskCard extends UiPart<Region> {
         default:
         }
 
-        logger.log(Level.INFO, LOG_TAG + ": End of rendering task status badges.");
+        logger.info(LOG_TAG + ": End of rendering task status badges.");
     }
 
     /**
@@ -166,7 +165,7 @@ public class DetailedTaskCard extends UiPart<Region> {
      * @param taskType
      */
     private void renderTaskTypeBadges(TaskType taskType) {
-        logger.log(Level.INFO, LOG_TAG + ": Start to render task type badges.");
+        logger.info(LOG_TAG + ": Start to render task type badges.");
 
         switch (taskType) {
         case Assignment:
@@ -190,7 +189,7 @@ public class DetailedTaskCard extends UiPart<Region> {
         default:
         }
 
-        logger.log(Level.INFO, LOG_TAG + ": End of rendering task type badges.");
+        logger.info(LOG_TAG + ": End of rendering task type badges.");
     }
 
     @Override

@@ -19,8 +19,6 @@ import javafx.collections.ObservableList;
 /**
  * Represents a TaskParser, which can parse all fields for tasks during interactive communication.
  * Especially for interactions of add task and edit task.
- *
- * @@author wyt-sonia
  */
 public class TaskParser {
 
@@ -36,7 +34,7 @@ public class TaskParser {
      */
     public static String parseName(String userInput) throws AddOrEditTaskCommandException {
 
-        logger.log(Level.INFO, LOG_TAG + ": Start of parseName.");
+        logger.info(LOG_TAG + ": Start of parseName.");
         String result = "";
         if (userInput.isBlank()) {
             logger.log(Level.WARNING, LOG_TAG + ": Empty task name error.");
@@ -61,7 +59,7 @@ public class TaskParser {
         assert !result.isBlank()
             : "The result of parseName from TaskParser is blank, please check.\n";
 
-        logger.log(Level.INFO, LOG_TAG + ": End of parseName with task name " + result);
+        logger.info(LOG_TAG + ": End of parseName with task name " + result);
         return result;
     }
 
@@ -73,7 +71,7 @@ public class TaskParser {
      * @throws AddOrEditTaskCommandException
      */
     public static String parseDescription(String userInput) throws AddOrEditTaskCommandException {
-        logger.log(Level.INFO, LOG_TAG + ": Start of parseDescription.");
+        logger.info(LOG_TAG + ": Start of parseDescription.");
 
         String result = "";
 
@@ -84,7 +82,7 @@ public class TaskParser {
 
         result = userInput.trim();
 
-        logger.log(Level.INFO, LOG_TAG + ": End of parseDescription with task description " + result);
+        logger.info(LOG_TAG + ": End of parseDescription with task description " + result);
 
         return result;
     }
@@ -98,7 +96,7 @@ public class TaskParser {
      */
     private static LocalDateTime[] parseDateTimeForAssignment(String userInput)
         throws AddOrEditTaskCommandException {
-        logger.log(Level.INFO, LOG_TAG + ": Start of parseDateTimeForAssignment.");
+        logger.info(LOG_TAG + ": Start of parseDateTimeForAssignment.");
         LocalDateTime[] result = new LocalDateTime[1];
 
         // Check date time format
@@ -114,7 +112,7 @@ public class TaskParser {
             logger.log(Level.WARNING, LOG_TAG + ": Task date time is passed time.");
             throw new AddOrEditTaskCommandException("pastDateTime");
         }
-        logger.log(Level.INFO, LOG_TAG + ": End of parseDateTimeForAssignment with data time "
+        logger.info(LOG_TAG + ": End of parseDateTimeForAssignment with data time "
             + TimeParser.getDateTimeString(result[0]));
         return result;
     }
@@ -128,7 +126,7 @@ public class TaskParser {
      */
     private static LocalDateTime[] parseDateTimeForOtherTaskType(String userInput)
         throws AddOrEditTaskCommandException {
-        logger.log(Level.INFO, LOG_TAG + ": Start of parseDateTimeForOtherTaskType.");
+        logger.info(LOG_TAG + ": Start of parseDateTimeForOtherTaskType.");
 
         LocalDateTime[] result = new LocalDateTime[2];
         String[] tempInputDateTimes;
@@ -164,7 +162,7 @@ public class TaskParser {
         assert result.length == 2
             : "Missing start or end date time, please check.";
 
-        logger.log(Level.INFO, LOG_TAG + ": End of parseDateTimeForOtherTaskType with date time as "
+        logger.info(LOG_TAG + ": End of parseDateTimeForOtherTaskType with date time as "
             + TimeParser.getDateTimeString(result[0]) + "-" + TimeParser.getDateTimeString(result[1]));
 
         return result;
@@ -181,7 +179,7 @@ public class TaskParser {
     public static LocalDateTime[] parseDateTime(String userInput, TaskType taskType)
         throws AddOrEditTaskCommandException {
         LocalDateTime[] result;
-        logger.log(Level.INFO, LOG_TAG + ": Start of parseDateTime.");
+        logger.info(LOG_TAG + ": Start of parseDateTime.");
 
         if (taskType.equals(TaskType.Assignment)) {
             result = parseDateTimeForAssignment(userInput);
@@ -191,7 +189,7 @@ public class TaskParser {
 
         assert result != null
             : "The result of parseDateTime from TaskParser is null, please check.\n";
-        logger.log(Level.INFO, LOG_TAG + ": End of parseDateTime.");
+        logger.info(LOG_TAG + ": End of parseDateTime.");
         return result;
     }
 
@@ -204,7 +202,7 @@ public class TaskParser {
      */
     public static Module parseModule(String userInput, ObservableList<Module> modules)
         throws AddOrEditTaskCommandException {
-        logger.log(Level.INFO, LOG_TAG + ": Start of parseModule.");
+        logger.info(LOG_TAG + ": Start of parseModule.");
 
         Module result;
 
@@ -234,7 +232,7 @@ public class TaskParser {
         assert result != null
             : "The result of parseModule from TaskParser is null, please check.\n";
 
-        logger.log(Level.INFO, LOG_TAG + ": End of parseModule with value " + result.toString());
+        logger.info(LOG_TAG + ": End of parseModule with value " + result.toString());
 
         return result;
     }
@@ -250,7 +248,7 @@ public class TaskParser {
      */
     public static TaskType parseType(String userInput, int size)
         throws AddOrEditTaskCommandException, NumberFormatException {
-        logger.log(Level.INFO, LOG_TAG + ": Start of parseType.");
+        logger.info(LOG_TAG + ": Start of parseType.");
 
         TaskType result;
 
@@ -269,7 +267,7 @@ public class TaskParser {
         assert result != null
             : "The result of parseType from TaskParser is null, please check.\n";
 
-        logger.log(Level.INFO, LOG_TAG + ": End of parseType with value " + result.toString());
+        logger.info(LOG_TAG + ": End of parseType with value " + result.toString());
 
         return result;
     }
@@ -283,7 +281,7 @@ public class TaskParser {
      */
     public static double parseWeight(String userInput) throws AddOrEditTaskCommandException {
         double result;
-        logger.log(Level.INFO, LOG_TAG + ": Start of parseWeight");
+        logger.info(LOG_TAG + ": Start of parseWeight");
         try {
             result = Double.parseDouble(userInput);
             if (result < 0.0 || result > 100.0) {
@@ -295,7 +293,7 @@ public class TaskParser {
             throw new AddOrEditTaskCommandException("wrongWeightFormatError");
         }
 
-        logger.log(Level.INFO, LOG_TAG + ": End of parseWeight with value " + result);
+        logger.info(LOG_TAG + ": End of parseWeight with value " + result);
 
         return result;
     }
@@ -308,7 +306,7 @@ public class TaskParser {
      * @throws AddOrEditTaskCommandException
      */
     public static double parseTimeCost(String userInput) throws AddOrEditTaskCommandException {
-        logger.log(Level.INFO, LOG_TAG + ": Start of parseTimeCost ");
+        logger.info(LOG_TAG + ": Start of parseTimeCost ");
 
         double result;
 
@@ -322,7 +320,7 @@ public class TaskParser {
             logger.log(Level.WARNING, LOG_TAG + ": " + e.getStackTrace());
             throw new AddOrEditTaskCommandException("wrongEstimatedTimeFormatError");
         }
-        logger.log(Level.INFO, LOG_TAG + ": End of parseTimeCost with value " + result);
+        logger.info(LOG_TAG + ": End of parseTimeCost with value " + result);
 
         return result;
     }

@@ -1,13 +1,11 @@
 package draganddrop.studybuddy.ui.panel;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import draganddrop.studybuddy.commons.core.LogsCenter;
 import draganddrop.studybuddy.model.task.Task;
 import draganddrop.studybuddy.ui.UiPart;
 import draganddrop.studybuddy.ui.card.DetailedTaskCard;
-
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -29,10 +27,10 @@ public class TaskListPanel extends UiPart<Region> {
 
     public TaskListPanel(ObservableList<Task> taskList) {
         super(FXML);
-        logger.log(Level.INFO, LOG_TAG + " : Start to set up the Task List Panel.");
+        logger.info(LOG_TAG + " : Start to set up the Task List Panel.");
         taskListView.setItems(taskList);
         taskListView.setCellFactory(listView -> new TaskListViewCell());
-        logger.log(Level.INFO, LOG_TAG + " : End of setting up the Task List Panel.");
+        logger.info(LOG_TAG + " : End of setting up the Task List Panel.");
     }
 
     /**

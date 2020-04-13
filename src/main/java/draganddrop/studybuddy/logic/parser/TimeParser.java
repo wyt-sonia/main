@@ -32,7 +32,7 @@ public class TimeParser {
      * @throws InteractiveCommandException when {@code userInput} format is invalid.
      */
     public static LocalDateTime parseDateTime(String userInput) throws InteractiveCommandException {
-        logger.log(Level.INFO, LOG_TAG + ": Start to parse date time.");
+        logger.info(LOG_TAG + ": Start to parse date time.");
 
         LocalDateTime inputTime;
         try {
@@ -45,7 +45,7 @@ public class TimeParser {
         assert inputTime != null
             : "The result of time parsing is null, please check.\n";
 
-        logger.log(Level.INFO, LOG_TAG + ": End of parsing date time.");
+        logger.info(LOG_TAG + ": End of parsing date time.");
         return inputTime;
     }
 
@@ -57,7 +57,7 @@ public class TimeParser {
      * @throws InteractiveCommandException when {@code userInput} format is invalid.
      */
     public static LocalDate parseDate(String userInput) throws InteractiveCommandException {
-        logger.log(Level.INFO, LOG_TAG + ": Start to parse date.");
+        logger.info(LOG_TAG + ": Start to parse date.");
 
         LocalDate inputDate = null;
         try {
@@ -69,7 +69,7 @@ public class TimeParser {
         assert inputDate != null
             : "The result of time parsing is null, please check.\n";
 
-        logger.log(Level.INFO, LOG_TAG + ": End of parsing date.");
+        logger.info(LOG_TAG + ": End of parsing date.");
 
         return inputDate;
     }
@@ -83,7 +83,7 @@ public class TimeParser {
      * @throws InteractiveCommandException
      */
     public static String getDateTimeString(LocalDateTime dateTime) throws InteractiveCommandException {
-        logger.log(Level.INFO, LOG_TAG + ": Start to get date time string.");
+        logger.info(LOG_TAG + ": Start to get date time string.");
 
         requireNonNull(dateTime);
 
@@ -99,7 +99,7 @@ public class TimeParser {
         assert !(min.isBlank() || hour.isBlank() || day.isBlank() || month.isBlank())
             : "There is blank value in min, hour, day and/or month when get DateTimeString, please check.\n";
 
-        logger.log(Level.INFO, LOG_TAG + ": End of getting date time string.");
+        logger.info(LOG_TAG + ": End of getting date time string.");
 
         return hour + ":" + min
             + " " + day + "/" + month + "/" + dateTime.getYear();
@@ -113,7 +113,7 @@ public class TimeParser {
      * @throws InteractiveCommandException
      */
     public static String getDateString(LocalDate date) throws InteractiveCommandException {
-        logger.log(Level.INFO, LOG_TAG + ": Start to get date string.");
+        logger.info(LOG_TAG + ": Start to get date string.");
 
         String day = date.getDayOfMonth() < 10 ? "0" + date.getDayOfMonth()
             : "" + date.getDayOfMonth();
@@ -123,7 +123,7 @@ public class TimeParser {
         assert !(day.isBlank() || month.isBlank())
             : "There is blank value in day and/or month when get DateTimeString, please check.\n";
 
-        logger.log(Level.INFO, LOG_TAG + ": End of getting date string.");
+        logger.info(LOG_TAG + ": End of getting date string.");
 
         return day + "/" + month + "/" + date.getYear();
     }

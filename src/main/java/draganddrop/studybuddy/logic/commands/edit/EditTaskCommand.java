@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import draganddrop.studybuddy.commons.core.LogsCenter;
@@ -45,7 +44,7 @@ public class EditTaskCommand extends Command {
      * Creates an edit task command.
      *
      * @param targetIndex index of target task to be edited
-     * @param taskField the task field to be edited
+     * @param taskField   the task field to be edited
      */
     public EditTaskCommand(Index targetIndex, TaskField taskField) {
         requireNonNull(targetIndex);
@@ -57,28 +56,34 @@ public class EditTaskCommand extends Command {
     public void provideNewTaskName(String newTaskName) {
         this.newTaskName = newTaskName;
     }
+
     public void provideNewTaskWeight(double newTaskWeight) {
         this.newTaskWeight = newTaskWeight;
     }
+
     public void provideNewTaskDescription(String newTaskDescription) {
         this.newTaskDescription = newTaskDescription;
     }
+
     public void provideNewTaskTimeCost(double newTaskTimeCost) {
         this.newTaskTimeCost = newTaskTimeCost;
     }
+
     public void provideNewTaskType(TaskType newTaskType) {
         this.newTaskType = newTaskType;
     }
+
     public void provideNewDateTime(LocalDateTime[] newDateTimes) {
         this.newDateTimes = newDateTimes;
     }
+
     public void provideNewModule(Module newModule) {
         this.newModule = newModule;
     }
 
     @Override
     public CommandResult execute(Model model) throws DuplicateTaskException, CommandException {
-        logger.log(Level.INFO, LOG_TAG + ": Start to execute edit task command.");
+        logger.info(LOG_TAG + ": Start to execute edit task command.");
         List<Task> lastShownList = model.getFilteredTaskList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
@@ -130,7 +135,7 @@ public class EditTaskCommand extends Command {
                 assert taskToEdit.getModule().equals(newModule)
                     : "The task module is not updated to the correct new value, please check.\n";
             } catch (ModuleException ex) {
-                logger.log(Level.INFO, LOG_TAG + ": module code invalid/does not exist!!!");
+                logger.info(LOG_TAG + ": module code invalid/does not exist!!!");
                 throw new CommandException("module code invalid/does not exist!!!");
             }
             break;
@@ -139,7 +144,7 @@ public class EditTaskCommand extends Command {
         }
         updateDueSoon(taskToEdit, model);
 
-        logger.log(Level.INFO, LOG_TAG + ": End of executing edit task command.");
+        logger.info(LOG_TAG + ": End of executing edit task command.");
         return new CommandResult(EDIT_TASK_SUCCESS);
     }
 

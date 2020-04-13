@@ -1031,6 +1031,7 @@ If you switch to `No Module Allocated` tab, you'll find the tasks affected by th
 image::module/module_delete_after.png[width="790",align="center",title = 'Checking the affected tasks']
 
 //Start updated by Yuting
+
 === Statistics
 
 With all the tasks and modules' information you entered, Study Buddy can provide you with a real-time visualized statistics about:

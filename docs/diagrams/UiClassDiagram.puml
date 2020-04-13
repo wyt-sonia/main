@@ -1,5 +1,7 @@
 @startuml
 !include style.puml
+
+skinparam DiagramBorderThickness 2
 skinparam arrowThickness 1.1
 skinparam arrowColor UI_COLOR_T4
 skinparam classBackgroundColor UI_COLOR
@@ -72,6 +74,8 @@ note right of XYZCard UI_COLOR_NOTE
 <b>XYZCard</b> = DetailedTaskCard,
 DueSoonTaskCard, ModCard
 end note
+
+note "The <b>HiddenLogic</b> and <b>HiddenModel</b> \nrepresent the less important details \nfrom <b>Logic</b> and <b>Model</b> components" as N1 UI_COLOR_NOTE
 
 
 @enduml

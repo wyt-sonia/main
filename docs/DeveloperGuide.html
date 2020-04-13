@@ -465,15 +465,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_implementation">5. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#_due_soon_tasks_feature">5.1. Due Soon Tasks Feature</a></li>
-<li><a href="#_task_summary_feature">5.2. Task Summary Feature</a></li>
-<li><a href="#_calendar_feature">5.3. Calendar feature</a></li>
-<li><a href="#_archive_feature">5.4. Archive feature</a></li>
-<li><a href="#_productivity_feature">5.5. Productivity feature</a></li>
-<li><a href="#_modules">5.6. Modules</a></li>
-<li><a href="#_logging">5.7. Logging</a></li>
-<li><a href="#Implementation-Configuration">5.8. Configuration</a></li>
-<li><a href="#_proposed_data_encryption">5.9. [Proposed] Data encryption</a></li>
+<li><a href="#_interactive_command_process_feature">5.1. Interactive Command Process Feature</a></li>
+<li><a href="#_due_soon_tasks_feature">5.2. Due Soon Tasks Feature</a></li>
+<li><a href="#_task_summary_feature">5.3. Task Summary Feature</a></li>
+<li><a href="#_calendar_feature">5.4. Calendar feature</a></li>
+<li><a href="#_archive_feature">5.5. Archive feature</a></li>
+<li><a href="#_productivity_feature">5.6. Productivity feature</a></li>
+<li><a href="#_modules">5.7. Modules</a></li>
+<li><a href="#_logging">5.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">5.9. Configuration</a></li>
+<li><a href="#_proposed_data_encryption">5.10. [Proposed] Data encryption</a></li>
 </ul>
 </li>
 <li><a href="#_documentation">6. Documentation</a></li>
@@ -867,80 +868,233 @@ The command execution will only terminate in two scenarios:<br>
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-202">
-<h3 id="_due_soon_tasks_feature">5.1. Due Soon Tasks Feature</h3>
+<h3 id="_interactive_command_process_feature">5.1. Interactive Command Process Feature</h3>
 <div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-204">
 <h4 id="_implementation_2">5.1.1. Implementation</h4>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-206">
-<p>The Due Soon Tasks feature allows users to view the tasks that have deadlines within the next week.</p>
-</div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-208">
-<p>This feature is implemented using a panel on the main window with a list of tasks Due Soon that is updated with every command that may affect Due Soon task list (such as add, delete or archive).</p>
-</div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-210">
-<p>Some situations that trigger due soon feature are:</p>
-</div>
-<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-212">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-206">
 <ol class="arabic">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-212">
-<p><strong>When user enters a task:</strong></p>
-<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-214">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-206">
+<p><strong>Feature introduction</strong></p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-208">
+<p>The Interactive Command Process Feature allows user to execute his/her command in an
+interactive way.</p>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-211">
+<p><strong>Implementation detail</strong></p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-213">
+<p>This feature applies on all commands provided by Study Buddy and is implemented using:</p>
+</div>
+<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-215">
 <ol class="loweralpha" type="a">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-214">
-<p>What it does:<br></p>
-<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-215">
-<ol class="lowerroman" type="i">
 <li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-215">
-<p>When a task that is added to the main list, is due within the next week, it is automatically added to the list of due soon tasks.<br></p>
+<p>The <code><strong>CommandBox</strong></code> from <code>UI</code> component to collect user input and init an associate interactivePrompt</p>
 </li>
 <li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-216">
+<p>The <code><strong>InteractivePrompt</strong></code> from <code>Logic</code> component to parse user input step by step and generate meaningful response
+message accordingly.
+It also produces an executable <code>Command</code> from each successful interaction to perform the user&#8217;s desired action.</p>
+<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-219">
+<ol class="lowerroman" type="i">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-219">
+<p>Different types of <code>InteractivePrompt</code> such as <code>AddTaskInteractivePrompt</code> are provided to handel interactions with different purpose.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-221">
+<div class="content">
+<img src="images/AddTaskObjectDiagram.png" alt="AddTaskObjectDiagram" width="550">
+</div>
+<div class="title">Figure 8. Object diagram when user add task using interactive command process</div>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-223">
+<p>Allow user to quit from each step of an interaction using <code>quit</code> (case insensitive) key word. Here is an example of user quiting from add task interactive command process.</p>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-225">
+<div class="content">
+<img src="images/QuitFromInteractionActivityDiagram.png" alt="QuitFromInteractionActivityDiagram" width="550">
+</div>
+<div class="title">Figure 9. Activity diagram when user quite from add task interactive command process</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-227">
+<h4 id="_example_usage_scenario">5.1.2. Example Usage Scenario</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-228">
+<p>Given below is an example usage scenario and how the interactive command process mechanism behaves at each step.</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-230">
+<p>Step 1. The user launches the application for the first time and skips the user guid.
+By following the hint from <code>UI</code> (i.e. when <code>CommandBox</code> is idle, it should display "Please enter your command here&#8230;&#8203;"),
+he can try some random input and hit enter to get the list of available commands.</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-234">
+<p>Step 2. The user picks a command from the list and type it in the <code>CommandBox</code>. The guide information of the next step will
+display in <code>FeedbackDisplayBox</code> after user press enter.</p>
+</div>
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-238">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+For some commands there is only one interaction involved, such as <code>help</code> and <code>list</code>. In such a case
+the application will execute the command right after user press enter.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-241">
+<p>Step 3. The user made a typo mistake in the data and time filed when adding a task record.
+Proper massage with the error type and the correct format of the data and time will be displayed in the
+<code>FeedbackDisplayBox</code>. User can follow the instruction to continue the interaction.</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-245">
+<p>Step 4. The user is performing an interaction to edit a task, but realized he/she
+chose a wrong task from the list, he/she can use <code>quit</code> to exit
+the process without making any changes to the task.</p>
+</div>
+</div>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-249">
+<h4 id="_design_considerations">5.1.3. Design Considerations</h4>
+<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-251">
+<h5 id="_aspect_how_to_react_to_an_invalid_input">Aspect: How to react to an invalid input</h5>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-252">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-252">
+<p><strong>Alternative 1 (current choice):</strong> provides relevant error message and stays at current interaction step.</p>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-254">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-254">
+<p><strong>If the next input is</strong></p>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-256">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-256">
+<p>Invalid: provides the relevant error message and continue waiting for another input.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-257">
+<p>Valid: start next interaction step.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-258">
+<p><code>quit</code>: quite from the command process.</p>
+</li>
+</ul>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-260">
+<p>Pros: Save the data from previous stages, especially in add task interaction, thus user no need to repeatedly
+enter the same information. Also the clear instruction provided by error message makes the
+interaction more straightforward.</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-264">
+<p>Cons: The interaction can only be stopped when user successfully complete the process or use
+<code>quit</code> to exit half-way.</p>
+</li>
+</ul>
+</div>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-267">
+<p><strong>Alternative 2:</strong> Quite from current step with proper error message.</p>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-268">
+<ul>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-268">
+<p>Pros: Quit the interaction immediately, which allows user to start with a new
+interaction. It will be useful when user want to quit from a particular process but forgets the exit command
+(i.e. <code>quit</code>).</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-271">
+<p>Cons: User has to restart the entire interaction process when the he/she enter
+invalid command.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-275">
+<h3 id="_due_soon_tasks_feature">5.2. Due Soon Tasks Feature</h3>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-277">
+<h4 id="_implementation_3">5.2.1. Implementation</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-279">
+<p>The Due Soon Tasks feature allows users to view the tasks that have deadlines within the next week.</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-281">
+<p>This feature is implemented using a panel on the main window with a list of tasks Due Soon that is updated with every command that may affect Due Soon task list (such as add, delete or archive).</p>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-283">
+<p>Some situations that trigger due soon feature are:</p>
+</div>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-285">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-285">
+<p><strong>When user enters a task:</strong></p>
+<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-287">
+<ol class="loweralpha" type="a">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-287">
+<p>What it does:<br></p>
+<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-288">
+<ol class="lowerroman" type="i">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-288">
+<p>When a task that is added to the main list, is due within the next week, it is automatically added to the list of due soon tasks.<br></p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-289">
 <p>The list is automatically sorted to be in increasing order of deadlines.<br></p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-217">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-290">
 <p>The time left for the deadline is also added.</p>
-<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-219">
+<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-292">
 <div class="content">
 <img src="images/AddDueSoonActivityDiagram.png" alt="AddDueSoonActivityDiagram" width="200">
 </div>
-<div class="title">Figure 8. Activity Diagram for Add to Due Soon list</div>
+<div class="title">Figure 10. Activity Diagram for Add to Due Soon list</div>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-220">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-293">
 <p><br></p>
 </div>
 </li>
 </ol>
 </div>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-222">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-295">
 <p>Details:<br></p>
-<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-223">
+<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-296">
 <ol class="lowerroman" type="i">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-223">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-296">
 <p>The add command when entered by the user, triggers the creation of an object of the InteractivePrompt class (in this case AddTaskInteractivePrompt).<br></p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-224">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-297">
 <p>In the AddTaskInteractivePrompt class, the data entered by user is parsed.<br></p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-225">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-298">
 <p>If there are no errors, the AddTaskCommand object is created which triggers the addTask() function in Model.<br></p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-226">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-299">
 <p>This function in turns calls addTask() function in Study Buddy.<br></p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-227">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-300">
 <p>This function calls the isDueSoon() function in Task to confirm if the task belong to the due soon list.<br></p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-228">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-301">
 <p>If it does, it is added to due soon list and main list, and the due soon list is sorted. Else, it is simply added to the main list.</p>
-<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-230">
+<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-303">
 <div class="content">
 <img src="images/AddDueSoonSequence.png" alt="AddDueSoonSequence" width="800">
 </div>
-<div class="title">Figure 9. Sequence Diagram for Add to Due Soon list</div>
+<div class="title">Figure 11. Sequence Diagram for Add to Due Soon list</div>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-231">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-304">
 <p><br></p>
 </div>
-<div class="admonitionblock caution has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-233">
+<div class="admonitionblock caution has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-306">
 <table>
 <tr>
 <td class="icon">
@@ -960,60 +1114,60 @@ The lifeline for every member should end at the destroy marker (X) but due to a 
 </ol>
 </div>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-236">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-309">
 <p><strong>When user deletes a task:</strong></p>
-<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-238">
+<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-311">
 <ol class="loweralpha" type="a">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-238">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-311">
 <p>What it does:</p>
-<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-239">
+<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-312">
 <ol class="lowerroman" type="i">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-239">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-312">
 <p>When a task that is deleted from the main list occurs in the due soon list as well, it is automatically deleted.</p>
-<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-241">
+<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-314">
 <div class="content">
 <img src="images/DeleteDueSoonActivityDiagram.png" alt="DeleteDueSoonActivityDiagram" width="200">
 </div>
-<div class="title">Figure 10. Activity Diagram for Delete from Due Soon list</div>
+<div class="title">Figure 12. Activity Diagram for Delete from Due Soon list</div>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-242">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-315">
 <p><br></p>
 </div>
 </li>
 </ol>
 </div>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-243">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-316">
 <p>Details:</p>
-<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-244">
+<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-317">
 <ol class="lowerroman" type="i">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-244">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-317">
 <p>The delete command when entered by the user, triggers the creation of an object of the InteractivePrompt class (in this case DeleteTaskInteractivePrompt).</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-245">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-318">
 <p>In the DeleteTaskInteractivePrompt class, the data entered by user is parsed.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-246">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-319">
 <p>If there are no errors, the DeleteTaskCommand object is created which triggers the deleteTask() function in Model.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-247">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-320">
 <p>This function in turns calls removeTask() function in Study Buddy.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-248">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-321">
 <p>removeTask() calls the updateDeleteDueSoon() function in StudyBuddy which checks if the task exists in the due soon list.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-249">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-322">
 <p>If it does, it is deleted from the due soon list and main list. Else, it is simply deleted from the main list.</p>
-<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-251">
+<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-324">
 <div class="content">
 <img src="images/DeleteDueSoonSequence.png" alt="DeleteDueSoonSequence" width="800">
 </div>
-<div class="title">Figure 11. Sequence Diagram for Delete from Due Soon list</div>
+<div class="title">Figure 13. Sequence Diagram for Delete from Due Soon list</div>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-252">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-325">
 <p><br></p>
 </div>
-<div class="admonitionblock caution has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-254">
+<div class="admonitionblock caution has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-327">
 <table>
 <tr>
 <td class="icon">
@@ -1032,51 +1186,51 @@ The lifeline for every member should end at the destroy marker (X) but due to a 
 </ol>
 </div>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-256">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-329">
 <p><strong>When user refreshes due soon list:</strong></p>
-<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-258">
+<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-331">
 <ol class="loweralpha" type="a">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-258">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-331">
 <p>What it does:<br></p>
-<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-259">
+<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-332">
 <ol class="lowerroman" type="i">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-259">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-332">
 <p>Refreshes the list of due soon tasks and status tags. This command is useful for a situation where due soon list is not up to date due to a drastic change in time.</p>
-<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-261">
+<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-334">
 <div class="content">
 <img src="images/DueSoonActivityDiagram.png" alt="DueSoonActivityDiagram" width="500">
 </div>
-<div class="title">Figure 12. Activity diagram for refresh</div>
+<div class="title">Figure 14. Activity diagram for refresh</div>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-262">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-335">
 <p><br></p>
 </div>
 </li>
 </ol>
 </div>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-263">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-336">
 <p>Details:</p>
-<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-264">
+<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-337">
 <ol class="lowerroman" type="i">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-264">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-337">
 <p>The refresh command when entered by the user, triggers the creation of an object of the InteractivePrompt class (in this case RefreshTaskInteractivePrompt).</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-265">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-338">
 <p>In the RefreshTaskInteractivePrompt class, the data entered by user is parsed.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-266">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-339">
 <p>If there are no errors, the RefreshCommand object is created which clears the due soon list and then, iterates through the main list and calls addDueSoonTask() in Model, for any tasks that are due soon.</p>
-<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-268">
+<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-341">
 <div class="content">
 <img src="images/DueSoonSequenceDiagram.png" alt="DueSoonSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 13. Sequence diagram for refresh</div>
+<div class="title">Figure 15. Sequence diagram for refresh</div>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-269">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-342">
 <p><br></p>
 </div>
-<div class="admonitionblock caution has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-271">
+<div class="admonitionblock caution has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-344">
 <table>
 <tr>
 <td class="icon">
@@ -1095,31 +1249,31 @@ The lifeline for every member should end at the destroy marker (X) but due to a 
 </ol>
 </div>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-273">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-346">
 <p><strong>When the application launches:</strong></p>
-<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-275">
+<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-348">
 <ol class="loweralpha" type="a">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-275">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-348">
 <p>What it does:</p>
-<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-276">
+<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-349">
 <ol class="lowerroman" type="i">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-276">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-349">
 <p>It loads the due soon tasks into a panel by filtering tasks that are due soon from the main list.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-277">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-350">
 <p>This is necessary, because old list of due soon tasks may not be up-to-date.</p>
 </li>
 </ol>
 </div>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-279">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-352">
 <p>Details:</p>
-<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-280">
+<div class="olist lowerroman has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-353">
 <ol class="lowerroman" type="i">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-280">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-353">
 <p>The addTask() function in StudyBuddy class already checks if task is due soon and adds to due soon list (as mentioned above).</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-281">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-354">
 <p>While all tasks are being added to their respective lists in JsonSerializableStudyBuddy class, the due soon list gets automatically updated.</p>
 </li>
 </ol>
@@ -1130,7 +1284,7 @@ The lifeline for every member should end at the destroy marker (X) but due to a 
 </li>
 </ol>
 </div>
-<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-284">
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-357">
 <table>
 <tr>
 <td class="icon">
@@ -1142,7 +1296,7 @@ Other commands like edit, archive etc also trigger due soon feature in a similar
 </tr>
 </table>
 </div>
-<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-286">
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-359">
 <table>
 <tr>
 <td class="icon">
@@ -1155,31 +1309,31 @@ Calculation of time left for deadline and check for if task is due soon can be f
 </table>
 </div>
 </div>
-<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-288">
-<h4 id="_example_usage_scenario">5.1.2. Example Usage Scenario</h4>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-289">
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-361">
+<h4 id="_example_usage_scenario_2">5.2.2. Example Usage Scenario</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-362">
 <p>Given below is an example usage scenario and how the Due Soon list mechanism behaves at each step.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-291">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-364">
 <p>Step 1. The user launches the application for the first time.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-293">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-366">
 <p>The list of tasks Due Soon will be initialized and displayed with the initial study buddy state. Initialization is done by filtering tasks that are Due Soon from the general list of tasks.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-295">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-368">
 <p>Step 2. The user executes <code>add</code> command to add a task.
 The <code>add</code> command execution checks if this task belongs in the Due Soon tasks list (i.e it is due in 7 days). If it does, the task is added to both lists, else it is only added to the main list.<br></p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-298">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-371">
 <p>Step 3. The user executes <code>delete</code> command to delete a task.
 The <code>delete</code> command execution also checks if this task exists in the Due Soon task list. If it does, task is deleted from both lists, else it is only deleted from the main list.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-301">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-374">
 <p>Step 4. The user executes <code>refresh</code> command to refresh the due soon task list.
 The <code>refresh</code> command execution will traverse the main list and check if there are any inconsistencies. For example, if there has been a change in time and a task is missing from the due soon task list, it will be added.
 It will also update the time left.</p>
 </div>
-<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-306">
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-379">
 <table>
 <tr>
 <td class="icon">
@@ -1192,33 +1346,33 @@ If there are no such inconsistencies, the refresh command will not make any chan
 </table>
 </div>
 </div>
-<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-309">
-<h4 id="_design_considerations">5.1.3. Design Considerations</h4>
-<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-311">
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-382">
+<h4 id="_design_considerations_2">5.2.3. Design Considerations</h4>
+<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-384">
 <h5 id="_aspect_how_refresh_command_works">Aspect: How <code>refresh</code> command works</h5>
-<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-313">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-386">
 <ul>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-313">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-386">
 <p><strong>Alternative 1 (current choice):</strong> Clear and reload the due soon task list.</p>
-<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-314">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-387">
 <ul>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-314">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-387">
 <p>Pros: Less prone to errors since the entire list is "refreshed".</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-315">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-388">
 <p>Cons: More operation intensive.</p>
 </li>
 </ul>
 </div>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-316">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-389">
 <p><strong>Alternative 2:</strong> Does not clear and reload the due soon task list.</p>
-<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-317">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-390">
 <ul>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-317">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-390">
 <p>Pros: Fewer operations need to be performed.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-318">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-391">
 <p>Cons: May have be more prone to errors because list is not completely "refreshed". Some parts of it are the same.</p>
 </li>
 </ul>
@@ -1229,33 +1383,33 @@ If there are no such inconsistencies, the refresh command will not make any chan
 </div>
 </div>
 </div>
-<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-322">
-<h3 id="_task_summary_feature">5.2. Task Summary Feature</h3>
-<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-324">
-<h4 id="_implementation_3">5.2.1. Implementation</h4>
-<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-326">
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-395">
+<h3 id="_task_summary_feature">5.3. Task Summary Feature</h3>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-397">
+<h4 id="_implementation_4">5.3.1. Implementation</h4>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-399">
 <ol class="arabic">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-326">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-399">
 <p><strong>Feature introduction</strong></p>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-328">
-<p>The task summary feature automatically summarize the collected data into different charts.
-It also allows user to click on chart to find the relevant tasks. The UI of the feature is in
-<code>Statistics</code> page.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-401">
+<p>The task summary feature automatically summarizes the collected data into different charts.
+It also allows the user to click on a chart to find the relevant tasks.
+The UI of the feature is in the <code>Statistics</code> Page.</p>
 </div>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-331">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-404">
 <p><strong>Implementation detail</strong></p>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-333">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-406">
 <p>This feature is implemented using <code>JavaFx</code> charts such as <code>PieChart</code>, <code>AreaChart</code> and <code>StackedBarChart</code>, as well as a
 <code>Task List Panel</code>.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-336">
-<p>The <code>Task List Panel</code> is used to show the relevant task records when user click on these <code>charts</code>.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-409">
+<p>The <code>Task List Panel</code> is used to show the relevant task records when the user clicks on <code>charts</code>.</p>
 </div>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-339">
-<p><strong>Charts &amp; DataBind &amp; OnClick Action Table</strong></p>
-<div class="admonitionblock tip has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-343">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-412">
+<p><strong>Table of Charts &amp; DataBind &amp; OnClick Action</strong></p>
+<div class="admonitionblock tip has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-416">
 <table>
 <tr>
 <td class="icon">
@@ -1267,7 +1421,7 @@ To improve the readability, only the tasks due or start within the next <strong>
 </tr>
 </table>
 </div>
-<table class="tableblock frame-all grid-all stretch has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-346">
+<table class="tableblock frame-all grid-all stretch has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-419">
 <colgroup>
 <col style="width: 37.5%;">
 <col style="width: 25%;">
@@ -1312,35 +1466,41 @@ Compare the weight of different types of tasks in each module.</p></td>
 </tr>
 </tbody>
 </table>
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-450">
+<div class="content">
+<img src="images/TaskSummaryOnClickActivityDiagram.png" alt="TaskSummaryOnClickActivityDiagram" width="650">
+</div>
+<div class="title">Figure 16. Sequence diagram for task summary UI update when data change</div>
+</div>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-377">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-452">
 <p><strong>OnChangeListener</strong></p>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-379">
-<p>The feature listens to the change of <code>UnArchived Task List</code>, <code>Archived Task List</code> and <code>Module List</code>.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-454">
+<p>The feature listens to the change of <code>Model&#8217;s</code> <code>UnArchived Task Records</code>, <code>Archived Task Records</code> and <code>Module Records</code>.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-381">
-<p>Therefore, the charts can automatically update according to the command execution.</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-456">
+<p>Once a change is captured, the charts will automatically re-render to show the latest statistics.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-383">
-<p>Currently, commands as <code>add</code> <code>edit</code> <code>delete</code> <code>sort</code> <code>find</code> <code>archive</code> <code>done</code> <code>list</code> and <code>clear</code> can
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-458">
+<p>Currently, commands as <code>add</code> <code>edit</code> <code>delete</code> <code>sort</code> <code>find</code> <code>archive</code> <code>done</code> <code>list</code> <code>clear</code> etc. can
 trigger the refresh of the charts.</p>
 </div>
-<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-386">
+<div class="imageblock text-center has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-461">
 <div class="content">
 <img src="images/TaskSummaryOnDataChangeSequenceDiagram.png" alt="TaskSummaryOnDataChangeSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 14. Sequence diagram for task summary UI update when data change</div>
+<div class="title">Figure 17. Sequence diagram for task summary UI update when data change</div>
 </div>
-<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-389">
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-464">
 <table>
 <tr>
 <td class="icon">
 <div class="title">Note</div>
 </td>
 <td class="content">
-It is possible that the pie chart&#8217;s labels can overlap together.
+It is possible that the labels of charts can overlap together.
 This is an unfixed bug regarding the JDK which is caused by JavaFX chart off-sync. To get more information, you may refer to <a href="https://bugs.openjdk.java.net/browse/JDK-8198830">here</a>.
-When this issue happens, you can use any command that can trigger chart updating to refresh the chart.
+When this issue happens, you can use any command that can trigger chart updating to refresh.
 </td>
 </tr>
 </table>
@@ -1349,86 +1509,99 @@ When this issue happens, you can use any command that can trigger chart updating
 </ol>
 </div>
 </div>
-<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-393">
-<h4 id="_example_usage_scenario_2">5.2.2. Example Usage Scenario</h4>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-394">
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-468">
+<h4 id="_example_usage_scenario_3">5.3.2. Example Usage Scenario</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-469">
 <p>Given below is an example usage scenario and how the task summary mechanism behaves at each step.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-396">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-471">
 <p>Step 1. The user launches the application for the first time, the statistics will perform on top of the sample records,
 and the result will be visualized into different charts organized in the <code>Tab Panel</code>. After the user clicks <code>Statistics</code>
 from the top menu bar, the <code>Tab Panel</code> and the <code>Task List Panel</code> will display.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-400">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-475">
 <p>Step 2. The user navigates to the <code>Statistics</code> Page for the first time. The <code>Tab Panel</code> should
 display the <code>Pie Chart</code> and the <code>Task List Panel</code> is empty with a title: "Click on Chart to View Related Tasks".
 Indeed, this is how the <code>Statistics</code> Page looks like every time the user navigates back from another Page.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-404">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-479">
 <p>Step 3. The user clicks on <code>Pie Chart</code> 's <code>Pending</code> portion. All tasks in <code>Pending</code> status should display in <code>Task List Panel</code>.
 Meanwhile, the title of the Panel will change to "PENDING: # Tasks" (# stands for the number of <code>Pending</code> tasks).</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-407">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-482">
 <p>Step 4. The user clicks on <code>Area Chart</code> 's <code>CS2101</code> area. All tasks under <code>CS2101</code> should display in <code>Task List Panel</code>.
 Meanwhile, the title of the Panel will change to "Tasks under CS2101".</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-410">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-485">
 <p>Step 5. The user executes <code>add</code> command at <code>Statistics</code> Page,
 the charts should update automatically.</p>
 </div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-488">
+<p>Step 6. The user executes <code>done</code> command at another page, and navigate back to <code>Statistics</code> Page
+the charts should show the latest statistics.</p>
 </div>
-<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-413">
-<h4 id="_design_considerations_2">5.2.3. Design Considerations</h4>
-<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-414">
+</div>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-491">
+<h4 id="_design_considerations_3">5.3.3. Design Considerations</h4>
+<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-492">
 <h5 id="_aspect_will_this_feature_contribute_value_to_cli_user">Aspect: Will this feature contribute value to CLI user</h5>
-<div class="dlist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-415">
+<div class="dlist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-493">
 <dl>
 <dt class="hdlist1">Consideration</dt>
 <dd>
-<p>Task Summary feature involves mouse clicking event.</p>
+<p>Task Summary feature involves mouse clicking event when user retrieving relevant tasks.</p>
 </dd>
 <dt class="hdlist1">Explanation</dt>
 <dd>
-<p>The most significant value of Task Summary Feature is the statistics it provides, instead of retrieving the
-relevant tasks.</p>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-422">
-<p>The statistics is auto-generated along the way the user managing their task records using keyboard input.
-Which means Study Buddy only supports keyboard input for statistics generating.
-Therefore,
-this feature still let the CLI users gain more benefits.</p>
+<p>The Task Summary Feature provides tow main services:</p>
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-498">
+<ol class="arabic">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-498">
+<p>The <strong>automatic statistics</strong> of the user input (i.e. the tasks and modules information).</p>
+</li>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-499">
+<p>The relevant <strong>records retrieving</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-502">
+<p>The retrieving service is built on top of the statistics result.
+Meanwhile, the statistics is auto-generated along the way the user managing their records using <strong>keyboard input</strong>.<br>
+Therefore, this feature can make a fast typist be more productive, especially when Study Buddy
+supports the CLI.</p>
 </div>
 </dd>
 </dl>
 </div>
 </div>
-<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-429">
+<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-507">
 <h5 id="_aspect_how_to_update_charts">Aspect: How to update charts</h5>
-<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-430">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-508">
 <ul>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-430">
-<p><strong>Alternative 1 (current choice):</strong> Use <code>onChangeListener</code> to monitor the data update and re-render the UI accordingly.</p>
-<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-431">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-508">
+<p><strong>Alternative 1 (current choice):</strong> Use <code>onChangeListener</code> to monitor the data update and re-render the UI simultaneously.</p>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-509">
 <ul>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-431">
-<p>Pros: More user-friendly and better enhance user&#8217;s productivity.</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-509">
+<p>Pros: More user-friendly, no need to ask user to manually update.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-432">
-<p>Cons: Might encounter JavaFX chart off-sync bug, and results in label overlapping. But user can  always use another
-command to walk around this problem.</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-510">
+<p>Cons: Might encounter JavaFX chart off-sync bug, and results in label overlapping. But user can always use another
+command which can trigger data updating to walk around this problem.</p>
 </li>
 </ul>
 </div>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-434">
-<p><strong>Alternative 2:</strong> Ask the user to re-launch the application or just re-open the Page to trigger the UI rendering.</p>
-<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-435">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-512">
+<p><strong>Alternative 2:</strong> Trigger the UI rendering by asking the user to re-launch the application or navigate away and back to the page.</p>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-513">
 <ul>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-435">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-513">
 <p>Pros: Safe from the JavaFX chart off-sync bug.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-436">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-514">
 <p>Cons: Force user to close or navigate around the application every time he/she wants to
-check the updated charts. Compare to the Cons from Alternative 1, this is less useful.</p>
+check the updated charts.</p>
 </li>
 </ul>
 </div>
@@ -1438,117 +1611,117 @@ check the updated charts. Compare to the Cons from Alternative 1, this is less u
 </div>
 </div>
 </div>
-<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-442">
-<h3 id="_calendar_feature">5.3. Calendar feature</h3>
-<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-444">
-<h4 id="_implementation_4">5.3.1. Implementation</h4>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-445">
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-519">
+<h3 id="_calendar_feature">5.4. Calendar feature</h3>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-521">
+<h4 id="_implementation_5">5.4.1. Implementation</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-522">
 <p>The calendar feature displays a calendar for users.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-447">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-524">
 <p>The feature is implemented by overriding the task list display panel on the main window with calendar box. The calendar currently supports following features:</p>
 </div>
-<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-449">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-526">
 <ol class="arabic">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-449">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-526">
 <p>Displays the name of all tasks on that day in the calendar grid.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-450">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-527">
 <p>Access calendars in previous or next month using the buttons on top.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-451">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-528">
 <p>Displays more information about tasks for the day on the Due Soon panel after clicking on a grid.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-452">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-529">
 <p>Fast forward to a specific year/month using CLI.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-454">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-531">
 <p>When a calender is requested, a CalendarPanel object is constructed, the object diagram below shows the structure of a CalendarPanel. We will be using the date <code>01/04/2020</code> as an example.</p>
 </div>
-<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-456">
+<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-533">
 <div class="content">
 <img src="images/CalendarBoxObjectDiagram.png" alt="CalendarBoxObjectDiagram">
 </div>
-<div class="title">Figure 15. CalendarPanel object diagram</div>
+<div class="title">Figure 18. CalendarPanel object diagram</div>
 </div>
 </div>
-<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-458">
-<h4 id="_example_usage_scenarios">5.3.2. Example usage scenarios</h4>
-<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-460">
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-535">
+<h4 id="_example_usage_scenarios">5.4.2. Example usage scenarios</h4>
+<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-537">
 <h5 id="_using_mouse_click">Using mouse click</h5>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-461">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-538">
 <p>Clicking on the show calendar menu item under the calendar menu will enable this feature. Upon requesting for the calendar to be shown:</p>
 </div>
-<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-463">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-540">
 <ol class="arabic">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-463">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-540">
 <p>The calendar box object will be constructed</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-464">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-541">
 <p>The calendar loops through every day of the month while searching for tasks due on that day</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-465">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-542">
 <p>The task name is added to the calendar grid</p>
 </li>
 </ol>
 </div>
 </div>
-<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-467">
+<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-544">
 <h5 id="_using_cli">Using CLI</h5>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-468">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-545">
 <p>As of Study Buddy v1.4, a new feature has been added that allows users to navigate the calendar using CLI.</p>
 </div>
-<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-470">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-547">
 <ol class="arabic">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-470">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-547">
 <p>The user enters 'calendar' into the command box.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-471">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-548">
 <p>The user enters the selected date into the command box.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-472">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-549">
 <p>Calendar will be generated the same way as a mouse click, however, it will use the selected date as parameters.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-474">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-551">
 <p>Below is an activity diagram describing the events that will happen:</p>
 </div>
-<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-476">
+<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-553">
 <div class="content">
 <img src="images/CalendarActivityDiagram.png" alt="CalendarActivityDiagram" width="400">
 </div>
-<div class="title">Figure 16. Calendar Activity Diagram</div>
+<div class="title">Figure 19. Calendar Activity Diagram</div>
 </div>
 </div>
 </div>
-<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-478">
-<h4 id="_design_considerations_3">5.3.3. Design considerations</h4>
-<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-479">
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-555">
+<h4 id="_design_considerations_4">5.4.3. Design considerations</h4>
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-556">
 <ul>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-479">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-556">
 <p>It is more efficient to cache the calendar rather than to generate a new one, however, we do not expect the user to have too many tasks and therefore it should not slow down the application.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-481">
-<h3 id="_archive_feature">5.4. Archive feature</h3>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-482">
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-558">
+<h3 id="_archive_feature">5.5. Archive feature</h3>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-559">
 <p>Archive stores selected task away into a separate task list, this command is used when the user has completed a task but still wants to keep track of it.</p>
 </div>
-<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-484">
-<h4 id="_implementation_5">5.4.1. Implementation</h4>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-485">
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-561">
+<h4 id="_implementation_6">5.5.1. Implementation</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-562">
 <p>Archive uses both the old delete and a new archive command. Upon executing the archive command, it will call the model to delete the task and archive it elsewhere.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-487">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-564">
 <p>The archived task list is stored within Model as a seperate list.</p>
 </div>
-<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-489">
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-566">
 <table>
 <tr>
 <td class="icon">
@@ -1560,144 +1733,144 @@ The index for archived tasks are not used for any commands other than <code>unar
 </tr>
 </table>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-491">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-568">
 <p>Sequence diagram:</p>
 </div>
-<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-493">
+<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-570">
 <div class="content">
 <img src="images/ArchiveSequenceDiagram.png" alt="ArchiveSequenceDiagram" width="600">
 </div>
-<div class="title">Figure 17. Archive Sequence Diagram</div>
+<div class="title">Figure 20. Archive Sequence Diagram</div>
 </div>
-<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-495">
+<div class="admonitionblock caution has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-572">
 <table>
 <tr>
 <td class="icon">
-<div class="title">Note</div>
+<div class="title">Caution</div>
 </td>
 <td class="content">
-The lifeline of an object should not continue after deletion. Lifeline is shown due to a limitation of plantUML.
+The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </td>
 </tr>
 </table>
 </div>
 </div>
 </div>
-<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-498">
-<h3 id="_productivity_feature">5.5. Productivity feature</h3>
-<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-500">
-<h4 id="_implementation_6">5.5.1. Implementation</h4>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-501">
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-575">
+<h3 id="_productivity_feature">5.6. Productivity feature</h3>
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-577">
+<h4 id="_implementation_7">5.6.1. Implementation</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-578">
 <p>The productivity feature displays insights related to the user&#8217;s productivity over the
-past day, week and more on the Productivity page.
+past day, week and more on the Productivity panel.
 The Productivity page is integrated with the main page as a side panel.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-505">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-582">
 <p>The Productivity page is further composed of 3 tabs:</p>
 </div>
-<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-507">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-584">
 <ol class="arabic">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-507">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-584">
 <p>Daily Productivity Tab</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-509">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-586">
 <p>Weekly Productivity Tab</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-511">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-588">
 <p>Productivity Points Tab</p>
 </li>
 </ol>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-513">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-590">
 <p>The Productivity page can be viewed by clicking on the Productivity menu item,
 which directs the user to the Daily Productivity Tab.
 The Productivity page can also be viewed by clicking on the Productivity Points shown on
 the top right of the application window.
 This directs the user to the Productivity Points Tab.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-519">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-596">
 <p>The productivity feature is facilitated by the <code>Statistics</code> class, which allows
 StudyBuddy to keep track of relevant usage statistics of the user.
 <code>Statistics</code> is further composed of classes that keep track of specific statistics:</p>
 </div>
-<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-523">
+<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-600">
 <ol class="loweralpha" type="a">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-523">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-600">
 <p><code>CompletionStats</code> keeps track of the number of tasks completed by the user each day and each week</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-525">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-602">
 <p><code>OverdueStats</code> keeps track of the number of tasks that went overdue each day and each week.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-527">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-604">
 <p><code>ScoreStats</code> keeps track of the user&#8217;s Productivity Points and rank each day</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-529">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-606">
 <p><code>GeneralStats</code> keeps track of the user&#8217;s goal, streak, and other statistics not covered by the other statistics classes</p>
 </li>
 </ol>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-531">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-608">
 <p>The user can gain or lose Productivity Points in StudyBuddy when certain actions or events are completed. These include:</p>
 </div>
-<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-533">
+<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-610">
 <ol class="loweralpha" type="a">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-533">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-610">
 <p>Adding a task: <em>+1</em></p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-535">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-612">
 <p>Completing a task: <em>+10</em></p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-537">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-614">
 <p>Completing your daily goal: <em>+(points equivalent to daily goal)</em></p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-539">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-616">
 <p>Using advanced features; <em>+1</em></p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-541">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-618">
 <p>Letting a task go Overdue: <em>-1</em></p>
 </li>
 </ol>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-543">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-620">
 <p>Each usage statistic is updated accordingly when the respective user action or event
-has concluded. These statistics are then rendered on the <code>ProductivityPage</code>.
+has concluded. These statistics are then rendered on the <code>ProductivityPanel</code>.
 The chart visualizations are implemented using <code>ProgressIndicator</code>, <code>BarChart</code> and <code>AreaChart</code>.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-547">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-624">
 <p>When the statistics are updated, the task list&#8217;s event listener and classes implementing
-<code>GoalObserver</code> will be informed of the changes. <code>ProductivityPage</code> re-renders the
+<code>GoalObserver</code> will be informed of the changes. <code>ProductivityPanel</code> re-renders the
 displayed information when either of these are updated.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-551">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-628">
 <p>The data displayed will be automatically updated upon calling any of the following commands:</p>
 </div>
-<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-553">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-630">
 <ul>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-553">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-630">
 <p><code>add</code></p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-555">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-632">
 <p><code>done</code></p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-557">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-634">
 <p><code>delete</code></p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-559">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-636">
 <p><code>refresh</code></p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-561">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-638">
 <p><code>goal</code></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-563">
-<h4 id="_example_use_scenario">5.5.2. Example Use Scenario</h4>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-564">
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-640">
+<h4 id="_example_use_scenario">5.6.2. Example Use Scenario</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-641">
 <p>Given below is an example usage scenario and how the
 Productivity feature behaves at each step.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-567">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-644">
 <p>Step 1: The user launches the application.
 Step 2: The Productivity feature displays the user&#8217;s Productivity Points on the top right of the screen.
 Step 3: The user clicks the Productivity Menu button
@@ -1706,72 +1879,72 @@ Step 5: The user completes a task using <code>done</code>
 Step 6: The daily number of tasks is added and Productivity Points is increased.
 If the daily goal has been reached, the user&#8217;s streak is incremented.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-575">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-652">
 <p>Here is an activity diagram of the aforementioned steps:</p>
 </div>
-<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-577">
+<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-654">
 <div class="content">
 <img src="images/ProductivityActivityDiagram.png" alt="ProductivityActivityDiagram" width="400">
 </div>
-<div class="title">Figure 18. Productivity Feature Example Activity Diagram</div>
+<div class="title">Figure 21. Productivity Feature Example Activity Diagram</div>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-579">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-656">
 <p>Extension: Suppose the user sees the Productivity Points and clicks it
 Step 3: The user clicks the Productivity Points on the top right of the screen
 Step 4: The Productivity Points Tab is displayed to the user</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-583">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-660">
 <p>From here, the user can continue to manage tasks as per Step 5 and 6 above,
 or navigate to other Productivity tabs.</p>
 </div>
-<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-588">
+<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-665">
 <h5 id="_clicking_the_productivity_menu_item">Clicking the Productivity menu item</h5>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-589">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-666">
 <p>image</p>
 </div>
 </div>
 </div>
-<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-591">
-<h4 id="_design_considerations_4">5.5.3. Design Considerations</h4>
-<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-593">
-<h5 id="_aspect_how_to_re_render_productivity_page_when_statistics_are_updated">Aspect: How to re-render Productivity page when statistics are updated</h5>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-594">
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-668">
+<h4 id="_design_considerations_5">5.6.3. Design Considerations</h4>
+<div class="sect4 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-670">
+<h5 id="_aspect_how_to_re_render_productivity_panel_when_statistics_are_updated">Aspect: How to re-render Productivity Panel when statistics are updated</h5>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-671">
 <p><strong>Alternative 1</strong>: re-render only the values that have been updated</p>
 </div>
-<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-596">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-673">
 <ul>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-596">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-673">
 <p>Pros: maximizes loading speed and minimizes lag for the user</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-598">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-675">
 <p>Cons: increases complexity for codebase, higher chance of bugs occuring</p>
 </li>
 </ul>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-600">
-<p><strong>Alternative 2</strong>: always re-render the whole Productivity Page</p>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-677">
+<p><strong>Alternative 2</strong>: always re-render the whole Productivity Panel</p>
 </div>
-<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-602">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-679">
 <ul>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-602">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-679">
 <p>Pros: easy to implement</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-604">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-681">
 <p>Cons: may result in slower loading speed and more lag for the user</p>
 </li>
 </ul>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-606">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-683">
 <p><strong>Alternative 3 (current choice)</strong>: re-render only the values that have been updated
 if it does not result in increased code complexity</p>
 </div>
-<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-609">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-686">
 <ul>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-609">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-686">
 <p>Pros: improves loading speed and decreases lag for the user,
 while keeping the codebase readable and easy to reason with.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-612">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-689">
 <p>Cons: may result in slower loading speed. However, based on testing,
 this trade-off does not result in any measurable delay.</p>
 </li>
@@ -1780,22 +1953,22 @@ this trade-off does not result in any measurable delay.</p>
 </div>
 </div>
 </div>
-<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-625">
-<h3 id="_modules">5.6. Modules</h3>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-626">
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-702">
+<h3 id="_modules">5.7. Modules</h3>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-703">
 <p>The <code>modules</code> feature enables users to be able to group and view their tasks according to various modules or subjects.
 Each module is assigned with a unique module code &amp; a name.
 By default, all task created with the <code>add</code> command will be be assigned to module code <code>OO0000O</code>.</p>
 </div>
-<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-630">
-<h4 id="_implementation_7">5.6.1. Implementation</h4>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-631">
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-707">
+<h4 id="_implementation_8">5.7.1. Implementation</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-708">
 <p>Modules are created with <code>create mods</code> Command and the program will request for a module name and module code. There are no restrictions on module name as long as it is not an empty entry.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-633">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-710">
 <p>Module codes however, require at least an alphabetical prefix, a number, and a postfix(optional).</p>
 </div>
-<div class="listingblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-635">
+<div class="listingblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-712">
 <div class="content">
 <pre class="CodeRay highlight"><code>Correct moduleCodes:
 A0A
@@ -1809,188 +1982,188 @@ CAT
 </div>
 </div>
 </div>
-<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-647">
-<h4 id="_sequence_diagram_for_creating_modules">5.6.2. Sequence diagram for creating modules</h4>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-648">
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-724">
+<h4 id="_sequence_diagram_for_creating_modules">5.7.2. Sequence diagram for creating modules</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-725">
 <p>This is a sequence of how a module is created using the <code>create mods</code> feature. Take note that all interactions go through the <code>CommandBox</code> first in the UI, but it will be omitted from this diagram for simplicity.</p>
 </div>
-<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-650">
+<div class="imageblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-727">
 <div class="content">
 <img src="images/UMLmodule.jpeg" alt="UMLmodule" width="1000">
 </div>
-<div class="title">Figure 19. Sequence diagram for modules</div>
+<div class="title">Figure 22. Sequence diagram for modules</div>
 </div>
 </div>
 </div>
-<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-653">
-<h3 id="_logging">5.7. Logging</h3>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-655">
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-730">
+<h3 id="_logging">5.8. Logging</h3>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-732">
 <p>We are using <code>java.util.logging</code> package for logging.
 The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
-<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-658">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-735">
 <ul>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-658">
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 5.8, &#8220;Configuration&#8221;</a>)</p>
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-735">
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 5.9, &#8220;Configuration&#8221;</a>)</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-659">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-736">
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-660">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-737">
 <p>Currently log messages are output through: <code>Console</code> and to a <code>.log</code> file.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-662">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-739">
 <p><strong>Logging Levels</strong></p>
 </div>
-<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-664">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-741">
 <ul>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-664">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-741">
 <p><code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the application</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-665">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-742">
 <p><code>WARNING</code> : Can continue, but with caution</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-666">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-743">
 <p><code>INFO</code> : Information showing the noteworthy actions by the App</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-667">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-744">
 <p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-670">
-<h3 id="Implementation-Configuration">5.8. Configuration</h3>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-672">
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-747">
+<h3 id="Implementation-Configuration">5.9. Configuration</h3>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-749">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
-<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-674">
-<h3 id="_proposed_data_encryption">5.9. [Proposed] Data encryption</h3>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-676">
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-751">
+<h3 id="_proposed_data_encryption">5.10. [Proposed] Data encryption</h3>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-753">
 <p>Since Study Buddy is an offline application, there is no threat of being attacked via a network channel. However, in case the computer has a shared owner, a password feature can be implemented in the future for privacy purposes.</p>
 </div>
-<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-678">
-<h4 id="_implementation_8">5.9.1. Implementation</h4>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-679">
+<div class="sect3 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-755">
+<h4 id="_implementation_9">5.10.1. Implementation</h4>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-756">
 <p>The goal is to encrypt <code>taskList3.json</code>, while still allowing the owner to access his/her tasks using his password.</p>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-681">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-758">
 <p>We will be using AES (Advanced Encryption Scheme) for encryption, and a slow hashing algorithm to derive a key from the user&#8217;s password. The slow hashing algorithm is to prevent brute force attacks.</p>
 </div>
-<div class="exampleblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-683">
+<div class="exampleblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-760">
 <div class="content">
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-684">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-761">
 <p><strong>Encryption</strong></p>
 </div>
-<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-686">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-763">
 <ol class="arabic">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-686">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-763">
 <p>User sets a password. (Optional)</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-687">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-764">
 <p>Study Buddy uses a slow hashing algorithm (<a href="https://github.com/patrickfav/bcrypt">bCrypt</a>) to generate a key.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-688">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-765">
 <p>When user exits the app, Study Buddy will encrypt taskList.json using the <a href="https://github.com/facebookarchive/conceal">conceal</a> library and the generated key.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-689">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-766">
 <p>TaskList.json should now be encrypted</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
-<div class="exampleblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-691">
+<div class="exampleblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-768">
 <div class="content">
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-692">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-769">
 <p><strong>Decryption</strong></p>
 </div>
-<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-694">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-771">
 <ol class="arabic">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-694">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-771">
 <p>User enters a password.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-695">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-772">
 <p>If the password is correct, the same key should be hashed and taskList.json can be decrypted.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-696">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-773">
 <p>If the password is incorrect, user will be allowed to try again.</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-699">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-776">
 <p>We leave it to the user&#8217;s own jurisdiction to create a strong password.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-701">
+<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-778">
 <h2 id="_documentation">6. Documentation</h2>
 <div class="sectionbody">
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-703">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-780">
 <p>Refer to the guide <a href="Documentation.html">here</a>.</p>
 </div>
 </div>
 </div>
-<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-705">
+<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-782">
 <h2 id="_testing">7. Testing</h2>
 <div class="sectionbody">
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-707">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-784">
 <p>Refer to the guide <a href="Testing.html">here</a>.</p>
 </div>
 </div>
 </div>
-<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-709">
+<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-786">
 <h2 id="_dev_ops">8. Dev Ops</h2>
 <div class="sectionbody">
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-711">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-788">
 <p>Refer to the guide <a href="DevOps.html">here</a>.</p>
 </div>
 </div>
 </div>
-<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-714">
+<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-791">
 <h2 id="_product_scope">Appendix A: Product Scope</h2>
 <div class="sectionbody">
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-716">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-793">
 <p><strong>Target user profile</strong>:</p>
 </div>
-<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-718">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-795">
 <ul>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-718">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-795">
 <p>has a need to manage a significant number of tasks for various modules</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-719">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-796">
 <p>appreciates visualization tools to aid in task management</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-720">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-797">
 <p>prefers desktop apps over mobile apps</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-721">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-798">
 <p>can type fast</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-722">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-799">
 <p>prefers typing over mouse input</p>
 </li>
 </ul>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-724">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-801">
 <p><strong>Value proposition</strong>: manages tasks faster than a typical mouse/<a href="#GUI">GUI</a> driven app</p>
 </div>
 </div>
 </div>
-<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-729">
+<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-806">
 <h2 id="_user_stories">Appendix B: User Stories</h2>
 <div class="sectionbody">
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-731">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-808">
 <p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
 </div>
-<table class="tableblock frame-all grid-all has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-734" style="width: 59%;">
+<table class="tableblock frame-all grid-all has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-811" style="width: 59%;">
 <colgroup>
 <col style="width: 22%;">
 <col style="width: 23%;">
@@ -2022,7 +2195,7 @@ The <code>LogsCenter</code> class is used to manage the logging levels and loggi
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add a new task</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view all my Pending tasks in one place</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view all my tasks in one place</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2041,6 +2214,12 @@ The <code>LogsCenter</code> class is used to manage the logging levels and loggi
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">find a task by keyword</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">locate details of a task without having to go through the entire list</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user with task deadline extended</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit the particular task</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update my task accordingly</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -2098,6 +2277,18 @@ The <code>LogsCenter</code> class is used to manage the logging levels and loggi
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who has many tasks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check the summary of their current status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">better plan my time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user who has many tasks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check the summary of their current status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">better plan my time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user who finds it hard to keep track of all my deadlines</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">have a calendar</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">easily find tasks due on a day</p></td>
@@ -2106,78 +2297,78 @@ The <code>LogsCenter</code> class is used to manage the logging levels and loggi
 </table>
 </div>
 </div>
-<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-771">
+<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-854">
 <h2 id="_use_cases">Appendix C: Use Cases</h2>
 <div class="sectionbody">
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-773">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-856">
 <p>(For all use cases below, the <strong>System</strong> is <code>Study Buddy</code> and the <strong>Actor</strong> is the <code>statistics</code>, unless specified otherwise)</p>
 </div>
-<h3 id="_use_case_list_task" class="discrete has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-778">Use case: List task</h3>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-780">
+<h3 id="_use_case_list_task" class="discrete has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-861">Use case: List task</h3>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-863">
 <p><strong>MSS</strong></p>
 </div>
-<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-782">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-865">
 <ol class="arabic">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-782">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-865">
 <p>User is on the <code>All tasks</code> or <code>productivity</code> tab.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-783">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-866">
 <p>User requests to list tasks</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-784">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-867">
 <p>Study Buddy shows a list of unarchived tasks</p>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-786">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-869">
 <p>Use case ends.</p>
 </div>
 </li>
 </ol>
 </div>
-<h3 id="_use_case_delete_task" class="discrete has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-789">Use case: Delete task</h3>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-791">
+<h3 id="_use_case_delete_task" class="discrete has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-872">Use case: Delete task</h3>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-874">
 <p><strong>MSS</strong></p>
 </div>
-<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-794">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-877">
 <ol class="arabic">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-794">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-877">
 <p>Refer to List task use case</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-795">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-878">
 <p>User requests to delete a specific task in the list</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-796">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-879">
 <p>Study Buddy asks for the index</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-797">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-880">
 <p>User provides index</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-798">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-881">
 <p>Study Buddy deletes the task</p>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-800">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-883">
 <p>Use case ends.</p>
 </div>
 </li>
 </ol>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-802">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-885">
 <p><strong>Extensions</strong></p>
 </div>
-<div class="ulist none has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-805">
+<div class="ulist none has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-888">
 <ul class="none">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-805">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-888">
 <p>2a.
 The list is empty.</p>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-808">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-891">
 <p>Use case ends.</p>
 </div>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-810">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-893">
 <p>3a.
 The given index is invalid.</p>
-<div class="ulist none has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-814">
+<div class="ulist none has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-897">
 <ul class="none">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-814">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-897">
 <p>3a1. Study Buddy shows an error message.</p>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-816">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-899">
 <p>Use case resumes at step 2.</p>
 </div>
 </li>
@@ -2186,48 +2377,48 @@ The given index is invalid.</p>
 </li>
 </ul>
 </div>
-<h3 id="_use_case_filter_tasks" class="discrete has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-819">Use case: Filter tasks</h3>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-821">
+<h3 id="_use_case_filter_tasks" class="discrete has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-902">Use case: Filter tasks</h3>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-904">
 <p><strong>MSS</strong></p>
 </div>
-<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-824">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-907">
 <ol class="arabic">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-824">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-907">
 <p>User requests to filter tasks</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-825">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-908">
 <p>Study Buddy shows two options for filter</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-826">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-909">
 <p>User requests to filter by status</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-827">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-910">
 <p>Study Buddy provides options to filter by status</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-828">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-911">
 <p>User provides input</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-829">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-912">
 <p>Study Buddy shows filtered task list</p>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-831">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-914">
 <p>Use case ends.</p>
 </div>
 </li>
 </ol>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-833">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-916">
 <p><strong>Extensions</strong></p>
 </div>
-<div class="ulist none has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-836">
+<div class="ulist none has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-919">
 <ul class="none">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-836">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-919">
 <p>3a.
 The given index is invalid.</p>
-<div class="ulist none has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-840">
+<div class="ulist none has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-923">
 <ul class="none">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-840">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-923">
 <p>3a1. Study Buddy shows an error message.</p>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-842">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-925">
 <p>Use case resumes at step 2.</p>
 </div>
 </li>
@@ -2236,16 +2427,16 @@ The given index is invalid.</p>
 </li>
 </ul>
 </div>
-<div class="ulist none has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-845">
+<div class="ulist none has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-928">
 <ul class="none">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-845">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-928">
 <p>3a.
 User chooses to filter by type instead.</p>
-<div class="ulist none has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-849">
+<div class="ulist none has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-932">
 <ul class="none">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-849">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-932">
 <p>4a. Study Buddy provides options to filter by type</p>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-851">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-934">
 <p>Use case resumes at step 5.</p>
 </div>
 </li>
@@ -2254,80 +2445,80 @@ User chooses to filter by type instead.</p>
 </li>
 </ul>
 </div>
-<h3 id="_use_case_view_renamed" class="discrete has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-855">Use case: View renamed</h3>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-857">
+<h3 id="_use_case_view_renamed" class="discrete has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-938">Use case: View renamed</h3>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-940">
 <p><strong>MSS</strong></p>
 </div>
-<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-859">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-942">
 <ol class="arabic">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-859">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-942">
 <p>User requests to view renamed tasks</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-860">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-943">
 <p>Study Buddy shows a list of renamed tasks</p>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-862">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-945">
 <p>Use case ends.</p>
 </div>
 </li>
 </ol>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-864">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-947">
 <p><strong>Extensions</strong></p>
 </div>
-<div class="ulist none has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-867">
+<div class="ulist none has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-950">
 <ul class="none">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-867">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-950">
 <p>2a.
 The list is empty.</p>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-870">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-953">
 <p>Use case ends.</p>
 </div>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-872">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-955">
 <p>3a.
 There are no duplicate tasks</p>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-875">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-958">
 <p>Use case ends.</p>
 </div>
 </li>
 </ul>
 </div>
-<h3 id="_use_case_refresh" class="discrete has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-878">Use case: Refresh</h3>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-880">
+<h3 id="_use_case_refresh" class="discrete has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-961">Use case: Refresh</h3>
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-963">
 <p><strong>MSS</strong></p>
 </div>
-<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-883">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-966">
 <ol class="arabic">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-883">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-966">
 <p>User notices Due Soon list needs to be updates</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-884">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-967">
 <p>User requests to refresh</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-885">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-968">
 <p>Study Buddy refreshes the Due Soon list and status tags</p>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-887">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-970">
 <p>Use case ends.</p>
 </div>
 </li>
 </ol>
 </div>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-889">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-972">
 <p><strong>Extensions</strong></p>
 </div>
-<div class="ulist none has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-892">
+<div class="ulist none has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-975">
 <ul class="none">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-892">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-975">
 <p>2a.
 The list is empty.</p>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-895">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-978">
 <p>Use case ends.</p>
 </div>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-897">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-980">
 <p>3a.
 There is nothing to refresh</p>
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-900">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-983">
 <p>Use case ends.</p>
 </div>
 </li>
@@ -2335,28 +2526,28 @@ There is nothing to refresh</p>
 </div>
 </div>
 </div>
-<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-904">
+<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-987">
 <h2 id="_non_functional_requirements">Appendix D: Non Functional Requirements</h2>
 <div class="sectionbody">
-<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-906">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-989">
 <ol class="arabic">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-906">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-989">
 <p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>11</code> or above installed.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-907">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-990">
 <p>Should be able to hold a good number of tasks without a noticeable sluggishness in performance for typical usage.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-908">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-991">
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
-<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-912">
+<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-995">
 <h2 id="_glossary">Appendix E: Glossary</h2>
 <div class="sectionbody">
-<div id="mainstream-os" class="dlist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-915">
+<div id="mainstream-os" class="dlist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-998">
 <dl>
 <dt class="hdlist1">Mainstream OS</dt>
 <dd>
@@ -2364,7 +2555,7 @@ There is nothing to refresh</p>
 </dd>
 </dl>
 </div>
-<div id="GUI" class="dlist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-918">
+<div id="GUI" class="dlist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1001">
 <dl>
 <dt class="hdlist1">GUI</dt>
 <dd>
@@ -2372,7 +2563,7 @@ There is nothing to refresh</p>
 </dd>
 </dl>
 </div>
-<div id="Index" class="dlist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-921">
+<div id="Index" class="dlist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1004">
 <dl>
 <dt class="hdlist1">Index</dt>
 <dd>
@@ -2382,13 +2573,13 @@ There is nothing to refresh</p>
 </div>
 </div>
 </div>
-<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-925">
+<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1008">
 <h2 id="_instructions_for_manual_testing">Appendix F: Instructions for Manual Testing</h2>
 <div class="sectionbody">
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-927">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1010">
 <p>Given below are instructions to test the app manually.</p>
 </div>
-<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-930">
+<div class="admonitionblock note has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1013">
 <table>
 <tr>
 <td class="icon">
@@ -2400,18 +2591,18 @@ These instructions only provide a starting point for testers to work on; testers
 </tr>
 </table>
 </div>
-<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-932">
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1015">
 <h3 id="_launch_and_shutdown">F.1. Launch and Shutdown</h3>
-<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-934">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1017">
 <ol class="arabic">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-934">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1017">
 <p>Initial launch</p>
-<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-936">
+<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1019">
 <ol class="loweralpha" type="a">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-936">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1019">
 <p>Download the jar file and copy into an empty folder</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-937">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1020">
 <p>Double-click the jar file<br>
    Expected: Shows the GUI with a set of sample tasks.
 The window size may not be optimum.</p>
@@ -2419,16 +2610,16 @@ The window size may not be optimum.</p>
 </ol>
 </div>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-941">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1024">
 <p>Saving window preferences</p>
-<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-943">
+<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1026">
 <ol class="loweralpha" type="a">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-943">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1026">
 <p>Resize the window to an optimum size.
 Move the window to a different location.
 Close the window.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-946">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1029">
 <p>Re-launch the app by double-clicking the jar file.<br>
 Expected: The most recent window size and location is retained.</p>
 </li>
@@ -2438,29 +2629,29 @@ Expected: The most recent window size and location is retained.</p>
 </ol>
 </div>
 </div>
-<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-950">
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1033">
 <h3 id="_deleting_a_task">F.2. Deleting a task</h3>
-<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-952">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1035">
 <ol class="arabic">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-952">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1035">
 <p>Deleting a task while all tasks are listed</p>
-<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-954">
+<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1037">
 <ol class="loweralpha" type="a">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-954">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1037">
 <p>Prerequisites: List all tasks using the <code>list</code> command.
 Multiple tasks in the list.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-956">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1039">
 <p>Test case: <code>delete [Enter]</code> + <code>1</code><br>
    Expected: First task is deleted from the list.
 Successful deletion indication in the status message.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-959">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1042">
 <p>Test case: <code>delete [Enter]</code> + <code>0</code><br>
    Expected: No task is deleted.
 Error details shown in the status message.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-962">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1045">
 <p>Other incorrect delete commands to try: <code>delete x</code>(where x is anything)</p>
 </li>
 </ol>
@@ -2469,26 +2660,26 @@ Error details shown in the status message.</p>
 </ol>
 </div>
 </div>
-<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-966">
+<div class="sect2 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1049">
 <h3 id="_saving_data">F.3. Saving data</h3>
-<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-968">
+<div class="olist arabic has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1051">
 <ol class="arabic">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-968">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1051">
 <p>Dealing with missing/corrupted data files</p>
-<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-970">
+<div class="olist loweralpha has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1053">
 <ol class="loweralpha" type="a">
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-970">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1053">
 <p>Prerequisites: Delete the "tasklist.json" file from data folder.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-972">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1055">
 <p>Test case: Launch the application<br>
    Expected: The application indicates that the data file needed is missing and creates one.
 c</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-975">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1058">
 <p>Prerequisites: Modify the "tasklist.json" file to show some incorrect data.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-977">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1060">
 <p>Test case: Launch the application<br>
    Expected: The application indicates that the data file is corrupted.
 Application launches successfully but has no data.</p>
@@ -2501,21 +2692,21 @@ Application launches successfully but has no data.</p>
 </div>
 </div>
 </div>
-<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-983">
+<div class="sect1 has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1066">
 <h2 id="_effort">Appendix G: Effort</h2>
 <div class="sectionbody">
-<div class="exampleblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-985">
+<div class="exampleblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1068">
 <div class="content">
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-986">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1069">
 <p><strong>Interactive prompt</strong></p>
 </div>
-<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-988">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1071">
 <ul>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-988">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1071">
 <p>AB3 requires users to input a whole line of text at once, which is unintuitive and prone to typos by the user. Furthermore, AB3 uses tags like
 &#8220;\p&#8221; to break the user&#8217;s input up for parsing. This means that users will not be able to use these strings for any of their inputs.</p>
 </li>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-991">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1074">
 <p>Study buddy fixes that issue by introducing an interactive prompt for every command. This required a lot effort as there had to be an interactive prompt
 for every command.</p>
 </li>
@@ -2523,14 +2714,14 @@ for every command.</p>
 </div>
 </div>
 </div>
-<div class="exampleblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-995">
+<div class="exampleblock has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1078">
 <div class="content">
-<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-996">
+<div class="paragraph has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1079">
 <p><strong>Refactoring</strong></p>
 </div>
-<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-998">
+<div class="ulist has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1081">
 <ul>
-<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-998">
+<li class="has-source-line data-line-/Users/yutingwang/Desktop/CS2103T/TP/Team_proj/main/docs/DeveloperGuide.adoc-1081">
 <p>AB3 uses the <code>Person</code> class which had 5 fields. Study buddy has 12 fields, every one of them is used in a major feature.</p>
 </li>
 </ul>
@@ -2542,7 +2733,7 @@ for every command.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-04-13 01:07:43 +0800
+Last updated 2020-04-13 16:41:10 +0800
 </div>
 </div>
 </body>
