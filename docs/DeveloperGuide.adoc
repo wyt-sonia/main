@@ -738,6 +738,11 @@ name and `ModuleCode` on according to user input.
 It will go through the various layers in Model before returning to the prompt,
 which will then return to the user.
 
+{bl}
+[CAUTION]
+The lifeline for every member should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+{bl}
+
 
 === Logging
 

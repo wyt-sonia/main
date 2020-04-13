@@ -26,7 +26,6 @@ public class SortTaskInteractivePrompt extends InteractivePrompt {
     private final Logger logger = LogsCenter.getLogger(SortTaskInteractivePrompt.class);
 
     private int option;
-    private String userInput;
 
     public SortTaskInteractivePrompt() {
         super();
