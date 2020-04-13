@@ -1,0 +1,44 @@
+@startuml
+
+skinparam objectBackgroundColor #tan
+skinparam objectBorderColor #black
+skinparam arrowColor #black
+
+object "statistics:Statistics" as s {
+}
+
+object "generalStats:GeneralStats" as gs {
+    goal
+    streak
+    isStreakAddedList
+}
+object "scoreStats:ScoreStats" as ss {
+    currentScore
+    scoreList
+}
+object "completionStats:CompletionStats" as cs {
+    completeCountList
+}
+object "overdueStats:OverdueStats" as os {
+    overdueCountList
+}
+
+object ":StatsUtil" as su
+interface "goalObserver:GoalObserver" as go {
+    update()
+}
+
+s*--cs
+s*--os
+s*--ss
+s*--gs
+
+s.>su
+ss..>su
+gs..>su
+
+gs..>go
+
+
+
+@enduml
