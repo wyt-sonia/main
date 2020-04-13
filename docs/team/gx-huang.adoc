@@ -8,7 +8,7 @@
 == Overview
 
 StudyBuddy is a desktop application designed for students who *wish to manage their module related tasks* in a convenient and user-friendly interface.
-It is *optimized for those who prefer to work with a Command Line Interface* (CLI) but still contains the benefits of *Graphical User Interface* (GUI) which was written using JavaFX.
+It is *optimized for those who prefer to work with a Command Line Interface* (CLI) but still contains the benefits of *Graphical User Interface* (GUI).
 The codebase is in Java and contains about 13kLoc.
 
 == Summary of contributions
@@ -56,13 +56,14 @@ https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#=undefined&search=gx-huang[T
 
 === Team-based Tasks
 * Helped set up the github team and repo.
-* Assigned issues to my team mates.https://github.com/AY1920S2-CS2103T-W16-3/main/issues/33[33]https://github.com/AY1920S2-CS2103T-W16-3/main/issues/31[31]
-* Left constructive feedback on my team mate's pull request.https://github.com/AY1920S2-CS2103T-W16-3/main/pull/58[58]
-* Helped resolve some issues my team mates had regarding address book 3.https://github.com/AY1920S2-CS2103T-W16-3/main/issues/49[49]
-* Created test cases for classes that were not mine.https://github.com/AY1920S2-CS2103T-W16-3/main/pull/61[61]
+* Assigned issues to my team mates. https://github.com/AY1920S2-CS2103T-W16-3/main/issues/33[33], https://github.com/AY1920S2-CS2103T-W16-3/main/issues/31[31]
+* Wrote proposed feature in developer's guide.
+* Created test cases for classes that were not mine. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/61[61]
 
 === Review/Mentoring
-* Left feedback
+* Left constructive feedback on my team mate's pull request. https://github.com/AY1920S2-CS2103T-W16-3/main/pull/58[58]
+* Helped resolve some issues my team mates had regarding address book 3. https://github.com/AY1920S2-CS2103T-W16-3/main/issues/49[49]
+* Left feedback for another team's DG. https://github.com/AY1920S2-CS2103-W14-3/main/issues/59[59]
 
 === User guide contributions
 
