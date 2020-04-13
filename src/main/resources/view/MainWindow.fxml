@@ -2,6 +2,7 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Scene?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -12,9 +13,9 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.Scene?>
 <?import javafx.scene.text.Font?>
 <?import javafx.stage.Stage?>
+
 <fx:root minHeight="600" minWidth="550" onCloseRequest="#handleExit" title="Study Buddy" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <icons>
         <Image url="@/images/study_buddy.png" />
@@ -31,8 +32,8 @@
                <children>
                       <MenuBar fx:id="menuBar">
                           <Menu mnemonicParsing="false" text="StudyBuddy">
-                              <MenuItem mnemonicParsing="false" onAction="#handleShowAllTasks" style="-fx-font-size: 10pt;" text="All Tasks" />
-                              <MenuItem mnemonicParsing="false" onAction="#handleShowArchivedTasks" style="-fx-font-size: 10pt;" text="Archived Tasks" />
+                              <MenuItem fx:id="allTaskMenuItem" mnemonicParsing="false" onAction="#handleShowAllTasks" style="-fx-font-size: 10pt;" text="All Tasks" />
+                              <MenuItem fx:id="archiveMenuItem" mnemonicParsing="false" onAction="#handleShowArchivedTasks" style="-fx-font-size: 10pt;" text="Archived Tasks" />
                               <MenuItem mnemonicParsing="false" onAction="#handleExit" style="-fx-font-size: 10pt;" text="Exit" />
                           </Menu>
                           <Menu mnemonicParsing="false" text="Modules">
@@ -44,16 +45,20 @@
                               <graphic>
                                   <Label fx:id="taskSummaryEntry" onMouseClicked="#handleShowTaskSummary" text="Statistics" />
                               </graphic>
+                              <MenuItem fx:id="statisticsMenuItem" visible="false" mnemonicParsing="false" onAction="#handleShowTaskSummary"> </MenuItem>
                           </Menu>
                           <Menu mnemonicParsing="false">
                               <graphic>
                                   <Label fx:id="CalendarLabel" onMouseClicked="#handleShowCalendar" text="Calendar" />
                               </graphic>
+                              <MenuItem fx:id="calendarMenuItem" visible="false" mnemonicParsing="false" onAction="#handleShowCalendar"> </MenuItem>
+
                           </Menu>
                           <Menu mnemonicParsing="false">
                               <graphic>
                                         <Label fx:id="ProductivityMenuLabel" onMouseClicked="#handleShowProductivityDaily" text="Productivity" />
                               </graphic>
+                              <MenuItem fx:id="productivityMenuItem" visible="false" mnemonicParsing="false" onAction="#handleShowProductivityDaily"> </MenuItem>
                           </Menu>
                       </MenuBar>
                   <Region fx:id="menuSpacer" prefHeight="0.0" prefWidth="200.0" styleClass="menu-bar" HBox.hgrow="ALWAYS" />
