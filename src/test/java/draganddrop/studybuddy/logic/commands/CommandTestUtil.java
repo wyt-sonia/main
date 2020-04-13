@@ -2,19 +2,15 @@ package draganddrop.studybuddy.logic.commands;
 
 import static draganddrop.studybuddy.testutil.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import draganddrop.studybuddy.commons.core.index.Index;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.StudyBuddy;
 import draganddrop.studybuddy.model.task.Task;
-import draganddrop.studybuddy.model.task.TaskNameContainsKeywordsPredicate;
 
 /**
  * Contains helper methods for testing commands.
@@ -76,19 +72,6 @@ public class CommandTestUtil {
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
         assertEquals(expectedStudyBuddy, actualModel.getStudyBuddy());
         assertEquals(expectedFilteredList, actualModel.getFilteredTaskList());
-    }
-
-    /**
-     * Updates {@code model}'s filtered list to show only the task at the given {@code targetIndex} in the
-     * {@code model}'s study buddy.
-     */
-    public static void showTaskAtIndex(Model model, Index targetIndex) {
-        assertTrue(targetIndex.getZeroBased() < model.getFilteredTaskList().size());
-
-        Task task = model.getFilteredTaskList().get(targetIndex.getZeroBased());
-        model.updateFilteredTaskList(new TaskNameContainsKeywordsPredicate(Arrays.asList(task.getTaskName())));
-
-        assertEquals(1, model.getFilteredTaskList().size());
     }
 
 }
