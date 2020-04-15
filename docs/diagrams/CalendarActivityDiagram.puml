@@ -8,11 +8,19 @@ skinparam arrowColor #black
 
 :User requests for a calendar;
 
-:Calendar for current month is generated;
+label lab1
+:User enters the date he wants for the calendar;
 
-while (day < Month.length) is (true)
-    :Search for task with date matching day;
-    :Add task name to gridpane;
-endwhile (day==Month.length)
+
+:Time parser parses the date;
+
+if () then ([Requested date is within
+50 years of current date])
+
+:Calendar is generated;
+:Tasks due on selected date is added to task panel;
+else ([else])
+:Error is thrown;
+endif
 stop
 @enduml

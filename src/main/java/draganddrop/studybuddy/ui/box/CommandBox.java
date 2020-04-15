@@ -4,6 +4,7 @@ import draganddrop.studybuddy.logic.Logic;
 import draganddrop.studybuddy.logic.commands.CommandResult;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.logic.parser.exceptions.ParseException;
+import draganddrop.studybuddy.ui.MainWindow;
 import draganddrop.studybuddy.ui.UiPart;
 import draganddrop.studybuddy.ui.interactiveprompt.ExitTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.InteractivePrompt;
@@ -19,6 +20,7 @@ import draganddrop.studybuddy.ui.interactiveprompt.edit.EditTaskInteractivePromp
 import draganddrop.studybuddy.ui.interactiveprompt.edit.SetGoalInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.edit.UnarchiveTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.sort.SortTaskInteractivePrompt;
+import draganddrop.studybuddy.ui.interactiveprompt.view.CalendarViewInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.view.FilterTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.view.FindTaskInteractivePrompt;
 import draganddrop.studybuddy.ui.interactiveprompt.view.HelpInteractivePrompt;
@@ -40,18 +42,20 @@ public class CommandBox extends UiPart<Region> {
     private static final String[] interactiveCommandTypes =
         {"add", "edit", "delete", "archive", "done", "view duplicates",
         "clear", "bye", "sort", "refresh", "help",
-        "filter", "create mods", "find", "list", "unarchive", "goal"};
+        "filter", "create mods", "find", "list", "unarchive", "goal", "calendar"};
     private final CommandExecutor commandExecutor;
     private InteractivePrompt currentInteractivePrompt;
     @FXML
     private TextField commandTextField;
+    private MainWindow mainWindow;
 
-    public CommandBox(CommandExecutor commandExecutor) {
+    public CommandBox(CommandExecutor commandExecutor, MainWindow mainWindow) {
         super(FXML);
         currentInteractivePrompt = null;
         this.commandExecutor = commandExecutor;
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
+        this.mainWindow = mainWindow;
     }
 
     /**
@@ -120,6 +124,10 @@ public class CommandBox extends UiPart<Region> {
                 //mod related functions will not be shown on UI but available as shortcut
                 case "goal":
                     currentInteractivePrompt = new SetGoalInteractivePrompt();
+                    break;
+                //change tabs
+                case "calendar":
+                    currentInteractivePrompt = new CalendarViewInteractivePrompt(mainWindow);
                     break;
                 default:
                     currentInteractivePrompt = new InvalidInputInteractivePrompt();

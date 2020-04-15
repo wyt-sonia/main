@@ -684,7 +684,7 @@ image::basic/filter/filter_type.png[width="600", title="Response to filter by ta
 
 . You can then proceed to choose what task type you would like to filter by. Here we have filtered by "assignment" as an example.
 +
-image::basic/filter/filter5.png[width="790", title="Response to filter by task type 'assignment'"]
+image::basic/filter/filter_type_result.png[width="790", title="Response to filter by task type 'assignment'"]
 //end::filter[]
 
 //updated by Souwmyaa
@@ -718,11 +718,10 @@ Suppose you notice that the task "Homework 1" is still in pending status.
 . Initiate the refresh command using keyword `refresh` and press kbd:[enter] to confirm the action.
 . Tasks have been refreshed!
 +
-image::basic/refresh/refresh3.png[width="790", title="View refreshed Study Buddy"]
+image::basic/refresh/refresh_result.png[width="600", title="Refreshed Study Buddy"]
 +
 You will notice that the overdue task has now moved out of the due soon list and has the updated status tag "overdue".
 //end::refresh[]
-image::basic/refresh/refresh_result.png[width="600", title="Refreshed Study Buddy"]
 
 [NOTE]
 After 'refresh', the tasks in *All Tasks Panel* will be sorted by their deadline or start date.
@@ -1015,6 +1014,14 @@ This is due to JavaFX chart off-sync and it was raised link:{jdk_bug_report}[her
 When this issue happens, you can use any command that can trigger chart updating to refresh the chart.
 
 === Calendar
+
+====
+*Constraints*
+
+. The calendar GUI does not work well if the window size is set too small.
+. You will not be able to navigate too far into the past/ future using CLI.
+
+====
 The calendar feature allows you to visualise your schedule by displaying the number of task you have for the month. This allows students to plan their time efficiently.
 
 The calendar feature can be toggled by clicking `Calendar` -> `Display`
@@ -1026,6 +1033,22 @@ image::calendar/calender_init.png[width="790", align= "left", title="calendar in
 * Clicking on any date will show you all tasks for that day. Keep in mind that the *Index* shown in this panel cannot be used for other commands.
 
 image::calendar/calendar_after_choose_date.png[width="790"", align="left", title="calendar after clicking on a date"]
+
+==== Navigation using CLI
+Study buddy also allows you to navigate to any date in the `Calendar`.
+
+. To initiate fast navigation, simply key in `calendar` into the input line.
+. Study buddy will ask you for a date
++
+image::calendar/Calendar_CLI_Date.png[width="790", align="left", title="Interactive prompt after keying in calendar"]
++
+In this example, we entered `11/04/2020`.
+. Input your date using the format shown and press kbd:[enter] once to proceed.
+. Press kbd:[enter] again to confirm your command.
+
+You will now see the calendar for your selected date as well as all the tasks on that day.
+
+image::calendar/calendar_after_CLI.png[width="790", align="left", title="Successfully navigated calendar using CLI"]
 
 === Productivity
 
@@ -1090,3 +1113,5 @@ Here are some examples of how to obtain Productivity Points in StudyBuddy:
 *Q*: How do I transfer my data to another Computer? +
 *A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Study Buddy folder (should be under data -> taskList.json).
 
+*Q*: How do I save my data? +
+*A*: Study buddy saves your data automatically after every command.

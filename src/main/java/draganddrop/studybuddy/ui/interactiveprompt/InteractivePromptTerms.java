@@ -34,5 +34,7 @@ public enum InteractivePromptTerms {
     CHANGE_MOD_CODE,
     DELETE_MOD,
     // for setting goals
-    GOAL;
+    GOAL,
+    //for calendar view
+    DATE;
 }

@@ -65,11 +65,11 @@ public class FindTaskCommandTest {
     @Test
     public void execute_multipleKeywords_multipleTasksFound() {
         String expectedMessage = String.format(Messages.MESSAGE_TASKS_LISTED_OVERVIEW, 2);
-        TaskNameContainsKeywordsPredicate predicate = preparePredicate("Ass Presentation");
+        TaskNameContainsKeywordsPredicate predicate = preparePredicate("Quiz");
         FindTaskCommand command = new FindTaskCommand(predicate);
         expectedModel.updateFilteredTaskList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(getSampleTasks()[0], getSampleTasks()[1]),
+        assertEquals(Arrays.asList(getSampleTasks()[2], getSampleTasks()[4]),
                 model.getFilteredTaskList());
     }
 
