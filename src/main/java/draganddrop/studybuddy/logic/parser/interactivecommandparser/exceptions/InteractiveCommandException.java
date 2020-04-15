@@ -43,6 +43,10 @@ public class InteractiveCommandException extends RuntimeException {
             errorMessage = "The weight should be from 0.0 to 100.0.";
             break;
 
+        case "invalidInputError":
+            errorMessage = "This is not a valid input.";
+            break;
+
         case "wrongEstimatedTimeFormatError":
             errorMessage = "Please enter decimal number for the number of hours the task might take.";
             break;

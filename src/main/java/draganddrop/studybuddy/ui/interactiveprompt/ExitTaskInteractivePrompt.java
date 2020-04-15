@@ -20,6 +20,7 @@ public class ExitTaskInteractivePrompt extends InteractivePrompt {
 
     private static final String END_OF_COMMAND_NO_EXIT_MSG = "Thank you for staying!";
     private static final String END_OF_COMMAND_MSG = "Exit successfully!";
+    public static final String QUIT_COMMAND_MSG = "Successfully quited from exit command.";
 
     private String reply;
     private InteractivePromptTerms currentTerm;
@@ -35,12 +36,17 @@ public class ExitTaskInteractivePrompt extends InteractivePrompt {
     @Override
     public String interact(String userInput) {
 
+        if ("quit".equals(userInput)) {
+            endInteract(QUIT_COMMAND_MSG);
+            return reply;
+        }
+
         switch (currentTerm) {
 
         case INIT:
             try {
                 reply = "Are you sure you want to quit?\n"
-                    + "Please press enter if you would like to close the application.";
+                    + "Please press enter yes if you would like to exit the application, and no if you would like to go back.";
                 currentTerm = InteractivePromptTerms.READY_TO_EXECUTE;
             } catch (ExitTaskCommandException ex) {
                 reply = ex.getErrorMessage();
@@ -51,8 +57,10 @@ public class ExitTaskInteractivePrompt extends InteractivePrompt {
             if (userInput.equalsIgnoreCase("yes")) {
                 super.setQuit(true);
                 endInteract(END_OF_COMMAND_MSG);
-            } else {
+            } else if (userInput.equalsIgnoreCase("no")){
                 endInteract(END_OF_COMMAND_NO_EXIT_MSG);
+            } else {
+                reply = (new ExitTaskCommandException("invalidInputError")).getErrorMessage();
             }
 
             break;

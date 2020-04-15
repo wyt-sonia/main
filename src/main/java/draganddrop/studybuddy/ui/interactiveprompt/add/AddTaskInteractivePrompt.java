@@ -20,6 +20,7 @@ import draganddrop.studybuddy.logic.commands.add.AddTaskCommand;
 import draganddrop.studybuddy.logic.commands.exceptions.CommandException;
 import draganddrop.studybuddy.logic.parser.TimeParser;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.AddTaskCommandParser;
+import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddDuplicateTaskCommandException;
 import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddTaskCommandException;
 import draganddrop.studybuddy.model.module.EmptyModule;
 import draganddrop.studybuddy.model.module.Module;
@@ -249,7 +250,7 @@ public class AddTaskInteractivePrompt extends InteractivePrompt {
                 endInteract(END_OF_COMMAND_DUPLICATE_MSG);
             } else {
                 //change this
-                reply = (new AddTaskCommandException("wrongDuplicateFormat")).getErrorMessage();
+                reply = (new AddDuplicateTaskCommandException("invalidInputError")).getErrorMessage();
             }
             break;
 
