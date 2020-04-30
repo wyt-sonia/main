@@ -854,7 +854,7 @@ image::duesoon/due_soon_sort.png[width="790",align="center",title="Due Soon List
 
 . It displays a tag with the time left to the deadline.
 +
-image::duesoon/due_soon_tag.png[width="790",align="center",title="Due Soon List Time Tags"]
+image::duesoon/due_soon_tag.png[width="790", align="center",title="Due Soon List Time Tags"]
 
 . It provides a <<Refresh>> function that allows you to refresh time/state of this list if needed.
 
