@@ -37,7 +37,9 @@ This not only helps to prevent typos, but also makes the application much easier
 
 If you can type fast, Study Buddy can get your module management done faster than traditional GUI apps.
 
-Currently, Study Buddy supports both Windows and Mac systems.
+The purpose of this document is to explain in detail, how users can utilize the various commands and functions that Study Buddy provides.
+
+Currently, we support both Windows and Mac systems.
 If you are interested, please jump to the <<Quick Start>> to get started.
 
 Hope you enjoy!

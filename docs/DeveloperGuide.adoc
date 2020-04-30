@@ -23,7 +23,7 @@ By: `Team Drag&Drop`      Since: `Jan 2020`     
 == Introduction
 Study Buddy is a task-management tool made for students who want to be able to track and manage their tasks in one place.
 
-Study Buddy uses various visualization tools such as pie charts and calendars, provides useful functionality such as archive, Due Soon task list etc to make task management simple and convenient.
+Study Buddy uses various visualization tools such as pie charts and calendars, provides useful features such as the Due Soon task list, a productivity tracker etc to make task management simple and convenient.
 
 In particular, Study Buddy is a Command Line Interface (CLI) application that also provides some Graphical User Interface (GUI). This means that users are expected to interact with the Study Buddy mainly through the command line, but each command executed will evoke a visual response as well.
 

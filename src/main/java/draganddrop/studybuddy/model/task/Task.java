@@ -111,6 +111,10 @@ public class Task implements Comparable<Task>, Cloneable {
         return getDateTimes()[0];
     }
 
+    /**
+     * Calculates the time left for the deadline.
+     * @return time left
+     */
     public String getTimeLeft() {
         String timeLeft = "Due: ";
         df = new SimpleDateFormat("HH:mm dd/MM/yyyy");
@@ -175,7 +179,6 @@ public class Task implements Comparable<Task>, Cloneable {
                 }
                 if (this.dateTimes[0].isAfter(now) && !this.taskStatus.equals(TaskStatus.PENDING)) {
                     this.taskStatus = TaskStatus.PENDING;
-                    return;
                 }
             }
         }
