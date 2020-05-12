@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import draganddrop.studybuddy.commons.core.LogsCenter;
+import draganddrop.studybuddy.model.statistics.GoalObserver;
 import draganddrop.studybuddy.model.statistics.Statistics;
 import draganddrop.studybuddy.model.statistics.StatsUtil;
 import draganddrop.studybuddy.model.task.Task;
@@ -24,7 +25,7 @@ import javafx.scene.shape.Circle;
 /**
  * Productivity page that contains usage statistics
  */
-public class ProductivityPage extends UiPart<Region> {
+public class ProductivityPage extends UiPart<Region> implements GoalObserver {
     private static final String FXML = "ProductivityPage.fxml";
     private static Statistics statistics;
 
@@ -104,6 +105,7 @@ public class ProductivityPage extends UiPart<Region> {
                 generateProductivityPage();
             }
         });
+        statistics.setObserver(this);
     }
 
     public static void setStatistics(Statistics statistics) {
@@ -155,6 +157,14 @@ public class ProductivityPage extends UiPart<Region> {
     // daily
 
     /**
+     * updates the daily tab when there are changes to daily goal
+     */
+    @Override
+    public void update() {
+        renderDailyTab();
+    }
+
+    /**
      * renders the progress indicator
      */
     public void renderProgressIndicator() {
@@ -165,6 +175,7 @@ public class ProductivityPage extends UiPart<Region> {
         if (taskCompletedCount >= goal) {
             goldStarImageView.setVisible(true);
             grayStarImageView.setVisible(false);
+            statistics.completeDailyGoal();
         }
         progressIndicator.setProgress(progress);
     }
@@ -269,9 +280,9 @@ public class ProductivityPage extends UiPart<Region> {
      */
     public void renderRankIcon() {
         toggleRankImageView(getRankNumberFromRank(statistics.getRank()));
-        int scoreToday = statistics.getScoreToday();
+        int scoreDifference = statistics.getScoreDifferenceForRank();
         int scoreToNextRank = statistics.getScoreToNextRank();
-        double rankProgress = (double) scoreToday / (double) (scoreToday + scoreToNextRank);
+        double rankProgress = (double) (scoreDifference - scoreToNextRank) / (double) scoreDifference;
         rankProgressIndicator.setProgress(rankProgress);
     }
 
@@ -351,4 +362,5 @@ public class ProductivityPage extends UiPart<Region> {
         rankFiveImageView.setVisible(false);
         rankSixImageView.setVisible(false);
     }
+
 }

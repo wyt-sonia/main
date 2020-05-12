@@ -13,7 +13,7 @@ import org.junit.jupiter.api.io.TempDir;
 
 import draganddrop.studybuddy.logic.LogicManager;
 import draganddrop.studybuddy.logic.parser.TimeParser;
-import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.EditTaskCommandException;
+import draganddrop.studybuddy.logic.parser.interactivecommandparser.exceptions.AddOrEditTaskCommandException;
 import draganddrop.studybuddy.model.Model;
 import draganddrop.studybuddy.model.ModelManager;
 import draganddrop.studybuddy.model.UserPrefs;
@@ -90,7 +90,7 @@ class EditTaskInteractivePromptTestTest {
     public void editTaskInteractivePromptTestInteractTaskIndexOutOfRangeZeroReturnErrorMessage() {
         String zero = "0";
         prompt.interact("");
-        assertEquals(new EditTaskCommandException("invalidIndexRangeError").getErrorMessage(),
+        assertEquals(new AddOrEditTaskCommandException("invalidIndexRangeError").getErrorMessage(),
             prompt.interact(zero));
     }
 
@@ -99,14 +99,14 @@ class EditTaskInteractivePromptTestTest {
         ObservableList<Task> tasksStub = modelStub.getStudyBuddy().getTaskList();
         int taskListSizePlusOne = tasksStub.size() + 1;
         prompt.interact("");
-        assertEquals(new EditTaskCommandException("invalidIndexRangeError").getErrorMessage(),
+        assertEquals(new AddOrEditTaskCommandException("invalidIndexRangeError").getErrorMessage(),
             prompt.interact(taskListSizePlusOne + ""));
     }
 
     @Test
     public void editTaskInteractivePromptTestInteractTaskIndexWrongFormatReturnErrorMessage() {
         prompt.interact("");
-        assertEquals(new EditTaskCommandException("wrongIndexFormatError").getErrorMessage(),
+        assertEquals(new AddOrEditTaskCommandException("wrongIndexFormatError").getErrorMessage(),
             prompt.interact("wrongIndexFormat"));
     }
 
@@ -116,7 +116,7 @@ class EditTaskInteractivePromptTestTest {
         prompt.interact("1");
         prompt.interact("wrongIndexFormat");
         assertTrue(prompt.interact("wrongIndexFormat")
-            .contains(new EditTaskCommandException("wrongIndexFormatError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("wrongIndexFormatError").getErrorMessage()));
     }
 
     @Test
@@ -124,7 +124,7 @@ class EditTaskInteractivePromptTestTest {
         prompt.interact("");
         prompt.interact("1");
         assertTrue(prompt.interact("0")
-            .contains(new EditTaskCommandException("invalidIndexRangeError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("invalidIndexRangeError").getErrorMessage()));
     }
 
     @Test
@@ -133,7 +133,7 @@ class EditTaskInteractivePromptTestTest {
         prompt.interact("");
         prompt.interact("1");
         assertTrue(prompt.interact(size + 1 + "")
-            .contains(new EditTaskCommandException("invalidIndexRangeError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("invalidIndexRangeError").getErrorMessage()));
     }
 
     @Test
@@ -141,7 +141,7 @@ class EditTaskInteractivePromptTestTest {
         prompt.interact("");
         prompt.interact("2");
         prompt.interact("2");
-        String expectedResponse = new EditTaskCommandException("emptyInputError").getErrorMessage() + "\n\n"
+        String expectedResponse = new AddOrEditTaskCommandException("emptyInputError").getErrorMessage() + "\n\n"
             + "Please enter the task name.";
         assertEquals(expectedResponse, prompt.interact(""));
     }
@@ -152,7 +152,7 @@ class EditTaskInteractivePromptTestTest {
         prompt.interact("2");
         prompt.interact("6");
         assertTrue(prompt.interact("101")
-            .contains(new EditTaskCommandException("wrongWeightRangeError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("wrongWeightRangeError").getErrorMessage()));
     }
 
     @Test
@@ -161,7 +161,7 @@ class EditTaskInteractivePromptTestTest {
         prompt.interact("2");
         prompt.interact("6");
         assertTrue(prompt.interact("-1")
-            .contains(new EditTaskCommandException("wrongWeightRangeError").getErrorMessage()));
+            .contains(new AddOrEditTaskCommandException("wrongWeightRangeError").getErrorMessage()));
     }
 
     @Test

@@ -24,18 +24,18 @@ public class ModuleCode {
      * Checks whether the {@code userInput} is module code.
      *
      * @param userInput
-     * @return
+     * @return true if {@code userInput} is a valid module code.
      */
     public static boolean isModuleCode(String userInput) {
-        boolean result = true;
+        boolean isValideModuleCode = true;
         try {
             parsePrefix(userInput);
             parseNumber(userInput);
             parsePostfix(userInput);
         } catch (ModuleException e) {
-            result = false;
+            isValideModuleCode = false;
         }
-        return result;
+        return isValideModuleCode;
     }
 
     /**

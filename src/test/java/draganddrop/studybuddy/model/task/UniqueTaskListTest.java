@@ -23,18 +23,18 @@ public class UniqueTaskListTest {
 
     @Test
     public void uniqueTaskListTestContainsNullTaskThrowsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueTaskList.contains(null));
+        assertThrows(NullPointerException.class, () -> uniqueTaskList.isContains(null));
     }
 
     @Test
     public void uniqueTaskListTestContainsTaskNotInListReturnsFalse() {
-        assertFalse(uniqueTaskList.contains(task1));
+        assertFalse(uniqueTaskList.isContains(task1));
     }
 
     @Test
     public void contains_taskInList_returnsTrue() {
         uniqueTaskList.add(task1);
-        assertTrue(uniqueTaskList.contains(task1));
+        assertTrue(uniqueTaskList.isContains(task1));
     }
 
     @Test

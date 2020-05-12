@@ -2,6 +2,8 @@ package draganddrop.studybuddy.model.task;
 
 /**
  * Represents the task types.
+ *
+ * @@author Wang Yuting
  */
 public enum TaskType {
     Assignment,
@@ -24,10 +26,6 @@ public enum TaskType {
         return taskTypes;
     }
 
-    public static void setTaskTypes(TaskType[] taskTypes) {
-        TaskType.taskTypes = taskTypes;
-    }
-
     public static String getTypeString() {
         return "1. Assignment\n"
             + "2. Quiz\n"
@@ -38,7 +36,7 @@ public enum TaskType {
     }
 
     /**
-     * Gets related task type according to String the input.
+     * Gets related task type according to the {@code status} string.
      *
      * @param status
      * @return
@@ -66,6 +64,8 @@ public enum TaskType {
             break;
         default:
         }
+        assert result != null
+            : "The input string does not match with any task type, please check.\n";
         return result;
     }
 }

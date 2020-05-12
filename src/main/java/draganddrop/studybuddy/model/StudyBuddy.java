@@ -137,7 +137,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
      */
     public boolean hasTask(Task task) {
         requireNonNull(task);
-        return tasks.contains(task);
+        return tasks.isContains(task);
     }
 
 
@@ -365,7 +365,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
      * @param target
      */
     public void updateAddDueSoon(Task target) {
-        if (!dueSoonTasks.contains(target)) {
+        if (!dueSoonTasks.isContains(target)) {
             if (target.isDueSoon()) {
                 dueSoonTasks.add(target);
                 sortDueSoonTasks();
@@ -374,7 +374,7 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
     }
 
     public void setModuleInTask(Task target, Module module) throws ModuleException {
-        if (moduleList.contains(module) || module.equals(new EmptyModule())) {
+        if (moduleList.isContains(module) || module.equals(new EmptyModule())) {
             tasks.setTaskMod(target, module);
         } else {
             throw new ModuleException("Module does not exist in studyBuddy!");
@@ -414,13 +414,9 @@ public class StudyBuddy implements ReadOnlyStudyBuddy {
         this.moduleList.setModuleList(modules);
     }
 
-    /*@Override
-    public Statistics getStatistics() {
-        return statistics;
-    }*/
 
     public boolean hasModule(Module module) {
-        return moduleList.contains(module);
+        return moduleList.isContains(module);
     }
 
     @Override

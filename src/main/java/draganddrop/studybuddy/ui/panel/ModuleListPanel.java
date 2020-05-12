@@ -120,13 +120,13 @@ public class ModuleListPanel extends UiPart<Region> {
          * Updates item.
          *
          * @param module
-         * @param empty
+         * @param isEmpty
          */
         @Override
-        protected void updateItem(Module module, boolean empty) {
-            super.updateItem(module, empty);
+        protected void updateItem(Module module, boolean isEmpty) {
+            super.updateItem(module, isEmpty);
 
-            if (empty || module == null || module.equals(new EmptyModule())) {
+            if (isEmpty || module == null || module.equals(new EmptyModule())) {
                 setGraphic(null);
                 setText(null);
             } else {

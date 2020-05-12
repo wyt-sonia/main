@@ -11,12 +11,18 @@ public class InteractiveCommandException extends RuntimeException {
         this.errorType = errorType;
 
         switch (errorType) {
+        case "unKnownException":
+            errorMessage = "Unknown problem happened, please quit this command or relaunch me.\n\n"
+                + "If you still face this error, you may have to contact my developer at: \n"
+                + "https://github.com/AY1920S2-CS2103T-W16-3/main/blob/master/docs/ContactUs.adoc";
+            break;
+
         case "emptyInputError":
             errorMessage = "The input is empty, please check again.";
             break;
 
         case "moduleWeightOverloadError":
-            errorMessage = "The maximum sum of task's weights under the same module is 100.0, please check.";
+            errorMessage = "The maximum sum of task's weights under the same module is 100.0, please check again.";
             break;
 
         case "taskCompletedError":
@@ -24,15 +30,15 @@ public class InteractiveCommandException extends RuntimeException {
             break;
 
         case "specialCharInputError":
-            errorMessage = "The task name contains special character, please check.";
+            errorMessage = "The task name contains special character, please check again.";
             break;
 
         case "taskNameLengthError":
-            errorMessage = "The maximum length of task name is 20 characters, please check.";
+            errorMessage = "The maximum length of task name is 20 characters, please check again.";
             break;
 
         case "taskDescriptionLengthError":
-            errorMessage = "The maximum length of task description is 300 characters, please check.";
+            errorMessage = "The maximum length of task description is 300 characters, please check again.";
             break;
 
         case "wrongWeightFormatError":
@@ -56,7 +62,7 @@ public class InteractiveCommandException extends RuntimeException {
             break;
 
         case "noSuchModuleError":
-            errorMessage = "Could not find the module based on the module code entered, please check and re-enter.";
+            errorMessage = "Could not find the module based on the module code entered, please check again.";
             break;
 
         case "duplicateModuleNameError":
@@ -101,10 +107,7 @@ public class InteractiveCommandException extends RuntimeException {
             break;
 
         case "dataTimeFormatError":
-            errorMessage = "Invalid date time format, please follow the format below:\n\n"
-                + "Assignment : HH:mm dd/MM/yyyy   e.g. 12:00 01/01/2020\n\n"
-                + "Rest: HH:mm dd/MM/yyyy-HH:mm dd/MM/yyyy\n"
-                + "e.g. 12:00 01/01/2020-14:00 01/01/2020\n";
+            errorMessage = "Invalid date time format, please check again.";
             break;
 
         case "pastDateTime":
@@ -112,12 +115,13 @@ public class InteractiveCommandException extends RuntimeException {
             break;
 
         case "eventEndBeforeStartError":
-            errorMessage = "Invalid date time, the end date you entered is before the start date, please check.";
+            errorMessage = "Invalid date time, the end date you entered is "
+                + "not after the start date, please check again.";
             break;
 
         case "dateFormatError":
             errorMessage = "Invalid date format, please follow the format below:\n\n"
-                            + "dd/MM/yyyy";
+                + "dd/MM/yyyy";
             break;
 
         case "tooLongAway":
